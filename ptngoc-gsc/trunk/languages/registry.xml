@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<!DOCTYPE languages PUBLIC
+	"-//MLS/Multilanguages Support Registry DTD//EN"
+	"http://svn.diendantinhoc.org/org.ddth/main/src/org/ddth/mls/mls.dtd">
+-->
+<languages>
+	<language name="default"
+		description="Default Language Pack (English)" type="properties"
+		locale="en">
+		<storage type="custom">
+			<param name="class"
+				value="org.ddth.panda.portal.module.ModuleLanguageStorageSource" />
+			<param name="dir"
+				value="${module.tmpDir}/languages/default" />
+			<param name="languageName" value="default" />
+		</storage>
+	</language>
+
+	<language name="en" description="English Language Pack" type="ref"
+		locale="en_US">
+		<ref target="default" />
+	</language>
+</languages>
