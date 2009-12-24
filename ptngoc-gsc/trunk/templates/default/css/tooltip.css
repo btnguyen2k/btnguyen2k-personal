@@ -1,0 +1,19 @@
+#tooltipBody {
+	position: absolute;
+	left: -300px;
+	width: 150px;
+	border: 1px solid black;
+	padding: 2px;
+	background-color: #ffffe0;
+	visibility: hidden;
+	z-index: 100;
+	/* remove the following line remove shadow, this line should always appear last within this CSS */
+	/* filter: 'progid:DXImageTransform.Microsoft.Shadow(color=gray,direction=135)'; */
+}
+
+#tooltipPointer {
+	position:absolute;
+	left: -300px;
+	z-index: 101;
+	visibility: hidden;
+}
