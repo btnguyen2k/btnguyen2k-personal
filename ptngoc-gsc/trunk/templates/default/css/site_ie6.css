@@ -1,0 +1,3 @@
+/* Hack around IE6 BUG: force corner adjustment */
+.block_tr { *right:-1; }
+.block_br { *right:-1; }

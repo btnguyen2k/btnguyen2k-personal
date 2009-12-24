@@ -1,0 +1,210 @@
+/* Color Scheme for TXBB */
+
+/**
+ * Colour Theme colour
+ *     R: 112 G:128 B:130
+ *     websafe #708082
+ */
+<#assign COLOR_THEME='#708082' />
+
+/**
+ * Light Font 1
+ *     R:255 G:255 B:255
+ *     websafe #ffffff
+ * Light Font 2
+ *     R:249 G:243 B:251
+ *     websafe #f9f3fb
+ */
+<#assign COLOR_FG_LIGHT_1='#ffffff' />
+<#assign COLOR_FG_LIGHT_2='#f9f3fb' />
+
+/**
+ * Dark Font 1
+ *     R:0 G:0 B:0
+ *     websafe #000000
+ * Dark Font 2
+ *     R:51 G:51 B:51
+ *     websafe #333333
+ */
+<#assign COLOR_FG_DARK_1='#000000' />
+<#assign COLOR_FG_DARK_2='#333333' />
+
+/**
+ * Warning Font 1
+ *     R:192 G:0 B:0
+ *     websafe #c00000
+ * Warning Font 2
+ *     R:255 G:255 B:102
+ *     websafe #ffff66
+ */
+<#assign COLOR_FG_WARNING_1='#c00000' />
+<#assign COLOR_FG_WARNING_2='#ffff66' />
+
+/**
+ * Light background 1:
+ *     R:249 G:243 B:251
+ *     websafe #f9f3fb
+ * Light background 2:
+ *     R:204 G:204 B:204
+ *     websafe #cccccc
+ */
+<#assign COLOR_BG_LIGHT_1='#f9f3fb' />
+<#assign COLOR_BG_LIGHT_2='#cccccc' />
+
+/**
+ * Dark background 1:
+ *     R:110 G:112 B:112
+ *     websafe #6e7070
+ * Dark background 2:
+ *     R:113 G:92 B:122
+ *     websafe #715c7a
+ */
+<#assign COLOR_BG_DARK_1='#6e7070' />
+<#assign COLOR_BG_DARK_2='#715c7a' />
+ 
+/*
+ * Active Title bar colour1:
+ *     R:110 G:112 B:112
+ *     websafe #6e7070
+ * Active Title bar colour2:
+ *     R:255 G:255 B:255
+ *     websafe #ffffff
+ */
+<#assign COLOR_BG_TITLE_1='#6e7070' />
+<#assign COLOR_BG_TITLE_2='#ffffff' />
+
+<#assign THEME_HIGHLIGHTED_BLOCK='block_highlighted' />
+<#assign THEME_NORMAL_BLOCK='block_normal' />
+<#assign THEME_MENU_BLOCK='block_menu' />
+<#assign THEME_INFORMATION='block_information' />
+<#assign THEME_WARNING='block_warning' />
+<#assign THEME_ERROR='block_error' />
+
+<#assign THEME_NORMAL_TAB='block_normal_tab' />
+<#assign THEME_SELECTED_TAB='block_selected_tab' />
+
+/* Hyper links */
+a:link { color: ${COLOR_BG_DARK_1}; text-decoration: none; }
+a:visited { color: ${COLOR_BG_DARK_1}; text-decoration: none; }
+a:hover { color: ${COLOR_BG_DARK_2}; text-decoration: underline; }
+
+/* Blocks */
+.block_highlighted .block_tl, .block_highlighted .block_tr, .block_highlighted .block_bl, .block_highlighted .block_br {
+	background: ${COLOR_BG_DARK_2};
+}
+.block_highlighted .block_body { border: 1px solid ${COLOR_BG_DARK_2}; }
+.block_highlighted .block_title { color: ${COLOR_FG_LIGHT_2}; background: ${COLOR_BG_DARK_2}; }
+
+.block_normal .block_tl, .block_normal .block_tr, .block_normal .block_bl, .block_normal .block_br {
+	background: ${COLOR_BG_LIGHT_2};
+}
+.block_normal .block_body { border: 1px solid ${COLOR_BG_LIGHT_2}; }
+.block_normal .block_title { color: ${COLOR_FG_DARK_1}; background: ${COLOR_BG_LIGHT_1}; }
+
+.block_information .block_tl, .block_information .block_tr, .block_information .block_bl, .block_information .block_br {
+	background: ${COLOR_THEME};
+}
+.block_information .block_body { border: 1px solid ${COLOR_THEME}; }
+.block_information .block_title { color: ${COLOR_FG_DARK_2}; background: ${COLOR_BG_LIGHT_2}; }
+
+.block_warning .block_tl, .block_warning .block_tr, .block_warning .block_bl, .block_warning .block_br {
+	background: ${COLOR_THEME};
+}
+.block_warning .block_body { border: 1px solid ${COLOR_THEME}; }
+.block_warning .block_title { color: ${COLOR_FG_WARNING_2}; background: ${COLOR_BG_LIGHT_2}; }
+
+.block_error .block_tl, .block_error .block_tr, .block_error .block_bl, .block_error .block_br {
+	background: ${COLOR_THEME};
+}
+.block_error .block_body { border: 1px solid ${COLOR_THEME}; }
+.block_error .block_title { color: ${COLOR_FG_WARNING_1}; background: ${COLOR_BG_LIGHT_2}; }
+
+.block_menu .block_tl, .block_menu .block_tr, .block_menu .block_bl, .block_menu .block_br {
+	background: ${COLOR_BG_DARK_2};
+}
+.block_menu .block_body { border: 1px solid ${COLOR_BG_DARK_2}; }
+.block_menu .block_title { color: ${COLOR_FG_LIGHT_2}; background: ${COLOR_BG_DARK_2}; }
+
+.block_selected_tab .block_tl, .block_selected_tab .block_tr, .block_selected_tab .block_bl, .block_selected_tab .block_br {
+	background: ${COLOR_BG_DARK_2};
+}
+.block_selected_tab .block_body { border: 1px solid ${COLOR_BG_DARK_2}; }
+.block_selected_tab .block_title { color: ${COLOR_FG_LIGHT_2}; background: ${COLOR_BG_DARK_2}; }
+
+.block_normal_tab .block_tl, .block_normal_tab .block_tr, .block_normal_tab .block_bl, .block_normal_tab .block_br {
+	background: ${COLOR_BG_LIGHT_2};
+}
+.block_normal_tab .block_body { border: 1px solid ${COLOR_BG_LIGHT_2}; }
+.block_normal_tab .block_title { color: ${COLOR_FG_DARK_1}; background: ${COLOR_BG_LIGHT_1}; }
+
+/* Menu */
+.menuItem { border-bottom: 1px solid ${COLOR_THEME}; padding: 2px; }
+.menuItem.highlighted { font-weight: bold; }
+.menuItem.last { border-bottom: none; padding: 2px; }
+.menuItem.selected { background: ${COLOR_BG_LIGHT_2}; }
+.menuItem.bullet { padding-left: 6px; }
+.menuItem a { text-decoration: underline; }
+.menuItem:hover { background: ${COLOR_BG_LIGHT_1}; color: #000000; cursor: pointer; }
+
+/* Messages */
+.errorMessage { color: ${COLOR_FG_WARNING_1}; font-weight: bold; }
+.warningMessage { color: ${COLOR_FG_WARNING_1}; font-weight: bold; }
+.infoMessage { color: ${COLOR_FG_DARK_2}; font-weight: bold; }
+
+/* Tables */
+table.tblListView thead th, table.tblListView thead td, table.tblListView tfoot th, table.tblListView tfoot td {
+	font-size: 10.5pt; font-weight: bold;
+	border: 1px solid ${COLOR_BG_DARK_2};
+	background-color: ${COLOR_BG_LIGHT_2};
+	text-align: center;
+}
+
+table.tblListView .row0 tbody td, table.tblListView .row0 td, table.tblListView td.row0 {
+	font-size: 10pt; font-weight: normal;
+	border: 1px solid ${COLOR_BG_LIGHT_2};
+}
+
+table.tblListView .row1 tbody td, table.tblListView .row1 td, table.tblListView td.row1 {
+	font-size: 10pt; font-weight: normal;
+	border: 1px solid ${COLOR_BG_LIGHT_2};
+	background-color: ${COLOR_BG_LIGHT_1};
+}
+
+/* Scah */
+div.syntaxhighlighter[title]:before {
+	text-align: center;
+	content: attr(title);
+	display: block;
+	padding-top: 4px; padding-bottom: 4px;
+	border-bottom: 1px solid ${COLOR_THEME};
+	font-weight: bold;
+}
+blockquote {
+	font-size: 90%;
+	background-color: ${COLOR_BG_LIGHT_1};
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-right: 10px;
+	margin-left: 50px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-right: 2px;
+	padding-left: 15px;
+	border-left: 3px solid ${COLOR_BG_LIGHT_2};
+}
+blockquote:before {
+	display: block;
+	border-bottom: 1px dotted ${COLOR_THEME};
+	margin-bottom: 1em;
+	padding-bottom: .5em;
+	font-weight: bold;
+}
+blockquote[title]:before {
+	content:attr(title) " said:"
+}
+blockquote[title][cite]:before {
+	content:attr(title) " (from " attr(cite) ") said:"
+}
+blockquote[cite]:before {
+	content:" From " attr(cite) ":"
+}
