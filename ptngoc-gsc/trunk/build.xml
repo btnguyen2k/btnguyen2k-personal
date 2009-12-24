@@ -1,0 +1,120 @@
+<!--
+Project: TXBB
+
+This is the ant build file for TXBB project.
+-->
+<project name="TXBB-build" default="build" basedir=".">
+	<target name="init">
+		<!-- directory properties -->
+		<property name="dist" value="dist" />
+		<property name="bin" value="bin" />
+		<property name="src" value="src" />
+		<property name="resources" value="resources" />
+		<property name="resources-lib" value="${resources}/lib" />
+		<property name="tmp" value="tmp" />
+		<property name="file-portal-module" value="portal-module.xml" />
+		<property name="file-manifest" value="META-INF/MANIFEST.MF" />
+			
+		<!-- Create the time stamp -->
+		<tstamp />
+	</target>
+
+	<target name="help" description="Usage information">
+		<echo>ant -projecthelp for list of available targets</echo>
+	</target>
+
+	<target name="loadDescriptor" depends="init" description="Load and Parse module description file">
+		<xpath file="${file-portal-module}" expression="/portal-module/@name" outputproperty="moduleName" />
+		<property name="module.name" value="${moduleName}" />
+		<!--
+		<property name="module.name" value="txbb" />
+		-->
+
+		<xpath file="${file-portal-module}" expression="/portal-module/module-info/version/@number" outputproperty="moduleVersion" />
+		<property name="module.version" value="${moduleVersion}" />
+
+		<xpath file="${file-portal-module}" expression="/portal-module/module-info/version/@build" outputproperty="moduleBuildNumber" />
+		<trim name="moduleBuildNumber" />
+		<condition property="module.build.number" value="${moduleBuildNumber}" else="0">
+			<and>
+				<isset property="moduleBuildNumber" />
+				<not>
+					<equals arg1="${moduleBuildNumber}" arg2="" />
+				</not>
+			</and>
+		</condition>
+		<property name="module.build.date" value="${DSTAMP}" />
+		<property name="module.build.time" value="${TSTAMP}" />
+	</target>
+
+	<target name="compile" depends="loadDescriptor, init" description="Compile module">
+		<mkdir dir="${bin}" />
+		<javac srcdir="${src}" destdir="${bin}" debug="true" source="1.5" target="1.5" encoding="utf-8" optimize="on">
+			<classpath>
+				<fileset dir="${resources-lib}">
+					<include name="*.jar" />
+				</fileset>
+				<fileset dir="${resources-lib}/ddth">
+					<include name="*.jar" />
+				</fileset>
+				<fileset dir="${resources-lib}/panda">
+					<include name="*.jar" />
+				</fileset>
+				<fileset dir="${resources-lib}/pandaportal">
+					<include name="*.jar" />
+				</fileset>
+				<fileset dir="${resources-lib}/thirdparty">
+					<include name="*.jar" />
+				</fileset>
+			</classpath>
+		</javac>
+
+		<delete failonerror="false" dir="${tmp}" />
+		<mkdir dir="${tmp}" />
+
+		<copy file="${resources-lib}/icu4j-4_0_1.jar" todir="${tmp}" />
+		<copy file="${resources-lib}/ddth/ddth-txcode-0.2.beta.jar" todir="${tmp}" />
+		<copy todir="${tmp}/org">
+			<fileset dir="${bin}/org" />
+		</copy>
+		<copy todir="${tmp}/hibernate">
+			<fileset dir="hibernate" />
+		</copy>
+		<copy todir="${tmp}/templates">
+			<fileset dir="templates" />
+		</copy>
+		<copy todir="${tmp}/languages">
+			<fileset dir="languages" />
+		</copy>
+		<copy file="${file-portal-module}" todir="${tmp}" />
+
+		<!-- make jar file -->
+		<mkdir dir="${bin}" />
+		<jar jarfile="${bin}/pandaportal-${module.name}-${module.version}.jar" basedir="${tmp}" manifest="${file-manifest}" />
+		<!--
+		<jar jarfile="${bin}/pandaportal-${module.name}-${module.version}-${module.build.number}-${module.build.date}.jar" basedir="${tmp}" />
+		-->
+	</target>
+
+	<target name="build" depends="loadDescriptor" description="Build module">
+		<!-- update module descriptor file -->
+		<increase name="module.build.number" />
+		<replaceregexp file="${file-portal-module}">
+			<regexp pattern="&lt;version.*?number=&quot;${module.version}&quot;.*?&gt;" />
+			<substitution expression="&lt;version number=&quot;${module.version}&quot; build=&quot;${module.build.number}&quot; date=&quot;${module.build.date}${module.build.time}&quot; /&gt;" />
+		</replaceregexp>
+
+		<antcall target="compile" />
+	</target>
+	
+	<target name="dist" depends="build" description="Build and Distribute module">
+		<copy file="${bin}/pandaportal-${module.name}-${module.version}.jar" todir="${dist}" />
+	</target>
+
+	<path id="lib.path">
+		<fileset dir="resources/lib" includes="*.jar" />
+	</path>
+	<taskdef name="xpath" classname="net.uworks.andariel.XPath" classpathref="lib.path" loaderref="lib.path.loader" />
+	<taskdef name="increase" classname="net.uworks.andariel.Increase" classpathref="lib.path" />
+	<taskdef name="trim" classname="net.uworks.andariel.Trim" classpathref="lib.path" />
+</project>
