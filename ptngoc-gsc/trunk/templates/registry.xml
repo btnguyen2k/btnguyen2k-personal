@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	<!DOCTYPE templates PUBLIC
+	"-//Template Registry DTD//EN"
+	"http://svn.diendantinhoc.org/org.ddth/main/src/org/ddth/webtemplate/templates.dtd">
+-->
+<templates>
+	<templateConfig />
+	<template name="default" description="Default Template Pack"
+		type="freemarker" configFile="config.xml">
+		<storage type="custom">
+			<param name="class"
+				value="org.ddth.panda.portal.module.ModuleTemplateStorageSource" />
+			<param name="dir"
+				value="${module.tmpDir}/templates/default" />
+			<param name="templateName" value="default" />
+		</storage>
+		<params>
+			<param name="configFile" value="config.xml" />
+		</params>
+	</template>
+</templates>

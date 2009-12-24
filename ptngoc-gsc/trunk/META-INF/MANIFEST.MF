@@ -1,0 +1,32 @@
+Bundle-SymbolicName: org.ddth.txbb
+Bundle-Name: TXBB - Tre Xanh Bulletin Board
+Bundle-Description: TXBB - Tre Xanh Bulletin Board v3.0
+Bundle-Vendor: DDTH.ORG
+Bundle-Version: 3.0.0
+Bundle-Activator: com.greenstorm.gsc.osgi.Activator
+Bundle-ClassPath: .,icu4j-4_0_1.jar,ddth-txcode-0.2.beta.jar
+Require-Bundle: PandaPortal-Core;bundle-version="1.0.0";reprovide=true
+Export-Package: com.greenstorm.gsc,
+ com.greenstorm.gsc.bo,
+ com.greenstorm.gsc.model,
+ com.greenstorm.gsc.panda,
+ com.greenstorm.gsc.panda.admin,
+ com.greenstorm.gsc.portlets,
+ com.greenstorm.gsc.portlets.admin
+Import-Package: org.osgi.framework, 
+    javax.servlet; specification-version="2.3", 
+    javassist.util.proxy, 
+    net.sf.ehcache, 
+    org.apache.commons.logging,
+    org.hibernate, org.hibernate.proxy, org.hibernate.cache,
+    org.ddth.fileupload,
+    org.ddth.logging,
+    org.ddth.daf, org.ddth.daf.impl,
+    org.ddth.osgi,
+    org.ddth.mls,
+    org.ddth.webtemplate, org.ddth.webtemplate.datamodel,
+    org.ddth.common,
+    org.ddth.ehconfig, org.ddth.ehconfig.impl,
+    org.ddth.xconfig,
+    org.ddth.panda, org.ddth.panda.core, org.ddth.panda.web, org.ddth.panda.setup, org.ddth.panda.utils, org.ddth.panda.core.daf, org.ddth.panda.core.impl.controlforward, org.ddth.panda.web.impl.controlforward,
+    org.ddth.panda.portal, org.ddth.panda.portal.module, org.ddth.panda.portal.model, org.ddth.panda.portal.portlet, org.ddth.panda.portal.portlet.menu, org.ddth.panda.portal.utils
