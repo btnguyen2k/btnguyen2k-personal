@@ -1,0 +1,1 @@
+<#assign MAIN_CONTENT_FILE='content_pcTopicLock.ftl'><#include "layout.ftl">

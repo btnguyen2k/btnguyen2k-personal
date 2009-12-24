@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class entity-name="org.ddth.txbb.bo.Box" name="org.ddth.txbb.bo.Box"
+		table="txbb_box">
+		<cache usage="nonstrict-read-write" />
+		<id name="id" column="bid" type="integer">
+			<generator class="native">
+				<!-- Note: for PostgreSQL 8.3 -->
+				<param name="sequence">txbb_box_bid_seq</param>
+			</generator>
+		</id>
+
+		<!--
+			<property name="isDeleted" column="bis_deleted"
+			type="org.ddth.hibernate.CharBooleanType" not-null="true" />
+		-->
+
+		<property name="parentId" column="bparent_id" type="integer" />
+
+		<property name="position" column="bposition" type="integer"
+			not-null="true" />
+
+		<property name="iconNewPost" column="bicon_new" type="string"
+			length="255" />
+
+		<property name="iconNoNewPost" column="bicon_nonew" type="string"
+			length="255" />
+
+		<property name="lastTopicId" column="blast_topic_id" type="integer" />
+
+		<!--
+			<property name="type" column="btype" type="integer" not-null="true"
+			/>
+		-->
+
+		<property name="title" column="btitle" type="string" length="255"
+			not-null="true" />
+
+		<property name="outerDescription" column="bouter_description"
+			type="text" />
+
+		<property name="innerDescription" column="binner_description"
+			type="text" />
+
+		<!-- Permissions -->
+		<set name="permissionPublishTopic" lazy="false" inverse="true"
+			cascade="all-delete-orphan">
+			<cache usage="nonstrict-read-write" />
+			<key column="bid" />
+			<one-to-many entity-name="org.ddth.txbb.bo.BoxPermissionGroupPublishTopic" />
+		</set>
+
+		<set name="permissionViewTopic" lazy="false" inverse="true"
+			cascade="all-delete-orphan">
+			<cache usage="nonstrict-read-write" />
+			<key column="bid" />
+			<one-to-many entity-name="org.ddth.txbb.bo.BoxPermissionGroupViewTopic" />
+		</set>
+		<!-- Permissions -->
+
+		<!-- Moderatings -->
+		<set name="groupModerating" lazy="false" inverse="true"
+			cascade="all-delete-orphan">
+			<cache usage="nonstrict-read-write" />
+			<key column="bid" />
+			<one-to-many entity-name="org.ddth.txbb.bo.BoxModerateGroup" />
+		</set>
+		<set name="memberModerating" lazy="false" inverse="true"
+			cascade="all-delete-orphan">
+			<cache usage="nonstrict-read-write" />
+			<key column="bid" />
+			<one-to-many entity-name="org.ddth.txbb.bo.BoxModerateMember" />
+		</set>
+		<!-- Moderatings -->
+	</class>
+</hibernate-mapping>

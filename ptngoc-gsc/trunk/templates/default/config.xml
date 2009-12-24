@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!--
+		<!DOCTYPE template-config PUBLIC "-//Template Configuration Settings
+		DTD//EN" "template.cfg.dtd">
+	-->
+<template-config>
+	<settings>
+		<charset>utf-8</charset>
+	</settings>
+
+	<page id="index">
+		<templateFile>layout_index.ftl</templateFile>
+	</page>
+	
+	<page id="box">
+		<templateFile>layout_boxView.ftl</templateFile>
+	</page>
+	
+	<page id="topic">
+		<templateFile>layout_topicView.ftl</templateFile>
+	</page>
+	
+	<page id="boxTopic">
+		<templateFile>layout_topicViewViaBox.ftl</templateFile>
+	</page>
+
+	<page id="login">
+		<templateFile>layout_login.ftl</templateFile>
+	</page>
+
+	<page id="pc">
+		<templateFile>layout_pcIndex.ftl</templateFile>
+	</page>
+	<page id="pcIndex">
+		<templateFile>layout_pcIndex.ftl</templateFile>
+	</page>
+	<page id="pcCreateTopic">
+		<templateFile>layout_pcTopicCreate.ftl
+		</templateFile>
+	</page>
+	<page id="pcEditTopic">
+		<templateFile>layout_pcTopicEdit.ftl
+		</templateFile>
+	</page>
+	<page id="pcViewDraftTopics">
+		<templateFile>layout_pcTopicViewDraftList.ftl
+		</templateFile>
+	</page>
+	<page id="pcViewPublishedTopics">
+		<templateFile>layout_pcTopicViewPublishedList.ftl
+		</templateFile>
+	</page>
+	<page id="pcDeleteTopic">
+		<templateFile>layout_pcTopicDelete.ftl
+		</templateFile>
+	</page>
+	<page id="pcPublishTopic">
+		<templateFile>layout_pcTopicPublish.ftl
+		</templateFile>
+	</page>
+	<page id="pcUnpublishTopic">
+		<templateFile>layout_pcTopicUnpublish.ftl
+		</templateFile>
+	</page>
+	<page id="pcLockTopic">
+		<templateFile>layout_pcTopicLock.ftl
+		</templateFile>
+	</page>
+	<page id="pcUnlockTopic">
+		<templateFile>layout_pcTopicUnlock.ftl
+		</templateFile>
+	</page>
+
+	<page id="admin">
+		<templateFile>layout_adminIndex.ftl
+		</templateFile>
+	</page>
+	<page id="adminListBoxes">
+		<templateFile>layout_adminBoxList.ftl
+		</templateFile>
+	</page>
+	<page id="adminCreateBox">
+		<templateFile>layout_adminBoxCreate.ftl
+		</templateFile>
+	</page>
+	<page id="adminDeleteBox">
+		<templateFile>layout_adminBoxDelete.ftl
+		</templateFile>
+	</page>
+	<page id="adminEditBox">
+		<templateFile>layout_adminBoxEdit.ftl
+		</templateFile>
+	</page>
+</template-config>

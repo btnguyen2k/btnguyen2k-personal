@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class entity-name="org.ddth.txbb.bo.Topic" name="org.ddth.txbb.bo.Topic"
+		table="txbb_topic">
+		<cache usage="nonstrict-read-write" />
+		<id name="id" column="tid" type="integer">
+			<generator class="native">
+				<!-- Note: for PostgreSQL 8.3 -->
+				<param name="sequence">txbb_topic_tid_seq</param>
+			</generator>
+		</id>
+
+		<property name="memberId" column="tmember_id" type="integer"
+			not-null="true" />
+
+		<property name="title" column="ttitle" type="string" length="255" />
+
+		<property name="type" column="ttype" type="string" length="32"
+			not-null="true" />
+
+		<property name="creationTimestamp" column="tcreation_timestamp"
+			type="integer" not-null="true" />
+
+		<property name="lastpostTimestamp" column="tlastpost_timestamp"
+			type="integer" not-null="true" />
+
+		<property name="lastupdateTimestamp" column="tlastupdate_timestamp"
+			type="integer" not-null="true" />
+
+		<property name="numViews" column="tnum_views" type="integer"
+			not-null="true" />
+
+		<property name="numPosts" column="tnum_posts" type="integer"
+			not-null="true" />
+
+		<property name="isPublished" column="tis_published"
+			type="org.ddth.hibernate.CharBooleanType" not-null="true" />
+
+		<property name="isLocked" column="tis_locked"
+			type="org.ddth.hibernate.CharBooleanType" not-null="true" />
+
+		<!--
+			<list name="topicContents" lazy="false" inverse="true"
+			cascade="all-delete-orphan"> <key column="ttopic_id" not-null="true"
+			/> <index column="torder" /> <one-to-many
+			entity-name="org.ddth.txbb.bo.TopicContent" /> </list>
+		-->
+
+		<set name="topicContents" lazy="true" inverse="true" order-by="torder"
+			cascade="all-delete-orphan">
+			<cache usage="nonstrict-read-write" />
+			<key column="ttopic_id" not-null="true" />
+			<one-to-many entity-name="org.ddth.txbb.bo.TopicContent" />
+		</set>
+	</class>
+</hibernate-mapping>
