@@ -1,0 +1,97 @@
+<!ELEMENT portal-module (module-info, module-properties?, portlets?, languages?, templates?, action-mapping, pages?)>
+<!ATTLIST portal-module
+	name CDATA #REQUIRED
+	brief-description CDATA #IMPLIED>
+
+<!ELEMENT module-info (description, version, portal-version, vendor)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT version EMPTY>
+<!ATTLIST version
+	number CDATA #REQUIRED
+	build CDATA #IMPLIED
+	date CDATA #IMPLIED>
+<!ELEMENT portal-version EMPTY>
+<!ATTLIST portal-version
+	min CDATA #IMPLIED
+	max CDATA #IMPLIED>
+<!ELEMENT vendor EMPTY>
+<!ATTLIST vendor
+	name CDATA #REQUIRED
+	url CDATA #IMPLIED>
+
+<!ELEMENT module-properties (property*)>
+<!ELEMENT property (#PCDATA)>
+<!ATTLIST property
+	name ID #REQUIRED>
+
+<!ELEMENT portlets (portlet*)>
+<!ELEMENT portlet EMPTY>
+<!ATTLIST portlet
+	name CDATA #REQUIRED
+	description CDATA #IMPLIED
+	class CDATA #REQUIRED>
+	
+<!ELEMENT languages EMPTY>
+<!ATTLIST languages
+	registry CDATA #REQUIRED>
+	
+<!ELEMENT templates EMPTY>
+<!ATTLIST templates
+	registry CDATA #REQUIRED>
+
+<!ELEMENT action-mapping (default-handler?, default-view?, module*)>
+
+<!ELEMENT module (form*, default-handler?, default-view?, handler*, view*)>
+<!ATTLIST module
+	name ID #REQUIRED>
+
+<!ELEMENT form (form-property*)>
+<!ATTLIST form
+	name ID #REQUIRED
+	validatorClass CDATA #IMPLIED>
+	
+<!ELEMENT form-property EMPTY>
+<!ATTLIST form-property
+	name CDATA #REQUIRED
+	type CDATA #REQUIRED
+	required (true|false) "true"
+	default-value CDATA #IMPLIED
+	max-length CDATA #IMPLIED
+	min-length CDATA #IMPLIED
+	min-value CDATA #IMPLIED
+	max-value CDATA #IMPLIED
+	allowed-values CDATA #IMPLIED
+	pattern CDATA #IMPLIED>
+
+<!ELEMENT default-handler EMPTY>
+<!ATTLIST default-handler
+	class CDATA #REQUIRED>
+
+<!ELEMENT handler EMPTY>
+<!ATTLIST handler
+	class CDATA #REQUIRED
+	action CDATA #REQUIRED
+	form IDREF #IMPLIED>
+
+<!ELEMENT default-view EMPTY>
+<!ATTLIST default-view
+	class CDATA #REQUIRED>
+
+<!ELEMENT view EMPTY>
+<!ATTLIST view
+	class CDATA #REQUIRED
+	action CDATA #REQUIRED>
+	
+<!ELEMENT pages (page*)>
+<!ELEMENT page ((layout|disabled-location)+)>
+<!ATTLIST page
+	action CDATA #REQUIRED>
+<!ELEMENT layout EMPTY>
+<!ATTLIST layout
+	location CDATA #REQUIRED
+	portlet CDATA #REQUIRED
+	position CDATA #REQUIRED>
+<!ELEMENT disabled-location EMPTY>
+<!ATTLIST disabled-location
+	id CDATA #REQUIRED>
+	

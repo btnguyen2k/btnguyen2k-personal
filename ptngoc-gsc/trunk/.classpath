@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="lib" path="resources/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="resources/lib/felix.jar"/>
+	<classpathentry kind="lib" path="resources/lib/icu4j-4_0_1.jar" sourcepath="/JavaSources/icu/icu4j-4_0_1-src.zip"/>
+	<classpathentry kind="lib" path="resources/lib/pandaportal/pandaportal-portalAdmin-1.0.0.jar"/>
+	<classpathentry kind="lib" path="resources/lib/pandaportal/pandaportal-portalCore-1.0.0.jar"/>
+	<classpathentry kind="lib" path="resources/lib/pandaportal/pandaportal-portalMember-1.0.0.jar"/>
+	<classpathentry kind="lib" path="resources/lib/ddth/ddth-caching-0.3.jar"/>
+	<classpathentry kind="lib" path="resources/lib/ddth/ddth-daf-0.5.beta.jar"/>
+	<classpathentry kind="lib" path="resources/lib/ddth/ddth-ehconfig-0.2.jar"/>
+	<classpathentry kind="lib" path="resources/lib/ddth/ddth-ehproperties-0.2.beta.jar"/>
+	<classpathentry kind="lib" path="resources/lib/ddth/ddth-osgi-0.1.beta.jar"/>
+	<classpathentry kind="lib" path="resources/lib/ddth/ddth-txcode-0.2.beta.jar"/>
+	<classpathentry kind="lib" path="resources/lib/ddth/ddth-common-0.4.jar"/>
+	<classpathentry kind="lib" path="resources/lib/ddth/ddth-mls-0.2.jar"/>
+	<classpathentry kind="lib" path="resources/lib/ddth/ddth-webtemplate-0.3.jar"/>
+	<classpathentry kind="lib" path="resources/lib/ddth/ddth-hibernateutil-0.2.beta.jar"/>
+	<classpathentry kind="lib" path="resources/lib/ddth/ddth-fileupload-0.3.beta.jar"/>
+	<classpathentry kind="lib" path="resources/lib/ddth/ddth-logging-0.3.beta.jar"/>
+	<classpathentry kind="lib" path="resources/lib/ddth/ddth-xconfig-0.3.beta.jar"/>
+	<classpathentry kind="lib" path="resources/lib/panda/ddth-panda-1.0.5.1.jar"/>
+	<classpathentry kind="lib" path="resources/lib/thirdparty/hibernate-3.3.2.GA.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
