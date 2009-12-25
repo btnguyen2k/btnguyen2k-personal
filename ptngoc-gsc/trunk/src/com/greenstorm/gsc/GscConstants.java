@@ -2,10 +2,10 @@ package com.greenstorm.gsc;
 
 import org.ddth.panda.portal.PandaPortalConstants;
 
-public class TxbbConstants extends PandaPortalConstants {
-    public final static String MODULE_KEY_NAME = "TXBB";
+public class GscConstants extends PandaPortalConstants {
+    public final static String MODULE_KEY_NAME = "GSC";
 
-    public final static String MODULE_NAME = "txbb";
+    public final static String MODULE_NAME = "gsc";
 
     public final static double TXBB_POINTS_PER_TOPIC = 10.0;
 
@@ -16,7 +16,7 @@ public class TxbbConstants extends PandaPortalConstants {
     public final static String TITLE_SEPARATOR = " | ";
 
     public final static int NUM_RECENT_PUBLISHED_TOPICS_PER_BOX = 5;
-    
+
     public final static int NUM_RECENT_PUBLISHED_TOPICS_ALL_BOXES = 12;
 
     public final static int NUM_RECENT_COMMENTED_TOPICS = 8;
@@ -26,11 +26,11 @@ public class TxbbConstants extends PandaPortalConstants {
     public final static String ACTION_VIEW_BOX = "box";
 
     public final static String ACTION_VIEW_TOPIC = "topic";
-    
+
     public final static String ACTION_VIEW_COMMENT = "comment";
 
     public final static String ACTION_VIEW_TOPIC_FROM_BOX = "boxTopic";
-    
+
     public final static String ACTION_VIEW_COMMENT_FROM_BOX = "boxComment";
 
     public final static String ACTION_PC_INDEX = "pcIndex";

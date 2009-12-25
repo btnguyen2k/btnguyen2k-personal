@@ -20,9 +20,9 @@ import org.ddth.panda.web.UrlCreator;
 import org.ddth.panda.web.impl.controlforward.UrlRedirectControlForward;
 import org.ddth.webtemplate.datamodel.DMMap;
 
-import com.greenstorm.gsc.TxbbConstants;
-import com.greenstorm.gsc.TxbbLangConstants;
-import com.greenstorm.gsc.TxbbPermissionConstants;
+import com.greenstorm.gsc.GscConstants;
+import com.greenstorm.gsc.GscLangConstants;
+import com.greenstorm.gsc.GscPermissionConstants;
 
 public abstract class BaseAdminActionHandler extends BaseActionHandler
         implements RequireLoggedin, RequireAuthorization, LastAccessUrl {
@@ -35,7 +35,7 @@ public abstract class BaseAdminActionHandler extends BaseActionHandler
     protected Collection<DafPermission> getRequiredPermissions() {
         Collection<DafPermission> requiredPermissions =
                 super.getRequiredPermissions();
-        requiredPermissions.add(TxbbPermissionConstants.PERMISSION_ACCESS_ADMIN_CP);
+        requiredPermissions.add(GscPermissionConstants.PERMISSION_ACCESS_ADMIN_CP);
         return requiredPermissions;
     }
 
@@ -73,7 +73,7 @@ public abstract class BaseAdminActionHandler extends BaseActionHandler
         ModuleDescriptor md = mm.getModule(ModuleManager.MODULE_PORTAL_CORE);
         UrlCreator urlCreator = app.getUrlCreator();
         Language lang = getLanguage();
-        String msg = lang.getMessage(TxbbLangConstants.MSG_LOGIN_MESSAGE);
+        String msg = lang.getMessage(GscLangConstants.MSG_LOGIN_MESSAGE);
         TransitionRecord transition =
                 TransitionRecord.createWarningTransitionRecord(msg);
         app.addTransition(transition);
@@ -97,7 +97,7 @@ public abstract class BaseAdminActionHandler extends BaseActionHandler
 
         String url =
                 urlCreator.createUri(getModule(),
-                        TxbbConstants.ACTION_ADMIN_HOME);
+                        GscConstants.ACTION_ADMIN_HOME);
         pageContent.addChild(MODEL_URL_ADMIN_HOME, url);
     }
 }

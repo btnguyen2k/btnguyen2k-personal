@@ -1,28 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--  
 <!DOCTYPE portal-module PUBLIC 
 	"-//DDTH.ORG//DTD Portal Module//EN"
 	"portal-module.dtd">
-<portal-module name="txbb" brief-description="TXBB v3.0">
+-->
+<portal-module name="gsc" brief-description="Greenstorm Card">
 	<!-- Module information -->
 	<module-info>
-		<description>TXBB v3.0.</description>
-		<version number="3.0.0" build="209" date="200910131213" />
+		<description>GreenStorm Card</description>
+		<version number="1.0.0" build="0" date="200910131213" />
 		<portal-version min="1.0" max="1.0" />
 		<vendor name="DDTH" url="http://www.ddth.org" />
 	</module-info>
 
+	<!--  
 	<module-properties>
 		<property name="txbb.seoUnicode">org.ddth.txbb.util.TCVN6909SeoUnicode</property>
 		<property name="txbb.txCodeParser">org.ddth.txbb.util.XhtmlTXCodeParser</property>
 	</module-properties>
+	-->
 
 	<portlets>
+		<!--  
 		<portlet name="txbb_admin_mainmenu" description="TXBB's Administrative Main Menu"
 			class="org.ddth.txbb.portlets.admin.MainMenuPortlet" />
 		<portlet name="txbb_mainmenu" description="TXBB's non-Administrative Main Menu"
 			class="org.ddth.txbb.portlets.MainMenuPortlet" />
 		<portlet name="txbb_personalcorner" description="TXBB's Personal Corner Menu"
 			class="org.ddth.txbb.portlets.PersonalCornerPortlet" />
+		-->
 	</portlets>
 
 	<languages registry="/languages/registry.xml"></languages>
@@ -30,7 +36,7 @@
 	<templates registry="/templates/registry.xml"></templates>
 
 	<action-mapping>
-		<module name="txbb">
+		<module name="gsc">
 			<form name="frmBoxCreate">
 				<form-property name="parentId" type="java.lang.Integer" />
 				<form-property name="title" type="java.lang.String"
@@ -84,53 +90,12 @@
 			<form name="frmTopicUnlock">
 			</form>
 
-			<default-handler class="org.ddth.txbb.panda.DefaultHandler" />
+			<default-handler class="com.greenstorm.gsc.panda.DefaultHandler" />
 
 			<default-view
 				class="org.ddth.panda.portal.module.core.panda.DefaultViewRenderer" />
 
-			<handler action="index" class="org.ddth.txbb.panda.IndexHandler" />
-
-			<handler action="box" class="org.ddth.txbb.panda.BoxViewHandler" />
-
-			<handler action="topic" class="org.ddth.txbb.panda.TopicViewHandler" />
-
-			<handler action="boxTopic" class="org.ddth.txbb.panda.TopicViewViaBoxHandler" />
-
-			<handler action="pc" class="org.ddth.txbb.panda.pc.IndexHandler" />
-			<handler action="pcIndex" class="org.ddth.txbb.panda.pc.IndexHandler" />
-			<handler action="pcCreateTopic" class="org.ddth.txbb.panda.pc.TopicCreateHandler"
-				form="frmTopicCreate" />
-			<handler action="pcEditTopic" class="org.ddth.txbb.panda.pc.TopicEditHandler"
-				form="frmTopicEdit" />
-			<handler action="pcViewDraftTopics"
-				class="org.ddth.txbb.panda.pc.TopicViewDraftListHandler" />
-			<handler action="pcViewPublishedTopics"
-				class="org.ddth.txbb.panda.pc.TopicViewPublishedListHandler" />
-			<handler action="pcDeleteTopic" class="org.ddth.txbb.panda.pc.TopicDeleteHandler"
-				form="frmTopicDelete" />
-			<handler action="pcPublishTopic" class="org.ddth.txbb.panda.pc.TopicPublishHandler"
-				form="frmTopicPublish" />
-			<handler action="pcUnpublishTopic"
-				class="org.ddth.txbb.panda.pc.TopicUnpublishHandler" form="frmTopicUnpublish" />
-			<handler action="pcLockTopic" class="org.ddth.txbb.panda.pc.TopicLockHandler"
-				form="frmTopicLock" />
-			<handler action="pcUnlockTopic" class="org.ddth.txbb.panda.pc.TopicUnlockHandler"
-				form="frmTopicUnlock" />
-
-			<handler action="admin" class="org.ddth.txbb.panda.admin.AdminIndexHandler" />
-			<handler action="adminListBoxes"
-				class="org.ddth.txbb.panda.admin.AdminBoxListHandler" />
-			<handler action="adminCreateBox"
-				class="org.ddth.txbb.panda.admin.AdminBoxCreateHandler" form="frmBoxCreate" />
-			<handler action="adminDeleteBox"
-				class="org.ddth.txbb.panda.admin.AdminBoxDeleteHandler" form="frmBoxDelete" />
-			<handler action="adminEditBox"
-				class="org.ddth.txbb.panda.admin.AdminBoxEditHandler" form="frmBoxEdit" />
-			<handler action="adminMoveUpBox"
-				class="org.ddth.txbb.panda.admin.AdminBoxMoveUpHandler" />
-			<handler action="adminMoveDownBox"
-				class="org.ddth.txbb.panda.admin.AdminBoxMoveDownHandler" />
+			<handler action="index" class="com.greenstorm.gsc.panda.IndexHandler" />
 		</module>
 	</action-mapping>
 
@@ -138,7 +103,6 @@
 		<page action="_">
 			<!--
 			<layout location="TOP" portlet="portal_topmenubar" position="-1" />
-			-->
 			<layout location="LEFT" portlet="txbb_mainmenu" position="-2" />
 			<layout location="LEFT" portlet="txbb_personalcorner"
 				position="-1" />
@@ -149,31 +113,7 @@
 				position="-2" />
 			<layout location="BOTTOM" portlet="portal_systeminfo"
 				position="-1" />
-		</page>
-
-		<page action="admin">
-			<layout location="LEFT" portlet="txbb_admin_mainmenu"
-				position="-2" />
-		</page>
-		<page action="adminListBoxes">
-			<layout location="LEFT" portlet="txbb_admin_mainmenu"
-				position="-2" />
-		</page>
-		<page action="adminCreateBox">
-			<layout location="LEFT" portlet="txbb_admin_mainmenu"
-				position="-2" />
-		</page>
-		<page action="adminListBoxes">
-			<layout location="LEFT" portlet="txbb_admin_mainmenu"
-				position="-2" />
-		</page>
-		<page action="adminDeleteBox">
-			<layout location="LEFT" portlet="txbb_admin_mainmenu"
-				position="-2" />
-		</page>
-		<page action="adminEditBox">
-			<layout location="LEFT" portlet="txbb_admin_mainmenu"
-				position="-2" />
+			-->
 		</page>
 	</pages>
 </portal-module>

@@ -14,7 +14,7 @@ import org.ddth.txbb.osgi.Activator;
 import org.hibernate.Session;
 import org.osgi.framework.BundleContext;
 
-import com.greenstorm.gsc.TxbbConstants;
+import com.greenstorm.gsc.GscConstants;
 import com.greenstorm.gsc.bo.HibernateGscManager;
 import com.greenstorm.gsc.bo.GscManager;
 
@@ -38,7 +38,7 @@ public class Activator extends AbstractActivator {
      * {@inheritDoc}
      */
     protected String getModuleName() {
-        return TxbbConstants.MODULE_NAME;
+        return GscConstants.MODULE_NAME;
     }
 
     /**
@@ -59,7 +59,7 @@ public class Activator extends AbstractActivator {
         context.registerService(GscManager.class.getName(), hfm,
                 new Properties());
         ServletUtils.setContextAttribute(
-                TxbbConstants.SERVLET_CTX_ATTR_TXBB_MANAGER, hfm);
+                GscConstants.SERVLET_CTX_ATTR_TXBB_MANAGER, hfm);
     }
 
     private class AppHibernateSessionFactory implements HibernateSessionFactory {

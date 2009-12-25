@@ -7,10 +7,10 @@ import org.ddth.txbb.panda.pc.BasePcActionHandler;
 import org.ddth.webtemplate.datamodel.DMList;
 import org.ddth.webtemplate.datamodel.DMMap;
 
-import com.greenstorm.gsc.TxbbPermissionConstants;
+import com.greenstorm.gsc.GscPermissionConstants;
 import com.greenstorm.gsc.bo.Box;
 import com.greenstorm.gsc.bo.GscManager;
-import com.greenstorm.gsc.model.BoxModel;
+import com.greenstorm.gsc.model.CardModel;
 
 public class IndexHandler extends BasePcActionHandler {
 
@@ -37,9 +37,9 @@ public class IndexHandler extends BasePcActionHandler {
         DMList modelBoxTree = new DMList(MODEL_BOX_TREE);
         Box[] boxTree = fm.getBoxTree();
         for ( Box box : boxTree ) {
-            if ( app.hasPermission(TxbbPermissionConstants.PERMISSION_VIEW_BOX,
+            if ( app.hasPermission(GscPermissionConstants.PERMISSION_VIEW_BOX,
                     box) ) {
-                modelBoxTree.addChild(BoxModel.getInstance(box));
+                modelBoxTree.addChild(CardModel.getInstance(box));
             }
         }
         pageContent.addChild(modelBoxTree);

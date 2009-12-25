@@ -27,13 +27,13 @@ import org.ddth.txbb.panda.admin.BaseAdminBoxHandler;
 import org.ddth.webtemplate.datamodel.DMList;
 import org.ddth.webtemplate.datamodel.DMMap;
 
-import com.greenstorm.gsc.TxbbConstants;
-import com.greenstorm.gsc.TxbbLangConstants;
+import com.greenstorm.gsc.GscConstants;
+import com.greenstorm.gsc.GscLangConstants;
 import com.greenstorm.gsc.bo.Box;
 import com.greenstorm.gsc.bo.BoxPermissionGroupPublishTopic;
 import com.greenstorm.gsc.bo.BoxPermissionGroupViewTopic;
 import com.greenstorm.gsc.bo.GscManager;
-import com.greenstorm.gsc.model.BoxModel;
+import com.greenstorm.gsc.model.CardModel;
 
 public class AdminBoxCreateHandler extends BaseAdminBoxHandler {
 
@@ -72,9 +72,9 @@ public class AdminBoxCreateHandler extends BaseAdminBoxHandler {
             Language lang = getLanguage();
             String message =
                     lang.getMessage(
-                            TxbbLangConstants.MSG_BOX_CREATE_SUCCESSFUL,
+                            GscLangConstants.MSG_BOX_CREATE_SUCCESSFUL,
                             StringUtils.escapeHtml(box.getTitle()));
-            String action = TxbbConstants.ACTION_ADMIN_LIST_BOXES;
+            String action = GscConstants.ACTION_ADMIN_LIST_BOXES;
             TransitionRecord transition =
                     TransitionRecord.createInformationTransitionRecord(message);
             app.addTransition(transition);
@@ -93,7 +93,7 @@ public class AdminBoxCreateHandler extends BaseAdminBoxHandler {
         if ( form != null ) {
             ModuleDescriptor md = app.getModule(getModuleName());
             form.setCancelAction(urlCreator.createUri(md.getUrlMapping(),
-                    TxbbConstants.ACTION_ADMIN_LIST_BOXES));
+                    GscConstants.ACTION_ADMIN_LIST_BOXES));
         }
         populateDataModels();
         return new ViewControlForward(getModule(), getAction());
@@ -174,7 +174,7 @@ public class AdminBoxCreateHandler extends BaseAdminBoxHandler {
         DMList modelBoxList = new DMList(MODEL_BOX_LIST);
         Box[] boxTree = fm.getBoxTree();
         for ( Box box : boxTree ) {
-            modelBoxList.addChild(BoxModel.getInstance(box));
+            modelBoxList.addChild(CardModel.getInstance(box));
         }
         pageContent.addChild(modelBoxList);
 

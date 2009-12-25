@@ -20,8 +20,8 @@ import org.ddth.panda.web.impl.controlforward.UrlRedirectControlForward;
 import org.ddth.txbb.panda.pc.BasePcActionHandler;
 import org.ddth.webtemplate.datamodel.DMMap;
 
-import com.greenstorm.gsc.TxbbConstants;
-import com.greenstorm.gsc.TxbbLangConstants;
+import com.greenstorm.gsc.GscConstants;
+import com.greenstorm.gsc.GscLangConstants;
 import com.greenstorm.gsc.bo.Topic;
 import com.greenstorm.gsc.bo.GscManager;
 import com.greenstorm.gsc.model.TopicModel;
@@ -53,14 +53,14 @@ public class TopicDeleteHandler extends BasePcActionHandler {
 
         if ( topic == null ) {
             app.addErrorMessage(lang.getMessage(
-                    TxbbLangConstants.ERROR_TOPIC_NOT_FOUND, topicId));
+                    GscLangConstants.ERROR_TOPIC_NOT_FOUND, topicId));
         } else if ( topic.getMemberId() != dafUserId ) {
             app.addErrorMessage(lang.getMessage(
-                    TxbbLangConstants.ERROR_CAN_NOT_DELETE_UNOWNED_TOPIC,
+                    GscLangConstants.ERROR_CAN_NOT_DELETE_UNOWNED_TOPIC,
                     topicId));
         } else if ( topic.isPublished() ) {
             app.addErrorMessage(lang.getMessage(
-                    TxbbLangConstants.ERROR_CAN_NOT_DELETE_PUBLISHED_TOPIC,
+                    GscLangConstants.ERROR_CAN_NOT_DELETE_PUBLISHED_TOPIC,
                     topicId));
         } else {
             ModuleDescriptor md = app.getModule(getModuleName());
@@ -69,9 +69,9 @@ public class TopicDeleteHandler extends BasePcActionHandler {
             if ( form != null && doDeleteTopic(form) ) {
                 String message =
                         lang.getMessage(
-                                TxbbLangConstants.MSG_PC_TOPIC_DELETE_SUCCESSFUL,
+                                GscLangConstants.MSG_PC_TOPIC_DELETE_SUCCESSFUL,
                                 StringUtils.escapeHtml(topic.getTitle()));
-                String action = TxbbConstants.ACTION_PC_VIEW_DRAFT_TOPICS;
+                String action = GscConstants.ACTION_PC_VIEW_DRAFT_TOPICS;
                 TransitionRecord transition =
                         TransitionRecord.createInformationTransitionRecord(message);
                 app.addTransition(transition);
@@ -88,7 +88,7 @@ public class TopicDeleteHandler extends BasePcActionHandler {
             }
             if ( form != null ) {
                 form.setCancelAction(urlCreator.createUri(md.getUrlMapping(),
-                        TxbbConstants.ACTION_PC_VIEW_DRAFT_TOPICS));
+                        GscConstants.ACTION_PC_VIEW_DRAFT_TOPICS));
             }
         }
         populateDataModels();

@@ -15,8 +15,8 @@ import org.ddth.txbb.model.BoxModel;
 import org.ddth.txbb.model.TopicContentModel;
 import org.ddth.txbb.model.TopicModel;
 
-import com.greenstorm.gsc.TxbbConstants;
-import com.greenstorm.gsc.TxbbPermissionConstants;
+import com.greenstorm.gsc.GscConstants;
+import com.greenstorm.gsc.GscPermissionConstants;
 import com.greenstorm.gsc.bo.Box;
 import com.greenstorm.gsc.bo.Topic;
 import com.greenstorm.gsc.bo.TopicContent;
@@ -195,13 +195,13 @@ public class TopicModel {
                             .intValue() ) {
                 if ( urlEdit == null ) {
                     ModuleDescriptor moduleTxbb;
-                    moduleTxbb = app.getModule(TxbbConstants.MODULE_NAME);
+                    moduleTxbb = app.getModule(GscConstants.MODULE_NAME);
                     UrlCreator urlCreator = app.getUrlCreator();
                     Map<String, String> params = new HashMap<String, String>();
                     params.put("id", String.valueOf(getId()));
                     urlEdit =
                             urlCreator.createUri(moduleTxbb.getUrlMapping(),
-                                    TxbbConstants.ACTION_PC_EDIT_TOPIC, null,
+                                    GscConstants.ACTION_PC_EDIT_TOPIC, null,
                                     params);
                 }
                 return urlEdit;
@@ -226,13 +226,13 @@ public class TopicModel {
                             .intValue() ) {
                 if ( urlDelete == null ) {
                     ModuleDescriptor moduleTxbb;
-                    moduleTxbb = app.getModule(TxbbConstants.MODULE_NAME);
+                    moduleTxbb = app.getModule(GscConstants.MODULE_NAME);
                     UrlCreator urlCreator = app.getUrlCreator();
                     Map<String, String> params = new HashMap<String, String>();
                     params.put("id", String.valueOf(getId()));
                     urlDelete =
                             urlCreator.createUri(moduleTxbb.getUrlMapping(),
-                                    TxbbConstants.ACTION_PC_DELETE_TOPIC, null,
+                                    GscConstants.ACTION_PC_DELETE_TOPIC, null,
                                     params);
                 }
                 return urlDelete;
@@ -257,13 +257,13 @@ public class TopicModel {
                             .intValue() ) {
                 if ( urlLock == null ) {
                     ModuleDescriptor moduleTxbb;
-                    moduleTxbb = app.getModule(TxbbConstants.MODULE_NAME);
+                    moduleTxbb = app.getModule(GscConstants.MODULE_NAME);
                     UrlCreator urlCreator = app.getUrlCreator();
                     Map<String, String> params = new HashMap<String, String>();
                     params.put("id", String.valueOf(getId()));
                     urlLock =
                             urlCreator.createUri(moduleTxbb.getUrlMapping(),
-                                    TxbbConstants.ACTION_PC_LOCK_TOPIC, null,
+                                    GscConstants.ACTION_PC_LOCK_TOPIC, null,
                                     params);
                 }
                 return urlLock;
@@ -288,13 +288,13 @@ public class TopicModel {
                             .intValue() ) {
                 if ( urlUnlock == null ) {
                     ModuleDescriptor moduleTxbb;
-                    moduleTxbb = app.getModule(TxbbConstants.MODULE_NAME);
+                    moduleTxbb = app.getModule(GscConstants.MODULE_NAME);
                     UrlCreator urlCreator = app.getUrlCreator();
                     Map<String, String> params = new HashMap<String, String>();
                     params.put("id", String.valueOf(getId()));
                     urlUnlock =
                             urlCreator.createUri(moduleTxbb.getUrlMapping(),
-                                    TxbbConstants.ACTION_PC_UNLOCK_TOPIC, null,
+                                    GscConstants.ACTION_PC_UNLOCK_TOPIC, null,
                                     params);
                 }
                 return urlUnlock;
@@ -319,13 +319,13 @@ public class TopicModel {
                             .intValue() ) {
                 if ( urlPublish == null ) {
                     ModuleDescriptor moduleTxbb;
-                    moduleTxbb = app.getModule(TxbbConstants.MODULE_NAME);
+                    moduleTxbb = app.getModule(GscConstants.MODULE_NAME);
                     UrlCreator urlCreator = app.getUrlCreator();
                     Map<String, String> params = new HashMap<String, String>();
                     params.put("id", String.valueOf(getId()));
                     urlPublish =
                             urlCreator.createUri(moduleTxbb.getUrlMapping(),
-                                    TxbbConstants.ACTION_PC_PUBLISH_TOPIC,
+                                    GscConstants.ACTION_PC_PUBLISH_TOPIC,
                                     null, params);
                 }
                 return urlPublish;
@@ -350,13 +350,13 @@ public class TopicModel {
                             .intValue() ) {
                 if ( urlUnpublish == null ) {
                     ModuleDescriptor moduleTxbb;
-                    moduleTxbb = app.getModule(TxbbConstants.MODULE_NAME);
+                    moduleTxbb = app.getModule(GscConstants.MODULE_NAME);
                     UrlCreator urlCreator = app.getUrlCreator();
                     Map<String, String> params = new HashMap<String, String>();
                     params.put("id", String.valueOf(getId()));
                     urlUnpublish =
                             urlCreator.createUri(moduleTxbb.getUrlMapping(),
-                                    TxbbConstants.ACTION_PC_UNPUBLISH_TOPIC,
+                                    GscConstants.ACTION_PC_UNPUBLISH_TOPIC,
                                     null, params);
                 }
                 return urlUnpublish;
@@ -369,7 +369,7 @@ public class TopicModel {
         }
     }
 
-    public String getUrlViewViaBox(BoxModel box) {
+    public String getUrlViewViaBox(CardModel box) {
         return getUrlViewViaBox(box.getId());
     }
 
@@ -387,10 +387,10 @@ public class TopicModel {
             if ( box == null ) {
                 return null;
             }
-            if ( app.hasPermission(TxbbPermissionConstants.PERMISSION_VIEW_BOX,
+            if ( app.hasPermission(GscPermissionConstants.PERMISSION_VIEW_BOX,
                     box) ) {
                 ModuleDescriptor moduleTxbb =
-                        app.getModule(TxbbConstants.MODULE_NAME);
+                        app.getModule(GscConstants.MODULE_NAME);
                 UrlCreator urlCreator = app.getUrlCreator();
                 List<String> vParams = new ArrayList<String>();
                 vParams.add(String.valueOf(getId()));
@@ -398,7 +398,7 @@ public class TopicModel {
                 Map<String, String> urlParams = new HashMap<String, String>();
                 urlParams.put("box", String.valueOf(box.getId()));
                 return urlCreator.createUri(moduleTxbb.getUrlMapping(),
-                        TxbbConstants.ACTION_VIEW_TOPIC_FROM_BOX,
+                        GscConstants.ACTION_VIEW_TOPIC_FROM_BOX,
                         vParams.toArray(new String[0]), urlParams);
 
             }
@@ -427,7 +427,7 @@ public class TopicModel {
                 canView = false;
                 for ( Box box : publishedBoxes ) {
                     if ( app.hasPermission(
-                            TxbbPermissionConstants.PERMISSION_VIEW_BOX, box) ) {
+                            GscPermissionConstants.PERMISSION_VIEW_BOX, box) ) {
                         // as long as there is a viewable box, this topic is
                         // viewable.
                         canView = true;
@@ -438,14 +438,14 @@ public class TopicModel {
             if ( canView ) {
                 if ( urlView == null ) {
                     ModuleDescriptor moduleTxbb;
-                    moduleTxbb = app.getModule(TxbbConstants.MODULE_NAME);
+                    moduleTxbb = app.getModule(GscConstants.MODULE_NAME);
                     UrlCreator urlCreator = app.getUrlCreator();
                     List<String> vParams = new ArrayList<String>();
                     vParams.add(String.valueOf(getId()));
                     vParams.add(getTitleForUrl());
                     urlView =
                             urlCreator.createUri(moduleTxbb.getUrlMapping(),
-                                    TxbbConstants.ACTION_VIEW_TOPIC,
+                                    GscConstants.ACTION_VIEW_TOPIC,
                                     vParams.toArray(new String[0]), null);
                 }
                 return urlView;
@@ -458,7 +458,7 @@ public class TopicModel {
         }
     }
 
-    public String getUrlViewCommentsViaBox(BoxModel box) {
+    public String getUrlViewCommentsViaBox(CardModel box) {
         return getUrlViewCommentsViaBox(box.getId());
     }
 
@@ -476,10 +476,10 @@ public class TopicModel {
             if ( box == null ) {
                 return null;
             }
-            if ( app.hasPermission(TxbbPermissionConstants.PERMISSION_VIEW_BOX,
+            if ( app.hasPermission(GscPermissionConstants.PERMISSION_VIEW_BOX,
                     box) ) {
                 ModuleDescriptor moduleTxbb =
-                        app.getModule(TxbbConstants.MODULE_NAME);
+                        app.getModule(GscConstants.MODULE_NAME);
                 UrlCreator urlCreator = app.getUrlCreator();
                 List<String> vParams = new ArrayList<String>();
                 vParams.add(String.valueOf(getId()));
@@ -487,7 +487,7 @@ public class TopicModel {
                 Map<String, String> urlParams = new HashMap<String, String>();
                 urlParams.put("box", String.valueOf(box.getId()));
                 return urlCreator.createUri(moduleTxbb.getUrlMapping(),
-                        TxbbConstants.ACTION_VIEW_COMMENT_FROM_BOX,
+                        GscConstants.ACTION_VIEW_COMMENT_FROM_BOX,
                         vParams.toArray(new String[0]), urlParams);
 
             }
@@ -516,7 +516,7 @@ public class TopicModel {
                 canView = false;
                 for ( Box box : publishedBoxes ) {
                     if ( app.hasPermission(
-                            TxbbPermissionConstants.PERMISSION_VIEW_BOX, box) ) {
+                            GscPermissionConstants.PERMISSION_VIEW_BOX, box) ) {
                         // as long as there is a viewable box, this topic is
                         // viewable.
                         canView = true;
@@ -527,14 +527,14 @@ public class TopicModel {
             if ( canView ) {
                 if ( urlViewComments == null ) {
                     ModuleDescriptor moduleTxbb;
-                    moduleTxbb = app.getModule(TxbbConstants.MODULE_NAME);
+                    moduleTxbb = app.getModule(GscConstants.MODULE_NAME);
                     UrlCreator urlCreator = app.getUrlCreator();
                     List<String> vParams = new ArrayList<String>();
                     vParams.add(String.valueOf(getId()));
                     vParams.add(getTitleForUrl());
                     urlViewComments =
                             urlCreator.createUri(moduleTxbb.getUrlMapping(),
-                                    TxbbConstants.ACTION_VIEW_COMMENT,
+                                    GscConstants.ACTION_VIEW_COMMENT,
                                     vParams.toArray(new String[0]), null);
                 }
                 return urlViewComments;

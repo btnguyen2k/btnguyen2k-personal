@@ -9,7 +9,7 @@ import org.ddth.webtemplate.datamodel.DMMap;
 
 import com.greenstorm.gsc.bo.Box;
 import com.greenstorm.gsc.bo.GscManager;
-import com.greenstorm.gsc.model.BoxModel;
+import com.greenstorm.gsc.model.CardModel;
 
 public class AdminBoxListHandler extends BaseAdminBoxHandler {
 
@@ -36,7 +36,7 @@ public class AdminBoxListHandler extends BaseAdminBoxHandler {
         DMList modelBoxList = new DMList(MODEL_BOX_LIST);
         Box[] boxTree = fm.getBoxTree();
         for ( Box box : boxTree ) {
-            modelBoxList.addChild(BoxModel.getInstance(box));
+            modelBoxList.addChild(CardModel.getInstance(box));
         }
         pageContent.addChild(modelBoxList);
     }

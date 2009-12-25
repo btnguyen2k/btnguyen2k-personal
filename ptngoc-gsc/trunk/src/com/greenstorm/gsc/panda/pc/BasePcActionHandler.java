@@ -18,8 +18,8 @@ import org.ddth.panda.web.UrlCreator;
 import org.ddth.panda.web.impl.controlforward.UrlRedirectControlForward;
 import org.ddth.webtemplate.datamodel.DMMap;
 
-import com.greenstorm.gsc.TxbbConstants;
-import com.greenstorm.gsc.TxbbLangConstants;
+import com.greenstorm.gsc.GscConstants;
+import com.greenstorm.gsc.GscLangConstants;
 import com.greenstorm.gsc.bo.GscManager;
 
 public abstract class BasePcActionHandler extends BaseActionHandler implements
@@ -83,7 +83,7 @@ public abstract class BasePcActionHandler extends BaseActionHandler implements
         ModuleDescriptor md = mm.getModule(ModuleManager.MODULE_PORTAL_CORE);
         UrlCreator urlCreator = app.getUrlCreator();
         Language lang = getLanguage();
-        String msg = lang.getMessage(TxbbLangConstants.MSG_LOGIN_MESSAGE);
+        String msg = lang.getMessage(GscLangConstants.MSG_LOGIN_MESSAGE);
         TransitionRecord transition =
                 TransitionRecord.createWarningTransitionRecord(msg);
         app.addTransition(transition);
@@ -106,22 +106,22 @@ public abstract class BasePcActionHandler extends BaseActionHandler implements
         UrlCreator urlCreator = app.getUrlCreator();
 
         String url =
-                urlCreator.createUri(getModule(), TxbbConstants.ACTION_PC_INDEX);
+                urlCreator.createUri(getModule(), GscConstants.ACTION_PC_INDEX);
         pageContent.addChild(MODEL_URL_PC_HOME, url);
 
         url =
                 urlCreator.createUri(getModule(),
-                        TxbbConstants.ACTION_PC_CREATE_TOPIC);
+                        GscConstants.ACTION_PC_CREATE_TOPIC);
         pageContent.addChild(MODEL_URL_PC_CREATE_TOPIC, url);
 
         url =
                 urlCreator.createUri(getModule(),
-                        TxbbConstants.ACTION_PC_VIEW_DRAFT_TOPICS);
+                        GscConstants.ACTION_PC_VIEW_DRAFT_TOPICS);
         pageContent.addChild(MODEL_URL_PC_DRAFT_TOPICS, url);
 
         url =
                 urlCreator.createUri(getModule(),
-                        TxbbConstants.ACTION_PC_VIEW_PUBLISHED_TOPICS);
+                        GscConstants.ACTION_PC_VIEW_PUBLISHED_TOPICS);
         pageContent.addChild(MODEL_URL_PC_PUBLISHED_TOPICS, url);
 
         GscManager txbbMan =

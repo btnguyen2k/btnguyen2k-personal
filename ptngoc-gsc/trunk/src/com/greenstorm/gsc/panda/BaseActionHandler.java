@@ -6,11 +6,11 @@ import org.ddth.panda.web.UrlCreator;
 import org.ddth.webtemplate.datamodel.DMList;
 import org.ddth.webtemplate.datamodel.DMMap;
 
-import com.greenstorm.gsc.TxbbConstants;
-import com.greenstorm.gsc.TxbbPermissionConstants;
+import com.greenstorm.gsc.GscConstants;
+import com.greenstorm.gsc.GscPermissionConstants;
 import com.greenstorm.gsc.bo.Box;
 import com.greenstorm.gsc.bo.GscManager;
-import com.greenstorm.gsc.model.BoxModel;
+import com.greenstorm.gsc.model.CardModel;
 
 public abstract class BaseActionHandler extends
         org.ddth.panda.portal.module.panda.BaseActionHandler implements
@@ -81,13 +81,13 @@ public abstract class BaseActionHandler extends
         UrlCreator urlCreator = app.getUrlCreator();
 
         String url =
-                urlCreator.createUri(getModule(), TxbbConstants.ACTION_HOME);
+                urlCreator.createUri(getModule(), GscConstants.ACTION_HOME);
         pageContent.addChild(MODEL_URL_HOME, url);
 
-        url = urlCreator.createUri(getModule(), TxbbConstants.ACTION_LOGIN);
+        url = urlCreator.createUri(getModule(), GscConstants.ACTION_LOGIN);
         pageContent.addChild(MODEL_URL_LOGIN, url);
 
-        url = urlCreator.createUri(getModule(), TxbbConstants.ACTION_LOGOUT);
+        url = urlCreator.createUri(getModule(), GscConstants.ACTION_LOGOUT);
         pageContent.addChild(MODEL_URL_LOGOUT, url);
 
         GscManager txbbMan =
@@ -97,9 +97,9 @@ public abstract class BaseActionHandler extends
         DMList modelBoxTree = new DMList(MODEL_BOX_TREE);
         Box[] boxTree = txbbMan.getBoxTree();
         for ( Box box : boxTree ) {
-            if ( app.hasPermission(TxbbPermissionConstants.PERMISSION_VIEW_BOX,
+            if ( app.hasPermission(GscPermissionConstants.PERMISSION_VIEW_BOX,
                     box) ) {
-                modelBoxTree.addChild(BoxModel.getInstance(box));
+                modelBoxTree.addChild(CardModel.getInstance(box));
             }
         }
         pageContent.addChild(modelBoxTree);

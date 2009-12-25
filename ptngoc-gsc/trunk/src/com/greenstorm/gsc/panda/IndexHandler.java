@@ -9,7 +9,7 @@ import org.ddth.txbb.panda.BaseActionHandler;
 import org.ddth.webtemplate.datamodel.DMList;
 import org.ddth.webtemplate.datamodel.DMMap;
 
-import com.greenstorm.gsc.TxbbConstants;
+import com.greenstorm.gsc.GscConstants;
 import com.greenstorm.gsc.bo.Box;
 import com.greenstorm.gsc.bo.Topic;
 import com.greenstorm.gsc.bo.GscManager;
@@ -49,7 +49,7 @@ public class IndexHandler extends BaseActionHandler {
         // recent published topics
         Topic[] recentPublishedTopics =
                 fm.getRecentPublishedTopics(
-                        TxbbConstants.NUM_RECENT_PUBLISHED_TOPICS_ALL_BOXES,
+                        GscConstants.NUM_RECENT_PUBLISHED_TOPICS_ALL_BOXES,
                         viewableBoxes);
         DMList modelRecentPublishedTopics =
                 new DMList(MODEL_RECENT_PUBLISHED_TOPICS);
@@ -61,7 +61,7 @@ public class IndexHandler extends BaseActionHandler {
         // recent commented topics
         Topic[] recentCommentedTopics =
                 fm.getRecentCommentedTopics(
-                        TxbbConstants.NUM_RECENT_COMMENTED_TOPICS,
+                        GscConstants.NUM_RECENT_COMMENTED_TOPICS,
                         viewableBoxes);
         DMList modelRecentCommentedTopics =
                 new DMList(MODEL_RECENT_COMMENTED_TOPICS);

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class entity-name="com.greenstorm.gsc.bo.Customer" name="com.greenstorm.gsc.bo.Customer"
+		table="gsc_customer">
+		<cache usage="nonstrict-read-write" />
+		<id name="id" column="cid" type="integer">
+			<generator class="native">
+				<!-- Note: for PostgreSQL 8.3 -->
+				<param name="sequence">gsc_customer_cid_seq</param>
+			</generator>
+		</id>
+
+		<property name="refCard" type="com.greenstorm.gsc.bo.Card"
+			column="cref_card_id" />
+
+		<property name="card" type="com.greenstorm.gsc.bo.Card"
+			column="ccard_id" not-null="true" />
+
+		<!--
+			<one-to-one name="card" entity-name="com.greenstorm.gsc.bo.Card"
+			lazy="false"> </one-to-one>
+		-->
+
+		<property name="name" column="gsc_name" type="string" length="255" />
+	</class>
+</hibernate-mapping>

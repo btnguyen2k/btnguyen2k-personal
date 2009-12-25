@@ -1,6 +1,6 @@
 package com.greenstorm.gsc;
 
-public class TxbbLangConstants {
+public class GscLangConstants {
     public final static String MSG_LOGIN_MESSAGE = "msg.loginMessage";
 
     public final static String MSG_HOME = "msg.home";

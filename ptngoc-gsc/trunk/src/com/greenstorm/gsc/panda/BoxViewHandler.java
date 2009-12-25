@@ -18,13 +18,13 @@ import org.ddth.txbb.panda.BaseActionHandler;
 import org.ddth.webtemplate.datamodel.DMList;
 import org.ddth.webtemplate.datamodel.DMMap;
 
-import com.greenstorm.gsc.TxbbConstants;
-import com.greenstorm.gsc.TxbbLangConstants;
-import com.greenstorm.gsc.TxbbPermissionConstants;
+import com.greenstorm.gsc.GscConstants;
+import com.greenstorm.gsc.GscLangConstants;
+import com.greenstorm.gsc.GscPermissionConstants;
 import com.greenstorm.gsc.bo.Box;
 import com.greenstorm.gsc.bo.Topic;
 import com.greenstorm.gsc.bo.GscManager;
-import com.greenstorm.gsc.model.BoxModel;
+import com.greenstorm.gsc.model.CardModel;
 import com.greenstorm.gsc.model.TopicModel;
 
 /* Dashboard */
@@ -64,11 +64,11 @@ public class BoxViewHandler extends BaseActionHandler {
 
         if ( box == null
                 || !app.hasPermission(
-                        TxbbPermissionConstants.PERMISSION_VIEW_BOX, box) ) {
+                        GscPermissionConstants.PERMISSION_VIEW_BOX, box) ) {
             // no permission to view would be the same as "not found"
             box = null;
             app.addErrorMessage(lang.getMessage(
-                    TxbbLangConstants.ERROR_BOX_NOT_FOUND, boxId));
+                    GscLangConstants.ERROR_BOX_NOT_FOUND, boxId));
         }
         populateDataModels();
         return new ViewControlForward(getModule(), getAction());
@@ -91,19 +91,19 @@ public class BoxViewHandler extends BaseActionHandler {
             viewableBoxes.add(box);
             for ( Box child : box.getChildren() ) {
                 if ( app.hasPermission(
-                        TxbbPermissionConstants.PERMISSION_VIEW_BOX, child) ) {
+                        GscPermissionConstants.PERMISSION_VIEW_BOX, child) ) {
                     viewableBoxes.add(child);
                 }
             }
 
-            pageContent.addChild(MODEL_BOX, BoxModel.getInstance(box));
+            pageContent.addChild(MODEL_BOX, CardModel.getInstance(box));
 
             pageContent.addChild(new TableTopics(MODEL_TOPICS));
 
             // recent commented topics
             Topic[] recentCommentedTopics =
                     txbbMan.getRecentCommentedTopics(
-                            TxbbConstants.NUM_RECENT_COMMENTED_TOPICS,
+                            GscConstants.NUM_RECENT_COMMENTED_TOPICS,
                             viewableBoxes);
             DMList modelRecentCommentedTopics =
                     new DMList(MODEL_RECENT_COMMENTED_TOPICS);
@@ -121,7 +121,7 @@ public class BoxViewHandler extends BaseActionHandler {
 
         private UrlCreator urlCreator;
 
-        private BoxModel boxModel = BoxModel.getInstance(box);
+        private CardModel boxModel = CardModel.getInstance(box);
 
         public TableTopics(String modelName) throws Exception {
             super(modelName);
@@ -135,7 +135,7 @@ public class BoxViewHandler extends BaseActionHandler {
             viewableBoxes.add(box);
             for ( Box child : box.getChildren() ) {
                 if ( app.hasPermission(
-                        TxbbPermissionConstants.PERMISSION_VIEW_BOX, child) ) {
+                        GscPermissionConstants.PERMISSION_VIEW_BOX, child) ) {
                     viewableBoxes.add(child);
                 }
             }
@@ -231,7 +231,7 @@ public class BoxViewHandler extends BaseActionHandler {
                 urlParams.put(URL_PARAM_PAGE, String.valueOf(pageNum));
                 url =
                         urlCreator.createUri(getModule(),
-                                TxbbConstants.ACTION_VIEW_BOX,
+                                GscConstants.ACTION_VIEW_BOX,
                                 vpParams.toArray(new String[0]), urlParams);
                 cacheUrls.put(pageNum, url);
             }
@@ -253,7 +253,7 @@ public class BoxViewHandler extends BaseActionHandler {
             String siteTitle = config != null
                     ? config.getConfigValue() : "";
             pageHeader.addChild(MODEL_PAGE_HEADER_TITLE, siteTitle
-                    + TxbbConstants.TITLE_SEPARATOR + box.getTitle());
+                    + GscConstants.TITLE_SEPARATOR + box.getTitle());
         }
     }
 }

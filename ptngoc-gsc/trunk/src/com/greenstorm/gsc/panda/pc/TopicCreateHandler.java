@@ -17,8 +17,8 @@ import org.ddth.panda.web.form.FormValidatingReporter;
 import org.ddth.panda.web.impl.controlforward.UrlRedirectControlForward;
 import org.ddth.txbb.panda.pc.BasePcActionHandler;
 
-import com.greenstorm.gsc.TxbbConstants;
-import com.greenstorm.gsc.TxbbLangConstants;
+import com.greenstorm.gsc.GscConstants;
+import com.greenstorm.gsc.GscLangConstants;
 import com.greenstorm.gsc.bo.Topic;
 import com.greenstorm.gsc.bo.GscManager;
 
@@ -39,8 +39,8 @@ public class TopicCreateHandler extends BasePcActionHandler {
         if ( form != null && (topic = doCreateTopic(form)) != null ) {
             Language lang = getLanguage();
             String message =
-                    lang.getMessage(TxbbLangConstants.MSG_PC_TOPIC_CREATE_SUCCESSFUL);
-            String action = TxbbConstants.ACTION_PC_EDIT_TOPIC;
+                    lang.getMessage(GscLangConstants.MSG_PC_TOPIC_CREATE_SUCCESSFUL);
+            String action = GscConstants.ACTION_PC_EDIT_TOPIC;
             TransitionRecord transition =
                     TransitionRecord.createInformationTransitionRecord(message);
             app.addTransition(transition);
@@ -58,7 +58,7 @@ public class TopicCreateHandler extends BasePcActionHandler {
         }
         if ( form != null ) {
             form.setCancelAction(urlCreator.createUri(md.getUrlMapping(),
-                    TxbbConstants.ACTION_PC_INDEX));
+                    GscConstants.ACTION_PC_INDEX));
         }
         populateDataModels();
         return new ViewControlForward(getModule(), getAction());
