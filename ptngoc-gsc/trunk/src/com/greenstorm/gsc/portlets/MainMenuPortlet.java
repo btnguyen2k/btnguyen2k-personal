@@ -15,11 +15,11 @@ import org.ddth.panda.portal.portlet.menu.MenuItem;
 import org.ddth.panda.web.UrlCreator;
 import org.ddth.txbb.portlets.BaseTxbbPortlet;
 
-import com.greenstorm.gsc.TxbbConstants;
-import com.greenstorm.gsc.TxbbLangConstants;
+import com.greenstorm.gsc.GscConstants;
+import com.greenstorm.gsc.GscLangConstants;
 import com.greenstorm.gsc.bo.Box;
 import com.greenstorm.gsc.bo.GscManager;
-import com.greenstorm.gsc.model.BoxModel;
+import com.greenstorm.gsc.model.CardModel;
 
 public class MainMenuPortlet extends BaseTxbbPortlet implements
         BorderedPortlet, SingletonPortlet, MenuPortlet, TitledPortlet {
@@ -49,16 +49,16 @@ public class MainMenuPortlet extends BaseTxbbPortlet implements
         String url;
         MenuItem menuItem;
 
-        url = urlCreator.createUri(module, TxbbConstants.ACTION_HOME);
+        url = urlCreator.createUri(module, GscConstants.ACTION_HOME);
         menuItem =
-                new MenuItem(lang.getMessage(TxbbLangConstants.MSG_HOME), url);
+                new MenuItem(lang.getMessage(GscLangConstants.MSG_HOME), url);
         menuItem.setHighlighted(true);
         result.add(menuItem);
 
         GscManager fm = app.getBundleManager().getService(GscManager.class);
         Box[] boxTree = fm.getBoxTree();
         for ( Box box : boxTree ) {
-            BoxModel bm = BoxModel.getInstance(box);
+            CardModel bm = CardModel.getInstance(box);
             url = bm.getUrlView();
             if ( url != null ) {
                 menuItem = new MenuItem(bm.getTitle(), url);
@@ -75,6 +75,6 @@ public class MainMenuPortlet extends BaseTxbbPortlet implements
      */
     public String getTitle() {
         Language lang = getLanguage();
-        return lang.getMessage(TxbbLangConstants.MSG_MAIN_MENU);
+        return lang.getMessage(GscLangConstants.MSG_MAIN_MENU);
     }
 }

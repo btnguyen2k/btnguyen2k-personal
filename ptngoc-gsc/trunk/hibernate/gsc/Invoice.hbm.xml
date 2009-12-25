@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class entity-name="com.greenstorm.gsc.bo.Invoice" name="com.greenstorm.gsc.bo.Invoice"
+		table="gsc_invoice">
+		<cache usage="nonstrict-read-write" />
+		<id name="id" column="iid" type="integer">
+			<generator class="native">
+				<!-- Note: for PostgreSQL 8.3 -->
+				<param name="sequence">gsc_invoice_iid_seq</param>
+			</generator>
+		</id>
+
+		<property name="customerId" type="integer" not-null="true"
+			column="icustomer_id" />
+
+		<property name="card" type="com.greenstorm.gsc.bo.Card"
+			column="icard" />
+
+		<property name="timestamp" type="integer" column="itimestamp" />
+
+		<property name="value" type="double" column="ivalue" />
+
+	</class>
+</hibernate-mapping>

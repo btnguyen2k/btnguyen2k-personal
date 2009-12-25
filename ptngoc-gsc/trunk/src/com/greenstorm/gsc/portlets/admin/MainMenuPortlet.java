@@ -14,9 +14,9 @@ import org.ddth.panda.portal.portlet.TitledPortlet;
 import org.ddth.panda.portal.portlet.menu.MenuItem;
 import org.ddth.panda.web.UrlCreator;
 
-import com.greenstorm.gsc.TxbbConstants;
-import com.greenstorm.gsc.TxbbLangConstants;
-import com.greenstorm.gsc.TxbbPermissionConstants;
+import com.greenstorm.gsc.GscConstants;
+import com.greenstorm.gsc.GscLangConstants;
+import com.greenstorm.gsc.GscPermissionConstants;
 import com.greenstorm.gsc.portlets.BaseTxbbPortlet;
 
 public class MainMenuPortlet extends BaseTxbbPortlet implements
@@ -40,7 +40,7 @@ public class MainMenuPortlet extends BaseTxbbPortlet implements
      */
     public boolean isVisible() throws Exception {
         PandaPortalApplication app = getApplication();
-        return app.hasPermission(TxbbPermissionConstants.PERMISSION_ACCESS_ADMIN_CP);
+        return app.hasPermission(GscPermissionConstants.PERMISSION_ACCESS_ADMIN_CP);
     }
 
     /**
@@ -59,9 +59,9 @@ public class MainMenuPortlet extends BaseTxbbPortlet implements
         String url;
         MenuItem menuItem;
 
-        url = urlCreator.createUri(module, TxbbConstants.ACTION_ADMIN_HOME);
+        url = urlCreator.createUri(module, GscConstants.ACTION_ADMIN_HOME);
         menuItem =
-                new MenuItem(lang.getMessage(TxbbLangConstants.MSG_ADMIN_HOME),
+                new MenuItem(lang.getMessage(GscLangConstants.MSG_ADMIN_HOME),
                         url);
         menuItem.setIcon(MENU_ICON_ADMIN_HOME);
         menuItem.setHighlighted(true);
@@ -69,18 +69,18 @@ public class MainMenuPortlet extends BaseTxbbPortlet implements
 
         url =
                 urlCreator.createUri(module,
-                        TxbbConstants.ACTION_ADMIN_LIST_BOXES);
+                        GscConstants.ACTION_ADMIN_LIST_BOXES);
         menuItem =
                 new MenuItem(
-                        lang.getMessage(TxbbLangConstants.MSG_BOX_MANAGEMENT),
+                        lang.getMessage(GscLangConstants.MSG_BOX_MANAGEMENT),
                         url);
         menuItem.setBulleted(true);
         // menuItem.setIcon(MENU_ICON_ADMIN_HOME);
         result.add(menuItem);
 
-        url = urlCreator.createUri(module, TxbbConstants.ACTION_LOGOUT);
+        url = urlCreator.createUri(module, GscConstants.ACTION_LOGOUT);
         menuItem =
-                new MenuItem(lang.getMessage(TxbbLangConstants.MSG_LOGOUT), url);
+                new MenuItem(lang.getMessage(GscLangConstants.MSG_LOGOUT), url);
         menuItem.setIcon(MENU_ICON_LOGOUT);
         result.add(menuItem);
 
@@ -93,6 +93,6 @@ public class MainMenuPortlet extends BaseTxbbPortlet implements
      */
     public String getTitle() {
         Language lang = getLanguage();
-        return lang.getMessage(TxbbLangConstants.MSG_ADMIN_MENU);
+        return lang.getMessage(GscLangConstants.MSG_ADMIN_MENU);
     }
 }

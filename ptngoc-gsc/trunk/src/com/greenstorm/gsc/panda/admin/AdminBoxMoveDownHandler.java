@@ -14,8 +14,8 @@ import org.ddth.panda.web.UrlCreator;
 import org.ddth.panda.web.impl.controlforward.UrlRedirectControlForward;
 import org.ddth.txbb.panda.admin.BaseAdminBoxHandler;
 
-import com.greenstorm.gsc.TxbbConstants;
-import com.greenstorm.gsc.TxbbLangConstants;
+import com.greenstorm.gsc.GscConstants;
+import com.greenstorm.gsc.GscLangConstants;
 import com.greenstorm.gsc.bo.Box;
 import com.greenstorm.gsc.bo.GscManager;
 
@@ -37,7 +37,7 @@ public class AdminBoxMoveDownHandler extends BaseAdminBoxHandler {
 
         Language lang = getLanguage();
         UrlCreator urlCreator = app.getUrlCreator();
-        String action = TxbbConstants.ACTION_ADMIN_LIST_BOXES;
+        String action = GscConstants.ACTION_ADMIN_LIST_BOXES;
         TransitionRecord transition;
 
         if ( box != null ) {
@@ -50,14 +50,14 @@ public class AdminBoxMoveDownHandler extends BaseAdminBoxHandler {
             }
             String message =
                     lang.getMessage(
-                            TxbbLangConstants.MSG_BOX_REORDER_SUCCESSFUL,
+                            GscLangConstants.MSG_BOX_REORDER_SUCCESSFUL,
                             StringUtils.escapeHtml(box.getTitle()));
             transition =
                     TransitionRecord.createInformationTransitionRecord(message);
             app.addTransition(transition);
         } else {
             String message =
-                    lang.getMessage(TxbbLangConstants.ERROR_BOX_NOT_FOUND,
+                    lang.getMessage(GscLangConstants.ERROR_BOX_NOT_FOUND,
                             boxId);
             transition = TransitionRecord.createErrorTransitionRecord(message);
             app.addTransition(transition);

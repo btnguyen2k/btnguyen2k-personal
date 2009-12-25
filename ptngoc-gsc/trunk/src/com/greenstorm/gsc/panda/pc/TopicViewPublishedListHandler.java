@@ -15,7 +15,7 @@ import org.ddth.txbb.panda.pc.BasePcActionHandler;
 import org.ddth.webtemplate.datamodel.DMList;
 import org.ddth.webtemplate.datamodel.DMMap;
 
-import com.greenstorm.gsc.TxbbConstants;
+import com.greenstorm.gsc.GscConstants;
 import com.greenstorm.gsc.bo.Topic;
 import com.greenstorm.gsc.bo.GscManager;
 import com.greenstorm.gsc.model.TopicModel;
@@ -95,7 +95,7 @@ public class TopicViewPublishedListHandler extends BasePcActionHandler {
          * {@inheritDoc}
          */
         public int getPageSize() {
-            return TxbbConstants.PAGE_SIZE;
+            return GscConstants.PAGE_SIZE;
         }
 
         /**
@@ -134,7 +134,7 @@ public class TopicViewPublishedListHandler extends BasePcActionHandler {
                     String url =
                             urlCreator.createUri(
                                     getModule(),
-                                    TxbbConstants.ACTION_PC_VIEW_PUBLISHED_TOPICS,
+                                    GscConstants.ACTION_PC_VIEW_PUBLISHED_TOPICS,
                                     null, urlParams);
                     DMMap modelPage = new DMMap("");
                     modelPage.addChild("page", pageNum);
@@ -157,7 +157,7 @@ public class TopicViewPublishedListHandler extends BasePcActionHandler {
                 urlParams.put("page", String.valueOf(pageNum));
                 url =
                         urlCreator.createUri(getModule(),
-                                TxbbConstants.ACTION_PC_VIEW_PUBLISHED_TOPICS,
+                                GscConstants.ACTION_PC_VIEW_PUBLISHED_TOPICS,
                                 null, urlParams);
                 cacheUrls.put(pageNum, url);
             }

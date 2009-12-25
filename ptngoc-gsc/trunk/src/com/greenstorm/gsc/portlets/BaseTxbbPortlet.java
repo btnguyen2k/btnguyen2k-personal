@@ -4,7 +4,7 @@ import org.ddth.panda.portal.module.ModuleDescriptor;
 import org.ddth.panda.portal.module.PortletDescriptor;
 import org.ddth.panda.portal.portlet.PortalPortlet;
 
-import com.greenstorm.gsc.TxbbConstants;
+import com.greenstorm.gsc.GscConstants;
 
 public abstract class BaseTxbbPortlet extends PortalPortlet {
 
@@ -22,6 +22,6 @@ public abstract class BaseTxbbPortlet extends PortalPortlet {
      */
     @Override
     public ModuleDescriptor getMyModule() {
-        return getModule(TxbbConstants.MODULE_NAME);
+        return getModule(GscConstants.MODULE_NAME);
     }
 }

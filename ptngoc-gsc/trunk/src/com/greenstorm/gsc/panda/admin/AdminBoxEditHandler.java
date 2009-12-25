@@ -25,13 +25,13 @@ import org.ddth.txbb.panda.admin.BaseAdminBoxHandler;
 import org.ddth.webtemplate.datamodel.DMList;
 import org.ddth.webtemplate.datamodel.DMMap;
 
-import com.greenstorm.gsc.TxbbConstants;
-import com.greenstorm.gsc.TxbbLangConstants;
+import com.greenstorm.gsc.GscConstants;
+import com.greenstorm.gsc.GscLangConstants;
 import com.greenstorm.gsc.bo.Box;
 import com.greenstorm.gsc.bo.BoxPermissionGroupPublishTopic;
 import com.greenstorm.gsc.bo.BoxPermissionGroupViewTopic;
 import com.greenstorm.gsc.bo.GscManager;
-import com.greenstorm.gsc.model.BoxModel;
+import com.greenstorm.gsc.model.CardModel;
 
 public class AdminBoxEditHandler extends BaseAdminBoxHandler {
 
@@ -79,16 +79,16 @@ public class AdminBoxEditHandler extends BaseAdminBoxHandler {
 
         if ( box == null ) {
             app.addErrorMessage(lang.getMessage(
-                    TxbbLangConstants.ERROR_BOX_NOT_FOUND, boxId));
+                    GscLangConstants.ERROR_BOX_NOT_FOUND, boxId));
         } else {
             SubmittedForm form = getSubmittedForm();
             UrlCreator urlCreator = app.getUrlCreator();
             if ( form != null && doEditBox(form) ) {
                 String message =
                         lang.getMessage(
-                                TxbbLangConstants.MSG_BOX_EDIT_SUCCESSFUL,
+                                GscLangConstants.MSG_BOX_EDIT_SUCCESSFUL,
                                 StringUtils.escapeHtml(box.getTitle()));
-                String action = TxbbConstants.ACTION_ADMIN_LIST_BOXES;
+                String action = GscConstants.ACTION_ADMIN_LIST_BOXES;
                 TransitionRecord transition =
                         TransitionRecord.createInformationTransitionRecord(message);
                 app.addTransition(transition);
@@ -136,7 +136,7 @@ public class AdminBoxEditHandler extends BaseAdminBoxHandler {
             if ( form != null ) {
                 ModuleDescriptor md = app.getModule(getModuleName());
                 form.setCancelAction(urlCreator.createUri(md.getUrlMapping(),
-                        TxbbConstants.ACTION_ADMIN_LIST_BOXES));
+                        GscConstants.ACTION_ADMIN_LIST_BOXES));
             }
         }
         populateDataModels();
@@ -210,7 +210,7 @@ public class AdminBoxEditHandler extends BaseAdminBoxHandler {
         PandaPortalApplication app = getApp();
 
         if ( box != null ) {
-            pageContent.addChild(MODEL_BOX, BoxModel.getInstance(box));
+            pageContent.addChild(MODEL_BOX, CardModel.getInstance(box));
         }
 
         GscManager fm = app.getBundleManager().getService(GscManager.class);
@@ -220,7 +220,7 @@ public class AdminBoxEditHandler extends BaseAdminBoxHandler {
             if ( !box.getId().equals(this.box.getId()) ) {
                 // do not include the current box from the list to avoid
                 // circular loop
-                modelBoxList.addChild(BoxModel.getInstance(box));
+                modelBoxList.addChild(CardModel.getInstance(box));
             }
         }
         pageContent.addChild(modelBoxList);

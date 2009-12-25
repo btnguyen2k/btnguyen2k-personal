@@ -20,8 +20,8 @@ import org.ddth.panda.web.impl.controlforward.UrlRedirectControlForward;
 import org.ddth.txbb.panda.pc.BasePcActionHandler;
 import org.ddth.webtemplate.datamodel.DMMap;
 
-import com.greenstorm.gsc.TxbbConstants;
-import com.greenstorm.gsc.TxbbLangConstants;
+import com.greenstorm.gsc.GscConstants;
+import com.greenstorm.gsc.GscLangConstants;
 import com.greenstorm.gsc.bo.Topic;
 import com.greenstorm.gsc.bo.GscManager;
 import com.greenstorm.gsc.model.TopicModel;
@@ -53,16 +53,16 @@ public class TopicUnlockHandler extends BasePcActionHandler {
 
         if ( topic == null ) {
             app.addErrorMessage(lang.getMessage(
-                    TxbbLangConstants.ERROR_TOPIC_NOT_FOUND, topicId));
+                    GscLangConstants.ERROR_TOPIC_NOT_FOUND, topicId));
         } else if ( topic.getMemberId() != dafUserId ) {
             topic = null;
             app.addErrorMessage(lang.getMessage(
-                    TxbbLangConstants.ERROR_CAN_NOT_UNLOCK_UNOWNED_TOPIC,
+                    GscLangConstants.ERROR_CAN_NOT_UNLOCK_UNOWNED_TOPIC,
                     topicId));
         } else if ( !topic.isPublished() ) {
             topic = null;
             app.addErrorMessage(lang.getMessage(
-                    TxbbLangConstants.ERROR_TOPIC_NOT_PUBLISHED, topicId));
+                    GscLangConstants.ERROR_TOPIC_NOT_PUBLISHED, topicId));
         } else {
             ModuleDescriptor md = app.getModule(getModuleName());
             SubmittedForm form = getSubmittedForm();
@@ -70,9 +70,9 @@ public class TopicUnlockHandler extends BasePcActionHandler {
             if ( form != null && doUnlockTopic(form) ) {
                 String message =
                         lang.getMessage(
-                                TxbbLangConstants.MSG_PC_TOPIC_UNLOCK_SUCCESSFUL,
+                                GscLangConstants.MSG_PC_TOPIC_UNLOCK_SUCCESSFUL,
                                 StringUtils.escapeHtml(topic.getTitle()));
-                String action = TxbbConstants.ACTION_PC_VIEW_PUBLISHED_TOPICS;
+                String action = GscConstants.ACTION_PC_VIEW_PUBLISHED_TOPICS;
                 TransitionRecord transition =
                         TransitionRecord.createInformationTransitionRecord(message);
                 app.addTransition(transition);
@@ -89,7 +89,7 @@ public class TopicUnlockHandler extends BasePcActionHandler {
             }
             if ( form != null ) {
                 form.setCancelAction(urlCreator.createUri(md.getUrlMapping(),
-                        TxbbConstants.ACTION_PC_VIEW_PUBLISHED_TOPICS));
+                        GscConstants.ACTION_PC_VIEW_PUBLISHED_TOPICS));
             }
         }
         populateDataModels();

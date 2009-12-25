@@ -8,8 +8,8 @@ import org.ddth.panda.web.UrlCreator;
 import org.ddth.txbb.panda.admin.BaseAdminActionHandler;
 import org.ddth.webtemplate.datamodel.DMMap;
 
-import com.greenstorm.gsc.TxbbConstants;
-import com.greenstorm.gsc.TxbbPermissionConstants;
+import com.greenstorm.gsc.GscConstants;
+import com.greenstorm.gsc.GscPermissionConstants;
 
 public abstract class BaseAdminBoxHandler extends BaseAdminActionHandler {
 
@@ -23,7 +23,7 @@ public abstract class BaseAdminBoxHandler extends BaseAdminActionHandler {
     protected Collection<DafPermission> getRequiredPermissions() {
         Collection<DafPermission> requiredPermissions =
                 super.getRequiredPermissions();
-        requiredPermissions.add(TxbbPermissionConstants.PERMISSION_MANAGE_BOXES);
+        requiredPermissions.add(GscPermissionConstants.PERMISSION_MANAGE_BOXES);
         return requiredPermissions;
     }
 
@@ -38,12 +38,12 @@ public abstract class BaseAdminBoxHandler extends BaseAdminActionHandler {
 
         String urlCreateBox =
                 urlCreator.createUri(getModule(),
-                        TxbbConstants.ACTION_ADMIN_CREATE_BOX);
+                        GscConstants.ACTION_ADMIN_CREATE_BOX);
         pageContent.addChild(MODEL_URL_CREATE_BOX, urlCreateBox);
 
         String urlBoxList =
                 urlCreator.createUri(getModule(),
-                        TxbbConstants.ACTION_ADMIN_LIST_BOXES);
+                        GscConstants.ACTION_ADMIN_LIST_BOXES);
         pageContent.addChild(MODEL_URL_LIST_BOXES, urlBoxList);
     }
 }

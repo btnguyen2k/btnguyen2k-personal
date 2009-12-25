@@ -13,13 +13,13 @@ import org.ddth.txbb.panda.BaseActionHandler;
 import org.ddth.webtemplate.datamodel.DMList;
 import org.ddth.webtemplate.datamodel.DMMap;
 
-import com.greenstorm.gsc.TxbbConstants;
-import com.greenstorm.gsc.TxbbLangConstants;
-import com.greenstorm.gsc.TxbbPermissionConstants;
+import com.greenstorm.gsc.GscConstants;
+import com.greenstorm.gsc.GscLangConstants;
+import com.greenstorm.gsc.GscPermissionConstants;
 import com.greenstorm.gsc.bo.Box;
 import com.greenstorm.gsc.bo.Topic;
 import com.greenstorm.gsc.bo.GscManager;
-import com.greenstorm.gsc.model.BoxModel;
+import com.greenstorm.gsc.model.CardModel;
 import com.greenstorm.gsc.model.TopicModel;
 
 public class TopicViewViaBoxHandler extends BaseActionHandler {
@@ -65,16 +65,16 @@ public class TopicViewViaBoxHandler extends BaseActionHandler {
 
         if ( box == null
                 || !app.hasPermission(
-                        TxbbPermissionConstants.PERMISSION_VIEW_BOX, box) ) {
+                        GscPermissionConstants.PERMISSION_VIEW_BOX, box) ) {
             // no permission to view would be the same as "not found"
             box = null;
             app.addErrorMessage(lang.getMessage(
-                    TxbbLangConstants.ERROR_BOX_NOT_FOUND, boxId));
+                    GscLangConstants.ERROR_BOX_NOT_FOUND, boxId));
         } else if ( topic == null || !containBox(publishedBoxes, box) ) {
             // no topic or no publishing would be the same as "not found"
             topic = null;
             app.addErrorMessage(lang.getMessage(
-                    TxbbLangConstants.ERROR_TOPIC_NOT_FOUND, topicId));
+                    GscLangConstants.ERROR_TOPIC_NOT_FOUND, topicId));
         }
 
         populateDataModels();
@@ -110,17 +110,17 @@ public class TopicViewViaBoxHandler extends BaseActionHandler {
             viewableBoxes.add(box);
             for ( Box child : box.getChildren() ) {
                 if ( app.hasPermission(
-                        TxbbPermissionConstants.PERMISSION_VIEW_BOX, child) ) {
+                        GscPermissionConstants.PERMISSION_VIEW_BOX, child) ) {
                     viewableBoxes.add(child);
                 }
             }
 
-            pageContent.addChild(MODEL_BOX, BoxModel.getInstance(box));
+            pageContent.addChild(MODEL_BOX, CardModel.getInstance(box));
 
             // recent commented topics
             Topic[] recentCommentedTopics =
                     txbbMan.getRecentCommentedTopics(
-                            TxbbConstants.NUM_RECENT_COMMENTED_TOPICS,
+                            GscConstants.NUM_RECENT_COMMENTED_TOPICS,
                             viewableBoxes);
             DMList modelRecentCommentedTopics =
                     new DMList(MODEL_RECENT_COMMENTED_TOPICS);
@@ -149,7 +149,7 @@ public class TopicViewViaBoxHandler extends BaseActionHandler {
             String siteTitle = config != null
                     ? config.getConfigValue() : "";
             pageHeader.addChild(MODEL_PAGE_HEADER_TITLE, siteTitle
-                    + TxbbConstants.TITLE_SEPARATOR + box.getTitle());
+                    + GscConstants.TITLE_SEPARATOR + box.getTitle());
         }
     }
 }

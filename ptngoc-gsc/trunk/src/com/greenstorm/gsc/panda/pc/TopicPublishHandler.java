@@ -23,13 +23,13 @@ import org.ddth.txbb.panda.pc.BasePcActionHandler;
 import org.ddth.webtemplate.datamodel.DMList;
 import org.ddth.webtemplate.datamodel.DMMap;
 
-import com.greenstorm.gsc.TxbbConstants;
-import com.greenstorm.gsc.TxbbLangConstants;
-import com.greenstorm.gsc.TxbbPermissionConstants;
+import com.greenstorm.gsc.GscConstants;
+import com.greenstorm.gsc.GscLangConstants;
+import com.greenstorm.gsc.GscPermissionConstants;
 import com.greenstorm.gsc.bo.Box;
 import com.greenstorm.gsc.bo.Topic;
 import com.greenstorm.gsc.bo.GscManager;
-import com.greenstorm.gsc.model.BoxModel;
+import com.greenstorm.gsc.model.CardModel;
 import com.greenstorm.gsc.model.TopicModel;
 
 public class TopicPublishHandler extends BasePcActionHandler {
@@ -63,16 +63,16 @@ public class TopicPublishHandler extends BasePcActionHandler {
 
         if ( topic == null ) {
             app.addErrorMessage(lang.getMessage(
-                    TxbbLangConstants.ERROR_TOPIC_NOT_FOUND, topicId));
+                    GscLangConstants.ERROR_TOPIC_NOT_FOUND, topicId));
         } else if ( topic.getMemberId() != dafUserId ) {
             topic = null;
             app.addErrorMessage(lang.getMessage(
-                    TxbbLangConstants.ERROR_CAN_NOT_PUBLISH_UNOWNED_TOPIC,
+                    GscLangConstants.ERROR_CAN_NOT_PUBLISH_UNOWNED_TOPIC,
                     topicId));
         } else if ( topic.isPublished() ) {
             topic = null;
             app.addErrorMessage(lang.getMessage(
-                    TxbbLangConstants.ERROR_TOPIC_ALREADY_PUBLISHED, topicId));
+                    GscLangConstants.ERROR_TOPIC_ALREADY_PUBLISHED, topicId));
         } else {
             ModuleDescriptor md = app.getModule(getModuleName());
             SubmittedForm form = getSubmittedForm();
@@ -80,9 +80,9 @@ public class TopicPublishHandler extends BasePcActionHandler {
             if ( form != null && doPublishTopic(form) ) {
                 String message =
                         lang.getMessage(
-                                TxbbLangConstants.MSG_PC_TOPIC_PUBLISH_SUCCESSFUL,
+                                GscLangConstants.MSG_PC_TOPIC_PUBLISH_SUCCESSFUL,
                                 StringUtils.escapeHtml(topic.getTitle()));
-                String action = TxbbConstants.ACTION_PC_VIEW_DRAFT_TOPICS;
+                String action = GscConstants.ACTION_PC_VIEW_DRAFT_TOPICS;
                 TransitionRecord transition =
                         TransitionRecord.createInformationTransitionRecord(message);
                 app.addTransition(transition);
@@ -99,7 +99,7 @@ public class TopicPublishHandler extends BasePcActionHandler {
             }
             if ( form != null ) {
                 form.setCancelAction(urlCreator.createUri(md.getUrlMapping(),
-                        TxbbConstants.ACTION_PC_VIEW_DRAFT_TOPICS));
+                        GscConstants.ACTION_PC_VIEW_DRAFT_TOPICS));
             }
         }
         populateDataModels();
@@ -129,11 +129,11 @@ public class TopicPublishHandler extends BasePcActionHandler {
             Box b = txbbMan.getBox(boxId);
             if ( b != null ) {
                 if ( app.hasPermission(
-                        TxbbPermissionConstants.PERMISSION_PUBLISH_TOPIC, b) ) {
+                        GscPermissionConstants.PERMISSION_PUBLISH_TOPIC, b) ) {
                     publishedBoxes.add(b);
                 } else {
                     app.addErrorMessage(lang.getMessage(
-                            TxbbLangConstants.ERROR_NO_PERMISSION_PUBLISH_TOPIC_TO_BOX,
+                            GscLangConstants.ERROR_NO_PERMISSION_PUBLISH_TOPIC_TO_BOX,
                             b.getId()));
                 }
             }
@@ -160,7 +160,7 @@ public class TopicPublishHandler extends BasePcActionHandler {
         Box[] boxTree = fm.getBoxTree();
         for ( Box box : boxTree ) {
             if ( box.canView(currentUser) )
-                modelBoxList.addChild(BoxModel.getInstance(box));
+                modelBoxList.addChild(CardModel.getInstance(box));
         }
         pageContent.addChild(modelBoxList);
 

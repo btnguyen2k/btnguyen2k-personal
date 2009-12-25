@@ -15,8 +15,8 @@ import org.ddth.panda.portal.portlet.menu.MenuItem;
 import org.ddth.panda.web.UrlCreator;
 import org.ddth.txbb.portlets.BaseTxbbPortlet;
 
-import com.greenstorm.gsc.TxbbConstants;
-import com.greenstorm.gsc.TxbbLangConstants;
+import com.greenstorm.gsc.GscConstants;
+import com.greenstorm.gsc.GscLangConstants;
 
 public class PersonalCornerPortlet extends BaseTxbbPortlet implements
         BorderedPortlet, SingletonPortlet, MenuPortlet, TitledPortlet {
@@ -54,9 +54,9 @@ public class PersonalCornerPortlet extends BaseTxbbPortlet implements
         String url;
         MenuItem menuItem;
 
-        url = urlCreator.createUri(module, TxbbConstants.ACTION_PC_INDEX);
+        url = urlCreator.createUri(module, GscConstants.ACTION_PC_INDEX);
         menuItem =
-                new MenuItem(lang.getMessage(TxbbLangConstants.MSG_PC_HOME),
+                new MenuItem(lang.getMessage(GscLangConstants.MSG_PC_HOME),
                         url);
         menuItem.setHighlighted(true);
         result.add(menuItem);
@@ -69,6 +69,6 @@ public class PersonalCornerPortlet extends BaseTxbbPortlet implements
      */
     public String getTitle() {
         Language lang = getLanguage();
-        return lang.getMessage(TxbbLangConstants.MSG_PC);
+        return lang.getMessage(GscLangConstants.MSG_PC);
     }
 }
