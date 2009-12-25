@@ -8,7 +8,7 @@ import org.ddth.panda.portal.PandaPortalApplication;
 import org.ddth.txbb.panda.admin.BaseAdminActionHandler;
 import org.ddth.webtemplate.datamodel.DMMap;
 
-import com.greenstorm.gsc.bo.TxbbManager;
+import com.greenstorm.gsc.bo.GscManager;
 
 public class AdminIndexHandler extends BaseAdminActionHandler {
 
@@ -41,7 +41,7 @@ public class AdminIndexHandler extends BaseAdminActionHandler {
         super.modelPageContentCustom(pageContent);
         PandaPortalApplication app = getApp();
 
-        TxbbManager fm = app.getBundleManager().getService(TxbbManager.class);
+        GscManager fm = app.getBundleManager().getService(GscManager.class);
         pageContent.addChild(MODEL_NUM_BOXES, fm.countBoxes());
         pageContent.addChild(MODEL_NUM_TOPICS, fm.countTopics());
         pageContent.addChild(MODEL_NUM_POSTS, fm.countPosts());

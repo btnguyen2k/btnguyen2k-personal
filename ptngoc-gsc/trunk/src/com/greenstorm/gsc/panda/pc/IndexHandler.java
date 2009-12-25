@@ -9,7 +9,7 @@ import org.ddth.webtemplate.datamodel.DMMap;
 
 import com.greenstorm.gsc.TxbbPermissionConstants;
 import com.greenstorm.gsc.bo.Box;
-import com.greenstorm.gsc.bo.TxbbManager;
+import com.greenstorm.gsc.bo.GscManager;
 import com.greenstorm.gsc.model.BoxModel;
 
 public class IndexHandler extends BasePcActionHandler {
@@ -33,7 +33,7 @@ public class IndexHandler extends BasePcActionHandler {
         super.modelPageContentCustom(pageContent);
         PandaPortalApplication app = getApp();
 
-        TxbbManager fm = app.getBundleManager().getService(TxbbManager.class);
+        GscManager fm = app.getBundleManager().getService(GscManager.class);
         DMList modelBoxTree = new DMList(MODEL_BOX_TREE);
         Box[] boxTree = fm.getBoxTree();
         for ( Box box : boxTree ) {

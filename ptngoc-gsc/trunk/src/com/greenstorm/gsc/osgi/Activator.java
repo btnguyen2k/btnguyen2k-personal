@@ -15,8 +15,8 @@ import org.hibernate.Session;
 import org.osgi.framework.BundleContext;
 
 import com.greenstorm.gsc.TxbbConstants;
-import com.greenstorm.gsc.bo.HibernateTxbbManager;
-import com.greenstorm.gsc.bo.TxbbManager;
+import com.greenstorm.gsc.bo.HibernateGscManager;
+import com.greenstorm.gsc.bo.GscManager;
 
 public class Activator extends AbstractActivator {
 
@@ -52,11 +52,11 @@ public class Activator extends AbstractActivator {
     }
 
     protected void registerTxbbManager() throws Exception {
-        HibernateTxbbManager hfm = new HibernateTxbbManager();
+        HibernateGscManager hfm = new HibernateGscManager();
         hfm.setHibernateSessionFactory(new AppHibernateSessionFactory(
                 getHibernateSessionFactory()));
         hfm.init();
-        context.registerService(TxbbManager.class.getName(), hfm,
+        context.registerService(GscManager.class.getName(), hfm,
                 new Properties());
         ServletUtils.setContextAttribute(
                 TxbbConstants.SERVLET_CTX_ATTR_TXBB_MANAGER, hfm);

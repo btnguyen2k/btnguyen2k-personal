@@ -17,7 +17,7 @@ import com.greenstorm.gsc.TxbbConstants;
 import com.greenstorm.gsc.TxbbPermissionConstants;
 import com.greenstorm.gsc.bo.Box;
 import com.greenstorm.gsc.bo.Topic;
-import com.greenstorm.gsc.bo.TxbbManager;
+import com.greenstorm.gsc.bo.GscManager;
 import com.greenstorm.gsc.util.SeoUnicode;
 import com.greenstorm.gsc.util.TxbbHelper;
 
@@ -86,8 +86,8 @@ public class BoxModel {
         try {
             PandaPortalApplication app =
                     (PandaPortalApplication)ApplicationRepository.getCurrentApp();
-            TxbbManager txbbMan =
-                    app.getBundleManager().getService(TxbbManager.class);
+            GscManager txbbMan =
+                    app.getBundleManager().getService(GscManager.class);
             Collection<Box> viewableBoxes = new ArrayList<Box>();
             viewableBoxes.add(box);
             for ( Box child : box.getChildren() ) {
@@ -112,8 +112,8 @@ public class BoxModel {
             if ( recentPublishedTopics == null ) {
                 PandaPortalApplication app =
                         (PandaPortalApplication)ApplicationRepository.getCurrentApp();
-                TxbbManager txbbMan =
-                        app.getBundleManager().getService(TxbbManager.class);
+                GscManager txbbMan =
+                        app.getBundleManager().getService(GscManager.class);
 
                 Collection<Box> viewableBoxes = new ArrayList<Box>();
                 viewableBoxes.add(box);

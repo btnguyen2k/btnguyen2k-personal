@@ -17,7 +17,7 @@ import org.ddth.webtemplate.datamodel.DMMap;
 
 import com.greenstorm.gsc.TxbbConstants;
 import com.greenstorm.gsc.bo.Topic;
-import com.greenstorm.gsc.bo.TxbbManager;
+import com.greenstorm.gsc.bo.GscManager;
 import com.greenstorm.gsc.model.TopicModel;
 
 public class TopicViewPublishedListHandler extends BasePcActionHandler {
@@ -57,8 +57,8 @@ public class TopicViewPublishedListHandler extends BasePcActionHandler {
             PandaPortalApplication app = getApp();
             urlCreator = app.getUrlCreator();
 
-            TxbbManager txbbMan =
-                    app.getBundleManager().getService(TxbbManager.class);
+            GscManager txbbMan =
+                    app.getBundleManager().getService(GscManager.class);
 
             DafUser currentUser = app.getCurrentUser();
             int numRecords = txbbMan.countPublishedTopics(currentUser);

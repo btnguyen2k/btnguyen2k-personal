@@ -23,7 +23,7 @@ import org.ddth.webtemplate.datamodel.DMMap;
 import com.greenstorm.gsc.TxbbConstants;
 import com.greenstorm.gsc.TxbbLangConstants;
 import com.greenstorm.gsc.bo.Topic;
-import com.greenstorm.gsc.bo.TxbbManager;
+import com.greenstorm.gsc.bo.GscManager;
 import com.greenstorm.gsc.model.TopicModel;
 
 public class TopicDeleteHandler extends BasePcActionHandler {
@@ -45,8 +45,8 @@ public class TopicDeleteHandler extends BasePcActionHandler {
 
         int topicId =
                 app.getHttpRequestParams().getUrlParamAsInt(URL_PARAM_TOPIC_ID);
-        TxbbManager txbbMan =
-                app.getBundleManager().getService(TxbbManager.class);
+        GscManager txbbMan =
+                app.getBundleManager().getService(GscManager.class);
         topic = txbbMan.getTopic(topicId);
 
         Language lang = getLanguage();
@@ -105,8 +105,8 @@ public class TopicDeleteHandler extends BasePcActionHandler {
             return false;
         }
 
-        TxbbManager txbbMan =
-                app.getBundleManager().getService(TxbbManager.class);
+        GscManager txbbMan =
+                app.getBundleManager().getService(GscManager.class);
         txbbMan.deleteTopic(topic);
 
         return true;

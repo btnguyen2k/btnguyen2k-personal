@@ -23,7 +23,7 @@ import com.greenstorm.gsc.TxbbLangConstants;
 import com.greenstorm.gsc.TxbbPermissionConstants;
 import com.greenstorm.gsc.bo.Box;
 import com.greenstorm.gsc.bo.Topic;
-import com.greenstorm.gsc.bo.TxbbManager;
+import com.greenstorm.gsc.bo.GscManager;
 import com.greenstorm.gsc.model.BoxModel;
 import com.greenstorm.gsc.model.TopicModel;
 
@@ -57,8 +57,8 @@ public class BoxViewHandler extends BaseActionHandler {
         int boxId =
                 app.getHttpRequestParams().getVirtualPathParamAsInt(
                         VIRTUAL_PARAM_BOX_ID);
-        TxbbManager txbbMan =
-                app.getBundleManager().getService(TxbbManager.class);
+        GscManager txbbMan =
+                app.getBundleManager().getService(GscManager.class);
         box = txbbMan.getBox(boxId);
         Language lang = getLanguage();
 
@@ -82,8 +82,8 @@ public class BoxViewHandler extends BaseActionHandler {
         super.modelPageContentCustom(pageContent);
         PandaPortalApplication app = getApp();
 
-        TxbbManager txbbMan =
-                app.getBundleManager().getService(TxbbManager.class);
+        GscManager txbbMan =
+                app.getBundleManager().getService(GscManager.class);
 
         if ( box != null ) {
             // viewable boxes
@@ -128,8 +128,8 @@ public class BoxViewHandler extends BaseActionHandler {
             PandaPortalApplication app = getApp();
             urlCreator = app.getUrlCreator();
 
-            TxbbManager txbbMan =
-                    app.getBundleManager().getService(TxbbManager.class);
+            GscManager txbbMan =
+                    app.getBundleManager().getService(GscManager.class);
 
             Collection<Box> viewableBoxes = new ArrayList<Box>();
             viewableBoxes.add(box);

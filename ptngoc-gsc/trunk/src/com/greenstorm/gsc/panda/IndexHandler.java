@@ -12,7 +12,7 @@ import org.ddth.webtemplate.datamodel.DMMap;
 import com.greenstorm.gsc.TxbbConstants;
 import com.greenstorm.gsc.bo.Box;
 import com.greenstorm.gsc.bo.Topic;
-import com.greenstorm.gsc.bo.TxbbManager;
+import com.greenstorm.gsc.bo.GscManager;
 import com.greenstorm.gsc.model.TopicModel;
 import com.greenstorm.gsc.util.TxbbHelper;
 
@@ -42,7 +42,7 @@ public class IndexHandler extends BaseActionHandler {
         super.modelPageContentCustom(pageContent);
         PandaPortalApplication app = getApp();
 
-        TxbbManager fm = app.getBundleManager().getService(TxbbManager.class);
+        GscManager fm = app.getBundleManager().getService(GscManager.class);
 
         Collection<Box> viewableBoxes = TxbbHelper.getViewableBoxes();
 

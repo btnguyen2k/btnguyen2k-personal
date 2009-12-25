@@ -4,34 +4,12 @@
 		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 	<session-factory>
-		<!--
-		<property name="hibernate.dialect">
-			org.hibernate.dialect.PostgreSQLDialect
-		</property>
-		-->
-		<!--
-		<property name="hibernate.dialect">
-			org.hibernate.dialect.HSQLDialect
-		</property>
-		-->
 		<property name="hibernate.generate_statistics">true</property>
-
-		<!-- Cache Settings -->
-		<!--
-		<property name="hibernate.cache.provider_class">
-			org.hibernate.cache.EhCacheProvider
-		</property>		
-		<property
-			name="hibernate.cache.provider_configuration_file_resource_path">
-			../ehcache.xml
-		</property>
-		-->
 		<property name="hibernate.cache.provider_class">
 			org.ddth.panda.portal.utils.hibernate.CacheProviderImpl
 		</property>
-		<property name="hibernate.cache.configuration_resource_file">
-			/../ehcache.xml			
-		</property>		
+		<property name="hibernate.cache.configuration_resource_file"> /../ehcache.xml			
+		</property>
 		<property name="hibernate.cache.use_second_level_cache">
 			true
 		</property>
@@ -42,11 +20,5 @@
 		<property name="hibernate.bytecode.use_reflection_optimizer">
 			true
 		</property>
-
-		<!-- For Debugging -->
-		<!--
-		<property name="hibernate.show_sql">true</property>
-		<property name="hibernate.format_sql">true</property>
-		-->
 	</session-factory>
 </hibernate-configuration>

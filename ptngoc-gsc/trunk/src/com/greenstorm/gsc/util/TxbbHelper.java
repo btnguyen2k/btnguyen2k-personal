@@ -14,7 +14,7 @@ import org.ddth.panda.utils.StringUtils;
 import com.greenstorm.gsc.TxbbConstants;
 import com.greenstorm.gsc.TxbbPermissionConstants;
 import com.greenstorm.gsc.bo.Box;
-import com.greenstorm.gsc.bo.TxbbManager;
+import com.greenstorm.gsc.bo.GscManager;
 
 /**
  * Helper class for TXBB
@@ -41,7 +41,7 @@ public class TxbbHelper {
      */
     public static Collection<Box> getViewableBoxes() throws Exception {
         PandaPortalApplication app = getApp();
-        TxbbManager fm = app.getBundleManager().getService(TxbbManager.class);
+        GscManager fm = app.getBundleManager().getService(GscManager.class);
 
         Box[] boxTree = fm.getBoxTree();
         Collection<Box> viewableBoxes = new ArrayList<Box>();
