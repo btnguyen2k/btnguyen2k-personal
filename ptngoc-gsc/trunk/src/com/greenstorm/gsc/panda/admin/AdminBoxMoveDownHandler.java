@@ -17,7 +17,7 @@ import org.ddth.txbb.panda.admin.BaseAdminBoxHandler;
 import com.greenstorm.gsc.TxbbConstants;
 import com.greenstorm.gsc.TxbbLangConstants;
 import com.greenstorm.gsc.bo.Box;
-import com.greenstorm.gsc.bo.TxbbManager;
+import com.greenstorm.gsc.bo.GscManager;
 
 public class AdminBoxMoveDownHandler extends BaseAdminBoxHandler {
 
@@ -31,8 +31,8 @@ public class AdminBoxMoveDownHandler extends BaseAdminBoxHandler {
         PandaPortalApplication app = getApp();
         int boxId =
                 app.getHttpRequestParams().getUrlParamAsInt(URL_PARAM_BOX_ID);
-        TxbbManager txbbMan =
-                app.getBundleManager().getService(TxbbManager.class);
+        GscManager txbbMan =
+                app.getBundleManager().getService(GscManager.class);
         Box box = txbbMan.getBox(boxId);
 
         Language lang = getLanguage();
@@ -74,8 +74,8 @@ public class AdminBoxMoveDownHandler extends BaseAdminBoxHandler {
 
     private void moveDownBox(Box[] boxList, Box box) throws Exception {
         PandaPortalApplication app = getApp();
-        TxbbManager txbbMan =
-                app.getBundleManager().getService(TxbbManager.class);
+        GscManager txbbMan =
+                app.getBundleManager().getService(GscManager.class);
         Box current = null;
         for ( Box next : boxList ) {
             if ( current != null && current.getId().equals(box.getId()) ) {

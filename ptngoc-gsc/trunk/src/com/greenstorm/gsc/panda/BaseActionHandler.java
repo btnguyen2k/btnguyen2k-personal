@@ -9,7 +9,7 @@ import org.ddth.webtemplate.datamodel.DMMap;
 import com.greenstorm.gsc.TxbbConstants;
 import com.greenstorm.gsc.TxbbPermissionConstants;
 import com.greenstorm.gsc.bo.Box;
-import com.greenstorm.gsc.bo.TxbbManager;
+import com.greenstorm.gsc.bo.GscManager;
 import com.greenstorm.gsc.model.BoxModel;
 
 public abstract class BaseActionHandler extends
@@ -90,8 +90,8 @@ public abstract class BaseActionHandler extends
         url = urlCreator.createUri(getModule(), TxbbConstants.ACTION_LOGOUT);
         pageContent.addChild(MODEL_URL_LOGOUT, url);
 
-        TxbbManager txbbMan =
-                app.getBundleManager().getService(TxbbManager.class);
+        GscManager txbbMan =
+                app.getBundleManager().getService(GscManager.class);
 
         // box tree
         DMList modelBoxTree = new DMList(MODEL_BOX_TREE);

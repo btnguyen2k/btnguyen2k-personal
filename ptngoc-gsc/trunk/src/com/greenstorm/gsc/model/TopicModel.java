@@ -20,7 +20,7 @@ import com.greenstorm.gsc.TxbbPermissionConstants;
 import com.greenstorm.gsc.bo.Box;
 import com.greenstorm.gsc.bo.Topic;
 import com.greenstorm.gsc.bo.TopicContent;
-import com.greenstorm.gsc.bo.TxbbManager;
+import com.greenstorm.gsc.bo.GscManager;
 import com.greenstorm.gsc.util.SeoUnicode;
 import com.greenstorm.gsc.util.TXCodeParser;
 import com.greenstorm.gsc.util.TxbbHelper;
@@ -381,8 +381,8 @@ public class TopicModel {
         try {
             PandaPortalApplication app =
                     (PandaPortalApplication)ApplicationRepository.getCurrentApp();
-            TxbbManager txbbMan =
-                    app.getBundleManager().getService(TxbbManager.class);
+            GscManager txbbMan =
+                    app.getBundleManager().getService(GscManager.class);
             Box box = txbbMan.getBox(boxId);
             if ( box == null ) {
                 return null;
@@ -415,8 +415,8 @@ public class TopicModel {
         try {
             PandaPortalApplication app =
                     (PandaPortalApplication)ApplicationRepository.getCurrentApp();
-            TxbbManager txbbMan =
-                    app.getBundleManager().getService(TxbbManager.class);
+            GscManager txbbMan =
+                    app.getBundleManager().getService(GscManager.class);
             // check for view permission
             Box[] publishedBoxes = txbbMan.getPublishedBoxes(topic);
             // if there is no published box, then topic is viewable via member's
@@ -470,8 +470,8 @@ public class TopicModel {
         try {
             PandaPortalApplication app =
                     (PandaPortalApplication)ApplicationRepository.getCurrentApp();
-            TxbbManager txbbMan =
-                    app.getBundleManager().getService(TxbbManager.class);
+            GscManager txbbMan =
+                    app.getBundleManager().getService(GscManager.class);
             Box box = txbbMan.getBox(boxId);
             if ( box == null ) {
                 return null;
@@ -504,8 +504,8 @@ public class TopicModel {
         try {
             PandaPortalApplication app =
                     (PandaPortalApplication)ApplicationRepository.getCurrentApp();
-            TxbbManager txbbMan =
-                    app.getBundleManager().getService(TxbbManager.class);
+            GscManager txbbMan =
+                    app.getBundleManager().getService(GscManager.class);
             // check for view permission
             Box[] publishedBoxes = txbbMan.getPublishedBoxes(topic);
             // if there is no published box, then topic is viewable via member's

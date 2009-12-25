@@ -20,7 +20,7 @@ import org.ddth.txbb.panda.pc.BasePcActionHandler;
 import com.greenstorm.gsc.TxbbConstants;
 import com.greenstorm.gsc.TxbbLangConstants;
 import com.greenstorm.gsc.bo.Topic;
-import com.greenstorm.gsc.bo.TxbbManager;
+import com.greenstorm.gsc.bo.GscManager;
 
 public class TopicCreateHandler extends BasePcActionHandler {
 
@@ -79,8 +79,8 @@ public class TopicCreateHandler extends BasePcActionHandler {
         topic.setType(type);
         topic.setMemberId((Integer)app.getCurrentUser().getId());
 
-        TxbbManager txbbMan =
-                app.getBundleManager().getService(TxbbManager.class);
+        GscManager txbbMan =
+                app.getBundleManager().getService(GscManager.class);
         topic = txbbMan.createTopic(topic);
 
         return topic;

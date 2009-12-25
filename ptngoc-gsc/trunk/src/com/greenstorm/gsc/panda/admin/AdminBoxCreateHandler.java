@@ -32,7 +32,7 @@ import com.greenstorm.gsc.TxbbLangConstants;
 import com.greenstorm.gsc.bo.Box;
 import com.greenstorm.gsc.bo.BoxPermissionGroupPublishTopic;
 import com.greenstorm.gsc.bo.BoxPermissionGroupViewTopic;
-import com.greenstorm.gsc.bo.TxbbManager;
+import com.greenstorm.gsc.bo.GscManager;
 import com.greenstorm.gsc.model.BoxModel;
 
 public class AdminBoxCreateHandler extends BaseAdminBoxHandler {
@@ -146,8 +146,8 @@ public class AdminBoxCreateHandler extends BaseAdminBoxHandler {
         box.setOuterDescription(outerDesc);
         box.setPosition(SystemUtils.getCurrentTimestamp());
 
-        TxbbManager txbbMan =
-                app.getBundleManager().getService(TxbbManager.class);
+        GscManager txbbMan =
+                app.getBundleManager().getService(GscManager.class);
         box = txbbMan.createBox(box);
         for ( BoxPermissionGroupPublishTopic p : permissionPublishTopic ) {
             p.setBoxId(box.getId());
@@ -170,7 +170,7 @@ public class AdminBoxCreateHandler extends BaseAdminBoxHandler {
         super.modelPageContentCustom(pageContent);
         PandaPortalApplication app = getApp();
 
-        TxbbManager fm = app.getBundleManager().getService(TxbbManager.class);
+        GscManager fm = app.getBundleManager().getService(GscManager.class);
         DMList modelBoxList = new DMList(MODEL_BOX_LIST);
         Box[] boxTree = fm.getBoxTree();
         for ( Box box : boxTree ) {

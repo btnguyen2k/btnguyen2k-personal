@@ -18,7 +18,7 @@ import com.greenstorm.gsc.TxbbLangConstants;
 import com.greenstorm.gsc.TxbbPermissionConstants;
 import com.greenstorm.gsc.bo.Box;
 import com.greenstorm.gsc.bo.Topic;
-import com.greenstorm.gsc.bo.TxbbManager;
+import com.greenstorm.gsc.bo.GscManager;
 import com.greenstorm.gsc.model.BoxModel;
 import com.greenstorm.gsc.model.TopicModel;
 
@@ -48,8 +48,8 @@ public class TopicViewViaBoxHandler extends BaseActionHandler {
     @Override
     protected ControlForward execute() throws Exception {
         PandaPortalApplication app = getApp();
-        TxbbManager txbbMan =
-                app.getBundleManager().getService(TxbbManager.class);
+        GscManager txbbMan =
+                app.getBundleManager().getService(GscManager.class);
         Language lang = getLanguage();
 
         int boxId =
@@ -101,8 +101,8 @@ public class TopicViewViaBoxHandler extends BaseActionHandler {
         super.modelPageContentCustom(pageContent);
         PandaPortalApplication app = getApp();
 
-        TxbbManager txbbMan =
-                app.getBundleManager().getService(TxbbManager.class);
+        GscManager txbbMan =
+                app.getBundleManager().getService(GscManager.class);
 
         if ( box != null ) {
             // viewable boxes

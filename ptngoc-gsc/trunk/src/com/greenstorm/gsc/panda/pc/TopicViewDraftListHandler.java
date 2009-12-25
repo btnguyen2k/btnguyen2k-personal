@@ -8,7 +8,7 @@ import org.ddth.webtemplate.datamodel.DMList;
 import org.ddth.webtemplate.datamodel.DMMap;
 
 import com.greenstorm.gsc.bo.Topic;
-import com.greenstorm.gsc.bo.TxbbManager;
+import com.greenstorm.gsc.bo.GscManager;
 import com.greenstorm.gsc.model.TopicModel;
 
 public class TopicViewDraftListHandler extends BasePcActionHandler {
@@ -32,7 +32,7 @@ public class TopicViewDraftListHandler extends BasePcActionHandler {
         super.modelPageContentCustom(pageContent);
         PandaPortalApplication app = getApp();
 
-        TxbbManager fm = app.getBundleManager().getService(TxbbManager.class);
+        GscManager fm = app.getBundleManager().getService(GscManager.class);
         Topic[] draftTopics = fm.getDraftTopics(app.getCurrentUser());
         DMList modelDraftTopics = new DMList(MODEL_DRAFT_TOPICS);
         for ( Topic topic : draftTopics ) {

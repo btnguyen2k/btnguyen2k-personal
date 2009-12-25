@@ -18,7 +18,7 @@ import org.ddth.txbb.portlets.BaseTxbbPortlet;
 import com.greenstorm.gsc.TxbbConstants;
 import com.greenstorm.gsc.TxbbLangConstants;
 import com.greenstorm.gsc.bo.Box;
-import com.greenstorm.gsc.bo.TxbbManager;
+import com.greenstorm.gsc.bo.GscManager;
 import com.greenstorm.gsc.model.BoxModel;
 
 public class MainMenuPortlet extends BaseTxbbPortlet implements
@@ -55,7 +55,7 @@ public class MainMenuPortlet extends BaseTxbbPortlet implements
         menuItem.setHighlighted(true);
         result.add(menuItem);
 
-        TxbbManager fm = app.getBundleManager().getService(TxbbManager.class);
+        GscManager fm = app.getBundleManager().getService(GscManager.class);
         Box[] boxTree = fm.getBoxTree();
         for ( Box box : boxTree ) {
             BoxModel bm = BoxModel.getInstance(box);

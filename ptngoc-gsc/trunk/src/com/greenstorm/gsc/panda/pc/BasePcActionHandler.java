@@ -20,7 +20,7 @@ import org.ddth.webtemplate.datamodel.DMMap;
 
 import com.greenstorm.gsc.TxbbConstants;
 import com.greenstorm.gsc.TxbbLangConstants;
-import com.greenstorm.gsc.bo.TxbbManager;
+import com.greenstorm.gsc.bo.GscManager;
 
 public abstract class BasePcActionHandler extends BaseActionHandler implements
         RequireLoggedin, LastAccessUrl {
@@ -124,8 +124,8 @@ public abstract class BasePcActionHandler extends BaseActionHandler implements
                         TxbbConstants.ACTION_PC_VIEW_PUBLISHED_TOPICS);
         pageContent.addChild(MODEL_URL_PC_PUBLISHED_TOPICS, url);
 
-        TxbbManager txbbMan =
-                app.getBundleManager().getService(TxbbManager.class);
+        GscManager txbbMan =
+                app.getBundleManager().getService(GscManager.class);
         DafUser user = app.getCurrentUser();
         pageContent.addChild(MODEL_NUM_DRAFT_TOPICS,
                 txbbMan.countDraftTopics(user));

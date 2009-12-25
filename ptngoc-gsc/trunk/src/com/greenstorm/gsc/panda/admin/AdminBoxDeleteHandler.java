@@ -22,7 +22,7 @@ import org.ddth.webtemplate.datamodel.DMMap;
 import com.greenstorm.gsc.TxbbConstants;
 import com.greenstorm.gsc.TxbbLangConstants;
 import com.greenstorm.gsc.bo.Box;
-import com.greenstorm.gsc.bo.TxbbManager;
+import com.greenstorm.gsc.bo.GscManager;
 import com.greenstorm.gsc.model.BoxModel;
 
 public class AdminBoxDeleteHandler extends BaseAdminBoxHandler {
@@ -41,8 +41,8 @@ public class AdminBoxDeleteHandler extends BaseAdminBoxHandler {
         PandaPortalApplication app = getApp();
         int boxId =
                 app.getHttpRequestParams().getUrlParamAsInt(URL_PARAM_BOX_ID);
-        TxbbManager txbbMan =
-                app.getBundleManager().getService(TxbbManager.class);
+        GscManager txbbMan =
+                app.getBundleManager().getService(GscManager.class);
         box = txbbMan.getBox(boxId);
 
         Language lang = getLanguage();
@@ -102,8 +102,8 @@ public class AdminBoxDeleteHandler extends BaseAdminBoxHandler {
         if ( form.hasErrorMessage() ) {
             return false;
         }
-        TxbbManager txbbMan =
-                app.getBundleManager().getService(TxbbManager.class);
+        GscManager txbbMan =
+                app.getBundleManager().getService(GscManager.class);
         txbbMan.deleteBox(box);
         return true;
     }

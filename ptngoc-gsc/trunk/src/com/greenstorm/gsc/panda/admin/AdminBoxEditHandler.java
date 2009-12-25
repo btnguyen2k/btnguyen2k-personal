@@ -30,7 +30,7 @@ import com.greenstorm.gsc.TxbbLangConstants;
 import com.greenstorm.gsc.bo.Box;
 import com.greenstorm.gsc.bo.BoxPermissionGroupPublishTopic;
 import com.greenstorm.gsc.bo.BoxPermissionGroupViewTopic;
-import com.greenstorm.gsc.bo.TxbbManager;
+import com.greenstorm.gsc.bo.GscManager;
 import com.greenstorm.gsc.model.BoxModel;
 
 public class AdminBoxEditHandler extends BaseAdminBoxHandler {
@@ -71,8 +71,8 @@ public class AdminBoxEditHandler extends BaseAdminBoxHandler {
         PandaPortalApplication app = getApp();
         int boxId =
                 app.getHttpRequestParams().getUrlParamAsInt(URL_PARAM_BOX_ID);
-        TxbbManager txbbMan =
-                app.getBundleManager().getService(TxbbManager.class);
+        GscManager txbbMan =
+                app.getBundleManager().getService(GscManager.class);
         box = txbbMan.getBox(boxId);
 
         Language lang = getLanguage();
@@ -195,8 +195,8 @@ public class AdminBoxEditHandler extends BaseAdminBoxHandler {
         // box.setPermissionPublishTopic(permissionPublishTopic);
         // box.setPermissionViewTopic(permissionViewTopic);
 
-        TxbbManager txbbMan =
-                app.getBundleManager().getService(TxbbManager.class);
+        GscManager txbbMan =
+                app.getBundleManager().getService(GscManager.class);
         txbbMan.updateBox(box);
         return true;
     }
@@ -213,7 +213,7 @@ public class AdminBoxEditHandler extends BaseAdminBoxHandler {
             pageContent.addChild(MODEL_BOX, BoxModel.getInstance(box));
         }
 
-        TxbbManager fm = app.getBundleManager().getService(TxbbManager.class);
+        GscManager fm = app.getBundleManager().getService(GscManager.class);
         DMList modelBoxList = new DMList(MODEL_BOX_LIST);
         Box[] boxTree = fm.getBoxTree();
         for ( Box box : boxTree ) {
