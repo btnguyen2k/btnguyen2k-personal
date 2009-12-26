@@ -2,11 +2,12 @@ package com.greenstorm.gsc.panda;
 
 import org.ddth.panda.core.ControlForward;
 import org.ddth.panda.portal.PandaPortalApplication;
-import org.ddth.panda.portal.module.admin.PortalAdminConstants;
 import org.ddth.panda.portal.module.panda.LastAccessUrl;
 import org.ddth.panda.portal.module.panda.ModuleActionHandler;
 import org.ddth.panda.web.UrlCreator;
 import org.ddth.panda.web.impl.controlforward.UrlRedirectControlForward;
+
+import com.greenstorm.gsc.GscConstants;
 
 public class DefaultHandler extends ModuleActionHandler implements
         LastAccessUrl {
@@ -19,8 +20,7 @@ public class DefaultHandler extends ModuleActionHandler implements
         UrlCreator urlCreator = app.getUrlCreator();
 
         String urlIndex =
-                urlCreator.createUri(getModule(),
-                        PortalAdminConstants.DEFAULT_ACTION);
+                urlCreator.createUri(getModule(), GscConstants.ACTION_INDEX);
         return new UrlRedirectControlForward(urlIndex);
     }
 }

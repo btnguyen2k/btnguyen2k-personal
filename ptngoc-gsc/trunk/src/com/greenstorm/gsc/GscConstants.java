@@ -7,6 +7,8 @@ public class GscConstants extends PandaPortalConstants {
 
     public final static String MODULE_NAME = "gsc";
 
+    public final static String ACTION_INDEX = "index";
+
     public final static double TXBB_POINTS_PER_TOPIC = 10.0;
 
     public final static double TXBB_POINTS_PER_POST = 3.0;
