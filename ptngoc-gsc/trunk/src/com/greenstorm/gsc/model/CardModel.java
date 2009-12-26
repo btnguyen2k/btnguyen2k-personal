@@ -11,8 +11,8 @@ public class CardModel {
     /**
      * Gets an instance of CardModel.
      * 
-     * @param box Box
-     * @return BoxModel
+     * @param card Card
+     * @return CardModel
      */
     public static CardModel getInstance(Card card) {
         PandaPortalApplication app =

@@ -13,13 +13,9 @@ import org.ddth.panda.portal.portlet.SingletonPortlet;
 import org.ddth.panda.portal.portlet.TitledPortlet;
 import org.ddth.panda.portal.portlet.menu.MenuItem;
 import org.ddth.panda.web.UrlCreator;
-import org.ddth.txbb.portlets.BaseTxbbPortlet;
 
 import com.greenstorm.gsc.GscConstants;
 import com.greenstorm.gsc.GscLangConstants;
-import com.greenstorm.gsc.bo.Box;
-import com.greenstorm.gsc.bo.GscManager;
-import com.greenstorm.gsc.model.CardModel;
 
 public class MainMenuPortlet extends BaseTxbbPortlet implements
         BorderedPortlet, SingletonPortlet, MenuPortlet, TitledPortlet {
@@ -55,17 +51,13 @@ public class MainMenuPortlet extends BaseTxbbPortlet implements
         menuItem.setHighlighted(true);
         result.add(menuItem);
 
-        GscManager fm = app.getBundleManager().getService(GscManager.class);
-        Box[] boxTree = fm.getBoxTree();
-        for ( Box box : boxTree ) {
-            CardModel bm = CardModel.getInstance(box);
-            url = bm.getUrlView();
-            if ( url != null ) {
-                menuItem = new MenuItem(bm.getTitle(), url);
-                menuItem.setBulleted(true);
-                result.add(menuItem);
-            }
-        }
+        /*
+         * GscManager fm = app.getBundleManager().getService(GscManager.class);
+         * Box[] boxTree = fm.getBoxTree(); for ( Box box : boxTree ) {
+         * CardModel bm = CardModel.getInstance(box); url = bm.getUrlView(); if
+         * ( url != null ) { menuItem = new MenuItem(bm.getTitle(), url);
+         * menuItem.setBulleted(true); result.add(menuItem); } }
+         */
 
         return result;
     }
