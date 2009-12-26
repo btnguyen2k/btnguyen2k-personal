@@ -10,13 +10,12 @@ import org.ddth.panda.portal.PandaPortalApplication;
 import org.ddth.panda.portal.osgi.AbstractActivator;
 import org.ddth.panda.portal.utils.PandaPortalAppPreFinishHook;
 import org.ddth.panda.utils.ServletUtils;
-import org.ddth.txbb.osgi.Activator;
 import org.hibernate.Session;
 import org.osgi.framework.BundleContext;
 
 import com.greenstorm.gsc.GscConstants;
-import com.greenstorm.gsc.bo.HibernateGscManager;
 import com.greenstorm.gsc.bo.GscManager;
+import com.greenstorm.gsc.bo.HibernateGscManager;
 
 public class Activator extends AbstractActivator {
 

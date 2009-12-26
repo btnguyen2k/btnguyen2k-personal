@@ -13,7 +13,6 @@ import org.ddth.panda.portal.portlet.SingletonPortlet;
 import org.ddth.panda.portal.portlet.TitledPortlet;
 import org.ddth.panda.portal.portlet.menu.MenuItem;
 import org.ddth.panda.web.UrlCreator;
-import org.ddth.txbb.portlets.BaseTxbbPortlet;
 
 import com.greenstorm.gsc.GscConstants;
 import com.greenstorm.gsc.GscLangConstants;
@@ -56,8 +55,7 @@ public class PersonalCornerPortlet extends BaseTxbbPortlet implements
 
         url = urlCreator.createUri(module, GscConstants.ACTION_PC_INDEX);
         menuItem =
-                new MenuItem(lang.getMessage(GscLangConstants.MSG_PC_HOME),
-                        url);
+                new MenuItem(lang.getMessage(GscLangConstants.MSG_PC_HOME), url);
         menuItem.setHighlighted(true);
         result.add(menuItem);
 
