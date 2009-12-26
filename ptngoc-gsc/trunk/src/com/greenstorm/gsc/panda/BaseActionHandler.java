@@ -3,14 +3,10 @@ package com.greenstorm.gsc.panda;
 import org.ddth.panda.portal.PandaPortalApplication;
 import org.ddth.panda.portal.module.panda.LastAccessUrl;
 import org.ddth.panda.web.UrlCreator;
-import org.ddth.webtemplate.datamodel.DMList;
 import org.ddth.webtemplate.datamodel.DMMap;
 
 import com.greenstorm.gsc.GscConstants;
-import com.greenstorm.gsc.GscPermissionConstants;
-import com.greenstorm.gsc.bo.Box;
 import com.greenstorm.gsc.bo.GscManager;
-import com.greenstorm.gsc.model.CardModel;
 
 public abstract class BaseActionHandler extends
         org.ddth.panda.portal.module.panda.BaseActionHandler implements
@@ -93,15 +89,12 @@ public abstract class BaseActionHandler extends
         GscManager txbbMan =
                 app.getBundleManager().getService(GscManager.class);
 
-        // box tree
-        DMList modelBoxTree = new DMList(MODEL_BOX_TREE);
-        Box[] boxTree = txbbMan.getBoxTree();
-        for ( Box box : boxTree ) {
-            if ( app.hasPermission(GscPermissionConstants.PERMISSION_VIEW_BOX,
-                    box) ) {
-                modelBoxTree.addChild(CardModel.getInstance(box));
-            }
-        }
-        pageContent.addChild(modelBoxTree);
+        /*
+         * // box tree DMList modelBoxTree = new DMList(MODEL_BOX_TREE); Box[]
+         * boxTree = txbbMan.getBoxTree(); for ( Box box : boxTree ) { if (
+         * app.hasPermission(GscPermissionConstants.PERMISSION_VIEW_BOX, box) )
+         * { modelBoxTree.addChild(CardModel.getInstance(box)); } }
+         * pageContent.addChild(modelBoxTree);
+         */
     }
 }
