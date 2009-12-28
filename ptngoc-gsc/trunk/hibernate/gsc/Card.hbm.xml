@@ -14,7 +14,7 @@
 			</generator>
 		</id>
 
-		<property name="issuedTimestamp" column="gsc_issued_timestamp"
+		<property name="issuedTimestamp" column="cissued_timestamp"
 			type="integer" />
 	</class>
 </hibernate-mapping>
