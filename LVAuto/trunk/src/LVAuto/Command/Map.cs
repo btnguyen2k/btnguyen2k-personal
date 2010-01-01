@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Collections;
-using LVAuto.Command.CommonObj;
+using LVAuto.LVForm.Command.CommonObj;
 
-namespace LVAuto.Command
+namespace LVAuto.LVForm.Command
 {
 	public class Map
 	{
 		public static Hashtable Execute(int command, string parameter, bool wait)
 		{
-			string data = parameter + "&num=" + LVAuto.Web.LVWeb.idimage;
-			string header = "POST http://s" + LVAuto.Web.LVWeb.Server + ".linhvuong.zooz.vn/GateWay/Map.ashx?id=" + command + "&0.05861361440438828 HTTP/1.1\n";
-			header += "Host: s" + LVAuto.Web.LVWeb.Server + ".linhvuong.zooz.vn\n";
+			string data = parameter + "&num=" + LVAuto.LVForm.Web.LVWeb.idimage;
+			string header = "POST http://s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn/GateWay/Map.ashx?id=" + command + "&0.05861361440438828 HTTP/1.1\n";
+			header += "Host: s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn\n";
 			header += "User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.7) Gecko/2009021910 Firefox/3.0.7\n";
 			header += "Accept: text/javascript, text/html, application/xml, text/xml, */*\n";
 			header += "Accept-Language: en-us,en;q=0.5\n";
@@ -20,7 +20,7 @@ namespace LVAuto.Command
 			header += "Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7\n";
 			header += "Keep-Alive: 300\n";
 			header += "Connection: keep-alive\n";
-			header += "Referer: http://s" + LVAuto.Web.LVWeb.Server + ".linhvuong.zooz.vn/city\n";
+			header += "Referer: http://s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn/city\n";
 			header += "X-Requested-With: XMLHttpRequest\n";
 			header += "X-Prototype-Version: 1.5.0\n";
 			header += "Cookie: " + Web.LVWeb.CurrentLoginInfo.MakeCookiesString() + "\n";
@@ -28,7 +28,7 @@ namespace LVAuto.Command
 			header += "Content-Length: " + (data.Length) + "\n";
 			header += "\n";
 
-			Hashtable response = Web.LVWeb.SendAndReceive(header + data, "s" + LVAuto.Web.LVWeb.Server + ".linhvuong.zooz.vn", 80, wait);
+			Hashtable response = Web.LVWeb.SendAndReceive(header + data, "s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn", 80, wait);
 			if (wait)
 			{
 				return (Hashtable)JSON.JSON.JsonDecode(response["DATA"].ToString());
@@ -42,9 +42,9 @@ namespace LVAuto.Command
 
 		public static Hashtable Execute(int command, string parameter, bool wait, string cookies)
 		{
-			string data = parameter + "&num=" + LVAuto.Web.LVWeb.idimage;
-			string header = "POST http://s" + LVAuto.Web.LVWeb.Server + ".linhvuong.zooz.vn/GateWay/Map.ashx?id=" + command + "&0.05861361440438828 HTTP/1.1\n";
-			header += "Host: s" + LVAuto.Web.LVWeb.Server + ".linhvuong.zooz.vn\n";
+			string data = parameter + "&num=" + LVAuto.LVForm.Web.LVWeb.idimage;
+			string header = "POST http://s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn/GateWay/Map.ashx?id=" + command + "&0.05861361440438828 HTTP/1.1\n";
+			header += "Host: s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn\n";
 			header += "User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.7) Gecko/2009021910 Firefox/3.0.7\n";
 			header += "Accept: text/javascript, text/html, application/xml, text/xml, */*\n";
 			header += "Accept-Language: en-us,en;q=0.5\n";
@@ -52,7 +52,7 @@ namespace LVAuto.Command
 			header += "Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7\n";
 			header += "Keep-Alive: 300\n";
 			header += "Connection: keep-alive\n";
-			header += "Referer: http://s" + LVAuto.Web.LVWeb.Server + ".linhvuong.zooz.vn/city\n";
+			header += "Referer: http://s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn/city\n";
 			header += "X-Requested-With: XMLHttpRequest\n";
 			header += "X-Prototype-Version: 1.5.0\n";
 			header += "Cookie: " + cookies + "\n";
@@ -60,7 +60,7 @@ namespace LVAuto.Command
 			header += "Content-Length: " + (data.Length) + "\n";
 			header += "\n";
 
-			Hashtable response = Web.LVWeb.SendAndReceive(header + data, "s" + LVAuto.Web.LVWeb.Server + ".linhvuong.zooz.vn", 80, wait);
+			Hashtable response = Web.LVWeb.SendAndReceive(header + data, "s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn", 80, wait);
 			if (wait)
 			{
 				if (response != null && response["DATA"] != null)

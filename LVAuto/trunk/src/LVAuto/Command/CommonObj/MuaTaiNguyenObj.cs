@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace LVAuto.Command.CommonObj
+namespace LVAuto.LVForm.Command.CommonObj
 {
 	public class MuaTaiNguyenObj
 	{

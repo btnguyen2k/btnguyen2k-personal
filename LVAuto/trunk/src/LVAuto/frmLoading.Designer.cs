@@ -1,4 +1,4 @@
-namespace LVAuto
+namespace LVAuto.LVForm
 {
 	partial class frmLoading
 	{
@@ -46,7 +46,7 @@ namespace LVAuto
 			// 
 			this.picWait.BackColor = System.Drawing.Color.Transparent;
 			this.picWait.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-			this.picWait.Image = global::LVAuto.Properties.Resources.waiting;
+			this.picWait.Image = global::LVAuto.LVForm.Properties.Resources.waiting;
 			this.picWait.Location = new System.Drawing.Point(6, 7);
 			this.picWait.Name = "picWait";
 			this.picWait.Size = new System.Drawing.Size(18, 16);

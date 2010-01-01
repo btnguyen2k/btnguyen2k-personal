@@ -6,7 +6,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Data;
 
-namespace LVAuto.LVThread 
+namespace LVAuto.LVForm.LVThread 
 {
     public class SELL 
 	{
@@ -166,7 +166,7 @@ namespace LVAuto.LVThread
 					if (banobj.CityInfo.Length == 0) return;
 
 					cityid = banobj.CityInfo[0].CityId;
-					cookies = LVAuto.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityid);
+					cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityid);
 
 					gialua = GetPrice(banobj.LUA, cookies);
 					giago = GetPrice(banobj.GO, cookies);
@@ -181,8 +181,8 @@ namespace LVAuto.LVThread
 							SetText("Đang bán ở thành " + banobj.CityInfo[i].CityName + " (" + i + "/" + banobj.CityInfo.Length + ")");
 							cityid = banobj.CityInfo[i].CityId;
 
-							cookies = LVAuto.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityid);
-							LVAuto.Command.City.SwitchCitySlow(cityid);
+							cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityid);
+							LVAuto.LVForm.Command.City.SwitchCitySlow(cityid);
 
 							//for debug
 							//LVAuto.Command.CityObj.City city = Command.City.GetCityByID(cityid);
@@ -360,10 +360,10 @@ namespace LVAuto.LVThread
 				if (!banobj.SalesOff) return true;
 
 
-				int minlua = Command.OPT.GetMinPriceResource(LVAuto.LVThread.BUYRES.RESOURCETYPE.LUA, cookies);
-				int mingo = Command.OPT.GetMinPriceResource(LVAuto.LVThread.BUYRES.RESOURCETYPE.GO, cookies);
-				int minda = Command.OPT.GetMinPriceResource(LVAuto.LVThread.BUYRES.RESOURCETYPE.DA, cookies);
-				int minsat = Command.OPT.GetMinPriceResource(LVAuto.LVThread.BUYRES.RESOURCETYPE.SAT, cookies);
+				int minlua = Command.OPT.GetMinPriceResource(LVAuto.LVForm.LVThread.BUYRES.RESOURCETYPE.LUA, cookies);
+				int mingo = Command.OPT.GetMinPriceResource(LVAuto.LVForm.LVThread.BUYRES.RESOURCETYPE.GO, cookies);
+				int minda = Command.OPT.GetMinPriceResource(LVAuto.LVForm.LVThread.BUYRES.RESOURCETYPE.DA, cookies);
+				int minsat = Command.OPT.GetMinPriceResource(LVAuto.LVForm.LVThread.BUYRES.RESOURCETYPE.SAT, cookies);
 
 				Hashtable listdangban = Command.Common.Execute(38, "stab=2", true);
 				if (listdangban == null) return false;
@@ -420,17 +420,17 @@ namespace LVAuto.LVThread
 					// change price
 					switch (type)
 					{
-						case  LVAuto.LVThread.BUYRES.RESOURCETYPE.LUA:
+						case  LVAuto.LVForm.LVThread.BUYRES.RESOURCETYPE.LUA:
 							price = minlua - GiaThapMin;
 							break;
 						
-						case LVAuto.LVThread.BUYRES.RESOURCETYPE.GO:
+						case LVAuto.LVForm.LVThread.BUYRES.RESOURCETYPE.GO:
 							price = mingo - GiaThapMin;
 							break;
-						case LVAuto.LVThread.BUYRES.RESOURCETYPE.DA:
+						case LVAuto.LVForm.LVThread.BUYRES.RESOURCETYPE.DA:
 							price = minda - GiaThapMin;
 							break;
-						case LVAuto.LVThread.BUYRES.RESOURCETYPE.SAT:
+						case LVAuto.LVForm.LVThread.BUYRES.RESOURCETYPE.SAT:
 							price = minsat - GiaThapMin;
 							break;
 					}

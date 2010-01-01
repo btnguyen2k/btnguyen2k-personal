@@ -30,7 +30,7 @@
 
 using System;
 
-namespace LVAuto.Connection.ProxySocket
+namespace LVAuto.LVForm.Connection.ProxySocket
 {
 	/// <summary>
 	/// The exception that is thrown when a proxy error occurs.

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 
-namespace LVAuto.HTMLParse
+namespace LVAuto.LVForm.HTMLParse
 {
   /// <summary>
   /// Base class for parsing tag based files, such as HTML,

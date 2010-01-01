@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Collections;
-using LVAuto.Command.CommonObj;
+using LVAuto.LVForm.Command.CommonObj;
 using System.Drawing;
-using LVAuto.Common;
+using LVAuto.LVForm.Common;
 
 
-namespace LVAuto.LVThread
+namespace LVAuto.LVForm.LVThread
 {
 	public class AUTOCALLMAN : ThreadSkeleton
 	{
@@ -78,7 +78,7 @@ namespace LVAuto.LVThread
 				}
 				base.SetText("Chờ tới phiên (0%) - chờ từ lúc " + DateTime.Now.ToString("HH:mm:ss"));
 				base.threadID = "CALLMAN_" + DateTime.Now.Ticks;
-				LVAuto.Common.ThreadManager.TakeResourceAndRun(base.threadID, new System.Threading.ThreadStart(this.mainprocess));
+				LVAuto.LVForm.Common.ThreadManager.TakeResourceAndRun(base.threadID, new System.Threading.ThreadStart(this.mainprocess));
 				base.Message.ForeColor = System.Drawing.Color.Blue;
 				base.SetText(string.Concat(new object[] { "Đang ngủ ", this.Sleep / 0xea60, " phút, chờ t\x00ed (mới chạy lúc: ", DateTime.Now.ToString("HH:mm:ss"), ")" }));
 				if (base.MainProcessResult > 0xf4240)
@@ -104,7 +104,7 @@ namespace LVAuto.LVThread
                 ArrayList gencallmanlisttmp = new ArrayList();
                 Command.CommonObj.CallManObj callmanobj;
 
-                LVAuto.Command.CityObj.MilitaryGeneral generalMilitaryInfoEx;
+                LVAuto.LVForm.Command.CityObj.MilitaryGeneral generalMilitaryInfoEx;
 
 
                 base.Message.ForeColor = Color.Red;
@@ -119,7 +119,7 @@ namespace LVAuto.LVThread
                     sotuongminhdanh1tuongdich = callmanobj.SoTuongMinhDanh1TuongDich;
                     SetText("Kiểm tra tình trạng tướng " + callmanobj.GeneralName + "...");
                     // đang bận đi thì thôi
-                    if (LVAuto.Command.CityObj.General.isTuongDangBusy(callmanobj, sotuongminhdanh1tuongdich))
+                    if (LVAuto.LVForm.Command.CityObj.General.isTuongDangBusy(callmanobj, sotuongminhdanh1tuongdich))
                     {
                         SetText("Tướng " + callmanobj.GeneralName + " đang bận...");
                         continue;
@@ -153,7 +153,7 @@ namespace LVAuto.LVThread
                     mapid = Common.common.MapPosToMapID(x, y);
 
                     SetText("Tìm man " + screencount + "/" + countmaxscreen + " screens ...");
-                    manFound = LVAuto.Command.Map.FindMan(mapid);
+                    manFound = LVAuto.LVForm.Command.Map.FindMan(mapid);
 
                     if (manFound == null || manFound.Length == 0)
                     {
@@ -274,14 +274,14 @@ namespace LVAuto.LVThread
                 SetText("Biên chế quân cho " + gen.GeneralName + "...");
                 if (gen.TuBienCheQuan && gen.CityID > 0)
                 {
-                    LVAuto.Common.BienCheQuan.BienChe(gen.CityID, gen.GeneralId,
+                    LVAuto.LVForm.Common.BienCheQuan.BienChe(gen.CityID, gen.GeneralId,
                             gen.Military.Bobinh[0], gen.Military.KyBinh[0],
                             gen.Military.CungThu[0], gen.Military.Xe[0]);
                 }
 
 
 
-                LVAuto.Command.CityObj.MilitaryGeneral generalMilitaryInfoEx  = Command.Common.GetGeneralMilitaryInfoINCityNTrai(gen.CityID, gen.GeneralId);
+                LVAuto.LVForm.Command.CityObj.MilitaryGeneral generalMilitaryInfoEx  = Command.Common.GetGeneralMilitaryInfoINCityNTrai(gen.CityID, gen.GeneralId);
 
 
                 if (generalMilitaryInfoEx == null)
@@ -328,14 +328,14 @@ namespace LVAuto.LVThread
             {
                 int mapid = Common.common.MapPosToMapID(x, y);
 
-                Npc_tentObj[] manFound = LVAuto.Command.Map.FindMan(mapid);
+                Npc_tentObj[] manFound = LVAuto.LVForm.Command.Map.FindMan(mapid);
                 if (manFound == null || manFound.Length == 0) return null;
-                LVAuto.Command.CommonObj.Npc_tentObj npcten;
+                LVAuto.LVForm.Command.CommonObj.Npc_tentObj npcten;
                 bool datok = true;
                 int manid = 0;
                 for (int i = 0; i < manFound.Length; i++)
                 {
-                    npcten = (LVAuto.Command.CommonObj.Npc_tentObj)manFound[i];
+                    npcten = (LVAuto.LVForm.Command.CommonObj.Npc_tentObj)manFound[i];
                     if (npcten.MapID == mapid)
                     {
                         return npcten;
@@ -438,11 +438,11 @@ namespace LVAuto.LVThread
                 }
 
                 int MapID = Common.common.MapPosToMapID(callmanobj.ToaDoCallVeX, callmanobj.ToaDoCallVeY);
-                hashtable = LVAuto.Command.OPT.DanhMotMucTieu(MapID, callmanobj.GeneralId, 0, 0, 1);
+                hashtable = LVAuto.LVForm.Command.OPT.DanhMotMucTieu(MapID, callmanobj.GeneralId, 0, 0, 1);
                 if ((hashtable != null) && (hashtable["ret"].ToString() == "0"))
                 {
                     goOK = true;
-                    LVAuto.LVThread.AUTOFIGHTING.startBattle(npcten.BatleId, time,
+                    LVAuto.LVForm.LVThread.AUTOFIGHTING.startBattle(npcten.BatleId, time,
                         callmanobj.SoTuongMinhDanh1TuongDich, callmanobj);
 
 
@@ -452,7 +452,7 @@ namespace LVAuto.LVThread
                 
 
                 // đang bận đi thì thôi
-                LVAuto.Command.CityObj.General.isTuongDangBusy(callmanobj, callmanobj.SoTuongMinhDanh1TuongDich) ;
+                LVAuto.LVForm.Command.CityObj.General.isTuongDangBusy(callmanobj, callmanobj.SoTuongMinhDanh1TuongDich) ;
 
                   
                     //int num13 = int.Parse(((ArrayList)hashtable["dest"])[0].ToString());
@@ -508,13 +508,13 @@ namespace LVAuto.LVThread
 		{
 			try
 			{
-				LVAuto.Command.CommonObj.CallManObj callmanobj;
-				LVAuto.Command.CityObj.MilitaryGeneral generalMilitaryInfoEx;
+				LVAuto.LVForm.Command.CommonObj.CallManObj callmanobj;
+				LVAuto.LVForm.Command.CityObj.MilitaryGeneral generalMilitaryInfoEx;
 				bool genisok = true;
 
 				int callX = 0;
 				int callY = 0;
-				LVAuto.Command.CommonObj.Npc_tentObj npcten = null;
+				LVAuto.LVForm.Command.CommonObj.Npc_tentObj npcten = null;
 				int MapID;
 				// duyeetj tung tuong
 				for (int genidx = 0; genidx < callmanifo.Count; genidx++)
@@ -522,7 +522,7 @@ namespace LVAuto.LVThread
 					bool canrun = true;
 					npcten = null;
 
-					callmanobj = (LVAuto.Command.CommonObj.CallManObj)callmanifo[genidx];
+					callmanobj = (LVAuto.LVForm.Command.CommonObj.CallManObj)callmanifo[genidx];
 					callX = callmanobj.ToaDoCallVeX;
 					callY = callmanobj.ToaDoCallVeY;
 
@@ -553,7 +553,7 @@ namespace LVAuto.LVThread
 						int manid = 0;
 						for (int i = 0; i < man.Count; i++)
 						{
-							npcten = (LVAuto.Command.CommonObj.Npc_tentObj)man[i];
+							npcten = (LVAuto.LVForm.Command.CommonObj.Npc_tentObj)man[i];
 							if (npcten.MapID == MapID)
 							{
 								datok = false;
@@ -575,7 +575,7 @@ namespace LVAuto.LVThread
 							{
 								//callmanobj = (LVAuto.Command.CommonObj.CallManObj)callmanifo[i];
 
-								man.AddRange(((LVAuto.Command.CommonObj.CallManObj)callmanifo[i]).Mans);
+								man.AddRange(((LVAuto.LVForm.Command.CommonObj.CallManObj)callmanifo[i]).Mans);
 							}
 
 							if (man.Count > 0)
@@ -590,7 +590,7 @@ namespace LVAuto.LVThread
 					if (genisok && npcten != null && callmanobj.TuBienCheQuan)
 					{
 						SetText("Biên chế quân cho " + callmanobj.GeneralName + "...");
-						LVAuto.Common.BienCheQuan.BienChe(callmanobj.CityID, callmanobj.GeneralId,
+						LVAuto.LVForm.Common.BienCheQuan.BienChe(callmanobj.CityID, callmanobj.GeneralId,
 								callmanobj.Military.Bobinh[0], callmanobj.Military.KyBinh[0],
 								callmanobj.Military.CungThu[0], callmanobj.Military.Xe[0]);
 
@@ -634,10 +634,10 @@ namespace LVAuto.LVThread
 							int num13 = int.Parse(((ArrayList)hashtable["dest"])[0].ToString());
 
 							MapID = Common.common.MapPosToMapID(callmanobj.ToaDoCallVeX, callmanobj.ToaDoCallVeY);
-							hashtable = LVAuto.Command.OPT.DanhMotMucTieu(MapID, callmanobj.GeneralId, 0, 0, 1);
+							hashtable = LVAuto.LVForm.Command.OPT.DanhMotMucTieu(MapID, callmanobj.GeneralId, 0, 0, 1);
 							if ((hashtable != null) && (hashtable["ret"].ToString() == "0"))
 							{
-								LVAuto.LVThread.AUTOFIGHTING.startBattle(npcten.BatleId, time,
+								LVAuto.LVForm.LVThread.AUTOFIGHTING.startBattle(npcten.BatleId, time,
 									callmanobj.SoTuongMinhDanh1TuongDich, callmanifo);
 								base.SetText("Điều tướng " + callmanobj.GeneralName + " đánh " + Man.GetManName(npcten.ManID));
 							}
@@ -660,7 +660,7 @@ namespace LVAuto.LVThread
 		/// <param name="x"> Tọa độ X sẽ call về</param>
 		/// <param name="y">Tọa độ Y sẽ call về</param>
 		/// <returns>LVAuto.Command.CommonObj.Npc_tentObj</returns>
-		private LVAuto.Command.CommonObj.Npc_tentObj FindNCallMan(ArrayList ManOBJ, int xCallVe, int yCallVe)
+		private LVAuto.LVForm.Command.CommonObj.Npc_tentObj FindNCallMan(ArrayList ManOBJ, int xCallVe, int yCallVe)
 		{
 			try
 			{
@@ -668,7 +668,7 @@ namespace LVAuto.LVThread
 				const int minO = -655;
 
 				const int NumOfRepeat = 300;
-				LVAuto.Command.CommonObj.Npc_tentObj npcreturn = null;
+				LVAuto.LVForm.Command.CommonObj.Npc_tentObj npcreturn = null;
 
 				int MapIDChuyenDen = Common.common.MapPosToMapID(xCallVe, yCallVe);
 
@@ -678,8 +678,8 @@ namespace LVAuto.LVThread
 				int x, y, mapid;
 				Random rand = new Random();
 				ArrayList man = new ArrayList();
-				LVAuto.Command.CommonObj.Npc_tentObj npcten = null;
-				LVAuto.Command.CommonObj.ManOBJ sourceMan;
+				LVAuto.LVForm.Command.CommonObj.Npc_tentObj npcten = null;
+				LVAuto.LVForm.Command.CommonObj.ManOBJ sourceMan;
 
 
 				while (count < NumOfRepeat)
@@ -700,10 +700,10 @@ namespace LVAuto.LVThread
 					bool foundman = false;
 					for (int i = 0; i < man.Count; i++)
 					{
-						npcten = (LVAuto.Command.CommonObj.Npc_tentObj)man[i];
+						npcten = (LVAuto.LVForm.Command.CommonObj.Npc_tentObj)man[i];
 						for (int j = 0; j < ManOBJ.Count; j++)
 						{
-							sourceMan = (LVAuto.Command.CommonObj.ManOBJ)ManOBJ[j];
+							sourceMan = (LVAuto.LVForm.Command.CommonObj.ManOBJ)ManOBJ[j];
 							if (npcten.ManID == sourceMan.ManID)
 							{
 								foundman = true;
@@ -748,7 +748,7 @@ namespace LVAuto.LVThread
 
 									for (int i = 0; i < ManOBJ.Count; i++)
 									{
-										sourceMan = (LVAuto.Command.CommonObj.ManOBJ)ManOBJ[i];
+										sourceMan = (LVAuto.LVForm.Command.CommonObj.ManOBJ)ManOBJ[i];
 										if (npcten.ManID == sourceMan.ManID)
 										{
 

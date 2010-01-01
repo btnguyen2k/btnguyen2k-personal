@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Net;
-namespace LVAuto.Web {
+namespace LVAuto.LVForm.Web {
     class Mobifone : SMS {
         public bool Login(string username, string password) {
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://www.mobifone.com.vn/web/vn/users/authenticate.jsp");

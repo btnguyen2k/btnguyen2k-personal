@@ -5,7 +5,7 @@ using System.Collections;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace LVAuto.LVThread {
+namespace LVAuto.LVForm.LVThread {
     public class BUYWEPON {
         delegate void SetTextCallback(string text);
         public Thread InThread; public string threadID;
@@ -35,10 +35,10 @@ namespace LVAuto.LVThread {
 
                 foreach (object obj in pnWepon.Controls) 
 				{
-                    LVAuto.Command.OPTObj.wepon vc = (LVAuto.Command.OPTObj.wepon)obj;
+                    LVAuto.LVForm.Command.OPTObj.wepon vc = (LVAuto.LVForm.Command.OPTObj.wepon)obj;
                     if (vc.chkOK.Checked) 
 					{
-                        Cookies[citycount] = LVAuto.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(vc.cityid);
+                        Cookies[citycount] = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(vc.cityid);
                         Id[citycount] = vc.cityid;
                         City[citycount] = new int[9];
                         City[citycount][0] = vc.cboWepon.Text == "" ? 0 : int.Parse(vc.cboWepon.Text.Split(new Char[] { '.' })[0]);
@@ -74,10 +74,10 @@ namespace LVAuto.LVThread {
 						// SetText("Đang chạy (" + i + " / " + citycount + ")");
 						try
 						{
-							Cookies[i] = LVAuto.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(Id[i]);
-							LVAuto.Command.City.SwitchCitySlow(Id[i]);
+							Cookies[i] = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(Id[i]);
+							LVAuto.LVForm.Command.City.SwitchCitySlow(Id[i]);
 
-							citypos = LVAuto.Command.City.GetCityPostByID(Id[i]);
+							citypos = LVAuto.LVForm.Command.City.GetCityPostByID(Id[i]);
 							//---
 							// lay lai thong tin neu truoc chua lay duoc
 							if (City[i][5] <= 0 || City[i][6] <= 0 || City[i][7] <= 0)
@@ -85,7 +85,7 @@ namespace LVAuto.LVThread {
 
 
 								if (Command.CityObj.City.AllCity[citypos].AllBuilding == null)
-									LVAuto.Command.City.GetAllBuilding(i, false, Cookies[i]);
+									LVAuto.LVForm.Command.City.GetAllBuilding(i, false, Cookies[i]);
 
 								if (Command.CityObj.City.AllCity[citypos].AllBuilding == null)
 								{

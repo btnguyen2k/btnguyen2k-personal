@@ -27,7 +27,7 @@ using System;
 using System.Net.Sockets;
 using System.ComponentModel;
 
-namespace LVAuto.Connection.StarksoftProxy
+namespace LVAuto.LVForm.Connection.StarksoftProxy
 {
     /// <summary>
     /// Event arguments class for the EncryptAsyncCompleted event.

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace LVAuto.Web {
+namespace LVAuto.LVForm.Web {
     public class ParseHTML : Parse {
         public AttributeList GetTag() {
             AttributeList tag = new AttributeList();

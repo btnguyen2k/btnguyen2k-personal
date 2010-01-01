@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Text;
 
-namespace LVAuto.Command.OPTObj 
+namespace LVAuto.LVForm.Command.OPTObj 
 {
-    public class GeneralInCombat : LVAuto.Command.CityObj.MilitaryGeneral 
+    public class GeneralInCombat : LVAuto.LVForm.Command.CityObj.MilitaryGeneral 
 	{
         /*/[1,"dai ca",14928,"Tư Qúy",358486,"Prepare for War",23910,4571922,1,87,0,0,6000,0,0,0,0,0,"",1]
         //                  3ten      4id                                   8battlearray

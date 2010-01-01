@@ -5,7 +5,7 @@ using System.Collections;
 using System.Threading;
 
 
-namespace LVAuto.Common
+namespace LVAuto.LVForm.Common
 {
 	public class ThreadManager
 	{

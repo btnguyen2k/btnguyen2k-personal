@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Collections;
-using LVAuto.Common;
+using LVAuto.LVForm.Common;
 
-namespace LVAuto.Command.CommonObj
+namespace LVAuto.LVForm.Command.CommonObj
 {
 	public class CallManObj : Command.CityObj.MilitaryGeneral
 	{
@@ -30,7 +30,7 @@ namespace LVAuto.Command.CommonObj
 
 			for (int i = 0; i < Mans.Count; i++)
 			{
-				str += ((LVAuto.Command.CommonObj.ManOBJ)Mans[i]).ManName + ", ";
+				str += ((LVAuto.LVForm.Command.CommonObj.ManOBJ)Mans[i]).ManName + ", ";
 			}
 
 			str += " được gọi về (" + ToaDoCallVeX + ", " + ToaDoCallVeY + ")";
@@ -53,7 +53,7 @@ namespace LVAuto.Command.CommonObj
 				str = str + ", không mua man lệnh";
 			}
 
-			str += ", mưu kế " + LVAuto.Common.WarFunc.GetMuuKeTrongChienTruongName(this.MuuKeTrongChienTranID);
+			str += ", mưu kế " + LVAuto.LVForm.Common.WarFunc.GetMuuKeTrongChienTruongName(this.MuuKeTrongChienTranID);
 			str += ", qsố min " + this.SoLuongQuanMinToGo + ", sk min " + this.SiKhiMinToGo ;
 
 			if (this.TuBienCheQuan)

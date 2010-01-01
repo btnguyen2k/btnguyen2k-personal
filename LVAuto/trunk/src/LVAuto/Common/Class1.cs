@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LVAuto.Common
+namespace LVAuto.LVForm.Common
 {
 	class Class1
 	{

@@ -28,7 +28,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Net.Sockets;
 
-namespace LVAuto.Connection.StarksoftProxy
+namespace LVAuto.LVForm.Connection.StarksoftProxy
 {
     /// <summary>
     /// Proxy client interface.  This is the interface that all proxy clients must implement.

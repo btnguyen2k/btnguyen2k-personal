@@ -1,4 +1,4 @@
-﻿namespace LVAuto
+﻿namespace LVAuto.LVForm
 {
 	partial class frmThongBaoDanhTuongViengTham
 	{

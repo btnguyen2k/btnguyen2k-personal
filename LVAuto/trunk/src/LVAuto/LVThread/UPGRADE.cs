@@ -6,7 +6,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Data;
 
-namespace LVAuto.LVThread {
+namespace LVAuto.LVForm.LVThread {
     public class UPGRADE {
         delegate void SetTextCallback(string text);
         public Thread InThread; 
@@ -62,7 +62,7 @@ namespace LVAuto.LVThread {
 				//Xay dung cookies
 				//Cookies[0] = LVAuto.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(ctyid);
 				cityid = int.Parse( upgradedata[0].ToString()); ;
-				int citypos = LVAuto.Command.City.GetCityPostByID(cityid);
+				int citypos = LVAuto.LVForm.Command.City.GetCityPostByID(cityid);
 				if (citypos == -1)
 				{
 					SetText("Chưa chọn thành chính");
@@ -97,7 +97,7 @@ namespace LVAuto.LVThread {
 			//lock (LVAuto.Web.LVWeb.islock)
 			{
 				Hashtable result;
-				LVAuto.Command.CityObj.CityTask citytask;
+				LVAuto.LVForm.Command.CityObj.CityTask citytask;
 				string cookies;
 				int ret;
 				try
@@ -112,7 +112,7 @@ namespace LVAuto.LVThread {
 							if (Command.CityObj.City.AllCity[cityindex].id < 0) continue;	// trại bỏ qua
 
 							cityid = Command.CityObj.City.AllCity[cityindex].id;
-							citytask = LVAuto.Command.City.GetCityTaskByCityID(cityid);
+							citytask = LVAuto.LVForm.Command.City.GetCityTaskByCityID(cityid);
 
 							if (!citytask.Canupgrade)				// citytask.Canupgrade= false: ddang co nghien cuu, khong lam nua
 								return;
@@ -122,9 +122,9 @@ namespace LVAuto.LVThread {
 							//{
 								if (nexttech < techcount)
 								{
-									cookies = LVAuto.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityid);
+									cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityid);
 
-									LVAuto.Command.City.SwitchCitySlow(cityid);
+									LVAuto.LVForm.Command.City.SwitchCitySlow(cityid);
 
 
 									if (Command.Build.SelectBuilding(cityid, 6, cookies))

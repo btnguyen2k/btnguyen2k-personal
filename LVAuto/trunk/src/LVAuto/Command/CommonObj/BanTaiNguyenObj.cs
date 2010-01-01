@@ -2,16 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace LVAuto.Command.CommonObj
+namespace LVAuto.LVForm.Command.CommonObj
 {
 	public class BanTaiNguyenObj
 	{
 		public int timetoruninminute = 1;
 		public bool SalesOff = true;
-		public commonInfo LUA = new commonInfo(LVAuto.LVThread.BUYRES.RESOURCETYPE.LUA);
-		public commonInfo GO = new commonInfo(LVAuto.LVThread.BUYRES.RESOURCETYPE.GO);
-		public commonInfo SAT = new commonInfo(LVAuto.LVThread.BUYRES.RESOURCETYPE.SAT);
-		public commonInfo DA = new commonInfo(LVAuto.LVThread.BUYRES.RESOURCETYPE.DA);
+		public commonInfo LUA = new commonInfo(LVAuto.LVForm.LVThread.BUYRES.RESOURCETYPE.LUA);
+		public commonInfo GO = new commonInfo(LVAuto.LVForm.LVThread.BUYRES.RESOURCETYPE.GO);
+		public commonInfo SAT = new commonInfo(LVAuto.LVForm.LVThread.BUYRES.RESOURCETYPE.SAT);
+		public commonInfo DA = new commonInfo(LVAuto.LVForm.LVThread.BUYRES.RESOURCETYPE.DA);
 		public cityInfo_[] CityInfo;
 
 		public void NewCityInfo(int count)

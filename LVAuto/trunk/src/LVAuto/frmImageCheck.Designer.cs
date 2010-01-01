@@ -1,4 +1,4 @@
-namespace LVAuto
+namespace LVAuto.LVForm
 {
 	partial class frmImageCheck
 	{
@@ -82,7 +82,7 @@ namespace LVAuto
 			// pic1
 			// 
 			this.pic1.Cursor = System.Windows.Forms.Cursors.Hand;
-			this.pic1.Image = global::LVAuto.Properties.Resources.ImageLoading;
+			this.pic1.Image = global::LVAuto.LVForm.Properties.Resources.ImageLoading;
 			this.pic1.Location = new System.Drawing.Point(10, 79);
 			this.pic1.Name = "pic1";
 			this.pic1.Size = new System.Drawing.Size(100, 63);
@@ -93,7 +93,7 @@ namespace LVAuto
 			// 
 			// picSamplePic
 			// 
-			this.picSamplePic.Image = global::LVAuto.Properties.Resources.VerifyCodexxx1;
+			this.picSamplePic.Image = global::LVAuto.LVForm.Properties.Resources.VerifyCodexxx1;
 			this.picSamplePic.Location = new System.Drawing.Point(87, -2);
 			this.picSamplePic.Name = "picSamplePic";
 			this.picSamplePic.Size = new System.Drawing.Size(261, 66);

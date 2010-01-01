@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using System.Data;
 using System.Collections;
 
-namespace LVAuto.LVThread {
+namespace LVAuto.LVForm.LVThread {
     public class BUYRES {
         delegate void SetTextCallback(string text);
         public Thread InThread; public string threadID;
@@ -175,8 +175,8 @@ namespace LVAuto.LVThread {
 						{
 
 							cityid = muaObj.CityInfo[i].CityId;
-							LVAuto.Command.City.SwitchCitySlow(cityid);
-							cookies = LVAuto.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityid);
+							LVAuto.LVForm.Command.City.SwitchCitySlow(cityid);
+							cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityid);
 
 #if (DEBUG)
                             if (Command.Build.SelectBuilding(cityid, 11, cookies) || Command.Build.SelectBuilding(cityid, 64, cookies))  // chợ

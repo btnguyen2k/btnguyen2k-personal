@@ -4,7 +4,7 @@ using System.Text;
 using System.Collections;
 using System.Threading;
 using System.Windows.Forms;
-namespace LVAuto.LVThread {
+namespace LVAuto.LVForm.LVThread {
     public class SIKHI 
 	{
         delegate void SetTextCallback(string text);
@@ -40,7 +40,7 @@ namespace LVAuto.LVThread {
                     TreeNode g = root.Nodes[i];
                     if (g.Checked) {
                         string[] ginfo = g.Name.Split(new char[] { '.' });
-                        Cookies[citycount] = LVAuto.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(int.Parse(ginfo[0]));
+                        Cookies[citycount] = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(int.Parse(ginfo[0]));
                         Id[citycount] = int.Parse(ginfo[0]);
                         General[citycount] = int.Parse(ginfo[1]);
                         citycount++;
@@ -64,10 +64,10 @@ namespace LVAuto.LVThread {
 						SetText("Đang chạy (" + (i) * 100 / citycount + "%)");
 						try
 						{
-                            citypost = LVAuto.Command.City.GetCityPostByID(Id[i]);
+                            citypost = LVAuto.LVForm.Command.City.GetCityPostByID(Id[i]);
 
-							Cookies[i] = LVAuto.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(Id[i]);
-							LVAuto.Command.City.SwitchCitySlow(Id[i]);
+							Cookies[i] = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(Id[i]);
+							LVAuto.LVForm.Command.City.SwitchCitySlow(Id[i]);
 
 							// da duoc check khi luyen
 							//sk = Command.Common.GetGeneralSyKhiInLuyenBinh(Id[i], General[i]);
@@ -79,7 +79,7 @@ namespace LVAuto.LVThread {
 								{
                                     int gid=16;
 #if (DEBUG)
-                                    if (LVAuto.Command.CityObj.City.AllCity[citypost].size == 4) gid = 69;
+                                    if (LVAuto.LVForm.Command.CityObj.City.AllCity[citypost].size == 4) gid = 69;
 #endif                                    
 
 									if (Command.Build.SelectBuilding(Id[i], gid, Cookies[i]))

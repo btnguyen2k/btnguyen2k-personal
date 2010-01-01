@@ -5,7 +5,7 @@ using System.Text;
 using System.Net.Sockets;
 using System.Windows.Forms;
 
-namespace LVAuto.Web {
+namespace LVAuto.LVForm.Web {
     public class LoginInfo {
         public string SessionId;
         public string sg_tag;
@@ -21,7 +21,7 @@ namespace LVAuto.Web {
         public string ally_id;
         public LoginInfo(string cookies) {
             string[] temp = cookies.Split(new char[] { '~' }, 2);
-            LVAuto.Web.LVWeb.Server = int.Parse(temp[0]);
+            LVAuto.LVForm.Web.LVWeb.Server = int.Parse(temp[0]);
             string[] temp1 = temp[1].Split(new char[] { ';' });
             foreach (string item in temp1) {
                 if (item != null) {

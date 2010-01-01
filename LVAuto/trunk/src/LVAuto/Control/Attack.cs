@@ -6,7 +6,7 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 
-namespace LVAuto.Control {
+namespace LVAuto.LVForm.Control {
     public partial class Attack : UserControl {
         public int battleid = 0;
         public Attack() {

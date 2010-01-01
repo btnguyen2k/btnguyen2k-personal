@@ -6,7 +6,7 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 
-namespace LVAuto.Command.CommonObj {
+namespace LVAuto.LVForm.Command.CommonObj {
     public partial class doitrai : UserControl {
         public int id;
         public doitrai() {

@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using System.Data;
 using System.Collections;
 
-namespace LVAuto.LVThread {
+namespace LVAuto.LVForm.LVThread {
     public class VANCHUYEN {
         delegate void SetTextCallback(string text);
         public Thread InThread; 
@@ -29,14 +29,14 @@ namespace LVAuto.LVThread {
                 City = new int[500][];
                 Id = new int[500];
                 this.Sleep = sleep;
-				LVAuto.Command.OPTObj.Vanchuyen vc;
+				LVAuto.LVForm.Command.OPTObj.Vanchuyen vc;
                 foreach (object obj in pnVanchuyen.Controls) {
-                    vc = (LVAuto.Command.OPTObj.Vanchuyen)obj;
+                    vc = (LVAuto.LVForm.Command.OPTObj.Vanchuyen)obj;
                     if (vc.chkOK.Checked) {
-                        Cookies[citycount] = LVAuto.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(((LVAuto.Command.CityObj.City)vc.cboSource.SelectedItem).id);
-                        Id[citycount] = ((LVAuto.Command.CityObj.City)vc.cboSource.SelectedItem).id;
+                        Cookies[citycount] = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(((LVAuto.LVForm.Command.CityObj.City)vc.cboSource.SelectedItem).id);
+                        Id[citycount] = ((LVAuto.LVForm.Command.CityObj.City)vc.cboSource.SelectedItem).id;
                         City[citycount] = new int[6];                  
-                        City[citycount][0]=((LVAuto.Command.CityObj.City)vc.cboDesc.SelectedItem).id;
+                        City[citycount][0]=((LVAuto.LVForm.Command.CityObj.City)vc.cboDesc.SelectedItem).id;
                         City[citycount][1]=int.Parse("0" + vc.txtFOOD.Text);
                         City[citycount][2]=int.Parse("0" + vc.txtWOOD.Text);
                         City[citycount][3]=int.Parse("0" + vc.txtIRON.Text);
@@ -62,8 +62,8 @@ namespace LVAuto.LVThread {
 						SetText("Đang chạy (" + (i) * 100 / citycount + "%)");
 						try
 						{
-							Cookies[i] = LVAuto.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(Id[i]);
-							LVAuto.Command.City.SwitchCitySlow(Id[i]);
+							Cookies[i] = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(Id[i]);
+							LVAuto.LVForm.Command.City.SwitchCitySlow(Id[i]);
 							if (Command.Build.SelectBuilding(Id[i], 11, Cookies[i]))
 							{
 								Command.OPT.Vanchuyen(City[i][0],

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace LVAuto.Command.BuildObj {
+namespace LVAuto.LVForm.Command.BuildObj {
     class UpdateBuildingInfo {
         public int NextLevel;
         public int FoodNeed;

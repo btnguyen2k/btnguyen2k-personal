@@ -33,7 +33,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
-namespace LVAuto.Connection.ProxySocket
+namespace LVAuto.LVForm.Connection.ProxySocket
 {
 	/// <summary>
 	/// This class implements the 'username/password authentication' scheme.

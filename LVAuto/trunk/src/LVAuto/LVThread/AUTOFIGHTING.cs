@@ -4,9 +4,9 @@ using System.Text;
 using System.Collections;
 using System.Threading;
 
-namespace LVAuto.LVThread
+namespace LVAuto.LVForm.LVThread
 {
-	public class AUTOFIGHTING : LVAuto.LVThread.ThreadSkeleton  
+	public class AUTOFIGHTING : LVAuto.LVForm.LVThread.ThreadSkeleton  
 	{
 		public static ArrayList BattleIDList = new ArrayList();
 		public static ArrayList BattleIDRunning = new ArrayList();
@@ -62,7 +62,7 @@ namespace LVAuto.LVThread
 
 			for(int i=0; i< general.Count; i++)
 			{
-				LVAuto.Command.CityObj.MilitaryGeneral g = (LVAuto.Command.CityObj.MilitaryGeneral)general[i];
+				LVAuto.LVForm.Command.CityObj.MilitaryGeneral g = (LVAuto.LVForm.Command.CityObj.MilitaryGeneral)general[i];
                 try
                 {
                     hastGeneral.Add(g.GeneralId, g);
@@ -77,7 +77,7 @@ namespace LVAuto.LVThread
 			try
 			{
 				int sleep = SleeptimeInSecond;	// giây
-				LVAuto.Command.OPTObj.BattleField battle = null;
+				LVAuto.LVForm.Command.OPTObj.BattleField battle = null;
 
 				sleep = sleep - 5 * 60;	// ngủ đến trước khi vào trận 5p
 				if (sleep > 0)
@@ -131,7 +131,7 @@ namespace LVAuto.LVThread
 			}  			
 		}
 
-		private void GoBattle(LVAuto.Command.OPTObj.BattleField battle)
+		private void GoBattle(LVAuto.LVForm.Command.OPTObj.BattleField battle)
 		{
             try
             {
@@ -183,7 +183,7 @@ namespace LVAuto.LVThread
 
 		}
 
-		private void ChonMucTieuNDoiTranHinh(LVAuto.Command.OPTObj.BattleField battle)
+		private void ChonMucTieuNDoiTranHinh(LVAuto.LVForm.Command.OPTObj.BattleField battle)
 		{
 			try
 			{
@@ -212,7 +212,7 @@ namespace LVAuto.LVThread
 				int tranhinh;
 				
 
-				LVAuto.Command.CityObj.MilitaryGeneral generalPara = null;
+				LVAuto.LVForm.Command.CityObj.MilitaryGeneral generalPara = null;
 				while (true)
 				{
 					int lastPhuongThucChonMucTieu = 0;
@@ -231,7 +231,7 @@ namespace LVAuto.LVThread
 						// kiểm tra xem tướng có trong list ko
 						if (hastGeneral.Contains(0))
 						{
-							generalPara = (LVAuto.Command.CityObj.MilitaryGeneral)hastGeneral[0];
+							generalPara = (LVAuto.LVForm.Command.CityObj.MilitaryGeneral)hastGeneral[0];
 						}
 						else
 						{
@@ -244,7 +244,7 @@ namespace LVAuto.LVThread
 							}
 							else
 							{
-								generalPara = (LVAuto.Command.CityObj.MilitaryGeneral)hastGeneral[mytroops[countmytroops].GeneralId];
+								generalPara = (LVAuto.LVForm.Command.CityObj.MilitaryGeneral)hastGeneral[mytroops[countmytroops].GeneralId];
 							}
 						}
 
@@ -257,11 +257,11 @@ namespace LVAuto.LVThread
 
 
                         //nếu quân địch đã bị hỗn loạn thì không đánh nữa, chon thang khac
-                        if (enemytroops[countenemytroops].Military.TrangThaiQuanDoi == LVAuto.Command.CityObj.MilitaryGeneral.TrangThaiQuanDoi.HonLoan)
+                        if (enemytroops[countenemytroops].Military.TrangThaiQuanDoi == LVAuto.LVForm.Command.CityObj.MilitaryGeneral.TrangThaiQuanDoi.HonLoan)
                         {
                             bool allHonloan = true;
                             for (int k = 0; k < enemytroops.Length; k++)
-                                if (enemytroops[k].Military.TrangThaiQuanDoi != LVAuto.Command.CityObj.MilitaryGeneral.TrangThaiQuanDoi.HonLoan)
+                                if (enemytroops[k].Military.TrangThaiQuanDoi != LVAuto.LVForm.Command.CityObj.MilitaryGeneral.TrangThaiQuanDoi.HonLoan)
                                 {
                                     allHonloan = false;
                                     break;
@@ -346,9 +346,9 @@ namespace LVAuto.LVThread
 							
 						
 						// sử dụng mưu kế
-						if (generalPara.MuuKeTrongChienTranID != LVAuto.Common.WarFunc.MUUKETRONGCHIENTRUONG.KhongDung)
+						if (generalPara.MuuKeTrongChienTranID != LVAuto.LVForm.Common.WarFunc.MUUKETRONGCHIENTRUONG.KhongDung)
 						{
-							LVAuto.Command.OPT.DungMuuKeTrongChienTruong(
+							LVAuto.LVForm.Command.OPT.DungMuuKeTrongChienTruong(
 								battle.Battleid, 
 								mytroops[countmytroops].attackid,
 								generalPara.MuuKeTrongChienTranID); 
@@ -433,8 +433,8 @@ namespace LVAuto.LVThread
 					
 					if (
 							(
-								LVAuto.Common.WarFunc.ArrayValue[tranhinhquanta, enemytroop[i].Military.TranHinh] >
-									LVAuto.Common.WarFunc.ArrayValue[tranhinhquanta, enemytroop[j].Military.TranHinh]
+								LVAuto.LVForm.Common.WarFunc.ArrayValue[tranhinhquanta, enemytroop[i].Military.TranHinh] >
+									LVAuto.LVForm.Common.WarFunc.ArrayValue[tranhinhquanta, enemytroop[j].Military.TranHinh]
 								&& vi  * 0.85 < vj
 									
 							)
@@ -491,7 +491,7 @@ namespace LVAuto.LVThread
 		/// /// <returns>int: trận hình tốt nhất (đối kháng với enemytroop[])</returns>
 		private static int TimTranHinhTotNhat(Command.OPTObj.GeneralInCombat[] enemytroop)
 		{
-			double[,] arrValue = new double[LVAuto.Common.WarFunc.TRANHINHAMOUNT, LVAuto.Common.WarFunc.TRANHINHAMOUNT]; 
+			double[,] arrValue = new double[LVAuto.LVForm.Common.WarFunc.TRANHINHAMOUNT, LVAuto.LVForm.Common.WarFunc.TRANHINHAMOUNT]; 
 
 			// value = hệ số trận hình * quân số * sy khi
 			/*
@@ -515,21 +515,21 @@ namespace LVAuto.LVThread
 				tmp = enemytroop[enemyidx].Military.SoQuanDangCo * enemytroop[enemyidx].Military.SyKhi
 							* Command.CityObj.General.GetHeSoTrangThaiQuanDoi(enemytroop[enemyidx].Military.TrangThaiQuanDoi);
 				
-				for (int i = 0; i < LVAuto.Common.WarFunc.TRANHINHAMOUNT; i++)
+				for (int i = 0; i < LVAuto.LVForm.Common.WarFunc.TRANHINHAMOUNT; i++)
 				{
 					arrValue[i, enemytroop[enemyidx].Military.TranHinh]
-						+= LVAuto.Common.WarFunc.ArrayValue[i, enemytroop[enemyidx].Military.TranHinh] * tmp;
+						+= LVAuto.LVForm.Common.WarFunc.ArrayValue[i, enemytroop[enemyidx].Military.TranHinh] * tmp;
 				}
 			}// end 			for (int i = 1; i < LVAuto.Common.WarFunc.TRANHINHAMOUNT; i++)
 
 			
-			double[] arrTongTheoChieuNgang = new double[LVAuto.Common.WarFunc.TRANHINHAMOUNT];
-			double[] arrTongTheoChieuDoc = new double[LVAuto.Common.WarFunc.TRANHINHAMOUNT]; 
+			double[] arrTongTheoChieuNgang = new double[LVAuto.LVForm.Common.WarFunc.TRANHINHAMOUNT];
+			double[] arrTongTheoChieuDoc = new double[LVAuto.LVForm.Common.WarFunc.TRANHINHAMOUNT]; 
 		
 			// tổng 1 trận hình
-			for (int i = 0; i < LVAuto.Common.WarFunc.TRANHINHAMOUNT; i++)
+			for (int i = 0; i < LVAuto.LVForm.Common.WarFunc.TRANHINHAMOUNT; i++)
 			{
-				for (int j = 0; j < LVAuto.Common.WarFunc.TRANHINHAMOUNT; j++)
+				for (int j = 0; j < LVAuto.LVForm.Common.WarFunc.TRANHINHAMOUNT; j++)
 				{
 					arrTongTheoChieuNgang[i] += arrValue[i,j];
 					arrTongTheoChieuDoc[i] += arrValue[j, i];
@@ -544,8 +544,8 @@ namespace LVAuto.LVThread
 			int[] tranhinhquandich = new int[] { 0, 1, 2, 3, 4, 5 };
 			double temp1;
 			int temp2;
-			for (int i=0; i < LVAuto.Common.WarFunc.TRANHINHAMOUNT; i++)
-				for (int j=i+1; j < LVAuto.Common.WarFunc.TRANHINHAMOUNT; j++)
+			for (int i=0; i < LVAuto.LVForm.Common.WarFunc.TRANHINHAMOUNT; i++)
+				for (int j=i+1; j < LVAuto.LVForm.Common.WarFunc.TRANHINHAMOUNT; j++)
 			{
 				if (arrTongTheoChieuNgang[i] < arrTongTheoChieuNgang[j])
 				{
@@ -633,7 +633,7 @@ namespace LVAuto.LVThread
         /// <param name="soluongtuongdanh1dich"></param>
         /// <param name="general">LVAuto.Command.CityObj.MilitaryGeneral</param>
         /// <returns></returns>
-        public static AUTOFIGHTING startBattle(int battleid, int sleeptime, int soluongtuongdanh1dich, LVAuto.Command.CityObj.MilitaryGeneral general)
+        public static AUTOFIGHTING startBattle(int battleid, int sleeptime, int soluongtuongdanh1dich, LVAuto.LVForm.Command.CityObj.MilitaryGeneral general)
         {
 
             ArrayList g = new ArrayList();

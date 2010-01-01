@@ -1,4 +1,4 @@
-namespace LVAuto.Command.OPTObj {
+namespace LVAuto.LVForm.Command.OPTObj {
     partial class Vanchuyen {
         /// <summary> 
         /// Required designer variable.

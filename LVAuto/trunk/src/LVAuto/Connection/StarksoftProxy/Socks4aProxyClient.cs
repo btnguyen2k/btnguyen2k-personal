@@ -29,7 +29,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.IO;
 
-namespace LVAuto.Connection.StarksoftProxy
+namespace LVAuto.LVForm.Connection.StarksoftProxy
 {
     /// <summary>
     /// Socks4a connection proxy class.  This class implements the Socks4a standard proxy protocol

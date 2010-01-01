@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;		
 using System.Windows.Forms;
 
-namespace LVAuto.Command.CommonObj
+namespace LVAuto.LVForm.Command.CommonObj
 {
   public class MyTabPage : TabPage
   {

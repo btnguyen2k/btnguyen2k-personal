@@ -30,7 +30,7 @@ using System.Threading;
 using System.Globalization;
 using System.ComponentModel;
 
-namespace LVAuto.Connection.StarksoftProxy
+namespace LVAuto.LVForm.Connection.StarksoftProxy
 {
 	/// <summary>
 	/// HTTP connection proxy class.  This class implements the HTTP standard proxy protocol.

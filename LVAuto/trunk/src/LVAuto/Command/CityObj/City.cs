@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Collections;
-namespace LVAuto.Command.CityObj 
+namespace LVAuto.LVForm.Command.CityObj 
 {
     public class City 
 	{
@@ -28,7 +28,7 @@ namespace LVAuto.Command.CityObj
 
 
 
-        public static LVAuto.Command.CityObj.City[] AllCity;
+        public static LVAuto.LVForm.Command.CityObj.City[] AllCity;
 
         public City(int id, string name, int x, int y, int size) 
 		{

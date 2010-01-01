@@ -5,9 +5,9 @@ using System.Windows.Forms;
 using System.Collections;
 using System.Threading;
 
-namespace LVAuto.LVThread
+namespace LVAuto.LVForm.LVThread
 {
-	public class AUTOVANCHUYENVK : LVAuto.LVThread.ThreadSkeleton  
+	public class AUTOVANCHUYENVK : LVAuto.LVForm.LVThread.ThreadSkeleton  
 	{
 		public ArrayList Data;
 		public AUTOVANCHUYENVK(Label lbl) 
@@ -65,7 +65,7 @@ namespace LVAuto.LVThread
 				{
 					objVCVK = (Command.CommonObj.VanChuyenVK)Data[i];
 					
-					cookies = LVAuto.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(objVCVK.ThanhChuyenDiID);
+					cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(objVCVK.ThanhChuyenDiID);
 					if (cityid != objVCVK.ThanhChuyenDiID)
 					{
 						citypost = Command.City.GetCityPostByID(objVCVK.ThanhChuyenDiID);

@@ -4,7 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace LVAuto.Control
+namespace LVAuto.LVForm.Control
 {
 	public delegate void CheckBoxClickedHandler(bool state);
 	public class DataGridViewCheckBoxHeaderCellEventArgs : EventArgs

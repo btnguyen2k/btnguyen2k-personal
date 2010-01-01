@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LVAuto.Command.CommonObj
+namespace LVAuto.LVForm.Command.CommonObj
 {
 	public class VanChuyenVK
 	{
@@ -37,7 +37,7 @@ namespace LVAuto.Command.CommonObj
 
 
 			string str = "Chuyển từ " + Command.City.GetCityByID(ThanhChuyenDiID) + " đến " + Command.City.GetCityByID(ThanhChuyenDenID);
-			str += ": " + LVAuto.Common.Wepons.GetWeponName(LoaiVuKhiID) + " (" + DaChuyenDuoc + "/" + TongSoLuongChuyen + ")";
+			str += ": " + LVAuto.LVForm.Common.Wepons.GetWeponName(LoaiVuKhiID) + " (" + DaChuyenDuoc + "/" + TongSoLuongChuyen + ")";
 			return str;
 		}
 

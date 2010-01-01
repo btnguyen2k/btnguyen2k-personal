@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using System.Data;
 using System.Collections;
 
-namespace LVAuto.LVThread 
+namespace LVAuto.LVForm.LVThread 
 {
     public class ANUI {
         delegate void SetTextCallback(string text);
@@ -89,8 +89,8 @@ namespace LVAuto.LVThread
 			}
 			catch (Exception ex)
 			{
-				LVAuto.frmmain.LVFRMMAIN.lblANUIMESSAGE.Text = "Chưa chọn đúng tham số";
-				LVAuto.frmmain.LVFRMMAIN.chkAutoUpDanSo.Checked = false;
+				LVAuto.LVForm.Main.LVFRMMAIN.lblANUIMESSAGE.Text = "Chưa chọn đúng tham số";
+				LVAuto.LVForm.Main.LVFRMMAIN.chkAutoUpDanSo.Checked = false;
 			}
 		}
 
@@ -122,8 +122,8 @@ namespace LVAuto.LVThread
 							city = Command.City.GetCityByID(Cityid[i]);
 							SetText("Đang an ủi thành " + city.name + "(" + i + "/" + Cityid.Length + ")");
 
-							cookies = LVAuto.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(Cityid[i]);
-							LVAuto.Command.City.SwitchCitySlow(Cityid[i]);
+							cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(Cityid[i]);
+							LVAuto.LVForm.Command.City.SwitchCitySlow(Cityid[i]);
 							citysimple = Command.City.GetCitySimpleInfo(cookies); 						
 
 							aino = (ArrayList)citysimple["morale"];

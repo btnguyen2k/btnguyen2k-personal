@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace LVAuto.LVThread {
+namespace LVAuto.LVForm.LVThread {
     class LOADING {
         delegate void SetTextCallback(string text);
         public Thread InThread; public string threadID;

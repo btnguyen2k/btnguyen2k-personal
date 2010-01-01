@@ -6,16 +6,16 @@ using System.Windows.Forms;
 using System.Data;
 using System.Collections;
 
-using LVAuto.Command;
-using LVAuto.Command.CityObj;
-using LVAuto.Common;
-using LVAuto.LVThread;
-using LVAuto.Web;
-using LVAuto.Command.CommonObj;
+using LVAuto.LVForm.Command;
+using LVAuto.LVForm.Command.CityObj;
+using LVAuto.LVForm.Common;
+using LVAuto.LVForm.LVThread;
+using LVAuto.LVForm.Web;
+using LVAuto.LVForm.Command.CommonObj;
 using System.Drawing;
 
 
-namespace LVAuto.LVThread
+namespace LVAuto.LVForm.LVThread
 {
     public class AUTOBINHMAN : ThreadSkeleton
     {
@@ -117,9 +117,9 @@ namespace LVAuto.LVThread
                 {
                     binhmanobj = (BinhManObj)geninfo[man];
                     int cityID = binhmanobj.CityID;
-                    LVAuto.Command.CityObj.City cityByID = LVAuto.Command.City.GetCityByID(cityID);
+                    LVAuto.LVForm.Command.CityObj.City cityByID = LVAuto.LVForm.Command.City.GetCityByID(cityID);
                     string cookies = LVWeb.CurrentLoginInfo.MakeCookiesString(cityID);
-                    LVAuto.Command.City.SwitchCitySlow(cityID);
+                    LVAuto.LVForm.Command.City.SwitchCitySlow(cityID);
                     SetText("Chuẩn bị tướng " + binhmanobj.GeneralName + " đánh địa tinh tọa độ (" + binhmanobj.ToaDoMoX + ", " + binhmanobj.ToaDoMoY + "...");
 
                     MilitaryGeneral generalMilitaryInfoEx = Command.Common.GetGeneralMilitaryInfoEx(cityID, binhmanobj.GeneralId);
@@ -234,11 +234,11 @@ namespace LVAuto.LVThread
                     }
                 }
                 int cityID = obj2.CityID;
-                LVAuto.Command.CityObj.City cityByID = LVAuto.Command.City.GetCityByID(cityID);
+                LVAuto.LVForm.Command.CityObj.City cityByID = LVAuto.LVForm.Command.City.GetCityByID(cityID);
                 int x = cityByID.x;
                 int y = cityByID.y;
                 string cookies = LVWeb.CurrentLoginInfo.MakeCookiesString(cityID);
-                LVAuto.Command.City.SwitchCitySlow(cityID);
+                LVAuto.LVForm.Command.City.SwitchCitySlow(cityID);
                 MilitaryGeneral generalMilitaryInfoEx = Command.Common.GetGeneralMilitaryInfoEx(cityID, obj2.GeneralId);
                 if (generalMilitaryInfoEx != null)
                 {
@@ -647,7 +647,7 @@ namespace LVAuto.LVThread
                 manid[i] = obj2.ManID;
             }
             int uuTienID = obj2.UuTienID;
-            LVAuto.Command.CityObj.City cityByID = LVAuto.Command.City.GetCityByID(obj2.CityID);
+            LVAuto.LVForm.Command.CityObj.City cityByID = LVAuto.LVForm.Command.City.GetCityByID(obj2.CityID);
             int x = cityByID.x;
             int y = cityByID.y;
             int centerMapID = common.MapPosToMapID(x, y);
@@ -825,7 +825,7 @@ namespace LVAuto.LVThread
 		{
 			int cityid = 0;
 			int genid = 0;
-			LVAuto.Command.CommonObj.BinhManObj binhmanobj;
+			LVAuto.LVForm.Command.CommonObj.BinhManObj binhmanobj;
 			ArrayList geninfo;
 
 			lastmapidcenter = 0;
@@ -837,11 +837,11 @@ namespace LVAuto.LVThread
 
 			try
 			{
-				binhmanobj = (LVAuto.Command.CommonObj.BinhManObj)binhmanifo[0];
+				binhmanobj = (LVAuto.LVForm.Command.CommonObj.BinhManObj)binhmanifo[0];
 				cityid = binhmanobj.CityID;
 
-				string cookies = LVAuto.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityid);
-				LVAuto.Command.City.SwitchCitySlow(cityid);
+				string cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityid);
+				LVAuto.LVForm.Command.City.SwitchCitySlow(cityid);
 
 
 
@@ -851,7 +851,7 @@ namespace LVAuto.LVThread
 
 				// check xem co đang đánh nhau khong
 				string para = "gid=16&pid=-1&tab=1&tid=0";
-				Hashtable result1 = LVAuto.Command.Build.Execute(2, para, true, cookies);
+				Hashtable result1 = LVAuto.LVForm.Command.Build.Execute(2, para, true, cookies);
 				if (result1 != null && result1["ret"].ToString() == "0")
 				{
 					ArrayList battle = (ArrayList)result1["battle"];
@@ -861,7 +861,7 @@ namespace LVAuto.LVThread
 						battleid = int.Parse(temp[0].ToString());
 						// lay thong tin chien truong
 						para = "lBattleID=" + battleid;
-						result = LVAuto.Command.Common.Execute(4, para, true, cookies);
+						result = LVAuto.LVForm.Command.Common.Execute(4, para, true, cookies);
 						if (result != null)
 						{
 							ArrayList myside = (ArrayList)result["myside"];
@@ -875,7 +875,7 @@ namespace LVAuto.LVThread
 								{
 									//LVAuto.LVThread.AUTOFIGHTING.startBattle(0, time, 1, 250, Common.WarFunc.PHUONGTHUCTANCONG.HoaTien );
 									//LVAuto.LVThread.AUTOFIGHTING.startBattle(battleid, 0, binhmanobj.SoTuongMinhDanh1TuongDich, 300, binhmanobj.PhuongThucTanCongID, binhmanobj.PhuongThucChonMucTieuID);
-									LVAuto.LVThread.AUTOFIGHTING.startBattle(battleid, 0, binhmanobj.SoTuongMinhDanh1TuongDich, arBinhManList);
+									LVAuto.LVForm.LVThread.AUTOFIGHTING.startBattle(battleid, 0, binhmanobj.SoTuongMinhDanh1TuongDich, arBinhManList);
 									return true;
 								}
 
@@ -888,7 +888,7 @@ namespace LVAuto.LVThread
 
 				// kiem tra xem co dang di khong
 				para = "tid=0";
-				result = LVAuto.Command.Common.Execute(40, para, true, cookies);
+				result = LVAuto.LVForm.Command.Common.Execute(40, para, true, cookies);
 				//result = LVAuto.Command.City.GetCityTask(cookies);
 				if (result != null)
 				{
@@ -909,7 +909,7 @@ namespace LVAuto.LVThread
 							{
 								//LVAuto.LVThread.AUTOFIGHTING.startBattle(0, time, 1, 250, Common.WarFunc.PHUONGTHUCTANCONG.HoaTien );
 								//LVAuto.LVThread.AUTOFIGHTING.startBattle(battleid, time, binhmanobj.SoTuongMinhDanh1TuongDich, 300, binhmanobj.PhuongThucTanCongID, binhmanobj.PhuongThucChonMucTieuID);
-								LVAuto.LVThread.AUTOFIGHTING.startBattle(battleid, time, binhmanobj.SoTuongMinhDanh1TuongDich, arBinhManList);
+								LVAuto.LVForm.LVThread.AUTOFIGHTING.startBattle(battleid, time, binhmanobj.SoTuongMinhDanh1TuongDich, arBinhManList);
 
 							}
 							return true;
@@ -945,7 +945,7 @@ namespace LVAuto.LVThread
 
                     base.SetText("Kiểm tra tướng " +  ((Command.CommonObj.BinhManObj)binhmanifo[0]).GeneralName + " ... ");
 
-                    if (binhmanifo.Count > 0 && !LVAuto.Command.CityObj.General.isTuongDangBusy(binhmanifo, sotuongminhdanh1tuongdich))
+                    if (binhmanifo.Count > 0 && !LVAuto.LVForm.Command.CityObj.General.isTuongDangBusy(binhmanifo, sotuongminhdanh1tuongdich))
                     {
                         if (((Command.CommonObj.BinhManObj)binhmanifo[0]).ManType == 1)
                             this.DieuTuongDiDanhMan(binhmanifo);

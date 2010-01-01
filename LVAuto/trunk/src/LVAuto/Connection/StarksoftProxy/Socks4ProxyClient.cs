@@ -32,7 +32,7 @@ using System.IO;
 using System.Threading;
 using System.ComponentModel;
 
-namespace LVAuto.Connection.StarksoftProxy
+namespace LVAuto.LVForm.Connection.StarksoftProxy
 {
     /// <summary>
     /// Socks4 connection proxy class.  This class implements the Socks4 standard proxy protocol.
