@@ -14,6 +14,15 @@ namespace LVUtils
         }
 
         /// <summary>
+        /// Display an information message box
+        /// </summary>
+        /// <param name="message"></param>
+        public static void InfoBox(string message)
+        {
+            MessageBox.Show(message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        /// <summary>
         /// Display a warning message box
         /// </summary>
         /// <param name="message"></param>

@@ -126,14 +126,14 @@
   <data name="label53.Text" xml:space="preserve">
     <value>Chú ý: số điện thoại gửi phải là mobi. Để đăng ký nhắn tin qua web các bạn vào www.mobifone.vn để kích hoạt, ai kích hoạt rồi thì thôi. Số điện thoại nhận là bất kỳ nhưng bắt buộc phải có 84 đứng trước. Ví dụ: tui muốn số nhận tin là 0906535613 thì gõ 84906535613. Phí nhắn tin là 220 đồng / 1 sms. Bèo như con mèo</value>
   </data>
-  <metadata name="notifyIcon1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="AppNotifyIcon.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>312, 17</value>
   </metadata>
   <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="notifyIcon1.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="AppNotifyIcon.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAgIAAAAEAIAAoCAEAFgAAACgAAACAAAAAAAEAAAEAIAAAAAAAAAABAMMOAADDDgAAAAAAAAAA
         AADExMT/3d3d/z4/P/8AAAD/W2ho//T///+xzs7/AAAA/wICAv8AAAD/AAAA/wAAAP8AAAD/AAAA/wAA
