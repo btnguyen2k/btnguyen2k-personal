@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Text;
 
-namespace LVAuto.LVForm.Web {
+namespace LVAuto.LVWeb {
     /// <summary>
     /// Base class for parsing tag based files, such as HTML,
     /// HTTP headers, or XML.

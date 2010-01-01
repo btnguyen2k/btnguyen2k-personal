@@ -8,9 +8,9 @@ namespace LVAuto.LVForm.Command {
     public class OPT {
         public static Hashtable Execute(int command, string parameter, bool wait) 
 		{
-            string data = parameter + "&num=" + LVAuto.LVForm.Web.LVWeb.idimage;
-            string header = "POST http://s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn/GateWay/OPT.ashx?id=" + command + "&0.05861361440438828 HTTP/1.1\n";
-            header += "Host: s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn\n";
+            string data = parameter + "&num=" + LVAuto.LVWeb.LVClient.idimage;
+            string header = "POST http://s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn/GateWay/OPT.ashx?id=" + command + "&0.05861361440438828 HTTP/1.1\n";
+            header += "Host: s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn\n";
             header += "User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.5) Gecko/2008120122 Firefox/3.0.5\n";
             header += "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n";
             header += "Accept-Language: en-us,en;q=0.5\n";
@@ -18,12 +18,12 @@ namespace LVAuto.LVForm.Command {
             header += "Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7\n";
             header += "Keep-Alive: 300\n";
             header += "Connection: keep-alive\n";
-            header += "Referer: http://s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn/city\n";
-            header += "Cookie: " + Web.LVWeb.CurrentLoginInfo.MakeCookiesString() + "\n";
+            header += "Referer: http://s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn/city\n";
+            header += "Cookie: " + LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString() + "\n";
             header += "Content-Type: application/x-www-form-urlencoded\n";
             header += "Content-Length: " + (data.Length) + "\n";
             header += "\n";
-            Hashtable response = Web.LVWeb.SendAndReceive(header + data, "s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn", 80, wait);
+            Hashtable response = LVWeb.LVClient.SendAndReceive(header + data, "s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn", 80, wait);
             if (wait) 
 			{
                 try 
@@ -42,10 +42,10 @@ namespace LVAuto.LVForm.Command {
             }
         }
         public static Hashtable Execute(int command, string parameter, bool wait, string cookies) {
-            string data = parameter + "&num="+LVAuto.LVForm.Web.LVWeb.idimage;
+            string data = parameter + "&num="+LVAuto.LVWeb.LVClient.idimage;
 
-                string header = "POST http://s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn/GateWay/OPT.ashx?id=" + command + "&0.05861361440438828 HTTP/1.1\n";
-                header += "Host: s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn\n";
+                string header = "POST http://s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn/GateWay/OPT.ashx?id=" + command + "&0.05861361440438828 HTTP/1.1\n";
+                header += "Host: s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn\n";
                 header += "User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.5) Gecko/2008120122 Firefox/3.0.5\n";
                 header += "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n";
                 header += "Accept-Language: en-us,en;q=0.5\n";
@@ -53,12 +53,12 @@ namespace LVAuto.LVForm.Command {
                 header += "Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7\n";
                 header += "Keep-Alive: 300\n";
                 header += "Connection: keep-alive\n";
-                header += "Referer: http://s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn/city\n";
+                header += "Referer: http://s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn/city\n";
                 header += "Cookie: " + cookies + "\n";
                 header += "Content-Type: application/x-www-form-urlencoded\n";
                 header += "Content-Length: " + (data.Length) + "\n";
                 header += "\n";
-                Hashtable response = Web.LVWeb.SendAndReceive(header + data, "s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn", 80, wait);
+                Hashtable response = LVWeb.LVClient.SendAndReceive(header + data, "s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn", 80, wait);
                 if (wait) 
 				{
                     try 
@@ -419,7 +419,7 @@ namespace LVAuto.LVForm.Command {
 					for (i = 0; i < attack_total; i++)
 					{
 						result.allattacktroops[i] = new LVAuto.LVForm.Command.OPTObj.GeneralInCombat((ArrayList)troops[j]);
-						if (result.allattacktroops[i].UserID == int.Parse(LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.uid))
+						if (result.allattacktroops[i].UserID == int.Parse(LVAuto.LVWeb.LVClient.CurrentLoginInfo.uid))
 							my_attack_count++;
 
 						j++;
@@ -427,7 +427,7 @@ namespace LVAuto.LVForm.Command {
 					for (i = 0; i < defend_total; i++)
 					{
 						result.alldefendtroops[i] = new LVAuto.LVForm.Command.OPTObj.GeneralInCombat((ArrayList)troops[j]);
-						if (result.alldefendtroops[i].UserID == int.Parse(LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.uid))
+						if (result.alldefendtroops[i].UserID == int.Parse(LVAuto.LVWeb.LVClient.CurrentLoginInfo.uid))
 							my_defend_count++;
 						
 						j++;
@@ -448,7 +448,7 @@ namespace LVAuto.LVForm.Command {
 
 						
 						
-						if (result.allattacktroops[i].UserID == int.Parse(LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.uid))
+						if (result.allattacktroops[i].UserID == int.Parse(LVAuto.LVWeb.LVClient.CurrentLoginInfo.uid))
 						{
 							//Lay thong tin ve tran hinh, don dau, rut lui ...
 							gTemp = Common.GetGeneralMilitaryInfo(result.allattacktroops[i].CityID, result.allattacktroops[i].GeneralId);
@@ -473,7 +473,7 @@ namespace LVAuto.LVForm.Command {
 					{
 						
 
-						if (result.alldefendtroops[i].UserID == int.Parse(LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.uid))
+						if (result.alldefendtroops[i].UserID == int.Parse(LVAuto.LVWeb.LVClient.CurrentLoginInfo.uid))
 						{
 							//Lay thong tin ve tran hinh, don dau, rut lui ...
 							gTemp = Common.GetGeneralMilitaryInfo(result.alldefendtroops[i].CityID, result.alldefendtroops[i].GeneralId);
@@ -821,7 +821,7 @@ namespace LVAuto.LVForm.Command {
 			}
 			  
 			
-			string cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityid);
+			string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityid);
             parameter += "lAddPoint="+addsikhi;
             parameter += "&lGeneralID=" + gid;
 
@@ -892,7 +892,7 @@ namespace LVAuto.LVForm.Command {
 
 									if (LVAuto.LVForm.Command.OPT.BanThuong(militaryGeneral[j].CityID, militaryGeneral[j].GeneralId,
 											militaryGeneral[j].Level * 10 * (100 - militaryGeneral[j].MucTrungThanh),
-											LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(militaryGeneral[j].CityID)))
+											LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(militaryGeneral[j].CityID)))
 									{
 										ok += militaryGeneral[j].GeneralName + ", ";
 									}

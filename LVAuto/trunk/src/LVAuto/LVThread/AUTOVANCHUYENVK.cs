@@ -65,7 +65,7 @@ namespace LVAuto.LVForm.LVThread
 				{
 					objVCVK = (Command.CommonObj.VanChuyenVK)Data[i];
 					
-					cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(objVCVK.ThanhChuyenDiID);
+					cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(objVCVK.ThanhChuyenDiID);
 					if (cityid != objVCVK.ThanhChuyenDiID)
 					{
 						citypost = Command.City.GetCityPostByID(objVCVK.ThanhChuyenDiID);

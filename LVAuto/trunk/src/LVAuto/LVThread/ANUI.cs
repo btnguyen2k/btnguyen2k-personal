@@ -89,8 +89,8 @@ namespace LVAuto.LVForm.LVThread
 			}
 			catch (Exception ex)
 			{
-				LVAuto.LVForm.Main.LVFRMMAIN.lblANUIMESSAGE.Text = "Chưa chọn đúng tham số";
-				LVAuto.LVForm.Main.LVFRMMAIN.chkAutoUpDanSo.Checked = false;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.lblANUIMESSAGE.Text = "Chưa chọn đúng tham số";
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.chkAutoUpDanSo.Checked = false;
 			}
 		}
 
@@ -122,7 +122,7 @@ namespace LVAuto.LVForm.LVThread
 							city = Command.City.GetCityByID(Cityid[i]);
 							SetText("Đang an ủi thành " + city.name + "(" + i + "/" + Cityid.Length + ")");
 
-							cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(Cityid[i]);
+							cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(Cityid[i]);
 							LVAuto.LVForm.Command.City.SwitchCitySlow(Cityid[i]);
 							citysimple = Command.City.GetCitySimpleInfo(cookies); 						
 

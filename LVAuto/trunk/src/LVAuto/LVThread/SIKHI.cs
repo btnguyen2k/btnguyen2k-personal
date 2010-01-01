@@ -40,7 +40,7 @@ namespace LVAuto.LVForm.LVThread {
                     TreeNode g = root.Nodes[i];
                     if (g.Checked) {
                         string[] ginfo = g.Name.Split(new char[] { '.' });
-                        Cookies[citycount] = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(int.Parse(ginfo[0]));
+                        Cookies[citycount] = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(int.Parse(ginfo[0]));
                         Id[citycount] = int.Parse(ginfo[0]);
                         General[citycount] = int.Parse(ginfo[1]);
                         citycount++;
@@ -66,7 +66,7 @@ namespace LVAuto.LVForm.LVThread {
 						{
                             citypost = LVAuto.LVForm.Command.City.GetCityPostByID(Id[i]);
 
-							Cookies[i] = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(Id[i]);
+							Cookies[i] = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(Id[i]);
 							LVAuto.LVForm.Command.City.SwitchCitySlow(Id[i]);
 
 							// da duoc check khi luyen

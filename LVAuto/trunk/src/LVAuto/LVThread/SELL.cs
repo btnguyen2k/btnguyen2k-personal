@@ -166,7 +166,7 @@ namespace LVAuto.LVForm.LVThread
 					if (banobj.CityInfo.Length == 0) return;
 
 					cityid = banobj.CityInfo[0].CityId;
-					cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityid);
+					cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityid);
 
 					gialua = GetPrice(banobj.LUA, cookies);
 					giago = GetPrice(banobj.GO, cookies);
@@ -181,7 +181,7 @@ namespace LVAuto.LVForm.LVThread
 							SetText("Đang bán ở thành " + banobj.CityInfo[i].CityName + " (" + i + "/" + banobj.CityInfo.Length + ")");
 							cityid = banobj.CityInfo[i].CityId;
 
-							cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityid);
+							cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityid);
 							LVAuto.LVForm.Command.City.SwitchCitySlow(cityid);
 
 							//for debug

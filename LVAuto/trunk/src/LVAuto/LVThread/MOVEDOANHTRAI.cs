@@ -154,7 +154,7 @@ namespace LVAuto.LVForm.LVThread {
 				{
 					if (TraiDiChuyen == null || TraiDiChuyen.Count <= 0)
 					{
-						Main.LVFRMMAIN.lblMOVEDOANHTRAI.Text = "chẳng có cái trại nào cần chuyển cả";
+						FrmMain.LVFRMMAIN.lblMOVEDOANHTRAI.Text = "chẳng có cái trại nào cần chuyển cả";
 						return;
 					}
 					
@@ -171,7 +171,7 @@ namespace LVAuto.LVForm.LVThread {
 						SetText("Đang chạy " + traidichuyenobj.TraiName + "(" + i + "/" + TraiDiChuyen.Count  + ")");
 						try
 						{
-							cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(traidichuyenobj.TraiID);
+							cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(traidichuyenobj.TraiID);
 							LVAuto.LVForm.Command.City.SwitchCitySlow(traidichuyenobj.TraiID);
 
 							// lay thong tin trong hang cho
@@ -280,7 +280,7 @@ namespace LVAuto.LVForm.LVThread {
 
 			LVAuto.LVForm.Command.CommonObj.doitrai vc;
 
-			foreach (object obj in Main.LVFRMMAIN.pnDoanhTrai.Controls)
+			foreach (object obj in FrmMain.LVFRMMAIN.pnDoanhTrai.Controls)
 			{
 				vc = (LVAuto.LVForm.Command.CommonObj.doitrai)obj;
 				if (vc.id == traiID)

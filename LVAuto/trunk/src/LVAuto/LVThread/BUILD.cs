@@ -398,7 +398,7 @@ namespace LVAuto.LVForm.LVThread {
 
 							SetText("Đang chạy: " + city.name + " (đã hoàn thành " + i + "/" + arcityid.Length + " thành. )");
 
-							cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityID);
+							cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityID);
 							LVAuto.LVForm.Command.City.SwitchCitySlow(cityID);
 							buildcount = 0;
 

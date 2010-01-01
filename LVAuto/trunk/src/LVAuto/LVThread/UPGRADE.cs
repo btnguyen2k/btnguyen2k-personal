@@ -122,7 +122,7 @@ namespace LVAuto.LVForm.LVThread {
 							//{
 								if (nexttech < techcount)
 								{
-									cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityid);
+									cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityid);
 
 									LVAuto.LVForm.Command.City.SwitchCitySlow(cityid);
 

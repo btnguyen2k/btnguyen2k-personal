@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Net;
-namespace LVAuto.LVForm.Web {
+namespace LVAuto.LVWeb {
     interface SMS {
         //public System.Net.CookieContainer cookies;
         bool Login(string username, string password);

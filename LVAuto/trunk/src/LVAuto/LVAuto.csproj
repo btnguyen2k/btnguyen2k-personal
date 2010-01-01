@@ -46,7 +46,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
@@ -59,6 +59,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>0</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
@@ -176,11 +177,11 @@
     <Compile Include="frmLoading.Designer.cs">
       <DependentUpon>frmLoading.cs</DependentUpon>
     </Compile>
-    <Compile Include="LVForm\Main.cs">
+    <Compile Include="LVForm\FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LVForm\Main.Designer.cs">
-      <DependentUpon>Main.cs</DependentUpon>
+    <Compile Include="LVForm\FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="frmThongBaoDanhTuongViengTham.cs">
       <SubType>Form</SubType>
@@ -200,6 +201,9 @@
     </Compile>
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LVForm\FrmMain.Actions.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="LVThread\ANUI.cs" />
     <Compile Include="LVThread\AUTOBINHMAN.cs" />
@@ -255,9 +259,9 @@
       <SubType>Designer</SubType>
       <DependentUpon>frmLoading.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LVForm\Main.resx">
+    <EmbeddedResource Include="LVForm\FrmMain.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>Main.cs</DependentUpon>
+      <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmThongBaoDanhTuongViengTham.resx">
       <DependentUpon>frmThongBaoDanhTuongViengTham.cs</DependentUpon>
@@ -285,16 +289,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Web\Attribute.cs" />
-    <Compile Include="Web\AttributeList.cs" />
-    <Compile Include="Web\LoginInfo.cs" />
-    <Compile Include="Web\LVWeb.cs" />
-    <Compile Include="Web\Mobifone.cs" />
-    <Compile Include="Web\Parse.cs" />
-    <Compile Include="Web\ParseHeader.cs" />
-    <Compile Include="Web\ParseHTML.cs" />
-    <Compile Include="Web\SaveNLoad.cs" />
-    <Compile Include="Web\SMS.cs" />
+    <Compile Include="LVWeb\Attribute.cs" />
+    <Compile Include="LVWeb\AttributeList.cs" />
+    <Compile Include="LVWeb\LoginInfo.cs" />
+    <Compile Include="LVWeb\LVClient.cs" />
+    <Compile Include="LVWeb\Mobifone.cs" />
+    <Compile Include="LVWeb\Parse.cs" />
+    <Compile Include="LVWeb\ParseHeader.cs" />
+    <Compile Include="LVWeb\ParseHTML.cs" />
+    <Compile Include="LVWeb\SaveNLoad.cs" />
+    <Compile Include="LVWeb\SMS.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Command\readme.txt" />
@@ -316,8 +320,10 @@
     <None Include="Resources\ImageLoading.png" />
     <None Include="Resources\BackGround.jpg" />
     <Content Include="Resources\MAIL18.ICO" />
-    <Content Include="ServerList.xml" />
-    <Content Include="Web\readme.txt" />
+    <Content Include="ServerList.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LVWeb\readme.txt" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="SHDocVw">
@@ -355,6 +361,15 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LVUtils\LVUtils.csproj">
+      <Project>{6594952C-0241-4C61-8D06-FE5ACD6C8DAE}</Project>
+      <Name>LVUtils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Web\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

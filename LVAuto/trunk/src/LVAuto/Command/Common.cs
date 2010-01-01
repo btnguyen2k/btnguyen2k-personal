@@ -9,9 +9,9 @@ namespace LVAuto.LVForm.Command {
 		private static Object GeneralisLock = new Object();
 
         public static Hashtable Execute(int command, string parameter,bool wait) {
-            string data = parameter + "&num=" + LVAuto.LVForm.Web.LVWeb.idimage;
-            string header = "POST http://s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn/GateWay/Common.ashx?id=" + command + "&0.05861361440438828 HTTP/1.1\n";
-            header += "Host: s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn\n";
+            string data = parameter + "&num=" + LVAuto.LVWeb.LVClient.idimage;
+            string header = "POST http://s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn/GateWay/Common.ashx?id=" + command + "&0.05861361440438828 HTTP/1.1\n";
+            header += "Host: s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn\n";
             header += "User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.5) Gecko/2008120122 Firefox/3.0.5\n";
             header += "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n";
             header += "Accept-Language: en-us,en;q=0.5\n";
@@ -19,12 +19,12 @@ namespace LVAuto.LVForm.Command {
             header += "Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7\n";
             header += "Keep-Alive: 300\n";
             header += "Connection: keep-alive\n";
-            header += "Referer: http://s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn/city\n";
-            header += "Cookie: " + Web.LVWeb.CurrentLoginInfo.MakeCookiesString() + "\n";
+            header += "Referer: http://s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn/city\n";
+            header += "Cookie: " + LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString() + "\n";
             header += "Content-Type: application/x-www-form-urlencoded\n";
             header += "Content-Length: " + (data.Length) + "\n";
             header += "\n";
-            Hashtable response = Web.LVWeb.SendAndReceive(header + data, "s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn", 80, wait);
+            Hashtable response = LVWeb.LVClient.SendAndReceive(header + data, "s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn", 80, wait);
             if (wait) 
 			{
                 try {
@@ -44,9 +44,9 @@ namespace LVAuto.LVForm.Command {
             }
         }
         public static Hashtable Execute(int command, string parameter, bool wait, string cookies ) {
-            string data = parameter + "&num=" + LVAuto.LVForm.Web.LVWeb.idimage;
-            string header = "POST http://s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn/GateWay/Common.ashx?id=" + command + "&0.05861361440438828 HTTP/1.1\n";
-            header += "Host: s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn\n";
+            string data = parameter + "&num=" + LVAuto.LVWeb.LVClient.idimage;
+            string header = "POST http://s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn/GateWay/Common.ashx?id=" + command + "&0.05861361440438828 HTTP/1.1\n";
+            header += "Host: s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn\n";
             header += "User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.5) Gecko/2008120122 Firefox/3.0.5\n";
             header += "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n";
             header += "Accept-Language: en-us,en;q=0.5\n";
@@ -54,12 +54,12 @@ namespace LVAuto.LVForm.Command {
             header += "Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7\n";
             header += "Keep-Alive: 300\n";
             header += "Connection: keep-alive\n";
-            header += "Referer: http://s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn/city\n";
+            header += "Referer: http://s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn/city\n";
             header += "Cookie: " + cookies + "\n";
             header += "Content-Type: application/x-www-form-urlencoded\n";
             header += "Content-Length: " + (data.Length) + "\n";
             header += "\n";
-            Hashtable response = Web.LVWeb.SendAndReceive(header + data, "s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn", 80, wait);
+            Hashtable response = LVWeb.LVClient.SendAndReceive(header + data, "s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn", 80, wait);
             if (wait) 
 			{
 				if (response != null &&  response["DATA"] != null)
@@ -213,7 +213,7 @@ namespace LVAuto.LVForm.Command {
 				LVAuto.LVForm.Command.CityObj.MilitaryGeneral onegenaral = new LVAuto.LVForm.Command.CityObj.MilitaryGeneral();
 
 				string para = "gid=16&pid=21&tab=2";
-				string cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityid);
+				string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityid);
 
 				Hashtable ret = Command.Build.SelectBuildingInfo(cityid, 16, 21, 2, cookies);
 
@@ -312,7 +312,7 @@ namespace LVAuto.LVForm.Command {
 				Hashtable ret = null;
 				ArrayList list = null;
 				//string para = "gid=16&pid=29&tab=6&tid=" + cityid;
-				string cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityid);
+				string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityid);
 				LVAuto.LVForm.Command.City.SwitchCitySlow(cityid);
 
 				int citypost = LVAuto.LVForm.Command.City.GetCityPostByID(cityid);
@@ -547,7 +547,7 @@ namespace LVAuto.LVForm.Command {
 
 				int cityID = Command.CityObj.City.AllCity[citypos].id;
 				//LVAuto.Command.City.SwitchCitySlow(cityID);
-				string cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityID);
+				string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityID);
 				while (count < 10)
 				{
 					// lay danh sach quan van + quan vo
@@ -844,7 +844,7 @@ namespace LVAuto.LVForm.Command {
 			
 			//int cityID = Command.CityObj.City.AllCity[citypos].id;
 			//LVAuto.Command.City.SwitchCitySlow(cityID);
-			string cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityID);
+			string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityID);
 			while (count < 10)
 			{
 				// lay danh sach quan van + quan vo
@@ -910,7 +910,7 @@ namespace LVAuto.LVForm.Command {
 
 				int cityID = Command.CityObj.City.AllCity[citypos].id;
 				//LVAuto.Command.City.SwitchCitySlow(cityID);
-				string cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityID);
+				string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityID);
 				while (count < 10)
 				{
 					// lay danh sach quan van + quan vo

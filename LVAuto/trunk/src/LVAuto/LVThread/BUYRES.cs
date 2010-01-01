@@ -176,7 +176,7 @@ namespace LVAuto.LVForm.LVThread {
 
 							cityid = muaObj.CityInfo[i].CityId;
 							LVAuto.LVForm.Command.City.SwitchCitySlow(cityid);
-							cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityid);
+							cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityid);
 
 #if (DEBUG)
                             if (Command.Build.SelectBuilding(cityid, 11, cookies) || Command.Build.SelectBuilding(cityid, 64, cookies))  // chợ

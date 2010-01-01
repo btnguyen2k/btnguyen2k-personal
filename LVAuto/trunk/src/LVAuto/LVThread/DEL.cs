@@ -267,7 +267,7 @@ namespace LVAuto.LVForm.LVThread {
 							LVAuto.LVForm.Command.City.UpdateAllBuilding(citypos);
 
 
-							cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityID);
+							cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityID);
 							buildcount = 0;
 							arBuilding = (ArrayList)buildDown[arcityid[i]];
 

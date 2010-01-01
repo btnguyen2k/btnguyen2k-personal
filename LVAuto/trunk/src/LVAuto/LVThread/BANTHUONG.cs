@@ -89,7 +89,7 @@ namespace LVAuto.LVForm.LVThread {
                     string fail = "";
                     LVAuto.LVForm.Command.OPT.BanThuongAll(ref ok, ref fail);
                     if (ShowMessage) MessageBox.Show("Đã ban thưởng thành công cho: " + (ok == "" ? "Chả ai được ban thưởng" : ok) + "\r\n"
-                        + "Mấy ông sau đây không chịu nhận: " + (fail == "" ? "Chả có ông nào không lấy" : fail), LVAuto.LVForm.Web.LVWeb.lvusername + " ban thưởng");
+                        + "Mấy ông sau đây không chịu nhận: " + (fail == "" ? "Chả có ông nào không lấy" : fail), LVAuto.LVWeb.LVClient.lvusername + " ban thưởng");
                 }
                 catch (Exception ex)
                 {
