@@ -138,6 +138,7 @@ namespace LVAuto.LVForm
 		{
 			try
 			{
+                this.AppNotifyIcon.Text = this.strVersion;
                 LVFRMMAIN = this;
 
                 // Disable all tabs, except for the "login" one
@@ -152,33 +153,7 @@ namespace LVAuto.LVForm
 			    //lblmainmsg.Text = "";
 			    picAttach.Visible = false;
 
-                const string configFile = "ServerList.xml";
-                try
-                {
-                    const string pathServer = "/LVAuto/server";
-
-                    //load server list
-                    System.Xml.XmlDocument xmlDoc = new System.Xml.XmlDocument();
-                    xmlDoc.Load(configFile);
-
-                    System.Xml.XmlNodeList nodes = xmlDoc.SelectNodes(pathServer);
-                    System.Collections.ArrayList servers = new System.Collections.ArrayList();
-                    for (int i = 0; i < nodes.Count; i++)
-                    {
-                        servers.Add(nodes[i].InnerText);
-                    }
-                    if (servers.Count > 0)
-                    {
-                        dropdownServerList.Items.Clear();
-                        dropdownServerList.Items.AddRange(servers.ToArray());
-                        dropdownServerList.SelectedIndex = 0;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    LVUtils.MsgBoxUtils.ErrorBox("Không load được danh sách server từ file ["+configFile+"]:\r\n"+ex.Message);
-                    this.Close();
-                }
+                LVLoadServerList();
 
                 #if (DEBUG)
                     strVersion += " (Debug)";
@@ -208,6 +183,7 @@ namespace LVAuto.LVForm
                 #endif
 
                 this.Text = strVersion;
+                this.AppNotifyIcon.Text = this.strVersion;
                 txtUsername.Focus();
 			}
 			catch (Exception ex)
@@ -216,100 +192,6 @@ namespace LVAuto.LVForm
                 this.Close();
 			}
         }
-
-		public void SetAllMainTabEnable(bool enable)
-		{
-			for (int i = 0; i < tabMainTab.TabPages.Count; i++)
-			{
-				tabMainTab.TabPages[i].Enabled = enable;
-			}
-		}
-
-		public bool FirstLogin_()
-		{
-			notifyIcon1.Text = "Đang load dữ liệu, vui lòng chờ. Máy có thể đứng đó.";
-			
-			
-			if (LVAuto.LVWeb.LVClient.LoginHtml != null)
-			{
-				while (true)
-				{
-					try
-					{
-						// enable tabage
-						for (int i = 1; i < tabMainTab.TabPages.Count; i++)
-						{
-							tabMainTab.TabPages[i].Enabled = true;
-						}
-
-						Hashtable lastlogindata = LVWeb.ParseHeader.GetDataFromForm(LVAuto.LVWeb.LVClient.LoginHtml);
-						Hashtable lastlogin = LVWeb.LVClient.LoginPartner(lastlogindata["uid"].ToString(), lastlogindata["uname"].ToString(), lastlogindata["ulgtime"].ToString(), lastlogindata["pid"].ToString(), lastlogindata["sign"].ToString());
-						LVWeb.LVClient.CurrentLoginInfo = new LVWeb.LoginInfo((string[])lastlogin["Set-Cookie"]);
-
-						//Command.City.GetAllSimpleCity();
-						
-						//Command.City.UpdateAllSimpleCity();
-						//Command.City.GetAllCity();
-
-
-						chkAutoAll.Enabled = true;
-						IsLogin = true;
-						notifyIcon1.Text = strVersion;//"LVAuto";
-
-						// bao bi tan cong, hungtv rem
-						LVCITYTASK = new LVAuto.LVForm.LVThread.CITYTASK();
-						LVCITYTASK.Auto();
-
-						LVAUTOTASK = new LVAuto.LVForm.LVThread.AUTOTASK(lblLoadingResMessage);
-						LVAUTOTASK.Auto();
-
-						LVBUILD = new LVAuto.LVForm.LVThread.BUILD(lblBUILDMESSAGE);
-						
-						LVDEL = new LVAuto.LVForm.LVThread.DEL(lblDELMESSAGE);
-						LVSELL = new LVAuto.LVForm.LVThread.SELL(lblSELLMESSAGE);
-						LVBUYRES = new LVAuto.LVForm.LVThread.BUYRES(lblBUYRESMESSAGE);
-						LVTHAOPHAT = new LVAuto.LVForm.LVThread.THAOPHAT(lblTHAOPHATMESSAGE);
-						LVUPGRADE = new LVAuto.LVForm.LVThread.UPGRADE(lblUPGEADEMESSAGE);
-						LVANUI = new LVAuto.LVForm.LVThread.ANUI(lblANUIMESSAGE);
-						LVVANCHUYEN = new LVAuto.LVForm.LVThread.VANCHUYEN(lblVANCHUYENMESSAGE);
-						LVMOVEDOANHTRAI = new LVAuto.LVForm.LVThread.MOVEDOANHTRAI(lblMOVEDOANHTRAI);
-						LVSIKHI = new LVAuto.LVForm.LVThread.SIKHI(lblSIKHIMESSAGE);
-						LVBUYWEPON = new LVAuto.LVForm.LVThread.BUYWEPON(lblBUYWEPONMESSAGE);
-						
-						LVBIENCHE = new LVAuto.LVForm.LVThread.BIENCHE(lblBIENCHEMESSAGE);
-						LVDAOMO = new LVAuto.LVForm.LVThread.PHAIQUANVANDAOMO(lblDIEUPHAIMESSAGE);
-						LVLOIDAI = new LVAuto.LVForm.LVThread.LOIDAI(lblDIEUPHAIMESSAGE);
-
-						LVAUTOVCVK = new LVAuto.LVForm.LVThread.AUTOVANCHUYENVK(lblAUTOVCVKMESSAGE);
-						//LVCITYTASK.IsRun = true;
-						LVAUTOBINHMAN = new LVAuto.LVForm.LVThread.AUTOBINHMAN(lblAUTOBINHMANMESSAGE);
-						LVAUTOCALLMAN = new LVAuto.LVForm.LVThread.AUTOCALLMAN(lblAUTOCALLMANMESSAGE);
-
-						
-
-						LVAuto.LVWeb.LVClient.debug = false;
-						LVAuto.LVWeb.LVClient.firstlogin = false;
-
-						tabLogin.Select();
-						tabLogin.Focus();
-
-						Thread.Sleep(5000);
-						break;
-					}
-					catch (Exception ex)
-					{
-						//MessageBox.Show(ex.ToString());
-						return false;
-					}
-				} // end 	while (true)
-				return true;
-			}
-			else
-			{
-				Application.Exit();
-			}
-			return false;
-		}
 
 		private void tabControl1_Selected(object sender, TabControlEventArgs e)
 		{
@@ -1564,7 +1446,7 @@ namespace LVAuto.LVForm
         private void cmdReload_Click(object sender, EventArgs e) {
             lock (LVAuto.LVWeb.LVClient.islock) {
                 //FirstLogin();
-				FirstLogin_();
+				LVLoadServerData();
                 MessageBox.Show("Đã nạp lại thông tin thành công. Bạn tự load lại cấu hình nhé.");
             }
         }
@@ -4050,7 +3932,7 @@ namespace LVAuto.LVForm
 				{
 					string message = "Hi " + LVAuto.LVWeb.LVClient.lvusername + "!!!\r\n" + g;
 					string title = "Hi " + LVAuto.LVWeb.LVClient.lvusername + "!!!";
-					notifyIcon1.ShowBalloonTip(3000, "", message, ToolTipIcon.None);
+					AppNotifyIcon.ShowBalloonTip(3000, "", message, ToolTipIcon.None);
 				}
 			}			
 
