@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LVAuto.LVForm.Properties {
+namespace LVAuto.Properties {
     using System;
     
     
@@ -22,8 +22,7 @@ namespace LVAuto.LVForm.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "2.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
-        
+    public class Resources {
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
@@ -36,7 +35,7 @@ namespace LVAuto.LVForm.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LVAuto.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +50,7 @@ namespace LVAuto.LVForm.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -60,63 +59,63 @@ namespace LVAuto.LVForm.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap BackGround1 {
+        public static System.Drawing.Bitmap BackGround1 {
             get {
                 object obj = ResourceManager.GetObject("BackGround1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap bitancong {
+        public static System.Drawing.Bitmap bitancong {
             get {
                 object obj = ResourceManager.GetObject("bitancong", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap Dangbitancong {
+        public static System.Drawing.Bitmap Dangbitancong {
             get {
                 object obj = ResourceManager.GetObject("Dangbitancong", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap ImageLoading {
+        public static System.Drawing.Bitmap ImageLoading {
             get {
                 object obj = ResourceManager.GetObject("ImageLoading", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Icon LVIcon128 {
+        public static System.Drawing.Icon LVIcon128 {
             get {
                 object obj = ResourceManager.GetObject("LVIcon128", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap NoAttach {
+        public static System.Drawing.Bitmap NoAttach {
             get {
                 object obj = ResourceManager.GetObject("NoAttach", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap VerifyCodexxx {
+        public static System.Drawing.Bitmap VerifyCodexxx {
             get {
                 object obj = ResourceManager.GetObject("VerifyCodexxx", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap VerifyCodexxx1 {
+        public static System.Drawing.Bitmap VerifyCodexxx1 {
             get {
                 object obj = ResourceManager.GetObject("VerifyCodexxx1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap waiting {
+        public static System.Drawing.Bitmap waiting {
             get {
                 object obj = ResourceManager.GetObject("waiting", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
