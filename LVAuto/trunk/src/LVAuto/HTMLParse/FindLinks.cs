@@ -5,7 +5,7 @@ using System.Net;
 using System.IO;
 
 
-namespace LVAuto.HTMLParse
+namespace LVAuto.LVForm.HTMLParse
 {
   /// <summary>
   /// FindLinks is a class that will test the HTML parser.

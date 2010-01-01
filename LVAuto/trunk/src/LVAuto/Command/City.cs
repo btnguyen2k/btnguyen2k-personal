@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Text;
 
-namespace LVAuto.Command {
+namespace LVAuto.LVForm.Command {
     public class City 
 	{
 		private static Object CityisLock = new Object();
@@ -12,12 +12,12 @@ namespace LVAuto.Command {
 
         public static Hashtable Execute(int command,string parameter,bool wait)
 		{
-            string data = parameter + "&num=" + LVAuto.Web.LVWeb.idimage;
+            string data = parameter + "&num=" + LVAuto.LVForm.Web.LVWeb.idimage;
 
 			data = "";
 
-            string header = "POST http://s" + LVAuto.Web.LVWeb.Server + ".linhvuong.zooz.vn/GateWay/City.ashx?id=" + command + "&0.05861361440438828  HTTP/1.1\n";
-            header += "Host: s" + LVAuto.Web.LVWeb.Server + ".linhvuong.zooz.vn\n";
+            string header = "POST http://s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn/GateWay/City.ashx?id=" + command + "&0.05861361440438828  HTTP/1.1\n";
+            header += "Host: s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn\n";
             header += "User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.5) Gecko/2008120122 Firefox/3.0.5\n";
             header += "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n";
             header += "Accept-Language: en-us,en;q=0.5\n";
@@ -27,7 +27,7 @@ namespace LVAuto.Command {
             header += "Connection: keep-alive\n";
 			header += "X-Requested-With: XMLHttpRequest\n";
 			header += "X-Prototype-Version: 1.5.0\n";
-			header += "Referer: http://s" + LVAuto.Web.LVWeb.Server + ".linhvuong.zooz.vn/city?login\n";
+			header += "Referer: http://s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn/city?login\n";
             header += "Content-Type: application/x-www-form-urlencoded\n";
             header += "Content-Length: " + (data.Length) + "\n";
 			header += "Pragma: no-cache\n";
@@ -35,7 +35,7 @@ namespace LVAuto.Command {
 			header += "Cookie: " + Web.LVWeb.CurrentLoginInfo.MakeCookiesString() + "\n";
 			header += "\n";
 			//Hashtable response = Web.LVWeb.SendAndReceive(header + data, "s" + LVAuto.Web.LVWeb.Server + ".linhvuong.zooz.vn", 80, wait);
-			Hashtable response = Web.LVWeb.SendAndReceive(header + data, "s" + LVAuto.Web.LVWeb.Server + ".linhvuong.zooz.vn", 80, wait);
+			Hashtable response = Web.LVWeb.SendAndReceive(header + data, "s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn", 80, wait);
             if (wait) 
 			{
 
@@ -48,9 +48,9 @@ namespace LVAuto.Command {
             }
         }
         public static Hashtable Execute(int command, string parameter, bool wait, string cookies) {
-            string data = parameter + "&num=" + LVAuto.Web.LVWeb.idimage;
-            string header = "POST http://s" + LVAuto.Web.LVWeb.Server + ".linhvuong.zooz.vn/GateWay/City.ashx?id=" + command + "&0.05861361440438828 HTTP/1.1\n";
-            header += "Host: s" + LVAuto.Web.LVWeb.Server + ".linhvuong.zooz.vn\n";
+            string data = parameter + "&num=" + LVAuto.LVForm.Web.LVWeb.idimage;
+            string header = "POST http://s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn/GateWay/City.ashx?id=" + command + "&0.05861361440438828 HTTP/1.1\n";
+            header += "Host: s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn\n";
             header += "User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.7) Gecko/2009021910 Firefox/3.0.7\n";
             header += "Accept: text/javascript, text/html, application/xml, text/xml, */*\n";
             header += "Accept-Language: en-us,en;q=0.5\n";
@@ -58,14 +58,14 @@ namespace LVAuto.Command {
             header += "Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7\n";
             header += "Keep-Alive: 300\n";
             header += "Connection: keep-alive\n";
-            header += "Referer: http://s" + LVAuto.Web.LVWeb.Server + ".linhvuong.zooz.vn/city\n";
+            header += "Referer: http://s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn/city\n";
             header += "X-Requested-With: XMLHttpRequest\n";
             header += "X-Prototype-Version: 1.5.0\n";
             header += "Cookie: " + cookies + "\n";
             header += "Content-Type: application/x-www-form-urlencoded; charset=UTF-8\n";
             header += "Content-Length: " + (data.Length) + "\n";
             header += "\n";
-            Hashtable response = Web.LVWeb.SendAndReceive(header + data, "s" + LVAuto.Web.LVWeb.Server + ".linhvuong.zooz.vn", 80, wait);
+            Hashtable response = Web.LVWeb.SendAndReceive(header + data, "s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn", 80, wait);
             if (wait) {
                 try {
                     return (Hashtable)JSON.JSON.JsonDecode(response["DATA"].ToString());
@@ -176,7 +176,7 @@ namespace LVAuto.Command {
 					ArrayList city = (ArrayList)infos[i];
 					if (id == int.Parse(city[1].ToString()))
 					{
-						return new LVAuto.Command.CityObj.City(int.Parse(city[1].ToString()), city[2].ToString(), int.Parse(city[4].ToString()),
+						return new LVAuto.LVForm.Command.CityObj.City(int.Parse(city[1].ToString()), city[2].ToString(), int.Parse(city[4].ToString()),
                                                            int.Parse(city[5].ToString()), int.Parse(city[7].ToString()), int.Parse(city[6].ToString()));
 					}
 				}
@@ -202,7 +202,7 @@ namespace LVAuto.Command {
             for (int i = 0; i < infos.Count; i++) {
                 ArrayList city = (ArrayList)infos[i];
                 if (id == int.Parse(city[1].ToString())) {
-                    return new LVAuto.Command.CityObj.City(int.Parse(city[1].ToString()), city[2].ToString(), int.Parse(city[4].ToString()),
+                    return new LVAuto.LVForm.Command.CityObj.City(int.Parse(city[1].ToString()), city[2].ToString(), int.Parse(city[4].ToString()),
                                                                             int.Parse(city[5].ToString()), int.Parse(city[7].ToString()));
                 }
             }
@@ -272,7 +272,7 @@ namespace LVAuto.Command {
 					ArrayList infosbuilding = (ArrayList)temp["infos"];
 					//Command.CityObj.City.AllCity[citypos].AllBuilding = new LVAuto.Command.CityObj.Building[infosbuilding.Count];
 
-					LVAuto.Command.CityObj.Building[] arNewBuilding = new LVAuto.Command.CityObj.Building[infosbuilding.Count];
+					LVAuto.LVForm.Command.CityObj.Building[] arNewBuilding = new LVAuto.LVForm.Command.CityObj.Building[infosbuilding.Count];
 
 					ArrayList building;
 					for (int j = 0; j < infosbuilding.Count; j++)
@@ -280,7 +280,7 @@ namespace LVAuto.Command {
 						//System.Windows.Forms.Application.DoEvents();
 						building = (ArrayList)infosbuilding[j];
 						//Command.CityObj.City.AllCity[citypos].AllBuilding[j] = new LVAuto.Command.CityObj.Building(int.Parse(building[0].ToString()), int.Parse(building[1].ToString()), building[2].ToString(), int.Parse(building[3].ToString()));
-						arNewBuilding[j] = new LVAuto.Command.CityObj.Building(int.Parse(building[0].ToString()), int.Parse(building[1].ToString()), building[2].ToString(), int.Parse(building[3].ToString()));
+						arNewBuilding[j] = new LVAuto.LVForm.Command.CityObj.Building(int.Parse(building[0].ToString()), int.Parse(building[1].ToString()), building[2].ToString(), int.Parse(building[3].ToString()));
 					}
 
 					//Array.Sort(Command.CityObj.City.AllCity[citypos].AllBuilding);
@@ -302,7 +302,7 @@ namespace LVAuto.Command {
 			
             ArrayList infosbuilding = (ArrayList)temp["infos"];
             //Command.CityObj.City.AllCity[citypos].AllBuilding = new LVAuto.Command.CityObj.Building[infosbuilding.Count];
-			LVAuto.Command.CityObj.Building[] newBuilding = new LVAuto.Command.CityObj.Building[infosbuilding.Count];
+			LVAuto.LVForm.Command.CityObj.Building[] newBuilding = new LVAuto.LVForm.Command.CityObj.Building[infosbuilding.Count];
 
             for (int j = 0; j < infosbuilding.Count; j++) 
 			{
@@ -310,7 +310,7 @@ namespace LVAuto.Command {
                 ArrayList building = (ArrayList)infosbuilding[j];
 				
                 //Command.CityObj.City.AllCity[citypos].AllBuilding[j] = new LVAuto.Command.CityObj.Building(int.Parse(building[0].ToString()), int.Parse(building[1].ToString()), building[2].ToString(), int.Parse(building[3].ToString()));
-				newBuilding[j] = new LVAuto.Command.CityObj.Building(int.Parse(building[0].ToString()), int.Parse(building[1].ToString()), building[2].ToString(), int.Parse(building[3].ToString()));
+				newBuilding[j] = new LVAuto.LVForm.Command.CityObj.Building(int.Parse(building[0].ToString()), int.Parse(building[1].ToString()), building[2].ToString(), int.Parse(building[3].ToString()));
  
 			}
             //Array.Sort(Command.CityObj.City.AllCity[citypos].AllBuilding);
@@ -342,14 +342,14 @@ namespace LVAuto.Command {
 
                     ArrayList infosbuilding = (ArrayList)temp["infos"];
 
-					Command.CityObj.Building[] newBuilding = new LVAuto.Command.CityObj.Building[infosbuilding.Count];
+					Command.CityObj.Building[] newBuilding = new LVAuto.LVForm.Command.CityObj.Building[infosbuilding.Count];
 
 					Command.CityObj.Building oldBuilding;
 					ArrayList building;
 					for (int i = 0; i < infosbuilding.Count; i++)
 					{
 						building = (ArrayList)infosbuilding[i];
-						newBuilding[i] = new LVAuto.Command.CityObj.Building(int.Parse(building[0].ToString()), int.Parse(building[1].ToString()), building[2].ToString(), int.Parse(building[3].ToString()));
+						newBuilding[i] = new LVAuto.LVForm.Command.CityObj.Building(int.Parse(building[0].ToString()), int.Parse(building[1].ToString()), building[2].ToString(), int.Parse(building[3].ToString()));
 						if (Command.CityObj.City.AllCity[citypos].AllBuilding != null)
 						{
 							// tim xem da co chua
@@ -386,14 +386,14 @@ namespace LVAuto.Command {
             //]}
             Hashtable result = Execute(7, "", true);
             ArrayList infos = (ArrayList)result["infos"];
-            Command.CityObj.City.AllCity = new LVAuto.Command.CityObj.City[infos.Count];
+            Command.CityObj.City.AllCity = new LVAuto.LVForm.Command.CityObj.City[infos.Count];
 
 
             for (int i = 0; i < infos.Count; i++)
             {
                 ArrayList city = (ArrayList)infos[i];
                 // public City(int id, string name, int x, int y)
-                Command.CityObj.City.AllCity[i] = new LVAuto.Command.CityObj.City(int.Parse(city[1].ToString()), city[2].ToString(), 
+                Command.CityObj.City.AllCity[i] = new LVAuto.LVForm.Command.CityObj.City(int.Parse(city[1].ToString()), city[2].ToString(), 
                     int.Parse(city[4].ToString()), int.Parse(city[5].ToString()), int.Parse(city[7].ToString()));
                 
                 
@@ -445,7 +445,7 @@ namespace LVAuto.Command {
             ArrayList infos = (ArrayList)result["infos"];
             //Command.CityObj.City.AllCity = new LVAuto.Command.CityObj.City[infos.Count];
 
-            Command.CityObj.City[] newcity = new LVAuto.Command.CityObj.City[infos.Count];
+            Command.CityObj.City[] newcity = new LVAuto.LVForm.Command.CityObj.City[infos.Count];
 
             ArrayList city;
             for (int i = 0; i < infos.Count; i++)
@@ -454,7 +454,7 @@ namespace LVAuto.Command {
 
                 city = (ArrayList)infos[i];
                 // public City(int id, string name, int x, int y)
-                newcity[i] = new LVAuto.Command.CityObj.City(int.Parse(city[1].ToString()), city[2].ToString(), int.Parse(city[4].ToString()), 
+                newcity[i] = new LVAuto.LVForm.Command.CityObj.City(int.Parse(city[1].ToString()), city[2].ToString(), int.Parse(city[4].ToString()), 
                                                                 int.Parse(city[5].ToString()), int.Parse(city[7].ToString()), int.Parse(city[6].ToString()));
                 
 
@@ -485,7 +485,7 @@ namespace LVAuto.Command {
 
 				ArrayList infos = (ArrayList)result["infos"];
 
-				Command.CityObj.City[] newcity = new LVAuto.Command.CityObj.City[infos.Count];
+				Command.CityObj.City[] newcity = new LVAuto.LVForm.Command.CityObj.City[infos.Count];
 				Command.CityObj.City oldcity;
 
 				ArrayList city;
@@ -496,13 +496,13 @@ namespace LVAuto.Command {
 
 					city = (ArrayList)infos[i];
 					// public City(int id, string name, int x, int y)
-					newcity[i] = new LVAuto.Command.CityObj.City(int.Parse(city[1].ToString()), city[2].ToString(), int.Parse(city[4].ToString()), 
+					newcity[i] = new LVAuto.LVForm.Command.CityObj.City(int.Parse(city[1].ToString()), city[2].ToString(), int.Parse(city[4].ToString()), 
                         int.Parse(city[5].ToString()), int.Parse(city[7].ToString()), int.Parse(city[6].ToString()));
                     
                     // cap thanh
                     newcity[i].size = int.Parse(city[7].ToString());
 
-                    oldcity = LVAuto.Command.City.GetCityByID(newcity[i].id);
+                    oldcity = LVAuto.LVForm.Command.City.GetCityByID(newcity[i].id);
 
                     if (oldcity != null)
                     {
@@ -541,7 +541,7 @@ namespace LVAuto.Command {
 
 			if (Command.CityObj.City.AllCity == null) return -1;
 			if (Command.CityObj.City.AllCity[citypost].AllBuilding == null)
-				LVAuto.Command.City.UpdateAllBuilding(citypost);
+				LVAuto.LVForm.Command.City.UpdateAllBuilding(citypost);
 
 			for (int i = 0; i < Command.CityObj.City.AllCity[citypost].AllBuilding.Length; i++)
 			{
@@ -577,22 +577,22 @@ namespace LVAuto.Command {
 			//---
             Hashtable temp = Execute(5, "", true);
             ArrayList infosbuilding = (ArrayList)temp["infos"];
-            Command.CityObj.City.AllCity[citypos].AllBuilding = new LVAuto.Command.CityObj.Building[infosbuilding.Count];
+            Command.CityObj.City.AllCity[citypos].AllBuilding = new LVAuto.LVForm.Command.CityObj.Building[infosbuilding.Count];
             for (int j = 0; j < infosbuilding.Count; j++) {
                 ArrayList building = (ArrayList)infosbuilding[j];
-                Command.CityObj.City.AllCity[citypos].AllBuilding[j] = new LVAuto.Command.CityObj.Building(int.Parse(building[0].ToString()), int.Parse(building[1].ToString()), building[2].ToString(), int.Parse(building[3].ToString()));
+                Command.CityObj.City.AllCity[citypos].AllBuilding[j] = new LVAuto.LVForm.Command.CityObj.Building(int.Parse(building[0].ToString()), int.Parse(building[1].ToString()), building[2].ToString(), int.Parse(building[3].ToString()));
             }
             Array.Sort(Command.CityObj.City.AllCity[citypos].AllBuilding);
         }
        
         public static void SwitchCitySlow(int idcity) {
             //Execute(50, "tid=" + idcity, true);
-            LVAuto.Web.LVWeb.CurrentLoginInfo.cid = "" + idcity;
+            LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.cid = "" + idcity;
         }
         public static void SwitchCity(int idcity) {
             //Execute(50, "tid=" + idcity);
-            lock (LVAuto.Web.LVWeb.CurrentLoginInfo.cid) {
-                LVAuto.Web.LVWeb.CurrentLoginInfo.cid = ""+idcity;
+            lock (LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.cid) {
+                LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.cid = ""+idcity;
             }
         }
         public static Hashtable GetCitySimpleInfo() {
@@ -604,30 +604,30 @@ namespace LVAuto.Command {
         }
 
 		// hungtv add 
-		public static LVAuto.Command.CityObj.CityTask GetCityTaskByCityID(int cityid)
+		public static LVAuto.LVForm.Command.CityObj.CityTask GetCityTaskByCityID(int cityid)
 		{
 			//int cityid = LVAuto.Command.CityObj.City.AllCity[citypos].id;
 				try
 				{
-					LVAuto.Command.City.SwitchCitySlow(cityid);
-					Hashtable task = Command.City.GetCityTask(LVAuto.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityid));
+					LVAuto.LVForm.Command.City.SwitchCitySlow(cityid);
+					Hashtable task = Command.City.GetCityTask(LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityid));
 					//Hashtable attack = Command.Common.GetCityAttack(cty.id,LVAuto.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cty.id));
 					int countbuild = ((ArrayList)((ArrayList)((ArrayList)task["list"])[0])[4]).Count;
 					int tech = int.Parse(((ArrayList)task["tech"])[2].ToString());
 					int task1 = int.Parse(((ArrayList)task["task"])[3].ToString());
 					//int mcb = int.Parse(((ArrayList)((ArrayList)((ArrayList)attack["infos"])[0])[2])[1].ToString());
-					return (new LVAuto.Command.CityObj.CityTask(countbuild, tech, task1, 0));
+					return (new LVAuto.LVForm.Command.CityObj.CityTask(countbuild, tech, task1, 0));
 				}
 				catch (Exception ex)
 				{
-					return ( new LVAuto.Command.CityObj.CityTask(0, 0, 0, 0));
+					return ( new LVAuto.LVForm.Command.CityObj.CityTask(0, 0, 0, 0));
 				}			
 		}
 
 			// hungtv add 
-		public static LVAuto.Command.CityObj.CityTask GetCityTaskByCityPos(int citypos)
+		public static LVAuto.LVForm.Command.CityObj.CityTask GetCityTaskByCityPos(int citypos)
 		{
-			return GetCityTaskByCityID(LVAuto.Command.CityObj.City.AllCity[citypos].id);
+			return GetCityTaskByCityID(LVAuto.LVForm.Command.CityObj.City.AllCity[citypos].id);
 		}
         
     }

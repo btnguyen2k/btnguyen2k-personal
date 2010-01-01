@@ -4,7 +4,7 @@ using System.Collections;
 using System.Globalization;
 using System.Text;
 
-namespace LVAuto.JSON {
+namespace LVAuto.LVForm.JSON {
     /// <summary>
     /// This class encodes and decodes JSON strings.
     /// Spec. details, see http://www.json.org/

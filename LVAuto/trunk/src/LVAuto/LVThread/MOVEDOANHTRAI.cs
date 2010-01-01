@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using System.Data;
 using System.Collections;
 
-namespace LVAuto.LVThread {
+namespace LVAuto.LVForm.LVThread {
     public class MOVEDOANHTRAI {
         delegate void SetTextCallback(string text);
         public Thread InThread; 
@@ -154,7 +154,7 @@ namespace LVAuto.LVThread {
 				{
 					if (TraiDiChuyen == null || TraiDiChuyen.Count <= 0)
 					{
-						frmmain.LVFRMMAIN.lblMOVEDOANHTRAI.Text = "chẳng có cái trại nào cần chuyển cả";
+						Main.LVFRMMAIN.lblMOVEDOANHTRAI.Text = "chẳng có cái trại nào cần chuyển cả";
 						return;
 					}
 					
@@ -171,11 +171,11 @@ namespace LVAuto.LVThread {
 						SetText("Đang chạy " + traidichuyenobj.TraiName + "(" + i + "/" + TraiDiChuyen.Count  + ")");
 						try
 						{
-							cookies = LVAuto.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(traidichuyenobj.TraiID);
-							LVAuto.Command.City.SwitchCitySlow(traidichuyenobj.TraiID);
+							cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(traidichuyenobj.TraiID);
+							LVAuto.LVForm.Command.City.SwitchCitySlow(traidichuyenobj.TraiID);
 
 							// lay thong tin trong hang cho
-							hsTemp = LVAuto.Command.Common.Execute(80, "tid=" + traidichuyenobj.TraiID, true, cookies);
+							hsTemp = LVAuto.LVForm.Command.Common.Execute(80, "tid=" + traidichuyenobj.TraiID, true, cookies);
 							if (hsTemp == null && int.Parse(hsTemp["ret"].ToString()) != 0) continue;	 // bi loi gi do
 
 							if (long.Parse(hsTemp["plus_left"].ToString()) > 0) maxsteps = 6;
@@ -189,7 +189,7 @@ namespace LVAuto.LVThread {
 								int mapID = int.Parse(runningstep[runningstep.Count - 1].ToString());
 								int x = Common.common.MapIDtoX(mapID);
 								int y = Common.common.MapIDtoY(mapID);
-								thisdt = new LVAuto.Command.CityObj.City(traidichuyenobj.TraiID, "", x, y, 1);
+								thisdt = new LVAuto.LVForm.Command.CityObj.City(traidichuyenobj.TraiID, "", x, y, 1);
 							}
 							else
 							{
@@ -278,11 +278,11 @@ namespace LVAuto.LVThread {
 		{
 			int traiID = ((Command.CommonObj.DoiTraiObj)TraiDiChuyen[listpost]).TraiID;
 
-			LVAuto.Command.CommonObj.doitrai vc;
+			LVAuto.LVForm.Command.CommonObj.doitrai vc;
 
-			foreach (object obj in frmmain.LVFRMMAIN.pnDoanhTrai.Controls)
+			foreach (object obj in Main.LVFRMMAIN.pnDoanhTrai.Controls)
 			{
-				vc = (LVAuto.Command.CommonObj.doitrai)obj;
+				vc = (LVAuto.LVForm.Command.CommonObj.doitrai)obj;
 				if (vc.id == traiID)
 				{
 					vc.chkOK.Checked = false;

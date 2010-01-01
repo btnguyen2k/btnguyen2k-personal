@@ -33,7 +33,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
-namespace LVAuto.Connection.ProxySocket
+namespace LVAuto.LVForm.Connection.ProxySocket
 {
 	/// <summary>
 	/// Implements the SOCKS4[A] protocol.

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Collections;
 
-namespace LVAuto.HTMLParse
+namespace LVAuto.LVForm.HTMLParse
 {
   /// <summary>
   /// The AttributeList class is used to store list of

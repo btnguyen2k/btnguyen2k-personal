@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace LVAuto.Command.CommonObj
+namespace LVAuto.LVForm.Command.CommonObj
 {
-    using LVAuto.Command.CityObj;
-    using LVAuto.Common;
+    using LVAuto.LVForm.Command.CityObj;
+    using LVAuto.LVForm.Common;
     using System;
 
 	public class BinhManObj :  Command.CityObj.MilitaryGeneral
@@ -74,7 +74,7 @@ namespace LVAuto.Command.CommonObj
 				str = str + ", không nâng sk";
             }
 
-		   str += ", mưu kế " + LVAuto.Common.WarFunc.GetMuuKeTrongChienTruongName(this.MuuKeTrongChienTranID);
+		   str += ", mưu kế " + LVAuto.LVForm.Common.WarFunc.GetMuuKeTrongChienTruongName(this.MuuKeTrongChienTranID);
 		   str += ", qsố min " +  this.SoLuongQuanMinToGo + ", sk min " +  this.SiKhiMinToGo +  ", max ô đi " + this.MaxOToGo ;
 		   str += ". Bchế "+ this.Military.Bobinh[0]+ " bộ, "+ this.Military.KyBinh[0]+ " kỵ, "+ this.Military.CungThu[0]+ " cung, "+ this.Military.Xe[0]+ " xe, " ;
            str += ". Quân giới: bộ " + Wepons.GetWeponName(this.Military.Bobinh[1])+ "-" + Wepons.GetWeponName(this.Military.Bobinh[2]) + "-" + Wepons.GetWeponName(this.Military.Bobinh[3]);

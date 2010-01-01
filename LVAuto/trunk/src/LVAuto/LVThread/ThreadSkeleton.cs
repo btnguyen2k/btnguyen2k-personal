@@ -5,7 +5,7 @@ using System.Threading;
 using System.Windows.Forms;
 
 
-namespace LVAuto.LVThread
+namespace LVAuto.LVForm.LVThread
 {
 	public class ThreadSkeleton
 	{

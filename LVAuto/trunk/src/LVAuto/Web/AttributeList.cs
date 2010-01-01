@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Text;
 
-namespace LVAuto.Web {
+namespace LVAuto.LVForm.Web {
     /// <summary>
     /// The AttributeList class is used to store list of
     /// Attribute classes.

@@ -26,7 +26,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace LVAuto.Connection.StarksoftProxy
+namespace LVAuto.LVForm.Connection.StarksoftProxy
 {
 
     /// <summary>

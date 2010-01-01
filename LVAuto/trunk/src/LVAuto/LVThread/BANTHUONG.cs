@@ -5,7 +5,7 @@ using System.Collections;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace LVAuto.LVThread {
+namespace LVAuto.LVForm.LVThread {
     class BANTHUONG {
         public Thread InThread; public string threadID;
         public bool IsRun = false;
@@ -87,9 +87,9 @@ namespace LVAuto.LVThread {
                 {
                     string ok = "";
                     string fail = "";
-                    LVAuto.Command.OPT.BanThuongAll(ref ok, ref fail);
+                    LVAuto.LVForm.Command.OPT.BanThuongAll(ref ok, ref fail);
                     if (ShowMessage) MessageBox.Show("Đã ban thưởng thành công cho: " + (ok == "" ? "Chả ai được ban thưởng" : ok) + "\r\n"
-                        + "Mấy ông sau đây không chịu nhận: " + (fail == "" ? "Chả có ông nào không lấy" : fail), LVAuto.Web.LVWeb.lvusername + " ban thưởng");
+                        + "Mấy ông sau đây không chịu nhận: " + (fail == "" ? "Chả có ông nào không lấy" : fail), LVAuto.LVForm.Web.LVWeb.lvusername + " ban thưởng");
                 }
                 catch (Exception ex)
                 {

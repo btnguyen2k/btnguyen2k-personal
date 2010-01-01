@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Collections;
 
-namespace LVAuto.Command.CityObj
+namespace LVAuto.LVForm.Command.CityObj
 {
 	public class General : IComparable 
 	{
@@ -313,10 +313,10 @@ namespace LVAuto.Command.CityObj
                     genIDtmp = callmanobj.GeneralId;
 
 					cityid = callmanobj.CityID;
-                    LVAuto.Command.CityObj.City cityByID = LVAuto.Command.City.GetCityByID(cityid);
+                    LVAuto.LVForm.Command.CityObj.City cityByID = LVAuto.LVForm.Command.City.GetCityByID(cityid);
 
-					string cookies = LVAuto.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityid);
-					LVAuto.Command.City.SwitchCitySlow(cityid);
+					string cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityid);
+					LVAuto.LVForm.Command.City.SwitchCitySlow(cityid);
 
 
 
@@ -334,7 +334,7 @@ namespace LVAuto.Command.CityObj
 					else
 						para = "gid=19&pid=-1&tab=1&tid=" + cityid;
 
-					Hashtable result1 = LVAuto.Command.Build.Execute(2, para, true, cookies);
+					Hashtable result1 = LVAuto.LVForm.Command.Build.Execute(2, para, true, cookies);
 					if (result1 != null && result1["ret"].ToString() == "0")
 					{
 						ArrayList battle = (ArrayList)result1["battle"];
@@ -345,7 +345,7 @@ namespace LVAuto.Command.CityObj
 
 							// lay thong tin chien truong
 							para = "lBattleID=" + battleid;
-							result = LVAuto.Command.Common.Execute(4, para, true, cookies);
+							result = LVAuto.LVForm.Command.Common.Execute(4, para, true, cookies);
 							if (result != null)
 							{
 								// check xem tướng mình có đang đánh nhau không
@@ -361,7 +361,7 @@ namespace LVAuto.Command.CityObj
 										//SetText("Tướng " + callmanobj.GeneralName + " đang đi...");
 										//LVAuto.LVThread.AUTOFIGHTING.startBattle(0, time, 1, 250, Common.WarFunc.PHUONGTHUCTANCONG.HoaTien );
 										//LVAuto.LVThread.AUTOFIGHTING.startBattle(battleid, 0, Callmanobj.SoTuongMinhDanh1TuongDich, 300, Callmanobj.PhuongThucTanCongID, Callmanobj.PhuongThucChonMucTieuID);
-										LVAuto.LVThread.AUTOFIGHTING.startBattle(battleid, 0, sotuongminhdanh1tuongdich, militaryGeneral);
+										LVAuto.LVForm.LVThread.AUTOFIGHTING.startBattle(battleid, 0, sotuongminhdanh1tuongdich, militaryGeneral);
 										ret = true;
 										break;
 										//return true;
@@ -382,7 +382,7 @@ namespace LVAuto.Command.CityObj
 						para = "tid=" + cityid;
 
 
-					result = LVAuto.Command.Common.Execute(40, para, true, cookies);
+					result = LVAuto.LVForm.Command.Common.Execute(40, para, true, cookies);
 					//result = LVAuto.Command.City.GetCityTask(cookies);
 					if (result != null)
 					{
@@ -421,7 +421,7 @@ namespace LVAuto.Command.CityObj
 
 									//LVAuto.LVThread.AUTOFIGHTING.startBattle(0, time, 1, 250, Common.WarFunc.PHUONGTHUCTANCONG.HoaTien );
 									//LVAuto.LVThread.AUTOFIGHTING.startBattle(battleid, time, Callmanobj.SoTuongMinhDanh1TuongDich, 300, Callmanobj.PhuongThucTanCongID, Callmanobj.PhuongThucChonMucTieuID);
-									LVAuto.LVThread.AUTOFIGHTING.startBattle(battleid, time, sotuongminhdanh1tuongdich, militaryGeneral);
+									LVAuto.LVForm.LVThread.AUTOFIGHTING.startBattle(battleid, time, sotuongminhdanh1tuongdich, militaryGeneral);
 
 								}
 

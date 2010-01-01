@@ -33,7 +33,7 @@ using System.Net;
 using System.Net.Sockets;
 
 // Implements a number of classes to allow Sockets to connect trough a firewall.
-namespace LVAuto.Connection.ProxySocket
+namespace LVAuto.LVForm.Connection.ProxySocket
 {
 	/// <summary>
 	/// Specifies the type of proxy servers that an instance of the ProxySocket class can use.

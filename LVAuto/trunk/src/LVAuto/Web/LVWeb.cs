@@ -10,11 +10,11 @@ using System.Net;
 using System.IO;
 using System.Diagnostics;
 //using LVAuto.Connection.ProxySocket;
-using LVAuto.Connection.StarksoftProxy;
+using LVAuto.LVForm.Connection.StarksoftProxy;
 using System.Net.Sockets;
 
 
-namespace LVAuto.Web 
+namespace LVAuto.LVForm.Web 
 {
     public class LVWeb {
 
@@ -164,26 +164,26 @@ namespace LVAuto.Web
 				IProxyClient proxyClient = null;
 				TcpClient tcpClient = null;
 
-				switch (LVAuto.frmmain.ProxyProtocol)
+				switch (LVAuto.LVForm.Main.ProxyProtocol)
 				{
-					case LVAuto.Connection.StarksoftProxy.ProxyProtocolType.NONE:
+					case LVAuto.LVForm.Connection.StarksoftProxy.ProxyProtocolType.NONE:
 
 						break;
 
-					case LVAuto.Connection.StarksoftProxy.ProxyProtocolType.HTTP:
-						proxyClient = new HttpProxyClient(LVAuto.frmmain.ProxyServer, Int32.Parse(LVAuto.frmmain.ProxyPort));
+					case LVAuto.LVForm.Connection.StarksoftProxy.ProxyProtocolType.HTTP:
+						proxyClient = new HttpProxyClient(LVAuto.LVForm.Main.ProxyServer, Int32.Parse(LVAuto.LVForm.Main.ProxyPort));
 						break;
 
-					case LVAuto.Connection.StarksoftProxy.ProxyProtocolType.SOCKS4:
-						proxyClient = new Socks4ProxyClient(LVAuto.frmmain.ProxyServer, Int32.Parse(LVAuto.frmmain.ProxyPort));
+					case LVAuto.LVForm.Connection.StarksoftProxy.ProxyProtocolType.SOCKS4:
+						proxyClient = new Socks4ProxyClient(LVAuto.LVForm.Main.ProxyServer, Int32.Parse(LVAuto.LVForm.Main.ProxyPort));
 						break;
 
-					case LVAuto.Connection.StarksoftProxy.ProxyProtocolType.SOCKS4a:
-						proxyClient = new Socks4aProxyClient(LVAuto.frmmain.ProxyServer, Int32.Parse(LVAuto.frmmain.ProxyPort),LVAuto.frmmain.ProxyUser);
+					case LVAuto.LVForm.Connection.StarksoftProxy.ProxyProtocolType.SOCKS4a:
+						proxyClient = new Socks4aProxyClient(LVAuto.LVForm.Main.ProxyServer, Int32.Parse(LVAuto.LVForm.Main.ProxyPort),LVAuto.LVForm.Main.ProxyUser);
 						break;
-					case LVAuto.Connection.StarksoftProxy.ProxyProtocolType.SOCKS5:
-						proxyClient = new Socks5ProxyClient(LVAuto.frmmain.ProxyServer, Int32.Parse(LVAuto.frmmain.ProxyPort),
-																LVAuto.frmmain.ProxyUser, LVAuto.frmmain.ProxyPass);
+					case LVAuto.LVForm.Connection.StarksoftProxy.ProxyProtocolType.SOCKS5:
+						proxyClient = new Socks5ProxyClient(LVAuto.LVForm.Main.ProxyServer, Int32.Parse(LVAuto.LVForm.Main.ProxyPort),
+																LVAuto.LVForm.Main.ProxyUser, LVAuto.LVForm.Main.ProxyPass);
 
 						break;
 
@@ -192,7 +192,7 @@ namespace LVAuto.Web
 				try
 				{
 					// test to see if the user would like to connect using the proxy or connect directly 
-					if (LVAuto.frmmain.ProxyProtocol != LVAuto.Connection.StarksoftProxy.ProxyProtocolType.NONE)
+					if (LVAuto.LVForm.Main.ProxyProtocol != LVAuto.LVForm.Connection.StarksoftProxy.ProxyProtocolType.NONE)
 						tcpClient = proxyClient.CreateConnection(server, port);
 					else
 						tcpClient = new TcpClient(server, port);
@@ -447,8 +447,8 @@ namespace LVAuto.Web
 
 							if (result["DATA"].ToString().Contains("{\"ret\":110}") || result["DATA"].ToString().Contains("{\"ret\":110,"))
 							{
-								if (LVAuto.frmImageCheck.imageChecking)
-									LVAuto.frmImageCheck.returnCheckImgValue = -1;
+								if (LVAuto.LVForm.frmImageCheck.imageChecking)
+									LVAuto.LVForm.frmImageCheck.returnCheckImgValue = -1;
 								else
 									processCheckImage();
 
@@ -478,7 +478,7 @@ namespace LVAuto.Web
 					if (result.ContainsKey("Set-Cookie"))
 					{
 						Cookies = ((string[])result["Set-Cookie"])[0];
-						LVAuto.Web.LVWeb.CurrentLoginInfo = new LoginInfo((string[])result["Set-Cookie"]);
+						LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo = new LoginInfo((string[])result["Set-Cookie"]);
 					}
 					//GC.Collect();
 					//File.WriteAllBytes(DateTime.Now.ToFileTimeUtc().ToString(), System.Text.UTF8Encoding.UTF8.GetBytes(result["DATA"].ToString()));
@@ -506,14 +506,14 @@ namespace LVAuto.Web
 
 		private static void SetStatusText(String str)
 		{
-			if (frmmain.LVFRMMAIN.lblNetworkStatus.InvokeRequired)
+			if (Main.LVFRMMAIN.lblNetworkStatus.InvokeRequired)
 			{
 				SetTextCallback d = new SetTextCallback(SetStatusText);
-				frmmain.LVFRMMAIN.lblNetworkStatus.Invoke(d, new object[] { str });
+				Main.LVFRMMAIN.lblNetworkStatus.Invoke(d, new object[] { str });
 			}
 			else
 			{
-				frmmain.LVFRMMAIN.lblNetworkStatus.Text = str;
+				Main.LVFRMMAIN.lblNetworkStatus.Text = str;
 			}
 		}
 
@@ -586,7 +586,7 @@ namespace LVAuto.Web
 					if (result.ContainsKey("Set-Cookie"))
 					{
 						Cookies = ((string[])result["Set-Cookie"])[0];
-						LVAuto.Web.LVWeb.CurrentLoginInfo = new LoginInfo((string[])result["Set-Cookie"]);
+						LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo = new LoginInfo((string[])result["Set-Cookie"]);
 					}
 					//GC.Collect();
 					//File.WriteAllBytes(DateTime.Now.ToFileTimeUtc().ToString(), System.Text.UTF8Encoding.UTF8.GetBytes(result["DATA"].ToString()));
@@ -789,9 +789,9 @@ namespace LVAuto.Web
 		{
             
 			// dang check, thoat luon
-			if (LVAuto.frmImageCheck.imageChecking) return;
+			if (LVAuto.LVForm.frmImageCheck.imageChecking) return;
 
-			if (LVAuto.frmmain._tuxacnhananh == 0) return;		// ko lam gi, thoat luon
+			if (LVAuto.LVForm.Main._tuxacnhananh == 0) return;		// ko lam gi, thoat luon
 			
 			
 			lock (isimagelock)
@@ -801,7 +801,7 @@ namespace LVAuto.Web
 				{
 					try
 					{
-						LVAuto.frmImageCheck.imageChecking = true;
+						LVAuto.LVForm.frmImageCheck.imageChecking = true;
 						idimage = -1;
 
 						hacking = true;
@@ -819,10 +819,10 @@ namespace LVAuto.Web
 						Hashtable img = GetImage();
 						string[] s1 = img["DATA"].ToString().Split(new char[] { '[', ']' });
 
-						LVAuto.frmImageCheck.imgChoseID[0] = int.Parse(s1[2]);
-						LVAuto.frmImageCheck.imgChoseID[1] = int.Parse(s1[4]);
-						LVAuto.frmImageCheck.imgChoseID[2] = int.Parse(s1[6]);
-						LVAuto.frmImageCheck.imgChoseID[3] = int.Parse(s1[8]);
+						LVAuto.LVForm.frmImageCheck.imgChoseID[0] = int.Parse(s1[2]);
+						LVAuto.LVForm.frmImageCheck.imgChoseID[1] = int.Parse(s1[4]);
+						LVAuto.LVForm.frmImageCheck.imgChoseID[2] = int.Parse(s1[6]);
+						LVAuto.LVForm.frmImageCheck.imgChoseID[3] = int.Parse(s1[8]);
 
 						/*
 						//for test only
@@ -849,21 +849,21 @@ namespace LVAuto.Web
 
 						
 													
-						if (LVAuto.frmmain._tuxacnhananh == 2)		// tu xac nhan anh	
+						if (LVAuto.LVForm.Main._tuxacnhananh == 2)		// tu xac nhan anh	
 						{
-							int MaxCheckSai = int.Parse( LVAuto.frmmain.LVFRMMAIN.txtXacNhanAnhMaxCheck.Text);
-							if (LVAuto.frmmain.LVFRMMAIN.SoLanTuCheckAnhSaiLienTiep >= MaxCheckSai)
+							int MaxCheckSai = int.Parse( LVAuto.LVForm.Main.LVFRMMAIN.txtXacNhanAnhMaxCheck.Text);
+							if (LVAuto.LVForm.Main.LVFRMMAIN.SoLanTuCheckAnhSaiLienTiep >= MaxCheckSai)
 							{
-								int duration = int.Parse(LVAuto.frmmain.LVFRMMAIN.txtXacNhanAnhMinTimeCheck.Text);
+								int duration = int.Parse(LVAuto.LVForm.Main.LVFRMMAIN.txtXacNhanAnhMinTimeCheck.Text);
 
-								string str = "Last check: " + LVAuto.frmmain.LVFRMMAIN.LastTimeImageCheck.ToString("HH:mm:ss") + ". Dừng check vì sai quá " + MaxCheckSai + " lần.";
-								str += " Check tiếp sau " + LVAuto.frmmain.LVFRMMAIN.LastTimeImageCheck.Add(new System.TimeSpan(duration, 0, 0)).ToString("HH:mm:ss");
+								string str = "Last check: " + LVAuto.LVForm.Main.LVFRMMAIN.LastTimeImageCheck.ToString("HH:mm:ss") + ". Dừng check vì sai quá " + MaxCheckSai + " lần.";
+								str += " Check tiếp sau " + LVAuto.LVForm.Main.LVFRMMAIN.LastTimeImageCheck.Add(new System.TimeSpan(duration, 0, 0)).ToString("HH:mm:ss");
 								SetCountText(str);
 
 
-								if (DateTime.Compare(LVAuto.frmmain.LVFRMMAIN.LastTimeImageCheck.Add(new System.TimeSpan(duration, 0, 0)), DateTime.Now) <= 0)
+								if (DateTime.Compare(LVAuto.LVForm.Main.LVFRMMAIN.LastTimeImageCheck.Add(new System.TimeSpan(duration, 0, 0)), DateTime.Now) <= 0)
 								{
-									LVAuto.frmmain.LVFRMMAIN.SoLanTuCheckAnhSaiLienTiep--;
+									LVAuto.LVForm.Main.LVFRMMAIN.SoLanTuCheckAnhSaiLienTiep--;
 								}
 								else
 								{
@@ -874,7 +874,7 @@ namespace LVAuto.Web
 
 							try
 							{
-								if (LVAuto.frmmain._chuongbao)
+								if (LVAuto.LVForm.Main._chuongbao)
 								{
 									System.Media.SoundPlayer mp = new System.Media.SoundPlayer();
 									mp.SoundLocation = @"alert.wav";
@@ -885,21 +885,21 @@ namespace LVAuto.Web
 							catch (Exception ex) { }
 
 							int imgidselect = (new Random()).Next(4);
-							string retCode = sendChoiceImageCheck(LVAuto.frmImageCheck.imgChoseID[imgidselect]);
-							LVAuto.frmImageCheck.imageChecking = false;
-							LVAuto.frmmain.LVFRMMAIN.LastTimeImageCheck = DateTime.Now;
+							string retCode = sendChoiceImageCheck(LVAuto.LVForm.frmImageCheck.imgChoseID[imgidselect]);
+							LVAuto.LVForm.frmImageCheck.imageChecking = false;
+							LVAuto.LVForm.Main.LVFRMMAIN.LastTimeImageCheck = DateTime.Now;
 
 							soluonglancheckanh++;
 							string strCheck = "false";
 							if (retCode == "0")
 							{
-								LVAuto.frmmain.LVFRMMAIN.SoLanTuCheckAnhSaiLienTiep = 0;
+								LVAuto.LVForm.Main.LVFRMMAIN.SoLanTuCheckAnhSaiLienTiep = 0;
 								soluonglancheckanhdung++;
 								strCheck = "ok";
 							}
 							else
 							{
-								LVAuto.frmmain.LVFRMMAIN.SoLanTuCheckAnhSaiLienTiep++; 
+								LVAuto.LVForm.Main.LVFRMMAIN.SoLanTuCheckAnhSaiLienTiep++; 
 							}
 				
 							SetCountText("(" + soluonglancheckanhdung + "/" + soluonglancheckanh + " - "
@@ -942,7 +942,7 @@ namespace LVAuto.Web
 
 							try
 							{
-								if (LVAuto.frmmain._chuongbao)
+								if (LVAuto.LVForm.Main._chuongbao)
 								{
 									System.Media.SoundPlayer mp = new System.Media.SoundPlayer();
 									mp.SoundLocation = @"alert.wav";
@@ -963,10 +963,10 @@ namespace LVAuto.Web
 							frImageCheck.pic3.WaitOnLoad = false;
 							frImageCheck.pic4.WaitOnLoad = false;
 
-							frImageCheck.pic1.LoadAsync(imgPath + LVAuto.frmImageCheck.imgChoseID[0] + ".gif");
-							frImageCheck.pic2.LoadAsync(imgPath + LVAuto.frmImageCheck.imgChoseID[1] + ".gif");
-							frImageCheck.pic3.LoadAsync(imgPath + LVAuto.frmImageCheck.imgChoseID[2] + ".gif");
-							frImageCheck.pic4.LoadAsync(imgPath + LVAuto.frmImageCheck.imgChoseID[3] + ".gif");
+							frImageCheck.pic1.LoadAsync(imgPath + LVAuto.LVForm.frmImageCheck.imgChoseID[0] + ".gif");
+							frImageCheck.pic2.LoadAsync(imgPath + LVAuto.LVForm.frmImageCheck.imgChoseID[1] + ".gif");
+							frImageCheck.pic3.LoadAsync(imgPath + LVAuto.LVForm.frmImageCheck.imgChoseID[2] + ".gif");
+							frImageCheck.pic4.LoadAsync(imgPath + LVAuto.LVForm.frmImageCheck.imgChoseID[3] + ".gif");
 
 							//frImageCheck.picSamplePic.
 							//frImageCheck.picSamplePic.Show();
@@ -979,9 +979,9 @@ namespace LVAuto.Web
 							frImageCheck.ShowDialog();
 							//frImageCheck.Refresh();
 							string retCode="";
-							if (LVAuto.frmmain.imagecheckid != -1)
+							if (LVAuto.LVForm.Main.imagecheckid != -1)
 							{
-								retCode = LVAuto.Web.LVWeb.sendChoiceImageCheck(LVAuto.frmmain.imagecheckid);
+								retCode = LVAuto.LVForm.Web.LVWeb.sendChoiceImageCheck(LVAuto.LVForm.Main.imagecheckid);
 
 								string strCheck = "false";
 								if (retCode == "0")
@@ -997,10 +997,10 @@ namespace LVAuto.Web
 								SetCountText("(" + soluonglancheckanhdung + "/" + soluonglancheckanh + " - "
 													+ percent + "%), last check: " + DateTime.Now.ToString("HH:mm:ss") + " - " + strCheck);
 
-								LVAuto.frmmain.LVFRMMAIN.SoLanTuCheckAnhSaiLienTiep = 0;
+								LVAuto.LVForm.Main.LVFRMMAIN.SoLanTuCheckAnhSaiLienTiep = 0;
 							}
 
-							LVAuto.frmImageCheck.imageChecking = false;
+							LVAuto.LVForm.frmImageCheck.imageChecking = false;
 
 							
 
@@ -1013,12 +1013,12 @@ namespace LVAuto.Web
 					}
 					catch (Exception ex)
 					{
-						LVAuto.frmImageCheck.imageChecking = false;
+						LVAuto.LVForm.frmImageCheck.imageChecking = false;
 						repeatcount++;
 					}
 				} //				while (repeatcount < 10)
 
-				LVAuto.frmImageCheck.imageChecking = false;
+				LVAuto.LVForm.frmImageCheck.imageChecking = false;
 			 }
 
 
@@ -1026,14 +1026,14 @@ namespace LVAuto.Web
 
 		private static void SetCountText(String str)
 		{
-			if (frmmain.LVFRMMAIN.lblfrmSolancheckAnh.InvokeRequired)
+			if (Main.LVFRMMAIN.lblfrmSolancheckAnh.InvokeRequired)
 			{
 				SetTextCallback d = new SetTextCallback(SetCountText);
-				frmmain.LVFRMMAIN.lblfrmSolancheckAnh.Invoke(d, new object[] { str });
+				Main.LVFRMMAIN.lblfrmSolancheckAnh.Invoke(d, new object[] { str });
 			}
 			else
 			{
-				frmmain.LVFRMMAIN.lblfrmSolancheckAnh.Text = str;
+				Main.LVFRMMAIN.lblfrmSolancheckAnh.Text = str;
 			}
 		}
 		public static string sendChoiceImageCheck(int imgid)
@@ -1042,12 +1042,12 @@ namespace LVAuto.Web
 
 			try
 			{
-				LVAuto.Web.LVWeb.idimage = imgid;
+				LVAuto.LVForm.Web.LVWeb.idimage = imgid;
 				int count = 0;
 				Hashtable battle = null;
 				do
 				{
-					battle = LVAuto.Command.OPT.Execute(102, "", true);
+					battle = LVAuto.LVForm.Command.OPT.Execute(102, "", true);
 					count++;
 				} while (battle == null && count < 5);
 
@@ -1061,11 +1061,11 @@ namespace LVAuto.Web
 				{
 					case "0":						// ok, chon dung hinh
 						//this.Close();
-						LVAuto.frmImageCheck.returnCheckImgValue = 0;
+						LVAuto.LVForm.frmImageCheck.returnCheckImgValue = 0;
 						break;
 
 					case "110":						// Chon sai hinh
-						LVAuto.frmImageCheck.returnCheckImgValue = -1;
+						LVAuto.LVForm.frmImageCheck.returnCheckImgValue = -1;
 						//this.Close();
 						break;
 
@@ -1076,7 +1076,7 @@ namespace LVAuto.Web
 
 
 							//int intCode = int.Parse(retCode);
-							LVAuto.frmImageCheck.returnCheckImgValue = int.Parse(retCode);
+							LVAuto.LVForm.frmImageCheck.returnCheckImgValue = int.Parse(retCode);
 						break;
 
 
@@ -1238,7 +1238,7 @@ namespace LVAuto.Web
             
         }
         public static void LoginEx() {
-            Hashtable loginform = LVAuto.Web.LVWeb.LoginForm();
+            Hashtable loginform = LVAuto.LVForm.Web.LVWeb.LoginForm();
             //ChallengeScript":"eval(\u0027835+409\u0027)
             //calculate antibot
             string data = loginform["DATA"].ToString();
@@ -1253,11 +1253,11 @@ namespace LVAuto.Web
             logindata.Remove("imgLoginLogOut");
             logindata["imgLoginLogOut.x"] = 10;
             logindata["imgLoginLogOut.y"] = 10;
-            LVAuto.Web.LVWeb.LoginFormData = logindata;
-            Hashtable temp = LVAuto.Web.LVWeb.Login();
-            temp = LVAuto.Web.LVWeb.LoginPlay();
-            LVAuto.Web.LVWeb.LoginHtml = temp["DATA"].ToString();
-            Hashtable lastlogindata = Web.ParseHeader.GetDataFromForm(LVAuto.Web.LVWeb.LoginHtml);
+            LVAuto.LVForm.Web.LVWeb.LoginFormData = logindata;
+            Hashtable temp = LVAuto.LVForm.Web.LVWeb.Login();
+            temp = LVAuto.LVForm.Web.LVWeb.LoginPlay();
+            LVAuto.LVForm.Web.LVWeb.LoginHtml = temp["DATA"].ToString();
+            Hashtable lastlogindata = Web.ParseHeader.GetDataFromForm(LVAuto.LVForm.Web.LVWeb.LoginHtml);
             Hashtable lastlogin = Web.LVWeb.LoginPartner(lastlogindata["uid"].ToString(), lastlogindata["uname"].ToString(), lastlogindata["ulgtime"].ToString(), lastlogindata["pid"].ToString(), lastlogindata["sign"].ToString());
             Web.LVWeb.CurrentLoginInfo = new Web.LoginInfo((string[])lastlogin["Set-Cookie"]);
                                 

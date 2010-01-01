@@ -11,10 +11,9 @@ namespace LVAuto {
         [STAThread]
         static void Main() 
 		{
-			
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmmain());
+            Application.Run(new LVAuto.LVForm.Main());
         }
     }
 }

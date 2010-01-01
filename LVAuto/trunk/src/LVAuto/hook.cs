@@ -6,13 +6,13 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
 
-namespace LVAuto {
+namespace LVAuto.LVForm {
     class hook {
         private const int WH_KEYBOARD_LL = 13;
         private const int WM_KEYDOWN = 0x0100;
         private static LowLevelKeyboardProc _proc = HookCallback;
         private static IntPtr _hookID = IntPtr.Zero;
-        public static LVThread.LOADING thpause = new LVAuto.LVThread.LOADING();
+        public static LVThread.LOADING thpause = new LVAuto.LVForm.LVThread.LOADING();
         public static Form f;
         public static void Hook() {
             _hookID = SetHook(_proc);

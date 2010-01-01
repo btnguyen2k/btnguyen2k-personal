@@ -5,7 +5,7 @@ using System.Collections;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace LVAuto.LVThread 
+namespace LVAuto.LVForm.LVThread 
 {
     public class THAOPHAT 
 	{
@@ -146,7 +146,7 @@ namespace LVAuto.LVThread
 		
 		private void mainprocess()
 		{
-			LVAuto.Command.CityObj.MilitaryGeneral geninfo;
+			LVAuto.LVForm.Command.CityObj.MilitaryGeneral geninfo;
 			//bool skok = true;
 			//bool luongquanok = false;
 			string cookies;
@@ -160,8 +160,8 @@ namespace LVAuto.LVThread
 			{
 				Message.ForeColor = System.Drawing.Color.Red;
 				SetText("Đang chạy (0%)");
-				cookies = LVAuto.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(CityID);
-				LVAuto.Command.City.SwitchCitySlow(CityID);
+				cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(CityID);
+				LVAuto.LVForm.Command.City.SwitchCitySlow(CityID);
 
 				result = Command.City.GetCityTask(cookies);
 				if (result != null)
@@ -177,7 +177,7 @@ namespace LVAuto.LVThread
 						if (status == 1 || status == 2)
 						{
 							//LVAuto.LVThread.AUTOFIGHTING.startBattle(0, time, 1, 250, Common.WarFunc.PHUONGTHUCTANCONG.HoaTien );
-							LVAuto.LVThread.AUTOFIGHTING.startBattle(Batleid, time, SoLuongTuongDanh1Dich, TuongDiThaoPhat);
+							LVAuto.LVForm.LVThread.AUTOFIGHTING.startBattle(Batleid, time, SoLuongTuongDanh1Dich, TuongDiThaoPhat);
 						}
 						return;
 					}
@@ -187,7 +187,7 @@ namespace LVAuto.LVThread
 
 				Common.GeneralThaoPhat GeneralThaoPhat=null;
 				bool canrun = true;
-				LVAuto.Command.CityObj.MilitaryGeneral gArray = null;
+				LVAuto.LVForm.Command.CityObj.MilitaryGeneral gArray = null;
 
 				for (int idx = 0; idx < this.TuongDiThaoPhat.Count; idx++)
 				{
@@ -272,7 +272,7 @@ namespace LVAuto.LVThread
 							{
 								//LVAuto.LVThread.AUTOFIGHTING.startBattle(0, time, 1, 250, Common.WarFunc.PHUONGTHUCTANCONG.HoaTien);
 								//LVAuto.LVThread.AUTOFIGHTING.startBattle(Batleid, time, SoLuongTuongDanh1Dich, TimeDoiTranHinh, PhuongThucTanCong, GeneralThaoPhat.phuongthucchonmuctieu);
-								LVAuto.LVThread.AUTOFIGHTING.startBattle(Batleid, time, SoLuongTuongDanh1Dich, TuongDiThaoPhat);
+								LVAuto.LVForm.LVThread.AUTOFIGHTING.startBattle(Batleid, time, SoLuongTuongDanh1Dich, TuongDiThaoPhat);
 								return;
 							}
 						}

@@ -6,7 +6,7 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 
-namespace LVAuto.Command.OPTObj {
+namespace LVAuto.LVForm.Command.OPTObj {
     public partial class Vanchuyen : UserControl {
         public Vanchuyen() {
             InitializeComponent();

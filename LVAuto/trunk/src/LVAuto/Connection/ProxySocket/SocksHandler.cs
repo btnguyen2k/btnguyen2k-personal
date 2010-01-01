@@ -32,7 +32,7 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 
-namespace LVAuto.Connection.ProxySocket
+namespace LVAuto.LVForm.Connection.ProxySocket
 {
 	/// <summary>
 	/// References the callback method to be called when the protocol negotiation is completed.

@@ -1,5 +1,5 @@
-﻿namespace LVAuto {
-    partial class frmmain {
+﻿namespace LVAuto.LVForm {
+    partial class Main {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -30,7 +30,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle76 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle77 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle78 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmmain));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LVAuto.LVForm.Main));
             System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("Thành thị");
             System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("Thành thị");
             System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("Tướng");
@@ -686,7 +686,7 @@
             // 
             // tabLogin
             // 
-            this.tabLogin.BackgroundImage = global::LVAuto.Properties.Resources.BackGround1;
+            this.tabLogin.BackgroundImage = global::LVAuto.LVForm.Properties.Resources.BackGround1;
             this.tabLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tabLogin.Controls.Add(this.groupBox20);
             this.tabLogin.Controls.Add(this.label88);
@@ -951,7 +951,7 @@
             // 
             // picPanelWaiting
             // 
-            this.picPanelWaiting.Image = global::LVAuto.Properties.Resources.waiting;
+            this.picPanelWaiting.Image = global::LVAuto.LVForm.Properties.Resources.waiting;
             this.picPanelWaiting.Location = new System.Drawing.Point(17, 13);
             this.picPanelWaiting.Name = "picPanelWaiting";
             this.picPanelWaiting.Size = new System.Drawing.Size(16, 16);
@@ -961,8 +961,8 @@
             // 
             // picAttach
             // 
-            this.picAttach.Image = global::LVAuto.Properties.Resources.Dangbitancong;
-            this.picAttach.InitialImage = global::LVAuto.Properties.Resources.Dangbitancong;
+            this.picAttach.Image = global::LVAuto.LVForm.Properties.Resources.Dangbitancong;
+            this.picAttach.InitialImage = global::LVAuto.LVForm.Properties.Resources.Dangbitancong;
             this.picAttach.Location = new System.Drawing.Point(448, 232);
             this.picAttach.Name = "picAttach";
             this.picAttach.Size = new System.Drawing.Size(88, 50);

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LVAuto.HTMLParse
+namespace LVAuto.LVForm.HTMLParse
 {
   /// <summary>
   /// Summary description for ParseHTML.

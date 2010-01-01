@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
-namespace LVAuto.Common {
+namespace LVAuto.LVForm.Common {
     class config {
         public static string[] SELLRESOURCE = null;
         public static string[] BUYRESOURCE = null;

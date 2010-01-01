@@ -1,4 +1,4 @@
-namespace LVAuto.Command.CommonObj {
+namespace LVAuto.LVForm.Command.CommonObj {
     partial class doitrai {
         /// <summary> 
         /// Required designer variable.

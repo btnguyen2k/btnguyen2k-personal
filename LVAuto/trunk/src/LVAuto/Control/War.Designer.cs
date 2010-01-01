@@ -1,4 +1,4 @@
-﻿namespace LVAuto.Control {
+﻿namespace LVAuto.LVForm.Control {
     partial class War {
         /// <summary> 
         /// Required designer variable.

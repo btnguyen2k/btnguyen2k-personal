@@ -2,7 +2,7 @@ using System;
 using System.Text;
 using System.Net;
 using System.Net.Sockets;
-using LVAuto.Connection.ProxySocket;
+using LVAuto.LVForm.Connection.ProxySocket;
 
 /*
  *   Using the ProxySocket class is very easy. It works exactely like

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Collections;
-namespace LVAuto.Command.CityObj {
+namespace LVAuto.LVForm.Command.CityObj {
     public class CityTask {
         public bool CanBuild = false;
         public bool Canupgrade = false;

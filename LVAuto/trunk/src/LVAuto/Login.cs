@@ -6,31 +6,31 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace LVAuto {
+namespace LVAuto.LVForm {
     public partial class Login : Form {
         public Login() {
             InitializeComponent();
         }
 
         private void Login_Load(object sender, EventArgs e) {
-            txtUsername.Text = LVAuto.Web.LVWeb.lvusername;
-            txtLvPassword.Text = LVAuto.Web.LVWeb.lvpassword;
+            txtUsername.Text = LVAuto.LVForm.Web.LVWeb.lvusername;
+            txtLvPassword.Text = LVAuto.LVForm.Web.LVWeb.lvpassword;
             if (txtLvPassword.Text != "") XLogin();
         }
 
         private void wbLogin_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e) {
-            if (LVAuto.Web.LVWeb.loadinput == false) {
+            if (LVAuto.LVForm.Web.LVWeb.loadinput == false) {
                 if (wbLogin.Url.AbsolutePath == "/login.aspx") {
                     timer1.Enabled = true;
-                    LVAuto.Web.LVWeb.loadinput = true;
+                    LVAuto.LVForm.Web.LVWeb.loadinput = true;
                 }
             }
             if (wbLogin.Url.AbsolutePath == "/play.aspx") {
                 //timer1.Enabled = false;
                 //wbLogin.Document.Cookie = "";
-                lock (LVAuto.Web.LVWeb.islock) 
+                lock (LVAuto.LVForm.Web.LVWeb.islock) 
 				{
-                    LVAuto.Web.LVWeb.LoginHtml = wbLogin.Document.Body.InnerHtml;
+                    LVAuto.LVForm.Web.LVWeb.LoginHtml = wbLogin.Document.Body.InnerHtml;
                     //wbLogin.Document.Forms[0].OuterHtml = "";
                 }
                 //if (LVAuto.Web.LVWeb.firstlogin) {
@@ -46,8 +46,8 @@ namespace LVAuto {
                 //tbFirstLogin.Controls.Add(wbLogin);
 
                 //tbFirstLogin.Controls.Add(wbLogin);
-                LVAuto.Web.LVWeb.lvusername= txtUsername.Text;
-                LVAuto.Web.LVWeb.lvpassword= txtLvPassword.Text;
+                LVAuto.LVForm.Web.LVWeb.lvusername= txtUsername.Text;
+                LVAuto.LVForm.Web.LVWeb.lvpassword= txtLvPassword.Text;
                 this.Close();
             }
         }
@@ -72,16 +72,16 @@ namespace LVAuto {
 
         private void cmdLogin_Click(object sender, EventArgs e) {
             //Common.common.ClearCookies();
-            LVAuto.Web.LVWeb.loadinput = false;
-            wbLogin.Navigate("http://login.linhvuong.zooz.vn/login.aspx?server=" + LVAuto.Web.LVWeb.Server, "", null, "Referer: http://linhvuong.zooz.vn/news/\n");
+            LVAuto.LVForm.Web.LVWeb.loadinput = false;
+            wbLogin.Navigate("http://login.linhvuong.zooz.vn/login.aspx?server=" + LVAuto.LVForm.Web.LVWeb.Server, "", null, "Referer: http://linhvuong.zooz.vn/news/\n");
             
         }
         public void XLogin() {
-            LVAuto.Web.LVWeb.loadinput = false;
-            wbLogin.Navigate("http://login.linhvuong.zooz.vn/login.aspx?server=" + LVAuto.Web.LVWeb.Server, "", null, "Referer: http://linhvuong.zooz.vn/news/\n");
+            LVAuto.LVForm.Web.LVWeb.loadinput = false;
+            wbLogin.Navigate("http://login.linhvuong.zooz.vn/login.aspx?server=" + LVAuto.LVForm.Web.LVWeb.Server, "", null, "Referer: http://linhvuong.zooz.vn/news/\n");
         }
         private void cboServer_SelectedIndexChanged(object sender, EventArgs e) {
-            LVAuto.Web.LVWeb.Server = int.Parse(cboServer.Text.Substring(0, 1));
+            LVAuto.LVForm.Web.LVWeb.Server = int.Parse(cboServer.Text.Substring(0, 1));
         }
     }
 }

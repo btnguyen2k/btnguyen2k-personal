@@ -30,7 +30,7 @@ using System.Net.Sockets;
 using System.Globalization;
 using System.ComponentModel;
 
-namespace LVAuto.Connection.StarksoftProxy
+namespace LVAuto.LVForm.Connection.StarksoftProxy
 {
     /// <summary>
     /// Socks5 connection proxy class.  This class implements the Socks5 standard proxy protocol.
