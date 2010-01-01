@@ -315,7 +315,7 @@ namespace LVAuto.LVForm.Command.CityObj
 					cityid = callmanobj.CityID;
                     LVAuto.LVForm.Command.CityObj.City cityByID = LVAuto.LVForm.Command.City.GetCityByID(cityid);
 
-					string cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityid);
+					string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityid);
 					LVAuto.LVForm.Command.City.SwitchCitySlow(cityid);
 
 

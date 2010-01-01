@@ -42,8 +42,8 @@ namespace LVAuto.LVForm.Common {
 				city = LVAuto.LVForm.Command.CityObj.City.AllCity[i];
 				if (city.id > 0)
 				{	check = false;	
-					for (int j=0; j < LVAuto.LVForm.Main.AnuiForAuto.Count; j++)
-						if (city.id == ((int) LVAuto.LVForm.Main.AnuiForAuto[j]))
+					for (int j=0; j < LVAuto.LVForm.FrmMain.AnuiForAuto.Count; j++)
+						if (city.id == ((int) LVAuto.LVForm.FrmMain.AnuiForAuto[j]))
 						{
 							check = true;
 							break;
@@ -74,9 +74,9 @@ namespace LVAuto.LVForm.Common {
                     DataRow tempdr = temptb.NewRow();
                     tempdr["ID_TT"] = onecity.id;
                     tempdr["NAME_TT"] = onecity.name;
-					for (int j = 0; j < LVAuto.LVForm.Main.AnuiForAuto.Count; j++)
+					for (int j = 0; j < LVAuto.LVForm.FrmMain.AnuiForAuto.Count; j++)
 					{
-						if (int.Parse(LVAuto.LVForm.Main.AnuiForAuto[j].ToString()) == onecity.id )
+						if (int.Parse(LVAuto.LVForm.FrmMain.AnuiForAuto[j].ToString()) == onecity.id )
 							tempdr["ADD_NK"] = true;
 						else
 							tempdr["ADD_NK"] = false;
@@ -113,11 +113,11 @@ namespace LVAuto.LVForm.Common {
 		public static void LoadDataResultForVCVK(ListBox lstVCVKResult)
 		{
 			lstVCVKResult.Items.Clear();
-			Command.CommonObj.VanChuyenVK[] arVc = new LVAuto.LVForm.Command.CommonObj.VanChuyenVK[LVAuto.LVForm.Main.VanChuyenVuKhi.Count];
+			Command.CommonObj.VanChuyenVK[] arVc = new LVAuto.LVForm.Command.CommonObj.VanChuyenVK[LVAuto.LVForm.FrmMain.VanChuyenVuKhi.Count];
 
-			for (int i = 0; i < LVAuto.LVForm.Main.VanChuyenVuKhi.Count; i++)
+			for (int i = 0; i < LVAuto.LVForm.FrmMain.VanChuyenVuKhi.Count; i++)
 			{
-				arVc[i] = (Command.CommonObj.VanChuyenVK)LVAuto.LVForm.Main.VanChuyenVuKhi[i];
+				arVc[i] = (Command.CommonObj.VanChuyenVK)LVAuto.LVForm.FrmMain.VanChuyenVuKhi[i];
 			}
 
 			lstVCVKResult.Items.AddRange(arVc);
@@ -170,14 +170,14 @@ namespace LVAuto.LVForm.Common {
 
 
 					//lay data luu
-					if (LVAuto.LVForm.Main.BanTaiNguyen.CityInfo != null)
-						for (int j = 0; j < LVAuto.LVForm.Main.BanTaiNguyen.CityInfo.Length; j++)
-							if (onecity.id == LVAuto.LVForm.Main.BanTaiNguyen.CityInfo[j].CityId)
+					if (LVAuto.LVForm.FrmMain.BanTaiNguyen.CityInfo != null)
+						for (int j = 0; j < LVAuto.LVForm.FrmMain.BanTaiNguyen.CityInfo.Length; j++)
+							if (onecity.id == LVAuto.LVForm.FrmMain.BanTaiNguyen.CityInfo[j].CityId)
 							{
-								tempdr["SELL_LUA"] = LVAuto.LVForm.Main.BanTaiNguyen.CityInfo[j].BanLua;
-								tempdr["SELL_GO"] = LVAuto.LVForm.Main.BanTaiNguyen.CityInfo[j].BanGo;
-								tempdr["SELL_SAT"] = LVAuto.LVForm.Main.BanTaiNguyen.CityInfo[j].BanSat;
-								tempdr["SELL_DA"] = LVAuto.LVForm.Main.BanTaiNguyen.CityInfo[j].BanDa;
+								tempdr["SELL_LUA"] = LVAuto.LVForm.FrmMain.BanTaiNguyen.CityInfo[j].BanLua;
+								tempdr["SELL_GO"] = LVAuto.LVForm.FrmMain.BanTaiNguyen.CityInfo[j].BanGo;
+								tempdr["SELL_SAT"] = LVAuto.LVForm.FrmMain.BanTaiNguyen.CityInfo[j].BanSat;
+								tempdr["SELL_DA"] = LVAuto.LVForm.FrmMain.BanTaiNguyen.CityInfo[j].BanDa;
 							}
 
 
@@ -187,131 +187,131 @@ namespace LVAuto.LVForm.Common {
 
 			//-----
 			
-			LVAuto.LVForm.Main.LVFRMMAIN.txtSELLCHECK.Text  = LVAuto.LVForm.Main.BanTaiNguyen.timetoruninminute.ToString();
+			LVAuto.LVForm.FrmMain.LVFRMMAIN.txtSELLCHECK.Text  = LVAuto.LVForm.FrmMain.BanTaiNguyen.timetoruninminute.ToString();
 
 
-			LVAuto.LVForm.Main.LVFRMMAIN.txtCOUNTLUA.Text =  LVAuto.LVForm.Main.BanTaiNguyen.LUA.SoLuongBan.ToString();
-			LVAuto.LVForm.Main.LVFRMMAIN.txtSAFELUA.Text	 = LVAuto.LVForm.Main.BanTaiNguyen.LUA.SoLuongAnToan.ToString();
+			LVAuto.LVForm.FrmMain.LVFRMMAIN.txtCOUNTLUA.Text =  LVAuto.LVForm.FrmMain.BanTaiNguyen.LUA.SoLuongBan.ToString();
+			LVAuto.LVForm.FrmMain.LVFRMMAIN.txtSAFELUA.Text	 = LVAuto.LVForm.FrmMain.BanTaiNguyen.LUA.SoLuongAnToan.ToString();
 
-			LVAuto.LVForm.Main.LVFRMMAIN.txtBanTN_LUA_TB_Heso.Text = LVAuto.LVForm.Main.BanTaiNguyen.LUA.GiaTri.ToString();
-			LVAuto.LVForm.Main.LVFRMMAIN.txtBanTN_LUA_TB_Heso.Enabled = true;
-			if (LVAuto.LVForm.Main.BanTaiNguyen.LUA.LoaiBan == 1)		// co dinh
+			LVAuto.LVForm.FrmMain.LVFRMMAIN.txtBanTN_LUA_TB_Heso.Text = LVAuto.LVForm.FrmMain.BanTaiNguyen.LUA.GiaTri.ToString();
+			LVAuto.LVForm.FrmMain.LVFRMMAIN.txtBanTN_LUA_TB_Heso.Enabled = true;
+			if (LVAuto.LVForm.FrmMain.BanTaiNguyen.LUA.LoaiBan == 1)		// co dinh
 			{
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_LUA_CODINH.Checked = true; 
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_LUA_TB_Cong.Enabled = false;
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_LUA_TB_Nhan.Enabled = false;	 				
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_LUA_THAPNHAT.Checked = false;
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_LUA_TRUNGBINH.Checked = false;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_LUA_CODINH.Checked = true; 
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_LUA_TB_Cong.Enabled = false;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_LUA_TB_Nhan.Enabled = false;	 				
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_LUA_THAPNHAT.Checked = false;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_LUA_TRUNGBINH.Checked = false;
 			}
 			else
 			{
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_LUA_TB_Cong.Enabled = true;
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_LUA_TB_Nhan.Enabled = true;
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_LUA_TB_Cong.Checked = !LVAuto.LVForm.Main.BanTaiNguyen.LUA.CongThucNhan;
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_LUA_TB_Nhan.Checked = LVAuto.LVForm.Main.BanTaiNguyen.LUA.CongThucNhan;
-				if (LVAuto.LVForm.Main.BanTaiNguyen.LUA.LoaiBan == 2)		// trung binh
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_LUA_TB_Cong.Enabled = true;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_LUA_TB_Nhan.Enabled = true;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_LUA_TB_Cong.Checked = !LVAuto.LVForm.FrmMain.BanTaiNguyen.LUA.CongThucNhan;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_LUA_TB_Nhan.Checked = LVAuto.LVForm.FrmMain.BanTaiNguyen.LUA.CongThucNhan;
+				if (LVAuto.LVForm.FrmMain.BanTaiNguyen.LUA.LoaiBan == 2)		// trung binh
 				{
-					LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_LUA_TRUNGBINH.Checked = true;
-					LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_LUA_CODINH.Checked = false;
-					LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_LUA_THAPNHAT.Checked = false;
+					LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_LUA_TRUNGBINH.Checked = true;
+					LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_LUA_CODINH.Checked = false;
+					LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_LUA_THAPNHAT.Checked = false;
 				}
 				else
 				{
-					LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_LUA_THAPNHAT.Checked = true;
-					LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_LUA_CODINH.Checked = false;
-					LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_LUA_TRUNGBINH.Checked = false;
+					LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_LUA_THAPNHAT.Checked = true;
+					LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_LUA_CODINH.Checked = false;
+					LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_LUA_TRUNGBINH.Checked = false;
 				}
 			}
 
-			LVAuto.LVForm.Main.LVFRMMAIN.txtBanTN_GO_TB_Heso.Text = LVAuto.LVForm.Main.BanTaiNguyen.GO.GiaTri.ToString();
-			LVAuto.LVForm.Main.LVFRMMAIN.txtBanTN_GO_TB_Heso.Enabled = true;
-			if (LVAuto.LVForm.Main.BanTaiNguyen.GO.LoaiBan == 1)		// co dinh
+			LVAuto.LVForm.FrmMain.LVFRMMAIN.txtBanTN_GO_TB_Heso.Text = LVAuto.LVForm.FrmMain.BanTaiNguyen.GO.GiaTri.ToString();
+			LVAuto.LVForm.FrmMain.LVFRMMAIN.txtBanTN_GO_TB_Heso.Enabled = true;
+			if (LVAuto.LVForm.FrmMain.BanTaiNguyen.GO.LoaiBan == 1)		// co dinh
 			{
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_GO_CODINH.Checked = true;
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_GO_TB_Cong.Enabled = false;
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_GO_TB_Nhan.Enabled = false;
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_GO_THAPNHAT.Checked = false;
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_GO_TRUNGBINH.Checked = false;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_GO_CODINH.Checked = true;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_GO_TB_Cong.Enabled = false;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_GO_TB_Nhan.Enabled = false;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_GO_THAPNHAT.Checked = false;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_GO_TRUNGBINH.Checked = false;
 			}
 			else
 			{
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_GO_TB_Cong.Enabled = true;
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_GO_TB_Nhan.Enabled = true;
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_GO_TB_Cong.Checked = !LVAuto.LVForm.Main.BanTaiNguyen.GO.CongThucNhan;
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_GO_TB_Nhan.Checked = LVAuto.LVForm.Main.BanTaiNguyen.GO.CongThucNhan;
-				if (LVAuto.LVForm.Main.BanTaiNguyen.GO.LoaiBan == 2)		// trung binh
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_GO_TB_Cong.Enabled = true;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_GO_TB_Nhan.Enabled = true;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_GO_TB_Cong.Checked = !LVAuto.LVForm.FrmMain.BanTaiNguyen.GO.CongThucNhan;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_GO_TB_Nhan.Checked = LVAuto.LVForm.FrmMain.BanTaiNguyen.GO.CongThucNhan;
+				if (LVAuto.LVForm.FrmMain.BanTaiNguyen.GO.LoaiBan == 2)		// trung binh
 				{
-					LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_GO_TRUNGBINH.Checked = true;
-					LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_GO_CODINH.Checked = false;
-					LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_GO_THAPNHAT.Checked = false;
+					LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_GO_TRUNGBINH.Checked = true;
+					LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_GO_CODINH.Checked = false;
+					LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_GO_THAPNHAT.Checked = false;
 				}
 				else
 				{
-					LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_GO_THAPNHAT.Checked = true;
-					LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_GO_CODINH.Checked = false;
-					LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_GO_TRUNGBINH.Checked = false;
+					LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_GO_THAPNHAT.Checked = true;
+					LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_GO_CODINH.Checked = false;
+					LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_GO_TRUNGBINH.Checked = false;
 				}
 			}
 
 
-			LVAuto.LVForm.Main.LVFRMMAIN.txtBanTN_DA_TB_Heso.Text = LVAuto.LVForm.Main.BanTaiNguyen.DA.GiaTri.ToString();
-			LVAuto.LVForm.Main.LVFRMMAIN.txtBanTN_DA_TB_Heso.Enabled = true;
-			if (LVAuto.LVForm.Main.BanTaiNguyen.DA.LoaiBan == 1)		// co dinh
+			LVAuto.LVForm.FrmMain.LVFRMMAIN.txtBanTN_DA_TB_Heso.Text = LVAuto.LVForm.FrmMain.BanTaiNguyen.DA.GiaTri.ToString();
+			LVAuto.LVForm.FrmMain.LVFRMMAIN.txtBanTN_DA_TB_Heso.Enabled = true;
+			if (LVAuto.LVForm.FrmMain.BanTaiNguyen.DA.LoaiBan == 1)		// co dinh
 			{
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_DA_CODINH.Checked = true;
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_DA_TB_Cong.Enabled = false;
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_DA_TB_Nhan.Enabled = false;
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_DA_THAPNHAT.Checked = false;
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_DA_TRUNGBINH.Checked = false;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_DA_CODINH.Checked = true;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_DA_TB_Cong.Enabled = false;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_DA_TB_Nhan.Enabled = false;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_DA_THAPNHAT.Checked = false;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_DA_TRUNGBINH.Checked = false;
 			}
 			else
 			{
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_DA_TB_Cong.Enabled = true;
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_DA_TB_Nhan.Enabled = true;
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_DA_TB_Cong.Checked = !LVAuto.LVForm.Main.BanTaiNguyen.DA.CongThucNhan;
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_DA_TB_Nhan.Checked = LVAuto.LVForm.Main.BanTaiNguyen.DA.CongThucNhan;
-				if (LVAuto.LVForm.Main.BanTaiNguyen.DA.LoaiBan == 2)		// trung binh
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_DA_TB_Cong.Enabled = true;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_DA_TB_Nhan.Enabled = true;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_DA_TB_Cong.Checked = !LVAuto.LVForm.FrmMain.BanTaiNguyen.DA.CongThucNhan;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_DA_TB_Nhan.Checked = LVAuto.LVForm.FrmMain.BanTaiNguyen.DA.CongThucNhan;
+				if (LVAuto.LVForm.FrmMain.BanTaiNguyen.DA.LoaiBan == 2)		// trung binh
 				{
-					LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_DA_TRUNGBINH.Checked = true;
-					LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_DA_CODINH.Checked = false;
-					LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_DA_THAPNHAT.Checked = false;
+					LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_DA_TRUNGBINH.Checked = true;
+					LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_DA_CODINH.Checked = false;
+					LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_DA_THAPNHAT.Checked = false;
 				}
 				else
 				{
-					LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_DA_THAPNHAT.Checked = true;
-					LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_DA_CODINH.Checked = false;
-					LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_DA_TRUNGBINH.Checked = false;
+					LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_DA_THAPNHAT.Checked = true;
+					LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_DA_CODINH.Checked = false;
+					LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_DA_TRUNGBINH.Checked = false;
 				}
 			}
 
 
-			LVAuto.LVForm.Main.LVFRMMAIN.txtBanTN_SAT_TB_Heso.Text = LVAuto.LVForm.Main.BanTaiNguyen.SAT.GiaTri.ToString();
-			LVAuto.LVForm.Main.LVFRMMAIN.txtBanTN_SAT_TB_Heso.Enabled = true;
-			if (LVAuto.LVForm.Main.BanTaiNguyen.SAT.LoaiBan == 1)		// co dinh
+			LVAuto.LVForm.FrmMain.LVFRMMAIN.txtBanTN_SAT_TB_Heso.Text = LVAuto.LVForm.FrmMain.BanTaiNguyen.SAT.GiaTri.ToString();
+			LVAuto.LVForm.FrmMain.LVFRMMAIN.txtBanTN_SAT_TB_Heso.Enabled = true;
+			if (LVAuto.LVForm.FrmMain.BanTaiNguyen.SAT.LoaiBan == 1)		// co dinh
 			{
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_SAT_CODINH.Checked = true;
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_SAT_TB_Cong.Enabled = false;
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_SAT_TB_Nhan.Enabled = false;
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_SAT_THAPNHAT.Checked = false;
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_SAT_TRUNGBINH.Checked = false;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_SAT_CODINH.Checked = true;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_SAT_TB_Cong.Enabled = false;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_SAT_TB_Nhan.Enabled = false;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_SAT_THAPNHAT.Checked = false;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_SAT_TRUNGBINH.Checked = false;
 			}
 			else
 			{
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_SAT_TB_Cong.Enabled = true;
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_SAT_TB_Nhan.Enabled = true;
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_SAT_TB_Cong.Checked = !LVAuto.LVForm.Main.BanTaiNguyen.SAT.CongThucNhan;
-				LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_SAT_TB_Nhan.Checked = LVAuto.LVForm.Main.BanTaiNguyen.SAT.CongThucNhan;
-				if (LVAuto.LVForm.Main.BanTaiNguyen.SAT.LoaiBan == 2)		// trung binh
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_SAT_TB_Cong.Enabled = true;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_SAT_TB_Nhan.Enabled = true;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_SAT_TB_Cong.Checked = !LVAuto.LVForm.FrmMain.BanTaiNguyen.SAT.CongThucNhan;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_SAT_TB_Nhan.Checked = LVAuto.LVForm.FrmMain.BanTaiNguyen.SAT.CongThucNhan;
+				if (LVAuto.LVForm.FrmMain.BanTaiNguyen.SAT.LoaiBan == 2)		// trung binh
 				{
-					LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_SAT_TRUNGBINH.Checked = true;
-					LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_SAT_CODINH.Checked = false;
-					LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_SAT_THAPNHAT.Checked = false;
+					LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_SAT_TRUNGBINH.Checked = true;
+					LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_SAT_CODINH.Checked = false;
+					LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_SAT_THAPNHAT.Checked = false;
 				}
 				else
 				{
-					LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_SAT_THAPNHAT.Checked = true;
-					LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_SAT_CODINH.Checked = false;
-					LVAuto.LVForm.Main.LVFRMMAIN.rdBanTN_SAT_TRUNGBINH.Checked = false;
+					LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_SAT_THAPNHAT.Checked = true;
+					LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_SAT_CODINH.Checked = false;
+					LVAuto.LVForm.FrmMain.LVFRMMAIN.rdBanTN_SAT_TRUNGBINH.Checked = false;
 				}
 			}
 
@@ -496,7 +496,7 @@ namespace LVAuto.LVForm.Common {
 			{
 				//Application.DoEvents();
 				LVAuto.LVForm.Command.City.SwitchCitySlow(Command.CityObj.City.AllCity[i].id);
-				Cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(Command.CityObj.City.AllCity[i].id);
+				Cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(Command.CityObj.City.AllCity[i].id);
 				
 				LVAuto.LVForm.Command.City.GetAllBuilding(i, false, Cookies);
 
@@ -523,7 +523,7 @@ namespace LVAuto.LVForm.Common {
 
 				//Application.DoEvents();
 				LVAuto.LVForm.Command.City.SwitchCitySlow(Command.CityObj.City.AllCity[citypost].id);
-				Cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(Command.CityObj.City.AllCity[citypost].id);
+				Cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(Command.CityObj.City.AllCity[citypost].id);
 
 				while (count < 5)
 				{
@@ -654,10 +654,10 @@ namespace LVAuto.LVForm.Common {
 				string str ="";
 				
 				LVAuto.LVForm.Common.BienChe oneBienChe;
-				for (int i = 0; i <  LVAuto.LVForm.Main.ListBienChe.Count  ; i++)
+				for (int i = 0; i <  LVAuto.LVForm.FrmMain.ListBienChe.Count  ; i++)
 				{
 					str = "";
-					oneBienChe = (LVAuto.LVForm.Common.BienChe) LVAuto.LVForm.Main.ListBienChe[i];
+					oneBienChe = (LVAuto.LVForm.Common.BienChe) LVAuto.LVForm.FrmMain.ListBienChe[i];
 					str += "Biên chế: " + oneBienChe.bobinhamount + " bộ,";
 					str += oneBienChe.kybinhamount + " kỵ,";
 					str += oneBienChe.cungthuamount + " cung,";
@@ -683,10 +683,10 @@ namespace LVAuto.LVForm.Common {
 		public static void LoadDataResultBinhMan(ListBox chklBinhManListResult)
 		{
 			chklBinhManListResult.Items.Clear();
-			BinhManObj[] items = new BinhManObj[LVAuto.LVForm.Main.BinhManList.Count];
-			for (int i = 0; i < LVAuto.LVForm.Main.BinhManList.Count; i++)
+			BinhManObj[] items = new BinhManObj[LVAuto.LVForm.FrmMain.BinhManList.Count];
+			for (int i = 0; i < LVAuto.LVForm.FrmMain.BinhManList.Count; i++)
 			{
-				items[i] = (BinhManObj)LVAuto.LVForm.Main.BinhManList[i];
+				items[i] = (BinhManObj)LVAuto.LVForm.FrmMain.BinhManList[i];
 			}
 			chklBinhManListResult.Items.AddRange(items);
 		}
@@ -712,11 +712,11 @@ namespace LVAuto.LVForm.Common {
 			if (Command.CityObj.City.AllCity == null) LVAuto.LVForm.Command.City.UpdateAllSimpleCity();
 			if (Command.CityObj.City.AllCity == null) return;
 
-			LVAuto.LVForm.Main.LVFRMMAIN.cboCity.Items.Clear();
-			LVAuto.LVForm.Main.LVFRMMAIN.cboCity.Items.AddRange(Command.CityObj.City.AllCity);
+			LVAuto.LVForm.FrmMain.LVFRMMAIN.cboCity.Items.Clear();
+			LVAuto.LVForm.FrmMain.LVFRMMAIN.cboCity.Items.AddRange(Command.CityObj.City.AllCity);
 
-			LVAuto.LVForm.Main.LVFRMMAIN.cboNhiemVu.Items.Clear();
-			LVAuto.LVForm.Main.LVFRMMAIN.cboNhiemVu.Items.AddRange(Command.CommonObj.ThaoPhat.AllNhiemVu);
+			LVAuto.LVForm.FrmMain.LVFRMMAIN.cboNhiemVu.Items.Clear();
+			LVAuto.LVForm.FrmMain.LVFRMMAIN.cboNhiemVu.Items.AddRange(Command.CommonObj.ThaoPhat.AllNhiemVu);
 
 			string str = "";
 
@@ -725,108 +725,108 @@ namespace LVAuto.LVForm.Common {
 			if (artuongdithaophat != null && artuongdithaophat.Count > 0)
 			{
 				gen = (Common.GeneralThaoPhat)artuongdithaophat[0];
-				for (int i = 0; i < LVAuto.LVForm.Main.LVFRMMAIN.cboCity.Items.Count; i++)
-					if (((Command.CityObj.City)LVAuto.LVForm.Main.LVFRMMAIN.cboCity.Items[i]).id == gen.CityID)
+				for (int i = 0; i < LVAuto.LVForm.FrmMain.LVFRMMAIN.cboCity.Items.Count; i++)
+					if (((Command.CityObj.City)LVAuto.LVForm.FrmMain.LVFRMMAIN.cboCity.Items[i]).id == gen.CityID)
 					{
-						LVAuto.LVForm.Main.LVFRMMAIN.cboCity.SelectedIndex = i;
+						LVAuto.LVForm.FrmMain.LVFRMMAIN.cboCity.SelectedIndex = i;
 						break;
 					}
 
-				for (int i = 0; i < LVAuto.LVForm.Main.LVFRMMAIN.cboNhiemVu.Items.Count; i++)
-					if (((Command.CommonObj.ThaoPhat)LVAuto.LVForm.Main.LVFRMMAIN.cboNhiemVu.Items[i]).id == gen.NhiemVuThaoPhatID)
+				for (int i = 0; i < LVAuto.LVForm.FrmMain.LVFRMMAIN.cboNhiemVu.Items.Count; i++)
+					if (((Command.CommonObj.ThaoPhat)LVAuto.LVForm.FrmMain.LVFRMMAIN.cboNhiemVu.Items[i]).id == gen.NhiemVuThaoPhatID)
 					{
-						LVAuto.LVForm.Main.LVFRMMAIN.cboNhiemVu.SelectedIndex = i;
+						LVAuto.LVForm.FrmMain.LVFRMMAIN.cboNhiemVu.SelectedIndex = i;
 						break;
 					}
 
-				for (int j = 0; j < LVAuto.LVForm.Main.LVFRMMAIN.cboThaoPhatSLTuongDanh1Dich.Items.Count; j++)
+				for (int j = 0; j < LVAuto.LVForm.FrmMain.LVFRMMAIN.cboThaoPhatSLTuongDanh1Dich.Items.Count; j++)
 				{
-					str = LVAuto.LVForm.Main.LVFRMMAIN.cboThaoPhatSLTuongDanh1Dich.Items[j].ToString();
+					str = LVAuto.LVForm.FrmMain.LVFRMMAIN.cboThaoPhatSLTuongDanh1Dich.Items[j].ToString();
 					//str = str.Substring(0, str.IndexOf("."));
 					if (gen.soluongtuongdanh1tuongdich == int.Parse(str))
 					{
-						LVAuto.LVForm.Main.LVFRMMAIN.cboThaoPhatSLTuongDanh1Dich.SelectedIndex = j;
+						LVAuto.LVForm.FrmMain.LVFRMMAIN.cboThaoPhatSLTuongDanh1Dich.SelectedIndex = j;
 						break;
 					}
 				}
 
-				for (int j = 0; j < LVAuto.LVForm.Main.LVFRMMAIN.cboThaoPhatPhuongThucTanCong.Items.Count; j++)
+				for (int j = 0; j < LVAuto.LVForm.FrmMain.LVFRMMAIN.cboThaoPhatPhuongThucTanCong.Items.Count; j++)
 				{
-					str = LVAuto.LVForm.Main.LVFRMMAIN.cboThaoPhatPhuongThucTanCong.Items[j].ToString();
+					str = LVAuto.LVForm.FrmMain.LVFRMMAIN.cboThaoPhatPhuongThucTanCong.Items[j].ToString();
 					str = str.Substring(0, str.IndexOf("."));
 					if (gen.PhuongThucTanCongID == int.Parse(str))
 					{
-						LVAuto.LVForm.Main.LVFRMMAIN.cboThaoPhatPhuongThucTanCong.SelectedIndex = j;
+						LVAuto.LVForm.FrmMain.LVFRMMAIN.cboThaoPhatPhuongThucTanCong.SelectedIndex = j;
 						break;
 					}
 				}
 
-				for (int j = 0; j < LVAuto.LVForm.Main.LVFRMMAIN.cboThaoPhatPhuongThucChonMucTieu.Items.Count; j++)
+				for (int j = 0; j < LVAuto.LVForm.FrmMain.LVFRMMAIN.cboThaoPhatPhuongThucChonMucTieu.Items.Count; j++)
 				{
-					str = LVAuto.LVForm.Main.LVFRMMAIN.cboThaoPhatPhuongThucChonMucTieu.Items[j].ToString();
+					str = LVAuto.LVForm.FrmMain.LVFRMMAIN.cboThaoPhatPhuongThucChonMucTieu.Items[j].ToString();
 					str = str.Substring(0, str.IndexOf("."));
 					if (gen.PhuongThucChonMucTieuID == int.Parse(str))
 					{
-						LVAuto.LVForm.Main.LVFRMMAIN.cboThaoPhatPhuongThucChonMucTieu.SelectedIndex = j;
+						LVAuto.LVForm.FrmMain.LVFRMMAIN.cboThaoPhatPhuongThucChonMucTieu.SelectedIndex = j;
 						break;
 					}
 				}
-				for (int j = 0; j < LVAuto.LVForm.Main.LVFRMMAIN.cboThaoPhatMuuKeTrongChienTruong.Items.Count; j++)
+				for (int j = 0; j < LVAuto.LVForm.FrmMain.LVFRMMAIN.cboThaoPhatMuuKeTrongChienTruong.Items.Count; j++)
 				{
-					str = LVAuto.LVForm.Main.LVFRMMAIN.cboThaoPhatMuuKeTrongChienTruong.Items[j].ToString();
+					str = LVAuto.LVForm.FrmMain.LVFRMMAIN.cboThaoPhatMuuKeTrongChienTruong.Items[j].ToString();
 					str = str.Substring(0, str.IndexOf("."));
 					if (gen.MuuKeTrongChienTranID == int.Parse(str))
 					{
-						LVAuto.LVForm.Main.LVFRMMAIN.cboThaoPhatMuuKeTrongChienTruong.SelectedIndex = j;
+						LVAuto.LVForm.FrmMain.LVFRMMAIN.cboThaoPhatMuuKeTrongChienTruong.SelectedIndex = j;
 						break;
 					}
 				}
 
-				LVAuto.LVForm.Main.LVFRMMAIN.txtTPCHECK.Text = gen.timetorun.ToString();
-				LVAuto.LVForm.Main.LVFRMMAIN.txtThaoPhatSyKhi.Text = gen.SiKhiMinToGo.ToString();
-				LVAuto.LVForm.Main.LVFRMMAIN.chkSKST.Checked = gen.TuUpSiKhi;
-				LVAuto.LVForm.Main.LVFRMMAIN.chkThaoPhatBienCheThemQuan.Checked = gen.TuBienCheQuan;
-				LVAuto.LVForm.Main.LVFRMMAIN.txtThaoPhatBienCheBoBinhAmount.Text = gen.BienCheBoBinhAmount.ToString();
-				LVAuto.LVForm.Main.LVFRMMAIN.txtThaoPhatBienCheKiBinhAmount.Text = gen.BienCheKyBinhAmount.ToString();
-				LVAuto.LVForm.Main.LVFRMMAIN.txtThaoPhatBienCheCungThuAmount.Text = gen.BienCheCungThuAmount.ToString();
-				LVAuto.LVForm.Main.LVFRMMAIN.txtThaoPhatBienCheXeAmount.Text = gen.BienCheXeAmount.ToString();
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.txtTPCHECK.Text = gen.timetorun.ToString();
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.txtThaoPhatSyKhi.Text = gen.SiKhiMinToGo.ToString();
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.chkSKST.Checked = gen.TuUpSiKhi;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.chkThaoPhatBienCheThemQuan.Checked = gen.TuBienCheQuan;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.txtThaoPhatBienCheBoBinhAmount.Text = gen.BienCheBoBinhAmount.ToString();
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.txtThaoPhatBienCheKiBinhAmount.Text = gen.BienCheKyBinhAmount.ToString();
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.txtThaoPhatBienCheCungThuAmount.Text = gen.BienCheCungThuAmount.ToString();
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.txtThaoPhatBienCheXeAmount.Text = gen.BienCheXeAmount.ToString();
 
-				LVAuto.LVForm.Main.LVFRMMAIN.txtThaoPhatTongQuanMin.Text = gen.SoLuongQuanMinToGo.ToString();
-				LVAuto.LVForm.Main.LVFRMMAIN.chkThaoPhatTuKhoiPhucTrangThai.Checked = gen.TuKhoiPhucTrangThai;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.txtThaoPhatTongQuanMin.Text = gen.SoLuongQuanMinToGo.ToString();
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.chkThaoPhatTuKhoiPhucTrangThai.Checked = gen.TuKhoiPhucTrangThai;
 				
 			}
 
 
-			Command.CityObj.City city = (Command.CityObj.City)LVAuto.LVForm.Main.LVFRMMAIN.cboCity.SelectedItem;
+			Command.CityObj.City city = (Command.CityObj.City)LVAuto.LVForm.FrmMain.LVFRMMAIN.cboCity.SelectedItem;
 			if (city != null)
 			{
 				if (city.MilitaryGeneral == null) LVAuto.LVForm.Command.Common.GetAllSimpleMilitaryGeneralInfoIntoCity();
 				if (city.MilitaryGeneral == null) return;
 
-				LVAuto.LVForm.Main.LVFRMMAIN.cboGeneral.Items.Clear();
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.cboGeneral.Items.Clear();
 
-				LVAuto.LVForm.Main.LVFRMMAIN.cboGeneral.Items.AddRange(city.MilitaryGeneral);
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.cboGeneral.Items.AddRange(city.MilitaryGeneral);
 
 				int g;
-				for (int i = 0; i < LVAuto.LVForm.Main.LVFRMMAIN.cboGeneral.Items.Count; i++)
+				for (int i = 0; i < LVAuto.LVForm.FrmMain.LVFRMMAIN.cboGeneral.Items.Count; i++)
 				{
-					g = ((Command.CityObj.MilitaryGeneral)LVAuto.LVForm.Main.LVFRMMAIN.cboGeneral.Items[i]).GeneralId;
+					g = ((Command.CityObj.MilitaryGeneral)LVAuto.LVForm.FrmMain.LVFRMMAIN.cboGeneral.Items[i]).GeneralId;
 					for (int k = 0; k < artuongdithaophat.Count; k++)
 					{
 		
 						gen = (Common.GeneralThaoPhat)artuongdithaophat[k];
 						if (g == gen.GeneralId)
 						{
-							LVAuto.LVForm.Main.LVFRMMAIN.cboGeneral.SetItemChecked(i, true);
+							LVAuto.LVForm.FrmMain.LVFRMMAIN.cboGeneral.SetItemChecked(i, true);
 						}
 					}
 				}
 
-				LVAuto.LVForm.Main.LVFRMMAIN.ThaoPhat_loaded = true;
+				LVAuto.LVForm.FrmMain.LVFRMMAIN.ThaoPhat_loaded = true;
 			}
 
-			LVAuto.LVForm.Main.LVFRMMAIN.chklbThaoPhatListResult.Items.Clear();
-			LVAuto.LVForm.Main.LVFRMMAIN.chklbThaoPhatListResult.Items.AddRange(LVAuto.LVForm.Main.TuongDiThaoPhatList.ToArray());
+			LVAuto.LVForm.FrmMain.LVFRMMAIN.chklbThaoPhatListResult.Items.Clear();
+			LVAuto.LVForm.FrmMain.LVFRMMAIN.chklbThaoPhatListResult.Items.AddRange(LVAuto.LVForm.FrmMain.TuongDiThaoPhatList.ToArray());
 
 			
 		}
@@ -879,9 +879,9 @@ namespace LVAuto.LVForm.Common {
 					foreach (TreeNode c in t.Nodes)
 					{
 
-						for (int i = 1; i < LVAuto.LVForm.Main.UpgradeForAuto.Count; i++)
+						for (int i = 1; i < LVAuto.LVForm.FrmMain.UpgradeForAuto.Count; i++)
 						{
-							if (c.Name == LVAuto.LVForm.Main.UpgradeForAuto[i].ToString())
+							if (c.Name == LVAuto.LVForm.FrmMain.UpgradeForAuto[i].ToString())
 							{
 								c.Checked = true;
 							}
@@ -925,7 +925,7 @@ namespace LVAuto.LVForm.Common {
 
 						if (onecity.AllBuilding == null)
 							LVAuto.LVForm.Command.City.GetAllBuilding(i, false, 
-								LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(onecity.id));
+								LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(onecity.id));
 
 						if (onecity.AllBuilding != null)
 						{

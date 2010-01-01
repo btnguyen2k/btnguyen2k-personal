@@ -15,17 +15,16 @@ using LVAuto.LVForm.Command.CommonObj;
 
 namespace LVAuto.LVForm
 {
-    public partial class Main : Form 
+    public partial class FrmMain : Form 
 	{
+        private const string APP_NAME = "LVAuto";
+        private const string APP_VERSION = "0.1";
+        private string strVersion = APP_NAME + " " + APP_VERSION;
 
-        private const string version = "5.2";
-		public string strVersion = "";
-
-		
-		private Boolean IsLogin = false;
-        private int CountTick = 0;
-        private int upgradepost = 0;
-		public  static LVThread.BUILD LVBUILD ;
+		private bool IsLogin = false;
+        //private int CountTick = 0;
+        //private int upgradepost = 0;
+		public static LVThread.BUILD LVBUILD ;
 		public static LVThread.DEL LVDEL;
 		public static LVThread.SELL LVSELL;
 		public static LVThread.BUYRES LVBUYRES;
@@ -45,8 +44,7 @@ namespace LVAuto.LVForm
 		public static LVThread.AUTOBINHMAN LVAUTOBINHMAN;
 		public static LVThread.AUTOCALLMAN LVAUTOCALLMAN;
 
-
-		public static LVAuto.LVForm.Main LVFRMMAIN;
+		public static LVAuto.LVForm.FrmMain LVFRMMAIN;
 
 		public static Label _lblLoading;
 
@@ -124,113 +122,101 @@ namespace LVAuto.LVForm
 		public static string ProxyUser;
 		public static string ProxyPass;
  
-		public Main() 
+		public FrmMain() 
 		{
             InitializeComponent();
 
-			timerForTBDanhTuongViengTham.Start();
+			timerDanhTuongViengTham.Start();
         }
 
-		private  void frmmain_Load(object sender, EventArgs e) 
+        /// <summary>
+        /// Auto-Called when form is loaded for the first time.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+		private void Main_Load(object sender, EventArgs e) 
 		{
 			try
 			{
+                LVFRMMAIN = this;
 
-            //FirstLogin();
-			LVFRMMAIN = this;
+                // Disable all tabs, except for the "login" one
+    			for (int i = 1; i < tabMainTab.TabPages.Count; i++)
+	    		{
+		    		tabMainTab.TabPages[i].Enabled = false;
+		    	}
 
-			string str = Directory.GetCurrentDirectory();
+                txtUsername.Focus();
+		        panelLoading.BringToFront();
+			    panelLoading.Visible = false;
+			    //lblmainmsg.Text = "";
+			    picAttach.Visible = false;
 
-
-			// Disable all tabpage
-			for (int i = 1; i < tabMainTab.TabPages.Count; i++)
-			{
-				tabMainTab.TabPages[i].Enabled = false;
-			}
-
-			
-			txtUsername.Focus();
-		
-			panelLoading.BringToFront();
-			panelLoading.Visible = false;
-			//lblmainmsg.Text = "";
-			picAttach.Visible = false;
-
-            try
-            {
-                //load server
-                System.Xml.XmlDocument xmld;
-                System.Xml.XmlNodeList nodelist;
-
-                //Create the XML Document
-                xmld = new System.Xml.XmlDocument();
-                //Load the Xml file
-                xmld.Load("ServerList.xml");
-                //Get the list of name nodes 
-                string notepath = "AutoLinhVuong";
-                //node = xmld.SelectSingleNode(notepath);
-
-                //Get the list of name nodes 
-                notepath = "/AutoLinhVuong/tan";
-                nodelist = xmld.SelectNodes(notepath);
-
-                System.Collections.ArrayList re = new System.Collections.ArrayList();
-                for (int ii = 0; ii < nodelist.Count; ii++)
+                const string configFile = "ServerList.xml";
+                try
                 {
-                    re.Add(nodelist[ii].InnerText);
+                    const string pathServer = "/LVAuto/server";
+
+                    //load server list
+                    System.Xml.XmlDocument xmlDoc = new System.Xml.XmlDocument();
+                    xmlDoc.Load(configFile);
+
+                    System.Xml.XmlNodeList nodes = xmlDoc.SelectNodes(pathServer);
+                    System.Collections.ArrayList servers = new System.Collections.ArrayList();
+                    for (int i = 0; i < nodes.Count; i++)
+                    {
+                        servers.Add(nodes[i].InnerText);
+                    }
+                    if (servers.Count > 0)
+                    {
+                        dropdownServerList.Items.Clear();
+                        dropdownServerList.Items.AddRange(servers.ToArray());
+                        dropdownServerList.SelectedIndex = 0;
+                    }
                 }
-                if (re.Count > 0)
+                catch (Exception ex)
                 {
-                    cboServer.Items.Clear();
-                    cboServer.Items.AddRange(re.ToArray());
+                    LVUtils.MsgBoxUtils.ErrorBox("Không load được danh sách server từ file ["+configFile+"]:\r\n"+ex.Message);
+                    this.Close();
                 }
-            }
-            catch (Exception ex)
-            {
 
-            }
-				//remove for release
-				
-				
-#if (DEBUG)
+                #if (DEBUG)
+                    strVersion += " (Debug)";
 
-                strVersion =  "LVAuto Debug " + version;
+                    chkTabBinhManListManDanh.Items.Clear();
+                    chkTabBinhManListManDanh.Items.Add("1. Uy Quốc");
+                    chkTabBinhManListManDanh.Items.Add("2. Tiên Ti");
+                    chkTabBinhManListManDanh.Items.Add("3. Ô hoàn");
+                    chkTabBinhManListManDanh.Items.Add("4. Sơn việt");
+                    chkTabBinhManListManDanh.Items.Add("5. Khương để");
+                    chkTabBinhManListManDanh.Items.Add("6. Mạnh hoạch");
+                    chkTabBinhManListManDanh.Items.Add("7. Hung nô");
+                    chkTabBinhManListManDanh.Items.Add("101. Quân lương");
+                    chkTabBinhManListManDanh.Items.Add("201. Thần thú");
 
-                chkTabBinhManListManDanh.Items.Clear();
-                chkTabBinhManListManDanh.Items.Add("1. Uy Quốc");
-                chkTabBinhManListManDanh.Items.Add("2. Tiên Ti");
-                chkTabBinhManListManDanh.Items.Add("3. Ô hoàn");
-                chkTabBinhManListManDanh.Items.Add("4. Sơn việt");
-                chkTabBinhManListManDanh.Items.Add("5. Khương để");
-                chkTabBinhManListManDanh.Items.Add("6. Mạnh hoạch");
-                chkTabBinhManListManDanh.Items.Add("7. Hung nô");
-                chkTabBinhManListManDanh.Items.Add("101. Quân lương");
-                chkTabBinhManListManDanh.Items.Add("201. Thần thú");
+                    txtTabBinhManMaxODi.Text = "50";
+                #else
+                    //tabMainTab.Controls.Remove(tabBinhMan);
+                    //chkAUTOBINHMAN.Visible = false;
+				    //lblAUTOBINHMANMESSAGE.Visible = false;
+                    strVersion += " (Release)";
 
-                txtTabBinhManMaxODi.Text = "50";
-
-#else
-                //tabMainTab.Controls.Remove(tabBinhMan);
-                //chkAUTOBINHMAN.Visible = false;
-				//lblAUTOBINHMANMESSAGE.Visible = false;
-
-                strVersion =  "LVAuto Release " + version;
-
-                chkTabBinhManListManDanh.Items.Add("101. Quân lương");
-                chkTabBinhManListManDanh.Items.Add("201. Thần thú");
-                txtTabBinhManMaxODi.Text = "10";
-#endif
-
+                    chkTabBinhManListManDanh.Items.Add("101. Quân lương");
+                    chkTabBinhManListManDanh.Items.Add("201. Thần thú");
+                    
+                    txtTabBinhManMaxODi.Text = "10";
+                #endif
 
                 this.Text = strVersion;
                 txtUsername.Focus();
-				
 			}
 			catch (Exception ex)
 			{
-
+                MessageBox.Show("Unexpected error:" + ex.Message, "Error", MessageBoxButtons.OK);
+                this.Close();
 			}
         }
+
 		public void SetAllMainTabEnable(bool enable)
 		{
 			for (int i = 0; i < tabMainTab.TabPages.Count; i++)
@@ -244,7 +230,7 @@ namespace LVAuto.LVForm
 			notifyIcon1.Text = "Đang load dữ liệu, vui lòng chờ. Máy có thể đứng đó.";
 			
 			
-			if (LVAuto.LVForm.Web.LVWeb.LoginHtml != null)
+			if (LVAuto.LVWeb.LVClient.LoginHtml != null)
 			{
 				while (true)
 				{
@@ -256,9 +242,9 @@ namespace LVAuto.LVForm
 							tabMainTab.TabPages[i].Enabled = true;
 						}
 
-						Hashtable lastlogindata = Web.ParseHeader.GetDataFromForm(LVAuto.LVForm.Web.LVWeb.LoginHtml);
-						Hashtable lastlogin = Web.LVWeb.LoginPartner(lastlogindata["uid"].ToString(), lastlogindata["uname"].ToString(), lastlogindata["ulgtime"].ToString(), lastlogindata["pid"].ToString(), lastlogindata["sign"].ToString());
-						Web.LVWeb.CurrentLoginInfo = new Web.LoginInfo((string[])lastlogin["Set-Cookie"]);
+						Hashtable lastlogindata = LVWeb.ParseHeader.GetDataFromForm(LVAuto.LVWeb.LVClient.LoginHtml);
+						Hashtable lastlogin = LVWeb.LVClient.LoginPartner(lastlogindata["uid"].ToString(), lastlogindata["uname"].ToString(), lastlogindata["ulgtime"].ToString(), lastlogindata["pid"].ToString(), lastlogindata["sign"].ToString());
+						LVWeb.LVClient.CurrentLoginInfo = new LVWeb.LoginInfo((string[])lastlogin["Set-Cookie"]);
 
 						//Command.City.GetAllSimpleCity();
 						
@@ -301,8 +287,8 @@ namespace LVAuto.LVForm
 
 						
 
-						LVAuto.LVForm.Web.LVWeb.debug = false;
-						LVAuto.LVForm.Web.LVWeb.firstlogin = false;
+						LVAuto.LVWeb.LVClient.debug = false;
+						LVAuto.LVWeb.LVClient.firstlogin = false;
 
 						tabLogin.Select();
 						tabLogin.Focus();
@@ -399,7 +385,7 @@ namespace LVAuto.LVForm
 				case "tabxaydung":						// Xay dung
 					//if (!BuildCity_loaded)
 						{
-							showLoadingLabel();
+							ShowLoadingLabel();
 							//Application.DoEvents();
 
 							cboXayDungCity.Items.Clear();
@@ -409,7 +395,7 @@ namespace LVAuto.LVForm
 							//Common.common.LoadBuildingToTreeViewForbuild_(this.tvBUILD, cboXayDungCity.SelectedIndex);
 						// Common.common.LoadBuildingToTreeViewForbuild_(this.tvBUILD);
 							BuildCity_loaded = true;
-							hideLoadingLabel();
+							HideLoadingLabel();
 							//chkXayNhaAll.Checked = Command.CityObj.City.isBuildAll;
 							//chkXayNha_TuMuaTaiNguyen.Checked = Command.CityObj.City.isBuyRes;
 							//txtXayNha_VangAnToan.Text = Command.CityObj.City.goldSafe.ToString();
@@ -421,14 +407,14 @@ namespace LVAuto.LVForm
 				case "tabhanha":						// Ha nha						
 					//if (!DelCity_loaded)
 					{
-						showLoadingLabel();
+						ShowLoadingLabel();
 						cboTabHaNhaCity.Items.Clear();
 						cboTabHaNhaCity.Items.AddRange(Command.CityObj.City.AllCity);
 						this.tvDEL.Nodes.Clear();
 
 						//Common.common.LoadBuildingToTreeViewForbuild(this.tvDEL);
 						DelCity_loaded = true;
-						hideLoadingLabel();
+						HideLoadingLabel();
 					}
 					break;
 
@@ -436,8 +422,8 @@ namespace LVAuto.LVForm
 
 					if (!ThaoPhat_loaded)
 					{
-						showLoadingLabel();
-						LVAuto.LVForm.Common.common.LoadDataForThaoPhat(LVAuto.LVForm.Main.TuongDiThaoPhatList);
+						ShowLoadingLabel();
+						LVAuto.LVForm.Common.common.LoadDataForThaoPhat(LVAuto.LVForm.FrmMain.TuongDiThaoPhatList);
 						
 						
 						/*
@@ -492,7 +478,7 @@ namespace LVAuto.LVForm
 						*/
 
 						ThaoPhat_loaded = true;
-						hideLoadingLabel();
+						HideLoadingLabel();
 					}
 
 					break;
@@ -543,13 +529,13 @@ namespace LVAuto.LVForm
 				case "tabmuavukhi":		// mua vu khi
 					if (!BuyWepon_loaded)
 					{
-						showLoadingLabel();
+						ShowLoadingLabel();
 						if (Common.common.LoadCityForBuyWepon(pnWepon) == 0) 
 							BuyWepon_loaded  = true;
 						else
 							BuyWepon_loaded = false;
 
-						hideLoadingLabel();
+						HideLoadingLabel();
 					}
 
 
@@ -854,7 +840,7 @@ namespace LVAuto.LVForm
         private void cboCity_SelectedIndexChanged(object sender, EventArgs e) {
             cboGeneral.Items.Clear();
             try {
-				showLoadingLabel();
+				ShowLoadingLabel();
 				LVAuto.LVForm.Command.Common.GetGeneral(cboCity.SelectedIndex, false); 
 				cboGeneral.Items.AddRange(Command.CityObj.City.AllCity[cboCity.SelectedIndex].MilitaryGeneral);
 
@@ -869,7 +855,7 @@ namespace LVAuto.LVForm
 					}
 				}
 
-				hideLoadingLabel();
+				HideLoadingLabel();
             } catch (Exception ex) { }
         }
 
@@ -889,7 +875,7 @@ namespace LVAuto.LVForm
         private void cmdLoadConfig_Click(object sender, EventArgs e) {
             openFileDialog1.ShowDialog();
 			
-			(new LVAuto.LVForm.Web.SaveNLoad()).loadConfig(fileSavepath);
+			(new LVAuto.LVWeb.SaveNLoad()).loadConfig(fileSavepath);
 
         }
 
@@ -1011,7 +997,7 @@ namespace LVAuto.LVForm
 
         private void cmdSaveConfig_Click(object sender, EventArgs e) {
             saveFileDialog1.ShowDialog();
-			(new LVAuto.LVForm.Web.SaveNLoad()).saveConfig(fileSavepath);
+			(new LVAuto.LVWeb.SaveNLoad()).saveConfig(fileSavepath);
         }
 
         private void saveFileDialog1_FileOk(object sender, CancelEventArgs e) 
@@ -1180,8 +1166,8 @@ namespace LVAuto.LVForm
         private void frmmain_FormClosing(object sender, FormClosingEventArgs e) 
 		{
 
-			string message =  "Hi " + LVAuto.LVForm.Web.LVWeb.lvusername + "!!!\r\n Bạn không muốn chạy chương trình này nữa phải không?";
-			string caption = "Chán quá, chuồn thôi  " + LVAuto.LVForm.Web.LVWeb.lvusername;
+			string message =  "Hi " + LVAuto.LVWeb.LVClient.lvusername + "!!!\r\n Bạn không muốn chạy chương trình này nữa phải không?";
+			string caption = "Chán quá, chuồn thôi  " + LVAuto.LVWeb.LVClient.lvusername;
 
 			MessageBoxButtons buttons = MessageBoxButtons.YesNo;
 			DialogResult result;
@@ -1490,8 +1476,8 @@ namespace LVAuto.LVForm
         }
 
         private void chkDebug_CheckedChanged(object sender, EventArgs e) {
-            lock (LVAuto.LVForm.Web.LVWeb.islock) {
-                LVAuto.LVForm.Web.LVWeb.debug = chkDebug.Checked;
+            lock (LVAuto.LVWeb.LVClient.islock) {
+                LVAuto.LVWeb.LVClient.debug = chkDebug.Checked;
             }
         }
 
@@ -1507,18 +1493,18 @@ namespace LVAuto.LVForm
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e) {
-            lock (LVAuto.LVForm.Web.LVWeb.islock) {
-                lock (LVAuto.LVForm.Web.LVWeb.ispause) {
-                    LVAuto.LVForm.Web.LVWeb.issendsms = checkBox2.Checked;
-                    LVAuto.LVForm.Web.LVWeb.smsusername = txtPhoneSend.Text;
-                    LVAuto.LVForm.Web.LVWeb.smspass = txtPassword.Text;
-                    LVAuto.LVForm.Web.LVWeb.smsto = txtTo.Text;
+            lock (LVAuto.LVWeb.LVClient.islock) {
+                lock (LVAuto.LVWeb.LVClient.ispause) {
+                    LVAuto.LVWeb.LVClient.issendsms = checkBox2.Checked;
+                    LVAuto.LVWeb.LVClient.smsusername = txtPhoneSend.Text;
+                    LVAuto.LVWeb.LVClient.smspass = txtPassword.Text;
+                    LVAuto.LVWeb.LVClient.smsto = txtTo.Text;
                 }
             }
         }
 
         private void cmdTestSMS_Click(object sender, EventArgs e) {
-            LVAuto.LVForm.Web.LVWeb.LoginMobi(txtPhoneSend.Text, txtPassword.Text, txtTo.Text, "Test thu tinh nang send sms");
+            LVAuto.LVWeb.LVClient.LoginMobi(txtPhoneSend.Text, txtPassword.Text, txtTo.Text, "Test thu tinh nang send sms");
         }
 
         private void timer1_Tick(object sender, EventArgs e) 
@@ -1529,189 +1515,28 @@ namespace LVAuto.LVForm
 
         private void cboServer_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LVAuto.LVForm.Web.LVWeb.Server = int.Parse(cboServer.Text.Substring(0,1));
+            LVAuto.LVWeb.LVClient.Server = int.Parse(dropdownServerList.Text.Substring(0,1));
         }
 
-
-		private bool ValidateLoginForm()
-		{
-			if (txtUsername.Text.Trim() == "")
-			{
-				MessageBox.Show("Chưa nhập Username!");
-				return false;
-			}
-			if (txtLvPassword.Text.Trim() == "")
-			{
-				MessageBox.Show("Chưa nhập password!");
-				return false;
-			}
-
-
-			ProxyProtocol = cbProxyProtocol.SelectedItem.ToString().Trim();
-
-			ProxyServer = txtProxyServer.Text.Trim();
-			ProxyPort	= txtProxyPort.Text.Trim();
-			ProxyUser	= txtProxyUser.Text.Trim();
-			ProxyPass	= txtProxyPassword.Text.Trim();
-
-			if (ProxyProtocol != "NONE")
-			{
-				if (ProxyServer == "")
-				{
-					MessageBox.Show("Chưa nhập proxy server!");
-					return false;
-				}
-
-				if (ProxyPort == "")
-				{
-					MessageBox.Show("Chưa nhập proxy port!");
-					return false;
-				}
-			}
-
-			switch (ProxyProtocol)
-			{
-
-				case "NONE":
-					ProxyServer = "";
-					ProxyPort = "";
-					ProxyUser = "";
-					ProxyPass = "";
-					break;
-
-				case "HTTP":
-				
-					ProxyUser = "";
-					ProxyPass = "";
-					break;
-				case "SOCKS4":
-					ProxyPass = "";
-					break;
-
-				case "SOCKS4a":
-					ProxyPass = "";
-					break;
-
-				case "SOCKS5":
-					break;
-
-
-			}
-			return true;
-		}
-
-        private void cmdLogin_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Auto-Called when the "Login" button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnLogin_Click(object sender, EventArgs e)
         {
-
-
-	/*		frmLoading frLoading = new frmLoading("Login......");
-			frLoading.ShowIcon = false; ;
-			frLoading.Activate();
-			frLoading.ShowIcon = false;
-			frLoading.ShowInTaskbar = false;
-			frLoading.TopMost = true;
-			frLoading.Show();
-
-		//	showLoading();
-
-	*/
 			try
 			{
-				int count =0;
-				Hashtable temp = null;
-				Hashtable loginform;
-				Hashtable logindata;
-				string data;
-				int i = 0;
-
-				if (!ValidateLoginForm()) return;
-
-				do
-				{
-					cmdLogin.Enabled = false;
-					showLoadingLabel("Login...");
-					try
-					{
-						 loginform = LVAuto.LVForm.Web.LVWeb.LoginForm();
-						//ChallengeScript":"eval(\u0027835+409\u0027)
-						//calculate antibot
-						data = loginform["DATA"].ToString();
-						i = data.IndexOf("\\u0027");
-						int j = data.IndexOf("\\u0027", i + 1);
-						string[] oper = data.Substring(i + 6, (j - i) - 6).Split(new char[] { '+' });
-						int antibot = int.Parse(oper[0].Trim()) + int.Parse(oper[1].Trim());
-						logindata = Web.ParseHeader.GetDataFromForm(data);
-						logindata["NoBot1$NoBot1_NoBotExtender_ClientState"] = antibot.ToString();
-						logindata["TxtPass"] = txtLvPassword.Text;
-						logindata["TxtUserName"] = txtUsername.Text;
-						logindata.Remove("imgLoginLogOut");
-						logindata["imgLoginLogOut.x"] = 10;
-						logindata["imgLoginLogOut.y"] = 10;
-						LVAuto.LVForm.Web.LVWeb.LoginFormData = logindata;
-						LVAuto.LVForm.Web.LVWeb.lvusername = txtUsername.Text;
-						LVAuto.LVForm.Web.LVWeb.lvpassword = txtLvPassword.Text;
-						temp = LVAuto.LVForm.Web.LVWeb.Login();
-						count++;
-					}
-					catch (Exception ex)
-					{
-						count++;
-					}
-				} while (temp == null && count < 3);
-
-				
-				if (temp == null)
-				{
-					i = 0;
-				}
-				else
-				{
-					data = temp["DATA"].ToString();
-					i = data.IndexOf("\\u0027");
-				}
-
-				if (i > -1)
-				{
-					hideLoadingLabel();
-					cmdLogin.Enabled = true; ;
-					MessageBox.Show("Sai pass hoặc đăng nhập thất bại. hê hê");
-				}
-				else
-				{
-					temp = LVAuto.LVForm.Web.LVWeb.LoginPlay();
-					LVAuto.LVForm.Web.LVWeb.LoginHtml = temp["DATA"].ToString();
-					if (!FirstLogin_())
-					{
-						MessageBox.Show("Sai pass hoặc đăng nhập thất bại. hê hê");
-						cmdLogin.Enabled = true; ;
-						return;
-					}
-					txtLvPassword.Enabled = false;
-					txtUsername.Enabled = false;
-					cmdLogin.Enabled = false;
-					//frLoading.Close();
-
-					ShowCoDanhTuongViengTham();
-					hideLoadingLabel();
-					MessageBox.Show("Đã login thành công. Hãy quên phần login đi nhé. Auto thôi.");
-
-					this.Text = strVersion + " - Welcome " + LVAuto.LVForm.Web.LVWeb.lvusername;
-
-					notifyIcon1.Text = strVersion + " - " + LVAuto.LVForm.Web.LVWeb.lvusername;
-					//LVAuto.Web.LVWeb.processCheckImage();
-
-
-					
-				}
+                LVLogin();
 			}
 			catch
 			{
 				MessageBox.Show("Hic hic, không login được mà không biết tại sao, có thể do mạng lởm. Cố thử lại lần nữa xem sao.", "Lỗi rồi", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				txtLvPassword.Enabled = true;
 				txtUsername.Enabled = true;
-				cmdLogin.Enabled = true;
+				btnLogin.Enabled = true;
 				//frLoading.Close();
-				hideLoadingLabel();
+				HideLoadingLabel();
 			}
         }
 
@@ -1737,7 +1562,7 @@ namespace LVAuto.LVForm
         }
 
         private void cmdReload_Click(object sender, EventArgs e) {
-            lock (LVAuto.LVForm.Web.LVWeb.islock) {
+            lock (LVAuto.LVWeb.LVClient.islock) {
                 //FirstLogin();
 				FirstLogin_();
                 MessageBox.Show("Đã nạp lại thông tin thành công. Bạn tự load lại cấu hình nhé.");
@@ -1757,28 +1582,34 @@ namespace LVAuto.LVForm
             }
         }
 
-		public void showLoadingLabel(string message)
+        /// <summary>
+        /// Shows the loading message
+        /// </summary>
+        /// <param name="message"></param>
+		public void ShowLoadingLabel(string message)
 		{
+            this.Text = strVersion + " | Please wait: " + message;
 			lblPanelLoading.Text = message;
 			panelLoading.BringToFront();
 			panelLoading.Visible = true;
 			lblPanelLoading.BringToFront();
-			LVFRMMAIN.Refresh();
-		}
-		public void showLoadingLabel()
-		{
-			//lblLoading.Location = new Point(LVFRMMAIN.Width / 2 - lblLoading.Width / 2, LVFRMMAIN.Height / 2 - lblLoading.Height);
-			lblPanelLoading.Text = "Loading...";
-			panelLoading.BringToFront();
-			panelLoading.Visible = true;
-			lblPanelLoading.BringToFront();
-			LVFRMMAIN.Refresh();
-			//this.Parent.Refresh();
-			this.Refresh();
+            LVFRMMAIN.Refresh();
 		}
 
-		public void hideLoadingLabel()
+        /// <summary>
+        /// Shows the default loading message
+        /// </summary>
+        public void ShowLoadingLabel()
 		{
+            ShowLoadingLabel("Loading...");
+		}
+
+        /// <summary>
+        /// Hides the loading message
+        /// </summary>
+		public void HideLoadingLabel()
+		{
+            this.Text = strVersion;
 			panelLoading.Visible = false;
 			LVFRMMAIN.Refresh();
 		}
@@ -2217,12 +2048,12 @@ namespace LVAuto.LVForm
 		{
 			chklstGeneral.Items.Clear();
             try {
-				showLoadingLabel();
+				ShowLoadingLabel();
 				LVAuto.LVForm.Command.Common.GetGeneral(cboBienCheCity.SelectedIndex, false);
 				chklstGeneral.Items.AddRange(Command.CityObj.City.AllCity[cboBienCheCity.SelectedIndex].MilitaryGeneral);
 
 				
-				hideLoadingLabel();
+				HideLoadingLabel();
             } catch (Exception ex) { }
         }
 
@@ -2429,7 +2260,7 @@ namespace LVAuto.LVForm
 			 cityid = 13139;	// iwunu5
 
 			int genid = 426324;  //Lam nap thach
-			string cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityid);
+			string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityid);
 			string para;
 			LVAuto.LVForm.Command.City.SwitchCitySlow(cityid);
 			para = "lCityTentID=" + cityid + "&lGeneralID=" + genid + "&lLevel=1";
@@ -2507,7 +2338,7 @@ namespace LVAuto.LVForm
 			//get danh sach quan van
 			//http://s3.linhvuong.zooz.vn/GateWay/Common.ashx?id=15&0.31696323126782144&lType=1&tid=13139
 
-			 cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityid);
+			 cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityid);
 
 			para = "lType=1&tid=" + cityid;
 			ret = LVAuto.LVForm.Command.Common.Execute(15, para, true, cookies);
@@ -3499,7 +3330,7 @@ namespace LVAuto.LVForm
 			cboGeneral.Items.Clear();
 			try
 			{
-				showLoadingLabel();
+				ShowLoadingLabel();
 
 				Command.CityObj.City city = (Command.CityObj.City ) cboCity.SelectedItem;
 				LVAuto.LVForm.Command.Common.GetAllSimpleMilitaryGeneralInfoIntoCity();
@@ -3533,7 +3364,7 @@ namespace LVAuto.LVForm
 
 			finally
 			{
-				hideLoadingLabel();
+				HideLoadingLabel();
 				btThaoPhatReload.Enabled = true;
 			}
 		}
@@ -3755,7 +3586,7 @@ namespace LVAuto.LVForm
 				int cityid = city.id;
 				int amount = int.Parse(txtTienIchRuongSoluong.Text);
 
-				string cookies = cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityid);
+				string cookies = cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityid);
 				LVAuto.LVForm.Command.City.SwitchCitySlow(cityid);
 				// mo ruong
 				string para = "lBoxID=" + ruongid;
@@ -3932,20 +3763,20 @@ namespace LVAuto.LVForm
 
 						//string header = "GET http://s" + LVAuto.Web.LVWeb.Server + ".linhvuong.zooz.vn/message HTTP/1.1\n";
 
-						string header = "GET http://s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn/Interfaces/message_list.aspx?n=n&page=" + page + " HTTP/1.1\n";
+						string header = "GET http://s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn/Interfaces/message_list.aspx?n=n&page=" + page + " HTTP/1.1\n";
 
-						header += "Host: s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn\n";
+						header += "Host: s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn\n";
 						header += "User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727)\n";
 						header += "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n";
 						header += "Accept-Language: en-us,en;q=0.5\n";
 						header += "Accept-Encoding: gzip,deflate\n";
 						header += "Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7\n";
 						header += "Keep-Alive: 300\n";
-						header += "Referer: http://s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn/city\n";
-						header += "Cookie: " + Web.LVWeb.CurrentLoginInfo.MakeCookiesString() + "\n";
+						header += "Referer: http://s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn/city\n";
+						header += "Cookie: " + LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString() + "\n";
 						header += "Content-Type: application/x-www-form-urlencoded\n";
 						header += "\n";
-						result = LVAuto.LVForm.Web.LVWeb.SendAndReceive(header, "s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn", 80, true);
+						result = LVAuto.LVWeb.LVClient.SendAndReceive(header, "s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn", 80, true);
 						if (result == null)
 						{
 							page = 1;
@@ -4005,9 +3836,9 @@ namespace LVAuto.LVForm
 
 						str += "</seqnos><del_type>1</del_type><noread_num>1</noread_num></delete></root>";
 
-						header = "POST http://s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn/Interfaces/read_message.aspx HTTP/1.1\n";
+						header = "POST http://s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn/Interfaces/read_message.aspx HTTP/1.1\n";
 
-						header += "Host: s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn\n";
+						header += "Host: s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn\n";
 						header += "User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727)\n";
 						header += "Accept: */*";
 						header += "method: POST /Interfaces/read_message.aspx HTTP/1.1\n";
@@ -4017,13 +3848,13 @@ namespace LVAuto.LVForm
 						header += "Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7\n";
 						header += "Keep-Alive: 300\n";
 						header += "Pragma: no-cache\n";
-						header += "Referer: http://s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn/message\n";
+						header += "Referer: http://s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn/message\n";
 						header += "Content-Type: application/x-www-form-urlencoded\n";
-						header += "Cookie: " + Web.LVWeb.CurrentLoginInfo.MakeCookiesString() + "\n";
+						header += "Cookie: " + LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString() + "\n";
 						header += "Content-Length: " + (str.Length) + "\n";
 						header += "\n";
 
-						Hashtable res = LVAuto.LVForm.Web.LVWeb.SendAndReceive(header + str, "s" + LVAuto.LVForm.Web.LVWeb.Server + ".linhvuong.zooz.vn", 80, true);
+						Hashtable res = LVAuto.LVWeb.LVClient.SendAndReceive(header + str, "s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn", 80, true);
 						page++;
 					} // end while true
 				} // end while (count < 10)
@@ -4217,8 +4048,8 @@ namespace LVAuto.LVForm
                 g=Command.Build.GetGeneralViengTham();
 				if (g != "")
 				{
-					string message = "Hi " + LVAuto.LVForm.Web.LVWeb.lvusername + "!!!\r\n" + g;
-					string title = "Hi " + LVAuto.LVForm.Web.LVWeb.lvusername + "!!!";
+					string message = "Hi " + LVAuto.LVWeb.LVClient.lvusername + "!!!\r\n" + g;
+					string title = "Hi " + LVAuto.LVWeb.LVClient.lvusername + "!!!";
 					notifyIcon1.ShowBalloonTip(3000, "", message, ToolTipIcon.None);
 				}
 			}			
@@ -4228,7 +4059,7 @@ namespace LVAuto.LVForm
 		private void btAutoHienAnhDeCheck_Click(object sender, EventArgs e)
 		{
 			btAutoHienAnhDeCheck.Enabled = false;
-			LVAuto.LVForm.Web.LVWeb.processCheckImage();
+			LVAuto.LVWeb.LVClient.processCheckImage();
 			btAutoHienAnhDeCheck.Enabled = true;
 
 		}

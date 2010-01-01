@@ -38,7 +38,7 @@ namespace LVAuto.LVForm.LVThread {
                     LVAuto.LVForm.Command.OPTObj.wepon vc = (LVAuto.LVForm.Command.OPTObj.wepon)obj;
                     if (vc.chkOK.Checked) 
 					{
-                        Cookies[citycount] = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(vc.cityid);
+                        Cookies[citycount] = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(vc.cityid);
                         Id[citycount] = vc.cityid;
                         City[citycount] = new int[9];
                         City[citycount][0] = vc.cboWepon.Text == "" ? 0 : int.Parse(vc.cboWepon.Text.Split(new Char[] { '.' })[0]);
@@ -74,7 +74,7 @@ namespace LVAuto.LVForm.LVThread {
 						// SetText("Đang chạy (" + i + " / " + citycount + ")");
 						try
 						{
-							Cookies[i] = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(Id[i]);
+							Cookies[i] = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(Id[i]);
 							LVAuto.LVForm.Command.City.SwitchCitySlow(Id[i]);
 
 							citypos = LVAuto.LVForm.Command.City.GetCityPostByID(Id[i]);

@@ -10,7 +10,7 @@ using LVAuto.LVForm.Command;
 using LVAuto.LVForm.Command.CityObj;
 using LVAuto.LVForm.Common;
 using LVAuto.LVForm.LVThread;
-using LVAuto.LVForm.Web;
+using LVAuto.LVWeb;
 using LVAuto.LVForm.Command.CommonObj;
 using System.Drawing;
 
@@ -118,7 +118,7 @@ namespace LVAuto.LVForm.LVThread
                     binhmanobj = (BinhManObj)geninfo[man];
                     int cityID = binhmanobj.CityID;
                     LVAuto.LVForm.Command.CityObj.City cityByID = LVAuto.LVForm.Command.City.GetCityByID(cityID);
-                    string cookies = LVWeb.CurrentLoginInfo.MakeCookiesString(cityID);
+                    string cookies = LVClient.CurrentLoginInfo.MakeCookiesString(cityID);
                     LVAuto.LVForm.Command.City.SwitchCitySlow(cityID);
                     SetText("Chuẩn bị tướng " + binhmanobj.GeneralName + " đánh địa tinh tọa độ (" + binhmanobj.ToaDoMoX + ", " + binhmanobj.ToaDoMoY + "...");
 
@@ -237,7 +237,7 @@ namespace LVAuto.LVForm.LVThread
                 LVAuto.LVForm.Command.CityObj.City cityByID = LVAuto.LVForm.Command.City.GetCityByID(cityID);
                 int x = cityByID.x;
                 int y = cityByID.y;
-                string cookies = LVWeb.CurrentLoginInfo.MakeCookiesString(cityID);
+                string cookies = LVClient.CurrentLoginInfo.MakeCookiesString(cityID);
                 LVAuto.LVForm.Command.City.SwitchCitySlow(cityID);
                 MilitaryGeneral generalMilitaryInfoEx = Command.Common.GetGeneralMilitaryInfoEx(cityID, obj2.GeneralId);
                 if (generalMilitaryInfoEx != null)
@@ -840,7 +840,7 @@ namespace LVAuto.LVForm.LVThread
 				binhmanobj = (LVAuto.LVForm.Command.CommonObj.BinhManObj)binhmanifo[0];
 				cityid = binhmanobj.CityID;
 
-				string cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(cityid);
+				string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityid);
 				LVAuto.LVForm.Command.City.SwitchCitySlow(cityid);
 
 

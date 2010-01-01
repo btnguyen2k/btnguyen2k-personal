@@ -25,7 +25,7 @@ namespace LVAuto.LVForm.LVThread {
 					//Application.DoEvents();
 					//lock (LVAuto.Web.LVWeb.ispause) {
 					Hashtable att;
-					if (LVAuto.LVForm.Web.LVWeb.issendsms == true)
+					if (LVAuto.LVWeb.LVClient.issendsms == true)
 					{
 						att = LVAuto.LVForm.Command.Common.GetCityAttack();
 						ArrayList ctys = (ArrayList)att["infos"];
@@ -42,59 +42,59 @@ namespace LVAuto.LVForm.LVThread {
 						}
 						if (timeatt != 999999999)
 						{
-							if (LVAuto.LVForm.Web.LVWeb.lastsmstype == -1)
+							if (LVAuto.LVWeb.LVClient.lastsmstype == -1)
 							{
-								if (timeatt > 60 * 30) LVAuto.LVForm.Web.LVWeb.lastsmstype = 1;
-								if (timeatt > 60 * 5 && timeatt < 60 * 30) LVAuto.LVForm.Web.LVWeb.lastsmstype = 2;
-								if (timeatt < 60 * 5) LVAuto.LVForm.Web.LVWeb.lastsmstype = 3;
+								if (timeatt > 60 * 30) LVAuto.LVWeb.LVClient.lastsmstype = 1;
+								if (timeatt > 60 * 5 && timeatt < 60 * 30) LVAuto.LVWeb.LVClient.lastsmstype = 2;
+								if (timeatt < 60 * 5) LVAuto.LVWeb.LVClient.lastsmstype = 3;
 							}
 							else
 							{
 								if (timeatt > 60 * 30)
 								{
 									//neu chua bi danh
-									if (LVAuto.LVForm.Web.LVWeb.lastsmstype != 1)
+									if (LVAuto.LVWeb.LVClient.lastsmstype != 1)
 									{
-										LVAuto.LVForm.Web.LVWeb.LoginMobi(
-											LVAuto.LVForm.Web.LVWeb.smsusername, LVAuto.LVForm.Web.LVWeb.smspass,
-											LVAuto.LVForm.Web.LVWeb.smsto, "Quan dich dang danh nhung con lau moi toi"
+										LVAuto.LVWeb.LVClient.LoginMobi(
+											LVAuto.LVWeb.LVClient.smsusername, LVAuto.LVWeb.LVClient.smspass,
+											LVAuto.LVWeb.LVClient.smsto, "Quan dich dang danh nhung con lau moi toi"
 										);
 
 										//LVAuto.frmmain.LVFRMMAIN.lblmainmsg.Text= "Quan dich dang danh nhung con lau moi toi";
 									}
-									LVAuto.LVForm.Web.LVWeb.lastsmstype = 1;
+									LVAuto.LVWeb.LVClient.lastsmstype = 1;
 								}
 								if (timeatt > 60 * 5 && timeatt < 60 * 30)
 								{
-									if (LVAuto.LVForm.Web.LVWeb.lastsmstype != 2)
+									if (LVAuto.LVWeb.LVClient.lastsmstype != 2)
 									{
-										LVAuto.LVForm.Web.LVWeb.LoginMobi(
-											LVAuto.LVForm.Web.LVWeb.smsusername, LVAuto.LVForm.Web.LVWeb.smspass,
-											LVAuto.LVForm.Web.LVWeb.smsto, "Quan dich dang danh nhung con 30 phut nua moi toi"
+										LVAuto.LVWeb.LVClient.LoginMobi(
+											LVAuto.LVWeb.LVClient.smsusername, LVAuto.LVWeb.LVClient.smspass,
+											LVAuto.LVWeb.LVClient.smsto, "Quan dich dang danh nhung con 30 phut nua moi toi"
 										);
 										//LVAuto.frmmain.LVFRMMAIN.lblmainmsg.Text = "Quan dich dang danh nhung con 30 phut nua moi toi";
 									}
-									LVAuto.LVForm.Web.LVWeb.lastsmstype = 2;
+									LVAuto.LVWeb.LVClient.lastsmstype = 2;
 								}
 								if (timeatt < 60 * 5)
 								{
-									if (LVAuto.LVForm.Web.LVWeb.lastsmstype != 3)
+									if (LVAuto.LVWeb.LVClient.lastsmstype != 3)
 									{
-										LVAuto.LVForm.Web.LVWeb.LoginMobi(
-											LVAuto.LVForm.Web.LVWeb.smsusername, LVAuto.LVForm.Web.LVWeb.smspass,
-											LVAuto.LVForm.Web.LVWeb.smsto, "Quan dich con cach 5 phut di duong. AAAA"
+										LVAuto.LVWeb.LVClient.LoginMobi(
+											LVAuto.LVWeb.LVClient.smsusername, LVAuto.LVWeb.LVClient.smspass,
+											LVAuto.LVWeb.LVClient.smsto, "Quan dich con cach 5 phut di duong. AAAA"
 										);
 
 										//LVAuto.frmmain.LVFRMMAIN.lblmainmsg.Text = "Quan dich con cach 5 phut di duong. AAAA";
 
 									}
-									LVAuto.LVForm.Web.LVWeb.lastsmstype = 3;
+									LVAuto.LVWeb.LVClient.lastsmstype = 3;
 								}
 							}
 						}
 						else
 						{
-							LVAuto.LVForm.Web.LVWeb.lastsmstype = 0;
+							LVAuto.LVWeb.LVClient.lastsmstype = 0;
 						}
 					}
 

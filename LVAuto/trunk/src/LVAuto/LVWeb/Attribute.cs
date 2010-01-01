@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace LVAuto.LVForm.Web {
+namespace LVAuto.LVWeb {
     /// <summary>
     /// Attribute holds one attribute, as is normally stored in an
     /// HTML or XML file. This includes a name, value and delimiter.

@@ -160,7 +160,7 @@ namespace LVAuto.LVForm.LVThread
 			{
 				Message.ForeColor = System.Drawing.Color.Red;
 				SetText("Đang chạy (0%)");
-				cookies = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(CityID);
+				cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(CityID);
 				LVAuto.LVForm.Command.City.SwitchCitySlow(CityID);
 
 				result = Command.City.GetCityTask(cookies);

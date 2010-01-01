@@ -13,7 +13,7 @@ namespace LVAuto {
 		{
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LVAuto.LVForm.Main());
+            Application.Run(new LVAuto.LVForm.FrmMain());
         }
     }
 }

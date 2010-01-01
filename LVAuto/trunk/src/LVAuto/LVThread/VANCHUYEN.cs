@@ -33,7 +33,7 @@ namespace LVAuto.LVForm.LVThread {
                 foreach (object obj in pnVanchuyen.Controls) {
                     vc = (LVAuto.LVForm.Command.OPTObj.Vanchuyen)obj;
                     if (vc.chkOK.Checked) {
-                        Cookies[citycount] = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(((LVAuto.LVForm.Command.CityObj.City)vc.cboSource.SelectedItem).id);
+                        Cookies[citycount] = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(((LVAuto.LVForm.Command.CityObj.City)vc.cboSource.SelectedItem).id);
                         Id[citycount] = ((LVAuto.LVForm.Command.CityObj.City)vc.cboSource.SelectedItem).id;
                         City[citycount] = new int[6];                  
                         City[citycount][0]=((LVAuto.LVForm.Command.CityObj.City)vc.cboDesc.SelectedItem).id;
@@ -62,7 +62,7 @@ namespace LVAuto.LVForm.LVThread {
 						SetText("Đang chạy (" + (i) * 100 / citycount + "%)");
 						try
 						{
-							Cookies[i] = LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(Id[i]);
+							Cookies[i] = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(Id[i]);
 							LVAuto.LVForm.Command.City.SwitchCitySlow(Id[i]);
 							if (Command.Build.SelectBuilding(Id[i], 11, Cookies[i]))
 							{

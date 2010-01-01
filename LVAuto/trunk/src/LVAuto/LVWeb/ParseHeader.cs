@@ -5,7 +5,7 @@ using System.Text;
 using System.Net.Sockets;
 using System.Windows.Forms;
 
-namespace LVAuto.LVForm.Web {
+namespace LVAuto.LVWeb {
     class ParseHeader {
         public static Hashtable Parse(string s,bool isimage) 
 		{

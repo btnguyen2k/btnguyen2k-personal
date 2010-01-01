@@ -29,7 +29,7 @@ namespace LVAuto.LVForm.LVThread {
             {
                 //lock (LVAuto.Web.LVWeb.islock)
                 {
-                    if (Command.Build.SelectBuilding(Command.CityObj.City.AllCity[0].id, 11, LVAuto.LVForm.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(Command.CityObj.City.AllCity[0].id)))
+                    if (Command.Build.SelectBuilding(Command.CityObj.City.AllCity[0].id, 11, LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(Command.CityObj.City.AllCity[0].id)))
                     {
                         Command.OPT.UpdateAllPrice(pricelua, 1);
                         Command.OPT.UpdateAllPrice(pricego, 2);
