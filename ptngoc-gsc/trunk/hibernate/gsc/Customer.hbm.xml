@@ -14,11 +14,21 @@
 			</generator>
 		</id>
 
-		<property name="refCard" type="com.greenstorm.gsc.bo.Card"
+		<!--
+			<property name="refCard" type="com.greenstorm.gsc.bo.Card"
 			column="cref_card_id" />
+		-->
+		<one-to-one name="refCard" entity-name="com.greenstorm.gsc.bo.Card"
+			foreign-key="cref_card_id">
+		</one-to-one>
 
-		<property name="card" type="com.greenstorm.gsc.bo.Card"
+		<!--
+			<property name="card" type="com.greenstorm.gsc.bo.Card"
 			column="ccard_id" not-null="true" />
+		-->
+		<one-to-one name="card" entity-name="com.greenstorm.gsc.bo.Card"
+			foreign-key="ccard_id">
+		</one-to-one>
 
 		<!--
 			<one-to-one name="card" entity-name="com.greenstorm.gsc.bo.Card"

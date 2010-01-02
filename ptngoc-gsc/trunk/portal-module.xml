@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--  
-<!DOCTYPE portal-module PUBLIC 
-	"-//DDTH.ORG//DTD Portal Module//EN"
-	"portal-module.dtd">
--->
+	<!--
+		<!DOCTYPE portal-module PUBLIC "-//DDTH.ORG//DTD Portal Module//EN"
+		"portal-module.dtd">
+	-->
 <portal-module name="gsc" brief-description="Greenstorm Card">
 	<!-- Module information -->
 	<module-info>
 		<description>GreenStorm Card</description>
-		<version number="1.0.0" build="0" date="200910131213" />
+		<version number="1.0.0" build="7" date="201001030132" />
 		<portal-version min="1.0" max="1.0" />
 		<vendor name="DDTH" url="http://www.ddth.org" />
 	</module-info>
 
-	<!--  
-	<module-properties>
-		<property name="txbb.seoUnicode">org.ddth.txbb.util.TCVN6909SeoUnicode</property>
-		<property name="txbb.txCodeParser">org.ddth.txbb.util.XhtmlTXCodeParser</property>
-	</module-properties>
+	<!--
+		<module-properties> <property
+		name="txbb.seoUnicode">org.ddth.txbb.util.TCVN6909SeoUnicode</property>
+		<property
+		name="txbb.txCodeParser">org.ddth.txbb.util.XhtmlTXCodeParser</property>
+		</module-properties>
 	-->
 
 	<portlets>
-		<!--  
-		<portlet name="txbb_admin_mainmenu" description="TXBB's Administrative Main Menu"
-			class="org.ddth.txbb.portlets.admin.MainMenuPortlet" />
-		<portlet name="txbb_mainmenu" description="TXBB's non-Administrative Main Menu"
-			class="org.ddth.txbb.portlets.MainMenuPortlet" />
-		<portlet name="txbb_personalcorner" description="TXBB's Personal Corner Menu"
+		<!--
+			<portlet name="txbb_admin_mainmenu" description="TXBB's
+			Administrative Main Menu"
+			class="org.ddth.txbb.portlets.admin.MainMenuPortlet" /> <portlet
+			name="txbb_mainmenu" description="TXBB's non-Administrative Main
+			Menu" class="org.ddth.txbb.portlets.MainMenuPortlet" /> <portlet
+			name="txbb_personalcorner" description="TXBB's Personal Corner Menu"
 			class="org.ddth.txbb.portlets.PersonalCornerPortlet" />
 		-->
 	</portlets>
@@ -102,18 +103,19 @@
 	<pages>
 		<page action="_">
 			<!--
-			<layout location="TOP" portlet="portal_topmenubar" position="-1" />
-			<layout location="LEFT" portlet="txbb_mainmenu" position="-2" />
-			<layout location="LEFT" portlet="txbb_personalcorner"
-				position="-1" />
-			<layout location="LEFT" portlet="portal_loginreminder"
-				position="-1" />			
-
-			<layout location="BOTTOM" portlet="portal_bottommenubar"
-				position="-2" />
-			<layout location="BOTTOM" portlet="portal_systeminfo"
-				position="-1" />
+				<layout location="TOP" portlet="portal_topmenubar" position="-1" />
+				<layout location="LEFT" portlet="txbb_mainmenu" position="-2" />
+				<layout location="LEFT" portlet="txbb_personalcorner" position="-1"
+				/> <layout location="LEFT" portlet="portal_loginreminder"
+				position="-1" /> <layout location="BOTTOM"
+				portlet="portal_bottommenubar" position="-2" /> <layout
+				location="BOTTOM" portlet="portal_systeminfo" position="-1" />
 			-->
+		</page>
+
+		<page action="index">
+			<disabled-location id="LEFT" />
+			<disabled-location id="RIGHT" />
 		</page>
 	</pages>
 </portal-module>

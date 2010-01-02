@@ -47,12 +47,9 @@
 	<!-- menu -->	
 	<div id="menu">
 		<ul>
-			<li id="current"><a href="index.html">Home</a></li>
-			<li><a href="index.html">Archives</a></li>
-			<li><a href="index.html">Downloads</a></li>
-			<li><a href="index.html">Services</a></li>
-			<li><a href="index.html">Support</a></li>
-			<li><a href="index.html">About</a></li>		
+			<li id="current"><a href="index.html">${language.getMessage('msg.home')}</a></li>
+			<li><a href="customerLogin.html">${language.getMessage('msg.customer')}</a></li>
+			<li><a href="staffLogin.html">${language.getMessage('msg.staff')}</a></li>
 		</ul>
 	</div>
 	
@@ -72,7 +69,7 @@
 			<#include "column_left.ftl">
 		</#if>
 
-		<div id="main">
+		<div id="main" style="width: 100%">
 			<#if MAIN_CONTENT_FILE??>
 				<#include MAIN_CONTENT_FILE>
 			<#else>

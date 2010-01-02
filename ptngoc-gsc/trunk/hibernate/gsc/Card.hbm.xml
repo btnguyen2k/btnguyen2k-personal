@@ -7,7 +7,7 @@
 	<class entity-name="com.greenstorm.gsc.bo.Card" name="com.greenstorm.gsc.bo.Card"
 		table="gsc_card">
 		<cache usage="nonstrict-read-write" />
-		<id name="cardId" column="cid" type="integer">
+		<id name="id" column="cid" type="integer">
 			<generator class="native">
 				<!-- Note: for PostgreSQL 8.3 -->
 				<param name="sequence">gsc_card_cid_seq</param>

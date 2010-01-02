@@ -4,7 +4,7 @@
 	"-//MLS/Multilanguages Support Registry DTD//EN"
 	"http://svn.diendantinhoc.org/org.ddth/main/src/org/ddth/mls/mls.dtd">
 -->
-<languages>
+<languages cache="disabled">
 	<language name="default"
 		description="Default Language Pack (English)" type="properties"
 		locale="en">
