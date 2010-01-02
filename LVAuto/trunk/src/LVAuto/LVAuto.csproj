@@ -202,7 +202,10 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="LVForm\FrmMain.Actions.cs">
+    <Compile Include="LVForm\FrmMain.Actions.Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LVForm\FrmMain.Public.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LVForm\FrmMain.Shared.cs">
