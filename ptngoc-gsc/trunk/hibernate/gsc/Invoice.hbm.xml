@@ -17,8 +17,13 @@
 		<property name="customerId" type="integer" not-null="true"
 			column="icustomer_id" />
 
-		<property name="card" type="com.greenstorm.gsc.bo.Card"
+		<!--
+			<property name="card" type="com.greenstorm.gsc.bo.Card"
 			column="icard_id" />
+		-->
+		<one-to-one name="card" entity-name="com.greenstorm.gsc.bo.Card"
+			foreign-key="icard_id">
+		</one-to-one>
 
 		<property name="timestamp" type="integer" column="itimestamp" />
 

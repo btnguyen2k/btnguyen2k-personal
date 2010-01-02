@@ -72,10 +72,8 @@ This is the ant build file for TXBB project.
 		<delete failonerror="false" dir="${tmp}" />
 		<mkdir dir="${tmp}" />
 
-		<copy file="${resources-lib}/icu4j-4_0_1.jar" todir="${tmp}" />
-		<copy file="${resources-lib}/ddth/ddth-txcode-0.2.beta.jar" todir="${tmp}" />
-		<copy todir="${tmp}/org">
-			<fileset dir="${bin}/org" />
+		<copy todir="${tmp}/com">
+			<fileset dir="${bin}/com" />
 		</copy>
 		<copy todir="${tmp}/hibernate">
 			<fileset dir="hibernate" />
