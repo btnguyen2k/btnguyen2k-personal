@@ -38,6 +38,8 @@ public class GscLangConstants {
             "msg.pcDeleteTopic.successful";
 
     public final static String MSG_LOGIN = "msg.login";
+    
+    public final static String MSG_LOGIN_SUCCESFUL = "msg.login.succesful";
 
     public final static String MSG_LOGOUT = "msg.logout";
 

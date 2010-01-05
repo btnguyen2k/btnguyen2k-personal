@@ -1,3 +1,12 @@
+.errorMessage {
+	font-weight: bold;
+	color: #FF0000;
+}
+.infoMessage {
+	font-weight: bold;
+	color: #009010;
+}
+
 /* content-box */
 #sidebar .freestyle-box {
 	padding: 5px 5px 5px 5px;

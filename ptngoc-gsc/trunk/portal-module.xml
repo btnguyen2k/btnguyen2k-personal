@@ -7,7 +7,7 @@
 	<!-- Module information -->
 	<module-info>
 		<description>GreenStorm Card</description>
-		<version number="1.0.0" build="7" date="201001030132" />
+		<version number="1.0.0" build="13" date="201001060102" />
 		<portal-version min="1.0" max="1.0" />
 		<vendor name="DDTH" url="http://www.ddth.org" />
 	</module-info>
@@ -38,57 +38,11 @@
 
 	<action-mapping>
 		<module name="gsc">
-			<form name="frmBoxCreate">
-				<form-property name="parentId" type="java.lang.Integer" />
-				<form-property name="title" type="java.lang.String"
-					required="true" max-length="255" />
-				<form-property name="outerDescription" type="java.lang.String"
-					required="false" />
-				<form-property name="innerDescription" type="java.lang.String"
-					required="false" />
-			</form>
-
-			<form name="frmBoxEdit">
-				<form-property name="parentId" type="java.lang.Integer" />
-				<form-property name="title" type="java.lang.String"
-					required="true" max-length="255" />
-				<form-property name="outerDescription" type="java.lang.String"
-					required="false" />
-				<form-property name="innerDescription" type="java.lang.String"
-					required="false" />
-			</form>
-
-			<form name="frmBoxDelete">
-			</form>
-
-			<form name="frmTopicCreate">
-				<form-property name="topicType" type="java.lang.String"
-					required="true" allowed-values="question,article,information" />
-			</form>
-
-			<form name="frmTopicEdit">
-				<form-property name="topicType" type="java.lang.String"
-					required="true" allowed-values="question,article,information" />
-				<form-property name="topicTitle" type="java.lang.String"
-					max-length="255" />
-				<form-property name="topicContent" type="java.lang.String" />
-			</form>
-
-			<form name="frmTopicDelete">
-			</form>
-
-			<form name="frmTopicPublish">
-				<form-property name="publishedBoxes" type="java.lang.Integer[]"
-					required="false" />
-			</form>
-
-			<form name="frmTopicUnpublish">
-			</form>
-
-			<form name="frmTopicLock">
-			</form>
-
-			<form name="frmTopicUnlock">
+			<form name="frmStaffLogin">
+				<form-property name="loginname" type="java.lang.String"
+					required="true" max-length="32" />
+				<form-property name="password" type="java.lang.String"
+					required="true" max-length="32" />
 			</form>
 
 			<default-handler class="com.greenstorm.gsc.panda.DefaultHandler" />
@@ -97,6 +51,14 @@
 				class="org.ddth.panda.portal.module.core.panda.DefaultViewRenderer" />
 
 			<handler action="index" class="com.greenstorm.gsc.panda.IndexHandler" />
+
+			<handler action="information"
+				class="org.ddth.panda.portal.module.panda.InformationHandler" />
+
+			<handler action="staffLogin" class="com.greenstorm.gsc.panda.staff.LoginHandler"
+				form="frmStaffLogin" />
+
+			<handler action="staff" class="com.greenstorm.gsc.panda.staff.IndexHandler" />
 		</module>
 	</action-mapping>
 
@@ -114,6 +76,11 @@
 		</page>
 
 		<page action="index">
+			<disabled-location id="LEFT" />
+			<disabled-location id="RIGHT" />
+		</page>
+
+		<page action="staffLogin">
 			<disabled-location id="LEFT" />
 			<disabled-location id="RIGHT" />
 		</page>
