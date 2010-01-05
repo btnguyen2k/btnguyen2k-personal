@@ -8,14 +8,14 @@
 					<a href="customerLogin.html">
 					<img src="images/icon_customer_login.png" alt="Customer Login" border="0"/>
 					<br/>
-					Customer Login
+					${language.getMessage('msg.customerLogin')}
 					</a>
 				</td>
 				<td width="50%" align="center">
 					<a href="staffLogin.html">
 					<img src="images/icon_staff_login.png" alt="Staff Login" border="0"/>
 					<br/>
-					Staff Login
+					${language.getMessage('msg.staffLogin')}
 					</a>
 				</td>
 			</tr>

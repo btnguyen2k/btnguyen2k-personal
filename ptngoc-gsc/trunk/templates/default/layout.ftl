@@ -24,7 +24,7 @@
 	/* ]]> */
 	</script>
 	<link rel="stylesheet" href="css/Refresh.css" type="text/css" />
-	<link rel="stylesheet" href="css/txbb.css" type="text/css" />
+	<link rel="stylesheet" href="css/gsc.css" type="text/css" />
 </head>
 
 <body>
@@ -44,14 +44,18 @@
 		-->				
 	</div>
 	
-	<!-- menu -->	
-	<div id="menu">
-		<ul>
-			<li id="current"><a href="index.html">${language.getMessage('msg.home')}</a></li>
-			<li><a href="customerLogin.html">${language.getMessage('msg.customer')}</a></li>
-			<li><a href="staffLogin.html">${language.getMessage('msg.staff')}</a></li>
-		</ul>
-	</div>
+	<!-- menu -->
+	<#if TOP_MENU_FILE??>
+		<#include TOP_MENU_FILE>
+	<#else>
+		<div id="menu">
+			<ul>
+				<li id="current"><a href="index.html">${language.getMessage('msg.home')}</a></li>
+				<li><a href="customerLogin.html">${language.getMessage('msg.customer')}</a></li>
+				<li><a href="staffLogin.html">${language.getMessage('msg.staff')}</a></li>
+			</ul>
+		</div>
+	</#if>
 	
 	<#if page.content.topContent??
 			&& page.content.topContent?is_sequence
@@ -74,7 +78,7 @@
 				<#include MAIN_CONTENT_FILE>
 			<#else>
 				<#include "column_center.ftl">
-			</#if>			
+			</#if>
 		</div>
 	</div>
 

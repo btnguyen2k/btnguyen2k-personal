@@ -12,6 +12,14 @@
 		<templateFile>layout_index.ftl</templateFile>
 	</page>
 	
+	<page id="info">
+		<templateFile>layout_info.ftl</templateFile>
+	</page>
+	
+	<page id="staffLogin">
+		<templateFile>layout_staffLogin.ftl</templateFile>
+	</page>
+	
 	<page id="box">
 		<templateFile>layout_boxView.ftl</templateFile>
 	</page>

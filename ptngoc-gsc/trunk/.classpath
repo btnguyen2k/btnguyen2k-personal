@@ -7,7 +7,7 @@
 	<classpathentry kind="lib" path="resources/lib/felix.jar"/>
 	<classpathentry kind="lib" path="resources/lib/icu4j-4_0_1.jar" sourcepath="/JavaSources/icu/icu4j-4_0_1-src.zip"/>
 	<classpathentry kind="lib" path="resources/lib/pandaportal/pandaportal-portalAdmin-1.0.0.jar"/>
-	<classpathentry kind="lib" path="resources/lib/pandaportal/pandaportal-portalCore-1.0.0.jar"/>
+	<classpathentry kind="lib" path="resources/lib/pandaportal/pandaportal-portalCore-1.0.0.jar" sourcepath="/PandaPortal-Core"/>
 	<classpathentry kind="lib" path="resources/lib/pandaportal/pandaportal-portalMember-1.0.0.jar"/>
 	<classpathentry kind="lib" path="resources/lib/ddth/ddth-caching-0.3.jar"/>
 	<classpathentry kind="lib" path="resources/lib/ddth/ddth-daf-0.5.beta.jar"/>
