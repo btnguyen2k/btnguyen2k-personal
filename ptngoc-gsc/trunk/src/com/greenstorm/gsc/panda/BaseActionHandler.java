@@ -1,7 +1,6 @@
 package com.greenstorm.gsc.panda;
 
 import org.ddth.panda.portal.PandaPortalApplication;
-import org.ddth.panda.portal.module.panda.LastAccessUrl;
 import org.ddth.panda.web.UrlCreator;
 import org.ddth.webtemplate.datamodel.DMMap;
 
@@ -9,8 +8,7 @@ import com.greenstorm.gsc.GscConstants;
 import com.greenstorm.gsc.bo.GscManager;
 
 public abstract class BaseActionHandler extends
-        org.ddth.panda.portal.module.panda.BaseActionHandler implements
-        LastAccessUrl {
+        org.ddth.panda.portal.module.panda.BaseActionHandler {
 
     public final static String MODEL_URL_HOME = "urlHome";
 

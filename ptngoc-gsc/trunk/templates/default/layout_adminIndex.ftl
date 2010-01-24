@@ -1,1 +1,0 @@
-<#assign MAIN_CONTENT_FILE='content_adminIndex.ftl'><#include "layout.ftl">
