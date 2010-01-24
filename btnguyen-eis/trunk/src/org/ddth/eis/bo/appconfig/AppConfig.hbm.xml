@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class entity-name="org.ddth.knob.bo.appconfig.AppConfig" name="org.ddth.knob.bo.appconfig.AppConfig"
+		table="knob_app_config">
+		<cache usage="nonstrict-read-write" />
+		<composite-id name="key"
+			class="org.ddth.knob.bo.appconfig.AppConfigKey">
+			<key-property name="domain" column="config_domain" type="string"
+				length="32" />
+			<key-property name="key" column="config_key" type="string"
+				length="64" />
+		</composite-id>
+
+		<property name="longValue" type="long" column="config_long" />
+
+		<property name="doubleValue" type="double" column="config_double" />
+
+		<property name="stringValue" type="text" column="config_string" />
+
+		<property name="dateValue" type="timestamp" column="config_date" />
+
+		<property name="booleanValue" type="org.ddth.hibernate.CharBooleanType"
+			column="config_boolean" />
+
+		<property name="binaryValue" type="binary" column="config_binary" />
+	</class>
+</hibernate-mapping>

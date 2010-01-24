@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="/WEB-INF/eis-config.properties" />
+	</bean>
+
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean"
+		scope="singleton">
+		<property name="jndiName" value="/jdbc/EISDS" />
+		<property name="resourceRef" value="true" />
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mappingResources">
+			<list>
+				<value>org/ddth/eis/bo/daf/DafGroup.hbm.xml</value>
+				<value>org/ddth/eis/bo/daf/DafGroupRule.hbm.xml</value>
+				<value>org/ddth/eis/bo/daf/DafPermission.hbm.xml</value>
+				<value>org/ddth/eis/bo/daf/DafRole.hbm.xml</value>
+				<value>org/ddth/eis/bo/daf/DafUser.hbm.xml</value>
+				<value>org/ddth/eis/bo/daf/DafUserProfile.hbm.xml</value>
+				<value>org/ddth/eis/bo/daf/DafUserRule.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.jdbc.batch_size">20</prop>
+				<prop key="hibernate.bytecode.use_reflection_optimizer">true</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+				<prop key="hibernate.cache.configuration_resource_file">ehcache.xml</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="defaultReplacementInterceptor"
+		class="org.ddth.panda.web.impl.DefaultWebReplacementInterceptor">
+		<property name="userDefinedReplacements">
+			<props>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="languageStorageSource" class="org.ddth.panda.setup.LanguageStorageSource">
+		<property name="rootPath" value="/WEB-INF/languages" />
+		<property name="parameters">
+			<props>
+				<prop key="cache">false</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="languageFactory" class="org.ddth.panda.setup.PandaLanguageFactory"
+		init-method="init">
+		<property name="registryFile" value="/WEB-INF/languages/registry.xml" />
+		<property name="storageSource" ref="languageStorageSource" />
+		<property name="replacementInterceptor">
+			<ref bean="defaultReplacementInterceptor" />
+		</property>
+	</bean>
+
+	<bean id="templateStorageSource" class="org.ddth.panda.setup.TemplateStorageSource">
+		<property name="rootPath" value="/WEB-INF/templates" />
+		<property name="parameters">
+			<props>
+				<prop key="cache">false</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="templateFactory" class="org.ddth.panda.setup.PandaTemplateFactory"
+		init-method="init">
+		<property name="registryFile" value="/WEB-INF/templates/registry.xml" />
+		<property name="storageSource" ref="templateStorageSource" />
+		<property name="replacementInterceptor">
+			<ref bean="defaultReplacementInterceptor" />
+		</property>
+	</bean>
+
+	<bean id="pandaViewResolver" class="org.ddth.panda.springwebmvc.PandaViewResolver">
+		<property name="templateFactory">
+			<ref bean="templateFactory" />
+		</property>
+	</bean>
+
+	<!--
+		<bean id="urlCreator" class="org.ddth.knob.utils.KnobUrlCreator">
+		</bean>
+	-->
+
+	<bean id="urlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/index">controlerIndex</prop>
+				<prop key="/index.*">controlerIndex</prop>
+				<prop key="/index/*">controlerIndex</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- START BO managers -->
+	<!--
+		<bean id="managerAppConfig"
+		class="org.ddth.knob.bo.appconfig.HibernateAppConfigManager">
+		<property name="sessionFactory" ref="sessionFactory" /> </bean>
+	-->
+	<!-- END BO managers -->
+
+</beans>
