@@ -7,7 +7,7 @@
 	<!-- Module information -->
 	<module-info>
 		<description>GreenStorm Card</description>
-		<version number="1.0.0" build="13" date="201001060102" />
+		<version number="1.0.0" build="16" date="201001062322" />
 		<portal-version min="1.0" max="1.0" />
 		<vendor name="DDTH" url="http://www.ddth.org" />
 	</module-info>
@@ -52,13 +52,16 @@
 
 			<handler action="index" class="com.greenstorm.gsc.panda.IndexHandler" />
 
-			<handler action="information"
+			<handler action="info"
 				class="org.ddth.panda.portal.module.panda.InformationHandler" />
+
+			<handler action="error"
+				class="org.ddth.panda.portal.module.panda.ErrorHandler" />
 
 			<handler action="staffLogin" class="com.greenstorm.gsc.panda.staff.LoginHandler"
 				form="frmStaffLogin" />
 
-			<handler action="staff" class="com.greenstorm.gsc.panda.staff.IndexHandler" />
+			<handler action="staff" class="com.greenstorm.gsc.panda.staff.HomeHandler" />
 		</module>
 	</action-mapping>
 

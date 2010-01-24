@@ -1,1 +1,0 @@
-<#assign MAIN_CONTENT_FILE='content_pcIndex.ftl'><#include "layout.ftl">

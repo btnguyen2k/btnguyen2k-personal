@@ -7,14 +7,7 @@ import org.ddth.webtemplate.datamodel.DMMap;
 
 import com.greenstorm.gsc.bo.GscManager;
 
-/* Dashboard */
 public class IndexHandler extends BaseActionHandler {
-
-    private final static String MODEL_RECENT_PUBLISHED_TOPICS =
-            "recentPublishedTopics";
-
-    private final static String MODEL_RECENT_COMMENTED_TOPICS =
-            "recentCommentedTopics";
 
     /**
      * {@inheritDoc}

@@ -71,9 +71,10 @@
 				&& page.content.leftColumn?is_sequence
 				&& page.content.leftColumn?size gt 0>
 			<#include "column_left.ftl">
+			<#assign _HAS_LEFT_COLUMN=true/>
 		</#if>
 
-		<div id="main" style="width: 100%">
+		<div id="main" style="width: <#if _HAS_LEFT_COLUMN??>72%<#else>100%</#if>">
 			<#if MAIN_CONTENT_FILE??>
 				<#include MAIN_CONTENT_FILE>
 			<#else>
