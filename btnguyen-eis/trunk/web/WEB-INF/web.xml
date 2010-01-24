@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+<web-app id="WebApp_ID" version="2.4"
+	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 	<display-name>EIS</display-name>
+	<filter>
+		<filter-name>pandaRequestDispatcherFilter</filter-name>
+		<filter-class>org.ddth.panda.filter.RequestDispatcherFilter</filter-class>
+		<init-param>
+			<param-name>dispatchRules</param-name>
+			<param-value>
+				[\.js$ ;pandaTemplateResourceHandlerServlet]
+				[\.css$;pandaTemplateResourceHandlerServlet]
+				[\.gif$;pandaTemplateResourceHandlerServlet]
+				[\.png$;pandaTemplateResourceHandlerServlet]
+				[\.jpg$;pandaTemplateResourceHandlerServlet]
+				[^.*$  ;panda]
+			</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>pandaRequestDispatcherFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<servlet>
+		<servlet-name>panda</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet>
+		<servlet-name>pandaTemplateResourceHandlerServlet</servlet-name>
+		<servlet-class>org.ddth.panda.servlet.TemplateResourceHandlerServlet</servlet-class>
+	</servlet>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/404.jsp</location>
+	</error-page>
+
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>

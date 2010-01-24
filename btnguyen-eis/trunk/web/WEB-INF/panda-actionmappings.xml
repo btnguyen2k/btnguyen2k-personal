@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+
+	<default-handler bean="" />
+
+	<module name="">
+		<default-handler bean="" />
+		<handler action="action" bean="" />
+	</module>
+</beans>

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class entity-name="org.ddth.eis.bo.daf.DafUser" name="org.ddth.eis.bo.daf.DafUser"
+		table="daf_user">
+		<cache usage="nonstrict-read-write" />
+		<id name="id" column="uid" type="integer">
+			<generator class="native">
+				<!-- Note: for PostgreSQL 8.3 -->
+				<param name="sequence">daf_group_gid_seq</param>
+			</generator>
+		</id>
+		<property name="loginName" column="ulogin_name" type="string"
+			length="64" not-null="true" unique="true" />
+		<property name="password" column="upassword" type="string"
+			length="64" not-null="true" />
+		<property name="email" column="uemail" type="string" length="64"
+			not-null="true" />
+		<property name="registerTimestamp" column="uregister_timestamp"
+			type="integer" not-null="true" />
+		<property name="lastUpdateTimestamp" column="ulast_update_timestamp"
+			type="integer" not-null="true" />
+		<property name="firstName" column="ufirst_name" type="string"
+			length="32" />
+		<property name="middleName" column="umid_name" type="string"
+			length="64" />
+		<property name="lastName" column="ulast_name" type="string"
+			length="32" />
+		<property name="sex" column="usex" type="integer" not-null="true" />
+		<property name="dobDay" column="udob_day" type="integer"
+			not-null="true" />
+		<property name="dobMonth" column="udob_month" type="integer"
+			not-null="true" />
+		<property name="dobYear" column="udob_year" type="integer"
+			not-null="true" />
+		<property name="timeZoneId" column="utime_zone_id" type="string"
+			length="64" />
+		<set name="roles" table="daf_role" lazy="false">
+			<cache usage="nonstrict-read-write" />
+			<key column="uid" />
+			<many-to-many column="gid" entity-name="org.ddth.eis.bo.daf.DafGroup" />
+		</set>
+	</class>
+</hibernate-mapping>

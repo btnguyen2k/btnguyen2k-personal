@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class entity-name="org.ddth.eis.bo.daf.DafUserProfile" name="org.ddth.eis.bo.daf.DafUserProfile"
+		table="daf_user_profile">
+		<cache usage="nonstrict-read-write" />
+		<composite-id class="org.ddth.daf.UserProfile$Id" name="id">
+			<key-property name="userId" column="uid" type="integer" />
+			<key-property name="domain" column="upmodule" type="string"
+				length="32" />
+			<key-property name="name" column="upname" type="string"
+				length="64" />
+		</composite-id>
+		<property name="data" column="updata" type="binary" />
+	</class>
+</hibernate-mapping>
