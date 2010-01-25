@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE templates PUBLIC
+	"-//Template Registry DTD//EN"
+	"http://www.ddth.org/dtd/webtemplate/0.4/templates.dtd">
+<templates cache="disabled">
+	<storage externalInstance="true">
+	</storage>
+
+	<templateConfig />
+
+	<template name="default" description="Default Template Pack"
+		type="freemarker">
+		<configurationFile name="config.xml" />
+		<param name="prefix" value="/WEB-INF/templates/default/" />
+	</template>
+
+	<!--
+		<template name="fancy" description="Fancy Template Pack" type="ref">
+		<ref target="default" /> </template> <template name="freemarker"
+		description="Freemarker Template Pack" type="freemarker">
+		<configurationFile name="config.xml" /> </template> <template
+		name="velocity" description="Velocity Template Pack" type="velocity">
+		<configurationFile name="config.xml" /> </template> <template
+		name="default" description="Default Template Pack" type="jsp">
+		<storage type="custom"> <param name="class"
+		value="org.ddth.panda.webtemplate.ServletContextStorageSource" />
+		<param name="path" value="/templates/default" /> <param
+		name="templateName" value="default" /> </storage> </template>
+	-->
+</templates>
