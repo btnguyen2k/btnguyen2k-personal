@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template-config>
+	<settings>
+		<charset>utf-8</charset>
+	</settings>
+	
+	<page id="index">
+		<templateFile>page_index.html</templateFile>
+	</page>
+</template-config>

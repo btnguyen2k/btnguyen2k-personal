@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE languages PUBLIC
+		"-//MLS/Multilanguages Support Registry DTD//EN"
+		"http://www.ddth.org/dtd/mls/0.3/mls.dtd">
+<languages cache="disabled">
+	<storage externalInstance="true">
+	</storage>
+	<language name="default" description="Default Language Pack"
+		type="properties" locale="en">
+		<asset name="eis.properties" />
+	</language>
+
+	<language name="en" description="English Language Pack" type="ref"
+		locale="en_US">
+		<ref target="default" />
+	</language>
+	
+	<language name="vn" description="Vietnamese Language Pack" type="properties"
+		locale="vi">
+		<asset name="knob.xml" />
+	</language>
+</languages>
