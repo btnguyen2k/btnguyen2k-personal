@@ -45,13 +45,12 @@
 		</property>
 	</bean>
 
-	<bean id="defaultReplacementInterceptor"
+	<!--
+		<bean id="defaultReplacementInterceptor"
 		class="org.ddth.panda.web.impl.DefaultWebReplacementInterceptor">
-		<property name="userDefinedReplacements">
-			<props>
-			</props>
-		</property>
-	</bean>
+		<property name="userDefinedReplacements"> <props> </props> </property>
+		</bean>
+	-->
 
 	<bean id="languageStorageSource" class="org.ddth.panda.setup.LanguageStorageSource">
 		<property name="rootPath" value="/WEB-INF/languages" />
@@ -66,9 +65,10 @@
 		init-method="init">
 		<property name="registryFile" value="/WEB-INF/languages/registry.xml" />
 		<property name="storageSource" ref="languageStorageSource" />
-		<property name="replacementInterceptor">
-			<ref bean="defaultReplacementInterceptor" />
-		</property>
+		<!--
+			<property name="replacementInterceptor"> <ref
+			bean="defaultReplacementInterceptor" /> </property>
+		-->
 	</bean>
 
 	<bean id="templateStorageSource" class="org.ddth.panda.setup.TemplateStorageSource">
@@ -84,9 +84,10 @@
 		init-method="init">
 		<property name="registryFile" value="/WEB-INF/templates/registry.xml" />
 		<property name="storageSource" ref="templateStorageSource" />
-		<property name="replacementInterceptor">
-			<ref bean="defaultReplacementInterceptor" />
-		</property>
+		<!--
+			<property name="replacementInterceptor"> <ref
+			bean="defaultReplacementInterceptor" /> </property>
+		-->
 	</bean>
 
 	<bean id="pandaViewResolver" class="org.ddth.panda.springwebmvc.PandaViewResolver">
@@ -100,23 +101,38 @@
 		</bean>
 	-->
 
+	<bean id="actionControllerManager" class="org.ddth.panda.ActionControllerManager"
+		init-method="init" destroy-method="destroy">
+		<property name="pandaControllersFile" value="/WEB-INF/panda-controllers.xml" />
+		<property name="pandaActionMappingsFile" value="/WEB-INF/panda-actionmappings.xml" />
+	</bean>
+
+	<bean id="requestParserFactory" class="org.ddth.panda.RequestParserFactory">
+	</bean>
+
+	<bean id="pandaFrontController" class="org.ddth.panda.springwebmvc.PandaFrontController">
+		<property name="actionControllerManager">
+			<ref bean="actionControllerManager" />
+		</property>
+		<property name="requestParserFactory">
+			<ref bean="requestParserFactory" />
+		</property>
+	</bean>
+
+	<!-- Map all requests to pandaFrontController -->
 	<bean id="urlMapping"
 		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<props>
-				<prop key="/index">controlerIndex</prop>
-				<prop key="/index.*">controlerIndex</prop>
-				<prop key="/index/*">controlerIndex</prop>
+				<prop key="/*">pandaFrontController</prop>
 			</props>
 		</property>
 	</bean>
 
 	<!-- START BO managers -->
-	<!--
-		<bean id="managerAppConfig"
-		class="org.ddth.knob.bo.appconfig.HibernateAppConfigManager">
-		<property name="sessionFactory" ref="sessionFactory" /> </bean>
-	-->
+	<bean id="managerDaf" class="org.ddth.eis.bo.daf.HibernateDafDataManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 	<!-- END BO managers -->
 
 </beans>
