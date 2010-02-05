@@ -3,11 +3,11 @@
 	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class entity-name="org.ddth.knob.bo.appconfig.AppConfig" name="org.ddth.knob.bo.appconfig.AppConfig"
-		table="knob_app_config">
+	<class entity-name="org.ddth.eis.bo.appconfig.AppConfig" name="org.ddth.eis.bo.appconfig.AppConfig"
+		table="eis_app_config">
 		<cache usage="nonstrict-read-write" />
 		<composite-id name="key"
-			class="org.ddth.knob.bo.appconfig.AppConfigKey">
+			class="org.ddth.eis.bo.appconfig.AppConfigKey">
 			<key-property name="domain" column="config_domain" type="string"
 				length="32" />
 			<key-property name="key" column="config_key" type="string"
