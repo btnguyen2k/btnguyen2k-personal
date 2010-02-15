@@ -27,7 +27,7 @@ namespace LVAuto.LVForm.Control
                         Attack attack = (Attack)temp;
 						Command.OPTObj.GeneralInCombat my = (Command.OPTObj.GeneralInCombat)attack.cboMyGeneral.SelectedItem;
 						Command.OPTObj.GeneralInCombat enemy = (Command.OPTObj.GeneralInCombat)attack.cboEnemyGeneral.SelectedItem;
-                        Command.OPT.ChangeBattleArray(my.GeneralId,Common.WarFunc.AntiAttack[enemy.Military.TranHinh]);
+                        Command.OPT.ChangeBattleArray(my.Id,LVCommon.WarFunc.AntiAttack[enemy.Military.TranHinh]);
                     }catch(Exception ex){
                     }
                 }

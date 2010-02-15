@@ -48,9 +48,9 @@ namespace LVAuto.LVForm.Command.OPTObj
 		{
 			attackid	= int.Parse(generaldata[0].ToString());
 			UserID		= int.Parse(generaldata[2].ToString());
-			GeneralName = generaldata[3].ToString();
-			GeneralId	= int.Parse(generaldata[4].ToString());
-			CityID = int.Parse(generaldata[6].ToString());
+			Name = generaldata[3].ToString();
+			Id	= int.Parse(generaldata[4].ToString());
+			CityId = int.Parse(generaldata[6].ToString());
 			this.Military.TranHinh = int.Parse(generaldata[8].ToString());
 			this.Military.SyKhi = int.Parse(generaldata[9].ToString());
 			this.Military.TrangThaiQuanDoi = int.Parse(generaldata[10].ToString());

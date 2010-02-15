@@ -24,16 +24,16 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Thành thị");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Thành thị");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Tướng");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Thành thị");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Thành thị");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Tướng");
             this.tabMainTab = new System.Windows.Forms.TabControl();
             this.tabLogin = new System.Windows.Forms.TabPage();
             this.groupBox20 = new System.Windows.Forms.GroupBox();
@@ -63,11 +63,13 @@
             this.label54 = new System.Windows.Forms.Label();
             this.label55 = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
-            this.dropdownServerList = new System.Windows.Forms.ComboBox();
-            this.btnLogin = new System.Windows.Forms.Button();
-            this.txtLvPassword = new System.Windows.Forms.TextBox();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.tbAuto = new System.Windows.Forms.TabPage();
+            this.Login_dropdownServerList = new System.Windows.Forms.ComboBox();
+            this.Login_btnLogin = new System.Windows.Forms.Button();
+            this.Login_txtPassword = new System.Windows.Forms.TextBox();
+            this.Login_txtUsername = new System.Windows.Forms.TextBox();
+            this.tabLog = new System.Windows.Forms.TabPage();
+            this.Log_txtLog = new System.Windows.Forms.TextBox();
+            this.tabAuto = new System.Windows.Forms.TabPage();
             this.lblAUTOCALLMANMESSAGE = new System.Windows.Forms.Label();
             this.lblAUTOBINHMANMESSAGE = new System.Windows.Forms.Label();
             this.lblAUTOVCVKMESSAGE = new System.Windows.Forms.Label();
@@ -108,30 +110,30 @@
             this.radXacNhanAnhHienAnh = new System.Windows.Forms.RadioButton();
             this.radHinhAnhKhongLamGi = new System.Windows.Forms.RadioButton();
             this.lblLoadingResMessage = new System.Windows.Forms.Label();
-            this.chkAutoBienche = new System.Windows.Forms.CheckBox();
+            this.Auto_checkAutoTroops = new System.Windows.Forms.CheckBox();
             this.cmdReload = new System.Windows.Forms.Button();
             this.chkDebug = new System.Windows.Forms.CheckBox();
-            this.cmdSaveConfig = new System.Windows.Forms.Button();
-            this.cmdLoadConfig = new System.Windows.Forms.Button();
+            this.Auto_btnSaveConfig = new System.Windows.Forms.Button();
+            this.Auto_btnLoadConfig = new System.Windows.Forms.Button();
             this.chkAutobuyWepon = new System.Windows.Forms.CheckBox();
-            this.chkAutoUpSiKhi = new System.Windows.Forms.CheckBox();
+            this.Auto_checkAutoMorale = new System.Windows.Forms.CheckBox();
             this.chkAutoMove = new System.Windows.Forms.CheckBox();
             this.chkAutoVanchuyen = new System.Windows.Forms.CheckBox();
             this.chkAutoUpDanSo = new System.Windows.Forms.CheckBox();
-            this.chkAutoST = new System.Windows.Forms.CheckBox();
-            this.chkAutoAll = new System.Windows.Forms.CheckBox();
+            this.Auto_checkAutoQuest = new System.Windows.Forms.CheckBox();
+            this.Auto_checkAutoAll = new System.Windows.Forms.CheckBox();
             this.chkAutoUpgrade = new System.Windows.Forms.CheckBox();
-            this.chkAutoDel = new System.Windows.Forms.CheckBox();
-            this.chkAutoBuild = new System.Windows.Forms.CheckBox();
-            this.chkAutoBuyResource = new System.Windows.Forms.CheckBox();
-            this.chkAutoSellFood = new System.Windows.Forms.CheckBox();
+            this.Auto_checkAutoDestruct = new System.Windows.Forms.CheckBox();
+            this.Auto_checkAutoConstruct = new System.Windows.Forms.CheckBox();
+            this.Auto_checkAutoBuyResources = new System.Windows.Forms.CheckBox();
+            this.Auto_checkAutoSellResources = new System.Windows.Forms.CheckBox();
             this.tabBanTaiNguyen = new System.Windows.Forms.TabPage();
             this.pnSELL = new System.Windows.Forms.Panel();
-            this.chkBanTN_SalesOff = new System.Windows.Forms.CheckBox();
+            this.SellRes_checkSelloff = new System.Windows.Forms.CheckBox();
             this.btBansTNSelectAllDa = new System.Windows.Forms.Button();
             this.btBansTNSelectAllSat = new System.Windows.Forms.Button();
             this.btBansTNSelectAllGo = new System.Windows.Forms.Button();
-            this.btBansTNSelectAllLua = new System.Windows.Forms.Button();
+            this.SellRes_btnSelectAllFood = new System.Windows.Forms.Button();
             this.txtSELLCHECK = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -202,7 +204,7 @@
             this.txtSAFEDA = new System.Windows.Forms.TextBox();
             this.lblBTNDaDVSoluong = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.dtaSELL = new System.Windows.Forms.DataGridView();
+            this.SellRes_gridCityList = new System.Windows.Forms.DataGridView();
             this.tabMuaTaiNguyen = new System.Windows.Forms.TabPage();
             this.pnLVBUYRES = new System.Windows.Forms.Panel();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
@@ -227,12 +229,12 @@
             this.chkXayNha_TuMuaTaiNguyen = new System.Windows.Forms.CheckBox();
             this.label90 = new System.Windows.Forms.Label();
             this.chkXayNhaAll = new System.Windows.Forms.CheckBox();
-            this.cmdReloadBuilding = new System.Windows.Forms.Button();
+            this.Construct_btnReloadBuildings = new System.Windows.Forms.Button();
             this.label37 = new System.Windows.Forms.Label();
             this.txtBUILDCHECK = new System.Windows.Forms.TextBox();
-            this.cboXayDungCity = new System.Windows.Forms.ComboBox();
+            this.Construct_dropdownCityList = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.tvBUILD = new System.Windows.Forms.TreeView();
+            this.Construct_treeBuilding = new System.Windows.Forms.TreeView();
             this.tabHaNha = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label91 = new System.Windows.Forms.Label();
@@ -276,44 +278,44 @@
             this.tvSIKHI = new System.Windows.Forms.TreeView();
             this.tabThaoPhat = new System.Windows.Forms.TabPage();
             this.pnTHAOPHAT = new System.Windows.Forms.Panel();
-            this.btThaoPhatAddList = new System.Windows.Forms.Button();
-            this.btThaoPhatHuyBo = new System.Windows.Forms.Button();
-            this.chklbThaoPhatListResult = new System.Windows.Forms.CheckedListBox();
+            this.Quest_btnQuestAddGeneral = new System.Windows.Forms.Button();
+            this.Quest_btnRemoveQuestGeneral = new System.Windows.Forms.Button();
+            this.Quest_QuestGeneralList = new System.Windows.Forms.CheckedListBox();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
             this.groupBox23 = new System.Windows.Forms.GroupBox();
-            this.txtThaoPhatBienCheXeAmount = new System.Windows.Forms.TextBox();
+            this.Quest_txtNumCatapults = new System.Windows.Forms.TextBox();
             this.label143 = new System.Windows.Forms.Label();
-            this.txtThaoPhatBienCheCungThuAmount = new System.Windows.Forms.TextBox();
+            this.Quest_txtNumArchers = new System.Windows.Forms.TextBox();
             this.label142 = new System.Windows.Forms.Label();
-            this.txtThaoPhatBienCheKiBinhAmount = new System.Windows.Forms.TextBox();
+            this.Quest_txtNumCavalries = new System.Windows.Forms.TextBox();
             this.label141 = new System.Windows.Forms.Label();
-            this.txtThaoPhatBienCheBoBinhAmount = new System.Windows.Forms.TextBox();
+            this.Quest_txtNumInfantries = new System.Windows.Forms.TextBox();
             this.label140 = new System.Windows.Forms.Label();
-            this.chkThaoPhatBienCheThemQuan = new System.Windows.Forms.CheckBox();
+            this.Quest_checkAutoTroop = new System.Windows.Forms.CheckBox();
             this.label67 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label74 = new System.Windows.Forms.Label();
-            this.txtThaoPhatSyKhi = new System.Windows.Forms.TextBox();
-            this.chkSKST = new System.Windows.Forms.CheckBox();
-            this.txtThaoPhatTongQuanMin = new System.Windows.Forms.TextBox();
+            this.Quest_txtMinMorale = new System.Windows.Forms.TextBox();
+            this.Quest_checkAutoMorale = new System.Windows.Forms.CheckBox();
+            this.Quest_txtMinTroops = new System.Windows.Forms.TextBox();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
-            this.chkThaoPhatTuKhoiPhucTrangThai = new System.Windows.Forms.CheckBox();
-            this.cboThaoPhatMuuKeTrongChienTruong = new System.Windows.Forms.ComboBox();
-            this.cboThaoPhatPhuongThucChonMucTieu = new System.Windows.Forms.ComboBox();
+            this.Quest_checkAutoRestoreStatus = new System.Windows.Forms.CheckBox();
+            this.Quest_dropdownSchemeInBattle = new System.Windows.Forms.ComboBox();
+            this.Quest_dropdownTargetMethod = new System.Windows.Forms.ComboBox();
             this.label103 = new System.Windows.Forms.Label();
-            this.chkThaoPhatTuDoiTranHinh = new System.Windows.Forms.CheckBox();
-            this.cboThaoPhatPhuongThucTanCong = new System.Windows.Forms.ComboBox();
-            this.cboThaoPhatSLTuongDanh1Dich = new System.Windows.Forms.ComboBox();
+            this.Quest_checkAutoFormula = new System.Windows.Forms.CheckBox();
+            this.Quest_dropdownAttackMethod = new System.Windows.Forms.ComboBox();
+            this.Quest_dropdownAttackNumGenerals = new System.Windows.Forms.ComboBox();
             this.label110 = new System.Windows.Forms.Label();
             this.label72 = new System.Windows.Forms.Label();
             this.label111 = new System.Windows.Forms.Label();
-            this.btThaoPhatReload = new System.Windows.Forms.Button();
-            this.cboNhiemVu = new System.Windows.Forms.ComboBox();
-            this.txtTPCHECK = new System.Windows.Forms.TextBox();
+            this.Quest_btnQuestReload = new System.Windows.Forms.Button();
+            this.Quest_dropdownQuestList = new System.Windows.Forms.ComboBox();
+            this.Quest_txtTimer = new System.Windows.Forms.TextBox();
             this.label112 = new System.Windows.Forms.Label();
-            this.cboGeneral = new System.Windows.Forms.CheckedListBox();
+            this.Quest_GeneralsInCity = new System.Windows.Forms.CheckedListBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.cboCity = new System.Windows.Forms.ComboBox();
+            this.Quest_dropdownCityList = new System.Windows.Forms.ComboBox();
             this.tabDieuPhai = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.lstboxTabDieuPhaiDieuPhai = new System.Windows.Forms.ListBox();
@@ -572,7 +574,7 @@
             this.toolStripMenuItemHienThi = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemThoat = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.dlgSaveConfigFile = new System.Windows.Forms.SaveFileDialog();
             this.timerAuto = new System.Windows.Forms.Timer(this.components);
             this.timerDanhTuongViengTham = new System.Windows.Forms.Timer(this.components);
             this.tabMainTab.SuspendLayout();
@@ -581,7 +583,8 @@
             this.panelLoading.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPanelWaiting)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAttach)).BeginInit();
-            this.tbAuto.SuspendLayout();
+            this.tabLog.SuspendLayout();
+            this.tabAuto.SuspendLayout();
             this.groupBox17.SuspendLayout();
             this.grbXacNhanHinhAnh.SuspendLayout();
             this.tabBanTaiNguyen.SuspendLayout();
@@ -598,7 +601,7 @@
             this.groupBox4.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox14.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtaSELL)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SellRes_gridCityList)).BeginInit();
             this.tabMuaTaiNguyen.SuspendLayout();
             this.pnLVBUYRES.SuspendLayout();
             this.groupBox10.SuspendLayout();
@@ -651,7 +654,8 @@
             // tabMainTab
             // 
             this.tabMainTab.Controls.Add(this.tabLogin);
-            this.tabMainTab.Controls.Add(this.tbAuto);
+            this.tabMainTab.Controls.Add(this.tabLog);
+            this.tabMainTab.Controls.Add(this.tabAuto);
             this.tabMainTab.Controls.Add(this.tabBanTaiNguyen);
             this.tabMainTab.Controls.Add(this.tabMuaTaiNguyen);
             this.tabMainTab.Controls.Add(this.tabXayDung);
@@ -697,10 +701,10 @@
             this.tabLogin.Controls.Add(this.label54);
             this.tabLogin.Controls.Add(this.label55);
             this.tabLogin.Controls.Add(this.label56);
-            this.tabLogin.Controls.Add(this.dropdownServerList);
-            this.tabLogin.Controls.Add(this.btnLogin);
-            this.tabLogin.Controls.Add(this.txtLvPassword);
-            this.tabLogin.Controls.Add(this.txtUsername);
+            this.tabLogin.Controls.Add(this.Login_dropdownServerList);
+            this.tabLogin.Controls.Add(this.Login_btnLogin);
+            this.tabLogin.Controls.Add(this.Login_txtPassword);
+            this.tabLogin.Controls.Add(this.Login_txtUsername);
             this.tabLogin.Location = new System.Drawing.Point(4, 40);
             this.tabLogin.Name = "tabLogin";
             this.tabLogin.Padding = new System.Windows.Forms.Padding(3);
@@ -996,11 +1000,11 @@
             this.label56.TabIndex = 52;
             this.label56.Text = "Username";
             // 
-            // dropdownServerList
+            // Login_dropdownServerList
             // 
-            this.dropdownServerList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.dropdownServerList.FormattingEnabled = true;
-            this.dropdownServerList.Items.AddRange(new object[] {
+            this.Login_dropdownServerList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Login_dropdownServerList.FormattingEnabled = true;
+            this.Login_dropdownServerList.Items.AddRange(new object[] {
             "1. Quan độ",
             "2. Trường bản",
             "3. Phàn thành",
@@ -1009,89 +1013,111 @@
             "6. Tà cốc",
             "7. Vị thủy",
             "8. Kỳ sơn"});
-            this.dropdownServerList.Location = new System.Drawing.Point(101, 91);
-            this.dropdownServerList.Name = "dropdownServerList";
-            this.dropdownServerList.Size = new System.Drawing.Size(157, 21);
-            this.dropdownServerList.TabIndex = 3;
-            this.dropdownServerList.SelectedIndexChanged += new System.EventHandler(this.cboServer_SelectedIndexChanged);
+            this.Login_dropdownServerList.Location = new System.Drawing.Point(101, 91);
+            this.Login_dropdownServerList.Name = "Login_dropdownServerList";
+            this.Login_dropdownServerList.Size = new System.Drawing.Size(157, 21);
+            this.Login_dropdownServerList.TabIndex = 3;
+            this.Login_dropdownServerList.SelectedIndexChanged += new System.EventHandler(this.cboServer_SelectedIndexChanged);
             // 
-            // btnLogin
+            // Login_btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(195, 118);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(63, 28);
-            this.btnLogin.TabIndex = 4;
-            this.btnLogin.Text = "Login";
-            this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.Login_btnLogin.Location = new System.Drawing.Point(195, 118);
+            this.Login_btnLogin.Name = "Login_btnLogin";
+            this.Login_btnLogin.Size = new System.Drawing.Size(63, 28);
+            this.Login_btnLogin.TabIndex = 4;
+            this.Login_btnLogin.Text = "Login";
+            this.Login_btnLogin.UseVisualStyleBackColor = true;
+            this.Login_btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
-            // txtLvPassword
+            // Login_txtPassword
             // 
-            this.txtLvPassword.Location = new System.Drawing.Point(101, 65);
-            this.txtLvPassword.Name = "txtLvPassword";
-            this.txtLvPassword.PasswordChar = '*';
-            this.txtLvPassword.Size = new System.Drawing.Size(88, 20);
-            this.txtLvPassword.TabIndex = 2;
+            this.Login_txtPassword.Location = new System.Drawing.Point(101, 65);
+            this.Login_txtPassword.Name = "Login_txtPassword";
+            this.Login_txtPassword.PasswordChar = '*';
+            this.Login_txtPassword.Size = new System.Drawing.Size(88, 20);
+            this.Login_txtPassword.TabIndex = 2;
             // 
-            // txtUsername
+            // Login_txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(101, 39);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(88, 20);
-            this.txtUsername.TabIndex = 1;
+            this.Login_txtUsername.Location = new System.Drawing.Point(101, 39);
+            this.Login_txtUsername.Name = "Login_txtUsername";
+            this.Login_txtUsername.Size = new System.Drawing.Size(88, 20);
+            this.Login_txtUsername.TabIndex = 1;
             // 
-            // tbAuto
+            // tabLog
             // 
-            this.tbAuto.BackColor = System.Drawing.Color.Transparent;
-            this.tbAuto.Controls.Add(this.lblAUTOCALLMANMESSAGE);
-            this.tbAuto.Controls.Add(this.lblAUTOBINHMANMESSAGE);
-            this.tbAuto.Controls.Add(this.lblAUTOVCVKMESSAGE);
-            this.tbAuto.Controls.Add(this.lblDIEUPHAIMESSAGE);
-            this.tbAuto.Controls.Add(this.lblSELLMESSAGE);
-            this.tbAuto.Controls.Add(this.lblBUYRESMESSAGE);
-            this.tbAuto.Controls.Add(this.lblTHAOPHATMESSAGE);
-            this.tbAuto.Controls.Add(this.lblBIENCHEMESSAGE);
-            this.tbAuto.Controls.Add(this.lblBUYWEPONMESSAGE);
-            this.tbAuto.Controls.Add(this.lblSIKHIMESSAGE);
-            this.tbAuto.Controls.Add(this.lblMOVEDOANHTRAI);
-            this.tbAuto.Controls.Add(this.lblVANCHUYENMESSAGE);
-            this.tbAuto.Controls.Add(this.lblANUIMESSAGE);
-            this.tbAuto.Controls.Add(this.lblUPGEADEMESSAGE);
-            this.tbAuto.Controls.Add(this.lblDELMESSAGE);
-            this.tbAuto.Controls.Add(this.chkAUTOCALLMAN);
-            this.tbAuto.Controls.Add(this.lblBUILDMESSAGE);
-            this.tbAuto.Controls.Add(this.chkAUTOBINHMAN);
-            this.tbAuto.Controls.Add(this.groupBox17);
-            this.tbAuto.Controls.Add(this.chkAUTOVCVK);
-            this.tbAuto.Controls.Add(this.lblNetworkStatus);
-            this.tbAuto.Controls.Add(this.label94);
-            this.tbAuto.Controls.Add(this.chkAutoDieuPhai);
-            this.tbAuto.Controls.Add(this.grbXacNhanHinhAnh);
-            this.tbAuto.Controls.Add(this.lblLoadingResMessage);
-            this.tbAuto.Controls.Add(this.chkAutoBienche);
-            this.tbAuto.Controls.Add(this.cmdReload);
-            this.tbAuto.Controls.Add(this.chkDebug);
-            this.tbAuto.Controls.Add(this.cmdSaveConfig);
-            this.tbAuto.Controls.Add(this.cmdLoadConfig);
-            this.tbAuto.Controls.Add(this.chkAutobuyWepon);
-            this.tbAuto.Controls.Add(this.chkAutoUpSiKhi);
-            this.tbAuto.Controls.Add(this.chkAutoMove);
-            this.tbAuto.Controls.Add(this.chkAutoVanchuyen);
-            this.tbAuto.Controls.Add(this.chkAutoUpDanSo);
-            this.tbAuto.Controls.Add(this.chkAutoST);
-            this.tbAuto.Controls.Add(this.chkAutoAll);
-            this.tbAuto.Controls.Add(this.chkAutoUpgrade);
-            this.tbAuto.Controls.Add(this.chkAutoDel);
-            this.tbAuto.Controls.Add(this.chkAutoBuild);
-            this.tbAuto.Controls.Add(this.chkAutoBuyResource);
-            this.tbAuto.Controls.Add(this.chkAutoSellFood);
-            this.tbAuto.Location = new System.Drawing.Point(4, 40);
-            this.tbAuto.Name = "tbAuto";
-            this.tbAuto.Padding = new System.Windows.Forms.Padding(3);
-            this.tbAuto.Size = new System.Drawing.Size(665, 480);
-            this.tbAuto.TabIndex = 0;
-            this.tbAuto.Text = "Auto";
-            this.tbAuto.UseVisualStyleBackColor = true;
+            this.tabLog.Controls.Add(this.Log_txtLog);
+            this.tabLog.Location = new System.Drawing.Point(4, 40);
+            this.tabLog.Name = "tabLog";
+            this.tabLog.Padding = new System.Windows.Forms.Padding(3);
+            this.tabLog.Size = new System.Drawing.Size(665, 480);
+            this.tabLog.TabIndex = 21;
+            this.tabLog.Text = "Log";
+            this.tabLog.UseVisualStyleBackColor = true;
+            // 
+            // Log_txtLog
+            // 
+            this.Log_txtLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Log_txtLog.Location = new System.Drawing.Point(3, 3);
+            this.Log_txtLog.Multiline = true;
+            this.Log_txtLog.Name = "Log_txtLog";
+            this.Log_txtLog.ReadOnly = true;
+            this.Log_txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.Log_txtLog.Size = new System.Drawing.Size(659, 474);
+            this.Log_txtLog.TabIndex = 0;
+            // 
+            // tabAuto
+            // 
+            this.tabAuto.BackColor = System.Drawing.Color.Transparent;
+            this.tabAuto.Controls.Add(this.lblAUTOCALLMANMESSAGE);
+            this.tabAuto.Controls.Add(this.lblAUTOBINHMANMESSAGE);
+            this.tabAuto.Controls.Add(this.lblAUTOVCVKMESSAGE);
+            this.tabAuto.Controls.Add(this.lblDIEUPHAIMESSAGE);
+            this.tabAuto.Controls.Add(this.lblSELLMESSAGE);
+            this.tabAuto.Controls.Add(this.lblBUYRESMESSAGE);
+            this.tabAuto.Controls.Add(this.lblTHAOPHATMESSAGE);
+            this.tabAuto.Controls.Add(this.lblBIENCHEMESSAGE);
+            this.tabAuto.Controls.Add(this.lblBUYWEPONMESSAGE);
+            this.tabAuto.Controls.Add(this.lblSIKHIMESSAGE);
+            this.tabAuto.Controls.Add(this.lblMOVEDOANHTRAI);
+            this.tabAuto.Controls.Add(this.lblVANCHUYENMESSAGE);
+            this.tabAuto.Controls.Add(this.lblANUIMESSAGE);
+            this.tabAuto.Controls.Add(this.lblUPGEADEMESSAGE);
+            this.tabAuto.Controls.Add(this.lblDELMESSAGE);
+            this.tabAuto.Controls.Add(this.chkAUTOCALLMAN);
+            this.tabAuto.Controls.Add(this.lblBUILDMESSAGE);
+            this.tabAuto.Controls.Add(this.chkAUTOBINHMAN);
+            this.tabAuto.Controls.Add(this.groupBox17);
+            this.tabAuto.Controls.Add(this.chkAUTOVCVK);
+            this.tabAuto.Controls.Add(this.lblNetworkStatus);
+            this.tabAuto.Controls.Add(this.label94);
+            this.tabAuto.Controls.Add(this.chkAutoDieuPhai);
+            this.tabAuto.Controls.Add(this.grbXacNhanHinhAnh);
+            this.tabAuto.Controls.Add(this.lblLoadingResMessage);
+            this.tabAuto.Controls.Add(this.Auto_checkAutoTroops);
+            this.tabAuto.Controls.Add(this.cmdReload);
+            this.tabAuto.Controls.Add(this.chkDebug);
+            this.tabAuto.Controls.Add(this.Auto_btnSaveConfig);
+            this.tabAuto.Controls.Add(this.Auto_btnLoadConfig);
+            this.tabAuto.Controls.Add(this.chkAutobuyWepon);
+            this.tabAuto.Controls.Add(this.Auto_checkAutoMorale);
+            this.tabAuto.Controls.Add(this.chkAutoMove);
+            this.tabAuto.Controls.Add(this.chkAutoVanchuyen);
+            this.tabAuto.Controls.Add(this.chkAutoUpDanSo);
+            this.tabAuto.Controls.Add(this.Auto_checkAutoQuest);
+            this.tabAuto.Controls.Add(this.Auto_checkAutoAll);
+            this.tabAuto.Controls.Add(this.chkAutoUpgrade);
+            this.tabAuto.Controls.Add(this.Auto_checkAutoDestruct);
+            this.tabAuto.Controls.Add(this.Auto_checkAutoConstruct);
+            this.tabAuto.Controls.Add(this.Auto_checkAutoBuyResources);
+            this.tabAuto.Controls.Add(this.Auto_checkAutoSellResources);
+            this.tabAuto.Location = new System.Drawing.Point(4, 40);
+            this.tabAuto.Name = "tabAuto";
+            this.tabAuto.Padding = new System.Windows.Forms.Padding(3);
+            this.tabAuto.Size = new System.Drawing.Size(665, 480);
+            this.tabAuto.TabIndex = 0;
+            this.tabAuto.Text = "Auto";
+            this.tabAuto.UseVisualStyleBackColor = true;
             // 
             // lblAUTOCALLMANMESSAGE
             // 
@@ -1543,17 +1569,17 @@
             this.lblLoadingResMessage.Size = new System.Drawing.Size(0, 13);
             this.lblLoadingResMessage.TabIndex = 1;
             // 
-            // chkAutoBienche
+            // Auto_checkAutoTroops
             // 
-            this.chkAutoBienche.AutoSize = true;
-            this.chkAutoBienche.Enabled = false;
-            this.chkAutoBienche.Location = new System.Drawing.Point(16, 109);
-            this.chkAutoBienche.Name = "chkAutoBienche";
-            this.chkAutoBienche.Size = new System.Drawing.Size(111, 17);
-            this.chkAutoBienche.TabIndex = 25;
-            this.chkAutoBienche.Text = "Tự động biên chế";
-            this.chkAutoBienche.UseVisualStyleBackColor = true;
-            this.chkAutoBienche.CheckedChanged += new System.EventHandler(this.chkAutoBienche_CheckedChanged);
+            this.Auto_checkAutoTroops.AutoSize = true;
+            this.Auto_checkAutoTroops.Enabled = false;
+            this.Auto_checkAutoTroops.Location = new System.Drawing.Point(16, 109);
+            this.Auto_checkAutoTroops.Name = "Auto_checkAutoTroops";
+            this.Auto_checkAutoTroops.Size = new System.Drawing.Size(111, 17);
+            this.Auto_checkAutoTroops.TabIndex = 25;
+            this.Auto_checkAutoTroops.Text = "Tự động biên chế";
+            this.Auto_checkAutoTroops.UseVisualStyleBackColor = true;
+            this.Auto_checkAutoTroops.CheckedChanged += new System.EventHandler(this.chkAutoBienche_CheckedChanged);
             // 
             // cmdReload
             // 
@@ -1578,25 +1604,25 @@
             this.chkDebug.Visible = false;
             this.chkDebug.CheckedChanged += new System.EventHandler(this.chkDebug_CheckedChanged);
             // 
-            // cmdSaveConfig
+            // Auto_btnSaveConfig
             // 
-            this.cmdSaveConfig.Location = new System.Drawing.Point(560, 415);
-            this.cmdSaveConfig.Name = "cmdSaveConfig";
-            this.cmdSaveConfig.Size = new System.Drawing.Size(86, 31);
-            this.cmdSaveConfig.TabIndex = 15;
-            this.cmdSaveConfig.Text = "Lưu cấu hình";
-            this.cmdSaveConfig.UseVisualStyleBackColor = true;
-            this.cmdSaveConfig.Click += new System.EventHandler(this.cmdSaveConfig_Click);
+            this.Auto_btnSaveConfig.Location = new System.Drawing.Point(560, 415);
+            this.Auto_btnSaveConfig.Name = "Auto_btnSaveConfig";
+            this.Auto_btnSaveConfig.Size = new System.Drawing.Size(86, 31);
+            this.Auto_btnSaveConfig.TabIndex = 15;
+            this.Auto_btnSaveConfig.Text = "Lưu cấu hình";
+            this.Auto_btnSaveConfig.UseVisualStyleBackColor = true;
+            this.Auto_btnSaveConfig.Click += new System.EventHandler(this.Auto_btnSaveConfig_Click);
             // 
-            // cmdLoadConfig
+            // Auto_btnLoadConfig
             // 
-            this.cmdLoadConfig.Location = new System.Drawing.Point(468, 415);
-            this.cmdLoadConfig.Name = "cmdLoadConfig";
-            this.cmdLoadConfig.Size = new System.Drawing.Size(86, 31);
-            this.cmdLoadConfig.TabIndex = 15;
-            this.cmdLoadConfig.Text = "Nạp cấu hình";
-            this.cmdLoadConfig.UseVisualStyleBackColor = true;
-            this.cmdLoadConfig.Click += new System.EventHandler(this.cmdLoadConfig_Click);
+            this.Auto_btnLoadConfig.Location = new System.Drawing.Point(468, 415);
+            this.Auto_btnLoadConfig.Name = "Auto_btnLoadConfig";
+            this.Auto_btnLoadConfig.Size = new System.Drawing.Size(86, 31);
+            this.Auto_btnLoadConfig.TabIndex = 15;
+            this.Auto_btnLoadConfig.Text = "Nạp cấu hình";
+            this.Auto_btnLoadConfig.UseVisualStyleBackColor = true;
+            this.Auto_btnLoadConfig.Click += new System.EventHandler(this.cmdLoadConfig_Click);
             // 
             // chkAutobuyWepon
             // 
@@ -1610,17 +1636,17 @@
             this.chkAutobuyWepon.UseVisualStyleBackColor = true;
             this.chkAutobuyWepon.CheckedChanged += new System.EventHandler(this.chkAutobuyWepon_CheckedChanged);
             // 
-            // chkAutoUpSiKhi
+            // Auto_checkAutoMorale
             // 
-            this.chkAutoUpSiKhi.AutoSize = true;
-            this.chkAutoUpSiKhi.Enabled = false;
-            this.chkAutoUpSiKhi.Location = new System.Drawing.Point(16, 128);
-            this.chkAutoUpSiKhi.Name = "chkAutoUpSiKhi";
-            this.chkAutoUpSiKhi.Size = new System.Drawing.Size(114, 17);
-            this.chkAutoUpSiKhi.TabIndex = 14;
-            this.chkAutoUpSiKhi.Text = "Tự động up sĩ khí";
-            this.chkAutoUpSiKhi.UseVisualStyleBackColor = true;
-            this.chkAutoUpSiKhi.CheckedChanged += new System.EventHandler(this.chkAutoUpSiKhi_CheckedChanged);
+            this.Auto_checkAutoMorale.AutoSize = true;
+            this.Auto_checkAutoMorale.Enabled = false;
+            this.Auto_checkAutoMorale.Location = new System.Drawing.Point(16, 128);
+            this.Auto_checkAutoMorale.Name = "Auto_checkAutoMorale";
+            this.Auto_checkAutoMorale.Size = new System.Drawing.Size(114, 17);
+            this.Auto_checkAutoMorale.TabIndex = 14;
+            this.Auto_checkAutoMorale.Text = "Tự động up sĩ khí";
+            this.Auto_checkAutoMorale.UseVisualStyleBackColor = true;
+            this.Auto_checkAutoMorale.CheckedChanged += new System.EventHandler(this.chkAutoUpSiKhi_CheckedChanged);
             // 
             // chkAutoMove
             // 
@@ -1658,29 +1684,29 @@
             this.chkAutoUpDanSo.UseVisualStyleBackColor = true;
             this.chkAutoUpDanSo.CheckedChanged += new System.EventHandler(this.chkAutoUpDanSo_CheckedChanged);
             // 
-            // chkAutoST
+            // Auto_checkAutoQuest
             // 
-            this.chkAutoST.AutoSize = true;
-            this.chkAutoST.Enabled = false;
-            this.chkAutoST.Location = new System.Drawing.Point(16, 146);
-            this.chkAutoST.Name = "chkAutoST";
-            this.chkAutoST.Size = new System.Drawing.Size(115, 17);
-            this.chkAutoST.TabIndex = 9;
-            this.chkAutoST.Text = "Tự động thảo phạt";
-            this.chkAutoST.UseVisualStyleBackColor = true;
-            this.chkAutoST.CheckedChanged += new System.EventHandler(this.chkAutoST_CheckedChanged);
+            this.Auto_checkAutoQuest.AutoSize = true;
+            this.Auto_checkAutoQuest.Enabled = false;
+            this.Auto_checkAutoQuest.Location = new System.Drawing.Point(16, 146);
+            this.Auto_checkAutoQuest.Name = "Auto_checkAutoQuest";
+            this.Auto_checkAutoQuest.Size = new System.Drawing.Size(115, 17);
+            this.Auto_checkAutoQuest.TabIndex = 9;
+            this.Auto_checkAutoQuest.Text = "Tự động thảo phạt";
+            this.Auto_checkAutoQuest.UseVisualStyleBackColor = true;
+            this.Auto_checkAutoQuest.CheckedChanged += new System.EventHandler(this.chkAutoST_CheckedChanged);
             // 
-            // chkAutoAll
+            // Auto_checkAutoAll
             // 
-            this.chkAutoAll.AutoSize = true;
-            this.chkAutoAll.Enabled = false;
-            this.chkAutoAll.Location = new System.Drawing.Point(8, 12);
-            this.chkAutoAll.Name = "chkAutoAll";
-            this.chkAutoAll.Size = new System.Drawing.Size(88, 17);
-            this.chkAutoAll.TabIndex = 5;
-            this.chkAutoAll.Text = "Tự động hóa";
-            this.chkAutoAll.UseVisualStyleBackColor = true;
-            this.chkAutoAll.CheckedChanged += new System.EventHandler(this.chkAutoAll_CheckedChanged);
+            this.Auto_checkAutoAll.AutoSize = true;
+            this.Auto_checkAutoAll.Enabled = false;
+            this.Auto_checkAutoAll.Location = new System.Drawing.Point(8, 12);
+            this.Auto_checkAutoAll.Name = "Auto_checkAutoAll";
+            this.Auto_checkAutoAll.Size = new System.Drawing.Size(88, 17);
+            this.Auto_checkAutoAll.TabIndex = 5;
+            this.Auto_checkAutoAll.Text = "Tự động hóa";
+            this.Auto_checkAutoAll.UseVisualStyleBackColor = true;
+            this.Auto_checkAutoAll.CheckedChanged += new System.EventHandler(this.Auto_checkAutoAll_CheckedChanged);
             // 
             // chkAutoUpgrade
             // 
@@ -1694,53 +1720,53 @@
             this.chkAutoUpgrade.UseVisualStyleBackColor = true;
             this.chkAutoUpgrade.CheckedChanged += new System.EventHandler(this.chkAutoUpgrade_CheckedChanged);
             // 
-            // chkAutoDel
+            // Auto_checkAutoDestruct
             // 
-            this.chkAutoDel.AutoSize = true;
-            this.chkAutoDel.Enabled = false;
-            this.chkAutoDel.Location = new System.Drawing.Point(16, 90);
-            this.chkAutoDel.Name = "chkAutoDel";
-            this.chkAutoDel.Size = new System.Drawing.Size(124, 17);
-            this.chkAutoDel.TabIndex = 0;
-            this.chkAutoDel.Text = "Tự động hạ cấp nhà";
-            this.chkAutoDel.UseVisualStyleBackColor = true;
-            this.chkAutoDel.CheckedChanged += new System.EventHandler(this.chkAutoDel_CheckedChanged);
+            this.Auto_checkAutoDestruct.AutoSize = true;
+            this.Auto_checkAutoDestruct.Enabled = false;
+            this.Auto_checkAutoDestruct.Location = new System.Drawing.Point(16, 90);
+            this.Auto_checkAutoDestruct.Name = "Auto_checkAutoDestruct";
+            this.Auto_checkAutoDestruct.Size = new System.Drawing.Size(124, 17);
+            this.Auto_checkAutoDestruct.TabIndex = 0;
+            this.Auto_checkAutoDestruct.Text = "Tự động hạ cấp nhà";
+            this.Auto_checkAutoDestruct.UseVisualStyleBackColor = true;
+            this.Auto_checkAutoDestruct.CheckedChanged += new System.EventHandler(this.chkAutoDel_CheckedChanged);
             // 
-            // chkAutoBuild
+            // Auto_checkAutoConstruct
             // 
-            this.chkAutoBuild.AutoSize = true;
-            this.chkAutoBuild.Enabled = false;
-            this.chkAutoBuild.Location = new System.Drawing.Point(16, 71);
-            this.chkAutoBuild.Name = "chkAutoBuild";
-            this.chkAutoBuild.Size = new System.Drawing.Size(136, 17);
-            this.chkAutoBuild.TabIndex = 0;
-            this.chkAutoBuild.Text = "Tự động nâng cấp nhà";
-            this.chkAutoBuild.UseVisualStyleBackColor = true;
-            this.chkAutoBuild.CheckedChanged += new System.EventHandler(this.chkAutoBuild_CheckedChanged);
+            this.Auto_checkAutoConstruct.AutoSize = true;
+            this.Auto_checkAutoConstruct.Enabled = false;
+            this.Auto_checkAutoConstruct.Location = new System.Drawing.Point(16, 71);
+            this.Auto_checkAutoConstruct.Name = "Auto_checkAutoConstruct";
+            this.Auto_checkAutoConstruct.Size = new System.Drawing.Size(136, 17);
+            this.Auto_checkAutoConstruct.TabIndex = 0;
+            this.Auto_checkAutoConstruct.Text = "Tự động nâng cấp nhà";
+            this.Auto_checkAutoConstruct.UseVisualStyleBackColor = true;
+            this.Auto_checkAutoConstruct.CheckedChanged += new System.EventHandler(this.Auto_checkAutoConstruct_CheckedChanged);
             // 
-            // chkAutoBuyResource
+            // Auto_checkAutoBuyResources
             // 
-            this.chkAutoBuyResource.AutoSize = true;
-            this.chkAutoBuyResource.Enabled = false;
-            this.chkAutoBuyResource.Location = new System.Drawing.Point(16, 51);
-            this.chkAutoBuyResource.Name = "chkAutoBuyResource";
-            this.chkAutoBuyResource.Size = new System.Drawing.Size(142, 17);
-            this.chkAutoBuyResource.TabIndex = 2;
-            this.chkAutoBuyResource.Text = "Tự động mua tài nguyên";
-            this.chkAutoBuyResource.UseVisualStyleBackColor = true;
-            this.chkAutoBuyResource.CheckedChanged += new System.EventHandler(this.chkAutoBuyResource_CheckedChanged);
+            this.Auto_checkAutoBuyResources.AutoSize = true;
+            this.Auto_checkAutoBuyResources.Enabled = false;
+            this.Auto_checkAutoBuyResources.Location = new System.Drawing.Point(16, 51);
+            this.Auto_checkAutoBuyResources.Name = "Auto_checkAutoBuyResources";
+            this.Auto_checkAutoBuyResources.Size = new System.Drawing.Size(142, 17);
+            this.Auto_checkAutoBuyResources.TabIndex = 2;
+            this.Auto_checkAutoBuyResources.Text = "Tự động mua tài nguyên";
+            this.Auto_checkAutoBuyResources.UseVisualStyleBackColor = true;
+            this.Auto_checkAutoBuyResources.CheckedChanged += new System.EventHandler(this.chkAutoBuyResource_CheckedChanged);
             // 
-            // chkAutoSellFood
+            // Auto_checkAutoSellResources
             // 
-            this.chkAutoSellFood.AutoSize = true;
-            this.chkAutoSellFood.Enabled = false;
-            this.chkAutoSellFood.Location = new System.Drawing.Point(16, 32);
-            this.chkAutoSellFood.Name = "chkAutoSellFood";
-            this.chkAutoSellFood.Size = new System.Drawing.Size(140, 17);
-            this.chkAutoSellFood.TabIndex = 2;
-            this.chkAutoSellFood.Text = "Tự động bán tài nguyên";
-            this.chkAutoSellFood.UseVisualStyleBackColor = true;
-            this.chkAutoSellFood.CheckedChanged += new System.EventHandler(this.chkAutoSellFood_CheckedChanged);
+            this.Auto_checkAutoSellResources.AutoSize = true;
+            this.Auto_checkAutoSellResources.Enabled = false;
+            this.Auto_checkAutoSellResources.Location = new System.Drawing.Point(16, 32);
+            this.Auto_checkAutoSellResources.Name = "Auto_checkAutoSellResources";
+            this.Auto_checkAutoSellResources.Size = new System.Drawing.Size(140, 17);
+            this.Auto_checkAutoSellResources.TabIndex = 2;
+            this.Auto_checkAutoSellResources.Text = "Tự động bán tài nguyên";
+            this.Auto_checkAutoSellResources.UseVisualStyleBackColor = true;
+            this.Auto_checkAutoSellResources.CheckedChanged += new System.EventHandler(this.chkAutoSellFood_CheckedChanged);
             // 
             // tabBanTaiNguyen
             // 
@@ -1756,18 +1782,18 @@
             // 
             // pnSELL
             // 
-            this.pnSELL.Controls.Add(this.chkBanTN_SalesOff);
+            this.pnSELL.Controls.Add(this.SellRes_checkSelloff);
             this.pnSELL.Controls.Add(this.btBansTNSelectAllDa);
             this.pnSELL.Controls.Add(this.btBansTNSelectAllSat);
             this.pnSELL.Controls.Add(this.btBansTNSelectAllGo);
-            this.pnSELL.Controls.Add(this.btBansTNSelectAllLua);
+            this.pnSELL.Controls.Add(this.SellRes_btnSelectAllFood);
             this.pnSELL.Controls.Add(this.txtSELLCHECK);
             this.pnSELL.Controls.Add(this.label20);
             this.pnSELL.Controls.Add(this.groupBox1);
             this.pnSELL.Controls.Add(this.groupBox2);
             this.pnSELL.Controls.Add(this.groupBox3);
             this.pnSELL.Controls.Add(this.groupBox4);
-            this.pnSELL.Controls.Add(this.dtaSELL);
+            this.pnSELL.Controls.Add(this.SellRes_gridCityList);
             this.pnSELL.Location = new System.Drawing.Point(5, 6);
             this.pnSELL.Name = "pnSELL";
             this.pnSELL.Size = new System.Drawing.Size(664, 453);
@@ -1775,18 +1801,18 @@
             this.pnSELL.Paint += new System.Windows.Forms.PaintEventHandler(this.pnSELL_Paint);
             this.pnSELL.Leave += new System.EventHandler(this.pnSELL_Leave);
             // 
-            // chkBanTN_SalesOff
+            // SellRes_checkSelloff
             // 
-            this.chkBanTN_SalesOff.AutoSize = true;
-            this.chkBanTN_SalesOff.Checked = true;
-            this.chkBanTN_SalesOff.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkBanTN_SalesOff.Location = new System.Drawing.Point(200, 427);
-            this.chkBanTN_SalesOff.Name = "chkBanTN_SalesOff";
-            this.chkBanTN_SalesOff.Size = new System.Drawing.Size(434, 17);
-            this.chkBanTN_SalesOff.TabIndex = 42;
-            this.chkBanTN_SalesOff.Text = "Sales off (khi bán treo tài nguyên bị đầy, tự động giảm giá 4 cái đầu tiên để bán" +
+            this.SellRes_checkSelloff.AutoSize = true;
+            this.SellRes_checkSelloff.Checked = true;
+            this.SellRes_checkSelloff.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.SellRes_checkSelloff.Location = new System.Drawing.Point(200, 427);
+            this.SellRes_checkSelloff.Name = "SellRes_checkSelloff";
+            this.SellRes_checkSelloff.Size = new System.Drawing.Size(434, 17);
+            this.SellRes_checkSelloff.TabIndex = 42;
+            this.SellRes_checkSelloff.Text = "Sales off (khi bán treo tài nguyên bị đầy, tự động giảm giá 4 cái đầu tiên để bán" +
                 " được)";
-            this.chkBanTN_SalesOff.UseVisualStyleBackColor = true;
+            this.SellRes_checkSelloff.UseVisualStyleBackColor = true;
             // 
             // btBansTNSelectAllDa
             // 
@@ -1796,7 +1822,7 @@
             this.btBansTNSelectAllDa.TabIndex = 41;
             this.btBansTNSelectAllDa.Text = "Chọn tất đá";
             this.btBansTNSelectAllDa.UseVisualStyleBackColor = true;
-            this.btBansTNSelectAllDa.Click += new System.EventHandler(this.btSelectAllDa_Click);
+            this.btBansTNSelectAllDa.Click += new System.EventHandler(this.SellRes_btnSelectAllStone_Click);
             // 
             // btBansTNSelectAllSat
             // 
@@ -1806,7 +1832,7 @@
             this.btBansTNSelectAllSat.TabIndex = 41;
             this.btBansTNSelectAllSat.Text = "Chọn tất sắt";
             this.btBansTNSelectAllSat.UseVisualStyleBackColor = true;
-            this.btBansTNSelectAllSat.Click += new System.EventHandler(this.btSelectAllSat_Click);
+            this.btBansTNSelectAllSat.Click += new System.EventHandler(this.SellRes_btnSelectAllIron_Click);
             // 
             // btBansTNSelectAllGo
             // 
@@ -1816,17 +1842,17 @@
             this.btBansTNSelectAllGo.TabIndex = 41;
             this.btBansTNSelectAllGo.Text = "Chọn tất gỗ";
             this.btBansTNSelectAllGo.UseVisualStyleBackColor = true;
-            this.btBansTNSelectAllGo.Click += new System.EventHandler(this.btSelectAllGo_Click);
+            this.btBansTNSelectAllGo.Click += new System.EventHandler(this.SellRes_btnSelectAllWoods_Click);
             // 
-            // btBansTNSelectAllLua
+            // SellRes_btnSelectAllFood
             // 
-            this.btBansTNSelectAllLua.Location = new System.Drawing.Point(568, 280);
-            this.btBansTNSelectAllLua.Name = "btBansTNSelectAllLua";
-            this.btBansTNSelectAllLua.Size = new System.Drawing.Size(75, 23);
-            this.btBansTNSelectAllLua.TabIndex = 41;
-            this.btBansTNSelectAllLua.Text = "Chọn tất lúa";
-            this.btBansTNSelectAllLua.UseVisualStyleBackColor = true;
-            this.btBansTNSelectAllLua.Click += new System.EventHandler(this.btSelectAllLua_Click);
+            this.SellRes_btnSelectAllFood.Location = new System.Drawing.Point(568, 280);
+            this.SellRes_btnSelectAllFood.Name = "SellRes_btnSelectAllFood";
+            this.SellRes_btnSelectAllFood.Size = new System.Drawing.Size(75, 23);
+            this.SellRes_btnSelectAllFood.TabIndex = 41;
+            this.SellRes_btnSelectAllFood.Text = "Chọn tất lúa";
+            this.SellRes_btnSelectAllFood.UseVisualStyleBackColor = true;
+            this.SellRes_btnSelectAllFood.Click += new System.EventHandler(this.SellRes_btnSelectAllFood_Click);
             // 
             // txtSELLCHECK
             // 
@@ -2648,40 +2674,40 @@
             this.label19.TabIndex = 402;
             this.label19.Text = "An toàn";
             // 
-            // dtaSELL
+            // SellRes_gridCityList
             // 
-            this.dtaSELL.AllowUserToAddRows = false;
-            this.dtaSELL.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtaSELL.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
-            this.dtaSELL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtaSELL.DefaultCellStyle = dataGridViewCellStyle14;
-            this.dtaSELL.Location = new System.Drawing.Point(3, 240);
-            this.dtaSELL.Name = "dtaSELL";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtaSELL.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
-            this.dtaSELL.RowHeadersVisible = false;
-            this.dtaSELL.Size = new System.Drawing.Size(555, 164);
-            this.dtaSELL.TabIndex = 3;
+            this.SellRes_gridCityList.AllowUserToAddRows = false;
+            this.SellRes_gridCityList.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SellRes_gridCityList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.SellRes_gridCityList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.SellRes_gridCityList.DefaultCellStyle = dataGridViewCellStyle2;
+            this.SellRes_gridCityList.Location = new System.Drawing.Point(3, 240);
+            this.SellRes_gridCityList.Name = "SellRes_gridCityList";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SellRes_gridCityList.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.SellRes_gridCityList.RowHeadersVisible = false;
+            this.SellRes_gridCityList.Size = new System.Drawing.Size(555, 164);
+            this.SellRes_gridCityList.TabIndex = 3;
             // 
             // tabMuaTaiNguyen
             // 
@@ -2781,33 +2807,33 @@
             // 
             this.dtaBUYRESOURCE.AllowUserToAddRows = false;
             this.dtaBUYRESOURCE.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtaBUYRESOURCE.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtaBUYRESOURCE.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dtaBUYRESOURCE.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtaBUYRESOURCE.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtaBUYRESOURCE.DefaultCellStyle = dataGridViewCellStyle5;
             this.dtaBUYRESOURCE.Location = new System.Drawing.Point(3, 3);
             this.dtaBUYRESOURCE.Name = "dtaBUYRESOURCE";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtaBUYRESOURCE.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtaBUYRESOURCE.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dtaBUYRESOURCE.RowHeadersVisible = false;
             this.dtaBUYRESOURCE.Size = new System.Drawing.Size(469, 437);
             this.dtaBUYRESOURCE.TabIndex = 4;
@@ -2893,12 +2919,12 @@
             // pnXayNha
             // 
             this.pnXayNha.Controls.Add(this.panel4);
-            this.pnXayNha.Controls.Add(this.cmdReloadBuilding);
+            this.pnXayNha.Controls.Add(this.Construct_btnReloadBuildings);
             this.pnXayNha.Controls.Add(this.label37);
             this.pnXayNha.Controls.Add(this.txtBUILDCHECK);
-            this.pnXayNha.Controls.Add(this.cboXayDungCity);
+            this.pnXayNha.Controls.Add(this.Construct_dropdownCityList);
             this.pnXayNha.Controls.Add(this.label1);
-            this.pnXayNha.Controls.Add(this.tvBUILD);
+            this.pnXayNha.Controls.Add(this.Construct_treeBuilding);
             this.pnXayNha.Location = new System.Drawing.Point(8, 8);
             this.pnXayNha.Name = "pnXayNha";
             this.pnXayNha.Size = new System.Drawing.Size(664, 448);
@@ -2969,15 +2995,15 @@
             this.chkXayNhaAll.UseVisualStyleBackColor = true;
             this.chkXayNhaAll.CheckedChanged += new System.EventHandler(this.chkXayNhaAll_CheckedChanged);
             // 
-            // cmdReloadBuilding
+            // Construct_btnReloadBuildings
             // 
-            this.cmdReloadBuilding.Location = new System.Drawing.Point(520, 232);
-            this.cmdReloadBuilding.Name = "cmdReloadBuilding";
-            this.cmdReloadBuilding.Size = new System.Drawing.Size(74, 26);
-            this.cmdReloadBuilding.TabIndex = 8;
-            this.cmdReloadBuilding.Text = "Nạp lại";
-            this.cmdReloadBuilding.UseVisualStyleBackColor = true;
-            this.cmdReloadBuilding.Click += new System.EventHandler(this.cmdReloadBuilding_Click);
+            this.Construct_btnReloadBuildings.Location = new System.Drawing.Point(520, 232);
+            this.Construct_btnReloadBuildings.Name = "Construct_btnReloadBuildings";
+            this.Construct_btnReloadBuildings.Size = new System.Drawing.Size(74, 26);
+            this.Construct_btnReloadBuildings.TabIndex = 8;
+            this.Construct_btnReloadBuildings.Text = "Nạp lại";
+            this.Construct_btnReloadBuildings.UseVisualStyleBackColor = true;
+            this.Construct_btnReloadBuildings.Click += new System.EventHandler(this.Construct_btnReloadBuildings_Click);
             // 
             // label37
             // 
@@ -2995,17 +3021,17 @@
             this.txtBUILDCHECK.TabIndex = 6;
             this.txtBUILDCHECK.Text = "1";
             // 
-            // cboXayDungCity
+            // Construct_dropdownCityList
             // 
-            this.cboXayDungCity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboXayDungCity.FormattingEnabled = true;
-            this.cboXayDungCity.IntegralHeight = false;
-            this.cboXayDungCity.Location = new System.Drawing.Point(8, 8);
-            this.cboXayDungCity.MaxDropDownItems = 20;
-            this.cboXayDungCity.Name = "cboXayDungCity";
-            this.cboXayDungCity.Size = new System.Drawing.Size(456, 21);
-            this.cboXayDungCity.TabIndex = 9;
-            this.cboXayDungCity.SelectedIndexChanged += new System.EventHandler(this.cboXayDungCity_SelectedIndexChanged);
+            this.Construct_dropdownCityList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Construct_dropdownCityList.FormattingEnabled = true;
+            this.Construct_dropdownCityList.IntegralHeight = false;
+            this.Construct_dropdownCityList.Location = new System.Drawing.Point(8, 8);
+            this.Construct_dropdownCityList.MaxDropDownItems = 20;
+            this.Construct_dropdownCityList.Name = "Construct_dropdownCityList";
+            this.Construct_dropdownCityList.Size = new System.Drawing.Size(456, 21);
+            this.Construct_dropdownCityList.TabIndex = 9;
+            this.Construct_dropdownCityList.SelectedIndexChanged += new System.EventHandler(this.Construct_dropdownCityList_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -3016,20 +3042,20 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Kiểm tra sau                    phút";
             // 
-            // tvBUILD
+            // Construct_treeBuilding
             // 
-            this.tvBUILD.CheckBoxes = true;
-            this.tvBUILD.Location = new System.Drawing.Point(8, 35);
-            this.tvBUILD.Name = "tvBUILD";
-            treeNode7.Name = "root";
-            treeNode7.Text = "Thành thị";
-            this.tvBUILD.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode7});
-            this.tvBUILD.Size = new System.Drawing.Size(456, 405);
-            this.tvBUILD.TabIndex = 0;
-            this.tvBUILD.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.tvBUILD_AfterCheck);
-            this.tvBUILD.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvBUILD_AfterSelect);
-            this.tvBUILD.Leave += new System.EventHandler(this.tvBUILD_Leave_1);
+            this.Construct_treeBuilding.CheckBoxes = true;
+            this.Construct_treeBuilding.Location = new System.Drawing.Point(8, 35);
+            this.Construct_treeBuilding.Name = "Construct_treeBuilding";
+            treeNode1.Name = "root";
+            treeNode1.Text = "Thành thị";
+            this.Construct_treeBuilding.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode1});
+            this.Construct_treeBuilding.Size = new System.Drawing.Size(456, 405);
+            this.Construct_treeBuilding.TabIndex = 0;
+            this.Construct_treeBuilding.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.tvBUILD_AfterCheck);
+            this.Construct_treeBuilding.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvBUILD_AfterSelect);
+            this.Construct_treeBuilding.Leave += new System.EventHandler(this.tvBUILD_Leave_1);
             // 
             // tabHaNha
             // 
@@ -3081,10 +3107,10 @@
             this.tvDEL.CheckBoxes = true;
             this.tvDEL.Location = new System.Drawing.Point(16, 32);
             this.tvDEL.Name = "tvDEL";
-            treeNode8.Name = "root";
-            treeNode8.Text = "Thành thị";
+            treeNode2.Name = "root";
+            treeNode2.Text = "Thành thị";
             this.tvDEL.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode8});
+            treeNode2});
             this.tvDEL.Size = new System.Drawing.Size(525, 432);
             this.tvDEL.TabIndex = 9;
             this.tvDEL.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.tvDEL_AfterCheck);
@@ -3456,10 +3482,10 @@
             this.tvSIKHI.CheckBoxes = true;
             this.tvSIKHI.Location = new System.Drawing.Point(6, 33);
             this.tvSIKHI.Name = "tvSIKHI";
-            treeNode9.Name = "root";
-            treeNode9.Text = "Tướng";
+            treeNode3.Name = "root";
+            treeNode3.Text = "Tướng";
             this.tvSIKHI.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode9});
+            treeNode3});
             this.tvSIKHI.Size = new System.Drawing.Size(525, 395);
             this.tvSIKHI.TabIndex = 1;
             // 
@@ -3476,18 +3502,18 @@
             // 
             // pnTHAOPHAT
             // 
-            this.pnTHAOPHAT.Controls.Add(this.btThaoPhatAddList);
-            this.pnTHAOPHAT.Controls.Add(this.btThaoPhatHuyBo);
-            this.pnTHAOPHAT.Controls.Add(this.chklbThaoPhatListResult);
+            this.pnTHAOPHAT.Controls.Add(this.Quest_btnQuestAddGeneral);
+            this.pnTHAOPHAT.Controls.Add(this.Quest_btnRemoveQuestGeneral);
+            this.pnTHAOPHAT.Controls.Add(this.Quest_QuestGeneralList);
             this.pnTHAOPHAT.Controls.Add(this.groupBox19);
             this.pnTHAOPHAT.Controls.Add(this.groupBox18);
-            this.pnTHAOPHAT.Controls.Add(this.btThaoPhatReload);
-            this.pnTHAOPHAT.Controls.Add(this.cboNhiemVu);
-            this.pnTHAOPHAT.Controls.Add(this.txtTPCHECK);
+            this.pnTHAOPHAT.Controls.Add(this.Quest_btnQuestReload);
+            this.pnTHAOPHAT.Controls.Add(this.Quest_dropdownQuestList);
+            this.pnTHAOPHAT.Controls.Add(this.Quest_txtTimer);
             this.pnTHAOPHAT.Controls.Add(this.label112);
-            this.pnTHAOPHAT.Controls.Add(this.cboGeneral);
+            this.pnTHAOPHAT.Controls.Add(this.Quest_GeneralsInCity);
             this.pnTHAOPHAT.Controls.Add(this.label23);
-            this.pnTHAOPHAT.Controls.Add(this.cboCity);
+            this.pnTHAOPHAT.Controls.Add(this.Quest_dropdownCityList);
             this.pnTHAOPHAT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnTHAOPHAT.Location = new System.Drawing.Point(3, 3);
             this.pnTHAOPHAT.Name = "pnTHAOPHAT";
@@ -3496,35 +3522,35 @@
             this.pnTHAOPHAT.Paint += new System.Windows.Forms.PaintEventHandler(this.pnTHAOPHAT_Paint);
             this.pnTHAOPHAT.Leave += new System.EventHandler(this.pnTHAOPHAT_Leave);
             // 
-            // btThaoPhatAddList
+            // Quest_btnQuestAddGeneral
             // 
-            this.btThaoPhatAddList.Location = new System.Drawing.Point(232, 117);
-            this.btThaoPhatAddList.Name = "btThaoPhatAddList";
-            this.btThaoPhatAddList.Size = new System.Drawing.Size(75, 23);
-            this.btThaoPhatAddList.TabIndex = 53;
-            this.btThaoPhatAddList.Text = "Đồng ý";
-            this.btThaoPhatAddList.UseVisualStyleBackColor = true;
-            this.btThaoPhatAddList.Click += new System.EventHandler(this.btThaoPhatAddList_Click);
+            this.Quest_btnQuestAddGeneral.Location = new System.Drawing.Point(229, 112);
+            this.Quest_btnQuestAddGeneral.Name = "Quest_btnQuestAddGeneral";
+            this.Quest_btnQuestAddGeneral.Size = new System.Drawing.Size(75, 25);
+            this.Quest_btnQuestAddGeneral.TabIndex = 53;
+            this.Quest_btnQuestAddGeneral.Text = "Đồng ý";
+            this.Quest_btnQuestAddGeneral.UseVisualStyleBackColor = true;
+            this.Quest_btnQuestAddGeneral.Click += new System.EventHandler(this.Quest_btnQuestAddGeneral_Click);
             // 
-            // btThaoPhatHuyBo
+            // Quest_btnRemoveQuestGeneral
             // 
-            this.btThaoPhatHuyBo.Location = new System.Drawing.Point(608, 40);
-            this.btThaoPhatHuyBo.Name = "btThaoPhatHuyBo";
-            this.btThaoPhatHuyBo.Size = new System.Drawing.Size(40, 23);
-            this.btThaoPhatHuyBo.TabIndex = 52;
-            this.btThaoPhatHuyBo.Text = "Hủy";
-            this.btThaoPhatHuyBo.UseVisualStyleBackColor = true;
-            this.btThaoPhatHuyBo.Click += new System.EventHandler(this.btThaoPhatHuyBo_Click);
+            this.Quest_btnRemoveQuestGeneral.Location = new System.Drawing.Point(608, 40);
+            this.Quest_btnRemoveQuestGeneral.Name = "Quest_btnRemoveQuestGeneral";
+            this.Quest_btnRemoveQuestGeneral.Size = new System.Drawing.Size(40, 23);
+            this.Quest_btnRemoveQuestGeneral.TabIndex = 52;
+            this.Quest_btnRemoveQuestGeneral.Text = "Hủy";
+            this.Quest_btnRemoveQuestGeneral.UseVisualStyleBackColor = true;
+            this.Quest_btnRemoveQuestGeneral.Click += new System.EventHandler(this.Quest_btnRemoveQuestGeneral_Click);
             // 
-            // chklbThaoPhatListResult
+            // Quest_QuestGeneralList
             // 
-            this.chklbThaoPhatListResult.CheckOnClick = true;
-            this.chklbThaoPhatListResult.FormattingEnabled = true;
-            this.chklbThaoPhatListResult.HorizontalScrollbar = true;
-            this.chklbThaoPhatListResult.Location = new System.Drawing.Point(0, 0);
-            this.chklbThaoPhatListResult.Name = "chklbThaoPhatListResult";
-            this.chklbThaoPhatListResult.Size = new System.Drawing.Size(600, 109);
-            this.chklbThaoPhatListResult.TabIndex = 51;
+            this.Quest_QuestGeneralList.CheckOnClick = true;
+            this.Quest_QuestGeneralList.FormattingEnabled = true;
+            this.Quest_QuestGeneralList.HorizontalScrollbar = true;
+            this.Quest_QuestGeneralList.Location = new System.Drawing.Point(0, 0);
+            this.Quest_QuestGeneralList.Name = "Quest_QuestGeneralList";
+            this.Quest_QuestGeneralList.Size = new System.Drawing.Size(600, 109);
+            this.Quest_QuestGeneralList.TabIndex = 51;
             // 
             // groupBox19
             // 
@@ -3532,9 +3558,9 @@
             this.groupBox19.Controls.Add(this.label67);
             this.groupBox19.Controls.Add(this.label11);
             this.groupBox19.Controls.Add(this.label74);
-            this.groupBox19.Controls.Add(this.txtThaoPhatSyKhi);
-            this.groupBox19.Controls.Add(this.chkSKST);
-            this.groupBox19.Controls.Add(this.txtThaoPhatTongQuanMin);
+            this.groupBox19.Controls.Add(this.Quest_txtMinMorale);
+            this.groupBox19.Controls.Add(this.Quest_checkAutoMorale);
+            this.groupBox19.Controls.Add(this.Quest_txtMinTroops);
             this.groupBox19.Location = new System.Drawing.Point(312, 112);
             this.groupBox19.Name = "groupBox19";
             this.groupBox19.Size = new System.Drawing.Size(344, 200);
@@ -3545,29 +3571,29 @@
             // 
             // groupBox23
             // 
-            this.groupBox23.Controls.Add(this.txtThaoPhatBienCheXeAmount);
+            this.groupBox23.Controls.Add(this.Quest_txtNumCatapults);
             this.groupBox23.Controls.Add(this.label143);
-            this.groupBox23.Controls.Add(this.txtThaoPhatBienCheCungThuAmount);
+            this.groupBox23.Controls.Add(this.Quest_txtNumArchers);
             this.groupBox23.Controls.Add(this.label142);
-            this.groupBox23.Controls.Add(this.txtThaoPhatBienCheKiBinhAmount);
+            this.groupBox23.Controls.Add(this.Quest_txtNumCavalries);
             this.groupBox23.Controls.Add(this.label141);
-            this.groupBox23.Controls.Add(this.txtThaoPhatBienCheBoBinhAmount);
+            this.groupBox23.Controls.Add(this.Quest_txtNumInfantries);
             this.groupBox23.Controls.Add(this.label140);
-            this.groupBox23.Controls.Add(this.chkThaoPhatBienCheThemQuan);
+            this.groupBox23.Controls.Add(this.Quest_checkAutoTroop);
             this.groupBox23.Location = new System.Drawing.Point(8, 78);
             this.groupBox23.Name = "groupBox23";
             this.groupBox23.Size = new System.Drawing.Size(328, 112);
             this.groupBox23.TabIndex = 13;
             this.groupBox23.TabStop = false;
             // 
-            // txtThaoPhatBienCheXeAmount
+            // Quest_txtNumCatapults
             // 
-            this.txtThaoPhatBienCheXeAmount.Location = new System.Drawing.Point(200, 83);
-            this.txtThaoPhatBienCheXeAmount.Name = "txtThaoPhatBienCheXeAmount";
-            this.txtThaoPhatBienCheXeAmount.Size = new System.Drawing.Size(72, 20);
-            this.txtThaoPhatBienCheXeAmount.TabIndex = 15;
-            this.txtThaoPhatBienCheXeAmount.Text = "0";
-            this.txtThaoPhatBienCheXeAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Quest_txtNumCatapults.Location = new System.Drawing.Point(200, 83);
+            this.Quest_txtNumCatapults.Name = "Quest_txtNumCatapults";
+            this.Quest_txtNumCatapults.Size = new System.Drawing.Size(72, 20);
+            this.Quest_txtNumCatapults.TabIndex = 15;
+            this.Quest_txtNumCatapults.Text = "0";
+            this.Quest_txtNumCatapults.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label143
             // 
@@ -3579,14 +3605,14 @@
             this.label143.TabIndex = 7;
             this.label143.Text = "Xe:";
             // 
-            // txtThaoPhatBienCheCungThuAmount
+            // Quest_txtNumArchers
             // 
-            this.txtThaoPhatBienCheCungThuAmount.Location = new System.Drawing.Point(88, 83);
-            this.txtThaoPhatBienCheCungThuAmount.Name = "txtThaoPhatBienCheCungThuAmount";
-            this.txtThaoPhatBienCheCungThuAmount.Size = new System.Drawing.Size(72, 20);
-            this.txtThaoPhatBienCheCungThuAmount.TabIndex = 14;
-            this.txtThaoPhatBienCheCungThuAmount.Text = "10000";
-            this.txtThaoPhatBienCheCungThuAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Quest_txtNumArchers.Location = new System.Drawing.Point(88, 83);
+            this.Quest_txtNumArchers.Name = "Quest_txtNumArchers";
+            this.Quest_txtNumArchers.Size = new System.Drawing.Size(72, 20);
+            this.Quest_txtNumArchers.TabIndex = 14;
+            this.Quest_txtNumArchers.Text = "10000";
+            this.Quest_txtNumArchers.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label142
             // 
@@ -3598,14 +3624,14 @@
             this.label142.TabIndex = 7;
             this.label142.Text = "Cung thủ:";
             // 
-            // txtThaoPhatBienCheKiBinhAmount
+            // Quest_txtNumCavalries
             // 
-            this.txtThaoPhatBienCheKiBinhAmount.Location = new System.Drawing.Point(88, 59);
-            this.txtThaoPhatBienCheKiBinhAmount.Name = "txtThaoPhatBienCheKiBinhAmount";
-            this.txtThaoPhatBienCheKiBinhAmount.Size = new System.Drawing.Size(72, 20);
-            this.txtThaoPhatBienCheKiBinhAmount.TabIndex = 13;
-            this.txtThaoPhatBienCheKiBinhAmount.Text = "10000";
-            this.txtThaoPhatBienCheKiBinhAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Quest_txtNumCavalries.Location = new System.Drawing.Point(88, 59);
+            this.Quest_txtNumCavalries.Name = "Quest_txtNumCavalries";
+            this.Quest_txtNumCavalries.Size = new System.Drawing.Size(72, 20);
+            this.Quest_txtNumCavalries.TabIndex = 13;
+            this.Quest_txtNumCavalries.Text = "10000";
+            this.Quest_txtNumCavalries.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label141
             // 
@@ -3617,14 +3643,14 @@
             this.label141.TabIndex = 7;
             this.label141.Text = "Kị binh:";
             // 
-            // txtThaoPhatBienCheBoBinhAmount
+            // Quest_txtNumInfantries
             // 
-            this.txtThaoPhatBienCheBoBinhAmount.Location = new System.Drawing.Point(88, 35);
-            this.txtThaoPhatBienCheBoBinhAmount.Name = "txtThaoPhatBienCheBoBinhAmount";
-            this.txtThaoPhatBienCheBoBinhAmount.Size = new System.Drawing.Size(72, 20);
-            this.txtThaoPhatBienCheBoBinhAmount.TabIndex = 12;
-            this.txtThaoPhatBienCheBoBinhAmount.Text = "10000";
-            this.txtThaoPhatBienCheBoBinhAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Quest_txtNumInfantries.Location = new System.Drawing.Point(88, 35);
+            this.Quest_txtNumInfantries.Name = "Quest_txtNumInfantries";
+            this.Quest_txtNumInfantries.Size = new System.Drawing.Size(72, 20);
+            this.Quest_txtNumInfantries.TabIndex = 12;
+            this.Quest_txtNumInfantries.Text = "10000";
+            this.Quest_txtNumInfantries.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label140
             // 
@@ -3636,18 +3662,18 @@
             this.label140.TabIndex = 7;
             this.label140.Text = "Bộ binh:";
             // 
-            // chkThaoPhatBienCheThemQuan
+            // Quest_checkAutoTroop
             // 
-            this.chkThaoPhatBienCheThemQuan.AutoSize = true;
-            this.chkThaoPhatBienCheThemQuan.Checked = true;
-            this.chkThaoPhatBienCheThemQuan.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkThaoPhatBienCheThemQuan.Location = new System.Drawing.Point(8, 14);
-            this.chkThaoPhatBienCheThemQuan.Name = "chkThaoPhatBienCheThemQuan";
-            this.chkThaoPhatBienCheThemQuan.Size = new System.Drawing.Size(136, 17);
-            this.chkThaoPhatBienCheThemQuan.TabIndex = 11;
-            this.chkThaoPhatBienCheThemQuan.Text = "Tự biên chế thêm quân";
-            this.chkThaoPhatBienCheThemQuan.UseVisualStyleBackColor = true;
-            this.chkThaoPhatBienCheThemQuan.CheckedChanged += new System.EventHandler(this.chkThaoPhatBienCheThemQuan_CheckedChanged);
+            this.Quest_checkAutoTroop.AutoSize = true;
+            this.Quest_checkAutoTroop.Checked = true;
+            this.Quest_checkAutoTroop.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.Quest_checkAutoTroop.Location = new System.Drawing.Point(8, 14);
+            this.Quest_checkAutoTroop.Name = "Quest_checkAutoTroop";
+            this.Quest_checkAutoTroop.Size = new System.Drawing.Size(136, 17);
+            this.Quest_checkAutoTroop.TabIndex = 11;
+            this.Quest_checkAutoTroop.Text = "Tự biên chế thêm quân";
+            this.Quest_checkAutoTroop.UseVisualStyleBackColor = true;
+            this.Quest_checkAutoTroop.CheckedChanged += new System.EventHandler(this.chkThaoPhatBienCheThemQuan_CheckedChanged);
             // 
             // label67
             // 
@@ -3675,49 +3701,49 @@
             this.label74.TabIndex = 7;
             this.label74.Text = "Thảo phạt khi quân số lớn hơn";
             // 
-            // txtThaoPhatSyKhi
+            // Quest_txtMinMorale
             // 
-            this.txtThaoPhatSyKhi.Location = new System.Drawing.Point(170, 13);
-            this.txtThaoPhatSyKhi.MaxLength = 6;
-            this.txtThaoPhatSyKhi.Name = "txtThaoPhatSyKhi";
-            this.txtThaoPhatSyKhi.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtThaoPhatSyKhi.Size = new System.Drawing.Size(68, 20);
-            this.txtThaoPhatSyKhi.TabIndex = 8;
-            this.txtThaoPhatSyKhi.Text = "85";
+            this.Quest_txtMinMorale.Location = new System.Drawing.Point(170, 13);
+            this.Quest_txtMinMorale.MaxLength = 6;
+            this.Quest_txtMinMorale.Name = "Quest_txtMinMorale";
+            this.Quest_txtMinMorale.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.Quest_txtMinMorale.Size = new System.Drawing.Size(68, 20);
+            this.Quest_txtMinMorale.TabIndex = 8;
+            this.Quest_txtMinMorale.Text = "85";
             // 
-            // chkSKST
+            // Quest_checkAutoMorale
             // 
-            this.chkSKST.AutoSize = true;
-            this.chkSKST.Checked = true;
-            this.chkSKST.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkSKST.Location = new System.Drawing.Point(16, 62);
-            this.chkSKST.Name = "chkSKST";
-            this.chkSKST.Size = new System.Drawing.Size(193, 17);
-            this.chkSKST.TabIndex = 10;
-            this.chkSKST.Text = "Tự nâng sĩ khí trước khi lên đường";
-            this.chkSKST.UseVisualStyleBackColor = true;
-            this.chkSKST.CheckedChanged += new System.EventHandler(this.chkSKST_CheckedChanged);
+            this.Quest_checkAutoMorale.AutoSize = true;
+            this.Quest_checkAutoMorale.Checked = true;
+            this.Quest_checkAutoMorale.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.Quest_checkAutoMorale.Location = new System.Drawing.Point(16, 62);
+            this.Quest_checkAutoMorale.Name = "Quest_checkAutoMorale";
+            this.Quest_checkAutoMorale.Size = new System.Drawing.Size(193, 17);
+            this.Quest_checkAutoMorale.TabIndex = 10;
+            this.Quest_checkAutoMorale.Text = "Tự nâng sĩ khí trước khi lên đường";
+            this.Quest_checkAutoMorale.UseVisualStyleBackColor = true;
+            this.Quest_checkAutoMorale.CheckedChanged += new System.EventHandler(this.chkSKST_CheckedChanged);
             // 
-            // txtThaoPhatTongQuanMin
+            // Quest_txtMinTroops
             // 
-            this.txtThaoPhatTongQuanMin.Location = new System.Drawing.Point(170, 41);
-            this.txtThaoPhatTongQuanMin.MaxLength = 6;
-            this.txtThaoPhatTongQuanMin.Name = "txtThaoPhatTongQuanMin";
-            this.txtThaoPhatTongQuanMin.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtThaoPhatTongQuanMin.Size = new System.Drawing.Size(68, 20);
-            this.txtThaoPhatTongQuanMin.TabIndex = 9;
-            this.txtThaoPhatTongQuanMin.Text = "10000";
-            this.txtThaoPhatTongQuanMin.TextChanged += new System.EventHandler(this.txtThaoPhatTongQuanMin_TextChanged);
+            this.Quest_txtMinTroops.Location = new System.Drawing.Point(170, 41);
+            this.Quest_txtMinTroops.MaxLength = 6;
+            this.Quest_txtMinTroops.Name = "Quest_txtMinTroops";
+            this.Quest_txtMinTroops.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.Quest_txtMinTroops.Size = new System.Drawing.Size(68, 20);
+            this.Quest_txtMinTroops.TabIndex = 9;
+            this.Quest_txtMinTroops.Text = "10000";
+            this.Quest_txtMinTroops.TextChanged += new System.EventHandler(this.txtThaoPhatTongQuanMin_TextChanged);
             // 
             // groupBox18
             // 
-            this.groupBox18.Controls.Add(this.chkThaoPhatTuKhoiPhucTrangThai);
-            this.groupBox18.Controls.Add(this.cboThaoPhatMuuKeTrongChienTruong);
-            this.groupBox18.Controls.Add(this.cboThaoPhatPhuongThucChonMucTieu);
+            this.groupBox18.Controls.Add(this.Quest_checkAutoRestoreStatus);
+            this.groupBox18.Controls.Add(this.Quest_dropdownSchemeInBattle);
+            this.groupBox18.Controls.Add(this.Quest_dropdownTargetMethod);
             this.groupBox18.Controls.Add(this.label103);
-            this.groupBox18.Controls.Add(this.chkThaoPhatTuDoiTranHinh);
-            this.groupBox18.Controls.Add(this.cboThaoPhatPhuongThucTanCong);
-            this.groupBox18.Controls.Add(this.cboThaoPhatSLTuongDanh1Dich);
+            this.groupBox18.Controls.Add(this.Quest_checkAutoFormula);
+            this.groupBox18.Controls.Add(this.Quest_dropdownAttackMethod);
+            this.groupBox18.Controls.Add(this.Quest_dropdownAttackNumGenerals);
             this.groupBox18.Controls.Add(this.label110);
             this.groupBox18.Controls.Add(this.label72);
             this.groupBox18.Controls.Add(this.label111);
@@ -3728,42 +3754,42 @@
             this.groupBox18.TabStop = false;
             this.groupBox18.Text = "Tự động trong chiến trường";
             // 
-            // chkThaoPhatTuKhoiPhucTrangThai
+            // Quest_checkAutoRestoreStatus
             // 
-            this.chkThaoPhatTuKhoiPhucTrangThai.AutoSize = true;
-            this.chkThaoPhatTuKhoiPhucTrangThai.Enabled = false;
-            this.chkThaoPhatTuKhoiPhucTrangThai.Location = new System.Drawing.Point(16, 120);
-            this.chkThaoPhatTuKhoiPhucTrangThai.Name = "chkThaoPhatTuKhoiPhucTrangThai";
-            this.chkThaoPhatTuKhoiPhucTrangThai.Size = new System.Drawing.Size(136, 17);
-            this.chkThaoPhatTuKhoiPhucTrangThai.TabIndex = 24;
-            this.chkThaoPhatTuKhoiPhucTrangThai.Text = "Tự khôi phục trạng thái";
-            this.chkThaoPhatTuKhoiPhucTrangThai.UseVisualStyleBackColor = true;
+            this.Quest_checkAutoRestoreStatus.AutoSize = true;
+            this.Quest_checkAutoRestoreStatus.Enabled = false;
+            this.Quest_checkAutoRestoreStatus.Location = new System.Drawing.Point(16, 120);
+            this.Quest_checkAutoRestoreStatus.Name = "Quest_checkAutoRestoreStatus";
+            this.Quest_checkAutoRestoreStatus.Size = new System.Drawing.Size(136, 17);
+            this.Quest_checkAutoRestoreStatus.TabIndex = 24;
+            this.Quest_checkAutoRestoreStatus.Text = "Tự khôi phục trạng thái";
+            this.Quest_checkAutoRestoreStatus.UseVisualStyleBackColor = true;
             // 
-            // cboThaoPhatMuuKeTrongChienTruong
+            // Quest_dropdownSchemeInBattle
             // 
-            this.cboThaoPhatMuuKeTrongChienTruong.FormattingEnabled = true;
-            this.cboThaoPhatMuuKeTrongChienTruong.Items.AddRange(new object[] {
+            this.Quest_dropdownSchemeInBattle.FormattingEnabled = true;
+            this.Quest_dropdownSchemeInBattle.Items.AddRange(new object[] {
             "0. Không dùng",
             "93. Phản khách vi chủ"});
-            this.cboThaoPhatMuuKeTrongChienTruong.Location = new System.Drawing.Point(152, 90);
-            this.cboThaoPhatMuuKeTrongChienTruong.Name = "cboThaoPhatMuuKeTrongChienTruong";
-            this.cboThaoPhatMuuKeTrongChienTruong.Size = new System.Drawing.Size(168, 21);
-            this.cboThaoPhatMuuKeTrongChienTruong.TabIndex = 23;
-            this.cboThaoPhatMuuKeTrongChienTruong.Text = "0. Không dùng";
+            this.Quest_dropdownSchemeInBattle.Location = new System.Drawing.Point(152, 90);
+            this.Quest_dropdownSchemeInBattle.Name = "Quest_dropdownSchemeInBattle";
+            this.Quest_dropdownSchemeInBattle.Size = new System.Drawing.Size(168, 21);
+            this.Quest_dropdownSchemeInBattle.TabIndex = 23;
+            this.Quest_dropdownSchemeInBattle.Text = "0. Không dùng";
             // 
-            // cboThaoPhatPhuongThucChonMucTieu
+            // Quest_dropdownTargetMethod
             // 
-            this.cboThaoPhatPhuongThucChonMucTieu.FormattingEnabled = true;
-            this.cboThaoPhatPhuongThucChonMucTieu.Items.AddRange(new object[] {
+            this.Quest_dropdownTargetMethod.FormattingEnabled = true;
+            this.Quest_dropdownTargetMethod.Items.AddRange(new object[] {
             "0. Tùy chọn",
             "1. Đánh quân đông nhất",
             "2. Trận hình mình hiệu quả nhất",
             "3. Trận hình + Quân đông nhất"});
-            this.cboThaoPhatPhuongThucChonMucTieu.Location = new System.Drawing.Point(152, 64);
-            this.cboThaoPhatPhuongThucChonMucTieu.Name = "cboThaoPhatPhuongThucChonMucTieu";
-            this.cboThaoPhatPhuongThucChonMucTieu.Size = new System.Drawing.Size(168, 21);
-            this.cboThaoPhatPhuongThucChonMucTieu.TabIndex = 22;
-            this.cboThaoPhatPhuongThucChonMucTieu.Text = "2. Trận hình mình hiệu quả nhất";
+            this.Quest_dropdownTargetMethod.Location = new System.Drawing.Point(152, 64);
+            this.Quest_dropdownTargetMethod.Name = "Quest_dropdownTargetMethod";
+            this.Quest_dropdownTargetMethod.Size = new System.Drawing.Size(168, 21);
+            this.Quest_dropdownTargetMethod.TabIndex = 22;
+            this.Quest_dropdownTargetMethod.Text = "2. Trận hình mình hiệu quả nhất";
             // 
             // label103
             // 
@@ -3775,23 +3801,23 @@
             this.label103.Text = "Số lượng tướng mình đánh 1 tướng địch:";
             this.label103.Click += new System.EventHandler(this.label103_Click);
             // 
-            // chkThaoPhatTuDoiTranHinh
+            // Quest_checkAutoFormula
             // 
-            this.chkThaoPhatTuDoiTranHinh.AutoSize = true;
-            this.chkThaoPhatTuDoiTranHinh.Checked = true;
-            this.chkThaoPhatTuDoiTranHinh.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkThaoPhatTuDoiTranHinh.Enabled = false;
-            this.chkThaoPhatTuDoiTranHinh.Location = new System.Drawing.Point(168, 120);
-            this.chkThaoPhatTuDoiTranHinh.Name = "chkThaoPhatTuDoiTranHinh";
-            this.chkThaoPhatTuDoiTranHinh.Size = new System.Drawing.Size(128, 17);
-            this.chkThaoPhatTuDoiTranHinh.TabIndex = 25;
-            this.chkThaoPhatTuDoiTranHinh.Text = "Tự đổi trận hình khắc";
-            this.chkThaoPhatTuDoiTranHinh.UseVisualStyleBackColor = true;
+            this.Quest_checkAutoFormula.AutoSize = true;
+            this.Quest_checkAutoFormula.Checked = true;
+            this.Quest_checkAutoFormula.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.Quest_checkAutoFormula.Enabled = false;
+            this.Quest_checkAutoFormula.Location = new System.Drawing.Point(168, 120);
+            this.Quest_checkAutoFormula.Name = "Quest_checkAutoFormula";
+            this.Quest_checkAutoFormula.Size = new System.Drawing.Size(128, 17);
+            this.Quest_checkAutoFormula.TabIndex = 25;
+            this.Quest_checkAutoFormula.Text = "Tự đổi trận hình khắc";
+            this.Quest_checkAutoFormula.UseVisualStyleBackColor = true;
             // 
-            // cboThaoPhatPhuongThucTanCong
+            // Quest_dropdownAttackMethod
             // 
-            this.cboThaoPhatPhuongThucTanCong.FormattingEnabled = true;
-            this.cboThaoPhatPhuongThucTanCong.Items.AddRange(new object[] {
+            this.Quest_dropdownAttackMethod.FormattingEnabled = true;
+            this.Quest_dropdownAttackMethod.Items.AddRange(new object[] {
             "0. Tùy chọn",
             "1. Tấn công phổ thông",
             "2. Đơn Chiến",
@@ -3800,16 +3826,16 @@
             "12. Thủy công",
             "13. Hỏa tiễn",
             "14. Phản kích"});
-            this.cboThaoPhatPhuongThucTanCong.Location = new System.Drawing.Point(152, 39);
-            this.cboThaoPhatPhuongThucTanCong.Name = "cboThaoPhatPhuongThucTanCong";
-            this.cboThaoPhatPhuongThucTanCong.Size = new System.Drawing.Size(168, 21);
-            this.cboThaoPhatPhuongThucTanCong.TabIndex = 21;
-            this.cboThaoPhatPhuongThucTanCong.Text = "0. Tùy chọn";
+            this.Quest_dropdownAttackMethod.Location = new System.Drawing.Point(152, 39);
+            this.Quest_dropdownAttackMethod.Name = "Quest_dropdownAttackMethod";
+            this.Quest_dropdownAttackMethod.Size = new System.Drawing.Size(168, 21);
+            this.Quest_dropdownAttackMethod.TabIndex = 21;
+            this.Quest_dropdownAttackMethod.Text = "0. Tùy chọn";
             // 
-            // cboThaoPhatSLTuongDanh1Dich
+            // Quest_dropdownAttackNumGenerals
             // 
-            this.cboThaoPhatSLTuongDanh1Dich.FormattingEnabled = true;
-            this.cboThaoPhatSLTuongDanh1Dich.Items.AddRange(new object[] {
+            this.Quest_dropdownAttackNumGenerals.FormattingEnabled = true;
+            this.Quest_dropdownAttackNumGenerals.Items.AddRange(new object[] {
             "1",
             "2",
             "3",
@@ -3819,13 +3845,13 @@
             "7",
             "8",
             "9"});
-            this.cboThaoPhatSLTuongDanh1Dich.Location = new System.Drawing.Point(208, 14);
-            this.cboThaoPhatSLTuongDanh1Dich.MaxDropDownItems = 10;
-            this.cboThaoPhatSLTuongDanh1Dich.Name = "cboThaoPhatSLTuongDanh1Dich";
-            this.cboThaoPhatSLTuongDanh1Dich.Size = new System.Drawing.Size(40, 21);
-            this.cboThaoPhatSLTuongDanh1Dich.TabIndex = 20;
-            this.cboThaoPhatSLTuongDanh1Dich.Text = "1";
-            this.cboThaoPhatSLTuongDanh1Dich.SelectedIndexChanged += new System.EventHandler(this.cboThaoPhatSLTuongDanh1Dich_SelectedIndexChanged);
+            this.Quest_dropdownAttackNumGenerals.Location = new System.Drawing.Point(208, 14);
+            this.Quest_dropdownAttackNumGenerals.MaxDropDownItems = 10;
+            this.Quest_dropdownAttackNumGenerals.Name = "Quest_dropdownAttackNumGenerals";
+            this.Quest_dropdownAttackNumGenerals.Size = new System.Drawing.Size(40, 21);
+            this.Quest_dropdownAttackNumGenerals.TabIndex = 20;
+            this.Quest_dropdownAttackNumGenerals.Text = "1";
+            this.Quest_dropdownAttackNumGenerals.SelectedIndexChanged += new System.EventHandler(this.cboThaoPhatSLTuongDanh1Dich_SelectedIndexChanged);
             // 
             // label110
             // 
@@ -3854,34 +3880,34 @@
             this.label111.TabIndex = 7;
             this.label111.Text = "Phương thức tấn công:";
             // 
-            // btThaoPhatReload
+            // Quest_btnQuestReload
             // 
-            this.btThaoPhatReload.Location = new System.Drawing.Point(232, 143);
-            this.btThaoPhatReload.Name = "btThaoPhatReload";
-            this.btThaoPhatReload.Size = new System.Drawing.Size(75, 23);
-            this.btThaoPhatReload.TabIndex = 50;
-            this.btThaoPhatReload.Text = "Nạp lại";
-            this.btThaoPhatReload.UseVisualStyleBackColor = true;
-            this.btThaoPhatReload.Click += new System.EventHandler(this.btThaoPhatReload_Click);
+            this.Quest_btnQuestReload.Location = new System.Drawing.Point(229, 141);
+            this.Quest_btnQuestReload.Name = "Quest_btnQuestReload";
+            this.Quest_btnQuestReload.Size = new System.Drawing.Size(75, 23);
+            this.Quest_btnQuestReload.TabIndex = 50;
+            this.Quest_btnQuestReload.Text = "Nạp lại";
+            this.Quest_btnQuestReload.UseVisualStyleBackColor = true;
+            this.Quest_btnQuestReload.Click += new System.EventHandler(this.Quest_btnQuestReload_Click);
             // 
-            // cboNhiemVu
+            // Quest_dropdownQuestList
             // 
-            this.cboNhiemVu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboNhiemVu.FormattingEnabled = true;
-            this.cboNhiemVu.Location = new System.Drawing.Point(3, 144);
-            this.cboNhiemVu.Name = "cboNhiemVu";
-            this.cboNhiemVu.Size = new System.Drawing.Size(221, 21);
-            this.cboNhiemVu.TabIndex = 4;
-            this.cboNhiemVu.SelectedIndexChanged += new System.EventHandler(this.cboNhiemVu_SelectedIndexChanged);
+            this.Quest_dropdownQuestList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Quest_dropdownQuestList.FormattingEnabled = true;
+            this.Quest_dropdownQuestList.Location = new System.Drawing.Point(5, 115);
+            this.Quest_dropdownQuestList.Name = "Quest_dropdownQuestList";
+            this.Quest_dropdownQuestList.Size = new System.Drawing.Size(221, 21);
+            this.Quest_dropdownQuestList.TabIndex = 4;
+            this.Quest_dropdownQuestList.SelectedIndexChanged += new System.EventHandler(this.cboNhiemVu_SelectedIndexChanged);
             // 
-            // txtTPCHECK
+            // Quest_txtTimer
             // 
-            this.txtTPCHECK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtTPCHECK.Location = new System.Drawing.Point(172, 445);
-            this.txtTPCHECK.Name = "txtTPCHECK";
-            this.txtTPCHECK.Size = new System.Drawing.Size(32, 20);
-            this.txtTPCHECK.TabIndex = 30;
-            this.txtTPCHECK.Text = "1";
+            this.Quest_txtTimer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Quest_txtTimer.Location = new System.Drawing.Point(172, 445);
+            this.Quest_txtTimer.Name = "Quest_txtTimer";
+            this.Quest_txtTimer.Size = new System.Drawing.Size(32, 20);
+            this.Quest_txtTimer.TabIndex = 30;
+            this.Quest_txtTimer.Text = "1";
             // 
             // label112
             // 
@@ -3892,15 +3918,15 @@
             this.label112.Size = new System.Drawing.Size(0, 13);
             this.label112.TabIndex = 7;
             // 
-            // cboGeneral
+            // Quest_GeneralsInCity
             // 
-            this.cboGeneral.CheckOnClick = true;
-            this.cboGeneral.FormattingEnabled = true;
-            this.cboGeneral.Location = new System.Drawing.Point(3, 168);
-            this.cboGeneral.Name = "cboGeneral";
-            this.cboGeneral.Size = new System.Drawing.Size(301, 274);
-            this.cboGeneral.TabIndex = 5;
-            this.cboGeneral.Leave += new System.EventHandler(this.cboGeneral_Leave);
+            this.Quest_GeneralsInCity.CheckOnClick = true;
+            this.Quest_GeneralsInCity.FormattingEnabled = true;
+            this.Quest_GeneralsInCity.Location = new System.Drawing.Point(3, 168);
+            this.Quest_GeneralsInCity.Name = "Quest_GeneralsInCity";
+            this.Quest_GeneralsInCity.Size = new System.Drawing.Size(301, 274);
+            this.Quest_GeneralsInCity.TabIndex = 5;
+            this.Quest_GeneralsInCity.Leave += new System.EventHandler(this.cboGeneral_Leave);
             // 
             // label23
             // 
@@ -3912,16 +3938,16 @@
             this.label23.TabIndex = 7;
             this.label23.Text = "Kiểm tra sau                    phút";
             // 
-            // cboCity
+            // Quest_dropdownCityList
             // 
-            this.cboCity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCity.FormattingEnabled = true;
-            this.cboCity.Location = new System.Drawing.Point(3, 117);
-            this.cboCity.MaxDropDownItems = 20;
-            this.cboCity.Name = "cboCity";
-            this.cboCity.Size = new System.Drawing.Size(221, 21);
-            this.cboCity.TabIndex = 3;
-            this.cboCity.SelectedIndexChanged += new System.EventHandler(this.cboCity_SelectedIndexChanged);
+            this.Quest_dropdownCityList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Quest_dropdownCityList.FormattingEnabled = true;
+            this.Quest_dropdownCityList.Location = new System.Drawing.Point(5, 143);
+            this.Quest_dropdownCityList.MaxDropDownItems = 20;
+            this.Quest_dropdownCityList.Name = "Quest_dropdownCityList";
+            this.Quest_dropdownCityList.Size = new System.Drawing.Size(221, 21);
+            this.Quest_dropdownCityList.TabIndex = 3;
+            this.Quest_dropdownCityList.SelectedIndexChanged += new System.EventHandler(this.Quest_dropdownCityList_SelectedIndexChanged);
             // 
             // tabDieuPhai
             // 
@@ -7546,11 +7572,10 @@
             this.openFileDialog1.Filter = "Linh vuong file (*.lv)|*.lv|All file (*.*)|*.*";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
-            // saveFileDialog1
+            // dlgSaveConfigFile
             // 
-            this.saveFileDialog1.DefaultExt = "lv";
-            this.saveFileDialog1.Filter = "Linh vuong file(*.lv)|*.lv|All file(*.*)|*.*";
-            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
+            this.dlgSaveConfigFile.DefaultExt = "xml";
+            this.dlgSaveConfigFile.Filter = "LVAuto File(*.xml)|*.xml|All file(*.*)|*.*";
             // 
             // timerAuto
             // 
@@ -7588,8 +7613,10 @@
             this.panelLoading.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPanelWaiting)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAttach)).EndInit();
-            this.tbAuto.ResumeLayout(false);
-            this.tbAuto.PerformLayout();
+            this.tabLog.ResumeLayout(false);
+            this.tabLog.PerformLayout();
+            this.tabAuto.ResumeLayout(false);
+            this.tabAuto.PerformLayout();
             this.groupBox17.ResumeLayout(false);
             this.groupBox17.PerformLayout();
             this.grbXacNhanHinhAnh.ResumeLayout(false);
@@ -7621,7 +7648,7 @@
             this.groupBox9.PerformLayout();
             this.groupBox14.ResumeLayout(false);
             this.groupBox14.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtaSELL)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SellRes_gridCityList)).EndInit();
             this.tabMuaTaiNguyen.ResumeLayout(false);
             this.pnLVBUYRES.ResumeLayout(false);
             this.pnLVBUYRES.PerformLayout();
@@ -7709,9 +7736,9 @@
 
         #endregion
 
-		private System.Windows.Forms.CheckBox chkAutoSellFood;
+		private System.Windows.Forms.CheckBox Auto_checkAutoSellResources;
         private System.Windows.Forms.NotifyIcon AppNotifyIcon;
-        private System.Windows.Forms.CheckBox chkAutoBuild;
+        private System.Windows.Forms.CheckBox Auto_checkAutoConstruct;
         private System.Windows.Forms.TabPage tabBanTaiNguyen;
 		private System.Windows.Forms.GroupBox groupBox4;
 		private System.Windows.Forms.Label label17;
@@ -7726,16 +7753,16 @@
 		private System.Windows.Forms.Label lblBTNLuaDVSoluong;
 		private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.CheckBox chkAutoST;
+        private System.Windows.Forms.CheckBox Auto_checkAutoQuest;
 		private System.Windows.Forms.TabPage tabThaoPhat;
 		private System.Windows.Forms.Label label23;
 		private System.Windows.Forms.TabPage tabXayDung;
         private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TreeView tvBUILD;
+		private System.Windows.Forms.TreeView Construct_treeBuilding;
 		private System.Windows.Forms.TabPage tabMuaTaiNguyen;
 		private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.CheckBox chkAutoBuyResource;
+		private System.Windows.Forms.CheckBox Auto_checkAutoBuyResources;
 		private System.Windows.Forms.TabPage tabNghienCuu;
 		private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -7755,7 +7782,7 @@
 		private System.Windows.Forms.Label label22;
 		private System.Windows.Forms.Label label30;
 		private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.SaveFileDialog dlgSaveConfigFile;
         private System.Windows.Forms.TabPage tabDoiTrai;
         private System.Windows.Forms.TextBox txtCHECKMOVE;
 		private System.Windows.Forms.Label label34;
@@ -7766,7 +7793,7 @@
 		private System.Windows.Forms.CheckBox chkAutoMove;
 		private System.Windows.Forms.TabPage tabLuyenSiKhi;
 		private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.CheckBox chkAutoUpSiKhi;
+        private System.Windows.Forms.CheckBox Auto_checkAutoMorale;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label36;
 		private System.Windows.Forms.TabPage tabMuaVukhi;
@@ -7811,13 +7838,13 @@
         private System.Windows.Forms.Label label54;
         private System.Windows.Forms.Label label55;
         private System.Windows.Forms.Label label56;
-        private System.Windows.Forms.ComboBox dropdownServerList;
-        private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.TextBox txtLvPassword;
-		private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.Button cmdReloadBuilding;
+        private System.Windows.Forms.ComboBox Login_dropdownServerList;
+        private System.Windows.Forms.Button Login_btnLogin;
+        private System.Windows.Forms.TextBox Login_txtPassword;
+		private System.Windows.Forms.TextBox Login_txtUsername;
+        private System.Windows.Forms.Button Construct_btnReloadBuildings;
 		private System.Windows.Forms.Button cmdReload;
-        private System.Windows.Forms.CheckBox chkAutoDel;
+        private System.Windows.Forms.CheckBox Auto_checkAutoDestruct;
 		private System.Windows.Forms.TabPage tabHaNha;
         private System.Windows.Forms.Label label48;
 		private System.Windows.Forms.TreeView tvDEL;
@@ -7825,7 +7852,7 @@
         private System.Windows.Forms.Label label59;
         private System.Windows.Forms.Label label60;
 		private System.Windows.Forms.Label label57;
-		private System.Windows.Forms.ComboBox cboXayDungCity;
+		private System.Windows.Forms.ComboBox Construct_dropdownCityList;
 		private System.Windows.Forms.ComboBox cboTabHaNhaCity;
 		private System.Windows.Forms.Label label46;
 		public System.Windows.Forms.TextBox txtBUILDCHECK;
@@ -7868,7 +7895,7 @@
 		private System.Windows.Forms.Label label64;
 		private System.Windows.Forms.TreeView tvBienCheList;
 		private System.Windows.Forms.Button btBienCheBo;
-		private System.Windows.Forms.CheckBox chkAutoBienche;
+		private System.Windows.Forms.CheckBox Auto_checkAutoTroops;
 		private System.Windows.Forms.Label lblBIENCHEMESSAGE;
 		private System.Windows.Forms.Button btTest;
 		public System.Windows.Forms.Label lblBUILDMESSAGE;
@@ -7888,7 +7915,7 @@
 		public System.Windows.Forms.TextBox txtSAFEGO;
 		public System.Windows.Forms.TextBox txtCOUNTLUA;
 		public System.Windows.Forms.TextBox txtSAFELUA;
-		public System.Windows.Forms.DataGridView dtaSELL;
+		public System.Windows.Forms.DataGridView SellRes_gridCityList;
 		public System.Windows.Forms.TextBox txtSELLCHECK;
 		public System.Windows.Forms.DataGridView dtaBUYRESOURCE;
 		public System.Windows.Forms.TextBox txtBUYRESOURCECHECK;
@@ -7947,7 +7974,7 @@
 		private System.Windows.Forms.Button btBansTNSelectAllDa;
 		private System.Windows.Forms.Button btBansTNSelectAllSat;
 		private System.Windows.Forms.Button btBansTNSelectAllGo;
-		private System.Windows.Forms.Button btBansTNSelectAllLua;
+		private System.Windows.Forms.Button SellRes_btnSelectAllFood;
 		private System.Windows.Forms.Button btMuaTNSelectAllDa;
 		private System.Windows.Forms.Button btMuaTNSelectAllSat;
 		private System.Windows.Forms.Button btMuaTNSelectAllGo;
@@ -7983,7 +8010,7 @@
 		public System.Windows.Forms.RadioButton rdBanTN_DA_THAPNHAT;
 		public System.Windows.Forms.RadioButton rdBanTN_DA_CODINH;
 		public System.Windows.Forms.RadioButton rdBanTN_DA_TRUNGBINH;
-		public System.Windows.Forms.CheckBox chkBanTN_SalesOff;
+		public System.Windows.Forms.CheckBox SellRes_checkSelloff;
 		private System.Windows.Forms.Panel pnXayNha;
 		private System.Windows.Forms.Panel panel3;
 		private System.Windows.Forms.CheckBox chkHaNhaDelAll;
@@ -7997,7 +8024,7 @@
 		private System.Windows.Forms.Label label93;
 		private System.Windows.Forms.Label label94;
 		public System.Windows.Forms.Label lblNetworkStatus;
-		private System.Windows.Forms.Button btThaoPhatReload;
+		private System.Windows.Forms.Button Quest_btnQuestReload;
 		private System.Windows.Forms.GroupBox grbTienIchMoRuong_group;
 		private System.Windows.Forms.Label label95;
 		private System.Windows.Forms.ComboBox cbTienIchChonRuong;
@@ -8056,22 +8083,22 @@
 		private System.Windows.Forms.TextBox txtVCVKSoLuong;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Label label11;
-		public System.Windows.Forms.TabPage tbAuto;
+		public System.Windows.Forms.TabPage tabAuto;
 		private System.Windows.Forms.Button btAnUiCheckAll;
 		private System.Windows.Forms.Label label15;
 		public System.Windows.Forms.TextBox txtXacNhanAnhMaxCheck;
 		private System.Windows.Forms.Label label18;
 		public System.Windows.Forms.TextBox txtXacNhanAnhMinTimeCheck;
-		public System.Windows.Forms.ComboBox cboThaoPhatPhuongThucTanCong;
-		public System.Windows.Forms.ComboBox cboThaoPhatSLTuongDanh1Dich;
+		public System.Windows.Forms.ComboBox Quest_dropdownAttackMethod;
+		public System.Windows.Forms.ComboBox Quest_dropdownAttackNumGenerals;
 		public System.Windows.Forms.TabPage tabLogin;
-		public System.Windows.Forms.CheckBox chkAutoAll;
+		public System.Windows.Forms.CheckBox Auto_checkAutoAll;
 		private System.Windows.Forms.Label label71;
-		protected System.Windows.Forms.Button cmdLoadConfig;
-		protected System.Windows.Forms.Button cmdSaveConfig;
+		protected System.Windows.Forms.Button Auto_btnLoadConfig;
+		protected System.Windows.Forms.Button Auto_btnSaveConfig;
 		private System.Windows.Forms.CheckBox chkAutoBanThuong;
 		private System.Windows.Forms.Label label72;
-		public System.Windows.Forms.ComboBox cboThaoPhatPhuongThucChonMucTieu;
+		public System.Windows.Forms.ComboBox Quest_dropdownTargetMethod;
 		private System.Windows.Forms.CheckBox chkAutoAnUiKhiDanNo;
 		private System.Windows.Forms.CheckBox chkAutoTuXoaNhacNho;
 		private System.Windows.Forms.GroupBox groupBox20;
@@ -8152,30 +8179,30 @@
 		public System.Windows.Forms.CheckBox chkXayNha_TuMuaTaiNguyen;
 		public System.Windows.Forms.TextBox txtXayNha_VangAnToan;
 		private System.Windows.Forms.Label label110;
-		public System.Windows.Forms.ComboBox cboThaoPhatMuuKeTrongChienTruong;
-		public System.Windows.Forms.CheckBox chkThaoPhatTuKhoiPhucTrangThai;
-		public System.Windows.Forms.TextBox txtTPCHECK;
-		public System.Windows.Forms.CheckedListBox cboGeneral;
-		public System.Windows.Forms.ComboBox cboNhiemVu;
-		public System.Windows.Forms.ComboBox cboCity;
-		public System.Windows.Forms.TextBox txtThaoPhatSyKhi;
-		public System.Windows.Forms.CheckBox chkThaoPhatTuDoiTranHinh;
-		public System.Windows.Forms.TextBox txtThaoPhatTongQuanMin;
-		public System.Windows.Forms.CheckBox chkSKST;
-		public System.Windows.Forms.CheckBox chkThaoPhatBienCheThemQuan;
+		public System.Windows.Forms.ComboBox Quest_dropdownSchemeInBattle;
+		public System.Windows.Forms.CheckBox Quest_checkAutoRestoreStatus;
+		public System.Windows.Forms.TextBox Quest_txtTimer;
+		public System.Windows.Forms.CheckedListBox Quest_GeneralsInCity;
+		public System.Windows.Forms.ComboBox Quest_dropdownQuestList;
+		public System.Windows.Forms.ComboBox Quest_dropdownCityList;
+		public System.Windows.Forms.TextBox Quest_txtMinMorale;
+		public System.Windows.Forms.CheckBox Quest_checkAutoFormula;
+		public System.Windows.Forms.TextBox Quest_txtMinTroops;
+		public System.Windows.Forms.CheckBox Quest_checkAutoMorale;
+		public System.Windows.Forms.CheckBox Quest_checkAutoTroop;
 		private System.Windows.Forms.Label label139;
 		private System.Windows.Forms.Label label140;
 		private System.Windows.Forms.Label label143;
 		private System.Windows.Forms.Label label142;
 		private System.Windows.Forms.Label label141;
 		private System.Windows.Forms.GroupBox groupBox23;
-		public System.Windows.Forms.TextBox txtThaoPhatBienCheBoBinhAmount;
-		public System.Windows.Forms.TextBox txtThaoPhatBienCheXeAmount;
-		public System.Windows.Forms.TextBox txtThaoPhatBienCheCungThuAmount;
-		public System.Windows.Forms.TextBox txtThaoPhatBienCheKiBinhAmount;
-		private System.Windows.Forms.Button btThaoPhatHuyBo;
-		private System.Windows.Forms.Button btThaoPhatAddList;
-		public System.Windows.Forms.CheckedListBox chklbThaoPhatListResult;
+		public System.Windows.Forms.TextBox Quest_txtNumInfantries;
+		public System.Windows.Forms.TextBox Quest_txtNumCatapults;
+		public System.Windows.Forms.TextBox Quest_txtNumArchers;
+		public System.Windows.Forms.TextBox Quest_txtNumCavalries;
+		private System.Windows.Forms.Button Quest_btnRemoveQuestGeneral;
+		private System.Windows.Forms.Button Quest_btnQuestAddGeneral;
+		public System.Windows.Forms.CheckedListBox Quest_QuestGeneralList;
 		private System.Windows.Forms.TabPage tabCallMan;
 		private System.Windows.Forms.Panel pnCallMan;
 		private System.Windows.Forms.Button btCallManCancel;
@@ -8250,6 +8277,8 @@
         private System.Windows.Forms.Label label165;
         private System.Windows.Forms.TextBox txtBinhManToaDoMoY;
         private System.Windows.Forms.TextBox txtBinhManToaDoMoX;
+        private System.Windows.Forms.TabPage tabLog;
+        private System.Windows.Forms.TextBox Log_txtLog;
     }
 }
 

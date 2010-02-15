@@ -118,21 +118,21 @@
       <DependentUpon>Vanchuyen.cs</DependentUpon>
     </Compile>
     <Compile Include="Command\CommonObj\BienChe.cs" />
-    <Compile Include="Common\BienCheQuan.cs" />
-    <Compile Include="Common\Class1.cs" />
-    <Compile Include="Common\common.cs" />
-    <Compile Include="Common\config.cs" />
+    <Compile Include="LVCommon\BienCheQuan.cs" />
+    <Compile Include="LVCommon\Class1.cs" />
+    <Compile Include="LVCommon\common.cs" />
+    <Compile Include="LVCommon\config.cs" />
     <Compile Include="Command\CommonObj\DieuPhaiTuong.cs" />
-    <Compile Include="Common\Constant.cs" />
-    <Compile Include="Common\DanhSachTuong.cs" />
-    <Compile Include="Common\GeneralThaoPhat.cs" />
-    <Compile Include="Common\Man.cs" />
-    <Compile Include="Common\PhaiQuanVanDaoMo.cs" />
-    <Compile Include="Common\PlayMusicFile.cs" />
-    <Compile Include="Common\Ruong.cs" />
-    <Compile Include="Common\ThreadManager.cs" />
-    <Compile Include="Common\WarFunc.cs" />
-    <Compile Include="Common\Wepons.cs" />
+    <Compile Include="LVCommon\Constants.cs" />
+    <Compile Include="LVCommon\DanhSachTuong.cs" />
+    <Compile Include="LVCommon\GeneralThaoPhat.cs" />
+    <Compile Include="LVCommon\Man.cs" />
+    <Compile Include="LVCommon\PhaiQuanVanDaoMo.cs" />
+    <Compile Include="LVCommon\PlayMusicFile.cs" />
+    <Compile Include="LVCommon\Ruong.cs" />
+    <Compile Include="LVCommon\ThreadManager.cs" />
+    <Compile Include="LVCommon\WarFunc.cs" />
+    <Compile Include="LVCommon\Wepons.cs" />
     <Compile Include="Connection\ProxySocket\AuthMethod.cs" />
     <Compile Include="Connection\ProxySocket\AuthNone.cs" />
     <Compile Include="Connection\ProxySocket\AuthUserPass.cs" />
@@ -177,6 +177,17 @@
     <Compile Include="frmLoading.Designer.cs">
       <DependentUpon>frmLoading.cs</DependentUpon>
     </Compile>
+    <Compile Include="LVForm\FrmMain.Actions.Construct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LVHelper\BaseHelper.cs" />
+    <Compile Include="LVHelper\CityCommandHelper.cs" />
+    <Compile Include="LVForm\FrmMain.Actions.Quest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LVForm\FrmMain.Actions.Auto.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="LVForm\FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,14 +222,18 @@
     <Compile Include="LVForm\FrmMain.Shared.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="LVHelper\BuildingCommandHelper.cs" />
+    <Compile Include="LVHelper\CommonCommandHelper.cs" />
+    <Compile Include="LVHelper\OptCommandHelper.cs" />
     <Compile Include="LVThread\ANUI.cs" />
     <Compile Include="LVThread\AUTOBINHMAN.cs" />
     <Compile Include="LVThread\AUTOCALLMAN.cs" />
     <Compile Include="LVThread\AUTOFIGHTING.cs" />
     <Compile Include="LVThread\AUTOTASK.cs" />
     <Compile Include="LVThread\AUTOVANCHUYENVK.cs" />
+    <Compile Include="LVThread\BaseThread.cs" />
     <Compile Include="LVThread\BIENCHE.cs" />
-    <Compile Include="LVThread\BUILD.cs" />
+    <Compile Include="LVThread\AutoConstruct.cs" />
     <Compile Include="LVThread\BUYRES.cs" />
     <Compile Include="LVThread\BUYWEPON.cs" />
     <Compile Include="LVThread\CITYTASK.cs" />

@@ -123,7 +123,7 @@ namespace LVAuto.LVForm.LVThread
 
 				this.TuongDiThaoPhat = General;
 				this.Sleep = sleep;
-				this.CityID = ((Common.GeneralThaoPhat)General[0]).CityID;
+				this.CityID = ((LVCommon.GeneralThaoPhat)General[0]).CityId;
 
 				/*
 				//Xay dung cookies
@@ -185,14 +185,14 @@ namespace LVAuto.LVForm.LVThread
 
 				
 
-				Common.GeneralThaoPhat GeneralThaoPhat=null;
+				LVCommon.GeneralThaoPhat GeneralThaoPhat=null;
 				bool canrun = true;
 				LVAuto.LVForm.Command.CityObj.MilitaryGeneral gArray = null;
 
 				for (int idx = 0; idx < this.TuongDiThaoPhat.Count; idx++)
 				{
-					GeneralThaoPhat = (Common.GeneralThaoPhat)TuongDiThaoPhat[idx];
-					g[idx] = GeneralThaoPhat.GeneralId;
+					GeneralThaoPhat = (LVCommon.GeneralThaoPhat)TuongDiThaoPhat[idx];
+					g[idx] = GeneralThaoPhat.Id;
 
 					// bo xung them quan
 					if (GeneralThaoPhat.TuBienCheQuan)
@@ -211,10 +211,10 @@ namespace LVAuto.LVForm.LVThread
 						}
 						 */
 
-						SetText("Biên chế quân cho " + GeneralThaoPhat.GeneralName + "...");
-						Common.BienCheQuan.BienChe(GeneralThaoPhat.CityID, GeneralThaoPhat.GeneralId, GeneralThaoPhat.BienCheBoBinhAmount,
-											GeneralThaoPhat.BienCheKyBinhAmount, GeneralThaoPhat.BienCheCungThuAmount, 
-											GeneralThaoPhat.BienCheXeAmount);
+						SetText("Biên chế quân cho " + GeneralThaoPhat.Name + "...");
+						LVCommon.BienCheQuan.BienChe(GeneralThaoPhat.CityId, GeneralThaoPhat.Id, GeneralThaoPhat.NumInfantries,
+											GeneralThaoPhat.NumCavalries, GeneralThaoPhat.NumArchers, 
+											GeneralThaoPhat.NumCatapults);
 
 					}
 
@@ -229,7 +229,7 @@ namespace LVAuto.LVForm.LVThread
 					*/
 
 					// check quaan so
-					gArray = Command.Common.GetGeneralInforInLuyenBinh(CityID,GeneralThaoPhat.GeneralId);
+					gArray = Command.Common.GetGeneralInforInLuyenBinh(CityID,GeneralThaoPhat.Id);
 					if (gArray == null)
 					{
 						canrun = false;
@@ -239,7 +239,7 @@ namespace LVAuto.LVForm.LVThread
 
 					if (GeneralThaoPhat.TuUpSiKhi)
 					{
-						SetText("Up sỹ khí" + GeneralThaoPhat.GeneralName + "....");
+						SetText("Up sỹ khí" + GeneralThaoPhat.Name + "....");
 						GeneralThaoPhat.Military.SyKhi = gArray.Military.SyKhi;
 						if (!UpSyKhi(GeneralThaoPhat)) canrun = false;
 					}
@@ -248,7 +248,7 @@ namespace LVAuto.LVForm.LVThread
 
 						
 				SetText("Điều đi thảo phạt ....");
-				idnhiemvu = GeneralThaoPhat.NhiemVuThaoPhatID;
+				idnhiemvu = GeneralThaoPhat.QuestId;
 				for (int i = TuongDiThaoPhat.Count; i < 5; i++)
 				{
 					g[i] = 0;
@@ -447,7 +447,7 @@ namespace LVAuto.LVForm.LVThread
                 SetText("Chờ tới phiên (0%) - chờ từ lúc " + DateTime.Now.ToString("HH:mm:ss"));
 
 				threadID = "THAOPHAT_" + DateTime.Now.Ticks;
-				Common.ThreadManager.TakeResourceAndRun(threadID , mainprocess);
+				LVCommon.ThreadManager.TakeResourceAndRun(threadID , mainprocess);
 				Message.ForeColor = System.Drawing.Color.Blue; 
                 SetText("Đang ngủ " + Sleep/(1000*60) + " phút, chờ tí (mới chạy lúc: " + DateTime.Now.ToString("HH:mm:ss") + ")");
                 Thread.Sleep(Sleep);	 				
@@ -455,18 +455,18 @@ namespace LVAuto.LVForm.LVThread
 			SetText("Dừng bởi lý do nào đó không biết");
         }
 
-		private bool UpSyKhi(Common.GeneralThaoPhat gen)
+		private bool UpSyKhi(LVCommon.GeneralThaoPhat gen)
 		{
 			bool ret = true;
 			if (gen.Military.SyKhi < gen.SiKhiMinToGo) ret = false;
 
 			if (gen.TuUpSiKhi && gen.Military.SyKhi < 100)
-				Command.OPT.UpSiKhi(gen.CityID, gen.GeneralId);
+				Command.OPT.UpSiKhi(gen.CityId, gen.Id);
 
 			return ret;
 		}
 
-		private bool CheckQuanSo(Common.GeneralThaoPhat gen)
+		private bool CheckQuanSo(LVCommon.GeneralThaoPhat gen)
 		{
 			bool ret = true;
 			if (gen.Military.Bobinh[0] + gen.Military.KyBinh[0] + gen.Military.CungThu[0] + gen.Military.Xe[0]*3 < gen.SoLuongQuanMinToGo) ret = false;
@@ -536,7 +536,7 @@ namespace LVAuto.LVForm.LVThread
 			{
                 InThread.Abort();
                 InThread.Join();
-				Common.ThreadManager.RemoveThread(threadID);
+				LVCommon.ThreadManager.RemoveThread(threadID);
                 Message.ForeColor = System.Drawing.Color.Blue ; Message.ForeColor = System.Drawing.Color.Blue ; Message.Text = "Đã dừng bởi người sử dụng";
                 IsRun = false;
             }

@@ -99,7 +99,7 @@ namespace LVAuto.LVForm.LVThread {
                 {
                     try
                     {
-                        Common.ThreadManager.RemoveThread(threadID);
+                        LVCommon.ThreadManager.RemoveThread(threadID);
                     }
                     catch (Exception ex) { }
                 }
@@ -109,8 +109,8 @@ namespace LVAuto.LVForm.LVThread {
 		{
             IsRun = true;
 			threadID = "BANTHUONG_" + DateTime.Now.Ticks;
-			Common.ThreadManager.TakeResourceAndRun(threadID, mainprocess);
-			Common.ThreadManager.RemoveThread(threadID);
+			LVCommon.ThreadManager.TakeResourceAndRun(threadID, mainprocess);
+			LVCommon.ThreadManager.RemoveThread(threadID);
 			IsRun = false;
            
         }
@@ -126,7 +126,7 @@ namespace LVAuto.LVForm.LVThread {
 		{
             if (IsRun) {
                 InThread.Abort();
-                InThread.Join();  Common.ThreadManager.RemoveThread(threadID);
+                InThread.Join();  LVCommon.ThreadManager.RemoveThread(threadID);
                 IsRun = false;
             }
         }

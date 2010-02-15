@@ -8,7 +8,7 @@ using System.Collections;
 
 using LVAuto.LVForm.Command;
 using LVAuto.LVForm.Command.CityObj;
-using LVAuto.LVForm.Common;
+using LVAuto.LVForm.LVCommon;
 using LVAuto.LVForm.LVThread;
 using LVAuto.LVWeb;
 using LVAuto.LVForm.Command.CommonObj;
@@ -47,7 +47,7 @@ namespace LVAuto.LVForm.LVThread
 			for (int i = 0; i < geninfolist.Count; i++)
 			{
 				binhManObj = (BinhManObj)geninfolist[i];
-				if (key != binhManObj.GeneralId)
+				if (key != binhManObj.Id)
 				{
 					if (i != 0)
 					{
@@ -56,7 +56,7 @@ namespace LVAuto.LVForm.LVThread
 					}
 					list = new ArrayList();
 					list.Add(geninfolist[i]);
-					key = binhManObj.GeneralId;
+					key = binhManObj.Id;
 				}
 				else
 				{
@@ -116,33 +116,33 @@ namespace LVAuto.LVForm.LVThread
                 for (int man = 0; man < geninfo.Count; man++)
                 {
                     binhmanobj = (BinhManObj)geninfo[man];
-                    int cityID = binhmanobj.CityID;
+                    int cityID = binhmanobj.CityId;
                     LVAuto.LVForm.Command.CityObj.City cityByID = LVAuto.LVForm.Command.City.GetCityByID(cityID);
                     string cookies = LVClient.CurrentLoginInfo.MakeCookiesString(cityID);
                     LVAuto.LVForm.Command.City.SwitchCitySlow(cityID);
-                    SetText("Chuẩn bị tướng " + binhmanobj.GeneralName + " đánh địa tinh tọa độ (" + binhmanobj.ToaDoMoX + ", " + binhmanobj.ToaDoMoY + "...");
+                    SetText("Chuẩn bị tướng " + binhmanobj.Name + " đánh địa tinh tọa độ (" + binhmanobj.ToaDoMoX + ", " + binhmanobj.ToaDoMoY + "...");
 
-                    MilitaryGeneral generalMilitaryInfoEx = Command.Common.GetGeneralMilitaryInfoEx(cityID, binhmanobj.GeneralId);
+                    MilitaryGeneral generalMilitaryInfoEx = Command.Common.GetGeneralMilitaryInfoEx(cityID, binhmanobj.Id);
                     if (generalMilitaryInfoEx == null)
                     {
-                        SetText("Tướng " + binhmanobj.GeneralName + " đang bận... ");
+                        SetText("Tướng " + binhmanobj.Name + " đang bận... ");
                         return;
                     }
-                    base.SetText("Biên chế quân cho theo yêu cầu cho tướng " + binhmanobj.GeneralName + "... ");
+                    base.SetText("Biên chế quân cho theo yêu cầu cho tướng " + binhmanobj.Name + "... ");
 
-                    BienCheQuan.BienChe(binhmanobj.CityID, binhmanobj.GeneralId, binhmanobj.Military.Bobinh[0], binhmanobj.Military.KyBinh[0], binhmanobj.Military.CungThu[0], binhmanobj.Military.Xe[0]);
+                    BienCheQuan.BienChe(binhmanobj.CityId, binhmanobj.Id, binhmanobj.Military.Bobinh[0], binhmanobj.Military.KyBinh[0], binhmanobj.Military.CungThu[0], binhmanobj.Military.Xe[0]);
 
-                    SetText("Biên chế quân giới theo yêu cầu cho tướng " + binhmanobj.GeneralName + "... ");
+                    SetText("Biên chế quân giới theo yêu cầu cho tướng " + binhmanobj.Name + "... ");
 
-                    Hashtable hashtable = OPT.ChangeQuanGioi(binhmanobj.GeneralId, binhmanobj.Military.Bobinh[1], binhmanobj.Military.Bobinh[2], binhmanobj.Military.Bobinh[3],
+                    Hashtable hashtable = OPT.ChangeQuanGioi(binhmanobj.Id, binhmanobj.Military.Bobinh[1], binhmanobj.Military.Bobinh[2], binhmanobj.Military.Bobinh[3],
                                     binhmanobj.Military.KyBinh[1], binhmanobj.Military.KyBinh[2], binhmanobj.Military.KyBinh[3], binhmanobj.Military.CungThu[1], binhmanobj.Military.CungThu[2], binhmanobj.Military.CungThu[3], binhmanobj.Military.Xe[1], cookies);
 
                     if ((hashtable == null) || (hashtable["ret"].ToString() != "0"))
                     {
-                        SetText("Không biên chế được quân giới cho tướng " + binhmanobj.GeneralName + "... ");
+                        SetText("Không biên chế được quân giới cho tướng " + binhmanobj.Name + "... ");
                         return;
                     }
-                    generalMilitaryInfoEx = Command.Common.GetGeneralMilitaryInfoEx(cityID, binhmanobj.GeneralId);
+                    generalMilitaryInfoEx = Command.Common.GetGeneralMilitaryInfoEx(cityID, binhmanobj.Id);
                     if (generalMilitaryInfoEx == null) return;
 
 
@@ -150,43 +150,43 @@ namespace LVAuto.LVForm.LVThread
                     bool flag = true;
                     if (binhmanobj.SoLuongQuanMinToGo > (((generalMilitaryInfoEx.Military.Bobinh[0] + generalMilitaryInfoEx.Military.KyBinh[0]) + generalMilitaryInfoEx.Military.CungThu[0]) + (generalMilitaryInfoEx.Military.Xe[0] * 3)))
                     {
-                        SetText("Tướng " + binhmanobj.GeneralName + " không đủ quân số để đi... ");
+                        SetText("Tướng " + binhmanobj.Name + " không đủ quân số để đi... ");
                         flag = false;
 
                     }
                     if (binhmanobj.SiKhiMinToGo > generalMilitaryInfoEx.Military.SyKhi)
                     {
-                        SetText("Tướng " + binhmanobj.GeneralName + " không đủ sỹ khí để đi... ");
+                        SetText("Tướng " + binhmanobj.Name + " không đủ sỹ khí để đi... ");
                         flag = false;
                     }
                     if (binhmanobj.TuUpSiKhi)
                     {
-                        OPT.UpSiKhi(cityID, binhmanobj.GeneralId);
+                        OPT.UpSiKhi(cityID, binhmanobj.Id);
                     }
 
                     if (flag)
                     {
-                        SetText("Điều tướng " + binhmanobj.GeneralName + " đánh địa tinh tọa độ (" + binhmanobj.ToaDoMoX + ", " + binhmanobj.ToaDoMoY + "...");
+                        SetText("Điều tướng " + binhmanobj.Name + " đánh địa tinh tọa độ (" + binhmanobj.ToaDoMoX + ", " + binhmanobj.ToaDoMoY + "...");
 
                         int destX = binhmanobj.ToaDoMoX;
                         int destY = binhmanobj.ToaDoMoY;
                         int mapID = common.MapPosToMapID(destX, destY);
 
-                        hashtable = Command.Common.TestDanhMotMucTieu(destX, destY, binhmanobj.GeneralId, 0, 0, 14);
+                        hashtable = Command.Common.TestDanhMotMucTieu(destX, destY, binhmanobj.Id, 0, 0, 14);
                         if ((hashtable != null) && !(hashtable["ret"].ToString() != "0"))
                         {
                             int num12 = int.Parse(hashtable["duration"].ToString());
                             int num13 = int.Parse(((ArrayList)hashtable["dest"])[0].ToString());
-                            hashtable = OPT.DanhMotMucTieu(mapID, binhmanobj.GeneralId, 0, 0, 14);
+                            hashtable = OPT.DanhMotMucTieu(mapID, binhmanobj.Id, 0, 0, 14);
                             if ((hashtable != null) && (hashtable["ret"].ToString() == "0"))
                             {
-                                base.SetText("Điều tướng " + binhmanobj.GeneralName + " đánh Địa tinh đi mất " + num12 / 60 + " phút... ");
+                                base.SetText("Điều tướng " + binhmanobj.Name + " đánh Địa tinh đi mất " + num12 / 60 + " phút... ");
                                 return;
                             }
                         }
                         else
                         {
-                            SetText(binhmanobj.GeneralName + " không đánh được địa tinh tọa độ (" + binhmanobj.ToaDoMoX + ", " + binhmanobj.ToaDoMoY + "...");
+                            SetText(binhmanobj.Name + " không đánh được địa tinh tọa độ (" + binhmanobj.ToaDoMoX + ", " + binhmanobj.ToaDoMoY + "...");
 
                         }
                         //return;
@@ -200,7 +200,7 @@ namespace LVAuto.LVForm.LVThread
             }
             catch (Exception ex)
             {
-                base.SetText("Không Điều tướng " + binhmanobj.GeneralName + " đánh địa tinh được, lỗi gì đó ...");
+                base.SetText("Không Điều tướng " + binhmanobj.Name + " đánh địa tinh được, lỗi gì đó ...");
             }
         }
 
@@ -220,7 +220,7 @@ namespace LVAuto.LVForm.LVThread
                         maxOToGo = obj2.MaxOToGo;
                     }
                 }
-                base.SetText("Điều tướng " + obj2.GeneralName + "...");
+                base.SetText("Điều tướng " + obj2.Name + "...");
                 if (maxOToGo <= 6)
                 {
                     num3 = 0;
@@ -233,16 +233,16 @@ namespace LVAuto.LVForm.LVThread
                         num3++;
                     }
                 }
-                int cityID = obj2.CityID;
+                int cityID = obj2.CityId;
                 LVAuto.LVForm.Command.CityObj.City cityByID = LVAuto.LVForm.Command.City.GetCityByID(cityID);
                 int x = cityByID.x;
                 int y = cityByID.y;
                 string cookies = LVClient.CurrentLoginInfo.MakeCookiesString(cityID);
                 LVAuto.LVForm.Command.City.SwitchCitySlow(cityID);
-                MilitaryGeneral generalMilitaryInfoEx = Command.Common.GetGeneralMilitaryInfoEx(cityID, obj2.GeneralId);
+                MilitaryGeneral generalMilitaryInfoEx = Command.Common.GetGeneralMilitaryInfoEx(cityID, obj2.Id);
                 if (generalMilitaryInfoEx != null)
                 {
-                    base.SetText("Điều tướng " + obj2.GeneralName + ", đang lấy th\x00f4ng tin man tr\x00ean bản đồ... ");
+                    base.SetText("Điều tướng " + obj2.Name + ", đang lấy th\x00f4ng tin man tr\x00ean bản đồ... ");
                     int[] manid = new int[geninfo.Count];
                     num2 = 0;
                     while (num2 < geninfo.Count)
@@ -257,7 +257,7 @@ namespace LVAuto.LVForm.LVThread
                     this.lastcityY = y;
                     if ((this.ManMap != null) && (this.ManMap.Count != 0))
                     {
-                        base.SetText("Điều tướng " + obj2.GeneralName + ", t\x00ecm man mục ti\x00eau... ");
+                        base.SetText("Điều tướng " + obj2.Name + ", t\x00ecm man mục ti\x00eau... ");
                         Npc_tentObj[] objArray = this.FindmanTarget(geninfo, this.ManMap);
                         if (objArray != null)
                         {
@@ -279,14 +279,14 @@ namespace LVAuto.LVForm.LVThread
                                     if (common.distancefrom2poin(x, y, num7, num8) <= obj2.MaxOToGo)
                                     {
                                         Hashtable hashtable;
-                                        base.SetText("Điều tướng " + obj2.GeneralName + " đánh " + Man.GetManName(obj3.ManID) + "...");
+                                        base.SetText("Điều tướng " + obj2.Name + " đánh " + Man.GetManName(obj3.ManID) + "...");
                                        
                                         
-                                        base.SetText("Điều tướng " + obj2.GeneralName + ", bi\x00ean chế qu\x00e2n... ");
+                                        base.SetText("Điều tướng " + obj2.Name + ", bi\x00ean chế qu\x00e2n... ");
                                        
-                                        BienCheQuan.BienChe(obj2.CityID, obj2.GeneralId, obj2.Military.Bobinh[0], obj2.Military.KyBinh[0], obj2.Military.CungThu[0], obj2.Military.Xe[0]);
+                                        BienCheQuan.BienChe(obj2.CityId, obj2.Id, obj2.Military.Bobinh[0], obj2.Military.KyBinh[0], obj2.Military.CungThu[0], obj2.Military.Xe[0]);
                                         
-                                        base.SetText("Điều tướng " + obj2.GeneralName + ", bi\x00ean chế qu\x00e2n giới... ");
+                                        base.SetText("Điều tướng " + obj2.Name + ", bi\x00ean chế qu\x00e2n giới... ");
                                         if (((((((obj2.Military.Bobinh[1] != 0) || (obj2.Military.Bobinh[2] != 0)) || ((obj2.Military.Bobinh[3] != 0) || (obj2.Military.KyBinh[1] != 0))) || (((obj2.Military.KyBinh[2] != 0) || (obj2.Military.KyBinh[3] != 0)) || ((obj2.Military.CungThu[1] != 0) || (obj2.Military.CungThu[2] != 0)))) || (obj2.Military.CungThu[3] != 0)) || (obj2.Military.Xe[1] != 0)) && (((((((obj2.Military.Bobinh[1] != 0) && (obj2.Military.Bobinh[1] != generalMilitaryInfoEx.Military.Bobinh[1])) || ((obj2.Military.Bobinh[2] != 0) && (obj2.Military.Bobinh[2] != generalMilitaryInfoEx.Military.Bobinh[2]))) || (((obj2.Military.Bobinh[3] != 0) && (obj2.Military.Bobinh[3] != generalMilitaryInfoEx.Military.Bobinh[3])) || ((obj2.Military.KyBinh[1] != 0) && (obj2.Military.KyBinh[1] != generalMilitaryInfoEx.Military.KyBinh[1])))) || ((((obj2.Military.KyBinh[2] != 0) && (obj2.Military.KyBinh[2] != generalMilitaryInfoEx.Military.KyBinh[2])) || ((obj2.Military.KyBinh[3] != 0) && (obj2.Military.KyBinh[3] != generalMilitaryInfoEx.Military.KyBinh[3]))) || (((obj2.Military.CungThu[1] != 0) && (obj2.Military.CungThu[1] != generalMilitaryInfoEx.Military.CungThu[1])) || ((obj2.Military.CungThu[2] != 0) && (obj2.Military.CungThu[2] != generalMilitaryInfoEx.Military.CungThu[2]))))) || ((obj2.Military.CungThu[3] != 0) && (obj2.Military.CungThu[3] != generalMilitaryInfoEx.Military.CungThu[3]))) || ((obj2.Military.Xe[1] != 0) && (obj2.Military.Xe[1] != generalMilitaryInfoEx.Military.Xe[1]))))
                                         {
                                             if (obj2.Military.Bobinh[1] != 0)
@@ -330,13 +330,13 @@ namespace LVAuto.LVForm.LVThread
                                                 generalMilitaryInfoEx.Military.Xe[1] = obj2.Military.Xe[1];
                                             }
                                           
-                                            hashtable = OPT.ChangeQuanGioi(obj2.GeneralId, obj2.Military.Bobinh[1], obj2.Military.Bobinh[2], obj2.Military.Bobinh[3], obj2.Military.KyBinh[1], obj2.Military.KyBinh[2], obj2.Military.KyBinh[3], obj2.Military.CungThu[1], obj2.Military.CungThu[2], obj2.Military.CungThu[3], obj2.Military.Xe[1], cookies);
+                                            hashtable = OPT.ChangeQuanGioi(obj2.Id, obj2.Military.Bobinh[1], obj2.Military.Bobinh[2], obj2.Military.Bobinh[3], obj2.Military.KyBinh[1], obj2.Military.KyBinh[2], obj2.Military.KyBinh[3], obj2.Military.CungThu[1], obj2.Military.CungThu[2], obj2.Military.CungThu[3], obj2.Military.Xe[1], cookies);
                                             if ((hashtable == null) || (hashtable["ret"].ToString() != "0"))
                                             {
                                                 goto Label_0C50;
                                             }
                                         }
-                                        generalMilitaryInfoEx = Command.Common.GetGeneralMilitaryInfoEx(cityID, obj2.GeneralId);
+                                        generalMilitaryInfoEx = Command.Common.GetGeneralMilitaryInfoEx(cityID, obj2.Id);
                                         if (generalMilitaryInfoEx == null)
                                         {
                                             return;
@@ -352,23 +352,23 @@ namespace LVAuto.LVForm.LVThread
                                         }
                                         if (obj2.TuUpSiKhi)
                                         {
-                                            OPT.UpSiKhi(cityID, obj2.GeneralId);
+                                            OPT.UpSiKhi(cityID, obj2.Id);
                                         }
                                         int mapID = obj3.MapID;
                                         int destX = common.MapIDtoX(mapID);
                                         int destY = common.MapIDtoY(mapID);
                                         if (flag)
                                         {
-                                            hashtable = Command.Common.TestDanhMotMucTieu(destX, destY, obj2.GeneralId, 0, 0, 1);
+                                            hashtable = Command.Common.TestDanhMotMucTieu(destX, destY, obj2.Id, 0, 0, 1);
                                             if ((hashtable != null) && !(hashtable["ret"].ToString() != "0"))
                                             {
                                                 int num12 = int.Parse(hashtable["duration"].ToString());
-                                                base.SetText(string.Concat(new object[] { "Điều tướng ", obj2.GeneralName, ", đánh ", Man.GetManName(obj3.ManID), " đi mất ", num12 / 60, " phút... " }));
+                                                base.SetText(string.Concat(new object[] { "Điều tướng ", obj2.Name, ", đánh ", Man.GetManName(obj3.ManID), " đi mất ", num12 / 60, " phút... " }));
                                                 int num13 = int.Parse(((ArrayList)hashtable["dest"])[0].ToString());
-                                                hashtable = OPT.DanhMotMucTieu(mapID, obj2.GeneralId, 0, 0, 1);
+                                                hashtable = OPT.DanhMotMucTieu(mapID, obj2.Id, 0, 0, 1);
                                                 if ((hashtable != null) && (hashtable["ret"].ToString() == "0"))
                                                 {
-                                                    base.SetText("Điều tướng " + obj2.GeneralName + " đánh " + Man.GetManName(obj3.ManID));
+                                                    base.SetText("Điều tướng " + obj2.Name + " đánh " + Man.GetManName(obj3.ManID));
                                                 }
                                             }
                                             return;
@@ -647,7 +647,7 @@ namespace LVAuto.LVForm.LVThread
                 manid[i] = obj2.ManID;
             }
             int uuTienID = obj2.UuTienID;
-            LVAuto.LVForm.Command.CityObj.City cityByID = LVAuto.LVForm.Command.City.GetCityByID(obj2.CityID);
+            LVAuto.LVForm.Command.CityObj.City cityByID = LVAuto.LVForm.Command.City.GetCityByID(obj2.CityId);
             int x = cityByID.x;
             int y = cityByID.y;
             int centerMapID = common.MapPosToMapID(x, y);
@@ -838,7 +838,7 @@ namespace LVAuto.LVForm.LVThread
 			try
 			{
 				binhmanobj = (LVAuto.LVForm.Command.CommonObj.BinhManObj)binhmanifo[0];
-				cityid = binhmanobj.CityID;
+				cityid = binhmanobj.CityId;
 
 				string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityid);
 				LVAuto.LVForm.Command.City.SwitchCitySlow(cityid);
@@ -871,7 +871,7 @@ namespace LVAuto.LVForm.LVThread
 								status = int.Parse(temp[0].ToString());
 								genid = int.Parse(temp[13].ToString());
 								battleid = int.Parse(result["battle_id"].ToString());
-								if (binhmanobj.GeneralId == genid)
+								if (binhmanobj.Id == genid)
 								{
 									//LVAuto.LVThread.AUTOFIGHTING.startBattle(0, time, 1, 250, Common.WarFunc.PHUONGTHUCTANCONG.HoaTien );
 									//LVAuto.LVThread.AUTOFIGHTING.startBattle(battleid, 0, binhmanobj.SoTuongMinhDanh1TuongDich, 300, binhmanobj.PhuongThucTanCongID, binhmanobj.PhuongThucChonMucTieuID);
@@ -900,7 +900,7 @@ namespace LVAuto.LVForm.LVThread
 						time = int.Parse(oneGotobat[13].ToString());		//s
 						genid = int.Parse(((ArrayList)(((ArrayList)oneGotobat[8])[0]))[0].ToString());
 						battleid = int.Parse(oneGotobat[4].ToString());
-						if (binhmanobj.GeneralId != genid) continue;
+						if (binhmanobj.Id != genid) continue;
 
 						if (status != 0)			// Đang di hoặc đang về thao phat	 1: dang di, 2: dang danh, 3: đang trở về
 						{
@@ -943,9 +943,9 @@ namespace LVAuto.LVForm.LVThread
 					sotuongminhdanh1tuongdich = ((Command.CommonObj.BinhManObj)binhmanifo[0]).SoTuongMinhDanh1TuongDich;
                     //if ((binhmanifo.Count > 0) && !this.isTuongDangDi(binhmanifo))
 
-                    base.SetText("Kiểm tra tướng " +  ((Command.CommonObj.BinhManObj)binhmanifo[0]).GeneralName + " ... ");
+                    base.SetText("Kiểm tra tướng " +  ((Command.CommonObj.BinhManObj)binhmanifo[0]).Name + " ... ");
 
-                    if (binhmanifo.Count > 0 && !LVAuto.LVForm.Command.CityObj.General.isTuongDangBusy(binhmanifo, sotuongminhdanh1tuongdich))
+                    if (binhmanifo.Count > 0 && !LVAuto.LVForm.Command.CityObj.General.AreMilitaryGeneralsBusy(binhmanifo, sotuongminhdanh1tuongdich))
                     {
                         if (((Command.CommonObj.BinhManObj)binhmanifo[0]).ManType == 1)
                             this.DieuTuongDiDanhMan(binhmanifo);
@@ -954,7 +954,7 @@ namespace LVAuto.LVForm.LVThread
                     }
                     else
                     {
-                        base.SetText("Tướng " + ((Command.CommonObj.BinhManObj)binhmanifo[0]).GeneralName + " đang bận. ");
+                        base.SetText("Tướng " + ((Command.CommonObj.BinhManObj)binhmanifo[0]).Name + " đang bận. ");
                     }
                 }
             }

@@ -7,32 +7,53 @@ namespace LVAuto.LVForm.Command.CityObj
 {
 	public class General : IComparable 
 	{
-		public int GeneralId;
-		public string GeneralName;
-		public string GeneralHistroryName;
+        public const int GENERAL_TYPE_CIVIL    = 1; //quan văn
+        public const int GENERAL_TYPE_MILITARY = 2; //quan võ
 
-		public int CityID;				// thanh/trai cua tuong do
+        /// <summary>
+        /// General's unique id.
+        /// </summary>
+		public int Id;
+        /// <summary>
+        /// General's name
+        /// </summary>
+		public string Name;
+        /// <summary>
+        /// General's historical name
+        /// </summary>
+		public string HistoricalName;
+
+        /// <summary>
+        /// Id of the city that the general is currently in
+        /// </summary>
+		public int CityId;          
+        /// <summary>
+        /// Name of the city that the general is currently in
+        /// </summary>
 		public string CityName;
 		
-		/// <summary>
-		/// Trạng thái tướng bình thường, đang xuất chinh ...
-		/// </summary>
-		public int GeneralStatus;		//0: binh thuong; 16: dang xuat chinh
-		public int Generaltype;		// 1: van, 2 vo
+        /// <summary>
+        /// General's status (normal, busy, etc)
+        /// </summary>
+		public int Status;		
+        /// <summary>
+        /// General'type (civil or military)
+        /// </summary>
+		public int Type;		
 
-		/// <summary>
-		/// Chức tước, nhàn rỗi, mưu sỹ, thái thu ...
-		/// </summary>
-		public int ChucTuoc;		//0: nhan roi, 3: muu sy, 1: thai thu, 2: quan su
+        /// <summary>
+        /// General's position (free, strategist, etc)
+        /// </summary>
+        public int Position;
+
 		public int Level;
-		public int MucTrungThanh;
 
-		public int TheLucHienTai;
-		public int TongTheLuc;
+		public int LoyaltyLevel;
 
+		public int CurrentHp;
+		public int MaxHp;
 
-		public int DiemCongConLai;
-
+		public int PointsLeft;
 
 		public override string ToString()
 		{
@@ -56,10 +77,10 @@ namespace LVAuto.LVForm.Command.CityObj
 			return st;
 			 * */
 
-			return GeneralName;
+			return Name;
 		}
 
-		public struct TrangThaiTuong
+		public struct GeneralStatus
 		{
 			public const int Binhthuong		= 0;
 			public const int TrongThuong	= 1;
@@ -69,332 +90,276 @@ namespace LVAuto.LVForm.Command.CityObj
 			public const int LoiDai			= 18;
 			public const int DieuPhai		= 21;
 			public const int NhiemVu		= 24; 
-			public const int ChiVien = 29;
+			public const int ChiVien        = 29;
 
 		}
 
-		public static string GetTrangThaiName(int status)
+		public static string GetGeneralStatusName(int status)
 		{
-			string name = "Unknow";
-			switch (status)
-			{
-				case 0:
-					name = "Bình thường";
-					break;
+            switch (status)
+            {
+                case GeneralStatus.Binhthuong:
+                    return "Bình thường";
 
-				case 1:
-					name = "Trọng thương";
-					break;
+                case GeneralStatus.TrongThuong:
+                    return "Trọng thương";
 
-				case 2:
-					name = "Trị thương";
-					break;
+                case GeneralStatus.TriThuong:
+                    return "Trị thương";
 
-				case 16:
-					name = "Xuất chinh";
-					break;
+                case GeneralStatus.XuatChinh:
+                    return "Xuất chinh";
 
-				case 17:
-					name = "Đi Chi viện";
-					break;
+                case GeneralStatus.DiChiVien:
+                    return "Đi Chi viện";
 
-				case 18:
-					name = "Lôi đài";
-					break;
-				
-				case 21:
-					name = "Điều phái";
-					break;
+                case GeneralStatus.LoiDai:
+                    return "Lôi đài";
 
-				case 24:
-					name = "Nhiệm vụ";
-					break;
-				
-				case 29:
-					name = "Chi viện";
-					break;
+                case GeneralStatus.DieuPhai:
+                    return "Điều phái";
 
-				
+                case GeneralStatus.NhiemVu:
+                    return "Nhiệm vụ";
 
+                case GeneralStatus.ChiVien:
+                    return "Chi viện";
 
-				default:
-					name = "Unknow";
-					break;
-			}
-
-			return name;
+                default:
+                    return "Unknow";
+            }
 		}
 
-		/// <summary>
-		/// Trạng thái quân đội hỗn loạn, thiếu kỉ luật
-		/// </summary>
-		public struct TrangThaiQuanDoi
+		public struct TroopStatus
 		{
-			public const int BinhThuong = 0;
-			public const int HonLoan = 1;
-			public const int SoHai = 4;	
+			public const int BinhThuong  = 0;
+			public const int HonLoan     = 1;
+			public const int SoHai       = 4;	
 			public const int ThieuKiLuat = 3;
 		}
 
-		/// <summary>
-		/// Lấy tên trạng thái quân đội (hỗn loạn, thiếu kỉ luật)
-		/// </summary>
-		/// <param name="trangthaiID"></param>
-		/// <returns>Tên trạng thái</returns>
-		public static string GetTrangThaiQuanDoiName(int trangthaiID)
+		public static string GetTroopStatusName(int status)
 		{
-			string name = "Unknow";
-			switch (trangthaiID)
+			switch (status)
 			{
-				case TrangThaiQuanDoi.BinhThuong:
-					name = "Bình thường";
-					break;
+				case TroopStatus.BinhThuong:
+                    return "Bình thường";
 
-				case TrangThaiQuanDoi.HonLoan:
-					name = "Hỗn loạn";
-					break;
+				case TroopStatus.HonLoan:
+					return "Hỗn loạn";
 
-				case TrangThaiQuanDoi.ThieuKiLuat:
-					name = "Thiếu kỉ luật";
-					break;
+				case TroopStatus.ThieuKiLuat:
+					return "Thiếu kỉ luật";
 
-				case TrangThaiQuanDoi.SoHai:
-					name = "Sợ hãi";
-					break;
+				case TroopStatus.SoHai:
+					return "Sợ hãi";
 
 				default:
-					name = "Unknow";
-					break;
+					return "Unknow";
 			}
-
-			return name;
-
 		}
 
-		/// <summary>
-		/// Lấy hệ số giảm của trạng thái quân đội, Bình thường =1, hỗn loạn = 0.5, thiếu kỉ luật = 0.8
-		/// </summary>
-		/// <param name="trangthaiID"></param>
-		/// <returns>Trả về hệ số, hỗn loạn =0.1, bình thường=1 </returns>
-		public static double GetHeSoTrangThaiQuanDoi(int trangthaiID)
+		public static double GetTroopRateByStatus(int status)
 		{
-			double rate= 1;
-			switch (trangthaiID)
+			switch (status)
 			{
-				case TrangThaiQuanDoi.BinhThuong:
-					rate = 1;
-					break;
+				case TroopStatus.BinhThuong:
+                    return 1.0;
 
-				case TrangThaiQuanDoi.HonLoan:
-					rate = 0.1;
-					break;
+				case TroopStatus.HonLoan:
+					return 0.1;
 
-				case TrangThaiQuanDoi.ThieuKiLuat:
-					rate = 0.8;
-					break;
+				case TroopStatus.ThieuKiLuat:
+					return 0.8;
 
-				case TrangThaiQuanDoi.SoHai:
-					rate = 0.8;
-					break;
+				case TroopStatus.SoHai:
+					return 0.8;
 
 				default:
-					rate = 0.9;
-					break;
+					return 1.0;
 			}
-
-			return rate;
-
 		}
 
-
-		/// <summary>
-		/// Chức tước của quan văn (Thái thú, Quân sư ...)
-		/// </summary>
-		public struct ChucTuocTuong
+		public struct CivilGeneralPosition
 		{
 			public const int NhanRoi = 0;
 			public const int ThaiThu = 1;
-			public const int QuanSu = 2;
-			public const int MuuSy = 3;
+			public const int QuanSu  = 2;
+			public const int MuuSy   = 3;
 		}
-		public static string GetChucTuocName(int chuctuocid)
+
+		public static string GetCivilGeneralPositionName(int position)
 		{
-			string name = "Unknow";
-			switch (chuctuocid)
+            switch (position)
 			{
-				case 0:
-					name = "Nhàn rỗi";
-					break;
+                case CivilGeneralPosition.NhanRoi:
+					return "Nhàn rỗi";
+					
+				case CivilGeneralPosition.ThaiThu:
+					return "Thái thú";
 
-				case 1:
-					name = "Thái thú";
-					break;
+				case CivilGeneralPosition.QuanSu:
+					return "Quân Sư";
 
-				case 2:
-					name = "Quân Sư";
-					break;
-
-				case 3:
-					name = "Mưu Sỹ";
-					break;
+				case CivilGeneralPosition.MuuSy:
+					return "Mưu Sỹ";
 
 				default:
-					name = "Unknow";
-					break;
+					return "Unknow";
 			}
-
-			return name;
 		}
 
-
-	
-		// sắp xếp theo ID
 		public virtual int CompareTo(object obj)
 		{
 			if (obj is General)
 			{
 				General temp = (General)obj;
 
-				if (this.CityID != temp.CityID)
-					return this.CityID.CompareTo(temp.CityID);
-				else
-					if (this.Generaltype != temp.Generaltype)
-						return this.Generaltype.CompareTo(temp.Generaltype);
-					else
-						return this.GeneralId.CompareTo(temp.GeneralId);
+                if (this.CityId != temp.CityId)
+                {
+                    return this.CityId.CompareTo(temp.CityId);
+                }
+                else
+                {
+                    if (this.Type != temp.Type)
+                    {
+                        return this.Type.CompareTo(temp.Type);
+                    }
+                    else
+                    {
+                        return this.Id.CompareTo(temp.Id);
+                    }
+                }
 			}
-			throw new ArgumentException("object is not a Temperature");
+			throw new ArgumentException("Argument is not an instance of General!");
 		}
 
-
-
-     
-
         /// <summary>
-        /// Kiểm tra xem tướng đang có đánh nhau hay đang đi không.
-        /// Nếu có thì add vào chiến trường
+        /// Checks if a military general is busy.
         /// </summary>
         /// <param name="militaryGeneral"></param>
-        /// <param name="sotuongminhdanh1tuongdich"></param>
-        /// <returns>true: đang bận, false: không bận</returns>
-        public static bool isTuongDangBusy(Command.CityObj.MilitaryGeneral militaryGeneral, int sotuongminhdanh1tuongdich)
+        /// <param name="attackNumGenerals">number of my generals attacking one target</param>
+        /// <returns></returns>
+        public static bool IsMilitaryGeneralBusy(MilitaryGeneral militaryGeneral, int attackNumGenerals)
         {
+            //IList<MilitaryGeneral> tmp = new List<MilitaryGeneral>();
             ArrayList tmp = new ArrayList();
             tmp.Add(militaryGeneral);
-            return  isTuongDangBusy(tmp, sotuongminhdanh1tuongdich);
+            return AreMilitaryGeneralsBusy(tmp, attackNumGenerals);
         }
-		/// <summary>
-		/// Kiểm tra xem tướng đang có đánh nhau hay đang đi không.
-		/// Nếu có thì add vào chiến trường
-		/// </summary>
-		/// <param name="callmanifo">List of Command.CityObj.MilitaryGeneral</param>
-		/// <returns>true: đang bận, false: không bận</returns>
-		public static bool isTuongDangBusy(ArrayList militaryGeneral, int sotuongminhdanh1tuongdich)
+
+        /// <summary>
+        /// Checks if all specified military generals are busy.
+        /// </summary>
+        /// <param name="militaryGenerals"></param>
+        /// <param name="attackNumGenerals">number of my generals attacking one target</param>
+        /// <returns></returns>
+        public static bool AreMilitaryGeneralsBusy(ArrayList militaryGenerals, int attackNumGenerals)
 		{
-			int cityid = 0;
-			int genid = 0;
-			Command.CityObj.MilitaryGeneral callmanobj;
-			ArrayList geninfo;
+            int cityid = 0;
+            int genid = 0;
+            Command.CityObj.MilitaryGeneral callmanobj;
+            ArrayList geninfo;
 
-			bool ret = false;
+            bool ret = false;
 
-			Hashtable result;
-			ArrayList temp;
+            Hashtable result;
+            ArrayList temp;
 
-			try
-			{
+            try
+            {
                 int genIDtmp = 0;
-				for (int genidx = 0; genidx < militaryGeneral.Count; genidx++)
-				{
+                for (int genidx = 0; genidx < militaryGenerals.Count; genidx++)
+                {
 
-					callmanobj = (Command.CityObj.MilitaryGeneral)militaryGeneral[genidx];
+                    callmanobj = (Command.CityObj.MilitaryGeneral)militaryGenerals[genidx];
 
-                    if (callmanobj.GeneralId == genIDtmp) continue;
-                    genIDtmp = callmanobj.GeneralId;
+                    if (callmanobj.Id == genIDtmp) continue;
+                    genIDtmp = callmanobj.Id;
 
-					cityid = callmanobj.CityID;
+                    cityid = callmanobj.CityId;
                     LVAuto.LVForm.Command.CityObj.City cityByID = LVAuto.LVForm.Command.City.GetCityByID(cityid);
 
-					string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityid);
-					LVAuto.LVForm.Command.City.SwitchCitySlow(cityid);
+                    string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityid);
+                    LVAuto.LVForm.Command.City.SwitchCitySlow(cityid);
 
 
 
-					int status;
-					int time;		//s
-					int battleid;
+                    int status;
+                    int time;		//s
+                    int battleid;
 
-					string para;
-					// check xem co đang đánh nhau khong
-					if (cityid > 0)                             // thien thanh gid=69
-                        if (cityByID.size >3)
+                    string para;
+                    // check xem co đang đánh nhau khong
+                    if (cityid > 0)                             // thien thanh gid=69
+                        if (cityByID.size > 3)
                             para = "gid=69&pid=-1&tab=1&tid=0";
                         else
-						    para = "gid=16&pid=-1&tab=1&tid=0";
-					else
-						para = "gid=19&pid=-1&tab=1&tid=" + cityid;
+                            para = "gid=16&pid=-1&tab=1&tid=0";
+                    else
+                        para = "gid=19&pid=-1&tab=1&tid=" + cityid;
 
-					Hashtable result1 = LVAuto.LVForm.Command.Build.Execute(2, para, true, cookies);
-					if (result1 != null && result1["ret"].ToString() == "0")
-					{
-						ArrayList battle = (ArrayList)result1["battle"];
-						for (int ii = 0; ii < battle.Count; ii++)
-						{
-							temp = (ArrayList)battle[ii];
-							battleid = int.Parse(temp[0].ToString());
+                    Hashtable result1 = LVAuto.LVForm.Command.Build.Execute(2, para, true, cookies);
+                    if (result1 != null && result1["ret"].ToString() == "0")
+                    {
+                        ArrayList battle = (ArrayList)result1["battle"];
+                        for (int ii = 0; ii < battle.Count; ii++)
+                        {
+                            temp = (ArrayList)battle[ii];
+                            battleid = int.Parse(temp[0].ToString());
 
-							// lay thong tin chien truong
-							para = "lBattleID=" + battleid;
-							result = LVAuto.LVForm.Command.Common.Execute(4, para, true, cookies);
-							if (result != null)
-							{
-								// check xem tướng mình có đang đánh nhau không
-								ArrayList myside = (ArrayList)result["myside"];
-								for (int i = 0; i < myside.Count; i++)
-								{
-									temp = (ArrayList)myside[0];
-									status = int.Parse(temp[0].ToString());
-									genid = int.Parse(temp[13].ToString());
-									battleid = int.Parse(result["battle_id"].ToString());
-									if (callmanobj.GeneralId == genid)
-									{
-										//SetText("Tướng " + callmanobj.GeneralName + " đang đi...");
-										//LVAuto.LVThread.AUTOFIGHTING.startBattle(0, time, 1, 250, Common.WarFunc.PHUONGTHUCTANCONG.HoaTien );
-										//LVAuto.LVThread.AUTOFIGHTING.startBattle(battleid, 0, Callmanobj.SoTuongMinhDanh1TuongDich, 300, Callmanobj.PhuongThucTanCongID, Callmanobj.PhuongThucChonMucTieuID);
-										LVAuto.LVForm.LVThread.AUTOFIGHTING.startBattle(battleid, 0, sotuongminhdanh1tuongdich, militaryGeneral);
-										ret = true;
-										break;
-										//return true;
-									}
+                            // lay thong tin chien truong
+                            para = "lBattleID=" + battleid;
+                            result = LVAuto.LVForm.Command.Common.Execute(4, para, true, cookies);
+                            if (result != null)
+                            {
+                                // check xem tướng mình có đang đánh nhau không
+                                ArrayList myside = (ArrayList)result["myside"];
+                                for (int i = 0; i < myside.Count; i++)
+                                {
+                                    temp = (ArrayList)myside[0];
+                                    status = int.Parse(temp[0].ToString());
+                                    genid = int.Parse(temp[13].ToString());
+                                    battleid = int.Parse(result["battle_id"].ToString());
+                                    if (callmanobj.Id == genid)
+                                    {
+                                        //SetText("Tướng " + callmanobj.GeneralName + " đang đi...");
+                                        //LVAuto.LVThread.AUTOFIGHTING.startBattle(0, time, 1, 250, Common.WarFunc.PHUONGTHUCTANCONG.HoaTien );
+                                        //LVAuto.LVThread.AUTOFIGHTING.startBattle(battleid, 0, Callmanobj.SoTuongMinhDanh1TuongDich, 300, Callmanobj.PhuongThucTanCongID, Callmanobj.PhuongThucChonMucTieuID);
+                                        LVAuto.LVForm.LVThread.AUTOFIGHTING.startBattle(battleid, 0, attackNumGenerals, militaryGenerals);
+                                        ret = true;
+                                        break;
+                                        //return true;
+                                    }
 
-								}
-							}// end if (result != null)						
-						} // end 					for (int i = 0; i < battle.Count; i++)
+                                }
+                            }// end if (result != null)						
+                        } // end 					for (int i = 0; i < battle.Count; i++)
 
-					}
-
-
-					// kiem tra xem co dang di khong
-					para = "tid=0";
-					if (cityid > 0)
-						para = "tid=0";
-					else
-						para = "tid=" + cityid;
+                    }
 
 
-					result = LVAuto.LVForm.Command.Common.Execute(40, para, true, cookies);
-					//result = LVAuto.Command.City.GetCityTask(cookies);
-					if (result != null)
-					{
-						ArrayList gotobat = (ArrayList)result["goto"];
-						for (int i = 0; i < gotobat.Count; i++)
-						{
-							ArrayList oneGotobat = (ArrayList)gotobat[i];
-							status = int.Parse(oneGotobat[1].ToString());       // sai, cos the la 2 
-							time = int.Parse(oneGotobat[13].ToString());		//s
-							genid = int.Parse(((ArrayList)(((ArrayList)oneGotobat[8])[0]))[0].ToString());
-							battleid = int.Parse(oneGotobat[4].ToString());         // nếu là đánh địa tinh thì id=0, kiểm tra [1]=14: địa tinh; =1: đánh man
-                            if (callmanobj.GeneralId != genid) continue;
+                    // kiem tra xem co dang di khong
+                    para = "tid=0";
+                    if (cityid > 0)
+                        para = "tid=0";
+                    else
+                        para = "tid=" + cityid;
+
+
+                    result = LVAuto.LVForm.Command.Common.Execute(40, para, true, cookies);
+                    //result = LVAuto.Command.City.GetCityTask(cookies);
+                    if (result != null)
+                    {
+                        ArrayList gotobat = (ArrayList)result["goto"];
+                        for (int i = 0; i < gotobat.Count; i++)
+                        {
+                            ArrayList oneGotobat = (ArrayList)gotobat[i];
+                            status = int.Parse(oneGotobat[1].ToString());       // sai, cos the la 2 
+                            time = int.Parse(oneGotobat[13].ToString());		//s
+                            genid = int.Parse(((ArrayList)(((ArrayList)oneGotobat[8])[0]))[0].ToString());
+                            battleid = int.Parse(oneGotobat[4].ToString());         // nếu là đánh địa tinh thì id=0, kiểm tra [1]=14: địa tinh; =1: đánh man
+                            if (callmanobj.Id != genid) continue;
 
                             if (int.Parse(oneGotobat[1].ToString()) == 14)      // DDiaj tinh
                             {
@@ -410,37 +375,36 @@ namespace LVAuto.LVForm.Command.CityObj
                             }
 
 
-							if (status != 0)			// Đang di hoặc đang về thao phat	 1: dang di, 2: dang danh, 3: đang trở về
-							{
-								//SetText("Tướng " + callmanobj.GeneralName + " đang đi...");
+                            if (status != 0)			// Đang di hoặc đang về thao phat	 1: dang di, 2: dang danh, 3: đang trở về
+                            {
+                                //SetText("Tướng " + callmanobj.GeneralName + " đang đi...");
 
-								if (status == 2) time = 0;
-								//if (battleid != 0 && (status == 1 || status == 2))
-                                if (battleid != 0 )
+                                if (status == 2) time = 0;
+                                //if (battleid != 0 && (status == 1 || status == 2))
+                                if (battleid != 0)
                                 {
 
-									//LVAuto.LVThread.AUTOFIGHTING.startBattle(0, time, 1, 250, Common.WarFunc.PHUONGTHUCTANCONG.HoaTien );
-									//LVAuto.LVThread.AUTOFIGHTING.startBattle(battleid, time, Callmanobj.SoTuongMinhDanh1TuongDich, 300, Callmanobj.PhuongThucTanCongID, Callmanobj.PhuongThucChonMucTieuID);
-									LVAuto.LVForm.LVThread.AUTOFIGHTING.startBattle(battleid, time, sotuongminhdanh1tuongdich, militaryGeneral);
+                                    //LVAuto.LVThread.AUTOFIGHTING.startBattle(0, time, 1, 250, Common.WarFunc.PHUONGTHUCTANCONG.HoaTien );
+                                    //LVAuto.LVThread.AUTOFIGHTING.startBattle(battleid, time, Callmanobj.SoTuongMinhDanh1TuongDich, 300, Callmanobj.PhuongThucTanCongID, Callmanobj.PhuongThucChonMucTieuID);
+                                    LVAuto.LVForm.LVThread.AUTOFIGHTING.startBattle(battleid, time, attackNumGenerals, militaryGenerals);
 
-								}
+                                }
 
-								ret = true;
-								break;
-								//return true;
-							}
-						}
+                                ret = true;
+                                break;
+                                //return true;
+                            }
+                        }
 
-					}
-				}
-				return ret;
+                    }
+                }
+                return ret;
 
-			}
-			catch (Exception ex)
-			{
-				return ret;
-			}
-
+            }
+            catch (Exception ex)
+            {
+                return ret;
+            }
 		}
 
 
