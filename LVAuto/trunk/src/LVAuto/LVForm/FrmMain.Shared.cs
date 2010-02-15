@@ -42,38 +42,13 @@ namespace LVAuto.LVForm
                 //Command.City.UpdateAllSimpleCity();
                 //Command.City.GetAllCity();
 
-                chkAutoAll.Enabled = true;
+                Auto_checkAutoAll.Enabled = true;
                 IsLogin = true;
                 AppNotifyIcon.Text = strVersion;
 
                 // bao bi tan cong, hungtv rem
-                LVCITYTASK = new LVAuto.LVForm.LVThread.CITYTASK();
                 LVCITYTASK.Auto();
-
-                LVAUTOTASK = new LVAuto.LVForm.LVThread.AUTOTASK(lblLoadingResMessage);
                 LVAUTOTASK.Auto();
-
-                LVBUILD = new LVAuto.LVForm.LVThread.BUILD(lblBUILDMESSAGE);
-
-                LVDEL = new LVAuto.LVForm.LVThread.DEL(lblDELMESSAGE);
-                LVSELL = new LVAuto.LVForm.LVThread.SELL(lblSELLMESSAGE);
-                LVBUYRES = new LVAuto.LVForm.LVThread.BUYRES(lblBUYRESMESSAGE);
-                LVTHAOPHAT = new LVAuto.LVForm.LVThread.THAOPHAT(lblTHAOPHATMESSAGE);
-                LVUPGRADE = new LVAuto.LVForm.LVThread.UPGRADE(lblUPGEADEMESSAGE);
-                LVANUI = new LVAuto.LVForm.LVThread.ANUI(lblANUIMESSAGE);
-                LVVANCHUYEN = new LVAuto.LVForm.LVThread.VANCHUYEN(lblVANCHUYENMESSAGE);
-                LVMOVEDOANHTRAI = new LVAuto.LVForm.LVThread.MOVEDOANHTRAI(lblMOVEDOANHTRAI);
-                LVSIKHI = new LVAuto.LVForm.LVThread.SIKHI(lblSIKHIMESSAGE);
-                LVBUYWEPON = new LVAuto.LVForm.LVThread.BUYWEPON(lblBUYWEPONMESSAGE);
-
-                LVBIENCHE = new LVAuto.LVForm.LVThread.BIENCHE(lblBIENCHEMESSAGE);
-                LVDAOMO = new LVAuto.LVForm.LVThread.PHAIQUANVANDAOMO(lblDIEUPHAIMESSAGE);
-                LVLOIDAI = new LVAuto.LVForm.LVThread.LOIDAI(lblDIEUPHAIMESSAGE);
-
-                LVAUTOVCVK = new LVAuto.LVForm.LVThread.AUTOVANCHUYENVK(lblAUTOVCVKMESSAGE);
-                //LVCITYTASK.IsRun = true;
-                LVAUTOBINHMAN = new LVAuto.LVForm.LVThread.AUTOBINHMAN(lblAUTOBINHMANMESSAGE);
-                LVAUTOCALLMAN = new LVAuto.LVForm.LVThread.AUTOCALLMAN(lblAUTOCALLMANMESSAGE);
 
                 LVAuto.LVWeb.LVClient.debug = false;
                 LVAuto.LVWeb.LVClient.firstlogin = false;
@@ -89,6 +64,208 @@ namespace LVAuto.LVForm
                 return false;
             }
             return true;
+        }
+
+        /// <summary>
+        /// Switches between tabs
+        /// </summary>
+        private void SwitchTab(TabPage selectedTab)
+        {
+            switch (selectedTab.Name.ToLower().Trim())
+            {
+                case "tabbantainguyen":
+                    {
+                        if (!SellResource_loaded)
+                        {
+                            LVCommon.common.LoadCityToGridForSellResource(this.SellRes_gridCityList);
+                            SellResource_loaded = true;
+                        }
+                        break;
+                    }
+
+                case "tabmuatainguyen":
+                    {
+                        if (!BuyResource_loaded)
+                        {
+                            LVCommon.common.LoadCityToGridForBuyResource(this.dtaBUYRESOURCE);
+                            BuyResource_loaded = true;
+                        }
+                        break;
+                    }
+
+                case "tabxaydung":
+                    {
+                        if (!BuildCity_loaded)
+                        {
+                            ShowLoadingLabel();
+                            Construct_dropdownCityList.Items.Clear();
+                            Construct_dropdownCityList.Items.AddRange(Command.CityObj.City.AllCity);
+                            this.Construct_treeBuilding.Nodes.Clear();
+                            BuildCity_loaded = true;
+                            HideLoadingLabel();
+                        }
+                        break;
+                    }
+
+                case "tabhanha":
+                    {
+                        ShowLoadingLabel();
+                        cboTabHaNhaCity.Items.Clear();
+                        cboTabHaNhaCity.Items.AddRange(Command.CityObj.City.AllCity);
+                        this.tvDEL.Nodes.Clear();
+                        DelCity_loaded = true;
+                        HideLoadingLabel();
+                        break;
+                    }
+
+                case "tabthaophat":
+                    {
+                        if (!ThaoPhat_loaded)
+                        {
+                            ShowLoadingLabel();
+                            LVAuto.LVForm.LVCommon.common.LoadDataForThaoPhat(LVAuto.LVForm.FrmMain.TuongDiThaoPhatList);
+                            ThaoPhat_loaded = true;
+                            HideLoadingLabel();
+                        }
+                        break;
+                    }
+
+                case "tabnghiencuu":
+                    {
+                        if (!ReSearch_loaded)
+                        {
+                            cboCityForUpgrade.Items.Clear();
+                            cboCityForUpgrade.Items.AddRange(Command.CityObj.City.AllCity);
+                            LVCommon.common.LoadUpgradeToTreeViewForUpdate(tvUpdate);
+
+                            ReSearch_loaded = true;
+                        }
+                        break;
+                    }
+
+                case "tabanui":
+                    {
+                        LVCommon.common.LoadCityToGridForAnUi(chklstAnUi);
+                        Anui_loaded = true;
+                        break;
+                    }
+
+                case "tabvanchuyen":
+                    {
+                        if (!VanChuyen_loaded)
+                        {
+                            LVCommon.common.LoadCityToGridForVanchuyen(pnVanchuyen);
+                            VanChuyen_loaded = true;
+                        }
+                        break;
+                    }
+
+                case "tabdoitrai":
+                    {
+                        if (!MoveDoanhTrai_loaded)
+                        {
+                            LVCommon.common.LoadDoanhTraiForMove(pnDoanhTrai);
+                            MoveDoanhTrai_loaded = true;
+                        }
+                        break;
+                    }
+
+                case "tabluyensikhi":
+                    {
+                        if (!Upsikhi_loaded)
+                        {
+                            //cboLuyenSKCity.Items.Clear();
+                            //cboLuyenSKCity.Items.AddRange(Command.CityObj.City.AllCity);
+
+                            if (LVCommon.common.LoadGeneralForUpSiKhi(tvSIKHI)) Upsikhi_loaded = true;
+                        }
+                        break;
+                    }
+
+                case "tabmuavukhi":
+                    {
+                        if (!BuyWepon_loaded)
+                        {
+                            ShowLoadingLabel();
+                            if (LVCommon.common.LoadCityForBuyWepon(pnWepon) == 0)
+                                BuyWepon_loaded = true;
+                            else
+                                BuyWepon_loaded = false;
+
+                            HideLoadingLabel();
+                        }
+                        break;
+                    }
+
+                case "tabbienche":
+                    {
+                        cboBienCheCity.Items.Clear();
+                        cboBienCheCity.Items.AddRange(Command.CityObj.City.AllCity);
+                        chklstGeneral.Items.Clear();
+                        LVAuto.LVForm.LVCommon.common.LoadGeneralForBienChe(tvBienCheList);
+                        btBiencheAccept.Enabled = false;
+                        break;
+                    }
+
+                case "tabdieuphai":
+                    {
+                        cboTabDieuPhaiThanhPhaiQuanVan.Items.Clear();
+                        cboTabDieuPhaiThanhPhaiQuanVan.Items.AddRange(Command.CityObj.City.AllCity);
+                        cbTabDieuPhaiThanhPhaiDiLoiDai.Items.Clear();
+                        cbTabDieuPhaiThanhPhaiDiLoiDai.Items.AddRange(Command.CityObj.City.AllCity);
+
+                        btTabDieuPhaiPhaiQuanVan.Enabled = false;
+                        showDataForGridDieuPhai();
+                        break;
+                    }
+
+                case "tabvanchuyenvukhi":
+                    {
+                        LoadDataForVCVK();
+                        LVCommon.common.LoadDataResultForVCVK(lstVCVKResult);
+                        break;
+                    }
+
+                case "tabbinhman":
+                    {
+                        this.cbTabBinhManThanhXuatQuan.Items.Clear();
+                        if (LVAuto.LVForm.Command.CityObj.City.AllCity == null)
+                        {
+                            LVAuto.LVForm.Command.City.UpdateAllSimpleCity();
+                        }
+
+                        if (LVAuto.LVForm.Command.CityObj.City.AllCity == null) return;
+
+
+                        this.cbTabBinhManThanhXuatQuan.Items.AddRange(LVAuto.LVForm.Command.CityObj.City.AllCity);
+                        if (this.cbTabBinhManThanhXuatQuan.SelectedItem == null)
+                        {
+                            this.chkTabBinhManTuongXuatTran.Items.Clear();
+                        }
+                        LVCommon.common.LoadDataResultBinhMan(chkTabBinhManList);
+                        break;
+                    }
+
+                case "tabcallman":
+                    {
+                        this.cboCallManThanhTraiXuatQuan.Items.Clear();
+                        if (LVAuto.LVForm.Command.CityObj.City.AllCity == null)
+                        {
+                            LVAuto.LVForm.Command.City.UpdateAllSimpleCity();
+                        }
+
+                        if (LVAuto.LVForm.Command.CityObj.City.AllCity == null) return;
+
+                        this.cboCallManThanhTraiXuatQuan.Items.AddRange(LVAuto.LVForm.Command.CityObj.City.AllCity);
+                        if (this.cboCallManThanhTraiXuatQuan.SelectedItem == null)
+                        {
+                            this.chklbCallManTuongXuatTran.Items.Clear();
+                        }
+                        chklbCallManListResult.Items.Clear();
+                        chklbCallManListResult.Items.AddRange(CallManList.ToArray());
+                        break;
+                    }
+            } //end switch
         }
     }
 }

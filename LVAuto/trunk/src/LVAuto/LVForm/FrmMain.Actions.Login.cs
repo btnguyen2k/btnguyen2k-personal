@@ -17,12 +17,12 @@ namespace LVAuto.LVForm
         /// <returns></returns>
         private bool ValidateLoginForm()
         {
-            if (txtUsername.Text.Trim() == "")
+            if (Login_txtUsername.Text.Trim() == "")
             {
                 LVUtils.MsgBoxUtils.WarningBox("Chưa nhập Username!");
                 return false;
             }
-            if (txtLvPassword.Text.Trim() == "")
+            if (Login_txtPassword.Text.Trim() == "")
             {
                 LVUtils.MsgBoxUtils.WarningBox("Chưa nhập password!");
                 return false;
@@ -79,15 +79,17 @@ namespace LVAuto.LVForm
         /// </summary>
         private void LVLoadServerList()
         {
-            const string configFile = "ServerList.xml";
+            const string CONFIG_FILE = "ServerList.xml";
             try
             {
+                WriteLog("Loading list of servers from [" + CONFIG_FILE + "]...");
+
                 const string pathServer = "/LVAuto/server";
 
                 //load server list
                 System.Xml.XmlDocument xmlDoc = new System.Xml.XmlDocument();
-                xmlDoc.Load(configFile);
-
+                xmlDoc.Load(CONFIG_FILE);
+                
                 System.Xml.XmlNodeList nodes = xmlDoc.SelectNodes(pathServer);
                 System.Collections.ArrayList servers = new System.Collections.ArrayList();
                 for (int i = 0; i < nodes.Count; i++)
@@ -96,14 +98,16 @@ namespace LVAuto.LVForm
                 }
                 if (servers.Count > 0)
                 {
-                    dropdownServerList.Items.Clear();
-                    dropdownServerList.Items.AddRange(servers.ToArray());
-                    dropdownServerList.SelectedIndex = 0;
+                    Login_dropdownServerList.Items.Clear();
+                    Login_dropdownServerList.Items.AddRange(servers.ToArray());
+                    Login_dropdownServerList.SelectedIndex = 0;
                 }
+
+                WriteLog("Number of servers: " + servers.Count);
             }
             catch (Exception ex)
             {
-                LVUtils.MsgBoxUtils.ErrorBox("Không load được danh sách server từ file [" + configFile + "]:\r\n" + ex.Message);
+                LVUtils.MsgBoxUtils.ErrorBox("Không load được danh sách server từ file [" + CONFIG_FILE + "]:\r\n" + ex.Message);
                 this.Close();
             }
         }
@@ -119,7 +123,7 @@ namespace LVAuto.LVForm
             Hashtable temp = null;
             do
             {
-                btnLogin.Enabled = false;
+                Login_btnLogin.Enabled = false;
                 ShowLoadingLabel("Logging in...");
                 try
                 {
@@ -133,14 +137,14 @@ namespace LVAuto.LVForm
                     int antibot = int.Parse(oper[0].Trim()) + int.Parse(oper[1].Trim());
                     Hashtable logindata = LVWeb.ParseHeader.GetDataFromForm(data);
                     logindata["NoBot1$NoBot1_NoBotExtender_ClientState"] = antibot.ToString();
-                    logindata["TxtPass"] = txtLvPassword.Text;
-                    logindata["TxtUserName"] = txtUsername.Text;
+                    logindata["TxtPass"] = Login_txtPassword.Text;
+                    logindata["TxtUserName"] = Login_txtUsername.Text;
                     logindata.Remove("imgLoginLogOut");
                     logindata["imgLoginLogOut.x"] = 10;
                     logindata["imgLoginLogOut.y"] = 10;
                     LVAuto.LVWeb.LVClient.LoginFormData = logindata;
-                    LVAuto.LVWeb.LVClient.lvusername = txtUsername.Text;
-                    LVAuto.LVWeb.LVClient.lvpassword = txtLvPassword.Text;
+                    LVAuto.LVWeb.LVClient.lvusername = Login_txtUsername.Text;
+                    LVAuto.LVWeb.LVClient.lvpassword = Login_txtPassword.Text;
                     temp = LVAuto.LVWeb.LVClient.Login();
                     loginCount++;
                 }
@@ -163,7 +167,7 @@ namespace LVAuto.LVForm
             if (tokenIndex > -1)
             {
                 HideLoadingLabel();
-                btnLogin.Enabled = true;
+                Login_btnLogin.Enabled = true;
                 LVUtils.MsgBoxUtils.WarningBox("Đăng nhập thật bại!");
             }
             else
@@ -173,12 +177,12 @@ namespace LVAuto.LVForm
                 if (!LVLoadServerData())
                 {
                     LVUtils.MsgBoxUtils.WarningBox("Không load được server data!");
-                    btnLogin.Enabled = true;
+                    Login_btnLogin.Enabled = true;
                     return;
                 }
-                txtLvPassword.Enabled = false;
-                txtUsername.Enabled = false;
-                btnLogin.Enabled = false;
+                Login_txtPassword.Enabled = false;
+                Login_txtUsername.Enabled = false;
+                Login_btnLogin.Enabled = false;
                 //frLoading.Close();
 
                 ShowCoDanhTuongViengTham();

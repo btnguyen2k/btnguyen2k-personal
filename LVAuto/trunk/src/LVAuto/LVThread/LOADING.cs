@@ -29,7 +29,7 @@ namespace LVAuto.LVForm.LVThread {
         public void Stop() {
             if (IsRun) {
                 InThread.Abort();
-                InThread.Join();  Common.ThreadManager.RemoveThread(threadID);
+                InThread.Join();  LVCommon.ThreadManager.RemoveThread(threadID);
                 f.Text = oldtext;
                 IsRun = false;
             }

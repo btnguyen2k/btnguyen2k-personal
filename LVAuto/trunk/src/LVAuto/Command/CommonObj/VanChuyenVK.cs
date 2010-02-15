@@ -37,7 +37,7 @@ namespace LVAuto.LVForm.Command.CommonObj
 
 
 			string str = "Chuyển từ " + Command.City.GetCityByID(ThanhChuyenDiID) + " đến " + Command.City.GetCityByID(ThanhChuyenDenID);
-			str += ": " + LVAuto.LVForm.Common.Wepons.GetWeponName(LoaiVuKhiID) + " (" + DaChuyenDuoc + "/" + TongSoLuongChuyen + ")";
+			str += ": " + LVAuto.LVForm.LVCommon.Wepons.GetWeponName(LoaiVuKhiID) + " (" + DaChuyenDuoc + "/" + TongSoLuongChuyen + ")";
 			return str;
 		}
 

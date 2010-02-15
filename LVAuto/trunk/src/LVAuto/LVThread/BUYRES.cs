@@ -281,7 +281,7 @@ namespace LVAuto.LVForm.LVThread {
 			{
 				SetText("Chờ tới phiên (0%) - chờ từ lúc " + DateTime.Now.ToString("HH:mm:ss"));
 				threadID = "BUYRES_" + DateTime.Now.Ticks;
-				Common.ThreadManager.TakeResourceAndRun(threadID, mainprocess);
+				LVCommon.ThreadManager.TakeResourceAndRun(threadID, mainprocess);
 				Message.ForeColor = System.Drawing.Color.Blue; 
 				SetText("Đang ngủ " + Sleep/(1000*60) + " phút, chờ tí (mới chạy lúc: " + DateTime.Now.ToString("HH:mm:ss") + ")");
 				Thread.Sleep(Sleep);
@@ -513,7 +513,7 @@ namespace LVAuto.LVForm.LVThread {
 		}
         public void Stop() {
             InThread.Abort();
-            InThread.Join();  Common.ThreadManager.RemoveThread(threadID);
+            InThread.Join();  LVCommon.ThreadManager.RemoveThread(threadID);
             Message.ForeColor = System.Drawing.Color.Blue ; Message.Text = "Đã dừng bởi người sử dụng";
             IsRun = false;
         }

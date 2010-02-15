@@ -162,7 +162,7 @@ namespace LVAuto.LVForm.Command {
 				onegenaral.Military.RatioStratagem = int.Parse(ret["ratio_stratagem"].ToString());
 				onegenaral.Military.WithdrawLoss = int.Parse(ret["withdraw_loss"].ToString());
 				onegenaral.Military.WithdrawMorale = int.Parse(ret["withdraw_morale"].ToString());
-				onegenaral.CityID = int.Parse(ret["owner_city_id"].ToString());
+				onegenaral.CityId = int.Parse(ret["owner_city_id"].ToString());
 				return onegenaral;
 			}
 			catch (Exception ex)
@@ -221,8 +221,8 @@ namespace LVAuto.LVForm.Command {
 				if (ret == null) return null;
 
 				onegenaral.Military.TanBinh = int.Parse((ret["trainee"].ToString()));
-				onegenaral.GeneralId = generalid;
-				onegenaral.CityID = cityid;
+				onegenaral.Id = generalid;
+				onegenaral.CityId = cityid;
 				ArrayList arGeneral = (ArrayList) ret["generals"];	
 				ArrayList g;
 				ArrayList bienche;
@@ -418,8 +418,8 @@ namespace LVAuto.LVForm.Command {
 					onegen = (ArrayList)list[i];
 					g2 = new LVAuto.LVForm.Command.CityObj.MilitaryGeneral();
 
-					g2.GeneralId = int.Parse(onegen[1].ToString());
-					g2.GeneralName = onegen[2].ToString();
+					g2.Id = int.Parse(onegen[1].ToString());
+					g2.Name = onegen[2].ToString();
 					g2.Military.Bobinh[0] = int.Parse(onegen[3].ToString());
 					g2.Military.KyBinh[0] = int.Parse(onegen[4].ToString());
 					g2.Military.CungThu[0] = int.Parse(onegen[5].ToString());
@@ -445,7 +445,7 @@ namespace LVAuto.LVForm.Command {
 
 			foreach (LVAuto.LVForm.Command.CityObj.MilitaryGeneral g1 in g)
 			{
-				if (generalid == g1.GeneralId)
+				if (generalid == g1.Id)
 					return g1;
 			}
 
@@ -518,8 +518,8 @@ namespace LVAuto.LVForm.Command {
                     
 					if (oneincity[4].ToString()=="2") {
                         Command.CityObj.MilitaryGeneral g = new LVAuto.LVForm.Command.CityObj.MilitaryGeneral();
-                        g.GeneralId = int.Parse(oneincity[0].ToString());
-						g.GeneralName = (string)oneincity[1];
+                        g.Id = int.Parse(oneincity[0].ToString());
+						g.Name = (string)oneincity[1];
                         Command.CityObj.City.AllCity[citypos].MilitaryGeneral[j] = g;
                         j++;
                     }
@@ -577,9 +577,9 @@ namespace LVAuto.LVForm.Command {
 						if (oneincity[4].ToString() == "2")				//=2: quan vo; =1: quan van
 						{
 							g = new LVAuto.LVForm.Command.CityObj.MilitaryGeneral();
-							g.GeneralId = int.Parse(oneincity[0].ToString());
-							g.GeneralName = (string)oneincity[1];
-							g.GeneralStatus = int.Parse(oneincity[5].ToString());
+							g.Id = int.Parse(oneincity[0].ToString());
+							g.Name = (string)oneincity[1];
+							g.Status = int.Parse(oneincity[5].ToString());
 							genList.Add(g);
 							//Command.CityObj.City.AllCity[citypos].AllGeneral[j] = g;
 
@@ -704,23 +704,23 @@ namespace LVAuto.LVForm.Command {
 					{
 						onegen = (ArrayList)genincity[j];
 						miligen[j] = new LVAuto.LVForm.Command.CityObj.CivilGeneral();
-						miligen[j].CityID = cityid;
+						miligen[j].CityId = cityid;
 						miligen[j].CityName = incity[1].ToString();
 
-						miligen[j].GeneralId = int.Parse(onegen[0].ToString());
-						miligen[j].GeneralName = (onegen[1].ToString());
-						miligen[j].GeneralHistroryName = (onegen[2].ToString());
-						miligen[j].Generaltype = int.Parse(onegen[3].ToString());
-						miligen[j].ChucTuoc = int.Parse(onegen[4].ToString());
-						miligen[j].GeneralStatus = int.Parse(onegen[5].ToString());
+						miligen[j].Id = int.Parse(onegen[0].ToString());
+						miligen[j].Name = (onegen[1].ToString());
+						miligen[j].HistoricalName = (onegen[2].ToString());
+						miligen[j].Type = int.Parse(onegen[3].ToString());
+						miligen[j].Position = int.Parse(onegen[4].ToString());
+						miligen[j].Status = int.Parse(onegen[5].ToString());
 						miligen[j].Level = int.Parse(onegen[6].ToString());
-						miligen[j].MucTrungThanh = int.Parse(onegen[7].ToString());
-						miligen[j].TheLucHienTai = int.Parse(onegen[8].ToString());
-						miligen[j].TongTheLuc = int.Parse(onegen[9].ToString());
+						miligen[j].LoyaltyLevel = int.Parse(onegen[7].ToString());
+						miligen[j].CurrentHp = int.Parse(onegen[8].ToString());
+						miligen[j].MaxHp = int.Parse(onegen[9].ToString());
 						miligen[j].ChiSoMiLuc = int.Parse(onegen[10].ToString());
 						miligen[j].ChiSoMuuTri = int.Parse(onegen[11].ToString());
 						miligen[j].ChiSoNoiChinh = int.Parse(onegen[12].ToString());
-						miligen[j].DiemCongConLai = int.Parse(onegen[14].ToString());
+						miligen[j].PointsLeft = int.Parse(onegen[14].ToString());
 
 					}
 
@@ -797,23 +797,23 @@ namespace LVAuto.LVForm.Command {
 					{
 						onegen = (ArrayList) genincity[j];
 						miligen[j] = new LVAuto.LVForm.Command.CityObj.MilitaryGeneral();
-						miligen[j].CityID = cityid;
+						miligen[j].CityId = cityid;
 						miligen[j].CityName = incity[1].ToString(); 
 						
-						miligen[j].GeneralId = int.Parse	(onegen[0].ToString());
-						miligen[j].GeneralName =			(onegen[1].ToString());
-						miligen[j].GeneralHistroryName =	(onegen[2].ToString());
-						miligen[j].Generaltype	=	int.Parse (onegen[3].ToString());
-						miligen[j].ChucTuoc =		int.Parse(onegen[4].ToString());
-						miligen[j].GeneralStatus = int.Parse(onegen[5].ToString());
+						miligen[j].Id = int.Parse	(onegen[0].ToString());
+						miligen[j].Name =			(onegen[1].ToString());
+						miligen[j].HistoricalName =	(onegen[2].ToString());
+						miligen[j].Type	=	int.Parse (onegen[3].ToString());
+						miligen[j].Position =		int.Parse(onegen[4].ToString());
+						miligen[j].Status = int.Parse(onegen[5].ToString());
 						miligen[j].Level =			int.Parse(onegen[6].ToString());
-						miligen[j].MucTrungThanh = int.Parse(onegen[7].ToString());
-						miligen[j].TheLucHienTai = int.Parse(onegen[8].ToString());
-						miligen[j].TongTheLuc = int.Parse(onegen[9].ToString());
+						miligen[j].LoyaltyLevel = int.Parse(onegen[7].ToString());
+						miligen[j].CurrentHp = int.Parse(onegen[8].ToString());
+						miligen[j].MaxHp = int.Parse(onegen[9].ToString());
 						miligen[j].ChiSoSucManh = int.Parse(onegen[10].ToString());
 						miligen[j].ChiSoNhanhNhen = int.Parse(onegen[11].ToString());
 						miligen[j].ChiSoThongLinh = int.Parse(onegen[12].ToString());
-						miligen[j].DiemCongConLai = int.Parse(onegen[14].ToString());
+						miligen[j].PointsLeft = int.Parse(onegen[14].ToString());
 
 					}
 
@@ -874,10 +874,10 @@ namespace LVAuto.LVForm.Command {
 					//if (oneincity[4].ToString() == "2")				//=2: quan vo; =1: quan van
 					{
 						g = new LVAuto.LVForm.Command.CityObj.MilitaryGeneral();
-						g.GeneralId = int.Parse(oneincity[0].ToString());
-						g.GeneralName = (string)oneincity[1];
-						g.GeneralStatus = int.Parse(oneincity[5].ToString());
-						g.Generaltype = int.Parse(oneincity[4].ToString()); 
+						g.Id = int.Parse(oneincity[0].ToString());
+						g.Name = (string)oneincity[1];
+						g.Status = int.Parse(oneincity[5].ToString());
+						g.Type = int.Parse(oneincity[4].ToString()); 
 						genList.Add(g);
 						//Command.CityObj.City.AllCity[citypos].AllGeneral[j] = g;
 
@@ -950,7 +950,7 @@ namespace LVAuto.LVForm.Command {
 							{
 								for (int k = 0; k < oldg.Length; k++)
 								{
-									if (((Command.CityObj.MilitaryGeneral)oldg[k]).GeneralId == gtempid)
+									if (((Command.CityObj.MilitaryGeneral)oldg[k]).Id == gtempid)
 									{
 										newg = oldg[k];
 										break;
@@ -962,9 +962,9 @@ namespace LVAuto.LVForm.Command {
 								newg = new LVAuto.LVForm.Command.CityObj.MilitaryGeneral();
 
 
-							newg.GeneralId = int.Parse(oneincity[0].ToString());
-							newg.GeneralName = (string)oneincity[1];
-							newg.GeneralStatus = int.Parse(oneincity[5].ToString());
+							newg.Id = int.Parse(oneincity[0].ToString());
+							newg.Name = (string)oneincity[1];
+							newg.Status = int.Parse(oneincity[5].ToString());
 							genList.Add(newg);
 							//Command.CityObj.City.AllCity[citypos].AllGeneral[j] = g;
 

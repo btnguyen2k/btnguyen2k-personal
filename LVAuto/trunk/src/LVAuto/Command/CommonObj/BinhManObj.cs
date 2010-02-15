@@ -5,7 +5,7 @@ using System.Text;
 namespace LVAuto.LVForm.Command.CommonObj
 {
     using LVAuto.LVForm.Command.CityObj;
-    using LVAuto.LVForm.Common;
+    using LVAuto.LVForm.LVCommon;
     using System;
 
 	public class BinhManObj :  Command.CityObj.MilitaryGeneral
@@ -42,20 +42,20 @@ namespace LVAuto.LVForm.Command.CommonObj
                 throw new ArgumentException("object is not a Temperature");
             }
             BinhManObj obj2 = (BinhManObj) obj;
-            if (this.CityID != obj2.CityID)
+            if (this.CityId != obj2.CityId)
             {
-                return this.CityID.CompareTo(obj2.CityID);
+                return this.CityId.CompareTo(obj2.CityId);
             }
-            if (this.GeneralId != obj2.GeneralId)
+            if (this.Id != obj2.Id)
             {
-                return this.GeneralId.CompareTo(obj2.GeneralId);
+                return this.Id.CompareTo(obj2.Id);
             }
             return this.ManID.CompareTo(obj2.ManID);
         }
 
         public override string ToString()
         {
-            string str = "Cử " + this.GeneralName + " từ " + this.CityName ;
+            string str = "Cử " + this.Name + " từ " + this.CityName ;
             if (this.ManType == 14)
                 str += " đánh Địa tinh ở tọa độ (" + this.ToaDoMoX + ", " + ToaDoMoY + ")";
             else
@@ -74,7 +74,7 @@ namespace LVAuto.LVForm.Command.CommonObj
 				str = str + ", không nâng sk";
             }
 
-		   str += ", mưu kế " + LVAuto.LVForm.Common.WarFunc.GetMuuKeTrongChienTruongName(this.MuuKeTrongChienTranID);
+		   str += ", mưu kế " + LVAuto.LVForm.LVCommon.WarFunc.GetMuuKeTrongChienTruongName(this.MuuKeTrongChienTranID);
 		   str += ", qsố min " +  this.SoLuongQuanMinToGo + ", sk min " +  this.SiKhiMinToGo +  ", max ô đi " + this.MaxOToGo ;
 		   str += ". Bchế "+ this.Military.Bobinh[0]+ " bộ, "+ this.Military.KyBinh[0]+ " kỵ, "+ this.Military.CungThu[0]+ " cung, "+ this.Military.Xe[0]+ " xe, " ;
            str += ". Quân giới: bộ " + Wepons.GetWeponName(this.Military.Bobinh[1])+ "-" + Wepons.GetWeponName(this.Military.Bobinh[2]) + "-" + Wepons.GetWeponName(this.Military.Bobinh[3]);

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace LVAuto.LVForm.Common
+namespace LVAuto.LVForm.LVCommon
 {
 	public class BienChe
 	{

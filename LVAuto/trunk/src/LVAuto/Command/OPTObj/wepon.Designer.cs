@@ -1,5 +1,5 @@
 ﻿namespace LVAuto.LVForm.Command.OPTObj {
-    partial class wepon {
+    partial class Weapon {
         /// <summary> 
         /// Required designer variable.
         /// </summary>

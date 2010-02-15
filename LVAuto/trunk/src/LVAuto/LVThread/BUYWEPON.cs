@@ -35,7 +35,7 @@ namespace LVAuto.LVForm.LVThread {
 
                 foreach (object obj in pnWepon.Controls) 
 				{
-                    LVAuto.LVForm.Command.OPTObj.wepon vc = (LVAuto.LVForm.Command.OPTObj.wepon)obj;
+                    LVAuto.LVForm.Command.OPTObj.Weapon vc = (LVAuto.LVForm.Command.OPTObj.Weapon)obj;
                     if (vc.chkOK.Checked) 
 					{
                         Cookies[citycount] = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(vc.cityid);
@@ -287,7 +287,7 @@ namespace LVAuto.LVForm.LVThread {
 			{
 				SetText("Chờ tới phiên (0%) - chờ từ lúc " + DateTime.Now.ToString("HH:mm:ss"));
 				threadID = "BUYWEPON_" + DateTime.Now.Ticks;
-				Common.ThreadManager.TakeResourceAndRun(threadID, mainprocess);
+				LVCommon.ThreadManager.TakeResourceAndRun(threadID, mainprocess);
 				Message.ForeColor = System.Drawing.Color.Blue; 
 				SetText("Đang ngủ " + Sleep/(1000*60) + " phút, chờ tí (mới chạy lúc: " + DateTime.Now.ToString("HH:mm:ss") + ")");
 				if (mainProcessResult > 1000000)
@@ -311,7 +311,7 @@ namespace LVAuto.LVForm.LVThread {
             if (IsRun) {
                 InThread.Abort();
                 InThread.Join();
-				Common.ThreadManager.RemoveThread(threadID);
+				LVCommon.ThreadManager.RemoveThread(threadID);
                 Message.ForeColor = System.Drawing.Color.Blue ; Message.Text = "Đã dừng bởi người sử dụng";
                 IsRun = false;
             }

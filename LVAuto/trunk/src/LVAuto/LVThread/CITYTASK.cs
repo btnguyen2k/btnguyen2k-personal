@@ -147,7 +147,7 @@ namespace LVAuto.LVForm.LVThread {
 			while (true)
 			{
 				threadID = "CITYTASK_" + DateTime.Now.Ticks;
-				Common.ThreadManager.TakeResourceAndRun(threadID, mainprocess); 
+				LVCommon.ThreadManager.TakeResourceAndRun(threadID, mainprocess); 
 				Thread.Sleep(Sleep);
 			}
         }
@@ -162,7 +162,7 @@ namespace LVAuto.LVForm.LVThread {
         public void Stop() {
             if (IsRun) {
                 InThread.Abort();
-                InThread.Join();  Common.ThreadManager.RemoveThread(threadID);
+                InThread.Join();  LVCommon.ThreadManager.RemoveThread(threadID);
                 IsRun = false;
             }
         }

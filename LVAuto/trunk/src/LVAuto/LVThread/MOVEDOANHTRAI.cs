@@ -187,8 +187,8 @@ namespace LVAuto.LVForm.LVThread {
 							{
 								// laays trong hang cho
 								int mapID = int.Parse(runningstep[runningstep.Count - 1].ToString());
-								int x = Common.common.MapIDtoX(mapID);
-								int y = Common.common.MapIDtoY(mapID);
+								int x = LVCommon.common.MapIDtoX(mapID);
+								int y = LVCommon.common.MapIDtoY(mapID);
 								thisdt = new LVAuto.LVForm.Command.CityObj.City(traidichuyenobj.TraiID, "", x, y, 1);
 							}
 							else
@@ -218,7 +218,7 @@ namespace LVAuto.LVForm.LVThread {
 									for (step = 16; step > 0; step--)
 									{
 										//int[] xy = Common.common.NextPoint(thisdt.x, thisdt.y, Pos[i][0], Pos[i][1], step);
-										int[] xy = Common.common.NextPoint(thisdt.x, thisdt.y, tarX, tarY, step);
+										int[] xy = LVCommon.common.NextPoint(thisdt.x, thisdt.y, tarX, tarY, step);
 										if (xy[0] == lastx && xy[1] == lasty)
 										{
 										}
@@ -236,7 +236,7 @@ namespace LVAuto.LVForm.LVThread {
 									}
 									if (step > 0) break;	// di chuyen thanh cong
 
-									if (Common.common.distancefrom2poin(thisdt.x, thisdt.y, tarX, tarY) <= 5) // gan toi, cach 5 o
+									if (LVCommon.common.distancefrom2poin(thisdt.x, thisdt.y, tarX, tarY) <= 5) // gan toi, cach 5 o
 									{
 										if (runningstep.Count == 0)
 										{
@@ -300,7 +300,7 @@ namespace LVAuto.LVForm.LVThread {
 			{
                 SetText("Chờ tới phiên (0%) - chờ từ lúc " + DateTime.Now.ToString("HH:mm:ss"));
 				threadID = "MOVEDOANHTRAI_" + DateTime.Now.Ticks;
-				Common.ThreadManager.TakeResourceAndRun(threadID, mainprocess);
+				LVCommon.ThreadManager.TakeResourceAndRun(threadID, mainprocess);
 				Message.ForeColor = System.Drawing.Color.Blue; 
 				SetText("Đang ngủ " + Sleep/(1000*60) + " phút, chờ tí (mới chạy lúc: " + DateTime.Now.ToString("HH:mm:ss") + ")");
                 Thread.Sleep(Sleep);
@@ -317,7 +317,7 @@ namespace LVAuto.LVForm.LVThread {
         public void Stop() {
             if (IsRun) {
                 InThread.Abort();
-                InThread.Join();  Common.ThreadManager.RemoveThread(threadID);
+                InThread.Join();  LVCommon.ThreadManager.RemoveThread(threadID);
                 Message.ForeColor = System.Drawing.Color.Blue ; Message.Text = "Đã dừng bởi người sử dụng";
                 IsRun = false;
             }

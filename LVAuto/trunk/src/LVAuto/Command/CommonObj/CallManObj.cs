@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Collections;
-using LVAuto.LVForm.Common;
+using LVAuto.LVForm.LVCommon;
 
 namespace LVAuto.LVForm.Command.CommonObj
 {
@@ -25,7 +25,7 @@ namespace LVAuto.LVForm.Command.CommonObj
 
 		public override string ToString()
 		{
-			string str = "Cử " + this.GeneralName;
+			string str = "Cử " + this.Name;
 			str += " đánh ";
 
 			for (int i = 0; i < Mans.Count; i++)
@@ -53,7 +53,7 @@ namespace LVAuto.LVForm.Command.CommonObj
 				str = str + ", không mua man lệnh";
 			}
 
-			str += ", mưu kế " + LVAuto.LVForm.Common.WarFunc.GetMuuKeTrongChienTruongName(this.MuuKeTrongChienTranID);
+			str += ", mưu kế " + LVAuto.LVForm.LVCommon.WarFunc.GetMuuKeTrongChienTruongName(this.MuuKeTrongChienTranID);
 			str += ", qsố min " + this.SoLuongQuanMinToGo + ", sk min " + this.SiKhiMinToGo ;
 
 			if (this.TuBienCheQuan)

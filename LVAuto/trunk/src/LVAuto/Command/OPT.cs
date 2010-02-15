@@ -349,7 +349,7 @@ namespace LVAuto.LVForm.Command {
 
 		public static Hashtable ChangeGeneralMilitaryAttribute(LVAuto.LVForm.Command.CityObj.MilitaryGeneral general, int arrayid)
 		{
-			return ChangeGeneralMilitaryAttribute(general.GeneralId, arrayid, general.Military.RatioAttack, general.Military.RatioPK,
+			return ChangeGeneralMilitaryAttribute(general.Id, arrayid, general.Military.RatioAttack, general.Military.RatioPK,
 										general.Military.RatioStratagem, general.Military.WithdrawLoss, general.Military.WithdrawMorale);
 		}
 
@@ -451,7 +451,7 @@ namespace LVAuto.LVForm.Command {
 						if (result.allattacktroops[i].UserID == int.Parse(LVAuto.LVWeb.LVClient.CurrentLoginInfo.uid))
 						{
 							//Lay thong tin ve tran hinh, don dau, rut lui ...
-							gTemp = Common.GetGeneralMilitaryInfo(result.allattacktroops[i].CityID, result.allattacktroops[i].GeneralId);
+							gTemp = Common.GetGeneralMilitaryInfo(result.allattacktroops[i].CityId, result.allattacktroops[i].Id);
 							if (gTemp != null && (gTemp.Military.RatioAttack + gTemp.Military.RatioPK + gTemp.Military.RatioStratagem) == 100)
 							{
 								result.allattacktroops[i].Military.RatioAttack = gTemp.Military.RatioAttack;
@@ -476,7 +476,7 @@ namespace LVAuto.LVForm.Command {
 						if (result.alldefendtroops[i].UserID == int.Parse(LVAuto.LVWeb.LVClient.CurrentLoginInfo.uid))
 						{
 							//Lay thong tin ve tran hinh, don dau, rut lui ...
-							gTemp = Common.GetGeneralMilitaryInfo(result.alldefendtroops[i].CityID, result.alldefendtroops[i].GeneralId);
+							gTemp = Common.GetGeneralMilitaryInfo(result.alldefendtroops[i].CityId, result.alldefendtroops[i].Id);
 							if (gTemp != null && (gTemp.Military.RatioAttack + gTemp.Military.RatioPK + gTemp.Military.RatioStratagem) == 100)
 							{
 								result.alldefendtroops[i].Military.RatioAttack = gTemp.Military.RatioAttack;
@@ -688,7 +688,7 @@ namespace LVAuto.LVForm.Command {
 							needfood = needfood - haveValue;
 							if (needfood <= 0) continue;			// vẫn còn đủ lúa
 
-							Command.OPT.BuyRes(LVAuto.LVForm.Common.Constant.RESOURCETYPE.LUA, (double)needfood, ref gold, cookies);
+							Command.OPT.BuyRes(LVAuto.LVCommon.Constants.RESOURCE_TYPE_FOOD, (double)needfood, ref gold, cookies);
 							//continue;
 						}
 					}
@@ -885,25 +885,25 @@ namespace LVAuto.LVForm.Command {
 						if (militaryGeneral == null) continue;
 						for (int j = 0; j < militaryGeneral.Length; j++)
 						{
-							if (militaryGeneral[j].MucTrungThanh != 100)
+							if (militaryGeneral[j].LoyaltyLevel != 100)
 							{
 								try
 								{
 
-									if (LVAuto.LVForm.Command.OPT.BanThuong(militaryGeneral[j].CityID, militaryGeneral[j].GeneralId,
-											militaryGeneral[j].Level * 10 * (100 - militaryGeneral[j].MucTrungThanh),
-											LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(militaryGeneral[j].CityID)))
+									if (LVAuto.LVForm.Command.OPT.BanThuong(militaryGeneral[j].CityId, militaryGeneral[j].Id,
+											militaryGeneral[j].Level * 10 * (100 - militaryGeneral[j].LoyaltyLevel),
+											LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(militaryGeneral[j].CityId)))
 									{
-										ok += militaryGeneral[j].GeneralName + ", ";
+										ok += militaryGeneral[j].Name + ", ";
 									}
 									else
 									{
-										fail += militaryGeneral[j].GeneralName + ", ";
+										fail += militaryGeneral[j].Name + ", ";
 									}
 								}
 								catch (Exception ex)
 								{
-									fail += militaryGeneral[j].GeneralName + ", ";
+									fail += militaryGeneral[j].Name + ", ";
 								}
 							} // end if (militaryGeneral[j].MucTrungThanh != 100)					
 

@@ -291,7 +291,7 @@ namespace LVAuto.LVForm.Command {
 				str = Command.Build.GetGeneralViengTham(1);
 				if (str != "")
 				{
-					str = "Đang có danh tướng " + str + " " + LVAuto.LVForm.Common.DanhSachTuong.GetTuongInfo(str.Trim()) + 
+					str = "Đang có danh tướng " + str + " " + LVAuto.LVForm.LVCommon.DanhSachTuong.GetTuongInfo(str.Trim()) + 
 						" viếng thăm trong tửu quán";
 				}
 				else
@@ -299,7 +299,7 @@ namespace LVAuto.LVForm.Command {
 					str = Command.Build.GetGeneralViengTham(2);
 					if (str != "")
 					{
-						str = "Đang có danh sỹ " + str + " " + LVAuto.LVForm.Common.DanhSachTuong.GetTuongInfo(str.Trim()) +
+						str = "Đang có danh sỹ " + str + " " + LVAuto.LVForm.LVCommon.DanhSachTuong.GetTuongInfo(str.Trim()) +
 							" viếng thăm trong quán trọ";
 					}
 				}

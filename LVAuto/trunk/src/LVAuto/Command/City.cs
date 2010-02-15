@@ -6,78 +6,10 @@ using System.Text;
 namespace LVAuto.LVForm.Command {
     public class City 
 	{
-		private static Object CityisLock = new Object();
-		private static Object BuildingisLock = new Object();
-		private static Object GeneralisLock = new Object();
+		private static object CityIsLock = new Object();
+		private static object BuildingIsLock = new Object();
+		private static object GeneralIsLock = new Object();
 
-        public static Hashtable Execute(int command,string parameter,bool wait)
-		{
-            string data = parameter + "&num=" + LVAuto.LVWeb.LVClient.idimage;
-
-			data = "";
-
-            string header = "POST http://s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn/GateWay/City.ashx?id=" + command + "&0.05861361440438828  HTTP/1.1\n";
-            header += "Host: s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn\n";
-            header += "User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.5) Gecko/2008120122 Firefox/3.0.5\n";
-            header += "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n";
-            header += "Accept-Language: en-us,en;q=0.5\n";
-           // header += "Accept-Encoding: gzip,deflate\n";
-            header += "Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7\n";
-            header += "Keep-Alive: 300\n";
-            header += "Connection: keep-alive\n";
-			header += "X-Requested-With: XMLHttpRequest\n";
-			header += "X-Prototype-Version: 1.5.0\n";
-			header += "Referer: http://s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn/city?login\n";
-            header += "Content-Type: application/x-www-form-urlencoded\n";
-            header += "Content-Length: " + (data.Length) + "\n";
-			header += "Pragma: no-cache\n";
-			header += "Cache-Control: no-cache\n";
-			header += "Cookie: " + LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString() + "\n";
-			header += "\n";
-			//Hashtable response = Web.LVWeb.SendAndReceive(header + data, "s" + LVAuto.Web.LVWeb.Server + ".linhvuong.zooz.vn", 80, wait);
-			Hashtable response = LVWeb.LVClient.SendAndReceive(header + data, "s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn", 80, wait);
-            if (wait) 
-			{
-
-				if (response !=null && response["DATA"] != null)
-					return (Hashtable)JSON.JSON.JsonDecode(response["DATA"].ToString());
-				else
-					return null;
-            } else {
-                return null;
-            }
-        }
-        public static Hashtable Execute(int command, string parameter, bool wait, string cookies) {
-            string data = parameter + "&num=" + LVAuto.LVWeb.LVClient.idimage;
-            string header = "POST http://s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn/GateWay/City.ashx?id=" + command + "&0.05861361440438828 HTTP/1.1\n";
-            header += "Host: s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn\n";
-            header += "User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.7) Gecko/2009021910 Firefox/3.0.7\n";
-            header += "Accept: text/javascript, text/html, application/xml, text/xml, */*\n";
-            header += "Accept-Language: en-us,en;q=0.5\n";
-          //  header += "Accept-Encoding: gzip,deflate\n";
-            header += "Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7\n";
-            header += "Keep-Alive: 300\n";
-            header += "Connection: keep-alive\n";
-            header += "Referer: http://s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn/city\n";
-            header += "X-Requested-With: XMLHttpRequest\n";
-            header += "X-Prototype-Version: 1.5.0\n";
-            header += "Cookie: " + cookies + "\n";
-            header += "Content-Type: application/x-www-form-urlencoded; charset=UTF-8\n";
-            header += "Content-Length: " + (data.Length) + "\n";
-            header += "\n";
-            Hashtable response = LVWeb.LVClient.SendAndReceive(header + data, "s" + LVAuto.LVWeb.LVClient.Server + ".linhvuong.zooz.vn", 80, wait);
-            if (wait) {
-                try {
-                    return (Hashtable)JSON.JSON.JsonDecode(response["DATA"].ToString());
-                } catch (Exception ex) {
-                    return null;
-                }
-            } else {
-                return null;
-            }
-        }
-
-	
 		public static int GetCityPostByID(int cityid)
 		{
 			for (int i = 0; i < Command.CityObj.City.AllCity.Length; i++)
@@ -137,7 +69,7 @@ namespace LVAuto.LVForm.Command {
 				{
 					for (int j = 0; j < Command.CityObj.City.AllCity[i].MilitaryGeneral.Length; j++)
 					{
-						if (genaralID == Command.CityObj.City.AllCity[i].MilitaryGeneral[j].GeneralId) return Command.CityObj.City.AllCity[i].MilitaryGeneral[j];
+						if (genaralID == Command.CityObj.City.AllCity[i].MilitaryGeneral[j].Id) return Command.CityObj.City.AllCity[i].MilitaryGeneral[j];
 					}
 				}
 				return null;
@@ -153,7 +85,7 @@ namespace LVAuto.LVForm.Command {
 			{
 					for (int j = 0; j < Command.CityObj.City.AllCity[citypost].MilitaryGeneral.Length; j++)
 					{
-						if (genaralID == Command.CityObj.City.AllCity[citypost].MilitaryGeneral[j].GeneralId) return Command.CityObj.City.AllCity[citypost].MilitaryGeneral[j];
+						if (genaralID == Command.CityObj.City.AllCity[citypost].MilitaryGeneral[j].Id) return Command.CityObj.City.AllCity[citypost].MilitaryGeneral[j];
 					}
 			
 				return null;
@@ -169,7 +101,7 @@ namespace LVAuto.LVForm.Command {
 			try
 			{
 				// get all city
-				Hashtable result = Execute(7, "", true);
+                Hashtable result = LVHelper.CityCommandHelper.GetInstance().ExecuteCommand(7, "", true);
 				ArrayList infos = (ArrayList)result["infos"];
 				for (int i = 0; i < infos.Count; i++)
 				{
@@ -189,7 +121,7 @@ namespace LVAuto.LVForm.Command {
         }
         public static Hashtable GetCityTask(string cookies) 
 		{
-            Hashtable r = Execute(37, "ttid=0", true, cookies);
+            Hashtable r = LVHelper.CityCommandHelper.GetInstance().ExecuteCommand(37, "ttid=0", true, cookies);
             //{"ret":0,"list":[[25547,"Âm Phong Thực Cốt",192433,4242485,[[1,3,29,1,45632],[12,3,30,1,313803],[22,3
             //,29,1,39808]],[],[],-1]],"tech":[7,23,62765],"task":[0,"",0,0]}
             return r;
@@ -197,7 +129,7 @@ namespace LVAuto.LVForm.Command {
 
         public static CityObj.City GetCityInfo(int id,string cookies) {
 			// get all city
-            Hashtable result = Execute(7, "", true, cookies);
+            Hashtable result = LVHelper.CityCommandHelper.GetInstance().ExecuteCommand(7, "", true, cookies);
             ArrayList infos = (ArrayList)result["infos"];
             for (int i = 0; i < infos.Count; i++) {
                 ArrayList city = (ArrayList)infos[i];
@@ -209,11 +141,11 @@ namespace LVAuto.LVForm.Command {
             return null;
         }
         public static Hashtable GetResource() {
-            return Execute(20, "", true);
+            return LVHelper.CityCommandHelper.GetInstance().ExecuteCommand(20, "", true);
         }
         public static Hashtable GetResource(string cookies) 
 		{
-            return Execute(20, "", true, cookies);
+            return LVHelper.CityCommandHelper.GetInstance().ExecuteCommand(20, "", true, cookies);
         }
 
 		public static Hashtable GetCurentResourceInCity(string cookies) 
@@ -253,7 +185,7 @@ namespace LVAuto.LVForm.Command {
 		}
 		public static void GetAllBuilding(int citypos, bool reload, string cookies)
 		{
-			lock (BuildingisLock)
+			lock (BuildingIsLock)
 			{
 				try
 				{
@@ -263,7 +195,7 @@ namespace LVAuto.LVForm.Command {
 					Hashtable temp = null;
 					do
 					{
-						temp = Execute(5, "", true, cookies);
+                        temp = LVHelper.CityCommandHelper.GetInstance().ExecuteCommand(5, "", true, cookies);
 						count++;
 					} while (temp == null && count < 5);
 
@@ -297,7 +229,7 @@ namespace LVAuto.LVForm.Command {
 
         public static void GetAllBuilding(int citypos, string cookies) 
 		{
-            Hashtable temp = Execute(5, "", true, cookies);
+            Hashtable temp = LVHelper.CityCommandHelper.GetInstance().ExecuteCommand(5, "", true, cookies);
 			//System.Windows.Forms.Application.DoEvents();
 			
             ArrayList infosbuilding = (ArrayList)temp["infos"];
@@ -322,7 +254,7 @@ namespace LVAuto.LVForm.Command {
 		// cap nhat thong tin ve level cua Building, neu co building moi se add them vao
 		public static void UpdateAllBuilding(int citypos) 
 		{
-			lock (BuildingisLock)
+			lock (BuildingIsLock)
 			{
 				try
 				{
@@ -332,7 +264,7 @@ namespace LVAuto.LVForm.Command {
 						return;
 					}
 
-					Hashtable temp = Execute(5, "", true, LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(Command.CityObj.City.AllCity[citypos].id));
+                    Hashtable temp = LVHelper.CityCommandHelper.GetInstance().ExecuteCommand(5, "", true, LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(Command.CityObj.City.AllCity[citypos].id));
 
                     try
                     {
@@ -384,7 +316,7 @@ namespace LVAuto.LVForm.Command {
             //{"ret":0,"infos":[[4,23910,"Prepare for War",185871,81,515,0],[2,-33311,"Prepare for Peace",162216,60
             //,533,23910],[1,63000,"Prepare for Sleep",4683,87,653,0],[2,-22087,"Đừng oánh tui",4678,82,653,63000]
             //]}
-            Hashtable result = Execute(7, "", true);
+            Hashtable result = LVHelper.CityCommandHelper.GetInstance().ExecuteCommand(7, "", true);
             ArrayList infos = (ArrayList)result["infos"];
             Command.CityObj.City.AllCity = new LVAuto.LVForm.Command.CityObj.City[infos.Count];
 
@@ -438,7 +370,7 @@ namespace LVAuto.LVForm.Command {
             Hashtable result = null;
             do
             {
-                result = Execute(7, "", true);
+                result = LVHelper.CityCommandHelper.GetInstance().ExecuteCommand(7, "", true);
                 count++;
             } while (result == null && count < 5);
 
@@ -468,7 +400,7 @@ namespace LVAuto.LVForm.Command {
 
 		public static void UpdateAllSimpleCity()
 		{
-			lock (CityisLock)
+			lock (CityIsLock)
 			{
 
 				if (Command.CityObj.City.AllCity == null)
@@ -480,7 +412,7 @@ namespace LVAuto.LVForm.Command {
 				//{"ret":0,"infos":[[4,23910,"Prepare for War",185871,81,515,0],[2,-33311,"Prepare for Peace",162216,60
 				//,533,23910],[1,63000,"Prepare for Sleep",4683,87,653,0],[2,-22087,"Đừng oánh tui",4678,82,653,63000]
 				//]}
-				Hashtable result = Execute(7, "", true);
+                Hashtable result = LVHelper.CityCommandHelper.GetInstance().ExecuteCommand(7, "", true);
 				if (result == null) return;
 
 				ArrayList infos = (ArrayList)result["infos"];
@@ -575,7 +507,7 @@ namespace LVAuto.LVForm.Command {
 			//hungtv add
 			//Command.City.SwitchCitySlow(Command.CityObj.City.AllCity[citypos].id);
 			//---
-            Hashtable temp = Execute(5, "", true);
+            Hashtable temp = LVHelper.CityCommandHelper.GetInstance().ExecuteCommand(5, "", true);
             ArrayList infosbuilding = (ArrayList)temp["infos"];
             Command.CityObj.City.AllCity[citypos].AllBuilding = new LVAuto.LVForm.Command.CityObj.Building[infosbuilding.Count];
             for (int j = 0; j < infosbuilding.Count; j++) {
@@ -596,11 +528,11 @@ namespace LVAuto.LVForm.Command {
             }
         }
         public static Hashtable GetCitySimpleInfo() {
-            return Execute(6, "", true);
+            return LVHelper.CityCommandHelper.GetInstance().ExecuteCommand(6, "", true);
         }
         public static Hashtable GetCitySimpleInfo(string cookies) 
 		{
-            return Execute(6, "", true, cookies);
+            return LVHelper.CityCommandHelper.GetInstance().ExecuteCommand(6, "", true, cookies);
         }
 
 		// hungtv add 

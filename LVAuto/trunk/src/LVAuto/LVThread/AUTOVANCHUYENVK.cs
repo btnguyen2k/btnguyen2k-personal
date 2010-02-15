@@ -34,7 +34,7 @@ namespace LVAuto.LVForm.LVThread
 
 				SetText("Chờ tới phiên (0%) - chờ từ lúc " + DateTime.Now.ToString("HH:mm:ss"));
 				threadID = "VCVK_" + DateTime.Now.Ticks;
-				Common.ThreadManager.TakeResourceAndRun(threadID, mainprocess);
+				LVCommon.ThreadManager.TakeResourceAndRun(threadID, mainprocess);
 				Message.ForeColor = System.Drawing.Color.Blue;
 				SetText("Đang ngủ " + Sleep / (1000 * 60) + " phút, chờ tí (mới chạy lúc: " + DateTime.Now.ToString("HH:mm:ss") + ")");
 				if (MainProcessResult > 1000000)

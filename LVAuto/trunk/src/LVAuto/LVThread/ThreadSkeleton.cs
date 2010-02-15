@@ -45,7 +45,7 @@ namespace LVAuto.LVForm.LVThread
 			{
 				InThread.Abort();
 				InThread.Join();
-				Common.ThreadManager.RemoveThread(threadID);
+				LVCommon.ThreadManager.RemoveThread(threadID);
 				Message.ForeColor = System.Drawing.Color.Blue; Message.ForeColor = System.Drawing.Color.Blue; Message.Text = "Đã dừng bởi người sử dụng";
 				IsRun = false;
 			}

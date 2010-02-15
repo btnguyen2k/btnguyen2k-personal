@@ -176,7 +176,7 @@ namespace LVAuto.LVForm.LVThread
 												needfood = needfood - haveValue;
 												if (needfood <= 0) continue;			// vẫn còn đủ lúa
 
-												Command.OPT.BuyRes(Common.Constant.RESOURCETYPE.LUA, (double)needfood, ref gold, cookies);
+                                                Command.OPT.BuyRes(LVAuto.LVCommon.Constants.RESOURCE_TYPE_FOOD, (double)needfood, ref gold, cookies);
 												continue;
 											}
 										}
@@ -215,7 +215,7 @@ namespace LVAuto.LVForm.LVThread
 				SetText("Chờ tới phiên (0%) - chờ từ lúc " + DateTime.Now.ToString("HH:mm:ss"));
 
 				threadID = "ANUI_" + DateTime.Now.Ticks;
-				Common.ThreadManager.TakeResourceAndRun(threadID, mainprocess);
+				LVCommon.ThreadManager.TakeResourceAndRun(threadID, mainprocess);
 				Message.ForeColor = System.Drawing.Color.Blue; 
 				SetText("Đang ngủ " + Sleep/(1000*60) + " phút, chờ tí (mới chạy lúc: " + DateTime.Now.ToString("HH:mm:ss") + ")");
 				if (mainProcessResult > 1000000)
@@ -279,7 +279,7 @@ namespace LVAuto.LVForm.LVThread
 
                 InThread.Abort();
                 InThread.Join();
-				Common.ThreadManager.s_alRegister.Remove(threadID);
+				LVCommon.ThreadManager.s_allRegister.Remove(threadID);
 
                 Message.ForeColor = System.Drawing.Color.Blue ; Message.ForeColor = System.Drawing.Color.Blue ; Message.Text = "Đã dừng bởi người sử dụng";
                 IsRun = false;
