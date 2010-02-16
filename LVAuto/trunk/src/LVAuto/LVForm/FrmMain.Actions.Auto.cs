@@ -273,79 +273,43 @@ namespace LVAuto.LVForm
             }
         } //end LVToggleAutoAll
 
+        /// <summary>
+        /// Toggles the "Auto Construct" check box.
+        /// </summary>
         private void LVToggleAutoConstruct()
         {
             if (Auto_checkAutoConstruct.Checked)
             {
-                LVBUILD.SetUp(int.Parse(txtBUILDCHECK.Text) * 60 * 1000);
+                THREAD_CONSTRUCT.SetUp(int.Parse(txtBUILDCHECK.Text) * 60 * 1000);
                 Construct_treeBuilding.Enabled = false;
                 pnXayNha.Enabled = false;
                 Construct_btnReloadBuildings.Enabled = false;
-                LVBUILD.Start();
+                THREAD_CONSTRUCT.Start();
             }
             else
             {
                 Construct_treeBuilding.Enabled = true;
                 pnXayNha.Enabled = true; ;
-                LVBUILD.Stop();
-            }
-
-            if (true) return;
-            if (Auto_checkAutoConstruct.Checked)
-            {
-                if (!LVAuto.LVForm.Command.CityObj.City.isBuildAll)
-                {
-                    bool hasUp = false;
-                    for (int i = 0; i < LVAuto.LVForm.Command.CityObj.City.AllCity.Length; i++)
-                    {
-                        if (LVAuto.LVForm.Command.CityObj.City.AllCity[i].AllBuilding != null)
-                        {
-                            for (int j = 0; j < LVAuto.LVForm.Command.CityObj.City.AllCity[i].AllBuilding.Length; j++)
-                            {
-                                if (LVAuto.LVForm.Command.CityObj.City.AllCity[i].AllBuilding[j].isUp)
-                                {
-                                    hasUp = true;
-                                    break;
-                                }
-                            }
-
-                            if (hasUp) break;
-                        }
-                    }
-
-                    if (!hasUp)
-                    {
-                        lblBUILDMESSAGE.Text = "Không có nhà nào để xây cả, kiểm tra lại đê";
-                        pnXayNha.Enabled = true; ;
-                        Auto_checkAutoConstruct.Checked = false;
-                        return;
-                    }
-                }
-                LVBUILD.SetUp(int.Parse(txtBUILDCHECK.Text) * 60 * 1000);
-                Construct_treeBuilding.Enabled = false;
-                pnXayNha.Enabled = false;
-                Construct_btnReloadBuildings.Enabled = false;
-                //LVBUILD.run();
-                LVBUILD.Start();
-            }
-            else
-            {
-                Construct_treeBuilding.Enabled = true;
-                //cmdReloadBuilding.Enabled = true;
-                pnXayNha.Enabled = true; ;
-                LVBUILD.Stop();
-            }
-
-            try
-            {
-                
-            }
-            catch (Exception ex)
-            {
-                lblBUILDMESSAGE.Text = "Chưa chọn đúng tham số";
-                pnXayNha.Enabled = true; ;
-                Auto_checkAutoConstruct.Checked = false;
+                THREAD_CONSTRUCT.Stop();
             }
         }
-    }
-}
+
+        /// <summary>
+        /// Toggles the "Auto Sell Resources" check box.
+        /// </summary>
+        private void LVToggleAutoSellResources()
+        {
+            if (Auto_checkAutoSellResources.Checked)
+            {
+                THREAD_SELL_RESOURCES.SetUp(int.Parse(SellRes_txtTimer.Text) * 60 * 1000);
+                pnSELL.Enabled = false;
+                THREAD_SELL_RESOURCES.Start();
+            }
+            else
+            {
+                THREAD_SELL_RESOURCES.Stop();
+                pnSELL.Enabled = true;
+            }
+        }
+    } //end class
+} //end namespace

@@ -177,6 +177,10 @@
     <Compile Include="frmLoading.Designer.cs">
       <DependentUpon>frmLoading.cs</DependentUpon>
     </Compile>
+    <Compile Include="LVConfig\AutoConfig.cs" />
+    <Compile Include="LVForm\FrmMain.Actions.SellRes.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="LVForm\FrmMain.Actions.Construct.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -245,7 +249,7 @@
     <Compile Include="LVThread\DEL.cs" />
     <Compile Include="LVThread\LOADING.cs" />
     <Compile Include="LVThread\MOVEDOANHTRAI.cs" />
-    <Compile Include="LVThread\SELL.cs" />
+    <Compile Include="LVThread\AutoSellResources.cs" />
     <Compile Include="LVThread\SIKHI.cs" />
     <Compile Include="LVThread\THAOPHAT.cs" />
     <Compile Include="LVThread\UPGRADE.cs" />

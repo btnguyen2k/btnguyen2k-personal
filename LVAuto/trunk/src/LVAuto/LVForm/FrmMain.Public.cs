@@ -5,9 +5,9 @@ namespace LVAuto.LVForm
 {
     public partial class FrmMain : System.Windows.Forms.Form
     {
-        private static LVAuto.LVThread.AutoConstruct LVBUILD;
+        private static LVAuto.LVThread.AutoSellResources THREAD_SELL_RESOURCES;
+        private static LVAuto.LVThread.AutoConstruct THREAD_CONSTRUCT;
         private static LVThread.DEL LVDEL;
-        private static LVThread.SELL LVSELL;
         private static LVThread.BUYRES LVBUYRES;
         private static LVThread.THAOPHAT LVTHAOPHAT;
         private static LVThread.UPGRADE LVUPGRADE;
@@ -72,9 +72,9 @@ namespace LVAuto.LVForm
         /// </summary>
         private void StopAllAutoThreads()
         {
-            if (LVBUILD.IsRunning)
+            if (THREAD_CONSTRUCT.IsRunning)
             {
-                LVBUILD.Stop();
+                THREAD_CONSTRUCT.Stop();
             }
 
             if (LVDEL.IsRun) 
@@ -82,9 +82,9 @@ namespace LVAuto.LVForm
                 LVDEL.Stop(); 
             }
 
-            if (LVSELL.IsRun)
+            if (THREAD_SELL_RESOURCES.IsRunning)
             {
-                LVSELL.Stop();
+                THREAD_SELL_RESOURCES.Stop();
             }
 
             if (LVBUYRES.IsRun)
@@ -178,11 +178,12 @@ namespace LVAuto.LVForm
         /// </summary>
         private void StartAllAutoThreads()
         {
-            if (Auto_checkAutoSellResources.Checked && !LVSELL.IsRun)
+            if (Auto_checkAutoSellResources.Checked && !THREAD_SELL_RESOURCES.IsRunning)
             {
-                LVSELL.GetParameter(BanTaiNguyen, int.Parse(txtSELLCHECK.Text) * 60 * 1000);
+                //THREAD_SELL_RESOURCES.GetParameter(BanTaiNguyen, int.Parse(SellRes_txtTimer.Text) * 60 * 1000);
+                THREAD_SELL_RESOURCES.SetUp(int.Parse(SellRes_txtTimer.Text) * 60 * 1000);
                 pnSELL.Enabled = false;
-                LVSELL.Auto();
+                THREAD_SELL_RESOURCES.Start();
             }
 
             if (Auto_checkAutoBuyResources.Checked && !LVBUYRES.IsRun)
@@ -222,12 +223,12 @@ namespace LVAuto.LVForm
                 }
             }
 
-            if (Auto_checkAutoConstruct.Checked && !LVBUILD.IsRunning)
+            if (Auto_checkAutoConstruct.Checked && !THREAD_CONSTRUCT.IsRunning)
             {
-                LVBUILD.SetUp(int.Parse(txtBUILDCHECK.Text) * 60 * 1000);
+                THREAD_CONSTRUCT.SetUp(int.Parse(txtBUILDCHECK.Text) * 60 * 1000);
                 Construct_treeBuilding.Enabled = false;
                 Construct_btnReloadBuildings.Enabled = false;
-                LVBUILD.Start();
+                THREAD_CONSTRUCT.Start();
             }
 
             if (Auto_checkAutoDestruct.Checked && !LVDEL.IsRun)

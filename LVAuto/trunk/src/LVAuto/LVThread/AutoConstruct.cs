@@ -33,7 +33,9 @@ namespace LVAuto.LVThread {
         /// Constructs a new AutoConstruct object.
         /// </summary>
         /// <param name="labelMessage"></param>
-        protected AutoConstruct(Label labelMessage) : base(labelMessage) {
+        protected AutoConstruct(Label labelMessage)
+            : base(labelMessage)
+        {
         }
 
         /// <summary>
@@ -239,6 +241,13 @@ namespace LVAuto.LVThread {
             return 0;
         }
 
+        /// <summary>
+        /// Buys more resources to upgrade building.
+        /// </summary>
+        /// <param name="cityId"></param>
+        /// <param name="building"></param>
+        /// <param name="safegold"></param>
+        /// <returns></returns>
         private bool BuyMoreResources(int cityId, LVAuto.LVForm.Command.CityObj.Building building, long safegold)
 		{
             Hashtable ResNeed = LVHelper.BuildingCommandHelper.GetResourcesForUpgrade(cityId, building);
@@ -250,7 +259,7 @@ namespace LVAuto.LVThread {
             Hashtable ResHave = LVHelper.CityCommandHelper.GetCurentResourceInCity(cityId);
             int needValue;
             int haveValue;
-            int maxkho = int.Parse(ResHave[LVHelper.BaseHelper.RESOURCE_MAX].ToString());
+            int maxStorage = int.Parse(ResHave[LVHelper.BaseHelper.RESOURCE_MAX].ToString());
             long gold = long.Parse(ResHave[LVHelper.BaseHelper.RESOURCE_GOLD].ToString());
             gold = gold - safegold;
 
@@ -263,10 +272,10 @@ namespace LVAuto.LVThread {
             //buy food
             needValue = int.Parse(ResNeed[LVHelper.BaseHelper.RESOURCE_FOOD].ToString());
             haveValue = int.Parse(ResHave[LVHelper.BaseHelper.RESOURCE_FOOD].ToString());
-            if (needValue > maxkho)
+            if (needValue > maxStorage)
             {
                 //exceed max storage
-                WriteLog("Auto buy more FOOD for [" + cityId + ":" + building.name + "]: max storage exceed (" + needValue + "/" + maxkho + ")!");
+                WriteLog("Auto buy more FOOD for [" + cityId + ":" + building.name + "]: max storage exceed (" + needValue + "/" + maxStorage + ")!");
                 return false;
             }
             if (needValue > haveValue)
@@ -285,10 +294,10 @@ namespace LVAuto.LVThread {
             //buy woods
             needValue = int.Parse(ResNeed[LVHelper.BaseHelper.RESOURCE_WOODS].ToString());
             haveValue = int.Parse(ResHave[LVHelper.BaseHelper.RESOURCE_WOODS].ToString());
-            if (needValue > maxkho)
+            if (needValue > maxStorage)
             {
                 //exceed max storage
-                WriteLog("Auto buy more WOODS for [" + cityId + ":" + building.name + "]: max storage exceed (" + needValue + "/" + maxkho + ")!");
+                WriteLog("Auto buy more WOODS for [" + cityId + ":" + building.name + "]: max storage exceed (" + needValue + "/" + maxStorage + ")!");
                 return false;
             }
             if (needValue > haveValue)
@@ -307,10 +316,10 @@ namespace LVAuto.LVThread {
             //buy stone
             needValue = int.Parse(ResNeed[LVHelper.BaseHelper.RESOURCE_STONE].ToString());
             haveValue = int.Parse(ResHave[LVHelper.BaseHelper.RESOURCE_STONE].ToString());
-            if (needValue > maxkho)
+            if (needValue > maxStorage)
             {
                 //exceed max storage
-                WriteLog("Auto buy more STONE for [" + cityId + ":" + building.name + "]: max storage exceed (" + needValue + "/" + maxkho + ")!");
+                WriteLog("Auto buy more STONE for [" + cityId + ":" + building.name + "]: max storage exceed (" + needValue + "/" + maxStorage + ")!");
                 return false;
             }
             if (needValue > haveValue)
@@ -329,10 +338,10 @@ namespace LVAuto.LVThread {
             //buy iron
             needValue = int.Parse(ResNeed[LVHelper.BaseHelper.RESOURCE_IRON].ToString());
             haveValue = int.Parse(ResHave[LVHelper.BaseHelper.RESOURCE_IRON].ToString());
-            if (needValue > maxkho)
+            if (needValue > maxStorage)
             {
                 //exceed max storage
-                WriteLog("Auto buy more IRON for [" + cityId + ":" + building.name + "]: max storage exceed (" + needValue + "/" + maxkho + ")!");
+                WriteLog("Auto buy more IRON for [" + cityId + ":" + building.name + "]: max storage exceed (" + needValue + "/" + maxStorage + ")!");
                 return false;
             }
             if (needValue > haveValue)

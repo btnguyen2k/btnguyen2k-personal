@@ -24,16 +24,16 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Thành thị");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Thành thị");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Tướng");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Thành thị");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Thành thị");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Tướng");
             this.tabMainTab = new System.Windows.Forms.TabControl();
             this.tabLogin = new System.Windows.Forms.TabPage();
             this.groupBox20 = new System.Windows.Forms.GroupBox();
@@ -74,8 +74,8 @@
             this.lblAUTOBINHMANMESSAGE = new System.Windows.Forms.Label();
             this.lblAUTOVCVKMESSAGE = new System.Windows.Forms.Label();
             this.lblDIEUPHAIMESSAGE = new System.Windows.Forms.Label();
-            this.lblSELLMESSAGE = new System.Windows.Forms.Label();
-            this.lblBUYRESMESSAGE = new System.Windows.Forms.Label();
+            this.Auto_labelAutoSellRes = new System.Windows.Forms.Label();
+            this.Auto_labelAutoBuyRes = new System.Windows.Forms.Label();
             this.lblTHAOPHATMESSAGE = new System.Windows.Forms.Label();
             this.lblBIENCHEMESSAGE = new System.Windows.Forms.Label();
             this.lblBUYWEPONMESSAGE = new System.Windows.Forms.Label();
@@ -86,7 +86,7 @@
             this.lblUPGEADEMESSAGE = new System.Windows.Forms.Label();
             this.lblDELMESSAGE = new System.Windows.Forms.Label();
             this.chkAUTOCALLMAN = new System.Windows.Forms.CheckBox();
-            this.lblBUILDMESSAGE = new System.Windows.Forms.Label();
+            this.Auto_labelAutoConstruct = new System.Windows.Forms.Label();
             this.chkAUTOBINHMAN = new System.Windows.Forms.CheckBox();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
             this.chkAutoTuXoaNhacNho = new System.Windows.Forms.CheckBox();
@@ -129,12 +129,13 @@
             this.Auto_checkAutoSellResources = new System.Windows.Forms.CheckBox();
             this.tabBanTaiNguyen = new System.Windows.Forms.TabPage();
             this.pnSELL = new System.Windows.Forms.Panel();
+            this.SellRes_btnUpdate = new System.Windows.Forms.Button();
             this.SellRes_checkSelloff = new System.Windows.Forms.CheckBox();
-            this.btBansTNSelectAllDa = new System.Windows.Forms.Button();
-            this.btBansTNSelectAllSat = new System.Windows.Forms.Button();
-            this.btBansTNSelectAllGo = new System.Windows.Forms.Button();
+            this.SellRes_btnSelectAllStone = new System.Windows.Forms.Button();
+            this.SellRes_btnSelectAllIron = new System.Windows.Forms.Button();
+            this.SellRes_btnSelectAllWoods = new System.Windows.Forms.Button();
             this.SellRes_btnSelectAllFood = new System.Windows.Forms.Button();
-            this.txtSELLCHECK = new System.Windows.Forms.TextBox();
+            this.SellRes_txtTimer = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rdBTNLuaPercentCoDinh = new System.Windows.Forms.RadioButton();
@@ -577,6 +578,7 @@
             this.dlgSaveConfigFile = new System.Windows.Forms.SaveFileDialog();
             this.timerAuto = new System.Windows.Forms.Timer(this.components);
             this.timerDanhTuongViengTham = new System.Windows.Forms.Timer(this.components);
+            this.SellRes_btnReloadCities = new System.Windows.Forms.Button();
             this.tabMainTab.SuspendLayout();
             this.tabLogin.SuspendLayout();
             this.groupBox20.SuspendLayout();
@@ -1073,8 +1075,8 @@
             this.tabAuto.Controls.Add(this.lblAUTOBINHMANMESSAGE);
             this.tabAuto.Controls.Add(this.lblAUTOVCVKMESSAGE);
             this.tabAuto.Controls.Add(this.lblDIEUPHAIMESSAGE);
-            this.tabAuto.Controls.Add(this.lblSELLMESSAGE);
-            this.tabAuto.Controls.Add(this.lblBUYRESMESSAGE);
+            this.tabAuto.Controls.Add(this.Auto_labelAutoSellRes);
+            this.tabAuto.Controls.Add(this.Auto_labelAutoBuyRes);
             this.tabAuto.Controls.Add(this.lblTHAOPHATMESSAGE);
             this.tabAuto.Controls.Add(this.lblBIENCHEMESSAGE);
             this.tabAuto.Controls.Add(this.lblBUYWEPONMESSAGE);
@@ -1085,7 +1087,7 @@
             this.tabAuto.Controls.Add(this.lblUPGEADEMESSAGE);
             this.tabAuto.Controls.Add(this.lblDELMESSAGE);
             this.tabAuto.Controls.Add(this.chkAUTOCALLMAN);
-            this.tabAuto.Controls.Add(this.lblBUILDMESSAGE);
+            this.tabAuto.Controls.Add(this.Auto_labelAutoConstruct);
             this.tabAuto.Controls.Add(this.chkAUTOBINHMAN);
             this.tabAuto.Controls.Add(this.groupBox17);
             this.tabAuto.Controls.Add(this.chkAUTOVCVK);
@@ -1162,25 +1164,25 @@
             this.lblDIEUPHAIMESSAGE.TabIndex = 26;
             this.lblDIEUPHAIMESSAGE.Text = "Chưa khởi động";
             // 
-            // lblSELLMESSAGE
+            // Auto_labelAutoSellRes
             // 
-            this.lblSELLMESSAGE.AutoSize = true;
-            this.lblSELLMESSAGE.ForeColor = System.Drawing.Color.Blue;
-            this.lblSELLMESSAGE.Location = new System.Drawing.Point(178, 33);
-            this.lblSELLMESSAGE.Name = "lblSELLMESSAGE";
-            this.lblSELLMESSAGE.Size = new System.Drawing.Size(83, 13);
-            this.lblSELLMESSAGE.TabIndex = 18;
-            this.lblSELLMESSAGE.Text = "Chưa khởi động";
+            this.Auto_labelAutoSellRes.AutoSize = true;
+            this.Auto_labelAutoSellRes.ForeColor = System.Drawing.Color.Blue;
+            this.Auto_labelAutoSellRes.Location = new System.Drawing.Point(178, 33);
+            this.Auto_labelAutoSellRes.Name = "Auto_labelAutoSellRes";
+            this.Auto_labelAutoSellRes.Size = new System.Drawing.Size(83, 13);
+            this.Auto_labelAutoSellRes.TabIndex = 18;
+            this.Auto_labelAutoSellRes.Text = "Chưa khởi động";
             // 
-            // lblBUYRESMESSAGE
+            // Auto_labelAutoBuyRes
             // 
-            this.lblBUYRESMESSAGE.AutoSize = true;
-            this.lblBUYRESMESSAGE.ForeColor = System.Drawing.Color.Blue;
-            this.lblBUYRESMESSAGE.Location = new System.Drawing.Point(178, 52);
-            this.lblBUYRESMESSAGE.Name = "lblBUYRESMESSAGE";
-            this.lblBUYRESMESSAGE.Size = new System.Drawing.Size(83, 13);
-            this.lblBUYRESMESSAGE.TabIndex = 18;
-            this.lblBUYRESMESSAGE.Text = "Chưa khởi động";
+            this.Auto_labelAutoBuyRes.AutoSize = true;
+            this.Auto_labelAutoBuyRes.ForeColor = System.Drawing.Color.Blue;
+            this.Auto_labelAutoBuyRes.Location = new System.Drawing.Point(178, 52);
+            this.Auto_labelAutoBuyRes.Name = "Auto_labelAutoBuyRes";
+            this.Auto_labelAutoBuyRes.Size = new System.Drawing.Size(83, 13);
+            this.Auto_labelAutoBuyRes.TabIndex = 18;
+            this.Auto_labelAutoBuyRes.Text = "Chưa khởi động";
             // 
             // lblTHAOPHATMESSAGE
             // 
@@ -1284,15 +1286,15 @@
             this.chkAUTOCALLMAN.UseVisualStyleBackColor = true;
             this.chkAUTOCALLMAN.CheckedChanged += new System.EventHandler(this.chkAUTOCALLMAN_CheckedChanged);
             // 
-            // lblBUILDMESSAGE
+            // Auto_labelAutoConstruct
             // 
-            this.lblBUILDMESSAGE.AutoSize = true;
-            this.lblBUILDMESSAGE.ForeColor = System.Drawing.Color.Blue;
-            this.lblBUILDMESSAGE.Location = new System.Drawing.Point(178, 72);
-            this.lblBUILDMESSAGE.Name = "lblBUILDMESSAGE";
-            this.lblBUILDMESSAGE.Size = new System.Drawing.Size(83, 13);
-            this.lblBUILDMESSAGE.TabIndex = 18;
-            this.lblBUILDMESSAGE.Text = "Chưa khởi động";
+            this.Auto_labelAutoConstruct.AutoSize = true;
+            this.Auto_labelAutoConstruct.ForeColor = System.Drawing.Color.Blue;
+            this.Auto_labelAutoConstruct.Location = new System.Drawing.Point(178, 72);
+            this.Auto_labelAutoConstruct.Name = "Auto_labelAutoConstruct";
+            this.Auto_labelAutoConstruct.Size = new System.Drawing.Size(83, 13);
+            this.Auto_labelAutoConstruct.TabIndex = 18;
+            this.Auto_labelAutoConstruct.Text = "Chưa khởi động";
             // 
             // chkAUTOBINHMAN
             // 
@@ -1754,7 +1756,7 @@
             this.Auto_checkAutoBuyResources.TabIndex = 2;
             this.Auto_checkAutoBuyResources.Text = "Tự động mua tài nguyên";
             this.Auto_checkAutoBuyResources.UseVisualStyleBackColor = true;
-            this.Auto_checkAutoBuyResources.CheckedChanged += new System.EventHandler(this.chkAutoBuyResource_CheckedChanged);
+            this.Auto_checkAutoBuyResources.CheckedChanged += new System.EventHandler(this.Auto_checkAutoBuyResources_CheckedChanged);
             // 
             // Auto_checkAutoSellResources
             // 
@@ -1766,7 +1768,7 @@
             this.Auto_checkAutoSellResources.TabIndex = 2;
             this.Auto_checkAutoSellResources.Text = "Tự động bán tài nguyên";
             this.Auto_checkAutoSellResources.UseVisualStyleBackColor = true;
-            this.Auto_checkAutoSellResources.CheckedChanged += new System.EventHandler(this.chkAutoSellFood_CheckedChanged);
+            this.Auto_checkAutoSellResources.CheckedChanged += new System.EventHandler(this.Auto_checkAutoSellResources_CheckedChanged);
             // 
             // tabBanTaiNguyen
             // 
@@ -1782,12 +1784,14 @@
             // 
             // pnSELL
             // 
+            this.pnSELL.Controls.Add(this.SellRes_btnReloadCities);
+            this.pnSELL.Controls.Add(this.SellRes_btnUpdate);
             this.pnSELL.Controls.Add(this.SellRes_checkSelloff);
-            this.pnSELL.Controls.Add(this.btBansTNSelectAllDa);
-            this.pnSELL.Controls.Add(this.btBansTNSelectAllSat);
-            this.pnSELL.Controls.Add(this.btBansTNSelectAllGo);
+            this.pnSELL.Controls.Add(this.SellRes_btnSelectAllStone);
+            this.pnSELL.Controls.Add(this.SellRes_btnSelectAllIron);
+            this.pnSELL.Controls.Add(this.SellRes_btnSelectAllWoods);
             this.pnSELL.Controls.Add(this.SellRes_btnSelectAllFood);
-            this.pnSELL.Controls.Add(this.txtSELLCHECK);
+            this.pnSELL.Controls.Add(this.SellRes_txtTimer);
             this.pnSELL.Controls.Add(this.label20);
             this.pnSELL.Controls.Add(this.groupBox1);
             this.pnSELL.Controls.Add(this.groupBox2);
@@ -1800,6 +1804,17 @@
             this.pnSELL.TabIndex = 6;
             this.pnSELL.Paint += new System.Windows.Forms.PaintEventHandler(this.pnSELL_Paint);
             this.pnSELL.Leave += new System.EventHandler(this.pnSELL_Leave);
+            // 
+            // SellRes_btnUpdate
+            // 
+            this.SellRes_btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SellRes_btnUpdate.ForeColor = System.Drawing.Color.Blue;
+            this.SellRes_btnUpdate.Location = new System.Drawing.Point(568, 395);
+            this.SellRes_btnUpdate.Name = "SellRes_btnUpdate";
+            this.SellRes_btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.SellRes_btnUpdate.TabIndex = 43;
+            this.SellRes_btnUpdate.Text = "Cập Nhật";
+            this.SellRes_btnUpdate.UseVisualStyleBackColor = true;
             // 
             // SellRes_checkSelloff
             // 
@@ -1814,39 +1829,39 @@
                 " được)";
             this.SellRes_checkSelloff.UseVisualStyleBackColor = true;
             // 
-            // btBansTNSelectAllDa
+            // SellRes_btnSelectAllStone
             // 
-            this.btBansTNSelectAllDa.Location = new System.Drawing.Point(568, 367);
-            this.btBansTNSelectAllDa.Name = "btBansTNSelectAllDa";
-            this.btBansTNSelectAllDa.Size = new System.Drawing.Size(75, 23);
-            this.btBansTNSelectAllDa.TabIndex = 41;
-            this.btBansTNSelectAllDa.Text = "Chọn tất đá";
-            this.btBansTNSelectAllDa.UseVisualStyleBackColor = true;
-            this.btBansTNSelectAllDa.Click += new System.EventHandler(this.SellRes_btnSelectAllStone_Click);
+            this.SellRes_btnSelectAllStone.Location = new System.Drawing.Point(568, 298);
+            this.SellRes_btnSelectAllStone.Name = "SellRes_btnSelectAllStone";
+            this.SellRes_btnSelectAllStone.Size = new System.Drawing.Size(75, 23);
+            this.SellRes_btnSelectAllStone.TabIndex = 41;
+            this.SellRes_btnSelectAllStone.Text = "Chọn tất đá";
+            this.SellRes_btnSelectAllStone.UseVisualStyleBackColor = true;
+            this.SellRes_btnSelectAllStone.Click += new System.EventHandler(this.SellRes_btnSelectAllStone_Click);
             // 
-            // btBansTNSelectAllSat
+            // SellRes_btnSelectAllIron
             // 
-            this.btBansTNSelectAllSat.Location = new System.Drawing.Point(568, 338);
-            this.btBansTNSelectAllSat.Name = "btBansTNSelectAllSat";
-            this.btBansTNSelectAllSat.Size = new System.Drawing.Size(75, 23);
-            this.btBansTNSelectAllSat.TabIndex = 41;
-            this.btBansTNSelectAllSat.Text = "Chọn tất sắt";
-            this.btBansTNSelectAllSat.UseVisualStyleBackColor = true;
-            this.btBansTNSelectAllSat.Click += new System.EventHandler(this.SellRes_btnSelectAllIron_Click);
+            this.SellRes_btnSelectAllIron.Location = new System.Drawing.Point(568, 327);
+            this.SellRes_btnSelectAllIron.Name = "SellRes_btnSelectAllIron";
+            this.SellRes_btnSelectAllIron.Size = new System.Drawing.Size(75, 23);
+            this.SellRes_btnSelectAllIron.TabIndex = 41;
+            this.SellRes_btnSelectAllIron.Text = "Chọn tất sắt";
+            this.SellRes_btnSelectAllIron.UseVisualStyleBackColor = true;
+            this.SellRes_btnSelectAllIron.Click += new System.EventHandler(this.SellRes_btnSelectAllIron_Click);
             // 
-            // btBansTNSelectAllGo
+            // SellRes_btnSelectAllWoods
             // 
-            this.btBansTNSelectAllGo.Location = new System.Drawing.Point(568, 309);
-            this.btBansTNSelectAllGo.Name = "btBansTNSelectAllGo";
-            this.btBansTNSelectAllGo.Size = new System.Drawing.Size(75, 23);
-            this.btBansTNSelectAllGo.TabIndex = 41;
-            this.btBansTNSelectAllGo.Text = "Chọn tất gỗ";
-            this.btBansTNSelectAllGo.UseVisualStyleBackColor = true;
-            this.btBansTNSelectAllGo.Click += new System.EventHandler(this.SellRes_btnSelectAllWoods_Click);
+            this.SellRes_btnSelectAllWoods.Location = new System.Drawing.Point(568, 269);
+            this.SellRes_btnSelectAllWoods.Name = "SellRes_btnSelectAllWoods";
+            this.SellRes_btnSelectAllWoods.Size = new System.Drawing.Size(75, 23);
+            this.SellRes_btnSelectAllWoods.TabIndex = 41;
+            this.SellRes_btnSelectAllWoods.Text = "Chọn tất gỗ";
+            this.SellRes_btnSelectAllWoods.UseVisualStyleBackColor = true;
+            this.SellRes_btnSelectAllWoods.Click += new System.EventHandler(this.SellRes_btnSelectAllWoods_Click);
             // 
             // SellRes_btnSelectAllFood
             // 
-            this.SellRes_btnSelectAllFood.Location = new System.Drawing.Point(568, 280);
+            this.SellRes_btnSelectAllFood.Location = new System.Drawing.Point(568, 240);
             this.SellRes_btnSelectAllFood.Name = "SellRes_btnSelectAllFood";
             this.SellRes_btnSelectAllFood.Size = new System.Drawing.Size(75, 23);
             this.SellRes_btnSelectAllFood.TabIndex = 41;
@@ -1854,13 +1869,13 @@
             this.SellRes_btnSelectAllFood.UseVisualStyleBackColor = true;
             this.SellRes_btnSelectAllFood.Click += new System.EventHandler(this.SellRes_btnSelectAllFood_Click);
             // 
-            // txtSELLCHECK
+            // SellRes_txtTimer
             // 
-            this.txtSELLCHECK.Location = new System.Drawing.Point(80, 424);
-            this.txtSELLCHECK.Name = "txtSELLCHECK";
-            this.txtSELLCHECK.Size = new System.Drawing.Size(50, 20);
-            this.txtSELLCHECK.TabIndex = 4;
-            this.txtSELLCHECK.Text = "1";
+            this.SellRes_txtTimer.Location = new System.Drawing.Point(80, 424);
+            this.SellRes_txtTimer.Name = "SellRes_txtTimer";
+            this.SellRes_txtTimer.Size = new System.Drawing.Size(50, 20);
+            this.SellRes_txtTimer.TabIndex = 4;
+            this.SellRes_txtTimer.Text = "1";
             // 
             // label20
             // 
@@ -2678,35 +2693,35 @@
             // 
             this.SellRes_gridCityList.AllowUserToAddRows = false;
             this.SellRes_gridCityList.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SellRes_gridCityList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SellRes_gridCityList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.SellRes_gridCityList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.SellRes_gridCityList.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.SellRes_gridCityList.DefaultCellStyle = dataGridViewCellStyle8;
             this.SellRes_gridCityList.Location = new System.Drawing.Point(3, 240);
             this.SellRes_gridCityList.Name = "SellRes_gridCityList";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SellRes_gridCityList.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SellRes_gridCityList.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.SellRes_gridCityList.RowHeadersVisible = false;
-            this.SellRes_gridCityList.Size = new System.Drawing.Size(555, 164);
+            this.SellRes_gridCityList.Size = new System.Drawing.Size(555, 178);
             this.SellRes_gridCityList.TabIndex = 3;
             // 
             // tabMuaTaiNguyen
@@ -2807,33 +2822,33 @@
             // 
             this.dtaBUYRESOURCE.AllowUserToAddRows = false;
             this.dtaBUYRESOURCE.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtaBUYRESOURCE.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtaBUYRESOURCE.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dtaBUYRESOURCE.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtaBUYRESOURCE.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtaBUYRESOURCE.DefaultCellStyle = dataGridViewCellStyle11;
             this.dtaBUYRESOURCE.Location = new System.Drawing.Point(3, 3);
             this.dtaBUYRESOURCE.Name = "dtaBUYRESOURCE";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtaBUYRESOURCE.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtaBUYRESOURCE.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dtaBUYRESOURCE.RowHeadersVisible = false;
             this.dtaBUYRESOURCE.Size = new System.Drawing.Size(469, 437);
             this.dtaBUYRESOURCE.TabIndex = 4;
@@ -3047,10 +3062,10 @@
             this.Construct_treeBuilding.CheckBoxes = true;
             this.Construct_treeBuilding.Location = new System.Drawing.Point(8, 35);
             this.Construct_treeBuilding.Name = "Construct_treeBuilding";
-            treeNode1.Name = "root";
-            treeNode1.Text = "Thành thị";
+            treeNode4.Name = "root";
+            treeNode4.Text = "Thành thị";
             this.Construct_treeBuilding.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode4});
             this.Construct_treeBuilding.Size = new System.Drawing.Size(456, 405);
             this.Construct_treeBuilding.TabIndex = 0;
             this.Construct_treeBuilding.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.tvBUILD_AfterCheck);
@@ -3107,10 +3122,10 @@
             this.tvDEL.CheckBoxes = true;
             this.tvDEL.Location = new System.Drawing.Point(16, 32);
             this.tvDEL.Name = "tvDEL";
-            treeNode2.Name = "root";
-            treeNode2.Text = "Thành thị";
+            treeNode5.Name = "root";
+            treeNode5.Text = "Thành thị";
             this.tvDEL.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
+            treeNode5});
             this.tvDEL.Size = new System.Drawing.Size(525, 432);
             this.tvDEL.TabIndex = 9;
             this.tvDEL.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.tvDEL_AfterCheck);
@@ -3482,10 +3497,10 @@
             this.tvSIKHI.CheckBoxes = true;
             this.tvSIKHI.Location = new System.Drawing.Point(6, 33);
             this.tvSIKHI.Name = "tvSIKHI";
-            treeNode3.Name = "root";
-            treeNode3.Text = "Tướng";
+            treeNode6.Name = "root";
+            treeNode6.Text = "Tướng";
             this.tvSIKHI.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3});
+            treeNode6});
             this.tvSIKHI.Size = new System.Drawing.Size(525, 395);
             this.tvSIKHI.TabIndex = 1;
             // 
@@ -3903,7 +3918,7 @@
             // Quest_txtTimer
             // 
             this.Quest_txtTimer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Quest_txtTimer.Location = new System.Drawing.Point(172, 445);
+            this.Quest_txtTimer.Location = new System.Drawing.Point(172, 427);
             this.Quest_txtTimer.Name = "Quest_txtTimer";
             this.Quest_txtTimer.Size = new System.Drawing.Size(32, 20);
             this.Quest_txtTimer.TabIndex = 30;
@@ -3913,7 +3928,7 @@
             // 
             this.label112.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label112.AutoSize = true;
-            this.label112.Location = new System.Drawing.Point(344, 186);
+            this.label112.Location = new System.Drawing.Point(344, 168);
             this.label112.Name = "label112";
             this.label112.Size = new System.Drawing.Size(0, 13);
             this.label112.TabIndex = 7;
@@ -3932,7 +3947,7 @@
             // 
             this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(96, 448);
+            this.label23.Location = new System.Drawing.Point(96, 430);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(146, 13);
             this.label23.TabIndex = 7;
@@ -7588,6 +7603,19 @@
             this.timerDanhTuongViengTham.Interval = 900000;
             this.timerDanhTuongViengTham.Tick += new System.EventHandler(this.timerForTBDanhTuongViengTham_Tick);
             // 
+            // SellRes_btnReloadCities
+            // 
+            this.SellRes_btnReloadCities.BackColor = System.Drawing.Color.Transparent;
+            this.SellRes_btnReloadCities.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SellRes_btnReloadCities.ForeColor = System.Drawing.Color.Blue;
+            this.SellRes_btnReloadCities.Location = new System.Drawing.Point(568, 366);
+            this.SellRes_btnReloadCities.Name = "SellRes_btnReloadCities";
+            this.SellRes_btnReloadCities.Size = new System.Drawing.Size(75, 23);
+            this.SellRes_btnReloadCities.TabIndex = 44;
+            this.SellRes_btnReloadCities.Text = "Nạp Lại";
+            this.SellRes_btnReloadCities.UseVisualStyleBackColor = false;
+            this.SellRes_btnReloadCities.Click += new System.EventHandler(this.SellRes_btnReloadCities_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -7808,8 +7836,8 @@
 		private System.Windows.Forms.CheckBox chkAutobuyWepon;
 		private System.Windows.Forms.Label label47;
         private System.Windows.Forms.Panel pnSELL;
-        private System.Windows.Forms.Label lblSELLMESSAGE;
-        private System.Windows.Forms.Label lblBUYRESMESSAGE;
+        private System.Windows.Forms.Label Auto_labelAutoSellRes;
+        private System.Windows.Forms.Label Auto_labelAutoBuyRes;
         private System.Windows.Forms.Panel pnLVBUYRES;
         private System.Windows.Forms.Panel pnTHAOPHAT;
         private System.Windows.Forms.Label lblTHAOPHATMESSAGE;
@@ -7898,7 +7926,7 @@
 		private System.Windows.Forms.CheckBox Auto_checkAutoTroops;
 		private System.Windows.Forms.Label lblBIENCHEMESSAGE;
 		private System.Windows.Forms.Button btTest;
-		public System.Windows.Forms.Label lblBUILDMESSAGE;
+		public System.Windows.Forms.Label Auto_labelAutoConstruct;
 		private System.Windows.Forms.Label label67;
 		public System.Windows.Forms.TextBox txtTabBienCheTimeCheck;
 		public System.Windows.Forms.CheckBox chkBienCheTuNangSK;
@@ -7916,7 +7944,7 @@
 		public System.Windows.Forms.TextBox txtCOUNTLUA;
 		public System.Windows.Forms.TextBox txtSAFELUA;
 		public System.Windows.Forms.DataGridView SellRes_gridCityList;
-		public System.Windows.Forms.TextBox txtSELLCHECK;
+		public System.Windows.Forms.TextBox SellRes_txtTimer;
 		public System.Windows.Forms.DataGridView dtaBUYRESOURCE;
 		public System.Windows.Forms.TextBox txtBUYRESOURCECHECK;
 		public System.Windows.Forms.TextBox txtSAFEGOLD;
@@ -7971,9 +7999,9 @@
 		private System.Windows.Forms.Label lblBTNDaDVSoluong;
 		public System.Windows.Forms.RadioButton rdBanTN_LUA_TB_Nhan;
         public System.Windows.Forms.RadioButton rdBanTN_LUA_TB_Cong;
-		private System.Windows.Forms.Button btBansTNSelectAllDa;
-		private System.Windows.Forms.Button btBansTNSelectAllSat;
-		private System.Windows.Forms.Button btBansTNSelectAllGo;
+		private System.Windows.Forms.Button SellRes_btnSelectAllStone;
+		private System.Windows.Forms.Button SellRes_btnSelectAllIron;
+		private System.Windows.Forms.Button SellRes_btnSelectAllWoods;
 		private System.Windows.Forms.Button SellRes_btnSelectAllFood;
 		private System.Windows.Forms.Button btMuaTNSelectAllDa;
 		private System.Windows.Forms.Button btMuaTNSelectAllSat;
@@ -8279,6 +8307,8 @@
         private System.Windows.Forms.TextBox txtBinhManToaDoMoX;
         private System.Windows.Forms.TabPage tabLog;
         private System.Windows.Forms.TextBox Log_txtLog;
+        private System.Windows.Forms.Button SellRes_btnUpdate;
+        private System.Windows.Forms.Button SellRes_btnReloadCities;
     }
 }
 
