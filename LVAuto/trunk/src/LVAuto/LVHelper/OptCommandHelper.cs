@@ -10,9 +10,12 @@ namespace LVAuto.LVHelper
     /// </summary>
     public class OptCommandHelper : BaseHelper
     {
-        public const int COMMAND_BUILD_BUILDING = 65;
 
         public const int COMMAND_BUY_RESOURCE = 9;
+        public const int COMMAND_GET_RESOURCE_AVG_PRICE = 29;
+        public const int COMMAND_SELL_RESOURCE = 49;
+        public const int COMMAND_BUILD_BUILDING = 65;
+        public const int COMMAND_UPDATE_MY_MARKET_PRICE = 68;
 
         private static object LocalLock = new object();
 
@@ -102,7 +105,18 @@ namespace LVAuto.LVHelper
             return GetInstance().ExecuteCommand(COMMAND_BUILD_BUILDING, parameters, true, cookies);
         }
 
-        private static void BuyResource(int cityId, int tonsToBuy, int price, int seqNo, int seller, int buyType, int buyinCount, int buyinPrice)
+        /// <summary>
+        /// Buy resources.
+        /// </summary>
+        /// <param name="cityId"></param>
+        /// <param name="tonsToBuy"></param>
+        /// <param name="price"></param>
+        /// <param name="seqNo"></param>
+        /// <param name="seller"></param>
+        /// <param name="resourceType">1: food, 2: woods, 3: stone, 4: iron</param>
+        /// <param name="buyinCount"></param>
+        /// <param name="buyinPrice"></param>
+        private static void BuyResource(int cityId, int tonsToBuy, int price, int seqNo, int seller, int resourceType, int buyinCount, int buyinPrice)
         {
             string parameter = "";
             parameter += "buyincount=" + buyinCount;
@@ -110,11 +124,11 @@ namespace LVAuto.LVHelper
             parameter += "&res_jsondata={floatid:\"res1\",desc:\"Lương thực\",value:0,onchange:\"Dipan.SanGuo.Build.Market.DropDown3()\",data:[{text:\"Lương thực\",value:0},{text:\"Gỗ\",value:1},{text:\"Đá\",value:2},{text:\"Sắt\",value:3},]}";
             parameter += "&count=" + tonsToBuy;
             parameter += "&countprice=" + price;
-            parameter += "&res_hidden=" + (buyType - 1);
+            parameter += "&res_hidden=" + (resourceType - 1);
             parameter += "&seller=" + seller;
             parameter += "&seqno=" + seqNo;
             parameter += "&tid=0";
-            parameter += "&type3=" + (buyType);
+            parameter += "&type3=" + (resourceType);
             GetInstance().ExecuteCommand(COMMAND_BUY_RESOURCE, parameter, false, cityId);
         }
 
@@ -122,13 +136,13 @@ namespace LVAuto.LVHelper
         /// Buys specified resource in a specified city.
         /// </summary>
         /// <param name="cityId"></param>
-        /// <param name="resourceType"></param>
+        /// <param name="resourceType">1: food, 2: woods, 3: stone, 4: iron</param>
         /// <param name="buyAmount">amount to buy (in raw unit)</param>
         /// <param name="gold">gold quota</param>
         public static void BuyResource(int cityId, int resourceType, int buyAmount, ref long gold)
         {
             string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityId);
-            Hashtable market = LVHelper.CommonCommandHelper.GetMarketSeller(resourceType);
+            Hashtable market = LVHelper.CommonCommandHelper.GetMarketSellers(resourceType);
             if (market == null) 
             {
                 return;
@@ -163,5 +177,78 @@ namespace LVAuto.LVHelper
                 if (tonsToBuy <= 0) break;
             }
         } //end BuyResource
+
+        /// <summary>
+        /// Gets market average price for a resource.
+        /// </summary>
+        /// <param name="resourceType">1: food, 2: woods, 3: stone, 4: iron</param>
+        /// <returns></returns>
+        public static int GetAvgPrice(int resourceType)
+        {
+            string parameter = "";
+            parameter += "type=" + resourceType;
+
+            Hashtable result = GetInstance().ExecuteCommand(COMMAND_GET_RESOURCE_AVG_PRICE, parameter, true);
+            return int.Parse(result["DATA"].ToString());
+        }
+
+        /// <summary>
+        /// Gets market minimum price for a resource.
+        /// </summary>
+        /// <param name="resourceType">1: food, 2: woods, 3: stone, 4: iron</param>
+        /// <returns></returns>
+        public static int GetMinPrice(int resourceType)
+        {
+            Hashtable market = CommonCommandHelper.GetMarketSellers(resourceType);
+            if (market == null)
+            {
+                return -1;
+            }
+
+            ArrayList infos = (ArrayList)market["infos"];
+            if (infos == null || infos.Count == 0)
+            {
+                return -1;
+            }
+
+            Hashtable infoitem = (Hashtable)infos[0]; //get the first item, it's always the lowest price listed
+            if (infoitem == null || infoitem["price"] == null)
+            {
+                return -1;
+            }
+
+            return int.Parse(infoitem["price"].ToString());
+        }
+
+        /// <summary>
+        /// Sells resource.
+        /// </summary>
+        /// <param name="cityId"></param>
+        /// <param name="amountInTon"></param>
+        /// <param name="price"></param>
+        /// <param name="resourceType">1: food, 2: woods, 3: stone, 4: iron</param>
+        /// <returns></returns>
+        public static Hashtable SellResource(int cityId, int amountInTon, int price, int resourceType)
+        {
+            string parameter = "";
+            parameter += "countprice1=" + amountInTon * price;
+            parameter += "&res1_hidden=" + (resourceType - 1);
+            parameter += "&res1_jsondata={floatid:\"res1\",desc:\"Lương thực\",value:0,onchange:\"Dipan.SanGuo.Build.Market.DropDown3()\",data:[{text:\"Lương thực\",value:0},{text:\"Gỗ\",value:1},{text:\"Đá\",value:2},{text:\"Sắt\",value:3},]}";
+            parameter += "&sellcount1=" + amountInTon;
+            parameter += "&sellprice1=" + price;
+            parameter += "&tid=0";
+            parameter += "&type1=" + resourceType;
+            return GetInstance().ExecuteCommand(COMMAND_SELL_RESOURCE, parameter, true, cityId);
+        }
+
+        /// <summary>
+        /// Updates my market listing price.
+        /// </summary>
+        /// <param name="seqNo"></param>
+        /// <param name="price"></param>
+        public static void UpdateMyMarketPrice(int seqNo, int price)
+        {
+            GetInstance().ExecuteCommand(COMMAND_UPDATE_MY_MARKET_PRICE, "price=" + price + "&seqno=" + seqNo + "&tid=0", true);
+        }
     } //end class
 } //end namespace

@@ -55,7 +55,6 @@ namespace LVAuto.LVForm
 		public static bool _chuongbao = false;
 		public static int imagecheckid;
 
-		public bool SellResource_loaded = false;
 		public bool BuyResource_loaded = false;
 		public bool Anui_loaded				= false;
 		public bool BuildCity_loaded = false;
@@ -136,10 +135,10 @@ namespace LVAuto.LVForm
                 LVCITYTASK = new LVAuto.LVForm.LVThread.CITYTASK();
                 LVAUTOTASK = new LVAuto.LVForm.LVThread.AUTOTASK(lblLoadingResMessage);
 
-                LVBUILD = LVAuto.LVThread.AutoConstruct.getInstance(lblBUILDMESSAGE);
+                THREAD_SELL_RESOURCES = LVAuto.LVThread.AutoSellResources.getInstance(Auto_labelAutoSellRes);
+                THREAD_CONSTRUCT = LVAuto.LVThread.AutoConstruct.getInstance(Auto_labelAutoConstruct);
                 LVDEL = new LVAuto.LVForm.LVThread.DEL(lblDELMESSAGE);
-                LVSELL = new LVAuto.LVForm.LVThread.SELL(lblSELLMESSAGE);
-                LVBUYRES = new LVAuto.LVForm.LVThread.BUYRES(lblBUYRESMESSAGE);
+                LVBUYRES = new LVAuto.LVForm.LVThread.BUYRES(Auto_labelAutoBuyRes);
                 LVTHAOPHAT = new LVAuto.LVForm.LVThread.THAOPHAT(lblTHAOPHATMESSAGE);
                 LVUPGRADE = new LVAuto.LVForm.LVThread.UPGRADE(lblUPGEADEMESSAGE);
                 LVANUI = new LVAuto.LVForm.LVThread.ANUI(lblANUIMESSAGE);
@@ -549,45 +548,11 @@ namespace LVAuto.LVForm
 			}
         }
 
-        private void chkAutoSellFood_CheckedChanged(object sender, EventArgs e) {
-            try
-			{
-				if (Auto_checkAutoSellResources.Checked) {
-                /*
-					LVSELL.GetParameter(
-                    int.Parse(txtCOUNTLUA.Text),
-                    int.Parse(txtPRICELUA.Text),
-                    int.Parse(txtSAFELUA.Text),
-                    int.Parse(txtCOUNTGO.Text),
-                    int.Parse(txtPRICEGO.Text),
-                    int.Parse(txtSAFEGO.Text),
-                    int.Parse(txtCOUNTDA.Text),
-                    int.Parse(txtPRICEDA.Text),
-                    int.Parse(txtSAFEDA.Text),
-                    int.Parse(txtCOUNTSAT.Text),
-                    int.Parse(txtPRICELSAT.Text),
-                    int.Parse(txtSAFESAT.Text),
-                    dtaSELL, int.Parse(txtSELLCHECK.Text) * 60 * 1000);
-				 
-				 */
-
-					LVSELL.GetParameter(BanTaiNguyen, int.Parse(txtSELLCHECK.Text) * 60 * 1000);
-                
-				pnSELL.Enabled = false;
-                LVSELL.Auto();
-            } else {
-                LVSELL.Stop();
-                pnSELL.Enabled = true;
-            }
-			}
-			catch (Exception ex)
-			{
-				lblSELLMESSAGE.Text = "Chưa chọn đúng tham số";
-				Auto_checkAutoSellResources.Checked = false;
-			}
+        private void Auto_checkAutoSellResources_CheckedChanged(object sender, EventArgs e) {
+            LVToggleAutoSellResources();
         }
 
-        private void chkAutoBuyResource_CheckedChanged(object sender, EventArgs e) {
+        private void Auto_checkAutoBuyResources_CheckedChanged(object sender, EventArgs e) {
             try
 			{
 			if (Auto_checkAutoBuyResources.Checked) 
@@ -607,7 +572,7 @@ namespace LVAuto.LVForm
 			}
 			catch (Exception ex)
 			{
-				lblBUYRESMESSAGE.Text = "Chưa chọn đúng tham số";
+				Auto_labelAutoBuyRes.Text = "Chưa chọn đúng tham số";
 				Auto_checkAutoBuyResources.Checked = false;
 			}
 
@@ -3841,13 +3806,12 @@ namespace LVAuto.LVForm
             grBinhManToaDoMo.Visible = rdBinhManDanhDiaTinh.Checked;
         }
 
-		
-		
-		
-		
-	}
-
-}
+        private void SellRes_btnReloadCities_Click(object sender, EventArgs e)
+        {
+            LVReloadCitesForSellResources();
+        }		
+	} //end class
+} //end namespace
 
 	
 

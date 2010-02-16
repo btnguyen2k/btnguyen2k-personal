@@ -75,10 +75,9 @@ namespace LVAuto.LVForm
             {
                 case "tabbantainguyen":
                     {
-                        if (!SellResource_loaded)
+                        if (!SellResourceTab_Loaded)
                         {
-                            LVCommon.common.LoadCityToGridForSellResource(this.SellRes_gridCityList);
-                            SellResource_loaded = true;
+                            LVReloadCitesForSellResources();
                         }
                         break;
                     }

@@ -12,7 +12,7 @@ namespace LVAuto.LVHelper
     {
         private static object LocalLock = new object();
 
-        public const int COMMAND_GET_MARKET_SELLER = 38;
+        public const int COMMAND_GET_MARKET_INFO = 38;
 
         private static CommonCommandHelper instance;
 
@@ -88,13 +88,23 @@ namespace LVAuto.LVHelper
         /// </summary>
         /// <param name="resourceType">1=food, 2=wood, 3=stone, 4=iron</param>
         /// <returns></returns>
-        public static Hashtable GetMarketSeller(int resourceType)
+        public static Hashtable GetMarketSellers(int resourceType)
         {
             string parameter = "";
             parameter += "stab=1";
             parameter += "&tid=0";
             parameter += "&type=" + resourceType;
-            return GetInstance().ExecuteCommand(COMMAND_GET_MARKET_SELLER, parameter, true);
+            return GetInstance().ExecuteCommand(COMMAND_GET_MARKET_INFO, parameter, true);
+        }
+
+        /// <summary>
+        /// Gets my market queue info
+        /// </summary>
+        /// <returns></returns>
+        public static ArrayList GetMyMarketQueue()
+        {
+            Hashtable result = GetInstance().ExecuteCommand(COMMAND_GET_MARKET_INFO, "stab=2", true);
+            return result != null ? (ArrayList)result["infos"] : null;
         }
     } //end class
 } //end namespace
