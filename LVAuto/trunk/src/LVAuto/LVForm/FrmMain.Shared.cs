@@ -98,7 +98,7 @@ namespace LVAuto.LVForm
                         {
                             ShowLoadingLabel();
                             Construct_dropdownCityList.Items.Clear();
-                            Construct_dropdownCityList.Items.AddRange(Command.CityObj.City.AllCity);
+                            Construct_dropdownCityList.Items.AddRange(LVObj.City.AllCity);
                             this.Construct_treeBuilding.Nodes.Clear();
                             BuildCity_loaded = true;
                             HideLoadingLabel();
@@ -110,7 +110,7 @@ namespace LVAuto.LVForm
                     {
                         ShowLoadingLabel();
                         cboTabHaNhaCity.Items.Clear();
-                        cboTabHaNhaCity.Items.AddRange(Command.CityObj.City.AllCity);
+                        cboTabHaNhaCity.Items.AddRange(LVObj.City.AllCity);
                         this.tvDEL.Nodes.Clear();
                         DelCity_loaded = true;
                         HideLoadingLabel();
@@ -134,7 +134,7 @@ namespace LVAuto.LVForm
                         if (!ReSearch_loaded)
                         {
                             cboCityForUpgrade.Items.Clear();
-                            cboCityForUpgrade.Items.AddRange(Command.CityObj.City.AllCity);
+                            cboCityForUpgrade.Items.AddRange(LVObj.City.AllCity);
                             LVCommon.common.LoadUpgradeToTreeViewForUpdate(tvUpdate);
 
                             ReSearch_loaded = true;
@@ -174,7 +174,7 @@ namespace LVAuto.LVForm
                         if (!Upsikhi_loaded)
                         {
                             //cboLuyenSKCity.Items.Clear();
-                            //cboLuyenSKCity.Items.AddRange(Command.CityObj.City.AllCity);
+                            //cboLuyenSKCity.Items.AddRange(LVObj.City.AllCity);
 
                             if (LVCommon.common.LoadGeneralForUpSiKhi(tvSIKHI)) Upsikhi_loaded = true;
                         }
@@ -199,7 +199,7 @@ namespace LVAuto.LVForm
                 case "tabbienche":
                     {
                         cboBienCheCity.Items.Clear();
-                        cboBienCheCity.Items.AddRange(Command.CityObj.City.AllCity);
+                        cboBienCheCity.Items.AddRange(LVObj.City.AllCity);
                         chklstGeneral.Items.Clear();
                         LVAuto.LVForm.LVCommon.common.LoadGeneralForBienChe(tvBienCheList);
                         btBiencheAccept.Enabled = false;
@@ -209,9 +209,9 @@ namespace LVAuto.LVForm
                 case "tabdieuphai":
                     {
                         cboTabDieuPhaiThanhPhaiQuanVan.Items.Clear();
-                        cboTabDieuPhaiThanhPhaiQuanVan.Items.AddRange(Command.CityObj.City.AllCity);
+                        cboTabDieuPhaiThanhPhaiQuanVan.Items.AddRange(LVObj.City.AllCity);
                         cbTabDieuPhaiThanhPhaiDiLoiDai.Items.Clear();
-                        cbTabDieuPhaiThanhPhaiDiLoiDai.Items.AddRange(Command.CityObj.City.AllCity);
+                        cbTabDieuPhaiThanhPhaiDiLoiDai.Items.AddRange(LVObj.City.AllCity);
 
                         btTabDieuPhaiPhaiQuanVan.Enabled = false;
                         showDataForGridDieuPhai();
@@ -228,15 +228,15 @@ namespace LVAuto.LVForm
                 case "tabbinhman":
                     {
                         this.cbTabBinhManThanhXuatQuan.Items.Clear();
-                        if (LVAuto.LVForm.Command.CityObj.City.AllCity == null)
+                        if (LVAuto.LVObj.City.AllCity == null)
                         {
                             LVAuto.LVForm.Command.City.UpdateAllSimpleCity();
                         }
 
-                        if (LVAuto.LVForm.Command.CityObj.City.AllCity == null) return;
+                        if (LVAuto.LVObj.City.AllCity == null) return;
 
 
-                        this.cbTabBinhManThanhXuatQuan.Items.AddRange(LVAuto.LVForm.Command.CityObj.City.AllCity);
+                        this.cbTabBinhManThanhXuatQuan.Items.AddRange(LVAuto.LVObj.City.AllCity);
                         if (this.cbTabBinhManThanhXuatQuan.SelectedItem == null)
                         {
                             this.chkTabBinhManTuongXuatTran.Items.Clear();
@@ -248,14 +248,14 @@ namespace LVAuto.LVForm
                 case "tabcallman":
                     {
                         this.cboCallManThanhTraiXuatQuan.Items.Clear();
-                        if (LVAuto.LVForm.Command.CityObj.City.AllCity == null)
+                        if (LVAuto.LVObj.City.AllCity == null)
                         {
                             LVAuto.LVForm.Command.City.UpdateAllSimpleCity();
                         }
 
-                        if (LVAuto.LVForm.Command.CityObj.City.AllCity == null) return;
+                        if (LVAuto.LVObj.City.AllCity == null) return;
 
-                        this.cboCallManThanhTraiXuatQuan.Items.AddRange(LVAuto.LVForm.Command.CityObj.City.AllCity);
+                        this.cboCallManThanhTraiXuatQuan.Items.AddRange(LVAuto.LVObj.City.AllCity);
                         if (this.cboCallManThanhTraiXuatQuan.SelectedItem == null)
                         {
                             this.chklbCallManTuongXuatTran.Items.Clear();

@@ -89,14 +89,14 @@ namespace LVAuto.LVForm.LVThread {
 							runningstep = (ArrayList)hsTemp["path"];
 							if (runningstep.Count >= maxsteps) continue;		// da du trong hang doi, khong lam gi nua
 
-							Command.CityObj.City thisdt = null;
+							LVObj.City thisdt = null;
 							if (runningstep.Count > 0)
 							{
 								// laays trong hang cho
 								int mapID = int.Parse( runningstep[runningstep.Count - 1].ToString());
 								int x = Command.Common.MapIDtoX(mapID);
 								int y = Command.Common.MapIDtoY(mapID);
-								thisdt = new LVAuto.Command.CityObj.City(Id[i], "", x, y);
+								thisdt = new LVAuto.LVObj.City(Id[i], "", x, y);
 							}
 							else
 							{
@@ -182,14 +182,14 @@ namespace LVAuto.LVForm.LVThread {
 							runningstep = (ArrayList)hsTemp["path"];
 							if (runningstep.Count >= maxsteps) continue;		// da du trong hang doi, khong lam gi nua
 
-							Command.CityObj.City thisdt = null;
+							LVObj.City thisdt = null;
 							if (runningstep.Count > 0)
 							{
 								// laays trong hang cho
 								int mapID = int.Parse(runningstep[runningstep.Count - 1].ToString());
 								int x = LVCommon.common.MapIDtoX(mapID);
 								int y = LVCommon.common.MapIDtoY(mapID);
-								thisdt = new LVAuto.LVForm.Command.CityObj.City(traidichuyenobj.TraiID, "", x, y, 1);
+								thisdt = new LVAuto.LVObj.City(traidichuyenobj.TraiID, "", x, y, 1);
 							}
 							else
 							{
@@ -199,7 +199,7 @@ namespace LVAuto.LVForm.LVThread {
 
 							if (thisdt == null) continue;
 
-							if (thisdt.x == traidichuyenobj.targetX && thisdt.y == traidichuyenobj.targetY)
+							if (thisdt.X == traidichuyenobj.targetX && thisdt.Y == traidichuyenobj.targetY)
 							{
 								if (runningstep.Count == 0)
 									removetraifromlist(i);
@@ -218,7 +218,7 @@ namespace LVAuto.LVForm.LVThread {
 									for (step = 16; step > 0; step--)
 									{
 										//int[] xy = Common.common.NextPoint(thisdt.x, thisdt.y, Pos[i][0], Pos[i][1], step);
-										int[] xy = LVCommon.common.NextPoint(thisdt.x, thisdt.y, tarX, tarY, step);
+										int[] xy = LVCommon.common.NextPoint(thisdt.X, thisdt.Y, tarX, tarY, step);
 										if (xy[0] == lastx && xy[1] == lasty)
 										{
 										}
@@ -236,7 +236,7 @@ namespace LVAuto.LVForm.LVThread {
 									}
 									if (step > 0) break;	// di chuyen thanh cong
 
-									if (LVCommon.common.distancefrom2poin(thisdt.x, thisdt.y, tarX, tarY) <= 5) // gan toi, cach 5 o
+									if (LVCommon.common.distancefrom2poin(thisdt.X, thisdt.Y, tarX, tarY) <= 5) // gan toi, cach 5 o
 									{
 										if (runningstep.Count == 0)
 										{

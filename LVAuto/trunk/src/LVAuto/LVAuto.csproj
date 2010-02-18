@@ -75,12 +75,12 @@
     <Compile Include="Command\BuildObj\General.cs" />
     <Compile Include="Command\BuildObj\UpdateBuildingInfo.cs" />
     <Compile Include="Command\City.cs" />
-    <Compile Include="Command\CityObj\Building.cs" />
-    <Compile Include="Command\CityObj\City.cs" />
-    <Compile Include="Command\CityObj\CityTask.cs" />
-    <Compile Include="Command\CityObj\CivilGeneral.cs" />
-    <Compile Include="Command\CityObj\General.cs" />
-    <Compile Include="Command\CityObj\MilitaryGeneral.cs" />
+    <Compile Include="LVObj\Building.cs" />
+    <Compile Include="LVObj\City.cs" />
+    <Compile Include="LVObj\CityTask.cs" />
+    <Compile Include="LVObj\CivilGeneral.cs" />
+    <Compile Include="LVObj\General.cs" />
+    <Compile Include="LVObj\MilitaryGeneral.cs" />
     <Compile Include="Command\Common.cs" />
     <Compile Include="Command\CommonObj\BanTaiNguyenObj.cs" />
     <Compile Include="Command\CommonObj\BinhManObj.cs" />
@@ -394,6 +394,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Command\CityObj\" />
     <Folder Include="Web\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

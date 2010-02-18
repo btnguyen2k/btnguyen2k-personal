@@ -104,7 +104,7 @@ namespace LVAuto.LVForm.LVThread
                 ArrayList gencallmanlisttmp = new ArrayList();
                 Command.CommonObj.CallManObj callmanobj;
 
-                LVAuto.LVForm.Command.CityObj.MilitaryGeneral generalMilitaryInfoEx;
+                LVAuto.LVObj.MilitaryGeneral generalMilitaryInfoEx;
 
 
                 base.Message.ForeColor = Color.Red;
@@ -119,7 +119,7 @@ namespace LVAuto.LVForm.LVThread
                     sotuongminhdanh1tuongdich = callmanobj.SoTuongMinhDanh1TuongDich;
                     SetText("Kiểm tra tình trạng tướng " + callmanobj.Name + "...");
                     // đang bận đi thì thôi
-                    if (LVAuto.LVForm.Command.CityObj.General.IsMilitaryGeneralBusy(callmanobj, sotuongminhdanh1tuongdich))
+                    if (LVAuto.LVObj.General.IsMilitaryGeneralBusy(callmanobj, sotuongminhdanh1tuongdich))
                     {
                         SetText("Tướng " + callmanobj.Name + " đang bận...");
                         continue;
@@ -281,7 +281,7 @@ namespace LVAuto.LVForm.LVThread
 
 
 
-                LVAuto.LVForm.Command.CityObj.MilitaryGeneral generalMilitaryInfoEx  = Command.Common.GetGeneralMilitaryInfoINCityNTrai(gen.CityId, gen.Id);
+                LVAuto.LVObj.MilitaryGeneral generalMilitaryInfoEx  = Command.Common.GetGeneralMilitaryInfoINCityNTrai(gen.CityId, gen.Id);
 
 
                 if (generalMilitaryInfoEx == null)
@@ -452,7 +452,7 @@ namespace LVAuto.LVForm.LVThread
                 
 
                 // đang bận đi thì thôi
-                LVAuto.LVForm.Command.CityObj.General.IsMilitaryGeneralBusy(callmanobj, callmanobj.SoTuongMinhDanh1TuongDich) ;
+                LVAuto.LVObj.General.IsMilitaryGeneralBusy(callmanobj, callmanobj.SoTuongMinhDanh1TuongDich) ;
 
                   
                     //int num13 = int.Parse(((ArrayList)hashtable["dest"])[0].ToString());
@@ -509,7 +509,7 @@ namespace LVAuto.LVForm.LVThread
 			try
 			{
 				LVAuto.LVForm.Command.CommonObj.CallManObj callmanobj;
-				LVAuto.LVForm.Command.CityObj.MilitaryGeneral generalMilitaryInfoEx;
+				LVAuto.LVObj.MilitaryGeneral generalMilitaryInfoEx;
 				bool genisok = true;
 
 				int callX = 0;

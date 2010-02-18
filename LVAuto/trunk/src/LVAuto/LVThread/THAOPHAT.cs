@@ -146,7 +146,7 @@ namespace LVAuto.LVForm.LVThread
 		
 		private void mainprocess()
 		{
-			LVAuto.LVForm.Command.CityObj.MilitaryGeneral geninfo;
+			LVAuto.LVObj.MilitaryGeneral geninfo;
 			//bool skok = true;
 			//bool luongquanok = false;
 			string cookies;
@@ -187,7 +187,7 @@ namespace LVAuto.LVForm.LVThread
 
 				LVCommon.GeneralThaoPhat GeneralThaoPhat=null;
 				bool canrun = true;
-				LVAuto.LVForm.Command.CityObj.MilitaryGeneral gArray = null;
+				LVAuto.LVObj.MilitaryGeneral gArray = null;
 
 				for (int idx = 0; idx < this.TuongDiThaoPhat.Count; idx++)
 				{

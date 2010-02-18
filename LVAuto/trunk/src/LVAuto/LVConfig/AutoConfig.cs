@@ -12,6 +12,7 @@ namespace LVAuto.LVConfig
         public const int RESOURCE_TYPE_IRON = 4;
 
         public static SellResourcesConfig CONFIG_SELL_RESOURCES = new SellResourcesConfig();
+        public static LVAuto.LVObj.City[] CONFIG_ALL_CITIES;
 
         public class SellResourcesConfig
         {

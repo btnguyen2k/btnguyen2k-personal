@@ -23,6 +23,8 @@ namespace LVAuto.LVForm
             const string COL_SELL_STONE = "SELL_STONE";
             const string COL_SELL_IRON  = "SELL_IRON";
 
+            WriteLog("Reloading cities for selling resources...");
+
             DataSet tempDs = new DataSet("temp");
             DataTable tempTbl = new DataTable("temp");
 
@@ -33,13 +35,13 @@ namespace LVAuto.LVForm
             tempTbl.Columns.Add(new DataColumn(COL_SELL_STONE, typeof(bool)));
             tempTbl.Columns.Add(new DataColumn(COL_SELL_IRON, typeof(bool)));
 
-            foreach (Command.CityObj.City city in Command.CityObj.City.AllCity)
+            foreach (LVObj.City city in LVObj.City.AllCity)
             {
-                if (city.id > 0)
+                if (city.Id > 0)
                 {
                     DataRow tempDr = tempTbl.NewRow();
-                    tempDr[COL_CITY_ID] = city.id;
-                    tempDr[COL_CITY_NAME] = city.name;
+                    tempDr[COL_CITY_ID] = city.Id;
+                    tempDr[COL_CITY_NAME] = city.Name;
                     tempDr[COL_SELL_FOOD] = false;
                     tempDr[COL_SELL_WOODS] = false;
                     tempDr[COL_SELL_STONE] = false;
@@ -49,7 +51,7 @@ namespace LVAuto.LVForm
                     {
                         foreach (LVConfig.AutoConfig.SellResourcesConfig.SellCityConfig cityConfig in LVConfig.AutoConfig.CONFIG_SELL_RESOURCES.CityConfig)
                         {
-                            if (city.id == cityConfig.CityId)
+                            if (city.Id == cityConfig.CityId)
                             {
                                 tempDr[COL_SELL_FOOD] = cityConfig.SellFood;
                                 tempDr[COL_SELL_WOODS] = cityConfig.SellWoods;
@@ -88,6 +90,8 @@ namespace LVAuto.LVForm
             SellRes_gridCityList.Columns[5].HeaderText = "Sắt";
             SellRes_gridCityList.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             SellRes_gridCityList.Columns[5].ReadOnly = false;
+
+            WriteLog("Reloading cities for selling resources...DONE.");
 
             /*
             LVAuto.LVForm.FrmMain.LVFRMMAIN.SellRes_txtTimer.Text = LVAuto.LVForm.FrmMain.BanTaiNguyen.timetoruninminute.ToString();

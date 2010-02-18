@@ -97,7 +97,7 @@ namespace LVAuto.LVForm.LVThread {
 			//lock (LVAuto.Web.LVWeb.islock)
 			{
 				Hashtable result;
-				LVAuto.LVForm.Command.CityObj.CityTask citytask;
+				LVAuto.LVObj.CityTask citytask;
 				string cookies;
 				int ret;
 				try
@@ -107,17 +107,17 @@ namespace LVAuto.LVForm.LVThread {
 
 					for (int techindex = 0; techindex < techcount; techindex++)			// duyeetj het cac hang muc can nang cap
 					{
-						for (int cityindex = 0; cityindex < Command.CityObj.City.AllCity.Length; cityindex++)		// duyet het cac thanh
+						for (int cityindex = 0; cityindex < LVObj.City.AllCity.Length; cityindex++)		// duyet het cac thanh
 						{
-							if (Command.CityObj.City.AllCity[cityindex].id < 0) continue;	// trại bỏ qua
+							if (LVObj.City.AllCity[cityindex].Id < 0) continue;	// trại bỏ qua
 
-							cityid = Command.CityObj.City.AllCity[cityindex].id;
+							cityid = LVObj.City.AllCity[cityindex].Id;
 							citytask = LVAuto.LVForm.Command.City.GetCityTaskByCityID(cityid);
 
 							if (!citytask.Canupgrade)				// citytask.Canupgrade= false: ddang co nghien cuu, khong lam nua
 								return;
 
-							//if(LVAuto.Command.CityObj.City.Canupgrade(Id[0]))
+							//if(LVAuto.LVObj.City.Canupgrade(Id[0]))
 							//if (citytask.Canupgrade)				// citytask.Canupgrade= false: ddang co nghien cuu, khong lam nua
 							//{
 								if (nexttech < techcount)
@@ -151,7 +151,7 @@ namespace LVAuto.LVForm.LVThread {
 									}  //end if (Command.Build.SelectBuilding(cityid, 6, cookies))
 								}	//if (nexttech < techcount)
 							//}  // if (citytask.Canupgrade)
-						} //end for (int cityindex=0; cityindex < Command.CityObj.City.AllCity.Length; cityindex++)
+						} //end for (int cityindex=0; cityindex < LVObj.City.AllCity.Length; cityindex++)
 
 						nexttech++;
 						if (nexttech >= techcount) nexttech = 0;

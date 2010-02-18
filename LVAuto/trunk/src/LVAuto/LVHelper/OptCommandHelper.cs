@@ -94,11 +94,11 @@ namespace LVAuto.LVHelper
         /// <param name="cityId"></param>
         /// <param name="building"></param>
         /// <returns></returns>
-        public static Hashtable ConstructBuilding(int cityId, LVAuto.LVForm.Command.CityObj.Building building)
+        public static Hashtable ConstructBuilding(int cityId, LVAuto.LVObj.Building building)
         {
             string parameters = "";
-            parameters += "gid=" + building.gid;
-            parameters += "&pid=" + building.pid;
+            parameters += "gid=" + building.GId;
+            parameters += "&pid=" + building.PId;
             parameters += "&tid=" + cityId;
             parameters += "&type=1";
             string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityId);

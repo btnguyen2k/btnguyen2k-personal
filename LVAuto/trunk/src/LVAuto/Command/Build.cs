@@ -85,10 +85,10 @@ namespace LVAuto.LVForm.Command {
 
         public static Hashtable GetUpgrade(int citypos) {
             Hashtable upgrade = new Hashtable();
-            Command.City.SwitchCitySlow(Command.CityObj.City.AllCity[citypos].id);
-            for (int i = 0; i < Command.CityObj.City.AllCity[citypos].AllBuilding.Length; i++) {
-                if (Command.CityObj.City.AllCity[citypos].AllBuilding[i].name == "Đại học điện") {
-                    upgrade = ExecuteExp(2, Command.CityObj.City.AllCity[citypos].AllBuilding[i].gid, Command.CityObj.City.AllCity[citypos].AllBuilding[i].pid, 1, 0);
+            Command.City.SwitchCitySlow(LVObj.City.AllCity[citypos].Id);
+            for (int i = 0; i < LVObj.City.AllCity[citypos].AllBuildings.Length; i++) {
+                if (LVObj.City.AllCity[citypos].AllBuildings[i].Name == "Đại học điện") {
+                    upgrade = ExecuteExp(2, LVObj.City.AllCity[citypos].AllBuildings[i].GId, LVObj.City.AllCity[citypos].AllBuildings[i].PId, 1, 0);
                     break;
                 }
             }
@@ -116,9 +116,9 @@ namespace LVAuto.LVForm.Command {
 			int citypostocheck = -1;
 			int maxbuild = 1;
 
-			for (int i = 0; i < Command.CityObj.City.AllCity.Length; i++)
+			for (int i = 0; i < LVObj.City.AllCity.Length; i++)
 			{
-				if (Command.CityObj.City.AllCity[i].id >0 )
+				if (LVObj.City.AllCity[i].Id >0 )
 				{
 					citypostocheck = i;
 					break;
@@ -126,13 +126,13 @@ namespace LVAuto.LVForm.Command {
 			}
 			if (citypostocheck != -1)
 			{
-				Command.CityObj.City city = Command.CityObj.City.AllCity[citypostocheck];
-				LVAuto.LVForm.Command.City.SwitchCitySlow(city.id);
-				string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(city.id);
+				LVObj.City city = LVObj.City.AllCity[citypostocheck];
+				LVAuto.LVForm.Command.City.SwitchCitySlow(city.Id);
+				string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(city.Id);
 				//checkret = Command.Build.ExecuteExp(2, 1, 8, 2, 0);
 
 
-				Hashtable r = Command.Build.SelectBuildingInfo(city.id, 1, 8, 2, cookies);
+				Hashtable r = Command.Build.SelectBuildingInfo(city.Id, 1, 8, 2, cookies);
 				if (r != null & r["plus_left"].ToString().Trim() != "0")
 					maxbuild = 3;
 				else
@@ -146,27 +146,27 @@ namespace LVAuto.LVForm.Command {
 		
         public static bool SelectBuilding(int cityid, int name, string cookies) 
 		{
-			LVAuto.LVForm.Command.CityObj.City cty; 
+			LVAuto.LVObj.City cty; 
 
-            //foreach (LVAuto.Command.CityObj.City cty in LVAuto.Command.CityObj.City.AllCity) 
-			for (int c=0; c < LVAuto.LVForm.Command.CityObj.City.AllCity.Length; c++) 
+            //foreach (LVAuto.LVObj.City cty in LVAuto.LVObj.City.AllCity) 
+			for (int c=0; c < LVAuto.LVObj.City.AllCity.Length; c++) 
 			{
-				cty = LVAuto.LVForm.Command.CityObj.City.AllCity[c];
+				cty = LVAuto.LVObj.City.AllCity[c];
 
-                if (cty.id == cityid) 
+                if (cty.Id == cityid) 
 				{
-					LVAuto.LVForm.Command.City.GetAllBuilding(c, false, LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cty.id));
+					LVAuto.LVForm.Command.City.GetAllBuilding(c, false, LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cty.Id));
 
 
-                    foreach (LVAuto.LVForm.Command.CityObj.Building b in cty.AllBuilding) 
+                    foreach (LVAuto.LVObj.Building b in cty.AllBuildings) 
 					{
-                        if (b.gid == name) 
+                        if (b.GId == name) 
 						{
                             int tab = 0;
-                            if (SelectBuilding(cityid,b.gid, b.pid, 0, cookies)) return true;
+                            if (SelectBuilding(cityid,b.GId, b.PId, 0, cookies)) return true;
                             for (int i = -2; i < 3; i++) 
 							{
-                                if (SelectBuilding(cityid,b.gid, b.pid, i, cookies)) 
+                                if (SelectBuilding(cityid,b.GId, b.PId, i, cookies)) 
 								{
                                     return true;
                                 };
@@ -216,13 +216,13 @@ namespace LVAuto.LVForm.Command {
 			try
 			{
 				Hashtable result;
-				int cityID = Command.CityObj.City.AllCity[citypost].id;
+				int cityID = LVObj.City.AllCity[citypost].Id;
 
 				LVAuto.LVForm.Command.City.SwitchCitySlow(cityID);
 				string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityID);
 				// lay pid cua chợ
 				int buldingpos = Command.City.GetBuildingPostById(citypost, 11);
-				int pid = Command.CityObj.City.AllCity[citypost].AllBuilding[buldingpos].pid;
+				int pid = LVObj.City.AllCity[citypost].AllBuildings[buldingpos].PId;
 
 				bool ret = Command.Build.SelectBuilding(cityID, 11, cookies);
 
@@ -261,7 +261,7 @@ namespace LVAuto.LVForm.Command {
 					gid = 7;
 
 				int citypos = Command.City.GetCityPostByGID(gid, false);
-				int cityid = Command.CityObj.City.AllCity[citypos].id;
+				int cityid = LVObj.City.AllCity[citypos].Id;
 				Command.City.SwitchCitySlow(cityid);
 				string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityid);
 

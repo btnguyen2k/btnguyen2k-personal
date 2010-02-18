@@ -93,16 +93,16 @@ namespace LVAuto.LVThread
         /// </summary>
         /// <param name="city"></param>
         /// <returns></returns>
-        private LVAuto.LVForm.Command.CityObj.Building FindMarketBuilding(LVAuto.LVForm.Command.CityObj.City city)
+        private LVAuto.LVObj.Building FindMarketBuilding(LVAuto.LVObj.City city)
         {
             LVHelper.CityCommandHelper.GetAndPopulateBuildings(city, false);
-            if (city.AllBuilding == null)
+            if (city.AllBuildings == null)
             {
                 return null;
             }
-            foreach (LVAuto.LVForm.Command.CityObj.Building building in city.AllBuilding)
+            foreach (LVAuto.LVObj.Building building in city.AllBuildings)
             {
-                if (building.gid == 11 /* market in normal castle */ || building.gid == 64 /* market in castle level 4 */)
+                if (building.GId == 11 /* market in normal castle */ || building.GId == 64 /* market in castle level 4 */)
                 {
                     return building;
                 }
@@ -155,8 +155,8 @@ namespace LVAuto.LVThread
                 numRunCities++;
                 SetText("Đang bán ở thành " + cityConfig.CityName + " (" + numRunCities + "/" + totalCities + ")");
                 int cityId = cityConfig.CityId;
-                LVAuto.LVForm.Command.CityObj.City city = LVHelper.CityCommandHelper.GetCityById(cityId);
-                LVAuto.LVForm.Command.CityObj.Building marketBuilding = FindMarketBuilding(city);
+                LVAuto.LVObj.City city = LVHelper.CityCommandHelper.GetCityById(cityId);
+                LVAuto.LVObj.Building marketBuilding = FindMarketBuilding(city);
                 if (marketBuilding == null)
                 {
                     //there is no market building!

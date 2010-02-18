@@ -55,15 +55,15 @@ namespace LVAuto.LVThread {
             constructionConfig.Clear();
             this.SleepTime = sleepTime;
 			
-	        foreach (LVAuto.LVForm.Command.CityObj.City city in LVAuto.LVForm.Command.CityObj.City.AllCity)
+	        foreach (LVAuto.LVObj.City city in LVAuto.LVObj.City.AllCity)
             {
                 bool hasUp = false;
-                if (city.AllBuilding != null)
+                if (city.AllBuildings != null)
                 {
                     ArrayList arrBuildings = new ArrayList();
-                    foreach (LVAuto.LVForm.Command.CityObj.Building building in city.AllBuilding)
+                    foreach (LVAuto.LVObj.Building building in city.AllBuildings)
                     {
-                        if (building.isUp)
+                        if (building.IsUp)
                         {
                             arrBuildings.Add(building);
                             hasUp = true;
@@ -71,7 +71,7 @@ namespace LVAuto.LVThread {
                     }
                     if (hasUp)
                     {
-                        constructionConfig.Add(city.id, arrBuildings.ToArray());
+                        constructionConfig.Add(city.Id, arrBuildings.ToArray());
                     }
                 }							
             }						
@@ -82,15 +82,15 @@ namespace LVAuto.LVThread {
         /// </summary>
         private void CheckBuildAll()
         {
-            if (LVAuto.LVForm.Command.CityObj.City.isBuildAll)
+            if (LVAuto.LVObj.City.IsBuildAll)
             {
                 this.constructionConfig.Clear();
-                foreach (LVAuto.LVForm.Command.CityObj.City city in LVAuto.LVForm.Command.CityObj.City.AllCity)
+                foreach (LVAuto.LVObj.City city in LVAuto.LVObj.City.AllCity)
                 {
                     LVHelper.CityCommandHelper.GetAndPopulateBuildings(city, false);
-                    if (city.AllBuilding != null)
+                    if (city.AllBuildings != null)
                     {
-                        this.constructionConfig.Add(city.id, city.AllBuilding);
+                        this.constructionConfig.Add(city.Id, city.AllBuildings);
                     }
                 }
             }
@@ -115,19 +115,19 @@ namespace LVAuto.LVThread {
             int countRunCities = 0;
             foreach (int cityId in constructionConfig.Keys)
             {
-                LVAuto.LVForm.Command.CityObj.City city = LVHelper.CityCommandHelper.GetCityById(cityId);
+                LVAuto.LVObj.City city = LVHelper.CityCommandHelper.GetCityById(cityId);
                 LVHelper.CityCommandHelper.GetAndPopulateBuildings(city, true);
                 //LVAuto.LVForm.Command.City.UpdateAllBuilding(cityPos);
                 countRunCities++;
-                SetText("Đang chạy: " + city.name + " (đã hoàn thành " + countRunCities + "/" + numCitiesToRun + " thành)");
+                SetText("Đang chạy: " + city.Name + " (đã hoàn thành " + countRunCities + "/" + numCitiesToRun + " thành)");
                 //LVAuto.LVForm.Command.City.SwitchCitySlow(cityId);
-                WriteLog("Constructing city ["+city.name+"]...");
+                WriteLog("Constructing city ["+city.Name+"]...");
 
-                Hashtable hcitytask = LVHelper.CityCommandHelper.GetCityTasks(city.id);
+                Hashtable hcitytask = LVHelper.CityCommandHelper.GetCityTasks(city.Id);
                 if (hcitytask == null)
                 {
                     //error while getting city tasks
-                    WriteLog("Constructing city [" + city.name + "]: Error while getting city tasks!");
+                    WriteLog("Constructing city [" + city.Name + "]: Error while getting city tasks!");
                     continue;
                 }
                 ArrayList temp = (ArrayList)hcitytask["list"];
@@ -135,19 +135,19 @@ namespace LVAuto.LVThread {
                 temp = (ArrayList)temp[4];
                 int numBuildings = temp.Count; //number of buildings under constructing
                 int countBuildings = 0;
-                foreach (LVAuto.LVForm.Command.CityObj.Building building in city.AllBuilding)
+                foreach (LVAuto.LVObj.Building building in city.AllBuildings)
                 {
-                    WriteLog("Constructing city [" + city.name + ":" + building.name + "]...");
+                    WriteLog("Constructing city [" + city.Name + ":" + building.Name + "]...");
                     if (numBuildings + countBuildings >= maxbuild)
                     {
                         //reach max number of simultaneous buildings
-                        WriteLog("Constructing city [" + city.name + ":" + building.name + "]: number of simultaneous buildings (" + maxbuild + ") exceeds!");
+                        WriteLog("Constructing city [" + city.Name + ":" + building.Name + "]: number of simultaneous buildings (" + maxbuild + ") exceeds!");
                         break;
                     }
-                    if (building.level >= MAXLEVEL)
+                    if (building.Level >= MAXLEVEL)
                     {
                         //building has already been at max level
-                        WriteLog("Constructing city [" + city.name + ":" + building.name + "]: building has already been at max level!");
+                        WriteLog("Constructing city [" + city.Name + ":" + building.Name + "]: building has already been at max level!");
                         continue;
                     }
                     bool underConstructing = false;
@@ -155,7 +155,7 @@ namespace LVAuto.LVThread {
                     {
                         int pid = int.Parse(((ArrayList)temp[i])[0].ToString());
                         int gid = int.Parse(((ArrayList)temp[i])[1].ToString());
-                        if (building.gid == gid && building.pid == pid)
+                        if (building.GId == gid && building.PId == pid)
                         {
                             //this building is under constructing
                             //(building under constructing: gid= 3; pid = 18)
@@ -165,7 +165,7 @@ namespace LVAuto.LVThread {
                     }
                     if (underConstructing)
                     {
-                        WriteLog("Constructing city [" + city.name + ":" + building.name + "]: building is under construction/destruction!");
+                        WriteLog("Constructing city [" + city.Name + ":" + building.Name + "]: building is under construction/destruction!");
                         continue;
                     }
 
@@ -173,7 +173,7 @@ namespace LVAuto.LVThread {
                 RETRY:
                     if (numRetries > 5)
                     {
-                        WriteLog("Constructing city [" + city.name + ":" + building.name + "]: max retries reaches, abort!");
+                        WriteLog("Constructing city [" + city.Name + ":" + building.Name + "]: max retries reaches, abort!");
                         continue;
                     }
                     Hashtable result = null;
@@ -196,26 +196,26 @@ namespace LVAuto.LVThread {
                     if (result == null)
                     {
                         //failed
-                        WriteLog("Constructing city [" + city.name + ":" + building.name + "]: failed (null returned from server)!");
+                        WriteLog("Constructing city [" + city.Name + ":" + building.Name + "]: failed (null returned from server)!");
                         continue;
                     }
                     int resultStatus = int.Parse(result["ret"].ToString());
                     if (resultStatus == 0)
                     {
                         countBuildings++; //increase number of processed buildings
-                        WriteLog("Constructing city [" + city.name + ":" + building.name + "]: successful!");
+                        WriteLog("Constructing city [" + city.Name + ":" + building.Name + "]: successful!");
                         continue;
                     }
                     if (resultStatus == 110)
                     {
                         //image captcha!
-                        WriteLog("Constructing city [" + city.name + ":" + building.name + "]: CAPTCHA!");
+                        WriteLog("Constructing city [" + city.Name + ":" + building.Name + "]: CAPTCHA!");
                         return resultStatus;
                     }
                     if (resultStatus > 1000000)
                     {
                         //activity is locked by the system
-                        WriteLog("Constructing city [" + city.name + ":" + building.name + "]: account being locked!");
+                        WriteLog("Constructing city [" + city.Name + ":" + building.Name + "]: account being locked!");
                         return resultStatus;
                     }
                     if (resultStatus == 32)
@@ -224,12 +224,12 @@ namespace LVAuto.LVThread {
                         if (cityId < 0)
                         {
                             //is barrack
-                            WriteLog("Constructing city [" + city.name + ":" + building.name + "]: not enough resource, is barrack, abort!");
+                            WriteLog("Constructing city [" + city.Name + ":" + building.Name + "]: not enough resource, is barrack, abort!");
                         }
-                        else if (LVAuto.LVForm.Command.CityObj.City.isBuyRes)
+                        else if (LVAuto.LVObj.City.IsBuyRes)
                         {
-                            WriteLog("Constructing city [" + city.name + ":" + building.name + "]: not enough resource, buying more...");
-                            if (BuyMoreResources(cityId, building, LVAuto.LVForm.Command.CityObj.City.goldSafe))
+                            WriteLog("Constructing city [" + city.Name + ":" + building.Name + "]: not enough resource, buying more...");
+                            if (BuyMoreResources(cityId, building, LVAuto.LVObj.City.GoldSafe))
                             {
                                 numRetries++;
                                 goto RETRY;
@@ -248,12 +248,12 @@ namespace LVAuto.LVThread {
         /// <param name="building"></param>
         /// <param name="safegold"></param>
         /// <returns></returns>
-        private bool BuyMoreResources(int cityId, LVAuto.LVForm.Command.CityObj.Building building, long safegold)
+        private bool BuyMoreResources(int cityId, LVAuto.LVObj.Building building, long safegold)
 		{
             Hashtable ResNeed = LVHelper.BuildingCommandHelper.GetResourcesForUpgrade(cityId, building);
             if (ResNeed == null)
             {
-                WriteLog("Auto buy more resources for [" + cityId + ":" + building.name + "]: upgrade condition not meet!");
+                WriteLog("Auto buy more resources for [" + cityId + ":" + building.Name + "]: upgrade condition not meet!");
                 return false;
             }
             Hashtable ResHave = LVHelper.CityCommandHelper.GetCurentResourceInCity(cityId);
@@ -266,7 +266,7 @@ namespace LVAuto.LVThread {
             if (gold <= 0)
             {
                 //not enough gold
-                WriteLog("Auto buy more resources for [" + cityId + ":" + building.name + "]: not enough gold (lacking " + Math.Abs(gold) + ")!");
+                WriteLog("Auto buy more resources for [" + cityId + ":" + building.Name + "]: not enough gold (lacking " + Math.Abs(gold) + ")!");
                 return false;
             }
             //buy food
@@ -275,20 +275,20 @@ namespace LVAuto.LVThread {
             if (needValue > maxStorage)
             {
                 //exceed max storage
-                WriteLog("Auto buy more FOOD for [" + cityId + ":" + building.name + "]: max storage exceed (" + needValue + "/" + maxStorage + ")!");
+                WriteLog("Auto buy more FOOD for [" + cityId + ":" + building.Name + "]: max storage exceed (" + needValue + "/" + maxStorage + ")!");
                 return false;
             }
             if (needValue > haveValue)
             {
                 int needbuy = needValue - haveValue;
-                WriteLog("Auto buy more FOOD for [" + cityId + ":" + building.name + "]: buying (" + needbuy + ")!");
+                WriteLog("Auto buy more FOOD for [" + cityId + ":" + building.Name + "]: buying (" + needbuy + ")!");
                 LVHelper.OptCommandHelper.BuyResource(cityId, LVAuto.LVCommon.Constants.RESOURCE_TYPE_FOOD, needbuy, ref gold);
             }
 
             if (gold <= 0)
             {
                 //not enough gold
-                WriteLog("Auto buy more resources for [" + cityId + ":" + building.name + "]: not enough gold (lacking " + Math.Abs(gold) + ")!");
+                WriteLog("Auto buy more resources for [" + cityId + ":" + building.Name + "]: not enough gold (lacking " + Math.Abs(gold) + ")!");
                 return false;
             }
             //buy woods
@@ -297,20 +297,20 @@ namespace LVAuto.LVThread {
             if (needValue > maxStorage)
             {
                 //exceed max storage
-                WriteLog("Auto buy more WOODS for [" + cityId + ":" + building.name + "]: max storage exceed (" + needValue + "/" + maxStorage + ")!");
+                WriteLog("Auto buy more WOODS for [" + cityId + ":" + building.Name + "]: max storage exceed (" + needValue + "/" + maxStorage + ")!");
                 return false;
             }
             if (needValue > haveValue)
             {
                 int needbuy = needValue - haveValue;
-                WriteLog("Auto buy more WOODS for [" + cityId + ":" + building.name + "]: buying (" + needbuy + ")!");
+                WriteLog("Auto buy more WOODS for [" + cityId + ":" + building.Name + "]: buying (" + needbuy + ")!");
                 LVHelper.OptCommandHelper.BuyResource(cityId, LVAuto.LVCommon.Constants.RESOURCE_TYPE_WOODS, needbuy, ref gold);
             }
 
             if (gold <= 0)
             {
                 //not enough gold
-                WriteLog("Auto buy more resources for [" + cityId + ":" + building.name + "]: not enough gold (lacking " + Math.Abs(gold) + ")!");
+                WriteLog("Auto buy more resources for [" + cityId + ":" + building.Name + "]: not enough gold (lacking " + Math.Abs(gold) + ")!");
                 return false;
             }
             //buy stone
@@ -319,20 +319,20 @@ namespace LVAuto.LVThread {
             if (needValue > maxStorage)
             {
                 //exceed max storage
-                WriteLog("Auto buy more STONE for [" + cityId + ":" + building.name + "]: max storage exceed (" + needValue + "/" + maxStorage + ")!");
+                WriteLog("Auto buy more STONE for [" + cityId + ":" + building.Name + "]: max storage exceed (" + needValue + "/" + maxStorage + ")!");
                 return false;
             }
             if (needValue > haveValue)
             {
                 int needbuy = needValue - haveValue;
-                WriteLog("Auto buy more STONE for [" + cityId + ":" + building.name + "]: buying (" + needbuy + ")!");
+                WriteLog("Auto buy more STONE for [" + cityId + ":" + building.Name + "]: buying (" + needbuy + ")!");
                 LVHelper.OptCommandHelper.BuyResource(cityId, LVAuto.LVCommon.Constants.RESOURCE_TYPE_STONE, needbuy, ref gold);
             }
 
             if (gold <= 0)
             {
                 //not enough gold
-                WriteLog("Auto buy more resources for [" + cityId + ":" + building.name + "]: not enough gold (lacking " + Math.Abs(gold) + ")!");
+                WriteLog("Auto buy more resources for [" + cityId + ":" + building.Name + "]: not enough gold (lacking " + Math.Abs(gold) + ")!");
                 return false;
             }
             //buy iron
@@ -341,13 +341,13 @@ namespace LVAuto.LVThread {
             if (needValue > maxStorage)
             {
                 //exceed max storage
-                WriteLog("Auto buy more IRON for [" + cityId + ":" + building.name + "]: max storage exceed (" + needValue + "/" + maxStorage + ")!");
+                WriteLog("Auto buy more IRON for [" + cityId + ":" + building.Name + "]: max storage exceed (" + needValue + "/" + maxStorage + ")!");
                 return false;
             }
             if (needValue > haveValue)
             {
                 int needbuy = needValue - haveValue;
-                WriteLog("Auto buy more STONE for [" + cityId + ":" + building.name + "]: buying (" + needbuy + ")!");
+                WriteLog("Auto buy more STONE for [" + cityId + ":" + building.Name + "]: buying (" + needbuy + ")!");
                 LVHelper.OptCommandHelper.BuyResource(cityId, LVAuto.LVCommon.Constants.RESOURCE_TYPE_IRON, needbuy, ref gold);
             }
 
@@ -361,7 +361,7 @@ namespace LVAuto.LVThread {
 		{
 			while (true)
 			{
-				if (!LVAuto.LVForm.Command.CityObj.City.isBuildAll && ( constructionConfig == null || constructionConfig.Count == 0))
+				if (!LVAuto.LVObj.City.IsBuildAll && ( constructionConfig == null || constructionConfig.Count == 0))
 				{
 					SetText("Chẳng có gì để chạy cả");
 					break;

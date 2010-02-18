@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LVAuto.LVForm.Command.CityObj
+namespace LVAuto.LVObj
 {
 
 	public class CivilGeneral :General
