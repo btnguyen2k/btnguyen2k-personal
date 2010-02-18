@@ -347,7 +347,7 @@ namespace LVAuto.LVForm.Command {
 
 		}
 
-		public static Hashtable ChangeGeneralMilitaryAttribute(LVAuto.LVForm.Command.CityObj.MilitaryGeneral general, int arrayid)
+		public static Hashtable ChangeGeneralMilitaryAttribute(LVAuto.LVObj.MilitaryGeneral general, int arrayid)
 		{
 			return ChangeGeneralMilitaryAttribute(general.Id, arrayid, general.Military.RatioAttack, general.Military.RatioPK,
 										general.Military.RatioStratagem, general.Military.WithdrawLoss, general.Military.WithdrawMorale);
@@ -442,7 +442,7 @@ namespace LVAuto.LVForm.Command {
 					int my_attack_troops = 0;
 					int my_defend_troops = 0;
 					j = 0;
-					LVAuto.LVForm.Command.CityObj.MilitaryGeneral gTemp;
+					LVAuto.LVObj.MilitaryGeneral gTemp;
 					for (i = 0; i < result.allattacktroops.Length; i++)
 					{
 
@@ -804,7 +804,7 @@ namespace LVAuto.LVForm.Command {
 
             //generalMilitaryInfoEx = Command.Common.GetGeneralMilitaryInfoEx(cityID, obj2.GeneralId);
 
-			//LVAuto.Command.CityObj.General geninfo = Command.Common.GetGeneralMilitaryInfoEx(cityid, gid);
+			//LVAuto.LVObj.General geninfo = Command.Common.GetGeneralMilitaryInfoEx(cityid, gid);
 			//if (geninfo == null) return;
 			//sk = geninfo.Military.SyKhi;
 			
@@ -875,12 +875,12 @@ namespace LVAuto.LVForm.Command {
 
 				}
 				
-				LVAuto.LVForm.Command.CityObj.General[] militaryGeneral;
+				LVAuto.LVObj.General[] militaryGeneral;
 				if (result != null)
-					for (int i = 0; i < Command.CityObj.City.AllCity.Length; i++)
+					for (int i = 0; i < LVObj.City.AllCity.Length; i++)
 					{
 						militaryGeneral =
-							(LVAuto.LVForm.Command.CityObj.General[])result[Command.CityObj.City.AllCity[i].id];
+							(LVAuto.LVObj.General[])result[LVObj.City.AllCity[i].Id];
 
 						if (militaryGeneral == null) continue;
 						for (int j = 0; j < militaryGeneral.Length; j++)

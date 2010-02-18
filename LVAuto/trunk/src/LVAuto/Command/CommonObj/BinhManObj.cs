@@ -4,11 +4,11 @@ using System.Text;
 
 namespace LVAuto.LVForm.Command.CommonObj
 {
-    using LVAuto.LVForm.Command.CityObj;
+    using LVAuto.LVObj;
     using LVAuto.LVForm.LVCommon;
     using System;
 
-	public class BinhManObj :  Command.CityObj.MilitaryGeneral
+	public class BinhManObj :  LVObj.MilitaryGeneral
     {
         public int ManID=0;
         public string ManName="";

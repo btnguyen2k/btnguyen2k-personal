@@ -145,7 +145,7 @@ namespace LVAuto.LVForm
                     XmlElement node = doc.CreateElement(NODE_WEAPONS_WEAPON);
                     myNode.AppendChild(node);
                     node.SetAttribute(ATTR_CITY_ID, weapon.cityid.ToString());
-                    node.SetAttribute(ATTR_CITY_NAME, (LVAuto.LVForm.Command.City.GetCityByID(weapon.cityid)).name);
+                    node.SetAttribute(ATTR_CITY_NAME, (LVAuto.LVForm.Command.City.GetCityByID(weapon.cityid)).Name);
                     node.SetAttribute(ATTR_WEAPON_ID, weapon.cboWepon.SelectedIndex.ToString());
                     node.SetAttribute(ATTR_ARMOUR_ID, weapon.cboAmor.SelectedIndex.ToString());
                     node.SetAttribute(ATTR_HORSE_ID, weapon.cboHorse.SelectedIndex.ToString());
@@ -173,29 +173,29 @@ namespace LVAuto.LVForm
             myNode.SetAttribute(ATTR_AUTO_RESOURCE, LVAuto.LVForm.FrmMain.LVFRMMAIN.chkXayNha_TuMuaTaiNguyen.Checked.ToString());
             myNode.SetAttribute(ATTR_GOLD_THRESHOLD, LVAuto.LVForm.FrmMain.LVFRMMAIN.txtXayNha_VangAnToan.Text);
 
-            if ( LVAuto.LVForm.Command.CityObj.City.AllCity == null )
+            if ( LVAuto.LVObj.City.AllCity == null )
             {
                 return;
             }
 
-            foreach (LVAuto.LVForm.Command.CityObj.City city in LVAuto.LVForm.Command.CityObj.City.AllCity)
+            foreach (LVAuto.LVObj.City city in LVAuto.LVObj.City.AllCity)
             {
-                if (city.AllBuilding == null)
+                if (city.AllBuildings == null)
                 {
                     continue;
                 }
 
-                foreach (LVAuto.LVForm.Command.CityObj.Building building in city.AllBuilding)
+                foreach (LVAuto.LVObj.Building building in city.AllBuildings)
                 {
-                    if (building.isUp)
+                    if (building.IsUp)
                     {
                         XmlElement nodeBuilding = doc.CreateElement(NODE_CONSTRUCTIONS_BUILDING);
                         myNode.AppendChild(nodeBuilding);
-                        nodeBuilding.SetAttribute(ATTR_CITY_ID, city.id.ToString());
-                        nodeBuilding.SetAttribute(ATTR_CITY_NAME, city.name);
-                        nodeBuilding.SetAttribute(ATTR_BUILDING_NAME, building.name);
-                        nodeBuilding.SetAttribute(ATTR_BUILDING_GID, building.gid.ToString());
-                        nodeBuilding.SetAttribute(ATTR_BUILDING_PID, building.pid.ToString());
+                        nodeBuilding.SetAttribute(ATTR_CITY_ID, city.Id.ToString());
+                        nodeBuilding.SetAttribute(ATTR_CITY_NAME, city.Name);
+                        nodeBuilding.SetAttribute(ATTR_BUILDING_NAME, building.Name);
+                        nodeBuilding.SetAttribute(ATTR_BUILDING_GID, building.GId.ToString());
+                        nodeBuilding.SetAttribute(ATTR_BUILDING_PID, building.PId.ToString());
                     }
                 }
             }
@@ -212,29 +212,29 @@ namespace LVAuto.LVForm
             root.AppendChild(myNode);
             myNode.SetAttribute(ATTR_TIME, LVAuto.LVForm.FrmMain.LVFRMMAIN.txtDELCHECK.Text);
 
-            if (LVAuto.LVForm.Command.CityObj.City.AllCity == null)
+            if (LVAuto.LVObj.City.AllCity == null)
             {
                 return;
             }
 
-            foreach (LVAuto.LVForm.Command.CityObj.City city in LVAuto.LVForm.Command.CityObj.City.AllCity)
+            foreach (LVAuto.LVObj.City city in LVAuto.LVObj.City.AllCity)
             {
-                if (city.AllBuilding == null)
+                if (city.AllBuildings == null)
                 {
                     continue;
                 }
 
-                foreach (LVAuto.LVForm.Command.CityObj.Building building in city.AllBuilding)
+                foreach (LVAuto.LVObj.Building building in city.AllBuildings)
                 {
-                    if (building.isDown)
+                    if (building.IsDown)
                     {
                         XmlElement nodeBuilding = doc.CreateElement(NODE_DESTRUCTIONS_BUILDING);
                         myNode.AppendChild(nodeBuilding);
-                        nodeBuilding.SetAttribute(ATTR_CITY_ID, city.id.ToString());
-                        nodeBuilding.SetAttribute(ATTR_CITY_NAME, city.name);
-                        nodeBuilding.SetAttribute(ATTR_BUILDING_NAME, building.name);
-                        nodeBuilding.SetAttribute(ATTR_BUILDING_GID, building.gid.ToString());
-                        nodeBuilding.SetAttribute(ATTR_BUILDING_PID, building.pid.ToString());
+                        nodeBuilding.SetAttribute(ATTR_CITY_ID, city.Id.ToString());
+                        nodeBuilding.SetAttribute(ATTR_CITY_NAME, city.Name);
+                        nodeBuilding.SetAttribute(ATTR_BUILDING_NAME, building.Name);
+                        nodeBuilding.SetAttribute(ATTR_BUILDING_GID, building.GId.ToString());
+                        nodeBuilding.SetAttribute(ATTR_BUILDING_PID, building.PId.ToString());
                     }
                 }
             }

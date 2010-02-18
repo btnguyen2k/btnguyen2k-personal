@@ -6,7 +6,7 @@ using LVAuto.LVForm.LVCommon;
 
 namespace LVAuto.LVForm.Command.CommonObj
 {
-	public class CallManObj : Command.CityObj.MilitaryGeneral
+	public class CallManObj : LVObj.MilitaryGeneral
 	{
 		public int GroupID;
 		/// <summary>

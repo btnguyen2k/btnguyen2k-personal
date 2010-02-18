@@ -82,7 +82,7 @@ namespace LVAuto.LVForm.LVThread
 					*/
 
 
-					SetText("Đang chạy " + Command.CityObj.City.AllCity[citypost].name + " (đã hoàn thành " + i + "/" + Data.Count + ".)");
+					SetText("Đang chạy " + LVObj.City.AllCity[citypost].Name + " (đã hoàn thành " + i + "/" + Data.Count + ".)");
 
 					if (objVCVK.DaChuyenDuoc < objVCVK.TongSoLuongChuyen)
 					{

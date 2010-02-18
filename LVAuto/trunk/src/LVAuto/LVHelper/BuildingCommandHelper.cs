@@ -103,10 +103,10 @@ namespace LVAuto.LVHelper
         /// <param name="cityId"></param>
         /// <param name="building"></param>
         /// <returns>resources needed for upgrading as a hash, null indicates that upgrading condition does not meet</returns>
-        public static Hashtable GetResourcesForUpgrade(int cityId, LVAuto.LVForm.Command.CityObj.Building building)
+        public static Hashtable GetResourcesForUpgrade(int cityId, LVAuto.LVObj.Building building)
         {
             string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityId);
-            Hashtable temp = GetInstance().ExecuteCommand(COMMAND_GET_BUILDING_INFO, "gid=" + building.gid + "&pid=" + building.pid + "&tab=-1&tid=" + cityId, true, cookies);
+            Hashtable temp = GetInstance().ExecuteCommand(COMMAND_GET_BUILDING_INFO, "gid=" + building.GId + "&pid=" + building.PId + "&tab=-1&tid=" + cityId, true, cookies);
             if (temp == null)
             {
                 return null;
@@ -133,11 +133,11 @@ namespace LVAuto.LVHelper
         /// <param name="cityId"></param>
         /// <param name="building"></param>
         /// <returns></returns>
-        public static bool SelectBuilding(int cityId, LVAuto.LVForm.Command.CityObj.Building building)
+        public static bool SelectBuilding(int cityId, LVAuto.LVObj.Building building)
         {
-            int gid = building.gid;
-            int pid = building.pid;
-            int tab = building.tab;
+            int gid = building.GId;
+            int pid = building.PId;
+            int tab = building.Tab;
             string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityId);
             Hashtable result = GetInstance().ExecuteCommand(COMMAND_GET_BUILDING_INFO, "gid=" + gid + "&pid=-1" + "&tab=" + tab + "&tid=" + cityId, true, cookies);
             return (result["ret"].ToString() == "0");
@@ -150,10 +150,10 @@ namespace LVAuto.LVHelper
         /// <param name="building"></param>
         /// <param name="tab"></param>
         /// <returns></returns>
-        public static bool SelectBuilding(int cityId, LVAuto.LVForm.Command.CityObj.Building building, int tab)
+        public static bool SelectBuilding(int cityId, LVAuto.LVObj.Building building, int tab)
         {
-            int gid = building.gid;
-            int pid = building.pid;
+            int gid = building.GId;
+            int pid = building.PId;
             string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityId);
             Hashtable result = GetInstance().ExecuteCommand(COMMAND_GET_BUILDING_INFO, "gid=" + gid + "&pid=-1" + "&tab=" + tab + "&tid=" + cityId, true, cookies);
             return (result["ret"].ToString() == "0");
@@ -165,9 +165,9 @@ namespace LVAuto.LVHelper
         /// <returns></returns>
         public static int GetSimultaneousBuildings()
         {
-            foreach (LVAuto.LVForm.Command.CityObj.City city in LVAuto.LVForm.Command.CityObj.City.AllCity)
+            foreach (LVAuto.LVObj.City city in LVAuto.LVObj.City.AllCity)
             {
-                Hashtable result = GetBuildingInfo(city.id, 1, 8, 2);
+                Hashtable result = GetBuildingInfo(city.Id, 1, 8, 2);
                 if (result != null & result["plus_left"].ToString().Trim() != "0")
                 {
                     return 3;

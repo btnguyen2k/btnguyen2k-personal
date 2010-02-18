@@ -109,11 +109,11 @@ namespace LVAuto.LVForm.Command {
 		/// <param name="cityid"></param>
 		/// <param name="generalid"></param>
 		/// <returns></returns>
-		public static LVAuto.LVForm.Command.CityObj.MilitaryGeneral GetGeneralMilitaryInfo(int cityid, int generalid)
+		public static LVAuto.LVObj.MilitaryGeneral GetGeneralMilitaryInfo(int cityid, int generalid)
 		{
 			try
 			{
-				LVAuto.LVForm.Command.CityObj.MilitaryGeneral onegenaral = new LVAuto.LVForm.Command.CityObj.MilitaryGeneral();
+				LVAuto.LVObj.MilitaryGeneral onegenaral = new LVAuto.LVObj.MilitaryGeneral();
 				//string parameter = "";
 				//parameter += "lGeneralID=" + generalid;
 				//parameter += "&lCityID=" + cityid;
@@ -179,11 +179,11 @@ namespace LVAuto.LVForm.Command {
         /// <param name="cityid"></param>
         /// <param name="generalid"></param>
         /// <returns></returns>
-        public static LVAuto.LVForm.Command.CityObj.MilitaryGeneral GetGeneralMilitaryInfoINCityNTrai(int cityid, int generalid)
+        public static LVAuto.LVObj.MilitaryGeneral GetGeneralMilitaryInfoINCityNTrai(int cityid, int generalid)
         {
             try
             {
-                LVAuto.LVForm.Command.CityObj.MilitaryGeneral gen = null;
+                LVAuto.LVObj.MilitaryGeneral gen = null;
                
                 if (cityid > 0)		// thành
                     gen= Command.Common.GetGeneralMilitaryInfoEx(cityid, generalid);
@@ -206,11 +206,11 @@ namespace LVAuto.LVForm.Command {
 		/// <param name="cityid"></param>
 		/// <param name="generalid"></param>
 		/// <returns></returns>
-		public static LVAuto.LVForm.Command.CityObj.MilitaryGeneral GetGeneralMilitaryInfoEx(int cityid, int generalid)
+		public static LVAuto.LVObj.MilitaryGeneral GetGeneralMilitaryInfoEx(int cityid, int generalid)
 		{
 			try
 			{
-				LVAuto.LVForm.Command.CityObj.MilitaryGeneral onegenaral = new LVAuto.LVForm.Command.CityObj.MilitaryGeneral();
+				LVAuto.LVObj.MilitaryGeneral onegenaral = new LVAuto.LVObj.MilitaryGeneral();
 
 				string para = "gid=16&pid=21&tab=2";
 				string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityid);
@@ -304,7 +304,7 @@ namespace LVAuto.LVForm.Command {
         }
 
 		// lay thong tin ve tuong trong binh truong/luyen binh (kha nang khong lay duoc trong thanh, khong biet tai sao
-		public static LVAuto.LVForm.Command.CityObj.MilitaryGeneral[] GetGeneralInforInLuyenBinh(int cityid)
+		public static LVAuto.LVObj.MilitaryGeneral[] GetGeneralInforInLuyenBinh(int cityid)
 		{
 			try
 			{
@@ -317,20 +317,20 @@ namespace LVAuto.LVForm.Command {
 
 				int citypost = LVAuto.LVForm.Command.City.GetCityPostByID(cityid);
 
-				LVAuto.LVForm.Command.CityObj.Building building;
+				LVAuto.LVObj.Building building;
 
 				int gid;
 				int pid = -1;
 				int tid;
 				string para;
 				ArrayList onegen;
-				LVAuto.LVForm.Command.CityObj.MilitaryGeneral[] g =  null;
+				LVAuto.LVObj.MilitaryGeneral[] g =  null;
 				
                 if (cityid > 0)			// thanh
 				{
                     gid = 16;
 #if (DEBUG)                    
-                    if (LVAuto.LVForm.Command.CityObj.City.AllCity[citypost].size == 4) gid = 69;
+                    if (LVAuto.LVObj.City.AllCity[citypost].size == 4) gid = 69;
 #endif                    
 					
                     tid = 0;
@@ -342,14 +342,14 @@ namespace LVAuto.LVForm.Command {
 				}
 
 
-				if (LVAuto.LVForm.Command.CityObj.City.AllCity[citypost].AllBuilding == null)
+				if (LVAuto.LVObj.City.AllCity[citypost].AllBuildings == null)
 					LVAuto.LVForm.Command.City.GetAllBuilding(citypost, false);
 
-				for (int i = 0; i < LVAuto.LVForm.Command.CityObj.City.AllCity[citypost].AllBuilding.Length; i++)
+				for (int i = 0; i < LVAuto.LVObj.City.AllCity[citypost].AllBuildings.Length; i++)
 				{
-					if (gid == LVAuto.LVForm.Command.CityObj.City.AllCity[citypost].AllBuilding[i].gid)
+					if (gid == LVAuto.LVObj.City.AllCity[citypost].AllBuildings[i].GId)
 					{
-						pid = LVAuto.LVForm.Command.CityObj.City.AllCity[citypost].AllBuilding[i].pid;
+						pid = LVAuto.LVObj.City.AllCity[citypost].AllBuildings[i].PId;
 						break;
 					}
 
@@ -410,13 +410,13 @@ namespace LVAuto.LVForm.Command {
 				if (list == null) return null;
 				if (list.Count <= 0) return null;
 
-				g = new LVAuto.LVForm.Command.CityObj.MilitaryGeneral[list.Count];
-				LVAuto.LVForm.Command.CityObj.MilitaryGeneral g2;
+				g = new LVAuto.LVObj.MilitaryGeneral[list.Count];
+				LVAuto.LVObj.MilitaryGeneral g2;
 				for (int i = 0; i < list.Count; i++)
 				{
 
 					onegen = (ArrayList)list[i];
-					g2 = new LVAuto.LVForm.Command.CityObj.MilitaryGeneral();
+					g2 = new LVAuto.LVObj.MilitaryGeneral();
 
 					g2.Id = int.Parse(onegen[1].ToString());
 					g2.Name = onegen[2].ToString();
@@ -438,12 +438,12 @@ namespace LVAuto.LVForm.Command {
 			}
 		}
 
-		public static LVAuto.LVForm.Command.CityObj.MilitaryGeneral GetGeneralInforInLuyenBinh(int cityid, int generalid)
+		public static LVAuto.LVObj.MilitaryGeneral GetGeneralInforInLuyenBinh(int cityid, int generalid)
 		{
-			LVAuto.LVForm.Command.CityObj.MilitaryGeneral[] g = GetGeneralInforInLuyenBinh(cityid);
+			LVAuto.LVObj.MilitaryGeneral[] g = GetGeneralInforInLuyenBinh(cityid);
 			if (g == null) return null;
 
-			foreach (LVAuto.LVForm.Command.CityObj.MilitaryGeneral g1 in g)
+			foreach (LVAuto.LVObj.MilitaryGeneral g1 in g)
 			{
 				if (generalid == g1.Id)
 					return g1;
@@ -509,7 +509,7 @@ namespace LVAuto.LVForm.Command {
             general = Execute(15, parameter, true);
             try {
                 ArrayList incity = (ArrayList)general["generals"];
-                Command.CityObj.City.AllCity[citypos].MilitaryGeneral = new LVAuto.LVForm.Command.CityObj.MilitaryGeneral[incity.Count];
+                LVObj.City.AllCity[citypos].MilitaryGenerals = new LVAuto.LVObj.MilitaryGeneral[incity.Count];
 				ArrayList oneincity = null;
                 int j = 0;
                 for (int i = 0; i < incity.Count; i++) {
@@ -517,10 +517,10 @@ namespace LVAuto.LVForm.Command {
 					oneincity = (ArrayList)incity[i];
                     
 					if (oneincity[4].ToString()=="2") {
-                        Command.CityObj.MilitaryGeneral g = new LVAuto.LVForm.Command.CityObj.MilitaryGeneral();
+                        LVObj.MilitaryGeneral g = new LVAuto.LVObj.MilitaryGeneral();
                         g.Id = int.Parse(oneincity[0].ToString());
 						g.Name = (string)oneincity[1];
-                        Command.CityObj.City.AllCity[citypos].MilitaryGeneral[j] = g;
+                        LVObj.City.AllCity[citypos].MilitaryGenerals[j] = g;
                         j++;
                     }
                 }
@@ -536,7 +536,7 @@ namespace LVAuto.LVForm.Command {
 			{
 				int count = 0;
 
-				if (!reload && Command.CityObj.City.AllCity[citypos].MilitaryGeneral != null) return;
+				if (!reload && LVObj.City.AllCity[citypos].MilitaryGenerals != null) return;
 
 
 				Hashtable general = new Hashtable();
@@ -545,7 +545,7 @@ namespace LVAuto.LVForm.Command {
 				parameter += "&tid=";
 				//general = Execute(15, parameter, true);
 
-				int cityID = Command.CityObj.City.AllCity[citypos].id;
+				int cityID = LVObj.City.AllCity[citypos].Id;
 				//LVAuto.Command.City.SwitchCitySlow(cityID);
 				string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityID);
 				while (count < 10)
@@ -562,13 +562,13 @@ namespace LVAuto.LVForm.Command {
 					ArrayList incity = (ArrayList)general["generals"];
 
 					//Hungtv rem
-					//Command.CityObj.City.AllCity[citypos].AllGeneral = new LVAuto.Command.CityObj.General[incity.Count];
+					//LVObj.City.AllCity[citypos].AllGeneral = new LVAuto.LVObj.General[incity.Count];
 
 					ArrayList oneincity = null;
 					ArrayList genList = new ArrayList();
 					int j = 0;
 
-					Command.CityObj.MilitaryGeneral g;
+					LVObj.MilitaryGeneral g;
 					for (int i = 0; i < incity.Count; i++)
 					{
 						//ArrayList oneincity = (ArrayList)incity[i];
@@ -576,21 +576,21 @@ namespace LVAuto.LVForm.Command {
 
 						if (oneincity[4].ToString() == "2")				//=2: quan vo; =1: quan van
 						{
-							g = new LVAuto.LVForm.Command.CityObj.MilitaryGeneral();
+							g = new LVAuto.LVObj.MilitaryGeneral();
 							g.Id = int.Parse(oneincity[0].ToString());
 							g.Name = (string)oneincity[1];
 							g.Status = int.Parse(oneincity[5].ToString());
 							genList.Add(g);
-							//Command.CityObj.City.AllCity[citypos].AllGeneral[j] = g;
+							//LVObj.City.AllCity[citypos].AllGeneral[j] = g;
 
 							j++;
 						}
 					}
 
-					Command.CityObj.City.AllCity[citypos].MilitaryGeneral = new LVAuto.LVForm.Command.CityObj.MilitaryGeneral[genList.Count];
+					LVObj.City.AllCity[citypos].MilitaryGenerals = new LVAuto.LVObj.MilitaryGeneral[genList.Count];
 					for (int i = 0; i < genList.Count; i++)
 					{
-						Command.CityObj.City.AllCity[citypos].MilitaryGeneral[i] = (LVAuto.LVForm.Command.CityObj.MilitaryGeneral)genList[i];
+						LVObj.City.AllCity[citypos].MilitaryGenerals[i] = (LVAuto.LVObj.MilitaryGeneral)genList[i];
 
 					}
 					int ii;
@@ -614,12 +614,12 @@ namespace LVAuto.LVForm.Command {
 
 			if (result == null) return;
 
-			for (int i = 0; i < Command.CityObj.City.AllCity.Length; i++)
+			for (int i = 0; i < LVObj.City.AllCity.Length; i++)
 			{
-				//if (Command.CityObj.City.AllCity[i].MilitaryGeneral != null && !reload) continue;
+				//if (LVObj.City.AllCity[i].MilitaryGeneral != null && !reload) continue;
 
-				Command.CityObj.City.AllCity[i].MilitaryGeneral = 
-					(LVAuto.LVForm.Command.CityObj.MilitaryGeneral[]) result[Command.CityObj.City.AllCity[i].id];
+				LVObj.City.AllCity[i].MilitaryGenerals = 
+					(LVAuto.LVObj.MilitaryGeneral[]) result[LVObj.City.AllCity[i].Id];
 
 			}
 		}
@@ -629,8 +629,8 @@ namespace LVAuto.LVForm.Command {
 		/// Lấy thông tin cơ bản về tướng như cấp, level, sức mạnh, thống lĩnh ... ở phần nội chính
 		/// </summary>
 		/// <param name="cityid">cityid cuar thành cần lấy tướng</param>
-		/// <returns>LVAuto.Command.CityObj.MilitaryGeneral[]: chỉ bao gồm tên, id, thành, thể lực, sức mạnh, level...  </returns>
-		public static LVAuto.LVForm.Command.CityObj.MilitaryGeneral[] GetAllSimpleMilitaryGeneralInfo(int cityid)
+		/// <returns>LVAuto.LVObj.MilitaryGeneral[]: chỉ bao gồm tên, id, thành, thể lực, sức mạnh, level...  </returns>
+		public static LVAuto.LVObj.MilitaryGeneral[] GetAllSimpleMilitaryGeneralInfo(int cityid)
 		{
 			try
 			{
@@ -638,7 +638,7 @@ namespace LVAuto.LVForm.Command {
 				Hashtable result = GetAllSimpleMilitaryGeneralInfo();
 				if (result == null || result.Count == 0) return null;
 
-				return (LVAuto.LVForm.Command.CityObj.MilitaryGeneral[])result[cityid];
+				return (LVAuto.LVObj.MilitaryGeneral[])result[cityid];
 			}
 			catch (Exception ex)
 			{
@@ -649,12 +649,12 @@ namespace LVAuto.LVForm.Command {
 		/// <summary>
 		/// Lấy thông tin cơ bản về quan văn như cấp, level, sức mạnh, thống lĩnh ... ở phần nội chính/nhân sự
 		/// </summary>
-		/// <returns>Hastable object. Key: cityID, Value: LVAuto.Command.CityObj.CivilGeneral[] </returns>
+		/// <returns>Hastable object. Key: cityID, Value: LVAuto.LVObj.CivilGeneral[] </returns>
 		public static Hashtable GetAllSimpleCivilGeneralInfo()
 		{
 			try
 			{
-				LVAuto.LVForm.Command.CityObj.CivilGeneral[] miligen = null;
+				LVAuto.LVObj.CivilGeneral[] miligen = null;
 
 				//http://s3.linhvuong.zooz.vn/GateWay/Common.ashx?id=32&0.2614652350805371&type=1
 
@@ -698,12 +698,12 @@ namespace LVAuto.LVForm.Command {
 					incity = (ArrayList)list[i];
 					cityid = int.Parse(incity[0].ToString());
 					genincity = (ArrayList)incity[4];
-					miligen = new LVAuto.LVForm.Command.CityObj.CivilGeneral[genincity.Count];
+					miligen = new LVAuto.LVObj.CivilGeneral[genincity.Count];
 
 					for (int j = 0; j < genincity.Count; j++)
 					{
 						onegen = (ArrayList)genincity[j];
-						miligen[j] = new LVAuto.LVForm.Command.CityObj.CivilGeneral();
+						miligen[j] = new LVAuto.LVObj.CivilGeneral();
 						miligen[j].CityId = cityid;
 						miligen[j].CityName = incity[1].ToString();
 
@@ -740,12 +740,12 @@ namespace LVAuto.LVForm.Command {
 		/// <summary>
 		/// Lấy thông tin cơ bản về tướng như cấp, level, sức mạnh, thống lĩnh ... ở phần nội chính/nhân sự
 		/// </summary>
-		/// <returns>Hastable object. Key: cityID, Value: LVAuto.Command.CityObj.MilitaryGeneral[] </returns>
+		/// <returns>Hastable object. Key: cityID, Value: LVAuto.LVObj.MilitaryGeneral[] </returns>
 		public static Hashtable GetAllSimpleMilitaryGeneralInfo()
 		{
 			try
 			{
-				LVAuto.LVForm.Command.CityObj.MilitaryGeneral[] miligen = null;
+				LVAuto.LVObj.MilitaryGeneral[] miligen = null;
 
 				Hashtable result = LVAuto.LVForm.Command.Common.Execute(32, "type=2", true);
 
@@ -791,12 +791,12 @@ namespace LVAuto.LVForm.Command {
 					incity = (ArrayList) list[i];
 					cityid = int.Parse( incity[0].ToString());
 					genincity = (ArrayList)incity[4];
-					miligen = new LVAuto.LVForm.Command.CityObj.MilitaryGeneral[genincity.Count];
+					miligen = new LVAuto.LVObj.MilitaryGeneral[genincity.Count];
 
 					for (int j = 0; j < genincity.Count; j++)
 					{
 						onegen = (ArrayList) genincity[j];
-						miligen[j] = new LVAuto.LVForm.Command.CityObj.MilitaryGeneral();
+						miligen[j] = new LVAuto.LVObj.MilitaryGeneral();
 						miligen[j].CityId = cityid;
 						miligen[j].CityName = incity[1].ToString(); 
 						
@@ -830,7 +830,7 @@ namespace LVAuto.LVForm.Command {
 		}
 
 		// Laays thong tin ve tuong trong thanh/trai
-		// tra ve Arraylist of Command.CityObj.General 
+		// tra ve Arraylist of LVObj.General 
 		public static ArrayList GetAllGeneralVanVo(int cityID)
 		{
 			int count = 0;
@@ -842,7 +842,7 @@ namespace LVAuto.LVForm.Command {
 			//general = Execute(15, parameter, true);
 
 			
-			//int cityID = Command.CityObj.City.AllCity[citypos].id;
+			//int cityID = LVObj.City.AllCity[citypos].id;
 			//LVAuto.Command.City.SwitchCitySlow(cityID);
 			string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityID);
 			while (count < 10)
@@ -859,13 +859,13 @@ namespace LVAuto.LVForm.Command {
 				ArrayList incity = (ArrayList)general["generals"];
 
 				//Hungtv rem
-				//Command.CityObj.City.AllCity[citypos].AllGeneral = new LVAuto.Command.CityObj.General[incity.Count];
+				//LVObj.City.AllCity[citypos].AllGeneral = new LVAuto.LVObj.General[incity.Count];
 
 				ArrayList oneincity = null;
 				ArrayList genList = new ArrayList();
 				int j = 0;
 
-				Command.CityObj.MilitaryGeneral g;
+				LVObj.MilitaryGeneral g;
 				for (int i = 0; i < incity.Count; i++)
 				{
 					//ArrayList oneincity = (ArrayList)incity[i];
@@ -873,13 +873,13 @@ namespace LVAuto.LVForm.Command {
 
 					//if (oneincity[4].ToString() == "2")				//=2: quan vo; =1: quan van
 					{
-						g = new LVAuto.LVForm.Command.CityObj.MilitaryGeneral();
+						g = new LVAuto.LVObj.MilitaryGeneral();
 						g.Id = int.Parse(oneincity[0].ToString());
 						g.Name = (string)oneincity[1];
 						g.Status = int.Parse(oneincity[5].ToString());
 						g.Type = int.Parse(oneincity[4].ToString()); 
 						genList.Add(g);
-						//Command.CityObj.City.AllCity[citypos].AllGeneral[j] = g;
+						//LVObj.City.AllCity[citypos].AllGeneral[j] = g;
 
 						j++;
 					}
@@ -908,7 +908,7 @@ namespace LVAuto.LVForm.Command {
 				parameter += "&tid=";
 				//general = Execute(15, parameter, true);
 
-				int cityID = Command.CityObj.City.AllCity[citypos].id;
+				int cityID = LVObj.City.AllCity[citypos].Id;
 				//LVAuto.Command.City.SwitchCitySlow(cityID);
 				string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityID);
 				while (count < 10)
@@ -928,14 +928,14 @@ namespace LVAuto.LVForm.Command {
 					ArrayList incity = (ArrayList)hashnewgeneral["generals"];
 
 					//Hungtv rem
-					//Command.CityObj.City.AllCity[citypos].AllGeneral = new LVAuto.Command.CityObj.General[incity.Count];
+					//LVObj.City.AllCity[citypos].AllGeneral = new LVAuto.LVObj.General[incity.Count];
 
 					ArrayList oneincity = null;
 					ArrayList genList = new ArrayList();
 					int j = 0;
 
-					Command.CityObj.MilitaryGeneral newg;
-					Command.CityObj.MilitaryGeneral[] oldg = Command.CityObj.City.AllCity[citypos].MilitaryGeneral;
+					LVObj.MilitaryGeneral newg;
+					LVObj.MilitaryGeneral[] oldg = LVObj.City.AllCity[citypos].MilitaryGenerals;
 					int gtempid;
 					for (int i = 0; i < incity.Count; i++)
 					{
@@ -950,7 +950,7 @@ namespace LVAuto.LVForm.Command {
 							{
 								for (int k = 0; k < oldg.Length; k++)
 								{
-									if (((Command.CityObj.MilitaryGeneral)oldg[k]).Id == gtempid)
+									if (((LVObj.MilitaryGeneral)oldg[k]).Id == gtempid)
 									{
 										newg = oldg[k];
 										break;
@@ -959,23 +959,23 @@ namespace LVAuto.LVForm.Command {
 							}
 
 							if (newg == null)
-								newg = new LVAuto.LVForm.Command.CityObj.MilitaryGeneral();
+								newg = new LVAuto.LVObj.MilitaryGeneral();
 
 
 							newg.Id = int.Parse(oneincity[0].ToString());
 							newg.Name = (string)oneincity[1];
 							newg.Status = int.Parse(oneincity[5].ToString());
 							genList.Add(newg);
-							//Command.CityObj.City.AllCity[citypos].AllGeneral[j] = g;
+							//LVObj.City.AllCity[citypos].AllGeneral[j] = g;
 
 							j++;
 						}
 					}
 
-					Command.CityObj.City.AllCity[citypos].MilitaryGeneral = new LVAuto.LVForm.Command.CityObj.MilitaryGeneral[genList.Count];
+					LVObj.City.AllCity[citypos].MilitaryGenerals = new LVAuto.LVObj.MilitaryGeneral[genList.Count];
 					for (int i = 0; i < genList.Count; i++)
 					{
-						Command.CityObj.City.AllCity[citypos].MilitaryGeneral[i] = (LVAuto.LVForm.Command.CityObj.MilitaryGeneral)genList[i];
+						LVObj.City.AllCity[citypos].MilitaryGenerals[i] = (LVAuto.LVObj.MilitaryGeneral)genList[i];
 
 					}
 					int ii;

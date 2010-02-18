@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Collections;
 
-namespace LVAuto.LVForm.Command.CityObj
+namespace LVAuto.LVObj
 {
 	public class General : IComparable 
 	{
@@ -258,7 +258,7 @@ namespace LVAuto.LVForm.Command.CityObj
 		{
             int cityid = 0;
             int genid = 0;
-            Command.CityObj.MilitaryGeneral callmanobj;
+            LVObj.MilitaryGeneral callmanobj;
             ArrayList geninfo;
 
             bool ret = false;
@@ -272,13 +272,13 @@ namespace LVAuto.LVForm.Command.CityObj
                 for (int genidx = 0; genidx < militaryGenerals.Count; genidx++)
                 {
 
-                    callmanobj = (Command.CityObj.MilitaryGeneral)militaryGenerals[genidx];
+                    callmanobj = (LVObj.MilitaryGeneral)militaryGenerals[genidx];
 
                     if (callmanobj.Id == genIDtmp) continue;
                     genIDtmp = callmanobj.Id;
 
                     cityid = callmanobj.CityId;
-                    LVAuto.LVForm.Command.CityObj.City cityByID = LVAuto.LVForm.Command.City.GetCityByID(cityid);
+                    LVAuto.LVObj.City cityByID = LVAuto.LVForm.Command.City.GetCityByID(cityid);
 
                     string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityid);
                     LVAuto.LVForm.Command.City.SwitchCitySlow(cityid);
@@ -292,7 +292,7 @@ namespace LVAuto.LVForm.Command.CityObj
                     string para;
                     // check xem co đang đánh nhau khong
                     if (cityid > 0)                             // thien thanh gid=69
-                        if (cityByID.size > 3)
+                        if (cityByID.Size > 3)
                             para = "gid=69&pid=-1&tab=1&tid=0";
                         else
                             para = "gid=16&pid=-1&tab=1&tid=0";
@@ -366,7 +366,7 @@ namespace LVAuto.LVForm.Command.CityObj
                                 int x = int.Parse(oneGotobat[6].ToString());
                                 int y = int.Parse(oneGotobat[7].ToString());
                                 // laays thong tin battleID cua dia tinh
-                                Hashtable tmp = Command.Common.Execute(98, "DestX=" + x + "&DestY=" + y, true);
+                                Hashtable tmp = LVAuto.LVForm.Command.Common.Execute(98, "DestX=" + x + "&DestY=" + y, true);
                                 if (tmp != null && tmp["ret"].ToString() == "0")
                                 {
                                     battleid = int.Parse(tmp["npc_id"].ToString());

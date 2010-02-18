@@ -42,9 +42,9 @@ namespace LVAuto.LVForm.LVThread {
 				 Cookies = new string[50];
 				 Sleep = sleep;
 				 Xay dung cookies
-				 for (int i = 0; i < LVAuto.Command.CityObj.City.AllCity.Length;i++) {
-					 Cookies[i] = LVAuto.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(LVAuto.Command.CityObj.City.AllCity[i].id);
-					 Id[i] = LVAuto.Command.CityObj.City.AllCity[i].id;
+				 for (int i = 0; i < LVAuto.LVObj.City.AllCity.Length;i++) {
+					 Cookies[i] = LVAuto.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(LVAuto.LVObj.City.AllCity[i].id);
+					 Id[i] = LVAuto.LVObj.City.AllCity[i].id;
 				 }
 
 				 //Xay dung mang de xay nha
@@ -87,23 +87,23 @@ namespace LVAuto.LVForm.LVThread {
 
 				bool hasDown = false;
 
-				for (int i = 0; i < LVAuto.LVForm.Command.CityObj.City.AllCity.Length; i++)
+				for (int i = 0; i < LVAuto.LVObj.City.AllCity.Length; i++)
 				{
 					hasDown = false;
-					if (LVAuto.LVForm.Command.CityObj.City.AllCity[i].AllBuilding != null)
+					if (LVAuto.LVObj.City.AllCity[i].AllBuildings != null)
 					{
 						arBuilding = new ArrayList();
-						for (int j = 0; j < LVAuto.LVForm.Command.CityObj.City.AllCity[i].AllBuilding.Length; j++)
+						for (int j = 0; j < LVAuto.LVObj.City.AllCity[i].AllBuildings.Length; j++)
 						{
-							if (LVAuto.LVForm.Command.CityObj.City.AllCity[i].AllBuilding[j].isDown)
+							if (LVAuto.LVObj.City.AllCity[i].AllBuildings[j].IsDown)
 							{
 								//arBuilding.Add(j);
-								arBuilding.Add(LVAuto.LVForm.Command.CityObj.City.AllCity[i].AllBuilding[j]);
+								arBuilding.Add(LVAuto.LVObj.City.AllCity[i].AllBuildings[j]);
 								hasDown = true;
 							}
 						}
 
-						if (hasDown) buildDown.Add(LVAuto.LVForm.Command.CityObj.City.AllCity[i].id, arBuilding);	//buildDown.Add(i, arBuilding);
+						if (hasDown) buildDown.Add(LVAuto.LVObj.City.AllCity[i].Id, arBuilding);	//buildDown.Add(i, arBuilding);
 					}
 				}
 
@@ -121,7 +121,7 @@ namespace LVAuto.LVForm.LVThread {
                             SetText("Đang chạy (0%)");
                             for (int i = 0; i < City.Length; i++) {
                                 SetText("Đang chạy (" + (i) * 100 / 50 + "%)");
-                                if(Check[i] && LVAuto.Command.CityObj.City.Canbuild(Id[i])){
+                                if(Check[i] && LVAuto.LVObj.City.Canbuild(Id[i])){
                                     try {
                                         Cookies[i] = LVAuto.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(Id[i]);
                                         LVAuto.Command.City.SwitchCitySlow(Id[i]);
@@ -153,8 +153,8 @@ namespace LVAuto.LVForm.LVThread {
                                             string[] oldbulding = Building[i];
                                             Building[i] = new string[50];
 
-                                            for (int j = 0; j < Command.CityObj.City.AllCity[i].AllBuilding.Length; j++) {
-                                                Command.CityObj.Building onebuilding = Command.CityObj.City.AllCity[i].AllBuilding[j];
+                                            for (int j = 0; j < LVObj.City.AllCity[i].AllBuilding.Length; j++) {
+                                                LVObj.Building onebuilding = LVObj.City.AllCity[i].AllBuilding[j];
                                                 //Check thu da duoc check chua
                                                 for (int k = 0; k < oldbulding.Length; k++) {
                                                     if (oldbulding[k] != null) {
@@ -195,8 +195,8 @@ namespace LVAuto.LVForm.LVThread {
 				{
 					Message.ForeColor = System.Drawing.Color.Red; 
 					int cityID;
-					LVAuto.LVForm.Command.CityObj.City city;
-					LVAuto.LVForm.Command.CityObj.Building building;
+					LVAuto.LVObj.City city;
+					LVAuto.LVObj.Building building;
 					bool canBuild = false;
 
 					int[] arcityid = null;
@@ -213,22 +213,22 @@ namespace LVAuto.LVForm.LVThread {
 					SetText("Đang chạy (0%)");
 					//LVAuto.Command.City.UpdateAllSimpleCity();
 
-					if (LVAuto.LVForm.Command.CityObj.City.isDowndAll)
+					if (LVAuto.LVObj.City.IsDowndAll)
 					{
 						buildDown.Clear();
-						for (int i = 0; i < LVAuto.LVForm.Command.CityObj.City.AllCity.Length; i++)
+						for (int i = 0; i < LVAuto.LVObj.City.AllCity.Length; i++)
 						{
 							Command.City.GetAllBuilding(i, false);
 
-							if (LVAuto.LVForm.Command.CityObj.City.AllCity[i].AllBuilding != null)
+							if (LVAuto.LVObj.City.AllCity[i].AllBuildings != null)
 							{
 								arBuilding = new ArrayList();
-								for (int j = 0; j < LVAuto.LVForm.Command.CityObj.City.AllCity[i].AllBuilding.Length; j++)
+								for (int j = 0; j < LVAuto.LVObj.City.AllCity[i].AllBuildings.Length; j++)
 								{
-									arBuilding.Add(LVAuto.LVForm.Command.CityObj.City.AllCity[i].AllBuilding[j]);
+									arBuilding.Add(LVAuto.LVObj.City.AllCity[i].AllBuildings[j]);
 								}
 
-								buildDown.Add(LVAuto.LVForm.Command.CityObj.City.AllCity[i].id, arBuilding);
+								buildDown.Add(LVAuto.LVObj.City.AllCity[i].Id, arBuilding);
 							}
 						}
 					}
@@ -256,10 +256,10 @@ namespace LVAuto.LVForm.LVThread {
 
 							citypos = LVAuto.LVForm.Command.City.GetCityPostByID(cityID);
 							//city = LVAuto.Command.City.GetCityByID(cityID);
-							city = LVAuto.LVForm.Command.CityObj.City.AllCity[citypos];
+							city = LVAuto.LVObj.City.AllCity[citypos];
 
 							if (city == null) continue;
-							SetText("Đang chạy: " + city.name + " (đã hoàn thành " + i + "/" + arcityid.Length + " thành. )");
+							SetText("Đang chạy: " + city.Name + " (đã hoàn thành " + i + "/" + arcityid.Length + " thành. )");
 
 							LVAuto.LVForm.Command.City.SwitchCitySlow(cityID);
 
@@ -278,10 +278,10 @@ namespace LVAuto.LVForm.LVThread {
 							buildcount = ((ArrayList)(((ArrayList)taskBuild[0])[4])).Count;				// so luong cong trinh dang xay
 							int oldbuildcount = buildcount;
 
-							LVAuto.LVForm.Command.CityObj.Building buildingtmp;
+							LVAuto.LVObj.Building buildingtmp;
 							
 							//for (int j = arBuilding.Count - 1; j >= 0; j--)
-							for (int m = Command.CityObj.City.AllCity[citypos].AllBuilding.Length - 1; m >= 0; m--)
+							for (int m = LVObj.City.AllCity[citypos].AllBuildings.Length - 1; m >= 0; m--)
 							{
 
 
@@ -289,16 +289,16 @@ namespace LVAuto.LVForm.LVThread {
 								if ((maxbuild - buildcount) <= 0) break;
 
 
-								//building = (LVAuto.Command.CityObj.Building)arBuilding[j];
+								//building = (LVAuto.LVObj.Building)arBuilding[j];
 								building = null;
 								// tim nha co level cao nhat de ha
 								for (int n = 0; n < arBuilding.Count; n++)
 								{
-									buildingtmp = (LVAuto.LVForm.Command.CityObj.Building)arBuilding[n];
-									if (Command.CityObj.City.AllCity[citypos].AllBuilding[m].gid == buildingtmp.gid
-										&& Command.CityObj.City.AllCity[citypos].AllBuilding[m].pid == buildingtmp.pid)
+									buildingtmp = (LVAuto.LVObj.Building)arBuilding[n];
+									if (LVObj.City.AllCity[citypos].AllBuildings[m].GId == buildingtmp.GId
+										&& LVObj.City.AllCity[citypos].AllBuildings[m].PId == buildingtmp.PId)
 									{
-										building = Command.CityObj.City.AllCity[citypos].AllBuilding[m];
+										building = LVObj.City.AllCity[citypos].AllBuildings[m];
 										break;
 									}
 								}
@@ -315,8 +315,8 @@ namespace LVAuto.LVForm.LVThread {
 									for (int k = 0; k < oldbuildcount; k++)
 									{
 										arTemp = (ArrayList)(((ArrayList)(((ArrayList)taskBuild[0])[4]))[k]);
-										if (building.gid == int.Parse(arTemp[1].ToString())
-												&& building.pid == int.Parse(arTemp[0].ToString()))
+										if (building.GId == int.Parse(arTemp[1].ToString())
+												&& building.PId == int.Parse(arTemp[0].ToString()))
 										{
 											isBuilding = true;
 											break;
@@ -335,20 +335,20 @@ namespace LVAuto.LVForm.LVThread {
 									//string[] info = Building[i][j].Split(new char[] { '.' });
 
 									// "False.30.9.93917" = isbuild.pid.gid.parentid
-									if (Command.Build.SelectBuilding(cityID, building.gid, building.pid, 0, cookies) == false)
+									if (Command.Build.SelectBuilding(cityID, building.GId, building.PId, 0, cookies) == false)
 									{
 										for (int k = -2; k < 3; k++)
 										{
-											if (Command.Build.SelectBuilding(cityID, building.gid, building.pid, k, cookies))
+											if (Command.Build.SelectBuilding(cityID, building.GId, building.PId, k, cookies))
 											{
-												result = Command.OPT.Build(building.pid, building.gid, cityID, 2, cookies);
+												result = Command.OPT.Build(building.PId, building.GId, cityID, 2, cookies);
 												break;
 											};
 										}
 									}
 									else
 									{
-										result = Command.OPT.Build(building.pid, building.gid, cityID, 2, cookies);
+										result = Command.OPT.Build(building.PId, building.GId, cityID, 2, cookies);
 									}
 
 

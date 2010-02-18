@@ -198,11 +198,11 @@ namespace LVAuto.LVForm
                 int g1 = 0, g2 = 0, g3 = 0, g4 = 0, g5 = 0;
                 try
                 {
-                    g1 = ((Command.CityObj.MilitaryGeneral)Quest_GeneralsInCity.CheckedItems[0]).Id;
-                    g2 = ((Command.CityObj.MilitaryGeneral)Quest_GeneralsInCity.CheckedItems[1]).Id;
-                    g3 = ((Command.CityObj.MilitaryGeneral)Quest_GeneralsInCity.CheckedItems[2]).Id;
-                    g4 = ((Command.CityObj.MilitaryGeneral)Quest_GeneralsInCity.CheckedItems[3]).Id;
-                    g5 = ((Command.CityObj.MilitaryGeneral)Quest_GeneralsInCity.CheckedItems[4]).Id;
+                    g1 = ((LVObj.MilitaryGeneral)Quest_GeneralsInCity.CheckedItems[0]).Id;
+                    g2 = ((LVObj.MilitaryGeneral)Quest_GeneralsInCity.CheckedItems[1]).Id;
+                    g3 = ((LVObj.MilitaryGeneral)Quest_GeneralsInCity.CheckedItems[2]).Id;
+                    g4 = ((LVObj.MilitaryGeneral)Quest_GeneralsInCity.CheckedItems[3]).Id;
+                    g5 = ((LVObj.MilitaryGeneral)Quest_GeneralsInCity.CheckedItems[4]).Id;
                 }
                 catch (Exception ex)
                 {

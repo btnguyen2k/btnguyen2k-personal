@@ -33,10 +33,10 @@ namespace LVAuto.LVForm.LVThread {
                 foreach (object obj in pnVanchuyen.Controls) {
                     vc = (LVAuto.LVForm.Command.OPTObj.Vanchuyen)obj;
                     if (vc.chkOK.Checked) {
-                        Cookies[citycount] = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(((LVAuto.LVForm.Command.CityObj.City)vc.cboSource.SelectedItem).id);
-                        Id[citycount] = ((LVAuto.LVForm.Command.CityObj.City)vc.cboSource.SelectedItem).id;
+                        Cookies[citycount] = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(((LVAuto.LVObj.City)vc.cboSource.SelectedItem).Id);
+                        Id[citycount] = ((LVAuto.LVObj.City)vc.cboSource.SelectedItem).Id;
                         City[citycount] = new int[6];                  
-                        City[citycount][0]=((LVAuto.LVForm.Command.CityObj.City)vc.cboDesc.SelectedItem).id;
+                        City[citycount][0]=((LVAuto.LVObj.City)vc.cboDesc.SelectedItem).Id;
                         City[citycount][1]=int.Parse("0" + vc.txtFOOD.Text);
                         City[citycount][2]=int.Parse("0" + vc.txtWOOD.Text);
                         City[citycount][3]=int.Parse("0" + vc.txtIRON.Text);

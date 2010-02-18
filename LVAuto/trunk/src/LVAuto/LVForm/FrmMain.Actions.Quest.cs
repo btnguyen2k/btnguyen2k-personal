@@ -33,11 +33,11 @@ namespace LVAuto.LVForm
             try
             {
                 //TuongDiThaoPhatList.Clear();
-                foreach (Command.CityObj.MilitaryGeneral selectedGeneral in Quest_GeneralsInCity.CheckedItems)
+                foreach (LVObj.MilitaryGeneral selectedGeneral in Quest_GeneralsInCity.CheckedItems)
                 {
                     LVCommon.GeneralThaoPhat questGeneral = new LVCommon.GeneralThaoPhat();
 
-                    questGeneral.CityId = ((LVAuto.LVForm.Command.CityObj.City)Quest_dropdownCityList.SelectedItem).id;
+                    questGeneral.CityId = ((LVAuto.LVObj.City)Quest_dropdownCityList.SelectedItem).Id;
                     questGeneral.QuestId = ((Command.CommonObj.ThaoPhat)Quest_dropdownQuestList.SelectedItem).id;
                     questGeneral.TimeToRun = int.Parse(Quest_txtTimer.Text);
 
@@ -115,15 +115,15 @@ namespace LVAuto.LVForm
             try
             {
                 ShowLoadingLabel();
-                Command.CityObj.City city = (Command.CityObj.City)Quest_dropdownCityList.SelectedItem;
+                LVObj.City city = (LVObj.City)Quest_dropdownCityList.SelectedItem;
                 LVAuto.LVForm.Command.Common.GetAllSimpleMilitaryGeneralInfoIntoCity();
-                if (Command.CityObj.City.AllCity[Quest_dropdownCityList.SelectedIndex].MilitaryGeneral == null)
+                if (LVObj.City.AllCity[Quest_dropdownCityList.SelectedIndex].MilitaryGenerals == null)
                 {
                     LVUtils.MsgBoxUtils.WarningBox("Lỗi rồi, có thể mạng lởm, đợi tý làm lại đê");
                     return;
                 }
                 Quest_GeneralsInCity.Items.Clear();
-                Quest_GeneralsInCity.Items.AddRange(Command.CityObj.City.AllCity[Quest_dropdownCityList.SelectedIndex].MilitaryGeneral);
+                Quest_GeneralsInCity.Items.AddRange(LVObj.City.AllCity[Quest_dropdownCityList.SelectedIndex].MilitaryGenerals);
             }
             finally
             {

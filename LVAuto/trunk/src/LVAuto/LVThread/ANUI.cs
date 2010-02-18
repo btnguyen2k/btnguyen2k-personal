@@ -41,12 +41,12 @@ namespace LVAuto.LVForm.LVThread
 
 					//Xay dung cookies
 					citycount = 0;
-					for (int i = 0; i < LVAuto.Command.CityObj.City.AllCity.Length; i++)
+					for (int i = 0; i < LVAuto.LVObj.City.AllCity.Length; i++)
 					{
-						if (LVAuto.Command.CityObj.City.AllCity[i].id > 0)
+						if (LVAuto.LVObj.City.AllCity[i].id > 0)
 						{
-							Cookies[citycount] = LVAuto.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(LVAuto.Command.CityObj.City.AllCity[i].id);
-							Id[citycount] = LVAuto.Command.CityObj.City.AllCity[i].id;
+							Cookies[citycount] = LVAuto.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(LVAuto.LVObj.City.AllCity[i].id);
+							Id[citycount] = LVAuto.LVObj.City.AllCity[i].id;
 							citycount++;
 						}
 					}
@@ -112,7 +112,7 @@ namespace LVAuto.LVForm.LVThread
 				{
 					Message.ForeColor = System.Drawing.Color.Red; 
 					SetText("Đang chạy (0%)");
-					Command.CityObj.City city;
+					LVObj.City city;
 
 					for (int i = 0; i < Cityid.Length; i++)
 					{	  			
@@ -120,7 +120,7 @@ namespace LVAuto.LVForm.LVThread
 						try
 						{
 							city = Command.City.GetCityByID(Cityid[i]);
-							SetText("Đang an ủi thành " + city.name + "(" + i + "/" + Cityid.Length + ")");
+							SetText("Đang an ủi thành " + city.Name + "(" + i + "/" + Cityid.Length + ")");
 
 							cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(Cityid[i]);
 							LVAuto.LVForm.Command.City.SwitchCitySlow(Cityid[i]);

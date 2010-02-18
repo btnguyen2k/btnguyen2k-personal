@@ -12,19 +12,19 @@ namespace LVAuto.LVForm.Command {
 
 		public static int GetCityPostByID(int cityid)
 		{
-			for (int i = 0; i < Command.CityObj.City.AllCity.Length; i++)
+            for (int i = 0; i < LVObj.City.AllCity.Length; i++)
 			{
-				if (Command.CityObj.City.AllCity[i].id == cityid) return i;
+                if (LVObj.City.AllCity[i].Id == cityid) return i;
 			}
 			return -1;
 		}
 
-		public static Command.CityObj.City GetCityByID(int cityid)
+		public static LVObj.City GetCityByID(int cityid)
 		{
-			for (int i = 0; i < Command.CityObj.City.AllCity.Length; i++)
+            for (int i = 0; i < LVObj.City.AllCity.Length; i++)
 			{
-				if (Command.CityObj.City.AllCity[i].id == cityid) 
-					return Command.CityObj.City.AllCity[i];
+                if (LVObj.City.AllCity[i].Id == cityid)
+                    return LVObj.City.AllCity[i];
 			}
 			return null;
 		}
@@ -38,38 +38,38 @@ namespace LVAuto.LVForm.Command {
 		// isall: true neu quet ca trai, neu khong chi quet thanh
 		public static int GetCityPostByGID(int gid, bool isall)
 		{
-			if (Command.CityObj.City.AllCity == null)
+			if (LVObj.City.AllCity == null)
 				GetAllSimpleCity();
 
-			if (Command.CityObj.City.AllCity == null) return -1;
+			if (LVObj.City.AllCity == null) return -1;
 			
-			for (int i = 0; i < Command.CityObj.City.AllCity.Length; i++)
+			for (int i = 0; i < LVObj.City.AllCity.Length; i++)
 			{
-				if (!isall && Command.CityObj.City.AllCity[i].id < 0) continue;
+				if (!isall && LVObj.City.AllCity[i].Id < 0) continue;
 
 
-				if (Command.CityObj.City.AllCity[i].AllBuilding == null)
+				if (LVObj.City.AllCity[i].AllBuildings == null)
 					GetAllBuilding(i, true);
 
-				if (Command.CityObj.City.AllCity[i].AllBuilding == null) continue;
-				for (int j = 0; j < Command.CityObj.City.AllCity[i].AllBuilding.Length; j++)
+				if (LVObj.City.AllCity[i].AllBuildings == null) continue;
+				for (int j = 0; j < LVObj.City.AllCity[i].AllBuildings.Length; j++)
 				{
-					if (gid == Command.CityObj.City.AllCity[i].AllBuilding[j].gid)
+					if (gid == LVObj.City.AllCity[i].AllBuildings[j].GId)
 						return i;
 				}
 			}
 			return -1;
 		}
 
-		public static Command.CityObj.MilitaryGeneral GetGeneralByID(int genaralID)
+        public static LVObj.MilitaryGeneral GetGeneralByID(int genaralID)
 		{
 			try
 			{
-				for (int i = 0; i < Command.CityObj.City.AllCity.Length; i++)
+				for (int i = 0; i < LVObj.City.AllCity.Length; i++)
 				{
-					for (int j = 0; j < Command.CityObj.City.AllCity[i].MilitaryGeneral.Length; j++)
+					for (int j = 0; j < LVObj.City.AllCity[i].MilitaryGenerals.Length; j++)
 					{
-						if (genaralID == Command.CityObj.City.AllCity[i].MilitaryGeneral[j].Id) return Command.CityObj.City.AllCity[i].MilitaryGeneral[j];
+						if (genaralID == LVObj.City.AllCity[i].MilitaryGenerals[j].Id) return LVObj.City.AllCity[i].MilitaryGenerals[j];
 					}
 				}
 				return null;
@@ -79,13 +79,13 @@ namespace LVAuto.LVForm.Command {
 				return null;
 			}
 		}
-		public static Command.CityObj.MilitaryGeneral GetGeneralByID(int citypost, int genaralID)
+        public static LVObj.MilitaryGeneral GetGeneralByID(int citypost, int genaralID)
 		{
 			try
 			{
-					for (int j = 0; j < Command.CityObj.City.AllCity[citypost].MilitaryGeneral.Length; j++)
+                for (int j = 0; j < LVObj.City.AllCity[citypost].MilitaryGenerals.Length; j++)
 					{
-						if (genaralID == Command.CityObj.City.AllCity[citypost].MilitaryGeneral[j].Id) return Command.CityObj.City.AllCity[citypost].MilitaryGeneral[j];
+                        if (genaralID == LVObj.City.AllCity[citypost].MilitaryGenerals[j].Id) return LVObj.City.AllCity[citypost].MilitaryGenerals[j];
 					}
 			
 				return null;
@@ -96,7 +96,7 @@ namespace LVAuto.LVForm.Command {
 			}
 		}
 
-        public static CityObj.City GetCityInfo(int id) 
+        public static LVObj.City GetCityInfo(int id) 
 		{
 			try
 			{
@@ -108,7 +108,7 @@ namespace LVAuto.LVForm.Command {
 					ArrayList city = (ArrayList)infos[i];
 					if (id == int.Parse(city[1].ToString()))
 					{
-						return new LVAuto.LVForm.Command.CityObj.City(int.Parse(city[1].ToString()), city[2].ToString(), int.Parse(city[4].ToString()),
+						return new LVAuto.LVObj.City(int.Parse(city[1].ToString()), city[2].ToString(), int.Parse(city[4].ToString()),
                                                            int.Parse(city[5].ToString()), int.Parse(city[7].ToString()), int.Parse(city[6].ToString()));
 					}
 				}
@@ -127,14 +127,15 @@ namespace LVAuto.LVForm.Command {
             return r;
         }
 
-        public static CityObj.City GetCityInfo(int id,string cookies) {
+        public static LVObj.City GetCityInfo(int id, string cookies)
+        {
 			// get all city
             Hashtable result = LVHelper.CityCommandHelper.GetInstance().ExecuteCommand(7, "", true, cookies);
             ArrayList infos = (ArrayList)result["infos"];
             for (int i = 0; i < infos.Count; i++) {
                 ArrayList city = (ArrayList)infos[i];
                 if (id == int.Parse(city[1].ToString())) {
-                    return new LVAuto.LVForm.Command.CityObj.City(int.Parse(city[1].ToString()), city[2].ToString(), int.Parse(city[4].ToString()),
+                    return new LVAuto.LVObj.City(int.Parse(city[1].ToString()), city[2].ToString(), int.Parse(city[4].ToString()),
                                                                             int.Parse(city[5].ToString()), int.Parse(city[7].ToString()));
                 }
             }
@@ -180,7 +181,7 @@ namespace LVAuto.LVForm.Command {
 
 		public static void GetAllBuilding(int citypos, bool reload)
 		{
-			GetAllBuilding(citypos, reload, LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(Command.CityObj.City.AllCity[citypos].id));
+			GetAllBuilding(citypos, reload, LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(LVObj.City.AllCity[citypos].Id));
 			
 		}
 		public static void GetAllBuilding(int citypos, bool reload, string cookies)
@@ -189,7 +190,7 @@ namespace LVAuto.LVForm.Command {
 			{
 				try
 				{
-					if (!reload && Command.CityObj.City.AllCity[citypos].AllBuilding != null) return;
+					if (!reload && LVObj.City.AllCity[citypos].AllBuildings != null) return;
 
 					int count = 0;
 					Hashtable temp = null;
@@ -202,22 +203,22 @@ namespace LVAuto.LVForm.Command {
 					if (temp == null) return;
 
 					ArrayList infosbuilding = (ArrayList)temp["infos"];
-					//Command.CityObj.City.AllCity[citypos].AllBuilding = new LVAuto.Command.CityObj.Building[infosbuilding.Count];
+					//LVObj.City.AllCity[citypos].AllBuilding = new LVAuto.LVObj.Building[infosbuilding.Count];
 
-					LVAuto.LVForm.Command.CityObj.Building[] arNewBuilding = new LVAuto.LVForm.Command.CityObj.Building[infosbuilding.Count];
+					LVAuto.LVObj.Building[] arNewBuilding = new LVAuto.LVObj.Building[infosbuilding.Count];
 
 					ArrayList building;
 					for (int j = 0; j < infosbuilding.Count; j++)
 					{
 						//System.Windows.Forms.Application.DoEvents();
 						building = (ArrayList)infosbuilding[j];
-						//Command.CityObj.City.AllCity[citypos].AllBuilding[j] = new LVAuto.Command.CityObj.Building(int.Parse(building[0].ToString()), int.Parse(building[1].ToString()), building[2].ToString(), int.Parse(building[3].ToString()));
-						arNewBuilding[j] = new LVAuto.LVForm.Command.CityObj.Building(int.Parse(building[0].ToString()), int.Parse(building[1].ToString()), building[2].ToString(), int.Parse(building[3].ToString()));
+						//LVObj.City.AllCity[citypos].AllBuilding[j] = new LVAuto.LVObj.Building(int.Parse(building[0].ToString()), int.Parse(building[1].ToString()), building[2].ToString(), int.Parse(building[3].ToString()));
+						arNewBuilding[j] = new LVAuto.LVObj.Building(int.Parse(building[0].ToString()), int.Parse(building[1].ToString()), building[2].ToString(), int.Parse(building[3].ToString()));
 					}
 
-					//Array.Sort(Command.CityObj.City.AllCity[citypos].AllBuilding);
+					//Array.Sort(LVObj.City.AllCity[citypos].AllBuilding);
 					Array.Sort(arNewBuilding);
-					Command.CityObj.City.AllCity[citypos].AllBuilding = arNewBuilding;
+					LVObj.City.AllCity[citypos].AllBuildings = arNewBuilding;
 
 					int k;
 				}
@@ -233,21 +234,21 @@ namespace LVAuto.LVForm.Command {
 			//System.Windows.Forms.Application.DoEvents();
 			
             ArrayList infosbuilding = (ArrayList)temp["infos"];
-            //Command.CityObj.City.AllCity[citypos].AllBuilding = new LVAuto.Command.CityObj.Building[infosbuilding.Count];
-			LVAuto.LVForm.Command.CityObj.Building[] newBuilding = new LVAuto.LVForm.Command.CityObj.Building[infosbuilding.Count];
+            //LVObj.City.AllCity[citypos].AllBuilding = new LVAuto.LVObj.Building[infosbuilding.Count];
+			LVAuto.LVObj.Building[] newBuilding = new LVAuto.LVObj.Building[infosbuilding.Count];
 
             for (int j = 0; j < infosbuilding.Count; j++) 
 			{
 				//System.Windows.Forms.Application.DoEvents();
                 ArrayList building = (ArrayList)infosbuilding[j];
 				
-                //Command.CityObj.City.AllCity[citypos].AllBuilding[j] = new LVAuto.Command.CityObj.Building(int.Parse(building[0].ToString()), int.Parse(building[1].ToString()), building[2].ToString(), int.Parse(building[3].ToString()));
-				newBuilding[j] = new LVAuto.LVForm.Command.CityObj.Building(int.Parse(building[0].ToString()), int.Parse(building[1].ToString()), building[2].ToString(), int.Parse(building[3].ToString()));
+                //LVObj.City.AllCity[citypos].AllBuilding[j] = new LVAuto.LVObj.Building(int.Parse(building[0].ToString()), int.Parse(building[1].ToString()), building[2].ToString(), int.Parse(building[3].ToString()));
+				newBuilding[j] = new LVAuto.LVObj.Building(int.Parse(building[0].ToString()), int.Parse(building[1].ToString()), building[2].ToString(), int.Parse(building[3].ToString()));
  
 			}
-            //Array.Sort(Command.CityObj.City.AllCity[citypos].AllBuilding);
+            //Array.Sort(LVObj.City.AllCity[citypos].AllBuilding);
 			Array.Sort(newBuilding);
-			Command.CityObj.City.AllCity[citypos].AllBuilding = newBuilding;
+			LVObj.City.AllCity[citypos].AllBuildings = newBuilding;
 
 		}
 
@@ -258,13 +259,13 @@ namespace LVAuto.LVForm.Command {
 			{
 				try
 				{
-					if (Command.CityObj.City.AllCity[citypos].AllBuilding == null)
+					if (LVObj.City.AllCity[citypos].AllBuildings == null)
 					{
 						GetAllBuilding(citypos, true);
 						return;
 					}
 
-                    Hashtable temp = LVHelper.CityCommandHelper.GetInstance().ExecuteCommand(5, "", true, LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(Command.CityObj.City.AllCity[citypos].id));
+                    Hashtable temp = LVHelper.CityCommandHelper.GetInstance().ExecuteCommand(5, "", true, LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(LVObj.City.AllCity[citypos].Id));
 
                     try
                     {
@@ -274,25 +275,25 @@ namespace LVAuto.LVForm.Command {
 
                     ArrayList infosbuilding = (ArrayList)temp["infos"];
 
-					Command.CityObj.Building[] newBuilding = new LVAuto.LVForm.Command.CityObj.Building[infosbuilding.Count];
+					LVObj.Building[] newBuilding = new LVAuto.LVObj.Building[infosbuilding.Count];
 
-					Command.CityObj.Building oldBuilding;
+					LVObj.Building oldBuilding;
 					ArrayList building;
 					for (int i = 0; i < infosbuilding.Count; i++)
 					{
 						building = (ArrayList)infosbuilding[i];
-						newBuilding[i] = new LVAuto.LVForm.Command.CityObj.Building(int.Parse(building[0].ToString()), int.Parse(building[1].ToString()), building[2].ToString(), int.Parse(building[3].ToString()));
-						if (Command.CityObj.City.AllCity[citypos].AllBuilding != null)
+						newBuilding[i] = new LVAuto.LVObj.Building(int.Parse(building[0].ToString()), int.Parse(building[1].ToString()), building[2].ToString(), int.Parse(building[3].ToString()));
+						if (LVObj.City.AllCity[citypos].AllBuildings != null)
 						{
 							// tim xem da co chua
-							for (int j = 0; j < Command.CityObj.City.AllCity[citypos].AllBuilding.Length; j++)
+							for (int j = 0; j < LVObj.City.AllCity[citypos].AllBuildings.Length; j++)
 							{
-								oldBuilding = Command.CityObj.City.AllCity[citypos].AllBuilding[j];
+								oldBuilding = LVObj.City.AllCity[citypos].AllBuildings[j];
 
-								if (newBuilding[i].gid == oldBuilding.gid && newBuilding[i].pid == oldBuilding.pid)
+								if (newBuilding[i].GId == oldBuilding.GId && newBuilding[i].PId == oldBuilding.PId)
 								{
-									newBuilding[i].isDown = oldBuilding.isDown;
-									newBuilding[i].isUp = oldBuilding.isUp;
+									newBuilding[i].IsDown = oldBuilding.IsDown;
+									newBuilding[i].IsUp = oldBuilding.IsUp;
 
 									break;
 								}
@@ -302,8 +303,8 @@ namespace LVAuto.LVForm.Command {
 
 					if (newBuilding != null) Array.Sort(newBuilding);
 
-					Command.CityObj.City.AllCity[citypos].AllBuilding = newBuilding;
-					//if (Command.CityObj.City.AllCity[citypos].AllBuilding != null) Array.Sort(Command.CityObj.City.AllCity[citypos].AllBuilding);
+					LVObj.City.AllCity[citypos].AllBuildings = newBuilding;
+					//if (LVObj.City.AllCity[citypos].AllBuilding != null) Array.Sort(LVObj.City.AllCity[citypos].AllBuilding);
 				}
 				catch (Exception ex)
 				{
@@ -318,14 +319,14 @@ namespace LVAuto.LVForm.Command {
             //]}
             Hashtable result = LVHelper.CityCommandHelper.GetInstance().ExecuteCommand(7, "", true);
             ArrayList infos = (ArrayList)result["infos"];
-            Command.CityObj.City.AllCity = new LVAuto.LVForm.Command.CityObj.City[infos.Count];
+            LVObj.City.AllCity = new LVAuto.LVObj.City[infos.Count];
 
 
             for (int i = 0; i < infos.Count; i++)
             {
                 ArrayList city = (ArrayList)infos[i];
                 // public City(int id, string name, int x, int y)
-                Command.CityObj.City.AllCity[i] = new LVAuto.LVForm.Command.CityObj.City(int.Parse(city[1].ToString()), city[2].ToString(), 
+                LVObj.City.AllCity[i] = new LVAuto.LVObj.City(int.Parse(city[1].ToString()), city[2].ToString(), 
                     int.Parse(city[4].ToString()), int.Parse(city[5].ToString()), int.Parse(city[7].ToString()));
                 
                 
@@ -375,9 +376,9 @@ namespace LVAuto.LVForm.Command {
             } while (result == null && count < 5);
 
             ArrayList infos = (ArrayList)result["infos"];
-            //Command.CityObj.City.AllCity = new LVAuto.Command.CityObj.City[infos.Count];
+            //LVObj.City.AllCity = new LVAuto.LVObj.City[infos.Count];
 
-            Command.CityObj.City[] newcity = new LVAuto.LVForm.Command.CityObj.City[infos.Count];
+            LVObj.City[] newcity = new LVAuto.LVObj.City[infos.Count];
 
             ArrayList city;
             for (int i = 0; i < infos.Count; i++)
@@ -386,7 +387,7 @@ namespace LVAuto.LVForm.Command {
 
                 city = (ArrayList)infos[i];
                 // public City(int id, string name, int x, int y)
-                newcity[i] = new LVAuto.LVForm.Command.CityObj.City(int.Parse(city[1].ToString()), city[2].ToString(), int.Parse(city[4].ToString()), 
+                newcity[i] = new LVAuto.LVObj.City(int.Parse(city[1].ToString()), city[2].ToString(), int.Parse(city[4].ToString()), 
                                                                 int.Parse(city[5].ToString()), int.Parse(city[7].ToString()), int.Parse(city[6].ToString()));
                 
 
@@ -394,7 +395,7 @@ namespace LVAuto.LVForm.Command {
                 Command.City.SwitchCitySlow(int.Parse(city[1].ToString()));
             }
 
-            Command.CityObj.City.AllCity = newcity;
+            LVObj.City.AllCity = newcity;
         }
 
 
@@ -403,7 +404,7 @@ namespace LVAuto.LVForm.Command {
 			lock (CityIsLock)
 			{
 
-				if (Command.CityObj.City.AllCity == null)
+				if (LVObj.City.AllCity == null)
 				{
 					GetAllSimpleCity();
 					return;
@@ -417,8 +418,8 @@ namespace LVAuto.LVForm.Command {
 
 				ArrayList infos = (ArrayList)result["infos"];
 
-				Command.CityObj.City[] newcity = new LVAuto.LVForm.Command.CityObj.City[infos.Count];
-				Command.CityObj.City oldcity;
+				LVObj.City[] newcity = new LVAuto.LVObj.City[infos.Count];
+				LVObj.City oldcity;
 
 				ArrayList city;
 				string newname;
@@ -428,26 +429,26 @@ namespace LVAuto.LVForm.Command {
 
 					city = (ArrayList)infos[i];
 					// public City(int id, string name, int x, int y)
-					newcity[i] = new LVAuto.LVForm.Command.CityObj.City(int.Parse(city[1].ToString()), city[2].ToString(), int.Parse(city[4].ToString()), 
+					newcity[i] = new LVAuto.LVObj.City(int.Parse(city[1].ToString()), city[2].ToString(), int.Parse(city[4].ToString()), 
                         int.Parse(city[5].ToString()), int.Parse(city[7].ToString()), int.Parse(city[6].ToString()));
                     
                     // cap thanh
-                    newcity[i].size = int.Parse(city[7].ToString());
+                    newcity[i].Size = int.Parse(city[7].ToString());
 
-                    oldcity = LVAuto.LVForm.Command.City.GetCityByID(newcity[i].id);
+                    oldcity = LVAuto.LVForm.Command.City.GetCityByID(newcity[i].Id);
 
                     if (oldcity != null)
                     {
-                        newcity[i].AllBuilding = oldcity.AllBuilding; 
+                        newcity[i].AllBuildings = oldcity.AllBuildings; 
                     }
 
 					
                     //Command.City.SwitchCitySlow(int.Parse(city[1].ToString()));
 					
                     /*
-                    for (int j = 0; j < Command.CityObj.City.AllCity.Length; j++)
+                    for (int j = 0; j < LVObj.City.AllCity.Length; j++)
 					{
-						oldcity = Command.CityObj.City.AllCity[j];
+						oldcity = LVObj.City.AllCity[j];
 						if (newcity[i].id == oldcity.id)
 						{
 							// thay doi moi ten, giu lai het cac thuoc tinh khac
@@ -462,23 +463,23 @@ namespace LVAuto.LVForm.Command {
                      */ 
 				}
 
-				Command.CityObj.City.AllCity = newcity;
+				LVObj.City.AllCity = newcity;
 			}
 		}
 
 
 		public static int GetBuildingPostById(int citypost, int gid)
 		{
-			Command.CityObj.Building building;
+			LVObj.Building building;
 
-			if (Command.CityObj.City.AllCity == null) return -1;
-			if (Command.CityObj.City.AllCity[citypost].AllBuilding == null)
+			if (LVObj.City.AllCity == null) return -1;
+			if (LVObj.City.AllCity[citypost].AllBuildings == null)
 				LVAuto.LVForm.Command.City.UpdateAllBuilding(citypost);
 
-			for (int i = 0; i < Command.CityObj.City.AllCity[citypost].AllBuilding.Length; i++)
+			for (int i = 0; i < LVObj.City.AllCity[citypost].AllBuildings.Length; i++)
 			{
-				building = Command.CityObj.City.AllCity[citypost].AllBuilding[i];
-				if (building.gid == gid ) return i;
+				building = LVObj.City.AllCity[citypost].AllBuildings[i];
+				if (building.GId == gid ) return i;
 			}
 
 			return -1;
@@ -488,15 +489,15 @@ namespace LVAuto.LVForm.Command {
 
 		public static int GetBuildingPostById(int citypost, int gid, int pid)
 		{
-			Command.CityObj.Building building;
+			LVObj.Building building;
 
-			if (Command.CityObj.City.AllCity == null) return -1;
-			if (Command.CityObj.City.AllCity[citypost].AllBuilding == null) return -1;
+			if (LVObj.City.AllCity == null) return -1;
+			if (LVObj.City.AllCity[citypost].AllBuildings == null) return -1;
 
-			for (int i = 0; i < Command.CityObj.City.AllCity[citypost].AllBuilding.Length; i++)
+			for (int i = 0; i < LVObj.City.AllCity[citypost].AllBuildings.Length; i++)
 			{
-				building = Command.CityObj.City.AllCity[citypost].AllBuilding[i];
-				if (building.gid == gid && building.pid == pid) return i;
+				building = LVObj.City.AllCity[citypost].AllBuildings[i];
+				if (building.GId == gid && building.PId == pid) return i;
 			}
 
 			return -1;
@@ -505,16 +506,16 @@ namespace LVAuto.LVForm.Command {
 		public static void GetAllBuilding(int citypos)
 		{
 			//hungtv add
-			//Command.City.SwitchCitySlow(Command.CityObj.City.AllCity[citypos].id);
+			//Command.City.SwitchCitySlow(LVObj.City.AllCity[citypos].id);
 			//---
             Hashtable temp = LVHelper.CityCommandHelper.GetInstance().ExecuteCommand(5, "", true);
             ArrayList infosbuilding = (ArrayList)temp["infos"];
-            Command.CityObj.City.AllCity[citypos].AllBuilding = new LVAuto.LVForm.Command.CityObj.Building[infosbuilding.Count];
+            LVObj.City.AllCity[citypos].AllBuildings = new LVAuto.LVObj.Building[infosbuilding.Count];
             for (int j = 0; j < infosbuilding.Count; j++) {
                 ArrayList building = (ArrayList)infosbuilding[j];
-                Command.CityObj.City.AllCity[citypos].AllBuilding[j] = new LVAuto.LVForm.Command.CityObj.Building(int.Parse(building[0].ToString()), int.Parse(building[1].ToString()), building[2].ToString(), int.Parse(building[3].ToString()));
+                LVObj.City.AllCity[citypos].AllBuildings[j] = new LVAuto.LVObj.Building(int.Parse(building[0].ToString()), int.Parse(building[1].ToString()), building[2].ToString(), int.Parse(building[3].ToString()));
             }
-            Array.Sort(Command.CityObj.City.AllCity[citypos].AllBuilding);
+            Array.Sort(LVObj.City.AllCity[citypos].AllBuildings);
         }
        
         public static void SwitchCitySlow(int idcity) {
@@ -536,9 +537,9 @@ namespace LVAuto.LVForm.Command {
         }
 
 		// hungtv add 
-		public static LVAuto.LVForm.Command.CityObj.CityTask GetCityTaskByCityID(int cityid)
+		public static LVAuto.LVObj.CityTask GetCityTaskByCityID(int cityid)
 		{
-			//int cityid = LVAuto.Command.CityObj.City.AllCity[citypos].id;
+			//int cityid = LVAuto.LVObj.City.AllCity[citypos].id;
 				try
 				{
 					LVAuto.LVForm.Command.City.SwitchCitySlow(cityid);
@@ -548,18 +549,18 @@ namespace LVAuto.LVForm.Command {
 					int tech = int.Parse(((ArrayList)task["tech"])[2].ToString());
 					int task1 = int.Parse(((ArrayList)task["task"])[3].ToString());
 					//int mcb = int.Parse(((ArrayList)((ArrayList)((ArrayList)attack["infos"])[0])[2])[1].ToString());
-					return (new LVAuto.LVForm.Command.CityObj.CityTask(countbuild, tech, task1, 0));
+					return (new LVAuto.LVObj.CityTask(countbuild, tech, task1, 0));
 				}
 				catch (Exception ex)
 				{
-					return ( new LVAuto.LVForm.Command.CityObj.CityTask(0, 0, 0, 0));
+					return ( new LVAuto.LVObj.CityTask(0, 0, 0, 0));
 				}			
 		}
 
 			// hungtv add 
-		public static LVAuto.LVForm.Command.CityObj.CityTask GetCityTaskByCityPos(int citypos)
+		public static LVAuto.LVObj.CityTask GetCityTaskByCityPos(int citypos)
 		{
-			return GetCityTaskByCityID(LVAuto.LVForm.Command.CityObj.City.AllCity[citypos].id);
+			return GetCityTaskByCityID(LVAuto.LVObj.City.AllCity[citypos].Id);
 		}
         
     }
