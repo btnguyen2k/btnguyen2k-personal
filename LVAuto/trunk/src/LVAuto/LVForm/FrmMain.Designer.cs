@@ -24,16 +24,16 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Thành thị");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Thành thị");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Tướng");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Thành thị");
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Thành thị");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Tướng");
             this.tabMainTab = new System.Windows.Forms.TabControl();
             this.tabLogin = new System.Windows.Forms.TabPage();
             this.groupBox20 = new System.Windows.Forms.GroupBox();
@@ -54,10 +54,6 @@
             this.label73 = new System.Windows.Forms.Label();
             this.label76 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.btTest = new System.Windows.Forms.Button();
-            this.panelLoading = new System.Windows.Forms.Panel();
-            this.lblPanelLoading = new System.Windows.Forms.Label();
-            this.picPanelWaiting = new System.Windows.Forms.PictureBox();
             this.picAttach = new System.Windows.Forms.PictureBox();
             this.label46 = new System.Windows.Forms.Label();
             this.label54 = new System.Windows.Forms.Label();
@@ -129,6 +125,7 @@
             this.Auto_checkAutoSellResources = new System.Windows.Forms.CheckBox();
             this.tabBanTaiNguyen = new System.Windows.Forms.TabPage();
             this.pnSELL = new System.Windows.Forms.Panel();
+            this.SellRes_btnReloadCities = new System.Windows.Forms.Button();
             this.SellRes_btnUpdate = new System.Windows.Forms.Button();
             this.SellRes_checkSelloff = new System.Windows.Forms.CheckBox();
             this.SellRes_btnSelectAllStone = new System.Windows.Forms.Button();
@@ -138,89 +135,89 @@
             this.SellRes_txtTimer = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rdBTNLuaPercentCoDinh = new System.Windows.Forms.RadioButton();
-            this.rdBTNLuaAnToanCoDinh = new System.Windows.Forms.RadioButton();
+            this.SellRes_radioSellAmountMethodFoodPercent = new System.Windows.Forms.RadioButton();
+            this.SellRes_radioSellAmountMethodFoodFix = new System.Windows.Forms.RadioButton();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.rdBanTN_LUA_TB_Cong = new System.Windows.Forms.RadioButton();
-            this.rdBanTN_LUA_TB_Nhan = new System.Windows.Forms.RadioButton();
+            this.SellRes_radioAddOnMethodFoodAdd = new System.Windows.Forms.RadioButton();
+            this.SellRes_radioAddOnMethodFoodMultiply = new System.Windows.Forms.RadioButton();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.rdBanTN_LUA_THAPNHAT = new System.Windows.Forms.RadioButton();
-            this.rdBanTN_LUA_CODINH = new System.Windows.Forms.RadioButton();
-            this.rdBanTN_LUA_TRUNGBINH = new System.Windows.Forms.RadioButton();
-            this.txtBanTN_LUA_TB_Heso = new System.Windows.Forms.TextBox();
-            this.txtCOUNTLUA = new System.Windows.Forms.TextBox();
+            this.SellRes_radioSellPriceMethodFoodMin = new System.Windows.Forms.RadioButton();
+            this.SellRes_radioSellPriceMethodFoodFix = new System.Windows.Forms.RadioButton();
+            this.SellRes_radioSellPriceMethodFoodAvg = new System.Windows.Forms.RadioButton();
+            this.SellRes_textAddOnValueFood = new System.Windows.Forms.TextBox();
+            this.SellRes_txtAmountSellFood = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.lblBTNLuaDVAnToan = new System.Windows.Forms.Label();
-            this.lblBTNLuaDVSoluong = new System.Windows.Forms.Label();
-            this.txtSAFELUA = new System.Windows.Forms.TextBox();
+            this.SellRes_labelAmountThresholdFood = new System.Windows.Forms.Label();
+            this.SellRes_labelAmountSellFood = new System.Windows.Forms.Label();
+            this.SellRes_txtAmountThresholdFood = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rdBTNGoPercentCoDinh = new System.Windows.Forms.RadioButton();
+            this.SellRes_radioSellAmountMethodWoodsPercent = new System.Windows.Forms.RadioButton();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.rdBanTN_GO_TB_Cong = new System.Windows.Forms.RadioButton();
+            this.SellRes_radioAddOnMethodWoodsAdd = new System.Windows.Forms.RadioButton();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.rdBanTN_GO_THAPNHAT = new System.Windows.Forms.RadioButton();
-            this.rdBanTN_GO_CODINH = new System.Windows.Forms.RadioButton();
-            this.rdBanTN_GO_TRUNGBINH = new System.Windows.Forms.RadioButton();
-            this.rdBanTN_GO_TB_Nhan = new System.Windows.Forms.RadioButton();
-            this.txtBanTN_GO_TB_Heso = new System.Windows.Forms.TextBox();
-            this.rdBTNGoAnToanCoDinh = new System.Windows.Forms.RadioButton();
-            this.txtCOUNTGO = new System.Windows.Forms.TextBox();
+            this.SellRes_radioSellPriceMethodWoodsMin = new System.Windows.Forms.RadioButton();
+            this.SellRes_radioSellPriceMethodWoodsFix = new System.Windows.Forms.RadioButton();
+            this.SellRes_radioSellPriceMethodWoodsAvg = new System.Windows.Forms.RadioButton();
+            this.SellRes_radioAddOnMethodWoodsMultiply = new System.Windows.Forms.RadioButton();
+            this.SellRes_textAddOnValueWoods = new System.Windows.Forms.TextBox();
+            this.SellRes_radioSellAmountMethodWoodsFix = new System.Windows.Forms.RadioButton();
+            this.SellRes_txtAmountSellWoods = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.lblBTNGoDVAnToan = new System.Windows.Forms.Label();
-            this.lblBTNGoDVSoluong = new System.Windows.Forms.Label();
-            this.txtSAFEGO = new System.Windows.Forms.TextBox();
+            this.SellRes_labelAmountThresholdWoods = new System.Windows.Forms.Label();
+            this.SellRes_labelAmountSellWoods = new System.Windows.Forms.Label();
+            this.SellRes_txtAmountThresholdWoods = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.rdBTNSatPercentCoDinh = new System.Windows.Forms.RadioButton();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.rdBanTN_SAT_TB_Cong = new System.Windows.Forms.RadioButton();
-            this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.rdBanTN_SAT_THAPNHAT = new System.Windows.Forms.RadioButton();
-            this.rdBanTN_SAT_CODINH = new System.Windows.Forms.RadioButton();
-            this.rdBanTN_SAT_TRUNGBINH = new System.Windows.Forms.RadioButton();
-            this.txtBanTN_SAT_TB_Heso = new System.Windows.Forms.TextBox();
-            this.rdBanTN_SAT_TB_Nhan = new System.Windows.Forms.RadioButton();
-            this.txtCOUNTSAT = new System.Windows.Forms.TextBox();
-            this.rdBTNSatAnToanCoDinh = new System.Windows.Forms.RadioButton();
-            this.label14 = new System.Windows.Forms.Label();
-            this.lblBTNSatDVAnToan = new System.Windows.Forms.Label();
-            this.lblBTNSatDVSoluong = new System.Windows.Forms.Label();
-            this.txtSAFESAT = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.rdBTNDaPercentCoDinh = new System.Windows.Forms.RadioButton();
+            this.SellRes_radioSellAmountMethodIronPercent = new System.Windows.Forms.RadioButton();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.SellRes_radioAddOnMethodIronAdd = new System.Windows.Forms.RadioButton();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.SellRes_radioSellPriceMethodIronMin = new System.Windows.Forms.RadioButton();
+            this.SellRes_radioSellPriceMethodIronFix = new System.Windows.Forms.RadioButton();
+            this.SellRes_radioSellPriceMethodIronAvg = new System.Windows.Forms.RadioButton();
+            this.SellRes_textAddOnValueIron = new System.Windows.Forms.TextBox();
+            this.SellRes_radioAddOnMethodIronMultiply = new System.Windows.Forms.RadioButton();
+            this.SellRes_txtAmountSellIron = new System.Windows.Forms.TextBox();
+            this.SellRes_radioSellAmountMethodIronFix = new System.Windows.Forms.RadioButton();
+            this.label14 = new System.Windows.Forms.Label();
+            this.SellRes_labelAmountThresholdIron = new System.Windows.Forms.Label();
+            this.SellRes_labelAmountSellIron = new System.Windows.Forms.Label();
+            this.SellRes_txtAmountThresholdIron = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.SellRes_radioSellAmountMethodStonePercent = new System.Windows.Forms.RadioButton();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.rdBanTN_DA_TB_Cong = new System.Windows.Forms.RadioButton();
+            this.SellRes_radioAddOnMethodStoneAdd = new System.Windows.Forms.RadioButton();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.rdBanTN_DA_THAPNHAT = new System.Windows.Forms.RadioButton();
-            this.rdBanTN_DA_CODINH = new System.Windows.Forms.RadioButton();
-            this.rdBanTN_DA_TRUNGBINH = new System.Windows.Forms.RadioButton();
-            this.rdBanTN_DA_TB_Nhan = new System.Windows.Forms.RadioButton();
-            this.txtBanTN_DA_TB_Heso = new System.Windows.Forms.TextBox();
-            this.txtCOUNTDA = new System.Windows.Forms.TextBox();
+            this.SellRes_radioSellPriceMethodStoneMin = new System.Windows.Forms.RadioButton();
+            this.SellRes_radioSellPriceMethodStoneFix = new System.Windows.Forms.RadioButton();
+            this.SellRes_radioSellPriceMethodStoneAvg = new System.Windows.Forms.RadioButton();
+            this.SellRes_radioAddOnMethodStoneMultiply = new System.Windows.Forms.RadioButton();
+            this.SellRes_textAddOnValueStone = new System.Windows.Forms.TextBox();
+            this.SellRes_txtAmountSellStone = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.rdBTNDaAnToanCoDinh = new System.Windows.Forms.RadioButton();
-            this.lblBTNDaDVAnToan = new System.Windows.Forms.Label();
-            this.txtSAFEDA = new System.Windows.Forms.TextBox();
-            this.lblBTNDaDVSoluong = new System.Windows.Forms.Label();
+            this.SellRes_radioSellAmountMethodStoneFix = new System.Windows.Forms.RadioButton();
+            this.SellRes_labelAmountThresholdStone = new System.Windows.Forms.Label();
+            this.SellRes_txtAmountThresholdStone = new System.Windows.Forms.TextBox();
+            this.SellRes_labelAmountSellStone = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.SellRes_gridCityList = new System.Windows.Forms.DataGridView();
             this.tabMuaTaiNguyen = new System.Windows.Forms.TabPage();
             this.pnLVBUYRES = new System.Windows.Forms.Panel();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.txtMuaTNGioiHanMua = new System.Windows.Forms.TextBox();
-            this.rdMuaTNMuaTheoPhanTram = new System.Windows.Forms.RadioButton();
-            this.rdMuaTNMuaTheoDonVi = new System.Windows.Forms.RadioButton();
+            this.BuyRes_txtBuyAmount = new System.Windows.Forms.TextBox();
+            this.BuyRes_radioBuyAmountMethodPercent = new System.Windows.Forms.RadioButton();
+            this.BuyRes_radioBuyAmountMethodFix = new System.Windows.Forms.RadioButton();
             this.label89 = new System.Windows.Forms.Label();
-            this.txtBUYRESOURCECHECK = new System.Windows.Forms.TextBox();
-            this.dtaBUYRESOURCE = new System.Windows.Forms.DataGridView();
+            this.BuyRes_txtTimer = new System.Windows.Forms.TextBox();
+            this.BuyRes_gridCityList = new System.Windows.Forms.DataGridView();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtSAFEGOLD = new System.Windows.Forms.TextBox();
-            this.btMuaTNSelectAllDa = new System.Windows.Forms.Button();
-            this.btMuaTNSelectAllLua = new System.Windows.Forms.Button();
-            this.btMuaTNSelectAllSat = new System.Windows.Forms.Button();
-            this.btMuaTNSelectAllGo = new System.Windows.Forms.Button();
+            this.BuyRes_txtGoldThreshold = new System.Windows.Forms.TextBox();
+            this.BuyRes_btnSelectAllStone = new System.Windows.Forms.Button();
+            this.BuyRes_btnSelectAllFood = new System.Windows.Forms.Button();
+            this.BuyRes_btnSelectAllIron = new System.Windows.Forms.Button();
+            this.BuyRes_btnSelectAllWoods = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.tabXayDung = new System.Windows.Forms.TabPage();
             this.pnXayNha = new System.Windows.Forms.Panel();
@@ -578,12 +575,11 @@
             this.dlgSaveConfigFile = new System.Windows.Forms.SaveFileDialog();
             this.timerAuto = new System.Windows.Forms.Timer(this.components);
             this.timerDanhTuongViengTham = new System.Windows.Forms.Timer(this.components);
-            this.SellRes_btnReloadCities = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.labelStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabMainTab.SuspendLayout();
             this.tabLogin.SuspendLayout();
             this.groupBox20.SuspendLayout();
-            this.panelLoading.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picPanelWaiting)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAttach)).BeginInit();
             this.tabLog.SuspendLayout();
             this.tabAuto.SuspendLayout();
@@ -597,17 +593,17 @@
             this.groupBox2.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox12.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox13.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SellRes_gridCityList)).BeginInit();
             this.tabMuaTaiNguyen.SuspendLayout();
             this.pnLVBUYRES.SuspendLayout();
             this.groupBox10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtaBUYRESOURCE)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BuyRes_gridCityList)).BeginInit();
             this.tabXayDung.SuspendLayout();
             this.pnXayNha.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -651,6 +647,7 @@
             this.groupBox24.SuspendLayout();
             this.groupBox25.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabMainTab
@@ -687,7 +684,6 @@
             this.tabMainTab.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabMainTab_Selecting);
             this.tabMainTab.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl1_Selected);
             this.tabMainTab.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabMainTab_DrawItem);
-            this.tabMainTab.SelectedIndexChanged += new System.EventHandler(this.tabMainTab_SelectedIndexChanged);
             // 
             // tabLogin
             // 
@@ -696,8 +692,6 @@
             this.tabLogin.Controls.Add(this.groupBox20);
             this.tabLogin.Controls.Add(this.label76);
             this.tabLogin.Controls.Add(this.linkLabel1);
-            this.tabLogin.Controls.Add(this.btTest);
-            this.tabLogin.Controls.Add(this.panelLoading);
             this.tabLogin.Controls.Add(this.picAttach);
             this.tabLogin.Controls.Add(this.label46);
             this.tabLogin.Controls.Add(this.label54);
@@ -714,7 +708,6 @@
             this.tabLogin.TabIndex = 14;
             this.tabLogin.Text = "Login";
             this.tabLogin.UseVisualStyleBackColor = true;
-            this.tabLogin.Click += new System.EventHandler(this.tabLogin_Click);
             // 
             // groupBox20
             // 
@@ -911,47 +904,6 @@
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "http://autolinhvuong.blogspot.com";
             // 
-            // btTest
-            // 
-            this.btTest.Location = new System.Drawing.Point(9, 382);
-            this.btTest.Name = "btTest";
-            this.btTest.Size = new System.Drawing.Size(75, 23);
-            this.btTest.TabIndex = 54;
-            this.btTest.Text = "Test";
-            this.btTest.UseVisualStyleBackColor = true;
-            this.btTest.Visible = false;
-            this.btTest.Click += new System.EventHandler(this.btTest_Click);
-            // 
-            // panelLoading
-            // 
-            this.panelLoading.Controls.Add(this.lblPanelLoading);
-            this.panelLoading.Controls.Add(this.picPanelWaiting);
-            this.panelLoading.Location = new System.Drawing.Point(216, 248);
-            this.panelLoading.Name = "panelLoading";
-            this.panelLoading.Size = new System.Drawing.Size(112, 45);
-            this.panelLoading.TabIndex = 4;
-            // 
-            // lblPanelLoading
-            // 
-            this.lblPanelLoading.AutoSize = true;
-            this.lblPanelLoading.ForeColor = System.Drawing.Color.Black;
-            this.lblPanelLoading.Location = new System.Drawing.Point(35, 15);
-            this.lblPanelLoading.Name = "lblPanelLoading";
-            this.lblPanelLoading.Size = new System.Drawing.Size(54, 13);
-            this.lblPanelLoading.TabIndex = 1;
-            this.lblPanelLoading.Text = "Loading...";
-            this.lblPanelLoading.Click += new System.EventHandler(this.lblPanelLoading_Click);
-            // 
-            // picPanelWaiting
-            // 
-            this.picPanelWaiting.Image = global::LVAuto.Properties.Resources.waiting;
-            this.picPanelWaiting.Location = new System.Drawing.Point(17, 13);
-            this.picPanelWaiting.Name = "picPanelWaiting";
-            this.picPanelWaiting.Size = new System.Drawing.Size(16, 16);
-            this.picPanelWaiting.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.picPanelWaiting.TabIndex = 0;
-            this.picPanelWaiting.TabStop = false;
-            // 
             // picAttach
             // 
             this.picAttach.Image = global::LVAuto.Properties.Resources.Dangbitancong;
@@ -1019,7 +971,7 @@
             this.Login_dropdownServerList.Name = "Login_dropdownServerList";
             this.Login_dropdownServerList.Size = new System.Drawing.Size(157, 21);
             this.Login_dropdownServerList.TabIndex = 3;
-            this.Login_dropdownServerList.SelectedIndexChanged += new System.EventHandler(this.cboServer_SelectedIndexChanged);
+            this.Login_dropdownServerList.SelectedIndexChanged += new System.EventHandler(this.Login_dropdownServerList_SelectedIndexChanged);
             // 
             // Login_btnLogin
             // 
@@ -1029,7 +981,7 @@
             this.Login_btnLogin.TabIndex = 4;
             this.Login_btnLogin.Text = "Login";
             this.Login_btnLogin.UseVisualStyleBackColor = true;
-            this.Login_btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.Login_btnLogin.Click += new System.EventHandler(this.Login_btnLogin_Click);
             // 
             // Login_txtPassword
             // 
@@ -1130,7 +1082,6 @@
             this.lblAUTOCALLMANMESSAGE.Size = new System.Drawing.Size(83, 13);
             this.lblAUTOCALLMANMESSAGE.TabIndex = 31;
             this.lblAUTOCALLMANMESSAGE.Text = "Chưa khởi động";
-            this.lblAUTOCALLMANMESSAGE.Click += new System.EventHandler(this.label106_Click);
             // 
             // lblAUTOBINHMANMESSAGE
             // 
@@ -1141,7 +1092,6 @@
             this.lblAUTOBINHMANMESSAGE.Size = new System.Drawing.Size(83, 13);
             this.lblAUTOBINHMANMESSAGE.TabIndex = 31;
             this.lblAUTOBINHMANMESSAGE.Text = "Chưa khởi động";
-            this.lblAUTOBINHMANMESSAGE.Click += new System.EventHandler(this.label106_Click);
             // 
             // lblAUTOVCVKMESSAGE
             // 
@@ -1152,7 +1102,6 @@
             this.lblAUTOVCVKMESSAGE.Size = new System.Drawing.Size(83, 13);
             this.lblAUTOVCVKMESSAGE.TabIndex = 31;
             this.lblAUTOVCVKMESSAGE.Text = "Chưa khởi động";
-            this.lblAUTOVCVKMESSAGE.Click += new System.EventHandler(this.label106_Click);
             // 
             // lblDIEUPHAIMESSAGE
             // 
@@ -1451,7 +1400,6 @@
             this.grbXacNhanHinhAnh.TabIndex = 2;
             this.grbXacNhanHinhAnh.TabStop = false;
             this.grbXacNhanHinhAnh.Text = "Xác nhận hình ảnh";
-            this.grbXacNhanHinhAnh.Enter += new System.EventHandler(this.grbXacNhanHinhAnh_Enter);
             // 
             // txtXacNhanAnhMinTimeCheck
             // 
@@ -1462,7 +1410,6 @@
             this.txtXacNhanAnhMinTimeCheck.TabIndex = 8;
             this.txtXacNhanAnhMinTimeCheck.Text = "1";
             this.txtXacNhanAnhMinTimeCheck.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtXacNhanAnhMinTimeCheck.TextChanged += new System.EventHandler(this.txtXacNhanAnhMinTimeCheck_TextChanged);
             this.txtXacNhanAnhMinTimeCheck.Leave += new System.EventHandler(this.txtXacNhanAnhMinTimeCheck_Leave);
             // 
             // label18
@@ -1494,7 +1441,6 @@
             this.txtXacNhanAnhMaxCheck.TabIndex = 6;
             this.txtXacNhanAnhMaxCheck.Text = "999999";
             this.txtXacNhanAnhMaxCheck.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtXacNhanAnhMaxCheck.TextChanged += new System.EventHandler(this.txtXacNhanAnhMaxCheck_TextChanged);
             this.txtXacNhanAnhMaxCheck.Leave += new System.EventHandler(this.txtXacNhanAnhMaxCheck_Leave);
             // 
             // btAutoHienAnhDeCheck
@@ -1780,7 +1726,6 @@
             this.tabBanTaiNguyen.TabIndex = 1;
             this.tabBanTaiNguyen.Text = "Bán tài nguyên";
             this.tabBanTaiNguyen.UseVisualStyleBackColor = true;
-            this.tabBanTaiNguyen.Leave += new System.EventHandler(this.tabBanTaiNguyen_Leave);
             // 
             // pnSELL
             // 
@@ -1795,15 +1740,26 @@
             this.pnSELL.Controls.Add(this.label20);
             this.pnSELL.Controls.Add(this.groupBox1);
             this.pnSELL.Controls.Add(this.groupBox2);
-            this.pnSELL.Controls.Add(this.groupBox3);
             this.pnSELL.Controls.Add(this.groupBox4);
+            this.pnSELL.Controls.Add(this.groupBox3);
             this.pnSELL.Controls.Add(this.SellRes_gridCityList);
             this.pnSELL.Location = new System.Drawing.Point(5, 6);
             this.pnSELL.Name = "pnSELL";
             this.pnSELL.Size = new System.Drawing.Size(664, 453);
             this.pnSELL.TabIndex = 6;
-            this.pnSELL.Paint += new System.Windows.Forms.PaintEventHandler(this.pnSELL_Paint);
-            this.pnSELL.Leave += new System.EventHandler(this.pnSELL_Leave);
+            // 
+            // SellRes_btnReloadCities
+            // 
+            this.SellRes_btnReloadCities.BackColor = System.Drawing.Color.Transparent;
+            this.SellRes_btnReloadCities.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SellRes_btnReloadCities.ForeColor = System.Drawing.Color.Blue;
+            this.SellRes_btnReloadCities.Location = new System.Drawing.Point(568, 366);
+            this.SellRes_btnReloadCities.Name = "SellRes_btnReloadCities";
+            this.SellRes_btnReloadCities.Size = new System.Drawing.Size(75, 23);
+            this.SellRes_btnReloadCities.TabIndex = 44;
+            this.SellRes_btnReloadCities.Text = "Nạp Lại";
+            this.SellRes_btnReloadCities.UseVisualStyleBackColor = false;
+            this.SellRes_btnReloadCities.Click += new System.EventHandler(this.SellRes_btnReloadCities_Click);
             // 
             // SellRes_btnUpdate
             // 
@@ -1815,6 +1771,7 @@
             this.SellRes_btnUpdate.TabIndex = 43;
             this.SellRes_btnUpdate.Text = "Cập Nhật";
             this.SellRes_btnUpdate.UseVisualStyleBackColor = true;
+            this.SellRes_btnUpdate.Click += new System.EventHandler(this.SellRes_btnUpdate_Click);
             // 
             // SellRes_checkSelloff
             // 
@@ -1888,14 +1845,14 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.rdBTNLuaPercentCoDinh);
-            this.groupBox1.Controls.Add(this.rdBTNLuaAnToanCoDinh);
+            this.groupBox1.Controls.Add(this.SellRes_radioSellAmountMethodFoodPercent);
+            this.groupBox1.Controls.Add(this.SellRes_radioSellAmountMethodFoodFix);
             this.groupBox1.Controls.Add(this.groupBox5);
-            this.groupBox1.Controls.Add(this.txtCOUNTLUA);
+            this.groupBox1.Controls.Add(this.SellRes_txtAmountSellFood);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.lblBTNLuaDVAnToan);
-            this.groupBox1.Controls.Add(this.lblBTNLuaDVSoluong);
-            this.groupBox1.Controls.Add(this.txtSAFELUA);
+            this.groupBox1.Controls.Add(this.SellRes_labelAmountThresholdFood);
+            this.groupBox1.Controls.Add(this.SellRes_labelAmountSellFood);
+            this.groupBox1.Controls.Add(this.SellRes_txtAmountThresholdFood);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Location = new System.Drawing.Point(3, 2);
             this.groupBox1.Name = "groupBox1";
@@ -1904,36 +1861,34 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lúa";
             // 
-            // rdBTNLuaPercentCoDinh
+            // SellRes_radioSellAmountMethodFoodPercent
             // 
-            this.rdBTNLuaPercentCoDinh.AutoSize = true;
-            this.rdBTNLuaPercentCoDinh.Location = new System.Drawing.Point(72, 16);
-            this.rdBTNLuaPercentCoDinh.Name = "rdBTNLuaPercentCoDinh";
-            this.rdBTNLuaPercentCoDinh.Size = new System.Drawing.Size(55, 17);
-            this.rdBTNLuaPercentCoDinh.TabIndex = 211;
-            this.rdBTNLuaPercentCoDinh.Text = "% Kho";
-            this.rdBTNLuaPercentCoDinh.UseVisualStyleBackColor = true;
-            this.rdBTNLuaPercentCoDinh.CheckedChanged += new System.EventHandler(this.rdBTNLuaPercentCoDinh_CheckedChanged);
+            this.SellRes_radioSellAmountMethodFoodPercent.AutoSize = true;
+            this.SellRes_radioSellAmountMethodFoodPercent.Location = new System.Drawing.Point(72, 16);
+            this.SellRes_radioSellAmountMethodFoodPercent.Name = "SellRes_radioSellAmountMethodFoodPercent";
+            this.SellRes_radioSellAmountMethodFoodPercent.Size = new System.Drawing.Size(55, 17);
+            this.SellRes_radioSellAmountMethodFoodPercent.TabIndex = 211;
+            this.SellRes_radioSellAmountMethodFoodPercent.Text = "% Kho";
+            this.SellRes_radioSellAmountMethodFoodPercent.UseVisualStyleBackColor = true;
             // 
-            // rdBTNLuaAnToanCoDinh
+            // SellRes_radioSellAmountMethodFoodFix
             // 
-            this.rdBTNLuaAnToanCoDinh.AutoSize = true;
-            this.rdBTNLuaAnToanCoDinh.Checked = true;
-            this.rdBTNLuaAnToanCoDinh.Location = new System.Drawing.Point(8, 16);
-            this.rdBTNLuaAnToanCoDinh.Name = "rdBTNLuaAnToanCoDinh";
-            this.rdBTNLuaAnToanCoDinh.Size = new System.Drawing.Size(62, 17);
-            this.rdBTNLuaAnToanCoDinh.TabIndex = 211;
-            this.rdBTNLuaAnToanCoDinh.TabStop = true;
-            this.rdBTNLuaAnToanCoDinh.Text = "Cố định";
-            this.rdBTNLuaAnToanCoDinh.UseVisualStyleBackColor = true;
-            this.rdBTNLuaAnToanCoDinh.CheckedChanged += new System.EventHandler(this.rdBTNLuaAnToanCoDinh_CheckedChanged);
+            this.SellRes_radioSellAmountMethodFoodFix.AutoSize = true;
+            this.SellRes_radioSellAmountMethodFoodFix.Checked = true;
+            this.SellRes_radioSellAmountMethodFoodFix.Location = new System.Drawing.Point(8, 16);
+            this.SellRes_radioSellAmountMethodFoodFix.Name = "SellRes_radioSellAmountMethodFoodFix";
+            this.SellRes_radioSellAmountMethodFoodFix.Size = new System.Drawing.Size(62, 17);
+            this.SellRes_radioSellAmountMethodFoodFix.TabIndex = 211;
+            this.SellRes_radioSellAmountMethodFoodFix.TabStop = true;
+            this.SellRes_radioSellAmountMethodFoodFix.Text = "Cố định";
+            this.SellRes_radioSellAmountMethodFoodFix.UseVisualStyleBackColor = true;
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.rdBanTN_LUA_TB_Cong);
-            this.groupBox5.Controls.Add(this.rdBanTN_LUA_TB_Nhan);
+            this.groupBox5.Controls.Add(this.SellRes_radioAddOnMethodFoodAdd);
+            this.groupBox5.Controls.Add(this.SellRes_radioAddOnMethodFoodMultiply);
             this.groupBox5.Controls.Add(this.groupBox11);
-            this.groupBox5.Controls.Add(this.txtBanTN_LUA_TB_Heso);
+            this.groupBox5.Controls.Add(this.SellRes_textAddOnValueFood);
             this.groupBox5.Location = new System.Drawing.Point(9, 88);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(131, 128);
@@ -1941,103 +1896,96 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Giá";
             // 
-            // rdBanTN_LUA_TB_Cong
+            // SellRes_radioAddOnMethodFoodAdd
             // 
-            this.rdBanTN_LUA_TB_Cong.AutoSize = true;
-            this.rdBanTN_LUA_TB_Cong.Checked = true;
-            this.rdBanTN_LUA_TB_Cong.Enabled = false;
-            this.rdBanTN_LUA_TB_Cong.Location = new System.Drawing.Point(24, 80);
-            this.rdBanTN_LUA_TB_Cong.Name = "rdBanTN_LUA_TB_Cong";
-            this.rdBanTN_LUA_TB_Cong.Size = new System.Drawing.Size(50, 17);
-            this.rdBanTN_LUA_TB_Cong.TabIndex = 5;
-            this.rdBanTN_LUA_TB_Cong.TabStop = true;
-            this.rdBanTN_LUA_TB_Cong.Text = "Cộng";
-            this.rdBanTN_LUA_TB_Cong.UseVisualStyleBackColor = true;
-            this.rdBanTN_LUA_TB_Cong.CheckedChanged += new System.EventHandler(this.rdBanTN_LUA_TB_Cong_CheckedChanged);
+            this.SellRes_radioAddOnMethodFoodAdd.AutoSize = true;
+            this.SellRes_radioAddOnMethodFoodAdd.Checked = true;
+            this.SellRes_radioAddOnMethodFoodAdd.Enabled = false;
+            this.SellRes_radioAddOnMethodFoodAdd.Location = new System.Drawing.Point(24, 80);
+            this.SellRes_radioAddOnMethodFoodAdd.Name = "SellRes_radioAddOnMethodFoodAdd";
+            this.SellRes_radioAddOnMethodFoodAdd.Size = new System.Drawing.Size(50, 17);
+            this.SellRes_radioAddOnMethodFoodAdd.TabIndex = 5;
+            this.SellRes_radioAddOnMethodFoodAdd.TabStop = true;
+            this.SellRes_radioAddOnMethodFoodAdd.Text = "Cộng";
+            this.SellRes_radioAddOnMethodFoodAdd.UseVisualStyleBackColor = true;
             // 
-            // rdBanTN_LUA_TB_Nhan
+            // SellRes_radioAddOnMethodFoodMultiply
             // 
-            this.rdBanTN_LUA_TB_Nhan.AutoSize = true;
-            this.rdBanTN_LUA_TB_Nhan.Enabled = false;
-            this.rdBanTN_LUA_TB_Nhan.Location = new System.Drawing.Point(75, 80);
-            this.rdBanTN_LUA_TB_Nhan.Name = "rdBanTN_LUA_TB_Nhan";
-            this.rdBanTN_LUA_TB_Nhan.Size = new System.Drawing.Size(51, 17);
-            this.rdBanTN_LUA_TB_Nhan.TabIndex = 6;
-            this.rdBanTN_LUA_TB_Nhan.Text = "Nhân";
-            this.rdBanTN_LUA_TB_Nhan.UseVisualStyleBackColor = true;
-            this.rdBanTN_LUA_TB_Nhan.CheckedChanged += new System.EventHandler(this.rdBanTN_LUA_TB_Nhan_CheckedChanged);
+            this.SellRes_radioAddOnMethodFoodMultiply.AutoSize = true;
+            this.SellRes_radioAddOnMethodFoodMultiply.Enabled = false;
+            this.SellRes_radioAddOnMethodFoodMultiply.Location = new System.Drawing.Point(75, 80);
+            this.SellRes_radioAddOnMethodFoodMultiply.Name = "SellRes_radioAddOnMethodFoodMultiply";
+            this.SellRes_radioAddOnMethodFoodMultiply.Size = new System.Drawing.Size(51, 17);
+            this.SellRes_radioAddOnMethodFoodMultiply.TabIndex = 6;
+            this.SellRes_radioAddOnMethodFoodMultiply.Text = "Nhân";
+            this.SellRes_radioAddOnMethodFoodMultiply.UseVisualStyleBackColor = true;
             // 
             // groupBox11
             // 
-            this.groupBox11.Controls.Add(this.rdBanTN_LUA_THAPNHAT);
-            this.groupBox11.Controls.Add(this.rdBanTN_LUA_CODINH);
-            this.groupBox11.Controls.Add(this.rdBanTN_LUA_TRUNGBINH);
+            this.groupBox11.Controls.Add(this.SellRes_radioSellPriceMethodFoodMin);
+            this.groupBox11.Controls.Add(this.SellRes_radioSellPriceMethodFoodFix);
+            this.groupBox11.Controls.Add(this.SellRes_radioSellPriceMethodFoodAvg);
             this.groupBox11.Location = new System.Drawing.Point(8, 8);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(104, 66);
             this.groupBox11.TabIndex = 204;
             this.groupBox11.TabStop = false;
             // 
-            // rdBanTN_LUA_THAPNHAT
+            // SellRes_radioSellPriceMethodFoodMin
             // 
-            this.rdBanTN_LUA_THAPNHAT.AutoSize = true;
-            this.rdBanTN_LUA_THAPNHAT.Location = new System.Drawing.Point(8, 46);
-            this.rdBanTN_LUA_THAPNHAT.Name = "rdBanTN_LUA_THAPNHAT";
-            this.rdBanTN_LUA_THAPNHAT.Size = new System.Drawing.Size(74, 17);
-            this.rdBanTN_LUA_THAPNHAT.TabIndex = 204;
-            this.rdBanTN_LUA_THAPNHAT.Text = "Thấp nhất";
-            this.rdBanTN_LUA_THAPNHAT.UseVisualStyleBackColor = true;
-            this.rdBanTN_LUA_THAPNHAT.CheckedChanged += new System.EventHandler(this.rdBanTN_LUA_THAPNHAT_CheckedChanged);
+            this.SellRes_radioSellPriceMethodFoodMin.AutoSize = true;
+            this.SellRes_radioSellPriceMethodFoodMin.Location = new System.Drawing.Point(8, 46);
+            this.SellRes_radioSellPriceMethodFoodMin.Name = "SellRes_radioSellPriceMethodFoodMin";
+            this.SellRes_radioSellPriceMethodFoodMin.Size = new System.Drawing.Size(74, 17);
+            this.SellRes_radioSellPriceMethodFoodMin.TabIndex = 204;
+            this.SellRes_radioSellPriceMethodFoodMin.Text = "Thấp nhất";
+            this.SellRes_radioSellPriceMethodFoodMin.UseVisualStyleBackColor = true;
             // 
-            // rdBanTN_LUA_CODINH
+            // SellRes_radioSellPriceMethodFoodFix
             // 
-            this.rdBanTN_LUA_CODINH.AutoSize = true;
-            this.rdBanTN_LUA_CODINH.Location = new System.Drawing.Point(8, 8);
-            this.rdBanTN_LUA_CODINH.Name = "rdBanTN_LUA_CODINH";
-            this.rdBanTN_LUA_CODINH.Size = new System.Drawing.Size(62, 17);
-            this.rdBanTN_LUA_CODINH.TabIndex = 204;
-            this.rdBanTN_LUA_CODINH.Text = "Cố định";
-            this.rdBanTN_LUA_CODINH.UseVisualStyleBackColor = true;
-            this.rdBanTN_LUA_CODINH.CheckedChanged += new System.EventHandler(this.rdBanTN_LUA_CODINH_CheckedChanged);
+            this.SellRes_radioSellPriceMethodFoodFix.AutoSize = true;
+            this.SellRes_radioSellPriceMethodFoodFix.Location = new System.Drawing.Point(8, 8);
+            this.SellRes_radioSellPriceMethodFoodFix.Name = "SellRes_radioSellPriceMethodFoodFix";
+            this.SellRes_radioSellPriceMethodFoodFix.Size = new System.Drawing.Size(62, 17);
+            this.SellRes_radioSellPriceMethodFoodFix.TabIndex = 204;
+            this.SellRes_radioSellPriceMethodFoodFix.Text = "Cố định";
+            this.SellRes_radioSellPriceMethodFoodFix.UseVisualStyleBackColor = true;
             // 
-            // rdBanTN_LUA_TRUNGBINH
+            // SellRes_radioSellPriceMethodFoodAvg
             // 
-            this.rdBanTN_LUA_TRUNGBINH.AutoSize = true;
-            this.rdBanTN_LUA_TRUNGBINH.Checked = true;
-            this.rdBanTN_LUA_TRUNGBINH.Location = new System.Drawing.Point(8, 27);
-            this.rdBanTN_LUA_TRUNGBINH.Name = "rdBanTN_LUA_TRUNGBINH";
-            this.rdBanTN_LUA_TRUNGBINH.Size = new System.Drawing.Size(76, 17);
-            this.rdBanTN_LUA_TRUNGBINH.TabIndex = 204;
-            this.rdBanTN_LUA_TRUNGBINH.TabStop = true;
-            this.rdBanTN_LUA_TRUNGBINH.Text = "Trung bình";
-            this.rdBanTN_LUA_TRUNGBINH.UseVisualStyleBackColor = true;
-            this.rdBanTN_LUA_TRUNGBINH.CheckedChanged += new System.EventHandler(this.rdBanTN_LUA_TRUNGBINH_CheckedChanged);
+            this.SellRes_radioSellPriceMethodFoodAvg.AutoSize = true;
+            this.SellRes_radioSellPriceMethodFoodAvg.Checked = true;
+            this.SellRes_radioSellPriceMethodFoodAvg.Location = new System.Drawing.Point(8, 27);
+            this.SellRes_radioSellPriceMethodFoodAvg.Name = "SellRes_radioSellPriceMethodFoodAvg";
+            this.SellRes_radioSellPriceMethodFoodAvg.Size = new System.Drawing.Size(76, 17);
+            this.SellRes_radioSellPriceMethodFoodAvg.TabIndex = 204;
+            this.SellRes_radioSellPriceMethodFoodAvg.TabStop = true;
+            this.SellRes_radioSellPriceMethodFoodAvg.Text = "Trung bình";
+            this.SellRes_radioSellPriceMethodFoodAvg.UseVisualStyleBackColor = true;
             // 
-            // txtBanTN_LUA_TB_Heso
+            // SellRes_textAddOnValueFood
             // 
-            this.txtBanTN_LUA_TB_Heso.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.SellRes_textAddOnValueFood.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBanTN_LUA_TB_Heso.Enabled = false;
-            this.txtBanTN_LUA_TB_Heso.Location = new System.Drawing.Point(40, 104);
-            this.txtBanTN_LUA_TB_Heso.MaxLength = 10;
-            this.txtBanTN_LUA_TB_Heso.Name = "txtBanTN_LUA_TB_Heso";
-            this.txtBanTN_LUA_TB_Heso.Size = new System.Drawing.Size(73, 20);
-            this.txtBanTN_LUA_TB_Heso.TabIndex = 7;
-            this.txtBanTN_LUA_TB_Heso.Text = "0";
-            this.txtBanTN_LUA_TB_Heso.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtBanTN_LUA_TB_Heso.TextChanged += new System.EventHandler(this.txtBanTN_LUA_TB_Heso_TextChanged);
+            this.SellRes_textAddOnValueFood.Location = new System.Drawing.Point(40, 104);
+            this.SellRes_textAddOnValueFood.MaxLength = 10;
+            this.SellRes_textAddOnValueFood.Name = "SellRes_textAddOnValueFood";
+            this.SellRes_textAddOnValueFood.Size = new System.Drawing.Size(73, 20);
+            this.SellRes_textAddOnValueFood.TabIndex = 7;
+            this.SellRes_textAddOnValueFood.Text = "0";
+            this.SellRes_textAddOnValueFood.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // txtCOUNTLUA
+            // SellRes_txtAmountSellFood
             // 
-            this.txtCOUNTLUA.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.SellRes_txtAmountSellFood.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCOUNTLUA.Location = new System.Drawing.Point(56, 41);
-            this.txtCOUNTLUA.MaxLength = 10;
-            this.txtCOUNTLUA.Name = "txtCOUNTLUA";
-            this.txtCOUNTLUA.Size = new System.Drawing.Size(63, 20);
-            this.txtCOUNTLUA.TabIndex = 1;
-            this.txtCOUNTLUA.Text = "1000";
-            this.txtCOUNTLUA.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.SellRes_txtAmountSellFood.Location = new System.Drawing.Point(56, 41);
+            this.SellRes_txtAmountSellFood.MaxLength = 10;
+            this.SellRes_txtAmountSellFood.Name = "SellRes_txtAmountSellFood";
+            this.SellRes_txtAmountSellFood.Size = new System.Drawing.Size(63, 20);
+            this.SellRes_txtAmountSellFood.TabIndex = 1;
+            this.SellRes_txtAmountSellFood.Text = "1000";
+            this.SellRes_txtAmountSellFood.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label8
             // 
@@ -2048,35 +1996,35 @@
             this.label8.TabIndex = 201;
             this.label8.Text = "Số lượng";
             // 
-            // lblBTNLuaDVAnToan
+            // SellRes_labelAmountThresholdFood
             // 
-            this.lblBTNLuaDVAnToan.AutoSize = true;
-            this.lblBTNLuaDVAnToan.Location = new System.Drawing.Point(120, 70);
-            this.lblBTNLuaDVAnToan.Name = "lblBTNLuaDVAnToan";
-            this.lblBTNLuaDVAnToan.Size = new System.Drawing.Size(22, 13);
-            this.lblBTNLuaDVAnToan.TabIndex = 101;
-            this.lblBTNLuaDVAnToan.Text = "tấn";
+            this.SellRes_labelAmountThresholdFood.AutoSize = true;
+            this.SellRes_labelAmountThresholdFood.Location = new System.Drawing.Point(120, 70);
+            this.SellRes_labelAmountThresholdFood.Name = "SellRes_labelAmountThresholdFood";
+            this.SellRes_labelAmountThresholdFood.Size = new System.Drawing.Size(22, 13);
+            this.SellRes_labelAmountThresholdFood.TabIndex = 101;
+            this.SellRes_labelAmountThresholdFood.Text = "tấn";
             // 
-            // lblBTNLuaDVSoluong
+            // SellRes_labelAmountSellFood
             // 
-            this.lblBTNLuaDVSoluong.AutoSize = true;
-            this.lblBTNLuaDVSoluong.Location = new System.Drawing.Point(120, 44);
-            this.lblBTNLuaDVSoluong.Name = "lblBTNLuaDVSoluong";
-            this.lblBTNLuaDVSoluong.Size = new System.Drawing.Size(22, 13);
-            this.lblBTNLuaDVSoluong.TabIndex = 101;
-            this.lblBTNLuaDVSoluong.Text = "tấn";
+            this.SellRes_labelAmountSellFood.AutoSize = true;
+            this.SellRes_labelAmountSellFood.Location = new System.Drawing.Point(120, 44);
+            this.SellRes_labelAmountSellFood.Name = "SellRes_labelAmountSellFood";
+            this.SellRes_labelAmountSellFood.Size = new System.Drawing.Size(22, 13);
+            this.SellRes_labelAmountSellFood.TabIndex = 101;
+            this.SellRes_labelAmountSellFood.Text = "tấn";
             // 
-            // txtSAFELUA
+            // SellRes_txtAmountThresholdFood
             // 
-            this.txtSAFELUA.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.SellRes_txtAmountThresholdFood.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSAFELUA.Location = new System.Drawing.Point(56, 67);
-            this.txtSAFELUA.MaxLength = 10;
-            this.txtSAFELUA.Name = "txtSAFELUA";
-            this.txtSAFELUA.Size = new System.Drawing.Size(63, 20);
-            this.txtSAFELUA.TabIndex = 2;
-            this.txtSAFELUA.Text = "500";
-            this.txtSAFELUA.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.SellRes_txtAmountThresholdFood.Location = new System.Drawing.Point(56, 67);
+            this.SellRes_txtAmountThresholdFood.MaxLength = 10;
+            this.SellRes_txtAmountThresholdFood.Name = "SellRes_txtAmountThresholdFood";
+            this.SellRes_txtAmountThresholdFood.Size = new System.Drawing.Size(63, 20);
+            this.SellRes_txtAmountThresholdFood.TabIndex = 2;
+            this.SellRes_txtAmountThresholdFood.Text = "500";
+            this.SellRes_txtAmountThresholdFood.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label9
             // 
@@ -2089,14 +2037,14 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.rdBTNGoPercentCoDinh);
+            this.groupBox2.Controls.Add(this.SellRes_radioSellAmountMethodWoodsPercent);
             this.groupBox2.Controls.Add(this.groupBox6);
-            this.groupBox2.Controls.Add(this.rdBTNGoAnToanCoDinh);
-            this.groupBox2.Controls.Add(this.txtCOUNTGO);
+            this.groupBox2.Controls.Add(this.SellRes_radioSellAmountMethodWoodsFix);
+            this.groupBox2.Controls.Add(this.SellRes_txtAmountSellWoods);
             this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.lblBTNGoDVAnToan);
-            this.groupBox2.Controls.Add(this.lblBTNGoDVSoluong);
-            this.groupBox2.Controls.Add(this.txtSAFEGO);
+            this.groupBox2.Controls.Add(this.SellRes_labelAmountThresholdWoods);
+            this.groupBox2.Controls.Add(this.SellRes_labelAmountSellWoods);
+            this.groupBox2.Controls.Add(this.SellRes_txtAmountThresholdWoods);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Location = new System.Drawing.Point(173, 3);
             this.groupBox2.Name = "groupBox2";
@@ -2105,23 +2053,22 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Gỗ";
             // 
-            // rdBTNGoPercentCoDinh
+            // SellRes_radioSellAmountMethodWoodsPercent
             // 
-            this.rdBTNGoPercentCoDinh.AutoSize = true;
-            this.rdBTNGoPercentCoDinh.Location = new System.Drawing.Point(70, 15);
-            this.rdBTNGoPercentCoDinh.Name = "rdBTNGoPercentCoDinh";
-            this.rdBTNGoPercentCoDinh.Size = new System.Drawing.Size(55, 17);
-            this.rdBTNGoPercentCoDinh.TabIndex = 211;
-            this.rdBTNGoPercentCoDinh.Text = "% Kho";
-            this.rdBTNGoPercentCoDinh.UseVisualStyleBackColor = true;
-            this.rdBTNGoPercentCoDinh.CheckedChanged += new System.EventHandler(this.rdBTNGoPercentCoDinh_CheckedChanged);
+            this.SellRes_radioSellAmountMethodWoodsPercent.AutoSize = true;
+            this.SellRes_radioSellAmountMethodWoodsPercent.Location = new System.Drawing.Point(70, 15);
+            this.SellRes_radioSellAmountMethodWoodsPercent.Name = "SellRes_radioSellAmountMethodWoodsPercent";
+            this.SellRes_radioSellAmountMethodWoodsPercent.Size = new System.Drawing.Size(55, 17);
+            this.SellRes_radioSellAmountMethodWoodsPercent.TabIndex = 211;
+            this.SellRes_radioSellAmountMethodWoodsPercent.Text = "% Kho";
+            this.SellRes_radioSellAmountMethodWoodsPercent.UseVisualStyleBackColor = true;
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.rdBanTN_GO_TB_Cong);
+            this.groupBox6.Controls.Add(this.SellRes_radioAddOnMethodWoodsAdd);
             this.groupBox6.Controls.Add(this.groupBox12);
-            this.groupBox6.Controls.Add(this.rdBanTN_GO_TB_Nhan);
-            this.groupBox6.Controls.Add(this.txtBanTN_GO_TB_Heso);
+            this.groupBox6.Controls.Add(this.SellRes_radioAddOnMethodWoodsMultiply);
+            this.groupBox6.Controls.Add(this.SellRes_textAddOnValueWoods);
             this.groupBox6.Location = new System.Drawing.Point(11, 88);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(131, 128);
@@ -2129,116 +2076,108 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Giá";
             // 
-            // rdBanTN_GO_TB_Cong
+            // SellRes_radioAddOnMethodWoodsAdd
             // 
-            this.rdBanTN_GO_TB_Cong.AutoSize = true;
-            this.rdBanTN_GO_TB_Cong.Checked = true;
-            this.rdBanTN_GO_TB_Cong.Enabled = false;
-            this.rdBanTN_GO_TB_Cong.Location = new System.Drawing.Point(24, 79);
-            this.rdBanTN_GO_TB_Cong.Name = "rdBanTN_GO_TB_Cong";
-            this.rdBanTN_GO_TB_Cong.Size = new System.Drawing.Size(50, 17);
-            this.rdBanTN_GO_TB_Cong.TabIndex = 5;
-            this.rdBanTN_GO_TB_Cong.TabStop = true;
-            this.rdBanTN_GO_TB_Cong.Text = "Cộng";
-            this.rdBanTN_GO_TB_Cong.UseVisualStyleBackColor = true;
-            this.rdBanTN_GO_TB_Cong.CheckedChanged += new System.EventHandler(this.rdBanTN_GO_TB_Cong_CheckedChanged);
+            this.SellRes_radioAddOnMethodWoodsAdd.AutoSize = true;
+            this.SellRes_radioAddOnMethodWoodsAdd.Checked = true;
+            this.SellRes_radioAddOnMethodWoodsAdd.Enabled = false;
+            this.SellRes_radioAddOnMethodWoodsAdd.Location = new System.Drawing.Point(24, 79);
+            this.SellRes_radioAddOnMethodWoodsAdd.Name = "SellRes_radioAddOnMethodWoodsAdd";
+            this.SellRes_radioAddOnMethodWoodsAdd.Size = new System.Drawing.Size(50, 17);
+            this.SellRes_radioAddOnMethodWoodsAdd.TabIndex = 5;
+            this.SellRes_radioAddOnMethodWoodsAdd.TabStop = true;
+            this.SellRes_radioAddOnMethodWoodsAdd.Text = "Cộng";
+            this.SellRes_radioAddOnMethodWoodsAdd.UseVisualStyleBackColor = true;
             // 
             // groupBox12
             // 
-            this.groupBox12.Controls.Add(this.rdBanTN_GO_THAPNHAT);
-            this.groupBox12.Controls.Add(this.rdBanTN_GO_CODINH);
-            this.groupBox12.Controls.Add(this.rdBanTN_GO_TRUNGBINH);
+            this.groupBox12.Controls.Add(this.SellRes_radioSellPriceMethodWoodsMin);
+            this.groupBox12.Controls.Add(this.SellRes_radioSellPriceMethodWoodsFix);
+            this.groupBox12.Controls.Add(this.SellRes_radioSellPriceMethodWoodsAvg);
             this.groupBox12.Location = new System.Drawing.Point(8, 7);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(104, 66);
             this.groupBox12.TabIndex = 204;
             this.groupBox12.TabStop = false;
             // 
-            // rdBanTN_GO_THAPNHAT
+            // SellRes_radioSellPriceMethodWoodsMin
             // 
-            this.rdBanTN_GO_THAPNHAT.AutoSize = true;
-            this.rdBanTN_GO_THAPNHAT.Location = new System.Drawing.Point(8, 46);
-            this.rdBanTN_GO_THAPNHAT.Name = "rdBanTN_GO_THAPNHAT";
-            this.rdBanTN_GO_THAPNHAT.Size = new System.Drawing.Size(74, 17);
-            this.rdBanTN_GO_THAPNHAT.TabIndex = 204;
-            this.rdBanTN_GO_THAPNHAT.Text = "Thấp nhất";
-            this.rdBanTN_GO_THAPNHAT.UseVisualStyleBackColor = true;
-            this.rdBanTN_GO_THAPNHAT.CheckedChanged += new System.EventHandler(this.rdBanTN_GO_THAPNHAT_CheckedChanged);
+            this.SellRes_radioSellPriceMethodWoodsMin.AutoSize = true;
+            this.SellRes_radioSellPriceMethodWoodsMin.Location = new System.Drawing.Point(8, 46);
+            this.SellRes_radioSellPriceMethodWoodsMin.Name = "SellRes_radioSellPriceMethodWoodsMin";
+            this.SellRes_radioSellPriceMethodWoodsMin.Size = new System.Drawing.Size(74, 17);
+            this.SellRes_radioSellPriceMethodWoodsMin.TabIndex = 204;
+            this.SellRes_radioSellPriceMethodWoodsMin.Text = "Thấp nhất";
+            this.SellRes_radioSellPriceMethodWoodsMin.UseVisualStyleBackColor = true;
             // 
-            // rdBanTN_GO_CODINH
+            // SellRes_radioSellPriceMethodWoodsFix
             // 
-            this.rdBanTN_GO_CODINH.AutoSize = true;
-            this.rdBanTN_GO_CODINH.Location = new System.Drawing.Point(8, 8);
-            this.rdBanTN_GO_CODINH.Name = "rdBanTN_GO_CODINH";
-            this.rdBanTN_GO_CODINH.Size = new System.Drawing.Size(62, 17);
-            this.rdBanTN_GO_CODINH.TabIndex = 204;
-            this.rdBanTN_GO_CODINH.Text = "Cố định";
-            this.rdBanTN_GO_CODINH.UseVisualStyleBackColor = true;
-            this.rdBanTN_GO_CODINH.CheckedChanged += new System.EventHandler(this.rdBanTN_GO_CODINH_CheckedChanged);
+            this.SellRes_radioSellPriceMethodWoodsFix.AutoSize = true;
+            this.SellRes_radioSellPriceMethodWoodsFix.Location = new System.Drawing.Point(8, 8);
+            this.SellRes_radioSellPriceMethodWoodsFix.Name = "SellRes_radioSellPriceMethodWoodsFix";
+            this.SellRes_radioSellPriceMethodWoodsFix.Size = new System.Drawing.Size(62, 17);
+            this.SellRes_radioSellPriceMethodWoodsFix.TabIndex = 204;
+            this.SellRes_radioSellPriceMethodWoodsFix.Text = "Cố định";
+            this.SellRes_radioSellPriceMethodWoodsFix.UseVisualStyleBackColor = true;
             // 
-            // rdBanTN_GO_TRUNGBINH
+            // SellRes_radioSellPriceMethodWoodsAvg
             // 
-            this.rdBanTN_GO_TRUNGBINH.AutoSize = true;
-            this.rdBanTN_GO_TRUNGBINH.Checked = true;
-            this.rdBanTN_GO_TRUNGBINH.Location = new System.Drawing.Point(8, 27);
-            this.rdBanTN_GO_TRUNGBINH.Name = "rdBanTN_GO_TRUNGBINH";
-            this.rdBanTN_GO_TRUNGBINH.Size = new System.Drawing.Size(76, 17);
-            this.rdBanTN_GO_TRUNGBINH.TabIndex = 204;
-            this.rdBanTN_GO_TRUNGBINH.TabStop = true;
-            this.rdBanTN_GO_TRUNGBINH.Text = "Trung bình";
-            this.rdBanTN_GO_TRUNGBINH.UseVisualStyleBackColor = true;
-            this.rdBanTN_GO_TRUNGBINH.CheckedChanged += new System.EventHandler(this.rdBanTN_GO_TRUNGBINH_CheckedChanged);
+            this.SellRes_radioSellPriceMethodWoodsAvg.AutoSize = true;
+            this.SellRes_radioSellPriceMethodWoodsAvg.Checked = true;
+            this.SellRes_radioSellPriceMethodWoodsAvg.Location = new System.Drawing.Point(8, 27);
+            this.SellRes_radioSellPriceMethodWoodsAvg.Name = "SellRes_radioSellPriceMethodWoodsAvg";
+            this.SellRes_radioSellPriceMethodWoodsAvg.Size = new System.Drawing.Size(76, 17);
+            this.SellRes_radioSellPriceMethodWoodsAvg.TabIndex = 204;
+            this.SellRes_radioSellPriceMethodWoodsAvg.TabStop = true;
+            this.SellRes_radioSellPriceMethodWoodsAvg.Text = "Trung bình";
+            this.SellRes_radioSellPriceMethodWoodsAvg.UseVisualStyleBackColor = true;
             // 
-            // rdBanTN_GO_TB_Nhan
+            // SellRes_radioAddOnMethodWoodsMultiply
             // 
-            this.rdBanTN_GO_TB_Nhan.AutoSize = true;
-            this.rdBanTN_GO_TB_Nhan.Enabled = false;
-            this.rdBanTN_GO_TB_Nhan.Location = new System.Drawing.Point(75, 79);
-            this.rdBanTN_GO_TB_Nhan.Name = "rdBanTN_GO_TB_Nhan";
-            this.rdBanTN_GO_TB_Nhan.Size = new System.Drawing.Size(51, 17);
-            this.rdBanTN_GO_TB_Nhan.TabIndex = 6;
-            this.rdBanTN_GO_TB_Nhan.Text = "Nhân";
-            this.rdBanTN_GO_TB_Nhan.UseVisualStyleBackColor = true;
-            this.rdBanTN_GO_TB_Nhan.CheckedChanged += new System.EventHandler(this.rdBanTN_GO_TB_Nhan_CheckedChanged);
+            this.SellRes_radioAddOnMethodWoodsMultiply.AutoSize = true;
+            this.SellRes_radioAddOnMethodWoodsMultiply.Enabled = false;
+            this.SellRes_radioAddOnMethodWoodsMultiply.Location = new System.Drawing.Point(75, 79);
+            this.SellRes_radioAddOnMethodWoodsMultiply.Name = "SellRes_radioAddOnMethodWoodsMultiply";
+            this.SellRes_radioAddOnMethodWoodsMultiply.Size = new System.Drawing.Size(51, 17);
+            this.SellRes_radioAddOnMethodWoodsMultiply.TabIndex = 6;
+            this.SellRes_radioAddOnMethodWoodsMultiply.Text = "Nhân";
+            this.SellRes_radioAddOnMethodWoodsMultiply.UseVisualStyleBackColor = true;
             // 
-            // txtBanTN_GO_TB_Heso
+            // SellRes_textAddOnValueWoods
             // 
-            this.txtBanTN_GO_TB_Heso.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.SellRes_textAddOnValueWoods.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBanTN_GO_TB_Heso.Enabled = false;
-            this.txtBanTN_GO_TB_Heso.Location = new System.Drawing.Point(40, 103);
-            this.txtBanTN_GO_TB_Heso.MaxLength = 10;
-            this.txtBanTN_GO_TB_Heso.Name = "txtBanTN_GO_TB_Heso";
-            this.txtBanTN_GO_TB_Heso.Size = new System.Drawing.Size(73, 20);
-            this.txtBanTN_GO_TB_Heso.TabIndex = 7;
-            this.txtBanTN_GO_TB_Heso.Text = "0";
-            this.txtBanTN_GO_TB_Heso.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtBanTN_GO_TB_Heso.TextChanged += new System.EventHandler(this.txtBanTN_GO_TB_Heso_TextChanged);
+            this.SellRes_textAddOnValueWoods.Location = new System.Drawing.Point(40, 103);
+            this.SellRes_textAddOnValueWoods.MaxLength = 10;
+            this.SellRes_textAddOnValueWoods.Name = "SellRes_textAddOnValueWoods";
+            this.SellRes_textAddOnValueWoods.Size = new System.Drawing.Size(73, 20);
+            this.SellRes_textAddOnValueWoods.TabIndex = 7;
+            this.SellRes_textAddOnValueWoods.Text = "0";
+            this.SellRes_textAddOnValueWoods.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // rdBTNGoAnToanCoDinh
+            // SellRes_radioSellAmountMethodWoodsFix
             // 
-            this.rdBTNGoAnToanCoDinh.AutoSize = true;
-            this.rdBTNGoAnToanCoDinh.Checked = true;
-            this.rdBTNGoAnToanCoDinh.Location = new System.Drawing.Point(6, 15);
-            this.rdBTNGoAnToanCoDinh.Name = "rdBTNGoAnToanCoDinh";
-            this.rdBTNGoAnToanCoDinh.Size = new System.Drawing.Size(62, 17);
-            this.rdBTNGoAnToanCoDinh.TabIndex = 211;
-            this.rdBTNGoAnToanCoDinh.TabStop = true;
-            this.rdBTNGoAnToanCoDinh.Text = "Cố định";
-            this.rdBTNGoAnToanCoDinh.UseVisualStyleBackColor = true;
-            this.rdBTNGoAnToanCoDinh.CheckedChanged += new System.EventHandler(this.rdBTNGoAnToanCoDinh_CheckedChanged);
+            this.SellRes_radioSellAmountMethodWoodsFix.AutoSize = true;
+            this.SellRes_radioSellAmountMethodWoodsFix.Checked = true;
+            this.SellRes_radioSellAmountMethodWoodsFix.Location = new System.Drawing.Point(6, 15);
+            this.SellRes_radioSellAmountMethodWoodsFix.Name = "SellRes_radioSellAmountMethodWoodsFix";
+            this.SellRes_radioSellAmountMethodWoodsFix.Size = new System.Drawing.Size(62, 17);
+            this.SellRes_radioSellAmountMethodWoodsFix.TabIndex = 211;
+            this.SellRes_radioSellAmountMethodWoodsFix.TabStop = true;
+            this.SellRes_radioSellAmountMethodWoodsFix.Text = "Cố định";
+            this.SellRes_radioSellAmountMethodWoodsFix.UseVisualStyleBackColor = true;
             // 
-            // txtCOUNTGO
+            // SellRes_txtAmountSellWoods
             // 
-            this.txtCOUNTGO.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.SellRes_txtAmountSellWoods.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCOUNTGO.Location = new System.Drawing.Point(56, 41);
-            this.txtCOUNTGO.MaxLength = 10;
-            this.txtCOUNTGO.Name = "txtCOUNTGO";
-            this.txtCOUNTGO.Size = new System.Drawing.Size(65, 20);
-            this.txtCOUNTGO.TabIndex = 21;
-            this.txtCOUNTGO.Text = "1000";
-            this.txtCOUNTGO.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.SellRes_txtAmountSellWoods.Location = new System.Drawing.Point(56, 41);
+            this.SellRes_txtAmountSellWoods.MaxLength = 10;
+            this.SellRes_txtAmountSellWoods.Name = "SellRes_txtAmountSellWoods";
+            this.SellRes_txtAmountSellWoods.Size = new System.Drawing.Size(65, 20);
+            this.SellRes_txtAmountSellWoods.TabIndex = 21;
+            this.SellRes_txtAmountSellWoods.Text = "1000";
+            this.SellRes_txtAmountSellWoods.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label10
             // 
@@ -2249,35 +2188,35 @@
             this.label10.TabIndex = 201;
             this.label10.Text = "Số lượng";
             // 
-            // lblBTNGoDVAnToan
+            // SellRes_labelAmountThresholdWoods
             // 
-            this.lblBTNGoDVAnToan.AutoSize = true;
-            this.lblBTNGoDVAnToan.Location = new System.Drawing.Point(122, 69);
-            this.lblBTNGoDVAnToan.Name = "lblBTNGoDVAnToan";
-            this.lblBTNGoDVAnToan.Size = new System.Drawing.Size(22, 13);
-            this.lblBTNGoDVAnToan.TabIndex = 101;
-            this.lblBTNGoDVAnToan.Text = "tấn";
+            this.SellRes_labelAmountThresholdWoods.AutoSize = true;
+            this.SellRes_labelAmountThresholdWoods.Location = new System.Drawing.Point(122, 69);
+            this.SellRes_labelAmountThresholdWoods.Name = "SellRes_labelAmountThresholdWoods";
+            this.SellRes_labelAmountThresholdWoods.Size = new System.Drawing.Size(22, 13);
+            this.SellRes_labelAmountThresholdWoods.TabIndex = 101;
+            this.SellRes_labelAmountThresholdWoods.Text = "tấn";
             // 
-            // lblBTNGoDVSoluong
+            // SellRes_labelAmountSellWoods
             // 
-            this.lblBTNGoDVSoluong.AutoSize = true;
-            this.lblBTNGoDVSoluong.Location = new System.Drawing.Point(122, 43);
-            this.lblBTNGoDVSoluong.Name = "lblBTNGoDVSoluong";
-            this.lblBTNGoDVSoluong.Size = new System.Drawing.Size(22, 13);
-            this.lblBTNGoDVSoluong.TabIndex = 101;
-            this.lblBTNGoDVSoluong.Text = "tấn";
+            this.SellRes_labelAmountSellWoods.AutoSize = true;
+            this.SellRes_labelAmountSellWoods.Location = new System.Drawing.Point(122, 43);
+            this.SellRes_labelAmountSellWoods.Name = "SellRes_labelAmountSellWoods";
+            this.SellRes_labelAmountSellWoods.Size = new System.Drawing.Size(22, 13);
+            this.SellRes_labelAmountSellWoods.TabIndex = 101;
+            this.SellRes_labelAmountSellWoods.Text = "tấn";
             // 
-            // txtSAFEGO
+            // SellRes_txtAmountThresholdWoods
             // 
-            this.txtSAFEGO.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.SellRes_txtAmountThresholdWoods.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSAFEGO.Location = new System.Drawing.Point(56, 66);
-            this.txtSAFEGO.MaxLength = 10;
-            this.txtSAFEGO.Name = "txtSAFEGO";
-            this.txtSAFEGO.Size = new System.Drawing.Size(65, 20);
-            this.txtSAFEGO.TabIndex = 22;
-            this.txtSAFEGO.Text = "500";
-            this.txtSAFEGO.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.SellRes_txtAmountThresholdWoods.Location = new System.Drawing.Point(56, 66);
+            this.SellRes_txtAmountThresholdWoods.MaxLength = 10;
+            this.SellRes_txtAmountThresholdWoods.Name = "SellRes_txtAmountThresholdWoods";
+            this.SellRes_txtAmountThresholdWoods.Size = new System.Drawing.Size(65, 20);
+            this.SellRes_txtAmountThresholdWoods.TabIndex = 22;
+            this.SellRes_txtAmountThresholdWoods.Text = "500";
+            this.SellRes_txtAmountThresholdWoods.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label13
             // 
@@ -2288,40 +2227,40 @@
             this.label13.TabIndex = 202;
             this.label13.Text = "An toàn";
             // 
-            // groupBox3
+            // groupBox4
             // 
-            this.groupBox3.Controls.Add(this.rdBTNSatPercentCoDinh);
-            this.groupBox3.Controls.Add(this.groupBox8);
-            this.groupBox3.Controls.Add(this.txtCOUNTSAT);
-            this.groupBox3.Controls.Add(this.rdBTNSatAnToanCoDinh);
-            this.groupBox3.Controls.Add(this.label14);
-            this.groupBox3.Controls.Add(this.lblBTNSatDVAnToan);
-            this.groupBox3.Controls.Add(this.lblBTNSatDVSoluong);
-            this.groupBox3.Controls.Add(this.txtSAFESAT);
-            this.groupBox3.Controls.Add(this.label16);
-            this.groupBox3.Location = new System.Drawing.Point(344, 3);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(146, 221);
-            this.groupBox3.TabIndex = 30;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Sắt";
+            this.groupBox4.Controls.Add(this.SellRes_radioSellAmountMethodIronPercent);
+            this.groupBox4.Controls.Add(this.groupBox8);
+            this.groupBox4.Controls.Add(this.SellRes_txtAmountSellIron);
+            this.groupBox4.Controls.Add(this.SellRes_radioSellAmountMethodIronFix);
+            this.groupBox4.Controls.Add(this.label14);
+            this.groupBox4.Controls.Add(this.SellRes_labelAmountThresholdIron);
+            this.groupBox4.Controls.Add(this.SellRes_labelAmountSellIron);
+            this.groupBox4.Controls.Add(this.SellRes_txtAmountThresholdIron);
+            this.groupBox4.Controls.Add(this.label16);
+            this.groupBox4.Location = new System.Drawing.Point(499, 3);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(146, 221);
+            this.groupBox4.TabIndex = 30;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Sắt";
             // 
-            // rdBTNSatPercentCoDinh
+            // SellRes_radioSellAmountMethodIronPercent
             // 
-            this.rdBTNSatPercentCoDinh.AutoSize = true;
-            this.rdBTNSatPercentCoDinh.Location = new System.Drawing.Point(69, 16);
-            this.rdBTNSatPercentCoDinh.Name = "rdBTNSatPercentCoDinh";
-            this.rdBTNSatPercentCoDinh.Size = new System.Drawing.Size(55, 17);
-            this.rdBTNSatPercentCoDinh.TabIndex = 211;
-            this.rdBTNSatPercentCoDinh.Text = "% Kho";
-            this.rdBTNSatPercentCoDinh.UseVisualStyleBackColor = true;
+            this.SellRes_radioSellAmountMethodIronPercent.AutoSize = true;
+            this.SellRes_radioSellAmountMethodIronPercent.Location = new System.Drawing.Point(69, 16);
+            this.SellRes_radioSellAmountMethodIronPercent.Name = "SellRes_radioSellAmountMethodIronPercent";
+            this.SellRes_radioSellAmountMethodIronPercent.Size = new System.Drawing.Size(55, 17);
+            this.SellRes_radioSellAmountMethodIronPercent.TabIndex = 211;
+            this.SellRes_radioSellAmountMethodIronPercent.Text = "% Kho";
+            this.SellRes_radioSellAmountMethodIronPercent.UseVisualStyleBackColor = true;
             // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.rdBanTN_SAT_TB_Cong);
+            this.groupBox8.Controls.Add(this.SellRes_radioAddOnMethodIronAdd);
             this.groupBox8.Controls.Add(this.groupBox13);
-            this.groupBox8.Controls.Add(this.txtBanTN_SAT_TB_Heso);
-            this.groupBox8.Controls.Add(this.rdBanTN_SAT_TB_Nhan);
+            this.groupBox8.Controls.Add(this.SellRes_textAddOnValueIron);
+            this.groupBox8.Controls.Add(this.SellRes_radioAddOnMethodIronMultiply);
             this.groupBox8.Location = new System.Drawing.Point(6, 88);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(131, 128);
@@ -2329,116 +2268,108 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Giá";
             // 
-            // rdBanTN_SAT_TB_Cong
+            // SellRes_radioAddOnMethodIronAdd
             // 
-            this.rdBanTN_SAT_TB_Cong.AutoSize = true;
-            this.rdBanTN_SAT_TB_Cong.Checked = true;
-            this.rdBanTN_SAT_TB_Cong.Enabled = false;
-            this.rdBanTN_SAT_TB_Cong.Location = new System.Drawing.Point(23, 80);
-            this.rdBanTN_SAT_TB_Cong.Name = "rdBanTN_SAT_TB_Cong";
-            this.rdBanTN_SAT_TB_Cong.Size = new System.Drawing.Size(50, 17);
-            this.rdBanTN_SAT_TB_Cong.TabIndex = 5;
-            this.rdBanTN_SAT_TB_Cong.TabStop = true;
-            this.rdBanTN_SAT_TB_Cong.Text = "Cộng";
-            this.rdBanTN_SAT_TB_Cong.UseVisualStyleBackColor = true;
-            this.rdBanTN_SAT_TB_Cong.CheckedChanged += new System.EventHandler(this.rdBanTN_SAT_TB_Cong_CheckedChanged);
+            this.SellRes_radioAddOnMethodIronAdd.AutoSize = true;
+            this.SellRes_radioAddOnMethodIronAdd.Checked = true;
+            this.SellRes_radioAddOnMethodIronAdd.Enabled = false;
+            this.SellRes_radioAddOnMethodIronAdd.Location = new System.Drawing.Point(23, 80);
+            this.SellRes_radioAddOnMethodIronAdd.Name = "SellRes_radioAddOnMethodIronAdd";
+            this.SellRes_radioAddOnMethodIronAdd.Size = new System.Drawing.Size(50, 17);
+            this.SellRes_radioAddOnMethodIronAdd.TabIndex = 5;
+            this.SellRes_radioAddOnMethodIronAdd.TabStop = true;
+            this.SellRes_radioAddOnMethodIronAdd.Text = "Cộng";
+            this.SellRes_radioAddOnMethodIronAdd.UseVisualStyleBackColor = true;
             // 
             // groupBox13
             // 
-            this.groupBox13.Controls.Add(this.rdBanTN_SAT_THAPNHAT);
-            this.groupBox13.Controls.Add(this.rdBanTN_SAT_CODINH);
-            this.groupBox13.Controls.Add(this.rdBanTN_SAT_TRUNGBINH);
+            this.groupBox13.Controls.Add(this.SellRes_radioSellPriceMethodIronMin);
+            this.groupBox13.Controls.Add(this.SellRes_radioSellPriceMethodIronFix);
+            this.groupBox13.Controls.Add(this.SellRes_radioSellPriceMethodIronAvg);
             this.groupBox13.Location = new System.Drawing.Point(7, 8);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Size = new System.Drawing.Size(104, 66);
             this.groupBox13.TabIndex = 204;
             this.groupBox13.TabStop = false;
             // 
-            // rdBanTN_SAT_THAPNHAT
+            // SellRes_radioSellPriceMethodIronMin
             // 
-            this.rdBanTN_SAT_THAPNHAT.AutoSize = true;
-            this.rdBanTN_SAT_THAPNHAT.Location = new System.Drawing.Point(8, 46);
-            this.rdBanTN_SAT_THAPNHAT.Name = "rdBanTN_SAT_THAPNHAT";
-            this.rdBanTN_SAT_THAPNHAT.Size = new System.Drawing.Size(74, 17);
-            this.rdBanTN_SAT_THAPNHAT.TabIndex = 204;
-            this.rdBanTN_SAT_THAPNHAT.Text = "Thấp nhất";
-            this.rdBanTN_SAT_THAPNHAT.UseVisualStyleBackColor = true;
-            this.rdBanTN_SAT_THAPNHAT.CheckedChanged += new System.EventHandler(this.rdBanTN_SAT_THAPNHAT_CheckedChanged);
+            this.SellRes_radioSellPriceMethodIronMin.AutoSize = true;
+            this.SellRes_radioSellPriceMethodIronMin.Location = new System.Drawing.Point(8, 46);
+            this.SellRes_radioSellPriceMethodIronMin.Name = "SellRes_radioSellPriceMethodIronMin";
+            this.SellRes_radioSellPriceMethodIronMin.Size = new System.Drawing.Size(74, 17);
+            this.SellRes_radioSellPriceMethodIronMin.TabIndex = 204;
+            this.SellRes_radioSellPriceMethodIronMin.Text = "Thấp nhất";
+            this.SellRes_radioSellPriceMethodIronMin.UseVisualStyleBackColor = true;
             // 
-            // rdBanTN_SAT_CODINH
+            // SellRes_radioSellPriceMethodIronFix
             // 
-            this.rdBanTN_SAT_CODINH.AutoSize = true;
-            this.rdBanTN_SAT_CODINH.Location = new System.Drawing.Point(8, 8);
-            this.rdBanTN_SAT_CODINH.Name = "rdBanTN_SAT_CODINH";
-            this.rdBanTN_SAT_CODINH.Size = new System.Drawing.Size(62, 17);
-            this.rdBanTN_SAT_CODINH.TabIndex = 204;
-            this.rdBanTN_SAT_CODINH.Text = "Cố định";
-            this.rdBanTN_SAT_CODINH.UseVisualStyleBackColor = true;
-            this.rdBanTN_SAT_CODINH.CheckedChanged += new System.EventHandler(this.rdBanTN_SAT_CODINH_CheckedChanged);
+            this.SellRes_radioSellPriceMethodIronFix.AutoSize = true;
+            this.SellRes_radioSellPriceMethodIronFix.Location = new System.Drawing.Point(8, 8);
+            this.SellRes_radioSellPriceMethodIronFix.Name = "SellRes_radioSellPriceMethodIronFix";
+            this.SellRes_radioSellPriceMethodIronFix.Size = new System.Drawing.Size(62, 17);
+            this.SellRes_radioSellPriceMethodIronFix.TabIndex = 204;
+            this.SellRes_radioSellPriceMethodIronFix.Text = "Cố định";
+            this.SellRes_radioSellPriceMethodIronFix.UseVisualStyleBackColor = true;
             // 
-            // rdBanTN_SAT_TRUNGBINH
+            // SellRes_radioSellPriceMethodIronAvg
             // 
-            this.rdBanTN_SAT_TRUNGBINH.AutoSize = true;
-            this.rdBanTN_SAT_TRUNGBINH.Checked = true;
-            this.rdBanTN_SAT_TRUNGBINH.Location = new System.Drawing.Point(8, 27);
-            this.rdBanTN_SAT_TRUNGBINH.Name = "rdBanTN_SAT_TRUNGBINH";
-            this.rdBanTN_SAT_TRUNGBINH.Size = new System.Drawing.Size(76, 17);
-            this.rdBanTN_SAT_TRUNGBINH.TabIndex = 204;
-            this.rdBanTN_SAT_TRUNGBINH.TabStop = true;
-            this.rdBanTN_SAT_TRUNGBINH.Text = "Trung bình";
-            this.rdBanTN_SAT_TRUNGBINH.UseVisualStyleBackColor = true;
-            this.rdBanTN_SAT_TRUNGBINH.CheckedChanged += new System.EventHandler(this.rdBanTN_SAT_TRUNGBINH_CheckedChanged);
+            this.SellRes_radioSellPriceMethodIronAvg.AutoSize = true;
+            this.SellRes_radioSellPriceMethodIronAvg.Checked = true;
+            this.SellRes_radioSellPriceMethodIronAvg.Location = new System.Drawing.Point(8, 27);
+            this.SellRes_radioSellPriceMethodIronAvg.Name = "SellRes_radioSellPriceMethodIronAvg";
+            this.SellRes_radioSellPriceMethodIronAvg.Size = new System.Drawing.Size(76, 17);
+            this.SellRes_radioSellPriceMethodIronAvg.TabIndex = 204;
+            this.SellRes_radioSellPriceMethodIronAvg.TabStop = true;
+            this.SellRes_radioSellPriceMethodIronAvg.Text = "Trung bình";
+            this.SellRes_radioSellPriceMethodIronAvg.UseVisualStyleBackColor = true;
             // 
-            // txtBanTN_SAT_TB_Heso
+            // SellRes_textAddOnValueIron
             // 
-            this.txtBanTN_SAT_TB_Heso.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.SellRes_textAddOnValueIron.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBanTN_SAT_TB_Heso.Enabled = false;
-            this.txtBanTN_SAT_TB_Heso.Location = new System.Drawing.Point(39, 104);
-            this.txtBanTN_SAT_TB_Heso.MaxLength = 10;
-            this.txtBanTN_SAT_TB_Heso.Name = "txtBanTN_SAT_TB_Heso";
-            this.txtBanTN_SAT_TB_Heso.Size = new System.Drawing.Size(73, 20);
-            this.txtBanTN_SAT_TB_Heso.TabIndex = 7;
-            this.txtBanTN_SAT_TB_Heso.Text = "0";
-            this.txtBanTN_SAT_TB_Heso.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtBanTN_SAT_TB_Heso.TextChanged += new System.EventHandler(this.txtBanTN_SAT_TB_Heso_TextChanged);
+            this.SellRes_textAddOnValueIron.Location = new System.Drawing.Point(39, 104);
+            this.SellRes_textAddOnValueIron.MaxLength = 10;
+            this.SellRes_textAddOnValueIron.Name = "SellRes_textAddOnValueIron";
+            this.SellRes_textAddOnValueIron.Size = new System.Drawing.Size(73, 20);
+            this.SellRes_textAddOnValueIron.TabIndex = 7;
+            this.SellRes_textAddOnValueIron.Text = "0";
+            this.SellRes_textAddOnValueIron.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // rdBanTN_SAT_TB_Nhan
+            // SellRes_radioAddOnMethodIronMultiply
             // 
-            this.rdBanTN_SAT_TB_Nhan.AutoSize = true;
-            this.rdBanTN_SAT_TB_Nhan.Enabled = false;
-            this.rdBanTN_SAT_TB_Nhan.Location = new System.Drawing.Point(74, 80);
-            this.rdBanTN_SAT_TB_Nhan.Name = "rdBanTN_SAT_TB_Nhan";
-            this.rdBanTN_SAT_TB_Nhan.Size = new System.Drawing.Size(51, 17);
-            this.rdBanTN_SAT_TB_Nhan.TabIndex = 6;
-            this.rdBanTN_SAT_TB_Nhan.Text = "Nhân";
-            this.rdBanTN_SAT_TB_Nhan.UseVisualStyleBackColor = true;
-            this.rdBanTN_SAT_TB_Nhan.CheckedChanged += new System.EventHandler(this.rdBanTN_SAT_TB_Nhan_CheckedChanged);
+            this.SellRes_radioAddOnMethodIronMultiply.AutoSize = true;
+            this.SellRes_radioAddOnMethodIronMultiply.Enabled = false;
+            this.SellRes_radioAddOnMethodIronMultiply.Location = new System.Drawing.Point(74, 80);
+            this.SellRes_radioAddOnMethodIronMultiply.Name = "SellRes_radioAddOnMethodIronMultiply";
+            this.SellRes_radioAddOnMethodIronMultiply.Size = new System.Drawing.Size(51, 17);
+            this.SellRes_radioAddOnMethodIronMultiply.TabIndex = 6;
+            this.SellRes_radioAddOnMethodIronMultiply.Text = "Nhân";
+            this.SellRes_radioAddOnMethodIronMultiply.UseVisualStyleBackColor = true;
             // 
-            // txtCOUNTSAT
+            // SellRes_txtAmountSellIron
             // 
-            this.txtCOUNTSAT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.SellRes_txtAmountSellIron.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCOUNTSAT.Location = new System.Drawing.Point(56, 41);
-            this.txtCOUNTSAT.MaxLength = 10;
-            this.txtCOUNTSAT.Name = "txtCOUNTSAT";
-            this.txtCOUNTSAT.Size = new System.Drawing.Size(52, 20);
-            this.txtCOUNTSAT.TabIndex = 31;
-            this.txtCOUNTSAT.Text = "1000";
-            this.txtCOUNTSAT.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.SellRes_txtAmountSellIron.Location = new System.Drawing.Point(56, 41);
+            this.SellRes_txtAmountSellIron.MaxLength = 10;
+            this.SellRes_txtAmountSellIron.Name = "SellRes_txtAmountSellIron";
+            this.SellRes_txtAmountSellIron.Size = new System.Drawing.Size(52, 20);
+            this.SellRes_txtAmountSellIron.TabIndex = 31;
+            this.SellRes_txtAmountSellIron.Text = "1000";
+            this.SellRes_txtAmountSellIron.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // rdBTNSatAnToanCoDinh
+            // SellRes_radioSellAmountMethodIronFix
             // 
-            this.rdBTNSatAnToanCoDinh.AutoSize = true;
-            this.rdBTNSatAnToanCoDinh.Checked = true;
-            this.rdBTNSatAnToanCoDinh.Location = new System.Drawing.Point(5, 16);
-            this.rdBTNSatAnToanCoDinh.Name = "rdBTNSatAnToanCoDinh";
-            this.rdBTNSatAnToanCoDinh.Size = new System.Drawing.Size(62, 17);
-            this.rdBTNSatAnToanCoDinh.TabIndex = 211;
-            this.rdBTNSatAnToanCoDinh.TabStop = true;
-            this.rdBTNSatAnToanCoDinh.Text = "Cố định";
-            this.rdBTNSatAnToanCoDinh.UseVisualStyleBackColor = true;
-            this.rdBTNSatAnToanCoDinh.CheckedChanged += new System.EventHandler(this.rdBTNSatAnToanCoDinh_CheckedChanged);
+            this.SellRes_radioSellAmountMethodIronFix.AutoSize = true;
+            this.SellRes_radioSellAmountMethodIronFix.Checked = true;
+            this.SellRes_radioSellAmountMethodIronFix.Location = new System.Drawing.Point(5, 16);
+            this.SellRes_radioSellAmountMethodIronFix.Name = "SellRes_radioSellAmountMethodIronFix";
+            this.SellRes_radioSellAmountMethodIronFix.Size = new System.Drawing.Size(62, 17);
+            this.SellRes_radioSellAmountMethodIronFix.TabIndex = 211;
+            this.SellRes_radioSellAmountMethodIronFix.TabStop = true;
+            this.SellRes_radioSellAmountMethodIronFix.Text = "Cố định";
+            this.SellRes_radioSellAmountMethodIronFix.UseVisualStyleBackColor = true;
             // 
             // label14
             // 
@@ -2449,35 +2380,35 @@
             this.label14.TabIndex = 301;
             this.label14.Text = "Số lượng";
             // 
-            // lblBTNSatDVAnToan
+            // SellRes_labelAmountThresholdIron
             // 
-            this.lblBTNSatDVAnToan.AutoSize = true;
-            this.lblBTNSatDVAnToan.Location = new System.Drawing.Point(112, 70);
-            this.lblBTNSatDVAnToan.Name = "lblBTNSatDVAnToan";
-            this.lblBTNSatDVAnToan.Size = new System.Drawing.Size(22, 13);
-            this.lblBTNSatDVAnToan.TabIndex = 101;
-            this.lblBTNSatDVAnToan.Text = "tấn";
+            this.SellRes_labelAmountThresholdIron.AutoSize = true;
+            this.SellRes_labelAmountThresholdIron.Location = new System.Drawing.Point(112, 70);
+            this.SellRes_labelAmountThresholdIron.Name = "SellRes_labelAmountThresholdIron";
+            this.SellRes_labelAmountThresholdIron.Size = new System.Drawing.Size(22, 13);
+            this.SellRes_labelAmountThresholdIron.TabIndex = 101;
+            this.SellRes_labelAmountThresholdIron.Text = "tấn";
             // 
-            // lblBTNSatDVSoluong
+            // SellRes_labelAmountSellIron
             // 
-            this.lblBTNSatDVSoluong.AutoSize = true;
-            this.lblBTNSatDVSoluong.Location = new System.Drawing.Point(112, 44);
-            this.lblBTNSatDVSoluong.Name = "lblBTNSatDVSoluong";
-            this.lblBTNSatDVSoluong.Size = new System.Drawing.Size(22, 13);
-            this.lblBTNSatDVSoluong.TabIndex = 101;
-            this.lblBTNSatDVSoluong.Text = "tấn";
+            this.SellRes_labelAmountSellIron.AutoSize = true;
+            this.SellRes_labelAmountSellIron.Location = new System.Drawing.Point(112, 44);
+            this.SellRes_labelAmountSellIron.Name = "SellRes_labelAmountSellIron";
+            this.SellRes_labelAmountSellIron.Size = new System.Drawing.Size(22, 13);
+            this.SellRes_labelAmountSellIron.TabIndex = 101;
+            this.SellRes_labelAmountSellIron.Text = "tấn";
             // 
-            // txtSAFESAT
+            // SellRes_txtAmountThresholdIron
             // 
-            this.txtSAFESAT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.SellRes_txtAmountThresholdIron.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSAFESAT.Location = new System.Drawing.Point(56, 66);
-            this.txtSAFESAT.MaxLength = 10;
-            this.txtSAFESAT.Name = "txtSAFESAT";
-            this.txtSAFESAT.Size = new System.Drawing.Size(52, 20);
-            this.txtSAFESAT.TabIndex = 32;
-            this.txtSAFESAT.Text = "500";
-            this.txtSAFESAT.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.SellRes_txtAmountThresholdIron.Location = new System.Drawing.Point(56, 66);
+            this.SellRes_txtAmountThresholdIron.MaxLength = 10;
+            this.SellRes_txtAmountThresholdIron.Name = "SellRes_txtAmountThresholdIron";
+            this.SellRes_txtAmountThresholdIron.Size = new System.Drawing.Size(52, 20);
+            this.SellRes_txtAmountThresholdIron.TabIndex = 32;
+            this.SellRes_txtAmountThresholdIron.Text = "500";
+            this.SellRes_txtAmountThresholdIron.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label16
             // 
@@ -2488,40 +2419,40 @@
             this.label16.TabIndex = 302;
             this.label16.Text = "An toàn";
             // 
-            // groupBox4
+            // groupBox3
             // 
-            this.groupBox4.Controls.Add(this.rdBTNDaPercentCoDinh);
-            this.groupBox4.Controls.Add(this.groupBox9);
-            this.groupBox4.Controls.Add(this.txtCOUNTDA);
-            this.groupBox4.Controls.Add(this.label17);
-            this.groupBox4.Controls.Add(this.rdBTNDaAnToanCoDinh);
-            this.groupBox4.Controls.Add(this.lblBTNDaDVAnToan);
-            this.groupBox4.Controls.Add(this.txtSAFEDA);
-            this.groupBox4.Controls.Add(this.lblBTNDaDVSoluong);
-            this.groupBox4.Controls.Add(this.label19);
-            this.groupBox4.Location = new System.Drawing.Point(499, 3);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(157, 221);
-            this.groupBox4.TabIndex = 40;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Đá";
+            this.groupBox3.Controls.Add(this.SellRes_radioSellAmountMethodStonePercent);
+            this.groupBox3.Controls.Add(this.groupBox9);
+            this.groupBox3.Controls.Add(this.SellRes_txtAmountSellStone);
+            this.groupBox3.Controls.Add(this.label17);
+            this.groupBox3.Controls.Add(this.SellRes_radioSellAmountMethodStoneFix);
+            this.groupBox3.Controls.Add(this.SellRes_labelAmountThresholdStone);
+            this.groupBox3.Controls.Add(this.SellRes_txtAmountThresholdStone);
+            this.groupBox3.Controls.Add(this.SellRes_labelAmountSellStone);
+            this.groupBox3.Controls.Add(this.label19);
+            this.groupBox3.Location = new System.Drawing.Point(344, 3);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(157, 221);
+            this.groupBox3.TabIndex = 40;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Đá";
             // 
-            // rdBTNDaPercentCoDinh
+            // SellRes_radioSellAmountMethodStonePercent
             // 
-            this.rdBTNDaPercentCoDinh.AutoSize = true;
-            this.rdBTNDaPercentCoDinh.Location = new System.Drawing.Point(77, 16);
-            this.rdBTNDaPercentCoDinh.Name = "rdBTNDaPercentCoDinh";
-            this.rdBTNDaPercentCoDinh.Size = new System.Drawing.Size(55, 17);
-            this.rdBTNDaPercentCoDinh.TabIndex = 211;
-            this.rdBTNDaPercentCoDinh.Text = "% Kho";
-            this.rdBTNDaPercentCoDinh.UseVisualStyleBackColor = true;
+            this.SellRes_radioSellAmountMethodStonePercent.AutoSize = true;
+            this.SellRes_radioSellAmountMethodStonePercent.Location = new System.Drawing.Point(77, 16);
+            this.SellRes_radioSellAmountMethodStonePercent.Name = "SellRes_radioSellAmountMethodStonePercent";
+            this.SellRes_radioSellAmountMethodStonePercent.Size = new System.Drawing.Size(55, 17);
+            this.SellRes_radioSellAmountMethodStonePercent.TabIndex = 211;
+            this.SellRes_radioSellAmountMethodStonePercent.Text = "% Kho";
+            this.SellRes_radioSellAmountMethodStonePercent.UseVisualStyleBackColor = true;
             // 
             // groupBox9
             // 
-            this.groupBox9.Controls.Add(this.rdBanTN_DA_TB_Cong);
+            this.groupBox9.Controls.Add(this.SellRes_radioAddOnMethodStoneAdd);
             this.groupBox9.Controls.Add(this.groupBox14);
-            this.groupBox9.Controls.Add(this.rdBanTN_DA_TB_Nhan);
-            this.groupBox9.Controls.Add(this.txtBanTN_DA_TB_Heso);
+            this.groupBox9.Controls.Add(this.SellRes_radioAddOnMethodStoneMultiply);
+            this.groupBox9.Controls.Add(this.SellRes_textAddOnValueStone);
             this.groupBox9.Location = new System.Drawing.Point(9, 88);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(131, 129);
@@ -2529,103 +2460,96 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Giá";
             // 
-            // rdBanTN_DA_TB_Cong
+            // SellRes_radioAddOnMethodStoneAdd
             // 
-            this.rdBanTN_DA_TB_Cong.AutoSize = true;
-            this.rdBanTN_DA_TB_Cong.Checked = true;
-            this.rdBanTN_DA_TB_Cong.Enabled = false;
-            this.rdBanTN_DA_TB_Cong.Location = new System.Drawing.Point(25, 81);
-            this.rdBanTN_DA_TB_Cong.Name = "rdBanTN_DA_TB_Cong";
-            this.rdBanTN_DA_TB_Cong.Size = new System.Drawing.Size(50, 17);
-            this.rdBanTN_DA_TB_Cong.TabIndex = 5;
-            this.rdBanTN_DA_TB_Cong.TabStop = true;
-            this.rdBanTN_DA_TB_Cong.Text = "Cộng";
-            this.rdBanTN_DA_TB_Cong.UseVisualStyleBackColor = true;
-            this.rdBanTN_DA_TB_Cong.CheckedChanged += new System.EventHandler(this.rdBanTN_DA_TB_Cong_CheckedChanged);
+            this.SellRes_radioAddOnMethodStoneAdd.AutoSize = true;
+            this.SellRes_radioAddOnMethodStoneAdd.Checked = true;
+            this.SellRes_radioAddOnMethodStoneAdd.Enabled = false;
+            this.SellRes_radioAddOnMethodStoneAdd.Location = new System.Drawing.Point(25, 81);
+            this.SellRes_radioAddOnMethodStoneAdd.Name = "SellRes_radioAddOnMethodStoneAdd";
+            this.SellRes_radioAddOnMethodStoneAdd.Size = new System.Drawing.Size(50, 17);
+            this.SellRes_radioAddOnMethodStoneAdd.TabIndex = 5;
+            this.SellRes_radioAddOnMethodStoneAdd.TabStop = true;
+            this.SellRes_radioAddOnMethodStoneAdd.Text = "Cộng";
+            this.SellRes_radioAddOnMethodStoneAdd.UseVisualStyleBackColor = true;
             // 
             // groupBox14
             // 
-            this.groupBox14.Controls.Add(this.rdBanTN_DA_THAPNHAT);
-            this.groupBox14.Controls.Add(this.rdBanTN_DA_CODINH);
-            this.groupBox14.Controls.Add(this.rdBanTN_DA_TRUNGBINH);
+            this.groupBox14.Controls.Add(this.SellRes_radioSellPriceMethodStoneMin);
+            this.groupBox14.Controls.Add(this.SellRes_radioSellPriceMethodStoneFix);
+            this.groupBox14.Controls.Add(this.SellRes_radioSellPriceMethodStoneAvg);
             this.groupBox14.Location = new System.Drawing.Point(9, 9);
             this.groupBox14.Name = "groupBox14";
             this.groupBox14.Size = new System.Drawing.Size(104, 66);
             this.groupBox14.TabIndex = 204;
             this.groupBox14.TabStop = false;
             // 
-            // rdBanTN_DA_THAPNHAT
+            // SellRes_radioSellPriceMethodStoneMin
             // 
-            this.rdBanTN_DA_THAPNHAT.AutoSize = true;
-            this.rdBanTN_DA_THAPNHAT.Location = new System.Drawing.Point(8, 46);
-            this.rdBanTN_DA_THAPNHAT.Name = "rdBanTN_DA_THAPNHAT";
-            this.rdBanTN_DA_THAPNHAT.Size = new System.Drawing.Size(74, 17);
-            this.rdBanTN_DA_THAPNHAT.TabIndex = 204;
-            this.rdBanTN_DA_THAPNHAT.Text = "Thấp nhất";
-            this.rdBanTN_DA_THAPNHAT.UseVisualStyleBackColor = true;
-            this.rdBanTN_DA_THAPNHAT.CheckedChanged += new System.EventHandler(this.rdBanTN_DA_THAPNHAT_CheckedChanged);
+            this.SellRes_radioSellPriceMethodStoneMin.AutoSize = true;
+            this.SellRes_radioSellPriceMethodStoneMin.Location = new System.Drawing.Point(8, 46);
+            this.SellRes_radioSellPriceMethodStoneMin.Name = "SellRes_radioSellPriceMethodStoneMin";
+            this.SellRes_radioSellPriceMethodStoneMin.Size = new System.Drawing.Size(74, 17);
+            this.SellRes_radioSellPriceMethodStoneMin.TabIndex = 204;
+            this.SellRes_radioSellPriceMethodStoneMin.Text = "Thấp nhất";
+            this.SellRes_radioSellPriceMethodStoneMin.UseVisualStyleBackColor = true;
             // 
-            // rdBanTN_DA_CODINH
+            // SellRes_radioSellPriceMethodStoneFix
             // 
-            this.rdBanTN_DA_CODINH.AutoSize = true;
-            this.rdBanTN_DA_CODINH.Location = new System.Drawing.Point(8, 8);
-            this.rdBanTN_DA_CODINH.Name = "rdBanTN_DA_CODINH";
-            this.rdBanTN_DA_CODINH.Size = new System.Drawing.Size(62, 17);
-            this.rdBanTN_DA_CODINH.TabIndex = 204;
-            this.rdBanTN_DA_CODINH.Text = "Cố định";
-            this.rdBanTN_DA_CODINH.UseVisualStyleBackColor = true;
-            this.rdBanTN_DA_CODINH.CheckedChanged += new System.EventHandler(this.rdBanTN_DA_CODINH_CheckedChanged);
+            this.SellRes_radioSellPriceMethodStoneFix.AutoSize = true;
+            this.SellRes_radioSellPriceMethodStoneFix.Location = new System.Drawing.Point(8, 8);
+            this.SellRes_radioSellPriceMethodStoneFix.Name = "SellRes_radioSellPriceMethodStoneFix";
+            this.SellRes_radioSellPriceMethodStoneFix.Size = new System.Drawing.Size(62, 17);
+            this.SellRes_radioSellPriceMethodStoneFix.TabIndex = 204;
+            this.SellRes_radioSellPriceMethodStoneFix.Text = "Cố định";
+            this.SellRes_radioSellPriceMethodStoneFix.UseVisualStyleBackColor = true;
             // 
-            // rdBanTN_DA_TRUNGBINH
+            // SellRes_radioSellPriceMethodStoneAvg
             // 
-            this.rdBanTN_DA_TRUNGBINH.AutoSize = true;
-            this.rdBanTN_DA_TRUNGBINH.Checked = true;
-            this.rdBanTN_DA_TRUNGBINH.Location = new System.Drawing.Point(8, 27);
-            this.rdBanTN_DA_TRUNGBINH.Name = "rdBanTN_DA_TRUNGBINH";
-            this.rdBanTN_DA_TRUNGBINH.Size = new System.Drawing.Size(76, 17);
-            this.rdBanTN_DA_TRUNGBINH.TabIndex = 204;
-            this.rdBanTN_DA_TRUNGBINH.TabStop = true;
-            this.rdBanTN_DA_TRUNGBINH.Text = "Trung bình";
-            this.rdBanTN_DA_TRUNGBINH.UseVisualStyleBackColor = true;
-            this.rdBanTN_DA_TRUNGBINH.CheckedChanged += new System.EventHandler(this.rdBanTN_DA_TRUNGBINH_CheckedChanged);
+            this.SellRes_radioSellPriceMethodStoneAvg.AutoSize = true;
+            this.SellRes_radioSellPriceMethodStoneAvg.Checked = true;
+            this.SellRes_radioSellPriceMethodStoneAvg.Location = new System.Drawing.Point(8, 27);
+            this.SellRes_radioSellPriceMethodStoneAvg.Name = "SellRes_radioSellPriceMethodStoneAvg";
+            this.SellRes_radioSellPriceMethodStoneAvg.Size = new System.Drawing.Size(76, 17);
+            this.SellRes_radioSellPriceMethodStoneAvg.TabIndex = 204;
+            this.SellRes_radioSellPriceMethodStoneAvg.TabStop = true;
+            this.SellRes_radioSellPriceMethodStoneAvg.Text = "Trung bình";
+            this.SellRes_radioSellPriceMethodStoneAvg.UseVisualStyleBackColor = true;
             // 
-            // rdBanTN_DA_TB_Nhan
+            // SellRes_radioAddOnMethodStoneMultiply
             // 
-            this.rdBanTN_DA_TB_Nhan.AutoSize = true;
-            this.rdBanTN_DA_TB_Nhan.Enabled = false;
-            this.rdBanTN_DA_TB_Nhan.Location = new System.Drawing.Point(76, 81);
-            this.rdBanTN_DA_TB_Nhan.Name = "rdBanTN_DA_TB_Nhan";
-            this.rdBanTN_DA_TB_Nhan.Size = new System.Drawing.Size(51, 17);
-            this.rdBanTN_DA_TB_Nhan.TabIndex = 6;
-            this.rdBanTN_DA_TB_Nhan.Text = "Nhân";
-            this.rdBanTN_DA_TB_Nhan.UseVisualStyleBackColor = true;
-            this.rdBanTN_DA_TB_Nhan.CheckedChanged += new System.EventHandler(this.rdBanTN_DA_TB_Nhan_CheckedChanged);
+            this.SellRes_radioAddOnMethodStoneMultiply.AutoSize = true;
+            this.SellRes_radioAddOnMethodStoneMultiply.Enabled = false;
+            this.SellRes_radioAddOnMethodStoneMultiply.Location = new System.Drawing.Point(76, 81);
+            this.SellRes_radioAddOnMethodStoneMultiply.Name = "SellRes_radioAddOnMethodStoneMultiply";
+            this.SellRes_radioAddOnMethodStoneMultiply.Size = new System.Drawing.Size(51, 17);
+            this.SellRes_radioAddOnMethodStoneMultiply.TabIndex = 6;
+            this.SellRes_radioAddOnMethodStoneMultiply.Text = "Nhân";
+            this.SellRes_radioAddOnMethodStoneMultiply.UseVisualStyleBackColor = true;
             // 
-            // txtBanTN_DA_TB_Heso
+            // SellRes_textAddOnValueStone
             // 
-            this.txtBanTN_DA_TB_Heso.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.SellRes_textAddOnValueStone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBanTN_DA_TB_Heso.Enabled = false;
-            this.txtBanTN_DA_TB_Heso.Location = new System.Drawing.Point(41, 105);
-            this.txtBanTN_DA_TB_Heso.MaxLength = 10;
-            this.txtBanTN_DA_TB_Heso.Name = "txtBanTN_DA_TB_Heso";
-            this.txtBanTN_DA_TB_Heso.Size = new System.Drawing.Size(73, 20);
-            this.txtBanTN_DA_TB_Heso.TabIndex = 7;
-            this.txtBanTN_DA_TB_Heso.Text = "0";
-            this.txtBanTN_DA_TB_Heso.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtBanTN_DA_TB_Heso.TextChanged += new System.EventHandler(this.txtBanTN_DA_TB_Heso_TextChanged);
+            this.SellRes_textAddOnValueStone.Location = new System.Drawing.Point(41, 105);
+            this.SellRes_textAddOnValueStone.MaxLength = 10;
+            this.SellRes_textAddOnValueStone.Name = "SellRes_textAddOnValueStone";
+            this.SellRes_textAddOnValueStone.Size = new System.Drawing.Size(73, 20);
+            this.SellRes_textAddOnValueStone.TabIndex = 7;
+            this.SellRes_textAddOnValueStone.Text = "0";
+            this.SellRes_textAddOnValueStone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // txtCOUNTDA
+            // SellRes_txtAmountSellStone
             // 
-            this.txtCOUNTDA.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.SellRes_txtAmountSellStone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCOUNTDA.Location = new System.Drawing.Point(56, 42);
-            this.txtCOUNTDA.MaxLength = 10;
-            this.txtCOUNTDA.Name = "txtCOUNTDA";
-            this.txtCOUNTDA.Size = new System.Drawing.Size(63, 20);
-            this.txtCOUNTDA.TabIndex = 41;
-            this.txtCOUNTDA.Text = "1000";
-            this.txtCOUNTDA.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.SellRes_txtAmountSellStone.Location = new System.Drawing.Point(56, 42);
+            this.SellRes_txtAmountSellStone.MaxLength = 10;
+            this.SellRes_txtAmountSellStone.Name = "SellRes_txtAmountSellStone";
+            this.SellRes_txtAmountSellStone.Size = new System.Drawing.Size(63, 20);
+            this.SellRes_txtAmountSellStone.TabIndex = 41;
+            this.SellRes_txtAmountSellStone.Text = "1000";
+            this.SellRes_txtAmountSellStone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label17
             // 
@@ -2636,49 +2560,47 @@
             this.label17.TabIndex = 401;
             this.label17.Text = "Số lượng";
             // 
-            // rdBTNDaAnToanCoDinh
+            // SellRes_radioSellAmountMethodStoneFix
             // 
-            this.rdBTNDaAnToanCoDinh.AutoSize = true;
-            this.rdBTNDaAnToanCoDinh.Checked = true;
-            this.rdBTNDaAnToanCoDinh.Location = new System.Drawing.Point(13, 16);
-            this.rdBTNDaAnToanCoDinh.Name = "rdBTNDaAnToanCoDinh";
-            this.rdBTNDaAnToanCoDinh.Size = new System.Drawing.Size(62, 17);
-            this.rdBTNDaAnToanCoDinh.TabIndex = 211;
-            this.rdBTNDaAnToanCoDinh.TabStop = true;
-            this.rdBTNDaAnToanCoDinh.Text = "Cố định";
-            this.rdBTNDaAnToanCoDinh.UseVisualStyleBackColor = true;
-            this.rdBTNDaAnToanCoDinh.CheckedChanged += new System.EventHandler(this.rdBTNDaAnToanCoDinh_CheckedChanged);
+            this.SellRes_radioSellAmountMethodStoneFix.AutoSize = true;
+            this.SellRes_radioSellAmountMethodStoneFix.Checked = true;
+            this.SellRes_radioSellAmountMethodStoneFix.Location = new System.Drawing.Point(13, 16);
+            this.SellRes_radioSellAmountMethodStoneFix.Name = "SellRes_radioSellAmountMethodStoneFix";
+            this.SellRes_radioSellAmountMethodStoneFix.Size = new System.Drawing.Size(62, 17);
+            this.SellRes_radioSellAmountMethodStoneFix.TabIndex = 211;
+            this.SellRes_radioSellAmountMethodStoneFix.TabStop = true;
+            this.SellRes_radioSellAmountMethodStoneFix.Text = "Cố định";
+            this.SellRes_radioSellAmountMethodStoneFix.UseVisualStyleBackColor = true;
             // 
-            // lblBTNDaDVAnToan
+            // SellRes_labelAmountThresholdStone
             // 
-            this.lblBTNDaDVAnToan.AutoSize = true;
-            this.lblBTNDaDVAnToan.Location = new System.Drawing.Point(123, 72);
-            this.lblBTNDaDVAnToan.Name = "lblBTNDaDVAnToan";
-            this.lblBTNDaDVAnToan.Size = new System.Drawing.Size(22, 13);
-            this.lblBTNDaDVAnToan.TabIndex = 101;
-            this.lblBTNDaDVAnToan.Text = "tấn";
-            this.lblBTNDaDVAnToan.Click += new System.EventHandler(this.label87_Click);
+            this.SellRes_labelAmountThresholdStone.AutoSize = true;
+            this.SellRes_labelAmountThresholdStone.Location = new System.Drawing.Point(123, 72);
+            this.SellRes_labelAmountThresholdStone.Name = "SellRes_labelAmountThresholdStone";
+            this.SellRes_labelAmountThresholdStone.Size = new System.Drawing.Size(22, 13);
+            this.SellRes_labelAmountThresholdStone.TabIndex = 101;
+            this.SellRes_labelAmountThresholdStone.Text = "tấn";
             // 
-            // txtSAFEDA
+            // SellRes_txtAmountThresholdStone
             // 
-            this.txtSAFEDA.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.SellRes_txtAmountThresholdStone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSAFEDA.Location = new System.Drawing.Point(56, 68);
-            this.txtSAFEDA.MaxLength = 10;
-            this.txtSAFEDA.Name = "txtSAFEDA";
-            this.txtSAFEDA.Size = new System.Drawing.Size(63, 20);
-            this.txtSAFEDA.TabIndex = 42;
-            this.txtSAFEDA.Text = "500";
-            this.txtSAFEDA.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.SellRes_txtAmountThresholdStone.Location = new System.Drawing.Point(56, 68);
+            this.SellRes_txtAmountThresholdStone.MaxLength = 10;
+            this.SellRes_txtAmountThresholdStone.Name = "SellRes_txtAmountThresholdStone";
+            this.SellRes_txtAmountThresholdStone.Size = new System.Drawing.Size(63, 20);
+            this.SellRes_txtAmountThresholdStone.TabIndex = 42;
+            this.SellRes_txtAmountThresholdStone.Text = "500";
+            this.SellRes_txtAmountThresholdStone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // lblBTNDaDVSoluong
+            // SellRes_labelAmountSellStone
             // 
-            this.lblBTNDaDVSoluong.AutoSize = true;
-            this.lblBTNDaDVSoluong.Location = new System.Drawing.Point(123, 46);
-            this.lblBTNDaDVSoluong.Name = "lblBTNDaDVSoluong";
-            this.lblBTNDaDVSoluong.Size = new System.Drawing.Size(22, 13);
-            this.lblBTNDaDVSoluong.TabIndex = 101;
-            this.lblBTNDaDVSoluong.Text = "tấn";
+            this.SellRes_labelAmountSellStone.AutoSize = true;
+            this.SellRes_labelAmountSellStone.Location = new System.Drawing.Point(123, 46);
+            this.SellRes_labelAmountSellStone.Name = "SellRes_labelAmountSellStone";
+            this.SellRes_labelAmountSellStone.Size = new System.Drawing.Size(22, 13);
+            this.SellRes_labelAmountSellStone.TabIndex = 101;
+            this.SellRes_labelAmountSellStone.Text = "tấn";
             // 
             // label19
             // 
@@ -2693,33 +2615,33 @@
             // 
             this.SellRes_gridCityList.AllowUserToAddRows = false;
             this.SellRes_gridCityList.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SellRes_gridCityList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SellRes_gridCityList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle28;
             this.SellRes_gridCityList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.SellRes_gridCityList.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.SellRes_gridCityList.DefaultCellStyle = dataGridViewCellStyle29;
             this.SellRes_gridCityList.Location = new System.Drawing.Point(3, 240);
             this.SellRes_gridCityList.Name = "SellRes_gridCityList";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SellRes_gridCityList.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SellRes_gridCityList.RowHeadersDefaultCellStyle = dataGridViewCellStyle30;
             this.SellRes_gridCityList.RowHeadersVisible = false;
             this.SellRes_gridCityList.Size = new System.Drawing.Size(555, 178);
             this.SellRes_gridCityList.TabIndex = 3;
@@ -2739,14 +2661,14 @@
             // pnLVBUYRES
             // 
             this.pnLVBUYRES.Controls.Add(this.groupBox10);
-            this.pnLVBUYRES.Controls.Add(this.txtBUYRESOURCECHECK);
-            this.pnLVBUYRES.Controls.Add(this.dtaBUYRESOURCE);
+            this.pnLVBUYRES.Controls.Add(this.BuyRes_txtTimer);
+            this.pnLVBUYRES.Controls.Add(this.BuyRes_gridCityList);
             this.pnLVBUYRES.Controls.Add(this.label12);
-            this.pnLVBUYRES.Controls.Add(this.txtSAFEGOLD);
-            this.pnLVBUYRES.Controls.Add(this.btMuaTNSelectAllDa);
-            this.pnLVBUYRES.Controls.Add(this.btMuaTNSelectAllLua);
-            this.pnLVBUYRES.Controls.Add(this.btMuaTNSelectAllSat);
-            this.pnLVBUYRES.Controls.Add(this.btMuaTNSelectAllGo);
+            this.pnLVBUYRES.Controls.Add(this.BuyRes_txtGoldThreshold);
+            this.pnLVBUYRES.Controls.Add(this.BuyRes_btnSelectAllStone);
+            this.pnLVBUYRES.Controls.Add(this.BuyRes_btnSelectAllFood);
+            this.pnLVBUYRES.Controls.Add(this.BuyRes_btnSelectAllIron);
+            this.pnLVBUYRES.Controls.Add(this.BuyRes_btnSelectAllWoods);
             this.pnLVBUYRES.Controls.Add(this.label6);
             this.pnLVBUYRES.Location = new System.Drawing.Point(0, 6);
             this.pnLVBUYRES.Name = "pnLVBUYRES";
@@ -2755,9 +2677,9 @@
             // 
             // groupBox10
             // 
-            this.groupBox10.Controls.Add(this.txtMuaTNGioiHanMua);
-            this.groupBox10.Controls.Add(this.rdMuaTNMuaTheoPhanTram);
-            this.groupBox10.Controls.Add(this.rdMuaTNMuaTheoDonVi);
+            this.groupBox10.Controls.Add(this.BuyRes_txtBuyAmount);
+            this.groupBox10.Controls.Add(this.BuyRes_radioBuyAmountMethodPercent);
+            this.groupBox10.Controls.Add(this.BuyRes_radioBuyAmountMethodFix);
             this.groupBox10.Controls.Add(this.label89);
             this.groupBox10.Location = new System.Drawing.Point(480, 64);
             this.groupBox10.Name = "groupBox10";
@@ -2766,38 +2688,36 @@
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Mua không quá";
             // 
-            // txtMuaTNGioiHanMua
+            // BuyRes_txtBuyAmount
             // 
-            this.txtMuaTNGioiHanMua.Location = new System.Drawing.Point(42, 63);
-            this.txtMuaTNGioiHanMua.Name = "txtMuaTNGioiHanMua";
-            this.txtMuaTNGioiHanMua.Size = new System.Drawing.Size(79, 20);
-            this.txtMuaTNGioiHanMua.TabIndex = 7;
-            this.txtMuaTNGioiHanMua.Text = "80";
-            this.txtMuaTNGioiHanMua.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.BuyRes_txtBuyAmount.Location = new System.Drawing.Point(42, 63);
+            this.BuyRes_txtBuyAmount.Name = "BuyRes_txtBuyAmount";
+            this.BuyRes_txtBuyAmount.Size = new System.Drawing.Size(79, 20);
+            this.BuyRes_txtBuyAmount.TabIndex = 7;
+            this.BuyRes_txtBuyAmount.Text = "80";
+            this.BuyRes_txtBuyAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // rdMuaTNMuaTheoPhanTram
+            // BuyRes_radioBuyAmountMethodPercent
             // 
-            this.rdMuaTNMuaTheoPhanTram.AutoSize = true;
-            this.rdMuaTNMuaTheoPhanTram.Checked = true;
-            this.rdMuaTNMuaTheoPhanTram.Location = new System.Drawing.Point(6, 20);
-            this.rdMuaTNMuaTheoPhanTram.Name = "rdMuaTNMuaTheoPhanTram";
-            this.rdMuaTNMuaTheoPhanTram.Size = new System.Drawing.Size(110, 17);
-            this.rdMuaTNMuaTheoPhanTram.TabIndex = 0;
-            this.rdMuaTNMuaTheoPhanTram.TabStop = true;
-            this.rdMuaTNMuaTheoPhanTram.Text = "% dung lượng kho";
-            this.rdMuaTNMuaTheoPhanTram.UseVisualStyleBackColor = true;
-            this.rdMuaTNMuaTheoPhanTram.CheckedChanged += new System.EventHandler(this.rdMuaTNMuaTheoPhanTram_CheckedChanged);
+            this.BuyRes_radioBuyAmountMethodPercent.AutoSize = true;
+            this.BuyRes_radioBuyAmountMethodPercent.Checked = true;
+            this.BuyRes_radioBuyAmountMethodPercent.Location = new System.Drawing.Point(6, 20);
+            this.BuyRes_radioBuyAmountMethodPercent.Name = "BuyRes_radioBuyAmountMethodPercent";
+            this.BuyRes_radioBuyAmountMethodPercent.Size = new System.Drawing.Size(110, 17);
+            this.BuyRes_radioBuyAmountMethodPercent.TabIndex = 0;
+            this.BuyRes_radioBuyAmountMethodPercent.TabStop = true;
+            this.BuyRes_radioBuyAmountMethodPercent.Text = "% dung lượng kho";
+            this.BuyRes_radioBuyAmountMethodPercent.UseVisualStyleBackColor = true;
             // 
-            // rdMuaTNMuaTheoDonVi
+            // BuyRes_radioBuyAmountMethodFix
             // 
-            this.rdMuaTNMuaTheoDonVi.AutoSize = true;
-            this.rdMuaTNMuaTheoDonVi.Location = new System.Drawing.Point(6, 39);
-            this.rdMuaTNMuaTheoDonVi.Name = "rdMuaTNMuaTheoDonVi";
-            this.rdMuaTNMuaTheoDonVi.Size = new System.Drawing.Size(128, 17);
-            this.rdMuaTNMuaTheoDonVi.TabIndex = 0;
-            this.rdMuaTNMuaTheoDonVi.Text = "giá trị theo đơn vị kho";
-            this.rdMuaTNMuaTheoDonVi.UseVisualStyleBackColor = true;
-            this.rdMuaTNMuaTheoDonVi.CheckedChanged += new System.EventHandler(this.rdMuaTNMuaTheoDonVi_CheckedChanged);
+            this.BuyRes_radioBuyAmountMethodFix.AutoSize = true;
+            this.BuyRes_radioBuyAmountMethodFix.Location = new System.Drawing.Point(6, 39);
+            this.BuyRes_radioBuyAmountMethodFix.Name = "BuyRes_radioBuyAmountMethodFix";
+            this.BuyRes_radioBuyAmountMethodFix.Size = new System.Drawing.Size(128, 17);
+            this.BuyRes_radioBuyAmountMethodFix.TabIndex = 0;
+            this.BuyRes_radioBuyAmountMethodFix.Text = "giá trị theo đơn vị kho";
+            this.BuyRes_radioBuyAmountMethodFix.UseVisualStyleBackColor = true;
             // 
             // label89
             // 
@@ -2809,49 +2729,49 @@
                 "ng kho.\r\nTheo đơn vị kho: mua đến khi nào kho đạt đến mức này (dù kho chưa đầy)." +
                 "";
             // 
-            // txtBUYRESOURCECHECK
+            // BuyRes_txtTimer
             // 
-            this.txtBUYRESOURCECHECK.Location = new System.Drawing.Point(544, 265);
-            this.txtBUYRESOURCECHECK.Name = "txtBUYRESOURCECHECK";
-            this.txtBUYRESOURCECHECK.Size = new System.Drawing.Size(34, 20);
-            this.txtBUYRESOURCECHECK.TabIndex = 8;
-            this.txtBUYRESOURCECHECK.Text = "1";
-            this.txtBUYRESOURCECHECK.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.BuyRes_txtTimer.Location = new System.Drawing.Point(544, 265);
+            this.BuyRes_txtTimer.Name = "BuyRes_txtTimer";
+            this.BuyRes_txtTimer.Size = new System.Drawing.Size(34, 20);
+            this.BuyRes_txtTimer.TabIndex = 8;
+            this.BuyRes_txtTimer.Text = "1";
+            this.BuyRes_txtTimer.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // dtaBUYRESOURCE
+            // BuyRes_gridCityList
             // 
-            this.dtaBUYRESOURCE.AllowUserToAddRows = false;
-            this.dtaBUYRESOURCE.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtaBUYRESOURCE.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
-            this.dtaBUYRESOURCE.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtaBUYRESOURCE.DefaultCellStyle = dataGridViewCellStyle11;
-            this.dtaBUYRESOURCE.Location = new System.Drawing.Point(3, 3);
-            this.dtaBUYRESOURCE.Name = "dtaBUYRESOURCE";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtaBUYRESOURCE.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
-            this.dtaBUYRESOURCE.RowHeadersVisible = false;
-            this.dtaBUYRESOURCE.Size = new System.Drawing.Size(469, 437);
-            this.dtaBUYRESOURCE.TabIndex = 4;
+            this.BuyRes_gridCityList.AllowUserToAddRows = false;
+            this.BuyRes_gridCityList.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.BuyRes_gridCityList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
+            this.BuyRes_gridCityList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.BuyRes_gridCityList.DefaultCellStyle = dataGridViewCellStyle26;
+            this.BuyRes_gridCityList.Location = new System.Drawing.Point(3, 3);
+            this.BuyRes_gridCityList.Name = "BuyRes_gridCityList";
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.BuyRes_gridCityList.RowHeadersDefaultCellStyle = dataGridViewCellStyle27;
+            this.BuyRes_gridCityList.RowHeadersVisible = false;
+            this.BuyRes_gridCityList.Size = new System.Drawing.Size(469, 437);
+            this.BuyRes_gridCityList.TabIndex = 4;
             // 
             // label12
             // 
@@ -2862,54 +2782,54 @@
             this.label12.TabIndex = 7;
             this.label12.Text = "Kiểm tra sau                phút";
             // 
-            // txtSAFEGOLD
+            // BuyRes_txtGoldThreshold
             // 
-            this.txtSAFEGOLD.Location = new System.Drawing.Point(488, 36);
-            this.txtSAFEGOLD.Name = "txtSAFEGOLD";
-            this.txtSAFEGOLD.Size = new System.Drawing.Size(97, 20);
-            this.txtSAFEGOLD.TabIndex = 6;
-            this.txtSAFEGOLD.Text = "1500000";
-            this.txtSAFEGOLD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.BuyRes_txtGoldThreshold.Location = new System.Drawing.Point(488, 36);
+            this.BuyRes_txtGoldThreshold.Name = "BuyRes_txtGoldThreshold";
+            this.BuyRes_txtGoldThreshold.Size = new System.Drawing.Size(97, 20);
+            this.BuyRes_txtGoldThreshold.TabIndex = 6;
+            this.BuyRes_txtGoldThreshold.Text = "1500000";
+            this.BuyRes_txtGoldThreshold.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // btMuaTNSelectAllDa
+            // BuyRes_btnSelectAllStone
             // 
-            this.btMuaTNSelectAllDa.Location = new System.Drawing.Point(484, 378);
-            this.btMuaTNSelectAllDa.Name = "btMuaTNSelectAllDa";
-            this.btMuaTNSelectAllDa.Size = new System.Drawing.Size(75, 23);
-            this.btMuaTNSelectAllDa.TabIndex = 11;
-            this.btMuaTNSelectAllDa.Text = "Chọn tất đá";
-            this.btMuaTNSelectAllDa.UseVisualStyleBackColor = true;
-            this.btMuaTNSelectAllDa.Click += new System.EventHandler(this.btMuaTNSelectAllDa_Click);
+            this.BuyRes_btnSelectAllStone.Location = new System.Drawing.Point(484, 349);
+            this.BuyRes_btnSelectAllStone.Name = "BuyRes_btnSelectAllStone";
+            this.BuyRes_btnSelectAllStone.Size = new System.Drawing.Size(75, 23);
+            this.BuyRes_btnSelectAllStone.TabIndex = 11;
+            this.BuyRes_btnSelectAllStone.Text = "Chọn tất đá";
+            this.BuyRes_btnSelectAllStone.UseVisualStyleBackColor = true;
+            this.BuyRes_btnSelectAllStone.Click += new System.EventHandler(this.btMuaTNSelectAllDa_Click);
             // 
-            // btMuaTNSelectAllLua
+            // BuyRes_btnSelectAllFood
             // 
-            this.btMuaTNSelectAllLua.Location = new System.Drawing.Point(484, 291);
-            this.btMuaTNSelectAllLua.Name = "btMuaTNSelectAllLua";
-            this.btMuaTNSelectAllLua.Size = new System.Drawing.Size(75, 23);
-            this.btMuaTNSelectAllLua.TabIndex = 11;
-            this.btMuaTNSelectAllLua.Text = "Chọn tất lúa";
-            this.btMuaTNSelectAllLua.UseVisualStyleBackColor = true;
-            this.btMuaTNSelectAllLua.Click += new System.EventHandler(this.btMuaTNSelectAllLua_Click);
+            this.BuyRes_btnSelectAllFood.Location = new System.Drawing.Point(484, 291);
+            this.BuyRes_btnSelectAllFood.Name = "BuyRes_btnSelectAllFood";
+            this.BuyRes_btnSelectAllFood.Size = new System.Drawing.Size(75, 23);
+            this.BuyRes_btnSelectAllFood.TabIndex = 11;
+            this.BuyRes_btnSelectAllFood.Text = "Chọn tất lúa";
+            this.BuyRes_btnSelectAllFood.UseVisualStyleBackColor = true;
+            this.BuyRes_btnSelectAllFood.Click += new System.EventHandler(this.btMuaTNSelectAllLua_Click);
             // 
-            // btMuaTNSelectAllSat
+            // BuyRes_btnSelectAllIron
             // 
-            this.btMuaTNSelectAllSat.Location = new System.Drawing.Point(484, 349);
-            this.btMuaTNSelectAllSat.Name = "btMuaTNSelectAllSat";
-            this.btMuaTNSelectAllSat.Size = new System.Drawing.Size(75, 23);
-            this.btMuaTNSelectAllSat.TabIndex = 11;
-            this.btMuaTNSelectAllSat.Text = "Chọn tất sắt";
-            this.btMuaTNSelectAllSat.UseVisualStyleBackColor = true;
-            this.btMuaTNSelectAllSat.Click += new System.EventHandler(this.btMuaTNSelectAllSat_Click);
+            this.BuyRes_btnSelectAllIron.Location = new System.Drawing.Point(484, 378);
+            this.BuyRes_btnSelectAllIron.Name = "BuyRes_btnSelectAllIron";
+            this.BuyRes_btnSelectAllIron.Size = new System.Drawing.Size(75, 23);
+            this.BuyRes_btnSelectAllIron.TabIndex = 11;
+            this.BuyRes_btnSelectAllIron.Text = "Chọn tất sắt";
+            this.BuyRes_btnSelectAllIron.UseVisualStyleBackColor = true;
+            this.BuyRes_btnSelectAllIron.Click += new System.EventHandler(this.btMuaTNSelectAllSat_Click);
             // 
-            // btMuaTNSelectAllGo
+            // BuyRes_btnSelectAllWoods
             // 
-            this.btMuaTNSelectAllGo.Location = new System.Drawing.Point(484, 320);
-            this.btMuaTNSelectAllGo.Name = "btMuaTNSelectAllGo";
-            this.btMuaTNSelectAllGo.Size = new System.Drawing.Size(75, 23);
-            this.btMuaTNSelectAllGo.TabIndex = 11;
-            this.btMuaTNSelectAllGo.Text = "Chọn tất gỗ";
-            this.btMuaTNSelectAllGo.UseVisualStyleBackColor = true;
-            this.btMuaTNSelectAllGo.Click += new System.EventHandler(this.btMuaTNSelectAllGo_Click);
+            this.BuyRes_btnSelectAllWoods.Location = new System.Drawing.Point(484, 320);
+            this.BuyRes_btnSelectAllWoods.Name = "BuyRes_btnSelectAllWoods";
+            this.BuyRes_btnSelectAllWoods.Size = new System.Drawing.Size(75, 23);
+            this.BuyRes_btnSelectAllWoods.TabIndex = 11;
+            this.BuyRes_btnSelectAllWoods.Text = "Chọn tất gỗ";
+            this.BuyRes_btnSelectAllWoods.UseVisualStyleBackColor = true;
+            this.BuyRes_btnSelectAllWoods.Click += new System.EventHandler(this.btMuaTNSelectAllGo_Click);
             // 
             // label6
             // 
@@ -2944,7 +2864,6 @@
             this.pnXayNha.Name = "pnXayNha";
             this.pnXayNha.Size = new System.Drawing.Size(664, 448);
             this.pnXayNha.TabIndex = 11;
-            this.pnXayNha.Paint += new System.Windows.Forms.PaintEventHandler(this.pnXayNha_Paint);
             this.pnXayNha.Leave += new System.EventHandler(this.pnXayNha_Leave);
             // 
             // panel4
@@ -3062,14 +2981,13 @@
             this.Construct_treeBuilding.CheckBoxes = true;
             this.Construct_treeBuilding.Location = new System.Drawing.Point(8, 35);
             this.Construct_treeBuilding.Name = "Construct_treeBuilding";
-            treeNode4.Name = "root";
-            treeNode4.Text = "Thành thị";
+            treeNode13.Name = "root";
+            treeNode13.Text = "Thành thị";
             this.Construct_treeBuilding.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4});
+            treeNode13});
             this.Construct_treeBuilding.Size = new System.Drawing.Size(456, 405);
             this.Construct_treeBuilding.TabIndex = 0;
             this.Construct_treeBuilding.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.tvBUILD_AfterCheck);
-            this.Construct_treeBuilding.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvBUILD_AfterSelect);
             this.Construct_treeBuilding.Leave += new System.EventHandler(this.tvBUILD_Leave_1);
             // 
             // tabHaNha
@@ -3122,10 +3040,10 @@
             this.tvDEL.CheckBoxes = true;
             this.tvDEL.Location = new System.Drawing.Point(16, 32);
             this.tvDEL.Name = "tvDEL";
-            treeNode5.Name = "root";
-            treeNode5.Text = "Thành thị";
+            treeNode14.Name = "root";
+            treeNode14.Text = "Thành thị";
             this.tvDEL.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode5});
+            treeNode14});
             this.tvDEL.Size = new System.Drawing.Size(525, 432);
             this.tvDEL.TabIndex = 9;
             this.tvDEL.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.tvDEL_AfterCheck);
@@ -3139,7 +3057,6 @@
             this.txtDELCHECK.TabIndex = 11;
             this.txtDELCHECK.Text = "1";
             this.txtDELCHECK.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtDELCHECK.TextChanged += new System.EventHandler(this.txtDELCHECK_TextChanged);
             // 
             // cboTabHaNhaCity
             // 
@@ -3201,7 +3118,6 @@
             this.tabBienChe.TabIndex = 16;
             this.tabBienChe.Text = "Biên chế";
             this.tabBienChe.UseVisualStyleBackColor = true;
-            this.tabBienChe.Click += new System.EventHandler(this.tabBienChe_Click);
             // 
             // btBienCheBo
             // 
@@ -3497,10 +3413,10 @@
             this.tvSIKHI.CheckBoxes = true;
             this.tvSIKHI.Location = new System.Drawing.Point(6, 33);
             this.tvSIKHI.Name = "tvSIKHI";
-            treeNode6.Name = "root";
-            treeNode6.Text = "Tướng";
+            treeNode15.Name = "root";
+            treeNode15.Text = "Tướng";
             this.tvSIKHI.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode6});
+            treeNode15});
             this.tvSIKHI.Size = new System.Drawing.Size(525, 395);
             this.tvSIKHI.TabIndex = 1;
             // 
@@ -3534,8 +3450,6 @@
             this.pnTHAOPHAT.Name = "pnTHAOPHAT";
             this.pnTHAOPHAT.Size = new System.Drawing.Size(659, 474);
             this.pnTHAOPHAT.TabIndex = 10;
-            this.pnTHAOPHAT.Paint += new System.Windows.Forms.PaintEventHandler(this.pnTHAOPHAT_Paint);
-            this.pnTHAOPHAT.Leave += new System.EventHandler(this.pnTHAOPHAT_Leave);
             // 
             // Quest_btnQuestAddGeneral
             // 
@@ -3582,7 +3496,6 @@
             this.groupBox19.TabIndex = 15;
             this.groupBox19.TabStop = false;
             this.groupBox19.Text = "Điều kiện trước khi đi";
-            this.groupBox19.Enter += new System.EventHandler(this.groupBox19_Enter);
             // 
             // groupBox23
             // 
@@ -3737,7 +3650,6 @@
             this.Quest_checkAutoMorale.TabIndex = 10;
             this.Quest_checkAutoMorale.Text = "Tự nâng sĩ khí trước khi lên đường";
             this.Quest_checkAutoMorale.UseVisualStyleBackColor = true;
-            this.Quest_checkAutoMorale.CheckedChanged += new System.EventHandler(this.chkSKST_CheckedChanged);
             // 
             // Quest_txtMinTroops
             // 
@@ -3748,7 +3660,6 @@
             this.Quest_txtMinTroops.Size = new System.Drawing.Size(68, 20);
             this.Quest_txtMinTroops.TabIndex = 9;
             this.Quest_txtMinTroops.Text = "10000";
-            this.Quest_txtMinTroops.TextChanged += new System.EventHandler(this.txtThaoPhatTongQuanMin_TextChanged);
             // 
             // groupBox18
             // 
@@ -3814,7 +3725,6 @@
             this.label103.Size = new System.Drawing.Size(198, 13);
             this.label103.TabIndex = 7;
             this.label103.Text = "Số lượng tướng mình đánh 1 tướng địch:";
-            this.label103.Click += new System.EventHandler(this.label103_Click);
             // 
             // Quest_checkAutoFormula
             // 
@@ -3866,7 +3776,6 @@
             this.Quest_dropdownAttackNumGenerals.Size = new System.Drawing.Size(40, 21);
             this.Quest_dropdownAttackNumGenerals.TabIndex = 20;
             this.Quest_dropdownAttackNumGenerals.Text = "1";
-            this.Quest_dropdownAttackNumGenerals.SelectedIndexChanged += new System.EventHandler(this.cboThaoPhatSLTuongDanh1Dich_SelectedIndexChanged);
             // 
             // label110
             // 
@@ -3913,7 +3822,6 @@
             this.Quest_dropdownQuestList.Name = "Quest_dropdownQuestList";
             this.Quest_dropdownQuestList.Size = new System.Drawing.Size(221, 21);
             this.Quest_dropdownQuestList.TabIndex = 4;
-            this.Quest_dropdownQuestList.SelectedIndexChanged += new System.EventHandler(this.cboNhiemVu_SelectedIndexChanged);
             // 
             // Quest_txtTimer
             // 
@@ -3941,7 +3849,6 @@
             this.Quest_GeneralsInCity.Name = "Quest_GeneralsInCity";
             this.Quest_GeneralsInCity.Size = new System.Drawing.Size(301, 274);
             this.Quest_GeneralsInCity.TabIndex = 5;
-            this.Quest_GeneralsInCity.Leave += new System.EventHandler(this.cboGeneral_Leave);
             // 
             // label23
             // 
@@ -4253,7 +4160,6 @@
             this.txtCHECKWEPON.Size = new System.Drawing.Size(50, 20);
             this.txtCHECKWEPON.TabIndex = 10;
             this.txtCHECKWEPON.Text = "1";
-            this.txtCHECKWEPON.TextChanged += new System.EventHandler(this.txtCHECKWEPON_TextChanged);
             // 
             // label44
             // 
@@ -4375,7 +4281,6 @@
             this.cboCityForUpgrade.Name = "cboCityForUpgrade";
             this.cboCityForUpgrade.Size = new System.Drawing.Size(448, 21);
             this.cboCityForUpgrade.TabIndex = 8;
-            this.cboCityForUpgrade.SelectedIndexChanged += new System.EventHandler(this.cboCityForUpgrade_SelectedIndexChanged);
             // 
             // txtCHECKUPDATE
             // 
@@ -4497,7 +4402,6 @@
             this.label21.Size = new System.Drawing.Size(184, 32);
             this.label21.TabIndex = 11;
             this.label21.Text = "Chú ý: trước khi thực hiện tăng dân, nếu dân nộ > 0 thì auto sẽ tự tế thiên.";
-            this.label21.Click += new System.EventHandler(this.label21_Click);
             // 
             // txtCHECKANUI
             // 
@@ -5301,7 +5205,6 @@
             this.tabBinhMan.TabIndex = 19;
             this.tabBinhMan.Text = "Bình man";
             this.tabBinhMan.UseVisualStyleBackColor = true;
-            this.tabBinhMan.Click += new System.EventHandler(this.tabBinhMan_Click);
             // 
             // pnBinhMan
             // 
@@ -6243,7 +6146,6 @@
             this.chkTabBinhManTuongXuatTran.Name = "chkTabBinhManTuongXuatTran";
             this.chkTabBinhManTuongXuatTran.Size = new System.Drawing.Size(136, 274);
             this.chkTabBinhManTuongXuatTran.TabIndex = 4;
-            this.chkTabBinhManTuongXuatTran.SelectedIndexChanged += new System.EventHandler(this.chkTabBinhManTuongXuatTran_SelectedIndexChanged);
             // 
             // label129
             // 
@@ -6504,7 +6406,6 @@
             this.txtCallManToaDoY.Size = new System.Drawing.Size(48, 20);
             this.txtCallManToaDoY.TabIndex = 12;
             this.txtCallManToaDoY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtCallManToaDoY.TextChanged += new System.EventHandler(this.textBox10_TextChanged);
             // 
             // label154
             // 
@@ -6562,7 +6463,6 @@
             this.chkCallManTuMuaThemManTocLenh.TabIndex = 59;
             this.chkCallManTuMuaThemManTocLenh.Text = "Tự mua man tộc lệnh nếu hết";
             this.chkCallManTuMuaThemManTocLenh.UseVisualStyleBackColor = true;
-            this.chkCallManTuMuaThemManTocLenh.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
             // chkCallManTuKhoiPhucTrangThai
             // 
@@ -6604,7 +6504,6 @@
             this.txtCallManSyKhiMin.TabIndex = 56;
             this.txtCallManSyKhiMin.Text = "85";
             this.txtCallManSyKhiMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtCallManSyKhiMin.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // txtCallManQuanSoMin
             // 
@@ -6715,7 +6614,6 @@
             this.cbCallManBienCheQuanGioiCungThu3.Size = new System.Drawing.Size(109, 21);
             this.cbCallManBienCheQuanGioiCungThu3.TabIndex = 37;
             this.cbCallManBienCheQuanGioiCungThu3.Text = "0. Để nguyên";
-            this.cbCallManBienCheQuanGioiCungThu3.SelectedIndexChanged += new System.EventHandler(this.cbCallManBienCheQuanGioiCungThu3_SelectedIndexChanged);
             // 
             // cbCallManBienCheQuanGioiKyBinh3
             // 
@@ -7192,7 +7090,6 @@
             this.cbCallManBienCheQuanGioiBoBinh2.Size = new System.Drawing.Size(97, 21);
             this.cbCallManBienCheQuanGioiBoBinh2.TabIndex = 21;
             this.cbCallManBienCheQuanGioiBoBinh2.Text = "0. Để nguyên";
-            this.cbCallManBienCheQuanGioiBoBinh2.SelectedIndexChanged += new System.EventHandler(this.comboBox9_SelectedIndexChanged);
             // 
             // label145
             // 
@@ -7603,26 +7500,29 @@
             this.timerDanhTuongViengTham.Interval = 900000;
             this.timerDanhTuongViengTham.Tick += new System.EventHandler(this.timerForTBDanhTuongViengTham_Tick);
             // 
-            // SellRes_btnReloadCities
+            // statusStrip1
             // 
-            this.SellRes_btnReloadCities.BackColor = System.Drawing.Color.Transparent;
-            this.SellRes_btnReloadCities.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SellRes_btnReloadCities.ForeColor = System.Drawing.Color.Blue;
-            this.SellRes_btnReloadCities.Location = new System.Drawing.Point(568, 366);
-            this.SellRes_btnReloadCities.Name = "SellRes_btnReloadCities";
-            this.SellRes_btnReloadCities.Size = new System.Drawing.Size(75, 23);
-            this.SellRes_btnReloadCities.TabIndex = 44;
-            this.SellRes_btnReloadCities.Text = "Nạp Lại";
-            this.SellRes_btnReloadCities.UseVisualStyleBackColor = false;
-            this.SellRes_btnReloadCities.Click += new System.EventHandler(this.SellRes_btnReloadCities_Click);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.labelStatus});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 524);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(673, 22);
+            this.statusStrip1.TabIndex = 59;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // labelStatus
+            // 
+            this.labelStatus.Name = "labelStatus";
+            this.labelStatus.Size = new System.Drawing.Size(0, 17);
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PeachPuff;
-            this.ClientSize = new System.Drawing.Size(673, 524);
+            this.ClientSize = new System.Drawing.Size(673, 546);
             this.Controls.Add(this.tabMainTab);
+            this.Controls.Add(this.statusStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -7637,9 +7537,6 @@
             this.tabLogin.PerformLayout();
             this.groupBox20.ResumeLayout(false);
             this.groupBox20.PerformLayout();
-            this.panelLoading.ResumeLayout(false);
-            this.panelLoading.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picPanelWaiting)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAttach)).EndInit();
             this.tabLog.ResumeLayout(false);
             this.tabLog.PerformLayout();
@@ -7664,14 +7561,14 @@
             this.groupBox6.PerformLayout();
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             this.groupBox14.ResumeLayout(false);
@@ -7682,7 +7579,7 @@
             this.pnLVBUYRES.PerformLayout();
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtaBUYRESOURCE)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BuyRes_gridCityList)).EndInit();
             this.tabXayDung.ResumeLayout(false);
             this.pnXayNha.ResumeLayout(false);
             this.pnXayNha.PerformLayout();
@@ -7758,7 +7655,10 @@
             this.groupBox25.ResumeLayout(false);
             this.groupBox25.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -7768,17 +7668,17 @@
         private System.Windows.Forms.NotifyIcon AppNotifyIcon;
         private System.Windows.Forms.CheckBox Auto_checkAutoConstruct;
         private System.Windows.Forms.TabPage tabBanTaiNguyen;
-		private System.Windows.Forms.GroupBox groupBox4;
+		private System.Windows.Forms.GroupBox groupBox3;
 		private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label19;
-		private System.Windows.Forms.GroupBox groupBox3;
+		private System.Windows.Forms.GroupBox groupBox4;
 		private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label16;
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label13;
 		private System.Windows.Forms.GroupBox groupBox1;
-		private System.Windows.Forms.Label lblBTNLuaDVSoluong;
+		private System.Windows.Forms.Label SellRes_labelAmountSellFood;
 		private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.CheckBox Auto_checkAutoQuest;
@@ -7891,10 +7791,7 @@
 		public System.Windows.Forms.Panel pnVanchuyen;
 		public System.Windows.Forms.TextBox txtCHECKVANCHUYEN;
 		public System.Windows.Forms.CheckBox chkAutoUpDanSo;
-		public System.Windows.Forms.Label lblANUIMESSAGE;
-		private System.Windows.Forms.Panel panelLoading;
-		private System.Windows.Forms.Label lblPanelLoading;
-		private System.Windows.Forms.PictureBox picPanelWaiting;
+        public System.Windows.Forms.Label lblANUIMESSAGE;
 		public System.Windows.Forms.PictureBox picAttach;
 		public System.Windows.Forms.Label lblDELMESSAGE;
 		private System.Windows.Forms.GroupBox grbXacNhanHinhAnh;
@@ -7924,8 +7821,7 @@
 		private System.Windows.Forms.TreeView tvBienCheList;
 		private System.Windows.Forms.Button btBienCheBo;
 		private System.Windows.Forms.CheckBox Auto_checkAutoTroops;
-		private System.Windows.Forms.Label lblBIENCHEMESSAGE;
-		private System.Windows.Forms.Button btTest;
+        private System.Windows.Forms.Label lblBIENCHEMESSAGE;
 		public System.Windows.Forms.Label Auto_labelAutoConstruct;
 		private System.Windows.Forms.Label label67;
 		public System.Windows.Forms.TextBox txtTabBienCheTimeCheck;
@@ -7935,19 +7831,19 @@
 		public System.Windows.Forms.TreeView tvUpdate;
 		public System.Windows.Forms.ComboBox cboCityForUpgrade;
 		public System.Windows.Forms.TextBox txtCHECKUPDATE;
-		public System.Windows.Forms.TextBox txtCOUNTDA;
-		public System.Windows.Forms.TextBox txtSAFEDA;
-		public System.Windows.Forms.TextBox txtCOUNTSAT;
-		public System.Windows.Forms.TextBox txtSAFESAT;
-		public System.Windows.Forms.TextBox txtCOUNTGO;
-		public System.Windows.Forms.TextBox txtSAFEGO;
-		public System.Windows.Forms.TextBox txtCOUNTLUA;
-		public System.Windows.Forms.TextBox txtSAFELUA;
+		public System.Windows.Forms.TextBox SellRes_txtAmountSellStone;
+		public System.Windows.Forms.TextBox SellRes_txtAmountThresholdStone;
+		public System.Windows.Forms.TextBox SellRes_txtAmountSellIron;
+		public System.Windows.Forms.TextBox SellRes_txtAmountThresholdIron;
+		public System.Windows.Forms.TextBox SellRes_txtAmountSellWoods;
+		public System.Windows.Forms.TextBox SellRes_txtAmountThresholdWoods;
+		public System.Windows.Forms.TextBox SellRes_txtAmountSellFood;
+		public System.Windows.Forms.TextBox SellRes_txtAmountThresholdFood;
 		public System.Windows.Forms.DataGridView SellRes_gridCityList;
 		public System.Windows.Forms.TextBox SellRes_txtTimer;
-		public System.Windows.Forms.DataGridView dtaBUYRESOURCE;
-		public System.Windows.Forms.TextBox txtBUYRESOURCECHECK;
-		public System.Windows.Forms.TextBox txtSAFEGOLD;
+		public System.Windows.Forms.DataGridView BuyRes_gridCityList;
+		public System.Windows.Forms.TextBox BuyRes_txtTimer;
+		public System.Windows.Forms.TextBox BuyRes_txtGoldThreshold;
 		private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemHienThi;
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemThoat;
@@ -7985,28 +7881,28 @@
 		private System.Windows.Forms.Label label84;
 		private System.Windows.Forms.Label label86;
 		private System.Windows.Forms.GroupBox groupBox5;
-		public System.Windows.Forms.TextBox txtBanTN_LUA_TB_Heso;
+		public System.Windows.Forms.TextBox SellRes_textAddOnValueFood;
 		private System.Windows.Forms.GroupBox groupBox6;
 		private System.Windows.Forms.GroupBox groupBox8;
 		private System.Windows.Forms.GroupBox groupBox9;
 		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.Label lblBTNLuaDVAnToan;
-		private System.Windows.Forms.Label lblBTNGoDVAnToan;
-		private System.Windows.Forms.Label lblBTNGoDVSoluong;
-		private System.Windows.Forms.Label lblBTNSatDVAnToan;
-		private System.Windows.Forms.Label lblBTNSatDVSoluong;
-		private System.Windows.Forms.Label lblBTNDaDVAnToan;
-		private System.Windows.Forms.Label lblBTNDaDVSoluong;
-		public System.Windows.Forms.RadioButton rdBanTN_LUA_TB_Nhan;
-        public System.Windows.Forms.RadioButton rdBanTN_LUA_TB_Cong;
+		private System.Windows.Forms.Label SellRes_labelAmountThresholdFood;
+		private System.Windows.Forms.Label SellRes_labelAmountThresholdWoods;
+		private System.Windows.Forms.Label SellRes_labelAmountSellWoods;
+		private System.Windows.Forms.Label SellRes_labelAmountThresholdIron;
+		private System.Windows.Forms.Label SellRes_labelAmountSellIron;
+		private System.Windows.Forms.Label SellRes_labelAmountThresholdStone;
+		private System.Windows.Forms.Label SellRes_labelAmountSellStone;
+		public System.Windows.Forms.RadioButton SellRes_radioAddOnMethodFoodMultiply;
+        public System.Windows.Forms.RadioButton SellRes_radioAddOnMethodFoodAdd;
 		private System.Windows.Forms.Button SellRes_btnSelectAllStone;
 		private System.Windows.Forms.Button SellRes_btnSelectAllIron;
 		private System.Windows.Forms.Button SellRes_btnSelectAllWoods;
 		private System.Windows.Forms.Button SellRes_btnSelectAllFood;
-		private System.Windows.Forms.Button btMuaTNSelectAllDa;
-		private System.Windows.Forms.Button btMuaTNSelectAllSat;
-		private System.Windows.Forms.Button btMuaTNSelectAllGo;
-		private System.Windows.Forms.Button btMuaTNSelectAllLua;
+		private System.Windows.Forms.Button BuyRes_btnSelectAllStone;
+		private System.Windows.Forms.Button BuyRes_btnSelectAllIron;
+		private System.Windows.Forms.Button BuyRes_btnSelectAllWoods;
+		private System.Windows.Forms.Button BuyRes_btnSelectAllFood;
 		private System.Windows.Forms.GroupBox groupBox10;
 		private System.Windows.Forms.Label label89;
 		public System.Windows.Forms.TabControl tabMainTab;
@@ -8014,30 +7910,30 @@
 		public System.Windows.Forms.Label lblMOVEDOANHTRAI;
 		public System.Windows.Forms.Panel pnDoanhTrai;
 		private System.Windows.Forms.GroupBox groupBox11;
-		public System.Windows.Forms.RadioButton rdBanTN_GO_TB_Cong;
+		public System.Windows.Forms.RadioButton SellRes_radioAddOnMethodWoodsAdd;
 		private System.Windows.Forms.GroupBox groupBox12;
-		public System.Windows.Forms.RadioButton rdBanTN_GO_TB_Nhan;
-		public System.Windows.Forms.TextBox txtBanTN_GO_TB_Heso;
-		public System.Windows.Forms.RadioButton rdBanTN_SAT_TB_Cong;
+		public System.Windows.Forms.RadioButton SellRes_radioAddOnMethodWoodsMultiply;
+		public System.Windows.Forms.TextBox SellRes_textAddOnValueWoods;
+		public System.Windows.Forms.RadioButton SellRes_radioAddOnMethodIronAdd;
 		private System.Windows.Forms.GroupBox groupBox13;
-		public System.Windows.Forms.TextBox txtBanTN_SAT_TB_Heso;
-		public System.Windows.Forms.RadioButton rdBanTN_SAT_TB_Nhan;
-		public System.Windows.Forms.RadioButton rdBanTN_DA_TB_Cong;
+		public System.Windows.Forms.TextBox SellRes_textAddOnValueIron;
+		public System.Windows.Forms.RadioButton SellRes_radioAddOnMethodIronMultiply;
+		public System.Windows.Forms.RadioButton SellRes_radioAddOnMethodStoneAdd;
 		private System.Windows.Forms.GroupBox groupBox14;
-		public System.Windows.Forms.RadioButton rdBanTN_DA_TB_Nhan;
-		public System.Windows.Forms.TextBox txtBanTN_DA_TB_Heso;
-		public System.Windows.Forms.RadioButton rdBanTN_LUA_THAPNHAT;
-		public System.Windows.Forms.RadioButton rdBanTN_LUA_TRUNGBINH;
-		public System.Windows.Forms.RadioButton rdBanTN_LUA_CODINH;
-		public System.Windows.Forms.RadioButton rdBanTN_GO_THAPNHAT;
-		public System.Windows.Forms.RadioButton rdBanTN_GO_CODINH;
-		public System.Windows.Forms.RadioButton rdBanTN_GO_TRUNGBINH;
-		public System.Windows.Forms.RadioButton rdBanTN_SAT_THAPNHAT;
-		public System.Windows.Forms.RadioButton rdBanTN_SAT_CODINH;
-		public System.Windows.Forms.RadioButton rdBanTN_SAT_TRUNGBINH;
-		public System.Windows.Forms.RadioButton rdBanTN_DA_THAPNHAT;
-		public System.Windows.Forms.RadioButton rdBanTN_DA_CODINH;
-		public System.Windows.Forms.RadioButton rdBanTN_DA_TRUNGBINH;
+		public System.Windows.Forms.RadioButton SellRes_radioAddOnMethodStoneMultiply;
+		public System.Windows.Forms.TextBox SellRes_textAddOnValueStone;
+		public System.Windows.Forms.RadioButton SellRes_radioSellPriceMethodFoodMin;
+		public System.Windows.Forms.RadioButton SellRes_radioSellPriceMethodFoodAvg;
+		public System.Windows.Forms.RadioButton SellRes_radioSellPriceMethodFoodFix;
+		public System.Windows.Forms.RadioButton SellRes_radioSellPriceMethodWoodsMin;
+		public System.Windows.Forms.RadioButton SellRes_radioSellPriceMethodWoodsFix;
+		public System.Windows.Forms.RadioButton SellRes_radioSellPriceMethodWoodsAvg;
+		public System.Windows.Forms.RadioButton SellRes_radioSellPriceMethodIronMin;
+		public System.Windows.Forms.RadioButton SellRes_radioSellPriceMethodIronFix;
+		public System.Windows.Forms.RadioButton SellRes_radioSellPriceMethodIronAvg;
+		public System.Windows.Forms.RadioButton SellRes_radioSellPriceMethodStoneMin;
+		public System.Windows.Forms.RadioButton SellRes_radioSellPriceMethodStoneFix;
+		public System.Windows.Forms.RadioButton SellRes_radioSellPriceMethodStoneAvg;
 		public System.Windows.Forms.CheckBox SellRes_checkSelloff;
 		private System.Windows.Forms.Panel pnXayNha;
 		private System.Windows.Forms.Panel panel3;
@@ -8096,14 +7992,14 @@
 		private System.Windows.Forms.GroupBox groupBox18;
 		private System.Windows.Forms.Label label112;
 		private System.Windows.Forms.GroupBox groupBox19;
-		public System.Windows.Forms.RadioButton rdBTNLuaPercentCoDinh;
-		public System.Windows.Forms.RadioButton rdBTNLuaAnToanCoDinh;
-		public System.Windows.Forms.RadioButton rdBTNGoPercentCoDinh;
-		public System.Windows.Forms.RadioButton rdBTNGoAnToanCoDinh;
-		public System.Windows.Forms.RadioButton rdBTNSatPercentCoDinh;
-		public System.Windows.Forms.RadioButton rdBTNSatAnToanCoDinh;
-		public System.Windows.Forms.RadioButton rdBTNDaPercentCoDinh;
-		public System.Windows.Forms.RadioButton rdBTNDaAnToanCoDinh;
+		public System.Windows.Forms.RadioButton SellRes_radioSellAmountMethodFoodPercent;
+		public System.Windows.Forms.RadioButton SellRes_radioSellAmountMethodFoodFix;
+		public System.Windows.Forms.RadioButton SellRes_radioSellAmountMethodWoodsPercent;
+		public System.Windows.Forms.RadioButton SellRes_radioSellAmountMethodWoodsFix;
+		public System.Windows.Forms.RadioButton SellRes_radioSellAmountMethodIronPercent;
+		public System.Windows.Forms.RadioButton SellRes_radioSellAmountMethodIronFix;
+		public System.Windows.Forms.RadioButton SellRes_radioSellAmountMethodStonePercent;
+		public System.Windows.Forms.RadioButton SellRes_radioSellAmountMethodStoneFix;
 		private System.Windows.Forms.Button cmdTienIchXoaNhacNhoAdmin;
 		private System.Windows.Forms.CheckBox chkAutoThongBaoDanhTuongViengTham;
 		private System.Windows.Forms.Timer timerDanhTuongViengTham;
@@ -8145,9 +8041,9 @@
 		private System.Windows.Forms.LinkLabel linkLabel2;
 		private System.Windows.Forms.Label label117;
 		private System.Windows.Forms.Label label116;
-		public System.Windows.Forms.RadioButton rdMuaTNMuaTheoPhanTram;
-		public System.Windows.Forms.TextBox txtMuaTNGioiHanMua;
-		public System.Windows.Forms.RadioButton rdMuaTNMuaTheoDonVi;
+		public System.Windows.Forms.RadioButton BuyRes_radioBuyAmountMethodPercent;
+		public System.Windows.Forms.TextBox BuyRes_txtBuyAmount;
+		public System.Windows.Forms.RadioButton BuyRes_radioBuyAmountMethodFix;
 		private System.Windows.Forms.TabPage tabBinhMan;
         private System.Windows.Forms.Panel pnBinhMan;
 		private System.Windows.Forms.CheckedListBox chkTabBinhManTuongXuatTran;
@@ -8309,6 +8205,8 @@
         private System.Windows.Forms.TextBox Log_txtLog;
         private System.Windows.Forms.Button SellRes_btnUpdate;
         private System.Windows.Forms.Button SellRes_btnReloadCities;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel labelStatus;
     }
 }
 

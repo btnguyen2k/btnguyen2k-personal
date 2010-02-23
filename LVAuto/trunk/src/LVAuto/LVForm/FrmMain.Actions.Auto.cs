@@ -173,12 +173,12 @@ namespace LVAuto.LVForm
             myNode.SetAttribute(ATTR_AUTO_RESOURCE, LVAuto.LVForm.FrmMain.LVFRMMAIN.chkXayNha_TuMuaTaiNguyen.Checked.ToString());
             myNode.SetAttribute(ATTR_GOLD_THRESHOLD, LVAuto.LVForm.FrmMain.LVFRMMAIN.txtXayNha_VangAnToan.Text);
 
-            if ( LVAuto.LVObj.City.AllCity == null )
+            if ( LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities == null )
             {
                 return;
             }
 
-            foreach (LVAuto.LVObj.City city in LVAuto.LVObj.City.AllCity)
+            foreach (LVAuto.LVObj.City city in LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities)
             {
                 if (city.AllBuildings == null)
                 {
@@ -212,12 +212,12 @@ namespace LVAuto.LVForm
             root.AppendChild(myNode);
             myNode.SetAttribute(ATTR_TIME, LVAuto.LVForm.FrmMain.LVFRMMAIN.txtDELCHECK.Text);
 
-            if (LVAuto.LVObj.City.AllCity == null)
+            if (LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities == null)
             {
                 return;
             }
 
-            foreach (LVAuto.LVObj.City city in LVAuto.LVObj.City.AllCity)
+            foreach (LVAuto.LVObj.City city in LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities)
             {
                 if (city.AllBuildings == null)
                 {

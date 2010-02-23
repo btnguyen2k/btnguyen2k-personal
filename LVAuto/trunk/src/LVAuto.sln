@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LVAuto", "LVAuto\LVAuto.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LVUtils", "LVUtils\LVUtils.csproj", "{6594952C-0241-4C61-8D06-FE5ACD6C8DAE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LVTest", "LVTest\LVTest.csproj", "{7D5B1B36-6ADC-49D8-9F12-83B5E40E1BC3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{6594952C-0241-4C61-8D06-FE5ACD6C8DAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6594952C-0241-4C61-8D06-FE5ACD6C8DAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6594952C-0241-4C61-8D06-FE5ACD6C8DAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D5B1B36-6ADC-49D8-9F12-83B5E40E1BC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D5B1B36-6ADC-49D8-9F12-83B5E40E1BC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D5B1B36-6ADC-49D8-9F12-83B5E40E1BC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D5B1B36-6ADC-49D8-9F12-83B5E40E1BC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

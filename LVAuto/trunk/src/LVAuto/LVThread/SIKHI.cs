@@ -79,7 +79,7 @@ namespace LVAuto.LVForm.LVThread {
 								{
                                     int gid=16;
 #if (DEBUG)
-                                    if (LVAuto.LVObj.City.AllCity[citypost].size == 4) gid = 69;
+                                    if (LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypost].Size == 4) gid = 69;
 #endif                                    
 
 									if (Command.Build.SelectBuilding(Id[i], gid, Cookies[i]))

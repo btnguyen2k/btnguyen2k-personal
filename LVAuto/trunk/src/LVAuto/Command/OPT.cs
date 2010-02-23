@@ -877,10 +877,10 @@ namespace LVAuto.LVForm.Command {
 				
 				LVAuto.LVObj.General[] militaryGeneral;
 				if (result != null)
-					for (int i = 0; i < LVObj.City.AllCity.Length; i++)
+					for (int i = 0; i < LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities.Length; i++)
 					{
 						militaryGeneral =
-							(LVAuto.LVObj.General[])result[LVObj.City.AllCity[i].Id];
+							(LVAuto.LVObj.General[])result[LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[i].Id];
 
 						if (militaryGeneral == null) continue;
 						for (int j = 0; j < militaryGeneral.Length; j++)

@@ -20,13 +20,7 @@ namespace LVAuto.LVObj
         public ArrayList generalupsikhi;
         public CityTask CityTasks;
 		
-		public static bool IsBuildAll = false;
-		public static bool IsDowndAll = false;
-
-		public static bool IsBuyRes = true;     // buy resources if needed
-		public static long GoldSafe = 5000000;  // gold threshold
-
-        public static LVAuto.LVObj.City[] AllCity;
+        //public static LVAuto.LVObj.City[] AllCity;
 
         /// <summary>
         /// Constructs a new City object.
