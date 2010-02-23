@@ -42,9 +42,9 @@ namespace LVAuto.LVForm.LVThread {
 				 Cookies = new string[50];
 				 Sleep = sleep;
 				 Xay dung cookies
-				 for (int i = 0; i < LVAuto.LVObj.City.AllCity.Length;i++) {
-					 Cookies[i] = LVAuto.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(LVAuto.LVObj.City.AllCity[i].id);
-					 Id[i] = LVAuto.LVObj.City.AllCity[i].id;
+				 for (int i = 0; i < LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities.Length;i++) {
+					 Cookies[i] = LVAuto.Web.LVWeb.CurrentLoginInfo.MakeCookiesString(LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[i].id);
+					 Id[i] = LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[i].id;
 				 }
 
 				 //Xay dung mang de xay nha
@@ -87,23 +87,23 @@ namespace LVAuto.LVForm.LVThread {
 
 				bool hasDown = false;
 
-				for (int i = 0; i < LVAuto.LVObj.City.AllCity.Length; i++)
+				for (int i = 0; i < LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities.Length; i++)
 				{
 					hasDown = false;
-					if (LVAuto.LVObj.City.AllCity[i].AllBuildings != null)
+					if (LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[i].AllBuildings != null)
 					{
 						arBuilding = new ArrayList();
-						for (int j = 0; j < LVAuto.LVObj.City.AllCity[i].AllBuildings.Length; j++)
+						for (int j = 0; j < LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[i].AllBuildings.Length; j++)
 						{
-							if (LVAuto.LVObj.City.AllCity[i].AllBuildings[j].IsDown)
+							if (LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[i].AllBuildings[j].IsDown)
 							{
 								//arBuilding.Add(j);
-								arBuilding.Add(LVAuto.LVObj.City.AllCity[i].AllBuildings[j]);
+								arBuilding.Add(LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[i].AllBuildings[j]);
 								hasDown = true;
 							}
 						}
 
-						if (hasDown) buildDown.Add(LVAuto.LVObj.City.AllCity[i].Id, arBuilding);	//buildDown.Add(i, arBuilding);
+						if (hasDown) buildDown.Add(LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[i].Id, arBuilding);	//buildDown.Add(i, arBuilding);
 					}
 				}
 
@@ -153,8 +153,8 @@ namespace LVAuto.LVForm.LVThread {
                                             string[] oldbulding = Building[i];
                                             Building[i] = new string[50];
 
-                                            for (int j = 0; j < LVObj.City.AllCity[i].AllBuilding.Length; j++) {
-                                                LVObj.Building onebuilding = LVObj.City.AllCity[i].AllBuilding[j];
+                                            for (int j = 0; j < LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[i].AllBuilding.Length; j++) {
+                                                LVObj.Building onebuilding = LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[i].AllBuilding[j];
                                                 //Check thu da duoc check chua
                                                 for (int k = 0; k < oldbulding.Length; k++) {
                                                     if (oldbulding[k] != null) {
@@ -213,22 +213,22 @@ namespace LVAuto.LVForm.LVThread {
 					SetText("Đang chạy (0%)");
 					//LVAuto.Command.City.UpdateAllSimpleCity();
 
-					if (LVAuto.LVObj.City.IsDowndAll)
+					if (LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.IsDowndAll)
 					{
 						buildDown.Clear();
-						for (int i = 0; i < LVAuto.LVObj.City.AllCity.Length; i++)
+						for (int i = 0; i < LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities.Length; i++)
 						{
 							Command.City.GetAllBuilding(i, false);
 
-							if (LVAuto.LVObj.City.AllCity[i].AllBuildings != null)
+							if (LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[i].AllBuildings != null)
 							{
 								arBuilding = new ArrayList();
-								for (int j = 0; j < LVAuto.LVObj.City.AllCity[i].AllBuildings.Length; j++)
+								for (int j = 0; j < LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[i].AllBuildings.Length; j++)
 								{
-									arBuilding.Add(LVAuto.LVObj.City.AllCity[i].AllBuildings[j]);
+									arBuilding.Add(LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[i].AllBuildings[j]);
 								}
 
-								buildDown.Add(LVAuto.LVObj.City.AllCity[i].Id, arBuilding);
+								buildDown.Add(LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[i].Id, arBuilding);
 							}
 						}
 					}
@@ -256,7 +256,7 @@ namespace LVAuto.LVForm.LVThread {
 
 							citypos = LVAuto.LVForm.Command.City.GetCityPostByID(cityID);
 							//city = LVAuto.Command.City.GetCityByID(cityID);
-							city = LVAuto.LVObj.City.AllCity[citypos];
+							city = LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos];
 
 							if (city == null) continue;
 							SetText("Đang chạy: " + city.Name + " (đã hoàn thành " + i + "/" + arcityid.Length + " thành. )");
@@ -281,7 +281,7 @@ namespace LVAuto.LVForm.LVThread {
 							LVAuto.LVObj.Building buildingtmp;
 							
 							//for (int j = arBuilding.Count - 1; j >= 0; j--)
-							for (int m = LVObj.City.AllCity[citypos].AllBuildings.Length - 1; m >= 0; m--)
+							for (int m = LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].AllBuildings.Length - 1; m >= 0; m--)
 							{
 
 
@@ -295,10 +295,10 @@ namespace LVAuto.LVForm.LVThread {
 								for (int n = 0; n < arBuilding.Count; n++)
 								{
 									buildingtmp = (LVAuto.LVObj.Building)arBuilding[n];
-									if (LVObj.City.AllCity[citypos].AllBuildings[m].GId == buildingtmp.GId
-										&& LVObj.City.AllCity[citypos].AllBuildings[m].PId == buildingtmp.PId)
+									if (LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].AllBuildings[m].GId == buildingtmp.GId
+										&& LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].AllBuildings[m].PId == buildingtmp.PId)
 									{
-										building = LVObj.City.AllCity[citypos].AllBuildings[m];
+										building = LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].AllBuildings[m];
 										break;
 									}
 								}

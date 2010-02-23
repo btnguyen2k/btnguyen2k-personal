@@ -21,13 +21,13 @@ namespace LVAuto.LVForm
                 //reload all cities
                 LVHelper.CityCommandHelper.UpdateSimpleCityInfo();
                 Construct_dropdownCityList.Items.Clear();
-                Construct_dropdownCityList.Items.AddRange(LVObj.City.AllCity);
+                Construct_dropdownCityList.Items.AddRange(LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities);
             }
             else
             {
                 //reload one city
                 int cityPos = Construct_dropdownCityList.SelectedIndex;
-                LVObj.City city = LVObj.City.AllCity[cityPos];
+                LVObj.City city = LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[cityPos];
                 LVHelper.CityCommandHelper.GetAndPopulateBuildings(city, true);
                 LVLoadBuildingsToTreeViewForConstruct();
             }
@@ -41,7 +41,7 @@ namespace LVAuto.LVForm
             Construct_treeBuilding.Nodes.Clear();
 
             int cityPos = Construct_dropdownCityList.SelectedIndex;
-            LVObj.City city = LVObj.City.AllCity[cityPos];
+            LVObj.City city = LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[cityPos];
 
             WriteLog("Construct: Reloading tree view for city [" + city.Name + "]...");
 

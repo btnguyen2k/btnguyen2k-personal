@@ -84,10 +84,10 @@ namespace LVAuto.LVForm.LVThread {
 							{
 
 
-								if (LVObj.City.AllCity[citypos].AllBuildings == null)
+								if (LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].AllBuildings == null)
 									LVAuto.LVForm.Command.City.GetAllBuilding(i, false, Cookies[i]);
 
-								if (LVObj.City.AllCity[citypos].AllBuildings == null)
+								if (LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].AllBuildings == null)
 								{
 									continue;
 								}
@@ -98,43 +98,43 @@ namespace LVAuto.LVForm.LVThread {
 									City[i][7] = 0;
 
 									//Lay nha vu khi
-									for (int j = 0; j < LVObj.City.AllCity[citypos].AllBuildings.Length; j++)
+									for (int j = 0; j < LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].AllBuildings.Length; j++)
 									{
 #if (DEBUG)
-                                        if (LVObj.City.AllCity[citypos].AllBuilding[j].gid == 13
-                                            || LVObj.City.AllCity[citypos].AllBuilding[j].gid == 66                                            
+                                        if (LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].AllBuildings[j].GId == 13
+                                            || LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].AllBuildings[j].GId == 66                                            
                                             )// xuong binh khi
 #else
 	
-                                        if (LVObj.City.AllCity[citypos].AllBuildings[j].GId == 13)// xuong binh khi
+                                        if (LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].AllBuildings[j].GId == 13)// xuong binh khi
 #endif
                                         {
-											City[i][5] = LVObj.City.AllCity[citypos].AllBuildings[j].PId;
+											City[i][5] = LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].AllBuildings[j].PId;
 										}
 
 
 #if (DEBUG)
-                                        if (LVObj.City.AllCity[citypos].AllBuilding[j].gid == 14
-                                            || LVObj.City.AllCity[citypos].AllBuilding[j].gid == 67                                            
+                                        if (LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].AllBuildings[j].GId == 14
+                                            || LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].AllBuildings[j].GId == 67                                            
                                             )// xuong binh khi
 #else
-										if (LVObj.City.AllCity[citypos].AllBuildings[j].GId == 14) //Xuong khoi giap
+										if (LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].AllBuildings[j].GId == 14) //Xuong khoi giap
 #endif										
                                         
                                         {
-											City[i][6] = LVObj.City.AllCity[citypos].AllBuildings[j].PId;
+											City[i][6] = LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].AllBuildings[j].PId;
 										}
 										
 #if (DEBUG)
-                                        if (LVObj.City.AllCity[citypos].AllBuilding[j].gid == 15
-                                            || LVObj.City.AllCity[citypos].AllBuilding[j].gid == 68                                            
+                                        if (LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].AllBuildings[j].GId == 15
+                                            || LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].AllBuildings[j].GId == 68                                            
                                             )// xuong binh khi
 #else
 
-                                        if (LVObj.City.AllCity[citypos].AllBuildings[j].GId == 15) // xuong ma xa
+                                        if (LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].AllBuildings[j].GId == 15) // xuong ma xa
 #endif
                                         {
-											City[i][7] = LVObj.City.AllCity[citypos].AllBuildings[j].PId;
+											City[i][7] = LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].AllBuildings[j].PId;
 										}
 									}
 								}
@@ -142,11 +142,11 @@ namespace LVAuto.LVForm.LVThread {
 							//---------------
 
 							result = null;
-							SetText("Đang chạy " + LVObj.City.AllCity[citypos].Name + " (" + i + "/" + citycount + ")");
+							SetText("Đang chạy " + LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].Name + " (" + i + "/" + citycount + ")");
 							int index;
                             int indtemp=13;
 #if (DEBUG)
-                                    if (LVObj.City.AllCity[citypos].size == 4) indtemp = 66;
+                                    if (LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].Size == 4) indtemp = 66;
 #endif
 							for (int k = 0; k < 3; k++)
 							{

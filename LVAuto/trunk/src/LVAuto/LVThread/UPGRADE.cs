@@ -107,11 +107,11 @@ namespace LVAuto.LVForm.LVThread {
 
 					for (int techindex = 0; techindex < techcount; techindex++)			// duyeetj het cac hang muc can nang cap
 					{
-						for (int cityindex = 0; cityindex < LVObj.City.AllCity.Length; cityindex++)		// duyet het cac thanh
+						for (int cityindex = 0; cityindex < LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities.Length; cityindex++)		// duyet het cac thanh
 						{
-							if (LVObj.City.AllCity[cityindex].Id < 0) continue;	// trại bỏ qua
+							if (LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[cityindex].Id < 0) continue;	// trại bỏ qua
 
-							cityid = LVObj.City.AllCity[cityindex].Id;
+							cityid = LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[cityindex].Id;
 							citytask = LVAuto.LVForm.Command.City.GetCityTaskByCityID(cityid);
 
 							if (!citytask.Canupgrade)				// citytask.Canupgrade= false: ddang co nghien cuu, khong lam nua
@@ -151,7 +151,7 @@ namespace LVAuto.LVForm.LVThread {
 									}  //end if (Command.Build.SelectBuilding(cityid, 6, cookies))
 								}	//if (nexttech < techcount)
 							//}  // if (citytask.Canupgrade)
-						} //end for (int cityindex=0; cityindex < LVObj.City.AllCity.Length; cityindex++)
+						} //end for (int cityindex=0; cityindex < LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities.Length; cityindex++)
 
 						nexttech++;
 						if (nexttech >= techcount) nexttech = 0;

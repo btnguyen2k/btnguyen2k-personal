@@ -85,10 +85,10 @@ namespace LVAuto.LVForm.Command {
 
         public static Hashtable GetUpgrade(int citypos) {
             Hashtable upgrade = new Hashtable();
-            Command.City.SwitchCitySlow(LVObj.City.AllCity[citypos].Id);
-            for (int i = 0; i < LVObj.City.AllCity[citypos].AllBuildings.Length; i++) {
-                if (LVObj.City.AllCity[citypos].AllBuildings[i].Name == "Đại học điện") {
-                    upgrade = ExecuteExp(2, LVObj.City.AllCity[citypos].AllBuildings[i].GId, LVObj.City.AllCity[citypos].AllBuildings[i].PId, 1, 0);
+            Command.City.SwitchCitySlow(LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].Id);
+            for (int i = 0; i < LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].AllBuildings.Length; i++) {
+                if (LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].AllBuildings[i].Name == "Đại học điện") {
+                    upgrade = ExecuteExp(2, LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].AllBuildings[i].GId, LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].AllBuildings[i].PId, 1, 0);
                     break;
                 }
             }
@@ -116,9 +116,9 @@ namespace LVAuto.LVForm.Command {
 			int citypostocheck = -1;
 			int maxbuild = 1;
 
-			for (int i = 0; i < LVObj.City.AllCity.Length; i++)
+			for (int i = 0; i < LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities.Length; i++)
 			{
-				if (LVObj.City.AllCity[i].Id >0 )
+				if (LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[i].Id >0 )
 				{
 					citypostocheck = i;
 					break;
@@ -126,7 +126,7 @@ namespace LVAuto.LVForm.Command {
 			}
 			if (citypostocheck != -1)
 			{
-				LVObj.City city = LVObj.City.AllCity[citypostocheck];
+				LVObj.City city = LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypostocheck];
 				LVAuto.LVForm.Command.City.SwitchCitySlow(city.Id);
 				string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(city.Id);
 				//checkret = Command.Build.ExecuteExp(2, 1, 8, 2, 0);
@@ -148,10 +148,10 @@ namespace LVAuto.LVForm.Command {
 		{
 			LVAuto.LVObj.City cty; 
 
-            //foreach (LVAuto.LVObj.City cty in LVAuto.LVObj.City.AllCity) 
-			for (int c=0; c < LVAuto.LVObj.City.AllCity.Length; c++) 
+            //foreach (LVAuto.LVObj.City cty in LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities) 
+			for (int c=0; c < LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities.Length; c++) 
 			{
-				cty = LVAuto.LVObj.City.AllCity[c];
+				cty = LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[c];
 
                 if (cty.Id == cityid) 
 				{
@@ -216,13 +216,13 @@ namespace LVAuto.LVForm.Command {
 			try
 			{
 				Hashtable result;
-				int cityID = LVObj.City.AllCity[citypost].Id;
+				int cityID = LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypost].Id;
 
 				LVAuto.LVForm.Command.City.SwitchCitySlow(cityID);
 				string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityID);
 				// lay pid cua chợ
 				int buldingpos = Command.City.GetBuildingPostById(citypost, 11);
-				int pid = LVObj.City.AllCity[citypost].AllBuildings[buldingpos].PId;
+				int pid = LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypost].AllBuildings[buldingpos].PId;
 
 				bool ret = Command.Build.SelectBuilding(cityID, 11, cookies);
 
@@ -261,7 +261,7 @@ namespace LVAuto.LVForm.Command {
 					gid = 7;
 
 				int citypos = Command.City.GetCityPostByGID(gid, false);
-				int cityid = LVObj.City.AllCity[citypos].Id;
+				int cityid = LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].Id;
 				Command.City.SwitchCitySlow(cityid);
 				string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityid);
 

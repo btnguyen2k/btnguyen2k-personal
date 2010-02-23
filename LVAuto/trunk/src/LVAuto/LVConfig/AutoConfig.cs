@@ -12,7 +12,16 @@ namespace LVAuto.LVConfig
         public const int RESOURCE_TYPE_IRON = 4;
 
         public static SellResourcesConfig CONFIG_SELL_RESOURCES = new SellResourcesConfig();
-        public static LVAuto.LVObj.City[] CONFIG_ALL_CITIES;
+        public static CityConstructConfig CONFIG_CITY_CONSTRUCT = new CityConstructConfig();
+
+        public class CityConstructConfig
+        {
+            public LVObj.City[] AllCities;
+            public bool IsBuildAll       = false;
+            public bool IsDowndAll       = false;
+            public bool AutoBuyResources = true;  
+            public long GoldThreshold    = 5000000; 
+        }
 
         public class SellResourcesConfig
         {

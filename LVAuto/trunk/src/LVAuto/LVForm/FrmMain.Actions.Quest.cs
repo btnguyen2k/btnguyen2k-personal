@@ -117,13 +117,13 @@ namespace LVAuto.LVForm
                 ShowLoadingLabel();
                 LVObj.City city = (LVObj.City)Quest_dropdownCityList.SelectedItem;
                 LVAuto.LVForm.Command.Common.GetAllSimpleMilitaryGeneralInfoIntoCity();
-                if (LVObj.City.AllCity[Quest_dropdownCityList.SelectedIndex].MilitaryGenerals == null)
+                if (LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[Quest_dropdownCityList.SelectedIndex].MilitaryGenerals == null)
                 {
                     LVUtils.MsgBoxUtils.WarningBox("Lỗi rồi, có thể mạng lởm, đợi tý làm lại đê");
                     return;
                 }
                 Quest_GeneralsInCity.Items.Clear();
-                Quest_GeneralsInCity.Items.AddRange(LVObj.City.AllCity[Quest_dropdownCityList.SelectedIndex].MilitaryGenerals);
+                Quest_GeneralsInCity.Items.AddRange(LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[Quest_dropdownCityList.SelectedIndex].MilitaryGenerals);
             }
             finally
             {

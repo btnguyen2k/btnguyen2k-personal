@@ -69,11 +69,6 @@ namespace LVAuto.LVForm
 
 		private string fileSavepath = "";
 
-		private bool bantaiNguyenLuaCheckAll = true;
-		private bool bantaiNguyenGoCheckAll = true;
-		private bool bantaiNguyenSatCheckAll = true;
-		private bool bantaiNguyenDaCheckAll = true;
-
 		private bool muataiNguyenLuaCheckAll = true;
 		private bool muataiNguyenGoCheckAll = true;
 		private bool muataiNguyenSatCheckAll = true;
@@ -81,13 +76,6 @@ namespace LVAuto.LVForm
 
 		private Hashtable QuocKho_Ruong = new Hashtable();
 		
-		
-		// ban tai nguyen
-		private int BanTNSoLuongBanCoDinhDefault = 1000;
-		private int BanTNSoLuongBanPercentDefault = 30;
-		private int BanTNAnToanCoDinhDefault = 500;
-		private int BanTNAnToanPercentDefault = 60;
-
 		public int SoLanTuCheckAnhSaiLienTiep = 0;
 		public DateTime LastTimeImageCheck = DateTime.Now;
 
@@ -103,7 +91,7 @@ namespace LVAuto.LVForm
 		public FrmMain() 
 		{
             InitializeComponent();
-
+            InitEvent_SellRes();
 			timerDanhTuongViengTham.Start();
         }
 
@@ -126,8 +114,8 @@ namespace LVAuto.LVForm
                 #endif
 
                 Login_txtUsername.Focus();
-		        panelLoading.BringToFront();
-			    panelLoading.Visible = false;
+		        //panelLoading.BringToFront();
+			    //panelLoading.Visible = false;
 			    picAttach.Visible = false;
 
                 LVLoadServerList();
@@ -196,7 +184,7 @@ namespace LVAuto.LVForm
 
 		private void LoadDataForBinhMan()
 		{
-			cbTabBinhManThanhXuatQuan.Items.AddRange(LVObj.City.AllCity);
+			cbTabBinhManThanhXuatQuan.Items.AddRange(LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities);
 
 
 		}
@@ -208,12 +196,12 @@ namespace LVAuto.LVForm
 				chklVCVKThanhDi.Items.Clear();
 				chklVCVKThanhDen.Items.Clear();
 				chklVCVKLoaiVuKhi.Items.Clear();
-				for (int i = 0; i < LVObj.City.AllCity.Length; i++)
+				for (int i = 0; i < LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities.Length; i++)
 				{
-					if (LVObj.City.AllCity[i].Id > 0)
+					if (LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[i].Id > 0)
 					{
-						chklVCVKThanhDi.Items.Add(LVObj.City.AllCity[i], false);
-						chklVCVKThanhDen.Items.Add(LVObj.City.AllCity[i], false);
+						chklVCVKThanhDi.Items.Add(LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[i], false);
+						chklVCVKThanhDen.Items.Add(LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[i], false);
 					}
 				}
 				chklVCVKLoaiVuKhi.Items.AddRange(LVCommon.Wepons.arWepon);
@@ -223,12 +211,12 @@ namespace LVAuto.LVForm
 				cbVCVKThanhDi.Items.Clear();
 				chklVCVKThanhDen.Items.Clear();
 				cbVCVKLoaiVK.Items.Clear();
-				for (int i = 0; i < LVObj.City.AllCity.Length; i++)
+				for (int i = 0; i < LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities.Length; i++)
 				{
-					if (LVObj.City.AllCity[i].id > 0)
+					if (LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[i].id > 0)
 					{
-						cbVCVKThanhDi.Items.Add(LVObj.City.AllCity[i]);
-						chklVCVKThanhDen.Items.Add(LVObj.City.AllCity[i], false);
+						cbVCVKThanhDi.Items.Add(LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[i]);
+						chklVCVKThanhDen.Items.Add(LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[i], false);
 					}
 				}
 
@@ -243,83 +231,6 @@ namespace LVAuto.LVForm
 		}
 
 
-		/* public void FirstLogin() {
-			 notifyIcon1.Text = "Đang load dữ liệu, vui lòng chờ. Máy có thể đứng đó.";
-            
-			 if (LVAuto.Web.LVWeb.LoginHtml != null) {
-				 while (true) {
-					 try {
-						 Hashtable lastlogindata = Web.ParseHeader.GetDataFromForm(LVAuto.Web.LVWeb.LoginHtml);
-						 Hashtable lastlogin = Web.LVWeb.LoginPartner(lastlogindata["uid"].ToString(), lastlogindata["uname"].ToString(), lastlogindata["ulgtime"].ToString(), lastlogindata["pid"].ToString(), lastlogindata["sign"].ToString());
-						 Web.LVWeb.CurrentLoginInfo = new Web.LoginInfo((string[])lastlogin["Set-Cookie"]);
-                        
-						 Command.City.GetAllCity();
-							
-						 Common.common.LoadCityToGridForSellResource(this.dtaSELL);
-						 while (true) {
-							 try {
-								 LoadAvgPrice();
-								 break;
-							 } catch (Exception ex) {
-							 }
-						 }
-						 Common.common.LoadCityToGridForBuyResource(this.dtaBUYRESOURCE);
-						 Common.common.LoadCityToGridForAnUi(dtaAnUi);
-						 Common.common.LoadBuildingToTreeViewForbuild(this.tvBUILD);
-						 Common.common.LoadBuildingToTreeViewForbuild(this.tvDEL);
-						 while (true) {
-							 try {
-								 Command.Common.GetMaxNhiemVu();
-								 break;
-							 } catch (Exception ex) {
-							 }
-						 }
-						 Common.common.LoadUpgradeToTreeViewForUpdate(tvUpdate);
-						 Common.common.LoadCityToGridForVanchuyen(pnVanchuyen);
-						 Common.common.LoadDoanhTraiForMove(pnDoanhTrai);
-						 Common.common.LoadGeneralForUpSiKhi(tvSIKHI);
-						 Common.common.LoadCityForBuyWepon(pnWepon);
-
-
-
-						 chkAutoAll.Enabled = true;
-						 IsLogin = true;
-						 cboCity.Items.Clear();
-						 cboCity.Items.AddRange(LVObj.City.AllCity);
-						 cboCityForUpgrade.Items.Clear();
-						 cboCityForUpgrade.Items.AddRange(LVObj.City.AllCity);
-						 cboNhiemVu.Items.Clear();
-						 cboNhiemVu.Items.AddRange(Command.CommonObj.ThaoPhat.AllNhiemVu);
-						 notifyIcon1.Text = "LVAuto";
-						 LVBUILD = new LVAuto.LVThread.BUILD(lblBUILDMESSAGE);
-						 LVDEL = new LVAuto.LVThread.DEL(lblDELMESSAGE);
-						 LVSELL = new LVAuto.LVThread.SELL(lblSELLMESSAGE);
-						 LVBUYRES = new LVAuto.LVThread.BUYRES(lblBUYRESMESSAGE);
-						 LVTHAOPHAT = new LVAuto.LVThread.THAOPHAT(lblTHAOPHATMESSAGE);
-						 LVUPGRADE = new LVAuto.LVThread.UPGRADE(lblUPGEADEMESSAGE);
-						 LVANUI = new LVAuto.LVThread.ANUI(lblANUIMESSAGE);
-						 LVVANCHUYEN = new LVAuto.LVThread.VANCHUYEN(lblVANCHUYENMESSAGE);
-						 LVMOVEDOANHTRAI = new LVAuto.LVThread.MOVEDOANHTRAI(lblMOVEDOANHTRAI);
-						 LVSIKHI = new LVAuto.LVThread.SIKHI(lblSIKHIMESSAGE);
-						 LVBUYWEPON = new LVAuto.LVThread.BUYWEPON(lblBUYWEPONMESSAGE);
-						 LVCITYTASK = new LVAuto.LVThread.CITYTASK();
-						 //LVCITYTASK.IsRun = true;
-                        
-						 LVCITYTASK.Auto();
-                        
-						 LVAuto.Web.LVWeb.debug = false;
-						 LVAuto.Web.LVWeb.firstlogin = false;
-						 break;
-					 } catch (Exception ex) {
-						 //MessageBox.Show(ex.ToString());
-					 }
-				 }
-			 } else {
-				 Application.Exit();
-			 }
-		 }
-
-		 */
 		private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e) 
 		{
             this.Show();
@@ -335,10 +246,6 @@ namespace LVAuto.LVForm
             }
         }
 
-        private void deltuong()
-        {
-
-        }
 
         private void Auto_checkAutoAll_CheckedChanged(object sender, EventArgs e) 
 		{
@@ -351,40 +258,6 @@ namespace LVAuto.LVForm
 
         private void Quest_dropdownCityList_SelectedIndexChanged(object sender, EventArgs e) {
             LVReloadGeneralsForQuest();
-            /*
-            Quest_GeneralsInCity.Items.Clear();
-            try {
-				ShowLoadingLabel();
-				LVAuto.LVForm.Command.Common.GetGeneral(Quest_dropdownCityList.SelectedIndex, false); 
-				Quest_GeneralsInCity.Items.AddRange(LVObj.City.AllCity[Quest_dropdownCityList.SelectedIndex].MilitaryGeneral);
-
-				int g;
-				for (int i = 0; i < Quest_GeneralsInCity.Items.Count; i++)
-				{
-					g = ((LVObj.MilitaryGeneral)Quest_GeneralsInCity.Items[i]).Id;
-					for (int k = 0; k < TuongDiThaoPhatList.Count; k++)
-					{
-						if (g == ((Common.GeneralThaoPhat)TuongDiThaoPhatList[k]).Id )
-							Quest_GeneralsInCity.SetItemChecked(i, true);
-					}
-				}
-
-				HideLoadingLabel();
-            } catch (Exception ex) { }
-            */
-        }
-
-        private void LoadAvgPrice() 
-		{
-            /* 1. Lúa
-             2. Gỗ
-             3. Đá
-             4. Sắt
-             * */
-            //txtPRICELUA.Text = "" + (int.Parse(Command.OPT.AvgPrice(1).ToString())+10);
-            //txtPRICEGO.Text = "" + (int.Parse(Command.OPT.AvgPrice(2).ToString()) + 10);
-            //txtPRICEDA.Text = "" + (int.Parse(Command.OPT.AvgPrice(3).ToString()) + 10);
-            //txtPRICESAT.Text = "" + (int.Parse(Command.OPT.AvgPrice(4).ToString()) + 10);
         }
 
         private void cmdLoadConfig_Click(object sender, EventArgs e) {
@@ -397,125 +270,10 @@ namespace LVAuto.LVForm
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e) {
 
 			fileSavepath = openFileDialog1.FileName;
-			return;
-			 /*
-			Common.config.load(openFileDialog1.FileName);
-            try {
-                //Load ban tai nguyen
-                if (Common.config.SELLRESOURCE != null) {
-                    txtSELLCHECK.Text = Common.config.SELLRESOURCE[1];
-                    //nap lua
-                    txtCOUNTLUA.Text = Common.config.SELLRESOURCE[2];
-                    txtPRICELUA.Text = Common.config.SELLRESOURCE[3];
-                    txtSAFELUA.Text = Common.config.SELLRESOURCE[4];
-                    //nap go
-                    txtCOUNTGO.Text = Common.config.SELLRESOURCE[5];
-                    txtPRICEGO.Text = Common.config.SELLRESOURCE[6];
-                    txtSAFEGO.Text = Common.config.SELLRESOURCE[7];
-                    //nap sat
-                    txtCOUNTSAT.Text = Common.config.SELLRESOURCE[8];
-                    txtPRICESAT.Text = Common.config.SELLRESOURCE[9];
-                    txtSAFESAT.Text = Common.config.SELLRESOURCE[10];
-                    //nap da
-                    txtCOUNTDA.Text = Common.config.SELLRESOURCE[11];
-                    txtPRICEDA.Text = Common.config.SELLRESOURCE[12];
-                    txtSAFEDA.Text = Common.config.SELLRESOURCE[13];
-                    //nap thanh
-                    DataTable data = (DataTable)dtaSELL.DataSource;
-                    for (int i = 0; i < data.Rows.Count; i++) {
-                        for (int j = 14; j < Common.config.SELLRESOURCE.Length; j++) {
-                            if (Common.config.SELLRESOURCE[j] == data.Rows[i]["ID_TT"].ToString()) {
-                                data.Rows[i]["SELL_LUA"] = Common.config.SELLRESOURCE[j + 1] == "1" ? true : false;
-                                data.Rows[i]["SELL_GO"] = Common.config.SELLRESOURCE[j + 2] == "1" ? true : false;
-                                data.Rows[i]["SELL_SAT"] = Common.config.SELLRESOURCE[j + 3] == "1" ? true : false;
-                                data.Rows[i]["SELL_DA"] = Common.config.SELLRESOURCE[j + 4] == "1" ? true : false;
-                            }
-                            j += 4;
-                        }
-                    }
-                }
-                //Load mua tai nguyen
-                if (Common.config.BUYRESOURCE != null) {
-                    txtBUYRESOURCECHECK.Text = Common.config.BUYRESOURCE[1];
-                    txtSAFEGOLD.Text = Common.config.BUYRESOURCE[2];
-                    DataTable data = (DataTable)dtaBUYRESOURCE.DataSource;
-                    for (int i = 0; i < data.Rows.Count; i++) {
-                        for (int j = 3; j < Common.config.BUYRESOURCE.Length; j++) {
-                            if (Common.config.BUYRESOURCE[j] == data.Rows[i]["ID_TT"].ToString()) {
-                                data.Rows[i]["BUY_LUA"] = Common.config.BUYRESOURCE[j + 1] == "1" ? true : false;
-                                data.Rows[i]["BUY_GO"] = Common.config.BUYRESOURCE[j + 2] == "1" ? true : false;
-                                data.Rows[i]["BUY_SAT"] = Common.config.BUYRESOURCE[j + 3] == "1" ? true : false;
-                                data.Rows[i]["BUY_DA"] = Common.config.BUYRESOURCE[j + 4] == "1" ? true : false;
-                            }
-                            j += 4;
-                        }
-                    }
-                }
-                //load xay nha
-                if (Common.config.UPDATEBUILDING != null) {
-                    txtBUILDCHECK.Text = Common.config.UPDATEBUILDING[1];
-                    TreeNode root = tvBUILD.Nodes["root"];
-                    for (int i = 2; i < Common.config.UPDATEBUILDING.Length; i++) {
-                        if (Common.config.UPDATEBUILDING[i] == root.Name) root.Checked = true;
-                    }
-                    foreach (TreeNode tt in root.Nodes) {
-                        for (int i = 2; i < Common.config.UPDATEBUILDING.Length; i++) {
-                            if (Common.config.UPDATEBUILDING[i] == tt.Name) tt.Checked = true;
-                        }
-                        foreach (TreeNode b in tt.Nodes) {
-                            for (int i = 2; i < Common.config.UPDATEBUILDING.Length; i++) {
-                                if (Common.config.UPDATEBUILDING[i] == b.Name) b.Checked = true;
-                            }
-                        }
-                    }
-                }
-                //load ha nha
-                if (Common.config.DELBUILDING != null) {
-                    txtDELCHECK.Text = Common.config.DELBUILDING[1];
-                    TreeNode root = tvDEL.Nodes["root"];
-                    for (int i = 2; i < Common.config.DELBUILDING.Length; i++) {
-                        if (Common.config.DELBUILDING[i] == root.Name) root.Checked = true;
-                    }
-                    foreach (TreeNode tt in root.Nodes) {
-                        for (int i = 2; i < Common.config.DELBUILDING.Length; i++) {
-                            if (Common.config.DELBUILDING[i] == tt.Name) tt.Checked = true;
-                        }
-                        foreach (TreeNode b in tt.Nodes) {
-                            for (int i = 2; i < Common.config.DELBUILDING.Length; i++) {
-                                if (Common.config.DELBUILDING[i] == b.Name) b.Checked = true;
-                            }
-                        }
-                    }
-                }
-                //load vu khi
-                if (Common.config.WEPON != null) {
-                    txtCHECKWEPON.Text = Common.config.WEPON[1];
-                    txtCOUNTWEPON.Text = Common.config.WEPON[2];
-                    for (int i = 3; i < Common.config.WEPON.Length; i++) {
-                        foreach (object o in pnWepon.Controls) {
-                            Command.OPTObj.wepon w = (Command.OPTObj.wepon)o;
-                            if (w.cityid.ToString() == Common.config.WEPON[i].ToString()) {
-                                w.cboWepon.Text = Common.config.WEPON[i + 1];
-                                w.cboAmor.Text = Common.config.WEPON[i + 2];
-                                w.cboHorse.Text = Common.config.WEPON[i + 3];
-                                w.cboLevel.Text = Common.config.WEPON[i + 4];
-                                w.chkOK.Checked = bool.Parse(Common.config.WEPON[i + 5]);
-                                i = i + 5;
-                            }
-                        }
-                    }
-                }
-            } catch (Exception ex) {
-            }
-			  * */
         }
 
         private void Auto_btnSaveConfig_Click(object sender, EventArgs e) {
             LVSaveConfig();
-        }
-
-        private void cmdUpdatePrice_Click(object sender, EventArgs e) {
-            
         }
 
         private void Auto_checkAutoConstruct_CheckedChanged(object sender, EventArgs e) {
@@ -736,10 +494,6 @@ namespace LVAuto.LVForm
 			}
 		}
 
-        private void tvBUILD_AfterSelect(object sender, TreeViewEventArgs e) {
-
-        }
-
         private void tvBUILD_AfterCheck(object sender, TreeViewEventArgs e) {
             foreach (TreeNode c in e.Node.Nodes) 
             {
@@ -795,8 +549,8 @@ namespace LVAuto.LVForm
         private void cmdUpdatePrice_Click_1(object sender, EventArgs e) {
             //LVThread.UPDATEPRICE up = new LVAuto.LVThread.UPDATEPRICE(int.Parse(txtPRICELUA.Text), int.Parse(txtPRICEGO.Text), int.Parse(txtPRICEDA.Text), int.Parse(txtPRICESAT.Text));
 
-			LVThread.UPDATEPRICE up = new LVAuto.LVForm.LVThread.UPDATEPRICE(int.Parse(txtBanTN_LUA_TB_Heso.Text), int.Parse(txtBanTN_GO_TB_Heso.Text), 
-												int.Parse(txtBanTN_DA_TB_Heso.Text), int.Parse(txtBanTN_SAT_TB_Heso.Text));
+			LVThread.UPDATEPRICE up = new LVAuto.LVForm.LVThread.UPDATEPRICE(int.Parse(SellRes_textAddOnValueFood.Text), int.Parse(SellRes_textAddOnValueWoods.Text), 
+												int.Parse(SellRes_textAddOnValueStone.Text), int.Parse(SellRes_textAddOnValueIron.Text));
 			up.Auto();
         }
 
@@ -813,10 +567,6 @@ namespace LVAuto.LVForm
             bt.Auto();
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e) {
-
-        }
-
         private void checkBox2_CheckedChanged(object sender, EventArgs e) {
             lock (LVAuto.LVWeb.LVClient.islock) {
                 lock (LVAuto.LVWeb.LVClient.ispause) {
@@ -830,39 +580,6 @@ namespace LVAuto.LVForm
 
         private void cmdTestSMS_Click(object sender, EventArgs e) {
             LVAuto.LVWeb.LVClient.LoginMobi(txtPhoneSend.Text, txtPassword.Text, txtTo.Text, "Test thu tinh nang send sms");
-        }
-
-        private void timer1_Tick(object sender, EventArgs e) 
-		{
-			//System.Collections.ArrayList arTemp = LVAuto.Common.ThreadManager.s_alRegister;
-			//System.Collections.ArrayList arTempRunning = LVAuto.Common.ThreadManager.s_funcRunning;
-        }
-
-        private void cboServer_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LVAuto.LVWeb.LVClient.Server = int.Parse(Login_dropdownServerList.Text.Substring(0,1));
-        }
-
-        /// <summary>
-        /// Auto-Called when the "Login" button is clicked
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-			try
-			{
-                LVLogin();
-			}
-			catch
-			{
-				MessageBox.Show("Hic hic, không login được mà không biết tại sao, có thể do mạng lởm. Cố thử lại lần nữa xem sao.", "Lỗi rồi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				Login_txtPassword.Enabled = true;
-				Login_txtUsername.Enabled = true;
-				Login_btnLogin.Enabled = true;
-				//frLoading.Close();
-				HideLoadingLabel();
-			}
         }
 
         private void Construct_btnReloadBuildings_Click(object sender, EventArgs e) 
@@ -898,10 +615,11 @@ namespace LVAuto.LVForm
 		public void ShowLoadingLabel(string message)
 		{
             this.Text = strVersion + " | Please wait: " + message;
-			lblPanelLoading.Text = message;
-			panelLoading.BringToFront();
-			panelLoading.Visible = true;
-			lblPanelLoading.BringToFront();
+            labelStatus.Text = message;
+			//lblPanelLoading.Text = message;
+			//panelLoading.BringToFront();
+			//panelLoading.Visible = true;
+			//lblPanelLoading.BringToFront();
             LVFRMMAIN.Refresh();
 		}
 
@@ -919,7 +637,8 @@ namespace LVAuto.LVForm
 		public void HideLoadingLabel()
 		{
             this.Text = strVersion;
-			panelLoading.Visible = false;
+            labelStatus.Text = "";
+			//panelLoading.Visible = false;
 			LVFRMMAIN.Refresh();
 		}
 
@@ -928,19 +647,9 @@ namespace LVAuto.LVForm
 			_chuongbao = chkChuong.Checked;
 		}
 
-		private void tabLogin_Click(object sender, EventArgs e)
-		{
-
-		}
-
 		private void Construct_dropdownCityList_SelectedIndexChanged(object sender, EventArgs e)
 		{
             LVLoadBuildingsToTreeViewForConstruct();
-		}
-
-		private void tvBUILD_Leave(object sender, EventArgs e)
-		{
-			
 		}
 
 		private void tvDEL_Leave(object sender, EventArgs e)
@@ -956,7 +665,7 @@ namespace LVAuto.LVForm
 				TreeNode tt;
 				for (int i = 0; i < root.Nodes.Count; i++)
 				{
-					LVObj.City.AllCity[cityPost].AllBuildings[i].IsDown = root.Nodes[i].Checked;
+					LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[cityPost].AllBuildings[i].IsDown = root.Nodes[i].Checked;
 				}
 				int ii;
 			}
@@ -977,7 +686,7 @@ namespace LVAuto.LVForm
                 //if (root.Checked) IsBuildAll = true;
                 for (int i = 0; i < root.Nodes.Count; i++)
                 {
-                    root.Nodes[i].Checked = LVObj.City.AllCity[cboTabHaNhaCity.SelectedIndex].AllBuildings[i].IsDown;
+                    root.Nodes[i].Checked = LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[cboTabHaNhaCity.SelectedIndex].AllBuildings[i].IsDown;
                 }
             }
             catch (Exception ex)
@@ -987,45 +696,7 @@ namespace LVAuto.LVForm
 
 		}
 
-		private void label61_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void txtDELCHECK_TextChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void cboGeneral_Leave(object sender, EventArgs e)
-		{
-			/*
-			int cityPost = cboCity.SelectedIndex;
-			int task = cboNhiemVu.SelectedIndex;
-
-			//Xay dung mang de xay nha
-			TreeNode root = tvDEL.Nodes[0];
-
-			//if (root.Checked) IsBuildAll = true;
-			TreeNode tt;
-			for (int i = 0; i < root.Nodes.Count; i++)
-			{
-				LVObj.City.AllCity[cityPost].AllBuilding[i].isDown = root.Nodes[i].Checked;
-			}
-			 */ 
-		}
-
-		private void txtCHECKWEPON_TextChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void cboNhiemVu_SelectedIndexChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void tabMainTab_Selecting(object sender, TabControlCancelEventArgs e)
+        private void tabMainTab_Selecting(object sender, TabControlCancelEventArgs e)
 		{
 			if (!e.TabPage.Enabled)
 			{
@@ -1051,11 +722,6 @@ namespace LVAuto.LVForm
 					e.Graphics.DrawString(page.Text, page.Font, brush, e.Bounds);
 				}
 			}
-		}
-
-		private void grbXacNhanHinhAnh_Enter(object sender, EventArgs e)
-		{
-
 		}
 
 		private void chkChuong_CheckedChanged(object sender, EventArgs e)
@@ -1085,26 +751,6 @@ namespace LVAuto.LVForm
 			txtXacNhanAnhMinTimeCheck.Enabled = radXacNhanAnhTuNhan.Checked;
 		}
 
-		private void cboLuyenSKCity_SelectedIndexChanged(object sender, EventArgs e)
-		{
-
-
-			/*
-			 * 
-			  cboGeneral.Items.Clear();
-            try {
-				showLoadingLabel();
-				LVAuto.Command.Common.GetGeneral(cboCity.SelectedIndex, false); 
-				cboGeneral.Items.AddRange(LVObj.City.AllCity[cboCity.SelectedIndex].AllGeneral);
-
-
-				hideLoadingLabel();
-            } catch (Exception ex) { }
-			 * 
-			 * 
-			*/
-		}
-
 		private void btLuyenSykhiNapLai_Click(object sender, EventArgs e)
 		{
 			try
@@ -1127,7 +773,7 @@ namespace LVAuto.LVForm
             try {
 				ShowLoadingLabel();
 				LVAuto.LVForm.Command.Common.GetGeneral(cboBienCheCity.SelectedIndex, false);
-				chklstGeneral.Items.AddRange(LVObj.City.AllCity[cboBienCheCity.SelectedIndex].MilitaryGenerals);
+				chklstGeneral.Items.AddRange(LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[cboBienCheCity.SelectedIndex].MilitaryGenerals);
 
 				
 				HideLoadingLabel();
@@ -1142,7 +788,7 @@ namespace LVAuto.LVForm
 				LVAuto.LVForm.LVCommon.BienChe bienche;
 				//int cityid = cboBienCheCity.SelectedIndex;
 				int citypost = cboBienCheCity.SelectedIndex;
-				int cityid = LVObj.City.AllCity[citypost].Id;
+				int cityid = LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypost].Id;
 
 				for (int i = 0; i < chklstGeneral.CheckedItems.Count; i++)
 				{
@@ -1152,7 +798,7 @@ namespace LVAuto.LVForm
 
 					bienche.generalid = onegenral.Id;
 					bienche.generalname = onegenral.Name;
-					bienche.cityname = LVObj.City.AllCity[citypost].Name;
+					bienche.cityname = LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypost].Name;
 					bienche.bobinhamount = txtBiencheBoBinh.Text.Trim().Length != 0 ? int.Parse(txtBiencheBoBinh.Text) : 0;
 					bienche.kybinhamount = txtBiencheKybinh.Text.Trim() != "" ? int.Parse(txtBiencheKybinh.Text) : 0;
 					bienche.cungthuamount = txtBienCheCungThu.Text.Trim().Length != 0 ? int.Parse(txtBienCheCungThu.Text) : 0;
@@ -1288,148 +934,6 @@ namespace LVAuto.LVForm
 			}
 		}
 
-		private void btTest_Click(object sender, EventArgs e)
-		{
-            int i;
-           
-           
-            
-            DeleteNhacNhoAdmin();
-
-			LVAuto.LVForm.Control.War w = new LVAuto.LVForm.Control.War();
-			w.Show();
-
-			return;
-
-			int generalid;
-			int cityid;
-			int sk;
-
-
-			
-			generalid = 412227;
-			// -16702 "5.3"
-			cityid = -16702;
-
-
-			//cityid = 13139; //iwunu5
-			//generalid = 426324;			//,"Lão Nạp Thạch
-
-			LVAuto.LVObj.MilitaryGeneral[] g = Command.Common.GetGeneralInforInLuyenBinh(cityid);
-
-			//sk = LVAuto.Command.Common.GetGeneralSyKhiInLuyenBinh(cityid, generalid);
-
-			cityid = 13139;	// iwunu5
-			generalid = 4426324;  //Lam nap thach
-
-			 g = Command.Common.GetGeneralInforInLuyenBinh(cityid);
-
-			//sk = LVAuto.Command.Common.GetGeneralSyKhiInLuyenBinh(cityid, generalid);
-			return;
-
-
-
-
-
-
-			// test di loi dai
-
-			 cityid = 13139;	// iwunu5
-
-			int genid = 426324;  //Lam nap thach
-			string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityid);
-			string para;
-			LVAuto.LVForm.Command.City.SwitchCitySlow(cityid);
-			para = "lCityTentID=" + cityid + "&lGeneralID=" + genid + "&lLevel=1";
-			Hashtable r= Command.OPT.Execute(21, para, false);
-			if (r != null && r["DATA"].ToString() == "{\"ret\":0}")
-			{
-				bool ok = true;
-
-			}
-
-			//Command.Common.GetGeneral(0, true);
-			//Command.Common.GetGeneralMilitary(10718,405711);
-			//Common.BienCheQuan.BienChe(10718, 405711, 100, 100, 100);
-			//Common.BienCheQuan.BienChe(ListBienChe );
-			int g1 = 277645, g2 = 275162, g3 = 313841, g4 = 0, g5 = 0, idnhiemvu = 4;
-		
-			Command.Common.GetMaxNhiemVu();
-			Command.OPT.DanhSonTac(idnhiemvu, g1, g2, g3, g4, g5, cookies);
-
-			i = 0;
-			
-			Hashtable ret;
-			//405723,"Quân Lạc Xuyên"
-			 generalid = 405723;
-			//[10718,"iwunu7(Đô thành)
-			 cityid = 10718;
-
-
-
-
-			// tu ddi dao mo
-			int X = 299;
-			int Y = -111;
-			cityid = 13139;
-			int mapid;
-			//http://s3.linhvuong.zooz.vn/GateWay/Common.ashx?id=72&0.24057125736018958&DestX=299&DestY=-111
-			para = "DestX=" + X + "&DestY=" + Y;
-			ret = LVAuto.LVForm.Command.Common.Execute(72, para, true);
-
-			if (ret == null) 
-				return;
-			mapid = int.Parse(ret["map_id"].ToString());
-
-			return;
-
-
-			
-
-			
-			sk = LVAuto.LVForm.Command.Common.GetGeneralSyKhiInLuyenBinh(cityid, generalid);
-
-
-			//412227,"Tề Hậu"
-			generalid = 412227;
-			// -16702 "5.3"
-			cityid = -16702;
-
-			sk = LVAuto.LVForm.Command.Common.GetGeneralSyKhiInLuyenBinh(cityid, generalid);
-
-			return;
-
-			
-			
-			// tu ddi dao mo
-			 X = 299;
-			Y = -111;
-			 cityid = 13139;
-						//http://s3.linhvuong.zooz.vn/GateWay/Common.ashx?id=72&0.24057125736018958&DestX=299&DestY=-111
-			para = "DestX=" + X + "&DestY=" + Y;
-			ret = LVAuto.LVForm.Command.Common.Execute(72, para, true);
-
-			if (ret == null) return;
-			mapid = int.Parse(ret["map_id"].ToString());
-
-			//get danh sach quan van
-			//http://s3.linhvuong.zooz.vn/GateWay/Common.ashx?id=15&0.31696323126782144&lType=1&tid=13139
-
-			 cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityid);
-
-			para = "lType=1&tid=" + cityid;
-			ret = LVAuto.LVForm.Command.Common.Execute(15, para, true, cookies);
-
-			ArrayList gen = (ArrayList) ret["generals"];  // 3=0, 5=0, 13=0
-			 genid = int.Parse(((ArrayList)gen[0])[0].ToString());
-
-			// cu quan van di
-			//http://s3.linhvuong.zooz.vn/GateWay/OPT.ashx?id=100&0.4721581634738514&DestMapID=1004086&HeroID=412545&tid=11697
-			para = "DestMapID=" + mapid + "&HeroID=" + genid + "&tid=" + cityid;
-			ret = LVAuto.LVForm.Command.OPT.Execute(100, para, true, cookies);
-			int iii;
-		}
-
 		private void chklstGeneral_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			bool haschecked;
@@ -1459,21 +963,6 @@ namespace LVAuto.LVForm
 			if (txtBiencheXe.Text.Trim().Length == 0) txtBiencheXe.Text = "0";
 		}
 
-		private void tabBienChe_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void textBox2_TextChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void groupBox5_Enter(object sender, EventArgs e)
-		{
-
-		}
-
 
 		public  void PhaiQuanVan(LVAuto.LVForm.LVCommon.PhaiQuanVanDaoMo pqv)
 		{
@@ -1482,37 +971,6 @@ namespace LVAuto.LVForm
 				LVDAOMO.Auto();
 			}
 		}
-/*		private void gbTuPhaiQuanVan_Leave(object sender, EventArgs e)
-		{
-			try
-			{
-				QuanVanDaoMo.check = chkTienIchTuphaiQuanVan.Checked;
-				if (QuanVanDaoMo.check)
-				{
-					QuanVanDaoMo.cityid = LVObj.City.AllCity[cboTuphaiquanvanCity.SelectedIndex].id;
-					QuanVanDaoMo.X = int.Parse(txtTuphaiQuanVanX.Text);
-					QuanVanDaoMo.Y = int.Parse(txtTuphaiQuanVanY.Text);
-					QuanVanDaoMo.Time = 60000;
-					//PhaiQuanVan(QuanVanDaoMo);
-				}
-				else
-				{
-					//LVTIENICH.Stop();
-				}
-
-			}
-			catch (Exception ex)
-			{
-			}
-		}
-*/
-		private void pnTHAOPHAT_Leave(object sender, EventArgs e)
-		{
-			
-
-		}
-
-		
 
 		private void chklstAnUi_Leave(object sender, EventArgs e)
 		{
@@ -1557,34 +1015,25 @@ namespace LVAuto.LVForm
 			this.Close(); ;
 		}
 
-		private void cboCityForUpgrade_SelectedIndexChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void cboTuphaiquanvanCity_SelectedIndexChanged(object sender, EventArgs e)
-		{
-
-		}
 
 		private void btTabDieuPhaiPhaiQuanVan_Click(object sender, EventArgs e)
 		{
 			try
 			{		
 				/*
-				QuanVanDaoMo.cityid = LVObj.City.AllCity[cboTabDieuPhaiThanhPhaiQuanVan.SelectedIndex].id;
+				QuanVanDaoMo.cityid = LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[cboTabDieuPhaiThanhPhaiQuanVan.SelectedIndex].id;
 				QuanVanDaoMo.X = int.Parse(txtTabDieuPhaiDaoMoX.Text);
 				QuanVanDaoMo.Y = int.Parse(txtTabDieuPhaiDaoMoY.Text);
 				QuanVanDaoMo.Time = 60000;
 				QuanVanDaoMo.check = true;
 				*/
 				Command.CommonObj.DieuPhaiTuong dieuphai = new LVAuto.LVForm.Command.CommonObj.DieuPhaiTuong();
-				dieuphai.cityID = LVObj.City.AllCity[cboTabDieuPhaiThanhPhaiQuanVan.SelectedIndex].Id;
+				dieuphai.cityID = LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[cboTabDieuPhaiThanhPhaiQuanVan.SelectedIndex].Id;
 				dieuphai.X = int.Parse(txtTabDieuPhaiDaoMoX.Text);
 				dieuphai.Y = int.Parse(txtTabDieuPhaiDaoMoY.Text);
 				dieuphai.generaltype = Command.CommonObj.DieuPhaiTuong.GENERALTYPE.QuanVan;
 				dieuphai.timetoruninmilisecond = 60000; ;
-				dieuphai.desc = "Điều phái quan văn từ thành " + LVObj.City.AllCity[cboTabDieuPhaiThanhPhaiQuanVan.SelectedIndex].Name
+				dieuphai.desc = "Điều phái quan văn từ thành " + LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[cboTabDieuPhaiThanhPhaiQuanVan.SelectedIndex].Name
 									+ " đến mỏ có tọa độ (" + dieuphai.X + "," + dieuphai.Y + ")";
 				dieuphai.tasktype = Command.CommonObj.DieuPhaiTuong.TASKTYPE.DaoMo;
 				DieuPhaiQuanVanVo.Add(dieuphai);
@@ -1667,7 +1116,7 @@ namespace LVAuto.LVForm
 				return;
 			}
 			cbTabDieuPhaiQuanVanVoDiLoiDai.Items.Clear();
-			cityid = LVObj.City.AllCity[cbTabDieuPhaiThanhPhaiDiLoiDai.SelectedIndex].Id;
+			cityid = LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[cbTabDieuPhaiThanhPhaiDiLoiDai.SelectedIndex].Id;
 
 			ArrayList argen = Command.Common.GetAllGeneralVanVo(cityid);
 
@@ -1737,7 +1186,7 @@ namespace LVAuto.LVForm
 					return;
 				}
 
-				dieuphai.cityID = LVObj.City.AllCity[cbTabDieuPhaiThanhPhaiDiLoiDai.SelectedIndex].Id;
+				dieuphai.cityID = LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[cbTabDieuPhaiThanhPhaiDiLoiDai.SelectedIndex].Id;
 				dieuphai.generalid = g.Id;
 				dieuphai.generalname = g.Name;
 				dieuphai.generaltype = g.Type;
@@ -1747,12 +1196,12 @@ namespace LVAuto.LVForm
 
 				if (dieuphai.generaltype == Command.CommonObj.DieuPhaiTuong.GENERALTYPE.QuanVan)
 				{
-					dieuphai.desc = "Điều phái quan văn " + dieuphai.generalname + " từ thành " + LVObj.City.AllCity[cbTabDieuPhaiThanhPhaiDiLoiDai.SelectedIndex].Name
+					dieuphai.desc = "Điều phái quan văn " + dieuphai.generalname + " từ thành " + LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[cbTabDieuPhaiThanhPhaiDiLoiDai.SelectedIndex].Name
 										+ " đi lôi đài cấp " + dieuphai.loidailevel;
 				}
 				else
 				{
-					dieuphai.desc = "Điều phái quan võ " + dieuphai.generalname + " từ thành " + LVObj.City.AllCity[cbTabDieuPhaiThanhPhaiDiLoiDai.SelectedIndex].Name
+					dieuphai.desc = "Điều phái quan võ " + dieuphai.generalname + " từ thành " + LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[cbTabDieuPhaiThanhPhaiDiLoiDai.SelectedIndex].Name
 										+ " đi lôi đài cấp " + dieuphai.loidailevel;
 
 				}
@@ -1773,112 +1222,40 @@ namespace LVAuto.LVForm
 			}
 		}
 
-		
-		private void tabBanTaiNguyen_Leave(object sender, EventArgs e)
-		{
-			
-		}
-
-		private void chkBanTN_LUA_TB_CheckedChanged(object sender, EventArgs e)
-		{
-			
-		}
-
-		private void chkBanTN_GO_TB_CheckedChanged(object sender, EventArgs e)
-		{
-			
-		}
-
-		private void chkBanTN_SAT_TB_CheckedChanged(object sender, EventArgs e)
-		{
-			
-		}
-
-		private void chkBanTN_DA_TB_CheckedChanged(object sender, EventArgs e)
-		{
-			
-		}
-
-		private void pnSELL_Paint(object sender, PaintEventArgs e)
-		{
-
-		}
-
-		private void SellRes_btnSelectAllFood_Click(object sender, EventArgs e)
-		{
-			for (int i = 0; i < SellRes_gridCityList.Rows.Count; i++)
-			{
-				SellRes_gridCityList.Rows[i].Cells[2].Value = bantaiNguyenLuaCheckAll;
-			}
-			bantaiNguyenLuaCheckAll = !bantaiNguyenLuaCheckAll;
-		}
-
-		private void SellRes_btnSelectAllWoods_Click(object sender, EventArgs e)
-		{
-			for (int i = 0; i < SellRes_gridCityList.Rows.Count; i++)
-			{
-				SellRes_gridCityList.Rows[i].Cells[3].Value = bantaiNguyenGoCheckAll;				
-			}
-			bantaiNguyenGoCheckAll = !bantaiNguyenGoCheckAll;
-		}
-
-		private void SellRes_btnSelectAllIron_Click(object sender, EventArgs e)
-		{
-			for (int i = 0; i < SellRes_gridCityList.Rows.Count; i++)
-			{
-				SellRes_gridCityList.Rows[i].Cells[4].Value = bantaiNguyenSatCheckAll;
-			}
-			bantaiNguyenSatCheckAll = !bantaiNguyenSatCheckAll;
-		}
-
-		private void SellRes_btnSelectAllStone_Click(object sender, EventArgs e)
-		{
-			for (int i = 0; i < SellRes_gridCityList.Rows.Count; i++)
-			{
-				SellRes_gridCityList.Rows[i].Cells[5].Value = bantaiNguyenDaCheckAll;
-			}
-			bantaiNguyenDaCheckAll = !bantaiNguyenDaCheckAll;
-		}
-
 		private void btMuaTNSelectAllLua_Click(object sender, EventArgs e)
 		{
-			for (int i = 0; i < dtaBUYRESOURCE.Rows.Count; i++)
+			for (int i = 0; i < BuyRes_gridCityList.Rows.Count; i++)
 			{
-				dtaBUYRESOURCE.Rows[i].Cells[2].Value = muataiNguyenLuaCheckAll;
+				BuyRes_gridCityList.Rows[i].Cells[2].Value = muataiNguyenLuaCheckAll;
 			}
 			muataiNguyenLuaCheckAll = !muataiNguyenLuaCheckAll;
 		}
 
 		private void btMuaTNSelectAllGo_Click(object sender, EventArgs e)
 		{
-			for (int i = 0; i < dtaBUYRESOURCE.Rows.Count; i++)
+			for (int i = 0; i < BuyRes_gridCityList.Rows.Count; i++)
 			{
-				dtaBUYRESOURCE.Rows[i].Cells[3].Value = muataiNguyenGoCheckAll;
+				BuyRes_gridCityList.Rows[i].Cells[3].Value = muataiNguyenGoCheckAll;
 			}
 			muataiNguyenGoCheckAll = !muataiNguyenGoCheckAll;
 		}
 
 		private void btMuaTNSelectAllSat_Click(object sender, EventArgs e)
 		{
-			for (int i = 0; i < dtaBUYRESOURCE.Rows.Count; i++)
+			for (int i = 0; i < BuyRes_gridCityList.Rows.Count; i++)
 			{
-				dtaBUYRESOURCE.Rows[i].Cells[4].Value = muataiNguyenSatCheckAll;
+				BuyRes_gridCityList.Rows[i].Cells[4].Value = muataiNguyenSatCheckAll;
 			}
 			muataiNguyenSatCheckAll = !muataiNguyenSatCheckAll;
 		}
 
 		private void btMuaTNSelectAllDa_Click(object sender, EventArgs e)
 		{
-			for (int i = 0; i < dtaBUYRESOURCE.Rows.Count; i++)
+			for (int i = 0; i < BuyRes_gridCityList.Rows.Count; i++)
 			{
-				dtaBUYRESOURCE.Rows[i].Cells[5].Value = muataiNguyenDaCheckAll;
+				BuyRes_gridCityList.Rows[i].Cells[5].Value = muataiNguyenDaCheckAll;
 			}
 			muataiNguyenDaCheckAll = !muataiNguyenDaCheckAll;
-		}
-
-		private void tabMainTab_Leave(object sender, EventArgs e)
-		{
-
 		}
 
 		private void tabMuaTaiNguyen_Leave(object sender, EventArgs e)
@@ -1886,12 +1263,12 @@ namespace LVAuto.LVForm
 			try
 			{
 
-				MuaTaiNguyen.VangAnToan = long.Parse(txtSAFEGOLD.Text);
-				MuaTaiNguyen.TimeToRunInMinute = double.Parse(txtBUYRESOURCECHECK.Text);
-				MuaTaiNguyen.MuaTheoDonViKho = (rdMuaTNMuaTheoDonVi.Checked);
-				MuaTaiNguyen.GiaTri = double.Parse(txtMuaTNGioiHanMua.Text);
+				MuaTaiNguyen.VangAnToan = long.Parse(BuyRes_txtGoldThreshold.Text);
+				MuaTaiNguyen.TimeToRunInMinute = double.Parse(BuyRes_txtTimer.Text);
+				MuaTaiNguyen.MuaTheoDonViKho = (BuyRes_radioBuyAmountMethodFix.Checked);
+				MuaTaiNguyen.GiaTri = double.Parse(BuyRes_txtBuyAmount.Text);
 
-				DataTable temp = (DataTable)dtaBUYRESOURCE.DataSource;
+				DataTable temp = (DataTable)BuyRes_gridCityList.DataSource;
 
 				LVAuto.LVForm.Command.CommonObj.MuaTaiNguyenObj.cityInfo_ ctinfo;
 
@@ -1930,16 +1307,6 @@ namespace LVAuto.LVForm
 			}
 		}
 
-		private void rdMuaTNMuaTheoPhanTram_CheckedChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void rdMuaTNMuaTheoDonVi_CheckedChanged(object sender, EventArgs e)
-		{
-
-		}
-
 		private void pnDoanhTrai_Leave(object sender, EventArgs e)
 		{
 			Command.CommonObj.DoiTraiObj objDoiTrai = null ;
@@ -1975,331 +1342,11 @@ namespace LVAuto.LVForm
 
 		}
 
-	
-
-		private void pnSELL_Leave(object sender, EventArgs e)
-		{
-			try
-			{
-				BanTaiNguyen.SalesOff = SellRes_checkSelloff.Checked;
-
-
-				BanTaiNguyen.LUA.BanCoDinh = rdBTNLuaAnToanCoDinh.Checked;
-				BanTaiNguyen.LUA.SoLuongBan = int.Parse(txtCOUNTLUA.Text);
-				BanTaiNguyen.LUA.SoLuongAnToan = int.Parse(txtSAFELUA.Text);
-				
-				if (rdBanTN_LUA_CODINH.Checked) BanTaiNguyen.LUA.LoaiBan = 1; // BanTaiNguyen.LOAIBAN.THEOGIACODINH;
-				if (rdBanTN_LUA_TRUNGBINH.Checked) BanTaiNguyen.LUA.LoaiBan = 2; // BanTaiNguyen.LOAIBAN.THEOGIACODINH;
-				if (rdBanTN_LUA_THAPNHAT.Checked) BanTaiNguyen.LUA.LoaiBan = 3; // BanTaiNguyen.LOAIBAN.THEOGIACODINH;
-				BanTaiNguyen.LUA.CongThucNhan = rdBanTN_LUA_TB_Nhan.Checked;
-				BanTaiNguyen.LUA.GiaTri = double.Parse(txtBanTN_LUA_TB_Heso.Text);
-
-				BanTaiNguyen.GO.BanCoDinh = rdBTNGoAnToanCoDinh.Checked;
-				BanTaiNguyen.GO.SoLuongBan = int.Parse(txtCOUNTGO.Text);
-				BanTaiNguyen.GO.SoLuongAnToan = int.Parse(txtSAFEGO.Text);
-				if (rdBanTN_GO_CODINH.Checked) BanTaiNguyen.GO.LoaiBan = 1; // BanTaiNguyen.LOAIBAN.THEOGIACODINH;
-				if (rdBanTN_GO_TRUNGBINH.Checked) BanTaiNguyen.GO.LoaiBan = 2; // BanTaiNguyen.LOAIBAN.THEOGIACODINH;
-				if (rdBanTN_GO_THAPNHAT.Checked) BanTaiNguyen.GO.LoaiBan = 3; // BanTaiNguyen.LOAIBAN.THEOGIACODINH;
-				BanTaiNguyen.GO.CongThucNhan = rdBanTN_GO_TB_Nhan.Checked;
-				BanTaiNguyen.GO.GiaTri = double.Parse(txtBanTN_GO_TB_Heso.Text);
-
-				BanTaiNguyen.SAT.BanCoDinh = rdBTNSatAnToanCoDinh.Checked;
-				BanTaiNguyen.SAT.SoLuongBan = int.Parse(txtCOUNTSAT.Text);
-				BanTaiNguyen.SAT.SoLuongAnToan = int.Parse(txtSAFESAT.Text);
-				if (rdBanTN_SAT_CODINH.Checked) BanTaiNguyen.SAT.LoaiBan = 1; // BanTaiNguyen.LOAIBAN.THEOGIACODINH;
-				if (rdBanTN_SAT_TRUNGBINH.Checked) BanTaiNguyen.SAT.LoaiBan = 2; // BanTaiNguyen.LOAIBAN.THEOGIACODINH;
-				if (rdBanTN_SAT_THAPNHAT.Checked) BanTaiNguyen.SAT.LoaiBan = 3; // BanTaiNguyen.LOAIBAN.THEOGIACODINH;
-				BanTaiNguyen.SAT.CongThucNhan = rdBanTN_SAT_TB_Nhan.Checked;
-				BanTaiNguyen.SAT.GiaTri = double.Parse(txtBanTN_SAT_TB_Heso.Text);
-
-				BanTaiNguyen.DA.BanCoDinh = rdBTNDaAnToanCoDinh.Checked;
-				BanTaiNguyen.DA.SoLuongBan = int.Parse(txtCOUNTDA.Text);
-				BanTaiNguyen.DA.SoLuongAnToan = int.Parse(txtSAFEDA.Text);
-				if (rdBanTN_DA_CODINH.Checked) BanTaiNguyen.DA.LoaiBan = 1; // BanTaiNguyen.LOAIBAN.THEOGIACODINH;
-				if (rdBanTN_DA_TRUNGBINH.Checked) BanTaiNguyen.DA.LoaiBan = 2; // BanTaiNguyen.LOAIBAN.THEOGIACODINH;
-				if (rdBanTN_DA_THAPNHAT.Checked) BanTaiNguyen.DA.LoaiBan = 3; // BanTaiNguyen.LOAIBAN.THEOGIACODINH;
-				BanTaiNguyen.DA.CongThucNhan = rdBanTN_DA_TB_Nhan.Checked;
-				BanTaiNguyen.DA.GiaTri = double.Parse(txtBanTN_DA_TB_Heso.Text);
-
-
-				DataTable temp = (DataTable)SellRes_gridCityList.DataSource;
-
-				LVAuto.LVForm.Command.CommonObj.BanTaiNguyenObj.cityInfo_ ctinfo;
-
-				ArrayList arCity = new ArrayList();
-
-				for (int i = 0; i < temp.Rows.Count; i++)
-				{
-					ctinfo = new LVAuto.LVForm.Command.CommonObj.BanTaiNguyenObj.cityInfo_();
-					ctinfo.CityId = int.Parse((temp.Rows[i]["ID_TT"]).ToString());
-					ctinfo.CityName = (temp.Rows[i]["NAME_TT"]).ToString();
-
-					ctinfo.BanLua = (bool)temp.Rows[i]["SELL_LUA"];
-					ctinfo.BanGo = (bool)temp.Rows[i]["SELL_GO"];
-					ctinfo.BanDa = (bool)temp.Rows[i]["SELL_DA"];
-					ctinfo.BanSat = (bool)temp.Rows[i]["SELL_SAT"];
-
-					if (ctinfo.BanLua || ctinfo.BanGo || ctinfo.BanDa || ctinfo.BanSat)
-						arCity.Add(ctinfo);
-					//BanTaiNguyen.CityInfo[i] = ctinfo;
-				}
-
-				if (arCity.Count > 0)
-				{
-					BanTaiNguyen.NewCityInfo(arCity.Count);
-					for (int i = 0; i < arCity.Count; i++)
-						BanTaiNguyen.CityInfo[i] = (LVAuto.LVForm.Command.CommonObj.BanTaiNguyenObj.cityInfo_)arCity[i];
-
-					//BanTaiNguyen.CityInfo = (LVAuto.Command.CommonObj.BanTaiNguyenObj.cityInfo_[]) arCity.ToArray();
-				}
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Có lỗi sai gì đó ở bán tài nguyên, kiểm tra lại đê", "Lỗi rồi", MessageBoxButtons.OK, MessageBoxIcon.Question);
-				
-			}
-		}
-
-		private void txtBanTN_DA_TB_Heso_TextChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void rdBanTN_DA_TB_Nhan_CheckedChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void rdBanTN_DA_TB_Cong_CheckedChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void rdBanTN_SAT_TB_Nhan_CheckedChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void rdBanTN_SAT_TB_Cong_CheckedChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void rdBanTN_GO_TB_Nhan_CheckedChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void rdBanTN_GO_TB_Cong_CheckedChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void rdBanTN_LUA_TB_Nhan_CheckedChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void rdBanTN_LUA_TB_Cong_CheckedChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void txtBanTN_LUA_TB_Heso_TextChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void txtBanTN_GO_TB_Heso_TextChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void txtBanTN_SAT_TB_Heso_TextChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void rdBanTN_GO_CODINH_CheckedChanged(object sender, EventArgs e)
-		{
-			if (rdBanTN_GO_CODINH.Checked)
-			{
-				rdBanTN_GO_TB_Cong.Enabled = false;
-				rdBanTN_GO_TB_Nhan.Enabled = false;
-			}
-			else
-			{
-				rdBanTN_GO_TB_Cong.Enabled = true;
-				rdBanTN_GO_TB_Nhan.Enabled = true;
-			}
-		}
-
-		private void rdBanTN_LUA_CODINH_CheckedChanged(object sender, EventArgs e)
-		{
-			if (rdBanTN_LUA_CODINH.Checked)
-			{
-				rdBanTN_LUA_TB_Cong.Enabled = false;
-				rdBanTN_LUA_TB_Nhan.Enabled = false;
-			}
-			else
-			{
-				rdBanTN_LUA_TB_Cong.Enabled = true;
-				rdBanTN_LUA_TB_Nhan.Enabled = true;
-			}
-		}
-
-		private void rdBanTN_LUA_TRUNGBINH_CheckedChanged(object sender, EventArgs e)
-		{
-			if (rdBanTN_LUA_TRUNGBINH.Checked)
-			{
-				rdBanTN_LUA_TB_Cong.Enabled = true;
-				rdBanTN_LUA_TB_Nhan.Enabled = true;
-			}
-			else
-			{
-				rdBanTN_LUA_TB_Cong.Enabled = false;
-				rdBanTN_LUA_TB_Nhan.Enabled = false;
-			}
-		}
-
-		private void rdBanTN_LUA_THAPNHAT_CheckedChanged(object sender, EventArgs e)
-		{
-			if (rdBanTN_LUA_THAPNHAT.Checked)
-			{
-				rdBanTN_LUA_TB_Cong.Enabled = true;
-				rdBanTN_LUA_TB_Nhan.Enabled = true;
-			}
-			else
-			{
-				rdBanTN_LUA_TB_Cong.Enabled = false;
-				rdBanTN_LUA_TB_Nhan.Enabled = false;
-			}
-		}
-
-		private void rdBanTN_GO_TRUNGBINH_CheckedChanged(object sender, EventArgs e)
-		{
-			if (rdBanTN_GO_TRUNGBINH.Checked)
-			{
-				rdBanTN_GO_TB_Cong.Enabled = true;
-				rdBanTN_GO_TB_Nhan.Enabled = true;
-			}
-			else
-			{
-				rdBanTN_GO_TB_Cong.Enabled = false;
-				rdBanTN_GO_TB_Nhan.Enabled = false;
-			}
-		}
-
-		private void rdBanTN_GO_THAPNHAT_CheckedChanged(object sender, EventArgs e)
-		{
-			if (rdBanTN_GO_THAPNHAT.Checked)
-			{
-				rdBanTN_GO_TB_Cong.Enabled = true;
-				rdBanTN_GO_TB_Nhan.Enabled = true;
-			}
-			else
-			{
-				rdBanTN_GO_TB_Cong.Enabled = false;
-				rdBanTN_GO_TB_Nhan.Enabled = false;
-			}
-		}
-
-		private void rdBanTN_SAT_CODINH_CheckedChanged(object sender, EventArgs e)
-		{
-			if (rdBanTN_SAT_CODINH.Checked)
-			{
-				rdBanTN_SAT_TB_Cong.Enabled = false;
-				rdBanTN_SAT_TB_Nhan.Enabled = false;
-			}
-			else
-			{
-				rdBanTN_SAT_TB_Cong.Enabled = true;
-				rdBanTN_SAT_TB_Nhan.Enabled = true;
-			}
-		}
-
-		private void rdBanTN_SAT_TRUNGBINH_CheckedChanged(object sender, EventArgs e)
-		{
-			if (rdBanTN_SAT_TRUNGBINH.Checked)
-			{
-				rdBanTN_SAT_TB_Cong.Enabled = true;
-				rdBanTN_SAT_TB_Nhan.Enabled = true;
-			}
-			else
-			{
-				rdBanTN_SAT_TB_Cong.Enabled = false;
-				rdBanTN_SAT_TB_Nhan.Enabled = false;
-			}
-		}
-
-		private void rdBanTN_SAT_THAPNHAT_CheckedChanged(object sender, EventArgs e)
-		{
-			if (rdBanTN_SAT_THAPNHAT.Checked)
-			{
-				rdBanTN_SAT_TB_Cong.Enabled = true;
-				rdBanTN_SAT_TB_Nhan.Enabled = true;
-			}
-			else
-			{
-				rdBanTN_SAT_TB_Cong.Enabled = false;
-				rdBanTN_SAT_TB_Nhan.Enabled = false;
-			}
-		}
-
-		private void rdBanTN_DA_CODINH_CheckedChanged(object sender, EventArgs e)
-		{
-			if (rdBanTN_DA_CODINH.Checked)
-			{
-				rdBanTN_DA_TB_Cong.Enabled = false;
-				rdBanTN_DA_TB_Nhan.Enabled = false;
-			}
-			else
-			{
-				rdBanTN_DA_TB_Cong.Enabled = true;
-				rdBanTN_DA_TB_Nhan.Enabled = true;
-			}
-		}
-
-		private void rdBanTN_DA_TRUNGBINH_CheckedChanged(object sender, EventArgs e)
-		{
-			if (rdBanTN_DA_TRUNGBINH.Checked)
-			{
-				rdBanTN_DA_TB_Cong.Enabled = true;
-				rdBanTN_DA_TB_Nhan.Enabled = true;
-			}
-			else
-			{
-				rdBanTN_DA_TB_Cong.Enabled = false;
-				rdBanTN_DA_TB_Nhan.Enabled = false;
-			}
-		}
-
-		private void rdBanTN_DA_THAPNHAT_CheckedChanged(object sender, EventArgs e)
-		{
-			if (rdBanTN_DA_THAPNHAT.Checked)
-			{
-				rdBanTN_DA_TB_Cong.Enabled = true;
-				rdBanTN_DA_TB_Nhan.Enabled = true;
-			}
-			else
-			{
-				rdBanTN_DA_TB_Cong.Enabled = false;
-				rdBanTN_DA_TB_Nhan.Enabled = false;
-			}
-		}
-
-		
-
 		private void chkHaNhaDelAll_CheckedChanged(object sender, EventArgs e)
 		{
-			LVObj.City.IsDowndAll = chkHaNhaDelAll.Checked;
+            LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.IsDowndAll = chkHaNhaDelAll.Checked;
 			cboTabHaNhaCity.Enabled = !chkHaNhaDelAll.Checked;
 			tvDEL.Enabled = !chkHaNhaDelAll.Checked;			
-		}
-
-		private void pnXayNha_Paint(object sender, PaintEventArgs e)
-		{
-
 		}
 
 		private void chkXayNhaAll_CheckedChanged(object sender, EventArgs e)
@@ -2307,8 +1354,7 @@ namespace LVAuto.LVForm
 			Construct_dropdownCityList.Enabled = !chkXayNhaAll.Checked;
 			Construct_treeBuilding.Enabled = !chkXayNhaAll.Checked;
 			Construct_btnReloadBuildings.Enabled = !chkXayNhaAll.Checked;
-
-			LVObj.City.IsBuildAll = chkXayNhaAll.Checked;	
+            LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.IsBuildAll = chkXayNhaAll.Checked;	
 		}
 
 		private void chkXayNha_TuMuaTaiNguyen_CheckedChanged(object sender, EventArgs e)
@@ -2321,8 +1367,8 @@ namespace LVAuto.LVForm
 			try
 			{
 
-				LVObj.City.IsBuyRes = chkXayNha_TuMuaTaiNguyen.Checked;
-				if (chkXayNha_TuMuaTaiNguyen.Checked) LVObj.City.GoldSafe = long.Parse(txtXayNha_VangAnToan.Text);
+                LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AutoBuyResources = chkXayNha_TuMuaTaiNguyen.Checked;
+				if (chkXayNha_TuMuaTaiNguyen.Checked) LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.GoldThreshold = long.Parse(txtXayNha_VangAnToan.Text);
 
 				if (chkXayNhaAll.Checked) return;
 
@@ -2338,7 +1384,7 @@ namespace LVAuto.LVForm
 					TreeNode tt;
 					for (int i = 0; i < root.Nodes.Count; i++)
 					{
-						LVObj.City.AllCity[cityPost].AllBuildings[i].IsUp = root.Nodes[i].Checked;
+						LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[cityPost].AllBuildings[i].IsUp = root.Nodes[i].Checked;
 					}
 				}
 				catch (Exception ex)
@@ -2351,10 +1397,6 @@ namespace LVAuto.LVForm
 			}
 		}
 
-		private void label21_Click(object sender, EventArgs e)
-		{
-
-		}
 
 		private void chkANUI_TuMuaLua_CheckedChanged(object sender, EventArgs e)
 		{
@@ -2366,8 +1408,8 @@ namespace LVAuto.LVForm
 			try
 			{
 
-				LVObj.City.IsBuyRes = chkXayNha_TuMuaTaiNguyen.Checked;
-				if (chkXayNha_TuMuaTaiNguyen.Checked) LVObj.City.GoldSafe = long.Parse(txtXayNha_VangAnToan.Text);
+                LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AutoBuyResources = chkXayNha_TuMuaTaiNguyen.Checked;
+                if (chkXayNha_TuMuaTaiNguyen.Checked) LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.GoldThreshold = long.Parse(txtXayNha_VangAnToan.Text);
 
 				if (chkXayNhaAll.Checked) return;
 
@@ -2382,7 +1424,7 @@ namespace LVAuto.LVForm
 					TreeNode tt;
 					for (int i = 0; i < root.Nodes.Count; i++)
 					{
-						LVObj.City.AllCity[cityPost].AllBuildings[i].IsUp = root.Nodes[i].Checked;
+						LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[cityPost].AllBuildings[i].IsUp = root.Nodes[i].Checked;
 					}
 				}
 				catch (Exception ex)
@@ -2441,9 +1483,9 @@ namespace LVAuto.LVForm
 				cbTienIchMoRuongRuongChonThanh.Enabled = true;
 				txtTienIchRuongSoluong.Enabled = true;
 				LVAuto.LVObj.City city;
-				for (int i = 0; i < LVAuto.LVObj.City.AllCity.Length; i++)
+				for (int i = 0; i < LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities.Length; i++)
 				{
-					city = LVAuto.LVObj.City.AllCity[i];
+					city = LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[i];
 					if (city.Id > 0)
 					{
 
@@ -2465,86 +1507,6 @@ namespace LVAuto.LVForm
 				btTienIchRuongGetData.Enabled = true;
 			}
 		}
-
-		/*private void btTienIchRuongGetData_Click(object sender, EventArgs e)
-		{
-			try
-			{
-				btTienIchRuongGetData.Enabled = false;
-
-				//http://s3.linhvuong.zooz.vn/GateWay/Common.ashx?id=2&0.6633130316506091&nid=0
-
-				Hashtable result = Command.Common.Execute(2, "nid=0", false);
-
-				//string str = "{Table:[{gem_id:1,counts:259},{gem_id:2,counts:265},{gem_id:3,counts:84},{gem_id:6,counts:93},{gem_id:7,counts:6},{gem_id:8,counts:10},{gem_id:11,counts:8},{gem_id:12,counts:15},{gem_id:13,counts:3},{gem_id:16,counts:261},{gem_id:17,counts:196},{gem_id:21,counts:54},{gem_id:24,counts:141},{gem_id:25,counts:162},{gem_id:35,counts:6},{gem_id:50,counts:2}],ret:0,nid:0}";
-
-				if (result == null)
-				{
-					MessageBox.Show(" Lỗi rồi, thử làm lại xem sao nha");
-					return;
-				}
-
-
-				string str = result["DATA"].ToString().Trim();
-				if (!str.Contains("ret:0"))
-				{
-					MessageBox.Show(" Lỗi rồi, thử làm lại xem sao nha");
-					return;
-				}
-
-
-				string s1 = str.Substring(str.IndexOf("[") + 1);
-				s1 = s1.Substring(0, s1.IndexOf("]"));
-				string[] ar = s1.Split(new char[] { ',' }, StringSplitOptions.None);
-
-				QuocKho_Ruong.Clear();
-				cbTienIchChonRuong.Items.Clear();
-				cbTienIchMoRuongRuongChonThanh.Items.Clear();
-				int i = 0;
-				int key;
-				string value;
-				Common.Ruong ruong = new LVAuto.Common.Ruong();
-				while (i < ar.Length)
-				{
-					key = int.Parse(ar[i].Substring(ar[i].IndexOf(":") + 1).Trim());
-					i++;
-					value = ar[i].Substring(ar[i].IndexOf(":") + 1).Trim();
-					value = value.Substring(0, value.Length - 1);
-					i++;
-					QuocKho_Ruong.Add(key, value);
-					cbTienIchChonRuong.Items.Add(key + ". " + ruong.GetRuongName(key));
-				}
-
-				cbTienIchChonRuong.Enabled = true;
-				cbTienIchMoRuongRuongChonThanh.Enabled = true;
-				txtTienIchRuongSoluong.Enabled = true;
-				LVAuto.LVObj.City city;
-				for (i = 0; i < LVAuto.LVObj.City.AllCity.Length; i++)
-				{
-					city = LVAuto.LVObj.City.AllCity[i];
-					if (city.id > 0)
-					{
-
-						cbTienIchMoRuongRuongChonThanh.Items.Add(city);
-					}
-				}
-
-
-			}
-			catch (Exception ex)
-			{
-				cbTienIchChonRuong.Enabled = false;
-				cbTienIchMoRuongRuongChonThanh.Enabled = false;
-				txtTienIchRuongSoluong.Enabled = false;
-			}
-
-			finally
-			{
-				btTienIchRuongGetData.Enabled = true;
-			}
-		}
-		*/
-
 
 		private void cbTienIchChonRuong_SelectedIndexChanged(object sender, EventArgs e)
 		{
@@ -2737,11 +1699,6 @@ namespace LVAuto.LVForm
 
 		}
 
-		private void label106_Click(object sender, EventArgs e)
-		{
-
-		}
-
 		private void chkAUTOVCVK_CheckedChanged(object sender, EventArgs e)
 		{
 			try
@@ -2916,136 +1873,6 @@ namespace LVAuto.LVForm
 			TuLinhBongLoc = chkAutoLinhBongLoc.Checked;
 		}
 
-		private void cboThaoPhatSLTuongDanh1Dich_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			/*
-			int sotuongdanh1dich= cboThaoPhatSLTuongDanh1Dich.SelectedIndex;
-			if (sotuongdanh1dich > 0)
-			{
-				cboThaoPhatPhuongThucTanCong.Enabled = true;
-			}
-			else
-			{
-				cboThaoPhatPhuongThucTanCong.Enabled = false;
-			}
-			 */ 
-		}
-
-		private void label87_Click(object sender, EventArgs e)
-		{
-
-		}
-
-	
-
-		private void rdBTNLuaAnToanCoDinh_CheckedChanged(object sender, EventArgs e)
-		{
-			if (rdBTNLuaAnToanCoDinh.Checked)
-			{
-				lblBTNLuaDVSoluong.Text = "tấn";
-				lblBTNLuaDVAnToan.Text = "tấn";
-				txtCOUNTLUA.Text = BanTNSoLuongBanCoDinhDefault.ToString(); ;
-				txtSAFELUA.Text = BanTNAnToanCoDinhDefault.ToString();
-			}
-			else
-			{
-				lblBTNLuaDVSoluong.Text = "% kho";
-				lblBTNLuaDVAnToan.Text = "% kho";
-				txtCOUNTLUA.Text = BanTNSoLuongBanPercentDefault.ToString(); ;
-				txtSAFELUA.Text = BanTNAnToanPercentDefault.ToString();
-
-			}
-		}
-
-		private void rdBTNLuaPercentCoDinh_CheckedChanged(object sender, EventArgs e)
-		{
-			if (!rdBTNLuaPercentCoDinh.Checked)
-			{
-				lblBTNLuaDVSoluong.Text = "tấn";
-				lblBTNLuaDVAnToan.Text = "tấn";
-			}
-			else
-			{
-				lblBTNLuaDVSoluong.Text = "% kho";
-				lblBTNLuaDVAnToan.Text = "% kho";
-
-			}
-		}
-
-		private void rdBTNGoAnToanCoDinh_CheckedChanged(object sender, EventArgs e)
-		{
-			if (rdBTNGoAnToanCoDinh.Checked)
-			{
-				lblBTNGoDVSoluong.Text = "tấn";
-				lblBTNGoDVAnToan.Text = "tấn";
-				txtCOUNTGO.Text = BanTNSoLuongBanCoDinhDefault.ToString(); ;
-				txtSAFEGO.Text = BanTNAnToanCoDinhDefault.ToString();
-			}
-			else
-			{
-				lblBTNGoDVSoluong.Text = "% kho";
-				lblBTNGoDVAnToan.Text = "% kho";
-				txtCOUNTGO.Text = BanTNSoLuongBanPercentDefault.ToString(); ;
-				txtSAFEGO.Text = BanTNAnToanPercentDefault.ToString();
-
-			}
-		}
-
-		private void rdBTNGoPercentCoDinh_CheckedChanged(object sender, EventArgs e)
-		{
-			if (!rdBTNGoPercentCoDinh.Checked)
-			{
-				lblBTNGoDVSoluong.Text = "tấn";
-				lblBTNGoDVAnToan.Text = "tấn";
-			}
-			else
-			{
-				lblBTNGoDVSoluong.Text = "% kho";
-				lblBTNGoDVAnToan.Text = "% kho";
-
-			}
-		}
-
-		private void rdBTNSatAnToanCoDinh_CheckedChanged(object sender, EventArgs e)
-		{
-
-			if (rdBTNSatAnToanCoDinh.Checked)
-			{
-				lblBTNSatDVSoluong.Text = "tấn";
-				lblBTNSatDVAnToan.Text = "tấn";
-				txtCOUNTSAT.Text = BanTNSoLuongBanCoDinhDefault.ToString(); ;
-				txtSAFESAT.Text = BanTNAnToanCoDinhDefault.ToString();
-			}
-			else
-			{
-				lblBTNSatDVSoluong.Text = "% kho";
-				lblBTNSatDVAnToan.Text = "% kho";
-				txtCOUNTSAT.Text = BanTNSoLuongBanPercentDefault.ToString(); ;
-				txtSAFESAT.Text = BanTNAnToanPercentDefault.ToString();
-
-			}
-		}
-
-		private void rdBTNDaAnToanCoDinh_CheckedChanged(object sender, EventArgs e)
-		{
-
-			if (rdBTNDaAnToanCoDinh.Checked)
-			{
-				lblBTNDaDVSoluong.Text = "tấn";
-				lblBTNDaDVAnToan.Text = "tấn";
-				txtCOUNTDA.Text = BanTNSoLuongBanCoDinhDefault.ToString(); ;
-				txtSAFEDA.Text = BanTNAnToanCoDinhDefault.ToString();
-			}
-			else
-			{
-				lblBTNDaDVSoluong.Text = "% kho";
-				lblBTNDaDVAnToan.Text = "% kho";
-				txtCOUNTDA.Text = BanTNSoLuongBanPercentDefault.ToString(); ;
-				txtSAFEDA.Text = BanTNAnToanPercentDefault.ToString();
-
-			}
-		}
-
 		private void cmdTienIchXoaNhacNhoAdmin_Click(object sender, EventArgs e)
 		{
 			cmdTienIchXoaNhacNhoAdmin.Enabled = false;
@@ -3104,16 +1931,6 @@ namespace LVAuto.LVForm
 			}
 		}
 
-		private void lblPanelLoading_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void txtXacNhanAnhMaxCheck_TextChanged(object sender, EventArgs e)
-		{
-
-		}
-
 		private void txtXacNhanAnhMaxCheck_Leave(object sender, EventArgs e)
 		{
 			string str = txtXacNhanAnhMaxCheck.Text;
@@ -3129,11 +1946,6 @@ namespace LVAuto.LVForm
 				MessageBox.Show("Số lần tự check sai tối đa phải là số nguyên");
 				txtXacNhanAnhMaxCheck.Focus();
 			}
-		}
-
-		private void txtXacNhanAnhMinTimeCheck_TextChanged(object sender, EventArgs e)
-		{
-
 		}
 
 		private void txtXacNhanAnhMinTimeCheck_Leave(object sender, EventArgs e)
@@ -3154,19 +1966,9 @@ namespace LVAuto.LVForm
 			}
 		}
 
-		private void txtThaoPhatTongQuanMin_TextChanged(object sender, EventArgs e)
-		{
-			
-		}
-
 		private void chkAutoBanThuong_CheckedChanged(object sender, EventArgs e)
 		{
 			TuBanThuongDoDe = chkAutoBanThuong.Checked;
-		}
-
-		private void pnTHAOPHAT_Paint(object sender, PaintEventArgs e)
-		{
-
 		}
 
 		private void chkAutoAnUiKhiDanNo_CheckedChanged(object sender, EventArgs e)
@@ -3225,12 +2027,7 @@ namespace LVAuto.LVForm
 
 		}
 
-		private void tabBinhMan_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void cbTabBinhManThanhXuatQuan_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbTabBinhManThanhXuatQuan_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (cbTabBinhManThanhXuatQuan.SelectedItem == null) return;
 
@@ -3256,7 +2053,7 @@ namespace LVAuto.LVForm
 			{
 				int num10;
 				int selectedIndex = this.cbTabBinhManThanhXuatQuan.SelectedIndex;
-				int id = LVAuto.LVObj.City.AllCity[selectedIndex].Id;
+				int id = LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[selectedIndex].Id;
 
 				string str = this.cbTabBinhManPhuongThucTanCong.SelectedItem.ToString();
 				int num3 = int.Parse(str.Substring(0, str.IndexOf(".")));
@@ -3362,7 +2159,7 @@ namespace LVAuto.LVForm
                             obj2.CityId = general.CityId;
                             obj2.CityName = general.CityName;
                             obj2.CityId = id;
-                            obj2.CityName = LVAuto.LVObj.City.AllCity[selectedIndex].Name;
+                            obj2.CityName = LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[selectedIndex].Name;
                             obj2.Military.Bobinh = numArray;
                             obj2.Military.KyBinh = numArray2;
                             obj2.Military.CungThu = numArray3;
@@ -3403,7 +2200,7 @@ namespace LVAuto.LVForm
                         obj2.CityId = general.CityId;
                         obj2.CityName = general.CityName;
                         obj2.CityId = id;
-                        obj2.CityName = LVAuto.LVObj.City.AllCity[selectedIndex].Name;
+                        obj2.CityName = LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[selectedIndex].Name;
                         obj2.Military.Bobinh = numArray;
                         obj2.Military.KyBinh = numArray2;
                         obj2.Military.CungThu = numArray3;
@@ -3519,16 +2316,6 @@ namespace LVAuto.LVForm
 			}
 		}
 
-		private void chkSKST_CheckedChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void groupBox19_Enter(object sender, EventArgs e)
-		{
-
-		}
-
 		private void chkThaoPhatBienCheThemQuan_CheckedChanged(object sender, EventArgs e)
 		{
 			Quest_txtNumInfantries.Enabled = Quest_checkAutoTroop.Checked;
@@ -3546,28 +2333,6 @@ namespace LVAuto.LVForm
 		{
             LVRemoveGeneralFromQuest();			
 		}
-
-		private void comboBox9_SelectedIndexChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void textBox4_TextChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void checkBox4_CheckedChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void chkTabBinhManTuongXuatTran_SelectedIndexChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		
 
 		private void cboCallManThanhTraiXuatQuan_SelectedIndexChanged(object sender, EventArgs e)
 		{
@@ -3596,11 +2361,6 @@ namespace LVAuto.LVForm
 			}
 			chklbCallManListResult.Items.Clear();
 			chklbCallManListResult.Items.AddRange(CallManList.ToArray());
-		}
-
-		private void cbCallManBienCheQuanGioiCungThu3_SelectedIndexChanged(object sender, EventArgs e)
-		{
-
 		}
 
 		private void btCallManXacNhan_Click(object sender, EventArgs e)
@@ -3728,21 +2488,6 @@ namespace LVAuto.LVForm
 			}
 		}
 
-		private void tabMainTab_SelectedIndexChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void label103_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void textBox10_TextChanged(object sender, EventArgs e)
-		{
-
-		}
-
 		private void chkCallManCoBienCheThemQuan_CheckedChanged(object sender, EventArgs e)
 		{
 			txtCallManBienCheQuanBoBinh.Enabled = chkCallManCoBienCheThemQuan.Checked;
@@ -3805,14 +2550,5 @@ namespace LVAuto.LVForm
             chkTabBinhManListManDanh.Visible = !rdBinhManDanhDiaTinh.Checked;
             grBinhManToaDoMo.Visible = rdBinhManDanhDiaTinh.Checked;
         }
-
-        private void SellRes_btnReloadCities_Click(object sender, EventArgs e)
-        {
-            LVReloadCitesForSellResources();
-        }		
 	} //end class
 } //end namespace
-
-	
-
-

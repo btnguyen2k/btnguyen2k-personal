@@ -330,7 +330,7 @@ namespace LVAuto.LVForm.Command {
 				{
                     gid = 16;
 #if (DEBUG)                    
-                    if (LVAuto.LVObj.City.AllCity[citypost].size == 4) gid = 69;
+                    if (LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypost].Size == 4) gid = 69;
 #endif                    
 					
                     tid = 0;
@@ -342,14 +342,14 @@ namespace LVAuto.LVForm.Command {
 				}
 
 
-				if (LVAuto.LVObj.City.AllCity[citypost].AllBuildings == null)
+				if (LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypost].AllBuildings == null)
 					LVAuto.LVForm.Command.City.GetAllBuilding(citypost, false);
 
-				for (int i = 0; i < LVAuto.LVObj.City.AllCity[citypost].AllBuildings.Length; i++)
+				for (int i = 0; i < LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypost].AllBuildings.Length; i++)
 				{
-					if (gid == LVAuto.LVObj.City.AllCity[citypost].AllBuildings[i].GId)
+					if (gid == LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypost].AllBuildings[i].GId)
 					{
-						pid = LVAuto.LVObj.City.AllCity[citypost].AllBuildings[i].PId;
+						pid = LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypost].AllBuildings[i].PId;
 						break;
 					}
 
@@ -509,7 +509,7 @@ namespace LVAuto.LVForm.Command {
             general = Execute(15, parameter, true);
             try {
                 ArrayList incity = (ArrayList)general["generals"];
-                LVObj.City.AllCity[citypos].MilitaryGenerals = new LVAuto.LVObj.MilitaryGeneral[incity.Count];
+                LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].MilitaryGenerals = new LVAuto.LVObj.MilitaryGeneral[incity.Count];
 				ArrayList oneincity = null;
                 int j = 0;
                 for (int i = 0; i < incity.Count; i++) {
@@ -520,7 +520,7 @@ namespace LVAuto.LVForm.Command {
                         LVObj.MilitaryGeneral g = new LVAuto.LVObj.MilitaryGeneral();
                         g.Id = int.Parse(oneincity[0].ToString());
 						g.Name = (string)oneincity[1];
-                        LVObj.City.AllCity[citypos].MilitaryGenerals[j] = g;
+                        LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].MilitaryGenerals[j] = g;
                         j++;
                     }
                 }
@@ -536,7 +536,7 @@ namespace LVAuto.LVForm.Command {
 			{
 				int count = 0;
 
-				if (!reload && LVObj.City.AllCity[citypos].MilitaryGenerals != null) return;
+				if (!reload && LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].MilitaryGenerals != null) return;
 
 
 				Hashtable general = new Hashtable();
@@ -545,7 +545,7 @@ namespace LVAuto.LVForm.Command {
 				parameter += "&tid=";
 				//general = Execute(15, parameter, true);
 
-				int cityID = LVObj.City.AllCity[citypos].Id;
+				int cityID = LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].Id;
 				//LVAuto.Command.City.SwitchCitySlow(cityID);
 				string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityID);
 				while (count < 10)
@@ -562,7 +562,7 @@ namespace LVAuto.LVForm.Command {
 					ArrayList incity = (ArrayList)general["generals"];
 
 					//Hungtv rem
-					//LVObj.City.AllCity[citypos].AllGeneral = new LVAuto.LVObj.General[incity.Count];
+					//LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].AllGeneral = new LVAuto.LVObj.General[incity.Count];
 
 					ArrayList oneincity = null;
 					ArrayList genList = new ArrayList();
@@ -581,16 +581,16 @@ namespace LVAuto.LVForm.Command {
 							g.Name = (string)oneincity[1];
 							g.Status = int.Parse(oneincity[5].ToString());
 							genList.Add(g);
-							//LVObj.City.AllCity[citypos].AllGeneral[j] = g;
+							//LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].AllGeneral[j] = g;
 
 							j++;
 						}
 					}
 
-					LVObj.City.AllCity[citypos].MilitaryGenerals = new LVAuto.LVObj.MilitaryGeneral[genList.Count];
+					LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].MilitaryGenerals = new LVAuto.LVObj.MilitaryGeneral[genList.Count];
 					for (int i = 0; i < genList.Count; i++)
 					{
-						LVObj.City.AllCity[citypos].MilitaryGenerals[i] = (LVAuto.LVObj.MilitaryGeneral)genList[i];
+						LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].MilitaryGenerals[i] = (LVAuto.LVObj.MilitaryGeneral)genList[i];
 
 					}
 					int ii;
@@ -614,12 +614,12 @@ namespace LVAuto.LVForm.Command {
 
 			if (result == null) return;
 
-			for (int i = 0; i < LVObj.City.AllCity.Length; i++)
+			for (int i = 0; i < LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities.Length; i++)
 			{
-				//if (LVObj.City.AllCity[i].MilitaryGeneral != null && !reload) continue;
+				//if (LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[i].MilitaryGeneral != null && !reload) continue;
 
-				LVObj.City.AllCity[i].MilitaryGenerals = 
-					(LVAuto.LVObj.MilitaryGeneral[]) result[LVObj.City.AllCity[i].Id];
+				LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[i].MilitaryGenerals = 
+					(LVAuto.LVObj.MilitaryGeneral[]) result[LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[i].Id];
 
 			}
 		}
@@ -842,7 +842,7 @@ namespace LVAuto.LVForm.Command {
 			//general = Execute(15, parameter, true);
 
 			
-			//int cityID = LVObj.City.AllCity[citypos].id;
+			//int cityID = LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].id;
 			//LVAuto.Command.City.SwitchCitySlow(cityID);
 			string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityID);
 			while (count < 10)
@@ -859,7 +859,7 @@ namespace LVAuto.LVForm.Command {
 				ArrayList incity = (ArrayList)general["generals"];
 
 				//Hungtv rem
-				//LVObj.City.AllCity[citypos].AllGeneral = new LVAuto.LVObj.General[incity.Count];
+				//LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].AllGeneral = new LVAuto.LVObj.General[incity.Count];
 
 				ArrayList oneincity = null;
 				ArrayList genList = new ArrayList();
@@ -879,7 +879,7 @@ namespace LVAuto.LVForm.Command {
 						g.Status = int.Parse(oneincity[5].ToString());
 						g.Type = int.Parse(oneincity[4].ToString()); 
 						genList.Add(g);
-						//LVObj.City.AllCity[citypos].AllGeneral[j] = g;
+						//LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].AllGeneral[j] = g;
 
 						j++;
 					}
@@ -908,7 +908,7 @@ namespace LVAuto.LVForm.Command {
 				parameter += "&tid=";
 				//general = Execute(15, parameter, true);
 
-				int cityID = LVObj.City.AllCity[citypos].Id;
+				int cityID = LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].Id;
 				//LVAuto.Command.City.SwitchCitySlow(cityID);
 				string cookies = LVAuto.LVWeb.LVClient.CurrentLoginInfo.MakeCookiesString(cityID);
 				while (count < 10)
@@ -928,14 +928,14 @@ namespace LVAuto.LVForm.Command {
 					ArrayList incity = (ArrayList)hashnewgeneral["generals"];
 
 					//Hungtv rem
-					//LVObj.City.AllCity[citypos].AllGeneral = new LVAuto.LVObj.General[incity.Count];
+					//LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].AllGeneral = new LVAuto.LVObj.General[incity.Count];
 
 					ArrayList oneincity = null;
 					ArrayList genList = new ArrayList();
 					int j = 0;
 
 					LVObj.MilitaryGeneral newg;
-					LVObj.MilitaryGeneral[] oldg = LVObj.City.AllCity[citypos].MilitaryGenerals;
+					LVObj.MilitaryGeneral[] oldg = LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].MilitaryGenerals;
 					int gtempid;
 					for (int i = 0; i < incity.Count; i++)
 					{
@@ -966,16 +966,16 @@ namespace LVAuto.LVForm.Command {
 							newg.Name = (string)oneincity[1];
 							newg.Status = int.Parse(oneincity[5].ToString());
 							genList.Add(newg);
-							//LVObj.City.AllCity[citypos].AllGeneral[j] = g;
+							//LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].AllGeneral[j] = g;
 
 							j++;
 						}
 					}
 
-					LVObj.City.AllCity[citypos].MilitaryGenerals = new LVAuto.LVObj.MilitaryGeneral[genList.Count];
+					LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].MilitaryGenerals = new LVAuto.LVObj.MilitaryGeneral[genList.Count];
 					for (int i = 0; i < genList.Count; i++)
 					{
-						LVObj.City.AllCity[citypos].MilitaryGenerals[i] = (LVAuto.LVObj.MilitaryGeneral)genList[i];
+						LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[citypos].MilitaryGenerals[i] = (LVAuto.LVObj.MilitaryGeneral)genList[i];
 
 					}
 					int ii;

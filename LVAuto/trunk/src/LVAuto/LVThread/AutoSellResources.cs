@@ -62,10 +62,9 @@ namespace LVAuto.LVThread
             int calcPrice = -1;
             switch (sellResConfig.SellPriceMethod)
             {
-                case LVAuto.LVConfig.AutoConfig.SellResourcesConfig.EnumSellPriceMethod.AVERAGE_PRICE:
-                    return (int)Math.Round(sellResConfig.PriceAddOn);
-                    break;
                 case LVAuto.LVConfig.AutoConfig.SellResourcesConfig.EnumSellPriceMethod.FIX_PRICE:
+                    return (int)Math.Round(sellResConfig.PriceAddOn);
+                case LVAuto.LVConfig.AutoConfig.SellResourcesConfig.EnumSellPriceMethod.AVERAGE_PRICE:
                     calcPrice = LVHelper.OptCommandHelper.GetAvgPrice(sellResConfig.ResourceType);
                     break;
                 case LVAuto.LVConfig.AutoConfig.SellResourcesConfig.EnumSellPriceMethod.MIN_PRICE:
@@ -110,7 +109,7 @@ namespace LVAuto.LVThread
             return null;
         }
 
-        private Hashtable PerformSellResource(int cityId, LVConfig.AutoConfig.SellResourcesConfig.SellResConfig sellResConfig, int price, int currentStorage, int maxStorage)
+        private Hashtable PerformSellResource(LVAuto.LVObj.City city, LVConfig.AutoConfig.SellResourcesConfig.SellResConfig sellResConfig, int price, int currentStorage, int maxStorage)
         {
             int sellAmount = 0, thresholdAmount = 0; //in ton
             switch (sellResConfig.SellAmountMethod)
@@ -127,7 +126,12 @@ namespace LVAuto.LVThread
             if (sellAmount + thresholdAmount <= currentStorage / 1000)
             {
                 //sell the resource
-                return LVHelper.OptCommandHelper.SellResource(cityId, sellAmount, price, sellResConfig.ResourceType);
+                WriteLog("Selling resources [" + city.Name + "/" + sellResConfig.ResourceType + "]: amount [" + sellAmount + "], price [" + price + "]");
+                return LVHelper.OptCommandHelper.SellResource(city.Id, sellAmount, price, sellResConfig.ResourceType);
+            }
+            else
+            {
+                WriteLog("Selling resources [" + city.Name + "/" + sellResConfig.ResourceType + "]: exceeds threshold amount, abort!");
             }
             return null;
         }
@@ -148,28 +152,34 @@ namespace LVAuto.LVThread
             int priceStone = CalcSellPrice(LVConfig.AutoConfig.CONFIG_SELL_RESOURCES.StoneConfig);
             int priceIron = CalcSellPrice(LVConfig.AutoConfig.CONFIG_SELL_RESOURCES.IronConfig);
 
+            WriteLog("Selling resources [Food: " + priceFood+"/Woods: "+priceWoods+"/Stone: "+priceStone+"/Iron: "+priceIron+"]");
+
             int totalCities = LVConfig.AutoConfig.CONFIG_SELL_RESOURCES.CityConfig.Length;
             int numRunCities = 0;
             foreach (LVConfig.AutoConfig.SellResourcesConfig.SellCityConfig cityConfig in LVConfig.AutoConfig.CONFIG_SELL_RESOURCES.CityConfig)
             {
                 numRunCities++;
                 SetText("Đang bán ở thành " + cityConfig.CityName + " (" + numRunCities + "/" + totalCities + ")");
+                WriteLog("Selling resources [" + cityConfig.CityName + "]...");
                 int cityId = cityConfig.CityId;
                 LVAuto.LVObj.City city = LVHelper.CityCommandHelper.GetCityById(cityId);
                 LVAuto.LVObj.Building marketBuilding = FindMarketBuilding(city);
                 if (marketBuilding == null)
                 {
+                    WriteLog("Selling resources [" + cityConfig.CityName + "]: No market building!");
                     //there is no market building!
                     continue;
                 }
                 if (!LVHelper.BuildingCommandHelper.SelectBuilding(cityConfig.CityId, marketBuilding))
                 {
+                    WriteLog("Selling resources [" + cityConfig.CityName + "]: Can not select market building (error?)!");
                     //error?
                     continue;
                 }
                 Hashtable currentResources = LVHelper.CityCommandHelper.GetCurentResourceInCity(cityId);
                 if (currentResources == null)
                 {
+                    WriteLog("Selling resources [" + cityConfig.CityName + "]: Can not get current resource info (error?)!");
                     //error?
                     continue;
                 }
@@ -182,7 +192,7 @@ namespace LVAuto.LVThread
                 {
                     //sell food
                     LVConfig.AutoConfig.SellResourcesConfig.SellResConfig sellResConfig = LVConfig.AutoConfig.CONFIG_SELL_RESOURCES.FoodConfig;
-                    Hashtable result = PerformSellResource(cityId, sellResConfig, priceFood, currentFood, maxStorage);
+                    Hashtable result = PerformSellResource(city, sellResConfig, priceFood, currentFood, maxStorage);
                     if (result != null)
                     {
                         int status = int.Parse(result["ret"].ToString());
@@ -196,7 +206,7 @@ namespace LVAuto.LVThread
                 {
                     //sell woods
                     LVConfig.AutoConfig.SellResourcesConfig.SellResConfig sellResConfig = LVConfig.AutoConfig.CONFIG_SELL_RESOURCES.WoodsConfig;
-                    Hashtable result = PerformSellResource(cityId, sellResConfig, priceWoods, currentWoods, maxStorage);
+                    Hashtable result = PerformSellResource(city, sellResConfig, priceWoods, currentWoods, maxStorage);
                     if (result != null)
                     {
                         int status = int.Parse(result["ret"].ToString());
@@ -210,7 +220,7 @@ namespace LVAuto.LVThread
                 {
                     //sell woods
                     LVConfig.AutoConfig.SellResourcesConfig.SellResConfig sellResConfig = LVConfig.AutoConfig.CONFIG_SELL_RESOURCES.StoneConfig;
-                    Hashtable result = PerformSellResource(cityId, sellResConfig, priceStone, currentStone, maxStorage);
+                    Hashtable result = PerformSellResource(city, sellResConfig, priceStone, currentStone, maxStorage);
                     if (result != null)
                     {
                         int status = int.Parse(result["ret"].ToString());
@@ -224,7 +234,7 @@ namespace LVAuto.LVThread
                 {
                     //sell woods
                     LVConfig.AutoConfig.SellResourcesConfig.SellResConfig sellResConfig = LVConfig.AutoConfig.CONFIG_SELL_RESOURCES.IronConfig;
-                    Hashtable result = PerformSellResource(cityId, sellResConfig, priceIron, currentIron, maxStorage);
+                    Hashtable result = PerformSellResource(city, sellResConfig, priceIron, currentIron, maxStorage);
                     if (result != null)
                     {
                         int status = int.Parse(result["ret"].ToString());
@@ -249,6 +259,8 @@ namespace LVAuto.LVThread
                 return;
             }
 
+            WriteLog("Selling resources: queue is full, selling off...");
+
             const int MaxItemsChange = 10;
             const int MinPriceThreshold = 1;
 
@@ -259,6 +271,7 @@ namespace LVAuto.LVThread
             ArrayList myQueue = LVHelper.CommonCommandHelper.GetMyMarketQueue();
             if (myQueue == null)
             {
+                WriteLog("Selling resources: queue is full, selling off...Queue is empty!");
                 return;
             }
             //sort by queue: ASC by amount
@@ -302,6 +315,7 @@ namespace LVAuto.LVThread
                 {
                     continue;
                 }
+                WriteLog("Selling resources: queue is full, selling off...[" + type + ": new price " + price + "]");
                 LVHelper.OptCommandHelper.UpdateMyMarketPrice(seqno, price);
             }
 		}

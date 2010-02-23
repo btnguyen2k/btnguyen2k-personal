@@ -11,6 +11,28 @@ namespace LVAuto.LVForm
 {
     public partial class FrmMain : Form
     {
+        private void Login_dropdownServerList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = Login_dropdownServerList.Text.IndexOf('.');
+            LVWeb.LVClient.Server = int.Parse(Login_dropdownServerList.Text.Substring(0, index));
+        }
+
+        private void Login_btnLogin_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LVLogin();
+            }
+            catch
+            {
+                MessageBox.Show("Hic hic, không login được mà không biết tại sao, có thể do mạng lởm. Cố thử lại lần nữa xem sao.", "Lỗi rồi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Login_txtPassword.Enabled = true;
+                Login_txtUsername.Enabled = true;
+                Login_btnLogin.Enabled = true;
+                HideLoadingLabel();
+            }
+        }
+
         /// <summary>
         /// Validates the login form
         /// </summary>
@@ -183,7 +205,8 @@ namespace LVAuto.LVForm
                 Login_txtPassword.Enabled = false;
                 Login_txtUsername.Enabled = false;
                 Login_btnLogin.Enabled = false;
-                //frLoading.Close();
+
+                SetAllTabsEnable(true);
 
                 ShowCoDanhTuongViengTham();
                 HideLoadingLabel();
@@ -191,8 +214,7 @@ namespace LVAuto.LVForm
                 this.strVersion += " - Welcome " + LVAuto.LVWeb.LVClient.lvusername;
                 this.Text = strVersion;
                 this.AppNotifyIcon.Text = strVersion;
-                //LVAuto.Web.LVWeb.processCheckImage();
             }
         }
-    }
-}
+    } //end class
+} //end namespace

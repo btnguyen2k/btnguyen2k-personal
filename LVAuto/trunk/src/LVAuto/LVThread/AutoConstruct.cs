@@ -55,7 +55,7 @@ namespace LVAuto.LVThread {
             constructionConfig.Clear();
             this.SleepTime = sleepTime;
 			
-	        foreach (LVAuto.LVObj.City city in LVAuto.LVObj.City.AllCity)
+	        foreach (LVAuto.LVObj.City city in LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities)
             {
                 bool hasUp = false;
                 if (city.AllBuildings != null)
@@ -82,10 +82,10 @@ namespace LVAuto.LVThread {
         /// </summary>
         private void CheckBuildAll()
         {
-            if (LVAuto.LVObj.City.IsBuildAll)
+            if (LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.IsBuildAll)
             {
                 this.constructionConfig.Clear();
-                foreach (LVAuto.LVObj.City city in LVAuto.LVObj.City.AllCity)
+                foreach (LVAuto.LVObj.City city in LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities)
                 {
                     LVHelper.CityCommandHelper.GetAndPopulateBuildings(city, false);
                     if (city.AllBuildings != null)
@@ -226,10 +226,10 @@ namespace LVAuto.LVThread {
                             //is barrack
                             WriteLog("Constructing city [" + city.Name + ":" + building.Name + "]: not enough resource, is barrack, abort!");
                         }
-                        else if (LVAuto.LVObj.City.IsBuyRes)
+                        else if (LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AutoBuyResources)
                         {
                             WriteLog("Constructing city [" + city.Name + ":" + building.Name + "]: not enough resource, buying more...");
-                            if (BuyMoreResources(cityId, building, LVAuto.LVObj.City.GoldSafe))
+                            if (BuyMoreResources(cityId, building, LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.GoldThreshold))
                             {
                                 numRetries++;
                                 goto RETRY;
@@ -361,7 +361,7 @@ namespace LVAuto.LVThread {
 		{
 			while (true)
 			{
-				if (!LVAuto.LVObj.City.IsBuildAll && ( constructionConfig == null || constructionConfig.Count == 0))
+                if (!LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.IsBuildAll && (constructionConfig == null || constructionConfig.Count == 0))
 				{
 					SetText("Chẳng có gì để chạy cả");
 					break;

@@ -132,7 +132,7 @@ namespace LVAuto.LVHelper
         /// <returns></returns>
         public static LVAuto.LVObj.City GetCityById(int cityId)
         {
-            foreach (LVAuto.LVObj.City city in LVAuto.LVObj.City.AllCity)
+            foreach (LVAuto.LVObj.City city in LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities)
             {
                 if (city.Id == cityId)
                 {
@@ -174,11 +174,9 @@ namespace LVAuto.LVHelper
             }
 
             ArrayList allCitiesInfo = (ArrayList)result["infos"];
-            if (LVAuto.LVObj.City.AllCity == null || LVAuto.LVObj.City.AllCity.Length != allCitiesInfo.Count)
+            if (LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities == null || LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities.Length != allCitiesInfo.Count)
             {
-
-                LVAuto.LVObj.City.AllCity = new LVAuto.LVObj.City[allCitiesInfo.Count];
-                return;
+                LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities = new LVAuto.LVObj.City[allCitiesInfo.Count];
             }
             for (int i = 0; i < allCitiesInfo.Count; i++)
             {
@@ -189,8 +187,8 @@ namespace LVAuto.LVHelper
                 int y = int.Parse(cityInfo[5].ToString());
                 int size = int.Parse(cityInfo[7].ToString());
                 int parentId = int.Parse(cityInfo[6].ToString());
-                LVAuto.LVObj.City.AllCity[i] = new LVAuto.LVObj.City(cityId, name, x, y, size, parentId);
-                GetAndPopulateBuildings(LVAuto.LVObj.City.AllCity[i], false);
+                LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[i] = new LVAuto.LVObj.City(cityId, name, x, y, size, parentId);
+                GetAndPopulateBuildings(LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities[i], false);
             }
         }
 

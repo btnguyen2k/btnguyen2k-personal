@@ -55,13 +55,13 @@ namespace LVAuto.LVForm
         {
             for (int i = 0; i < tabMainTab.TabPages.Count; i++)
             {
-                if (!tabMainTab.TabPages[i].Text.Equals("Log"))
+                if (!tabMainTab.TabPages[i].Text.Equals("Log") && !tabMainTab.TabPages[i].Text.Equals("Login"))
                 {
                     tabMainTab.TabPages[i].Enabled = enable;
                 }
                 else
                 {
-                    //always enable the Log tab
+                    //always enable the Log tab and the Login tab
                     tabMainTab.TabPages[i].Enabled = true;
                 }
             }

@@ -165,7 +165,7 @@ namespace LVAuto.LVHelper
         /// <returns></returns>
         public static int GetSimultaneousBuildings()
         {
-            foreach (LVAuto.LVObj.City city in LVAuto.LVObj.City.AllCity)
+            foreach (LVAuto.LVObj.City city in LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities)
             {
                 Hashtable result = GetBuildingInfo(city.Id, 1, 8, 2);
                 if (result != null & result["plus_left"].ToString().Trim() != "0")
