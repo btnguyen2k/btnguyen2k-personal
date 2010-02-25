@@ -23,7 +23,7 @@ namespace LVAuto.LVForm
         private bool SellResStoneCheckAll = true;
         private bool SellResIronCheckAll = true;
 
-        private void InitEvent_SellRes()
+        private void InitEventHandlers_SellRes()
         {
             this.tabBanTaiNguyen.Enter += tabSellRes_Enter;
             this.tabBanTaiNguyen.Leave += tabSellRes_Leave;
@@ -263,10 +263,10 @@ namespace LVAuto.LVForm
                 LVUtils.MsgBoxUtils.ErrorBox("Giá trị thời gian kiểm tra: [" + SellRes_txtTimer.Text + "] (phải là số nguyên)!");
                 return;
             }
-            LVConfig.AutoConfig.CONFIG_SELL_RESOURCES.CityConfig = new LVAuto.LVConfig.AutoConfig.SellResourcesConfig.SellCityConfig[SellRes_gridCityList.Rows.Count];
+            LVConfig.AutoConfig.CONFIG_SELL_RESOURCES.CityConfig = new LVAuto.LVConfig.AutoConfig.SellResourcesConfig.SellResCityConfig[SellRes_gridCityList.Rows.Count];
             for (int i = 0; i < SellRes_gridCityList.Rows.Count; i++)
             {
-                LVAuto.LVConfig.AutoConfig.SellResourcesConfig.SellCityConfig cityConfig = new LVAuto.LVConfig.AutoConfig.SellResourcesConfig.SellCityConfig();
+                LVAuto.LVConfig.AutoConfig.SellResourcesConfig.SellResCityConfig cityConfig = new LVAuto.LVConfig.AutoConfig.SellResourcesConfig.SellResCityConfig();
                 LVConfig.AutoConfig.CONFIG_SELL_RESOURCES.CityConfig[i] = cityConfig;
                 int cityId = int.Parse(SellRes_gridCityList.Rows[i].Cells[0].Value.ToString());
                 LVAuto.LVObj.City city = LVHelper.CityCommandHelper.GetCityById(cityId);
@@ -626,7 +626,7 @@ namespace LVAuto.LVForm
 
                     if (LVConfig.AutoConfig.CONFIG_SELL_RESOURCES.CityConfig != null)
                     {
-                        foreach (LVConfig.AutoConfig.SellResourcesConfig.SellCityConfig cityConfig in LVConfig.AutoConfig.CONFIG_SELL_RESOURCES.CityConfig)
+                        foreach (LVConfig.AutoConfig.SellResourcesConfig.SellResCityConfig cityConfig in LVConfig.AutoConfig.CONFIG_SELL_RESOURCES.CityConfig)
                         {
                             if (city.Id == cityConfig.CityId)
                             {
@@ -642,10 +642,10 @@ namespace LVAuto.LVForm
             } //end foreach
             if (LVConfig.AutoConfig.CONFIG_SELL_RESOURCES.CityConfig == null)
             {
-                LVConfig.AutoConfig.CONFIG_SELL_RESOURCES.CityConfig = new LVAuto.LVConfig.AutoConfig.SellResourcesConfig.SellCityConfig[countCities];
+                LVConfig.AutoConfig.CONFIG_SELL_RESOURCES.CityConfig = new LVAuto.LVConfig.AutoConfig.SellResourcesConfig.SellResCityConfig[countCities];
                 for (int i = 0; i < countCities; i++)
                 {
-                    LVConfig.AutoConfig.CONFIG_SELL_RESOURCES.CityConfig[i] = new LVAuto.LVConfig.AutoConfig.SellResourcesConfig.SellCityConfig();
+                    LVConfig.AutoConfig.CONFIG_SELL_RESOURCES.CityConfig[i] = new LVAuto.LVConfig.AutoConfig.SellResourcesConfig.SellResCityConfig();
                 }
             }
 

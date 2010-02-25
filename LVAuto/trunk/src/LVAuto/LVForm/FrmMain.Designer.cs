@@ -2656,7 +2656,6 @@
             this.tabMuaTaiNguyen.TabIndex = 5;
             this.tabMuaTaiNguyen.Text = "Mua tài nguyên";
             this.tabMuaTaiNguyen.UseVisualStyleBackColor = true;
-            this.tabMuaTaiNguyen.Leave += new System.EventHandler(this.tabMuaTaiNguyen_Leave);
             // 
             // pnLVBUYRES
             // 
@@ -2799,7 +2798,7 @@
             this.BuyRes_btnSelectAllStone.TabIndex = 11;
             this.BuyRes_btnSelectAllStone.Text = "Chọn tất đá";
             this.BuyRes_btnSelectAllStone.UseVisualStyleBackColor = true;
-            this.BuyRes_btnSelectAllStone.Click += new System.EventHandler(this.btMuaTNSelectAllDa_Click);
+            this.BuyRes_btnSelectAllStone.Click += new System.EventHandler(this.BuyRes_btnSelectAllStone_Click);
             // 
             // BuyRes_btnSelectAllFood
             // 
@@ -2809,7 +2808,7 @@
             this.BuyRes_btnSelectAllFood.TabIndex = 11;
             this.BuyRes_btnSelectAllFood.Text = "Chọn tất lúa";
             this.BuyRes_btnSelectAllFood.UseVisualStyleBackColor = true;
-            this.BuyRes_btnSelectAllFood.Click += new System.EventHandler(this.btMuaTNSelectAllLua_Click);
+            this.BuyRes_btnSelectAllFood.Click += new System.EventHandler(this.BuyRes_btnSelectAllFood_Click);
             // 
             // BuyRes_btnSelectAllIron
             // 
@@ -2819,7 +2818,7 @@
             this.BuyRes_btnSelectAllIron.TabIndex = 11;
             this.BuyRes_btnSelectAllIron.Text = "Chọn tất sắt";
             this.BuyRes_btnSelectAllIron.UseVisualStyleBackColor = true;
-            this.BuyRes_btnSelectAllIron.Click += new System.EventHandler(this.btMuaTNSelectAllSat_Click);
+            this.BuyRes_btnSelectAllIron.Click += new System.EventHandler(this.BuyRes_btnSelectAllIron_Click);
             // 
             // BuyRes_btnSelectAllWoods
             // 
@@ -2829,7 +2828,7 @@
             this.BuyRes_btnSelectAllWoods.TabIndex = 11;
             this.BuyRes_btnSelectAllWoods.Text = "Chọn tất gỗ";
             this.BuyRes_btnSelectAllWoods.UseVisualStyleBackColor = true;
-            this.BuyRes_btnSelectAllWoods.Click += new System.EventHandler(this.btMuaTNSelectAllGo_Click);
+            this.BuyRes_btnSelectAllWoods.Click += new System.EventHandler(this.BuyRes_btnSelectAllWoods_Click);
             // 
             // label6
             // 

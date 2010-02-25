@@ -75,6 +75,9 @@
     <Compile Include="Command\BuildObj\General.cs" />
     <Compile Include="Command\BuildObj\UpdateBuildingInfo.cs" />
     <Compile Include="Command\City.cs" />
+    <Compile Include="LVForm\FrmMain.Actions.BuyRes.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="LVObj\Building.cs" />
     <Compile Include="LVObj\City.cs" />
     <Compile Include="LVObj\CityTask.cs" />
@@ -242,6 +245,7 @@
     <Compile Include="LVThread\BUYWEPON.cs" />
     <Compile Include="LVThread\CITYTASK.cs" />
     <Compile Include="LVThread\BANTHUONG.cs" />
+    <Compile Include="LVThread\AutoBuyResources.cs" />
     <Compile Include="LVThread\LOIDAI.cs" />
     <Compile Include="LVThread\PHAIQUANVANDAOMO.cs" />
     <Compile Include="LVThread\ThreadSkeleton.cs" />

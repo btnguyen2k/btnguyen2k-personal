@@ -13,8 +13,6 @@ namespace LVAuto.LVThread
     /// </summary>
     public class AutoSellResources : BaseThread
 	{
-		LVAuto.LVForm.Command.CommonObj.BanTaiNguyenObj banobj;
-
         private static LVThread.AutoSellResources instance;
 
         public static LVThread.AutoSellResources getInstance(Label labelMessage)
@@ -47,9 +45,9 @@ namespace LVAuto.LVThread
             }
 
             #if (DEBUG)
-                sleepTime = 10000; //10 seconds sleep in debug mode
+                sleepTime = 10; //10 seconds sleep in debug mode
             #endif
-            this.SleepTime = sleepTime;
+            this.SleepTimeInSeconds = sleepTime;
 		}
 
         /// <summary>
@@ -156,7 +154,7 @@ namespace LVAuto.LVThread
 
             int totalCities = LVConfig.AutoConfig.CONFIG_SELL_RESOURCES.CityConfig.Length;
             int numRunCities = 0;
-            foreach (LVConfig.AutoConfig.SellResourcesConfig.SellCityConfig cityConfig in LVConfig.AutoConfig.CONFIG_SELL_RESOURCES.CityConfig)
+            foreach (LVConfig.AutoConfig.SellResourcesConfig.SellResCityConfig cityConfig in LVConfig.AutoConfig.CONFIG_SELL_RESOURCES.CityConfig)
             {
                 numRunCities++;
                 SetText("Đang bán ở thành " + cityConfig.CityName + " (" + numRunCities + "/" + totalCities + ")");
@@ -335,13 +333,15 @@ namespace LVAuto.LVThread
                     SaleOff();
                 }
                 Message.ForeColor = System.Drawing.Color.Blue;
-                SetText("Đang ngủ " + SleepTime / 1000 + " giây, chờ tí (mới chạy lúc: " + DateTime.Now.ToString("HH:mm:ss") + ")");
+                //SetText("Đang ngủ " + SleepTimeInSeconds / 1000 + " giây, chờ tí (mới chạy lúc: " + DateTime.Now.ToString("HH:mm:ss") + ")");
                 if (resultStatus > 1000000)
                 {
-                    SetText("Bị khóa đến " + DateTime.Now.AddSeconds(resultStatus - 1000000).ToString("HH:mm:ss")
-                        + ". Đang ngủ " + SleepTime / 1000 + " giây, chờ tí (mới chạy lúc: " + DateTime.Now.ToString("HH:mm:ss") + ")");
+                    WriteLog("Bị khóa đến " + DateTime.Now.AddSeconds(resultStatus - 1000000).ToString("HH:mm:ss"));
+                    //SetText("Bị khóa đến " + DateTime.Now.AddSeconds(resultStatus - 1000000).ToString("HH:mm:ss")
+                    //    + ". Đang ngủ " + SleepTimeInSeconds / 1000 + " giây, chờ tí (mới chạy lúc: " + DateTime.Now.ToString("HH:mm:ss") + ")");
                 }
-				Thread.Sleep(SleepTime);
+                Sleep();
+				//Thread.Sleep(SleepTimeInSeconds);
 			}
 		}        
     } //end class

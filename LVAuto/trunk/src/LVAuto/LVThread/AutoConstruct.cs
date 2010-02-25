@@ -53,7 +53,7 @@ namespace LVAuto.LVThread {
                 sleepTime = 10000; //10 seconds sleep in debug mode
             #endif
             constructionConfig.Clear();
-            this.SleepTime = sleepTime;
+            this.SleepTimeInSeconds = sleepTime;
 			
 	        foreach (LVAuto.LVObj.City city in LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities)
             {
@@ -370,13 +370,13 @@ namespace LVAuto.LVThread {
                 Message.ForeColor = System.Drawing.Color.Red;
                 int resultStatus = ConstructBuildings();
 				Message.ForeColor = System.Drawing.Color.Blue;
-                SetText("Đang ngủ " + SleepTime / 1000 + " giây, chờ tí (mới chạy lúc: " + DateTime.Now.ToString("HH:mm:ss") + ")");
+                SetText("Đang ngủ " + SleepTimeInSeconds / 1000 + " giây, chờ tí (mới chạy lúc: " + DateTime.Now.ToString("HH:mm:ss") + ")");
                 if (resultStatus > 1000000)
 				{
                     SetText("Bị khóa đến " + DateTime.Now.AddSeconds(resultStatus - 1000000).ToString("HH:mm:ss")
-                        + ". Đang ngủ " + SleepTime / 1000 + " giây, chờ tí (mới chạy lúc: " + DateTime.Now.ToString("HH:mm:ss") + ")");
+                        + ". Đang ngủ " + SleepTimeInSeconds / 1000 + " giây, chờ tí (mới chạy lúc: " + DateTime.Now.ToString("HH:mm:ss") + ")");
 				}
-				Thread.Sleep(SleepTime);
+				Thread.Sleep(SleepTimeInSeconds);
 			}
 		}
     } //end class

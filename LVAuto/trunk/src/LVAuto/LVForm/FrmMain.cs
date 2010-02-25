@@ -55,7 +55,6 @@ namespace LVAuto.LVForm
 		public static bool _chuongbao = false;
 		public static int imagecheckid;
 
-		public bool BuyResource_loaded = false;
 		public bool Anui_loaded				= false;
 		public bool BuildCity_loaded = false;
 		public bool DelCity_loaded = false;
@@ -68,11 +67,6 @@ namespace LVAuto.LVForm
 		public bool BuyWepon_loaded = false;
 
 		private string fileSavepath = "";
-
-		private bool muataiNguyenLuaCheckAll = true;
-		private bool muataiNguyenGoCheckAll = true;
-		private bool muataiNguyenSatCheckAll = true;
-		private bool muataiNguyenDaCheckAll = true;
 
 		private Hashtable QuocKho_Ruong = new Hashtable();
 		
@@ -91,7 +85,8 @@ namespace LVAuto.LVForm
 		public FrmMain() 
 		{
             InitializeComponent();
-            InitEvent_SellRes();
+            InitEventHandlers_SellRes();
+            InitEventHandlers_BuyRes();
 			timerDanhTuongViengTham.Start();
         }
 
@@ -124,9 +119,10 @@ namespace LVAuto.LVForm
                 LVAUTOTASK = new LVAuto.LVForm.LVThread.AUTOTASK(lblLoadingResMessage);
 
                 THREAD_SELL_RESOURCES = LVAuto.LVThread.AutoSellResources.getInstance(Auto_labelAutoSellRes);
+                THREAD_BUY_RESOURCES = LVAuto.LVThread.AutoBuyResources.getInstance(Auto_labelAutoBuyRes);
                 THREAD_CONSTRUCT = LVAuto.LVThread.AutoConstruct.getInstance(Auto_labelAutoConstruct);
+
                 LVDEL = new LVAuto.LVForm.LVThread.DEL(lblDELMESSAGE);
-                LVBUYRES = new LVAuto.LVForm.LVThread.BUYRES(Auto_labelAutoBuyRes);
                 LVTHAOPHAT = new LVAuto.LVForm.LVThread.THAOPHAT(lblTHAOPHATMESSAGE);
                 LVUPGRADE = new LVAuto.LVForm.LVThread.UPGRADE(lblUPGEADEMESSAGE);
                 LVANUI = new LVAuto.LVForm.LVThread.ANUI(lblANUIMESSAGE);
@@ -304,36 +300,6 @@ namespace LVAuto.LVForm
 			{
 				e.Cancel = true;				
 			}
-        }
-
-        private void Auto_checkAutoSellResources_CheckedChanged(object sender, EventArgs e) {
-            LVToggleAutoSellResources();
-        }
-
-        private void Auto_checkAutoBuyResources_CheckedChanged(object sender, EventArgs e) {
-            try
-			{
-			if (Auto_checkAutoBuyResources.Checked) 
-			{
-                //LVBUYRES.GetParameter(
-                //    int.Parse(txtSAFEGOLD.Text),
-                //    dtaBUYRESOURCE, int.Parse(txtBUYRESOURCECHECK.Text) * 60 * 1000);
-
-				LVBUYRES.GetParameter(MuaTaiNguyen);
-				pnLVBUYRES.Enabled = false;
-				
-                LVBUYRES.Auto();
-            } else {
-                LVBUYRES.Stop();
-                pnLVBUYRES.Enabled = true;
-            }
-			}
-			catch (Exception ex)
-			{
-				Auto_labelAutoBuyRes.Text = "Chưa chọn đúng tham số";
-				Auto_checkAutoBuyResources.Checked = false;
-			}
-
         }
 
         private void chkAutoST_CheckedChanged(object sender, EventArgs e) {
@@ -1219,91 +1185,6 @@ namespace LVAuto.LVForm
 			catch (Exception ex)
 			{
 				MessageBox.Show("Chọn chưa đúng các tham số", "Lỗi rồi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
-		}
-
-		private void btMuaTNSelectAllLua_Click(object sender, EventArgs e)
-		{
-			for (int i = 0; i < BuyRes_gridCityList.Rows.Count; i++)
-			{
-				BuyRes_gridCityList.Rows[i].Cells[2].Value = muataiNguyenLuaCheckAll;
-			}
-			muataiNguyenLuaCheckAll = !muataiNguyenLuaCheckAll;
-		}
-
-		private void btMuaTNSelectAllGo_Click(object sender, EventArgs e)
-		{
-			for (int i = 0; i < BuyRes_gridCityList.Rows.Count; i++)
-			{
-				BuyRes_gridCityList.Rows[i].Cells[3].Value = muataiNguyenGoCheckAll;
-			}
-			muataiNguyenGoCheckAll = !muataiNguyenGoCheckAll;
-		}
-
-		private void btMuaTNSelectAllSat_Click(object sender, EventArgs e)
-		{
-			for (int i = 0; i < BuyRes_gridCityList.Rows.Count; i++)
-			{
-				BuyRes_gridCityList.Rows[i].Cells[4].Value = muataiNguyenSatCheckAll;
-			}
-			muataiNguyenSatCheckAll = !muataiNguyenSatCheckAll;
-		}
-
-		private void btMuaTNSelectAllDa_Click(object sender, EventArgs e)
-		{
-			for (int i = 0; i < BuyRes_gridCityList.Rows.Count; i++)
-			{
-				BuyRes_gridCityList.Rows[i].Cells[5].Value = muataiNguyenDaCheckAll;
-			}
-			muataiNguyenDaCheckAll = !muataiNguyenDaCheckAll;
-		}
-
-		private void tabMuaTaiNguyen_Leave(object sender, EventArgs e)
-		{
-			try
-			{
-
-				MuaTaiNguyen.VangAnToan = long.Parse(BuyRes_txtGoldThreshold.Text);
-				MuaTaiNguyen.TimeToRunInMinute = double.Parse(BuyRes_txtTimer.Text);
-				MuaTaiNguyen.MuaTheoDonViKho = (BuyRes_radioBuyAmountMethodFix.Checked);
-				MuaTaiNguyen.GiaTri = double.Parse(BuyRes_txtBuyAmount.Text);
-
-				DataTable temp = (DataTable)BuyRes_gridCityList.DataSource;
-
-				LVAuto.LVForm.Command.CommonObj.MuaTaiNguyenObj.cityInfo_ ctinfo;
-
-				ArrayList arCity = new ArrayList();
-				if (temp != null)
-				{
-					for (int i = 0; i < temp.Rows.Count; i++)
-					{
-						ctinfo = new LVAuto.LVForm.Command.CommonObj.MuaTaiNguyenObj.cityInfo_();
-						ctinfo.CityId = int.Parse((temp.Rows[i]["ID_TT"]).ToString());
-						ctinfo.CityName = (temp.Rows[i]["NAME_TT"]).ToString();
-
-						ctinfo.MuaLua = (bool)temp.Rows[i]["BUY_LUA"];
-						ctinfo.MuaGo = (bool)temp.Rows[i]["BUY_GO"];
-						ctinfo.MuaSat = (bool)temp.Rows[i]["BUY_SAT"];
-						ctinfo.MuaDa = (bool)temp.Rows[i]["BUY_DA"];
-
-						if (ctinfo.MuaLua || ctinfo.MuaGo || ctinfo.MuaDa || ctinfo.MuaSat)
-							arCity.Add(ctinfo);
-					}
-
-					if (arCity.Count > 0)
-					{
-						MuaTaiNguyen.newCityInfo(arCity.Count);
-						for (int i = 0; i < arCity.Count; i++)
-							MuaTaiNguyen.CityInfo[i] = (LVAuto.LVForm.Command.CommonObj.MuaTaiNguyenObj.cityInfo_)arCity[i];
-						
-					}
-				}
-				
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Có lỗi sai gì đó ở mua tài nguyên, kiểm tra lại đê", "Lỗi rồi", MessageBoxButtons.OK, MessageBoxIcon.Question);
-
 			}
 		}
 
