@@ -12,6 +12,7 @@ namespace LVAuto.LVConfig
         public const int RESOURCE_TYPE_IRON = 4;
 
         public static SellResourcesConfig CONFIG_SELL_RESOURCES = new SellResourcesConfig();
+        public static BuyResourcesConfig CONFIG_BUY_RESOURCES = new BuyResourcesConfig();
         public static CityConstructConfig CONFIG_CITY_CONSTRUCT = new CityConstructConfig();
 
         public class CityConstructConfig
@@ -22,6 +23,24 @@ namespace LVAuto.LVConfig
             public bool AutoBuyResources = true;  
             public long GoldThreshold    = 5000000; 
         }
+
+        public class BuyResourcesConfig
+        {
+            public enum EnumBuyAmountMethod { FIX_AMOUNT, PERCENT_STORAGE };
+
+            public int SleepTimeInMinutes = 1;
+            public long GoldThreshold = 5000000;
+            public EnumBuyAmountMethod BuyAmountMethod = EnumBuyAmountMethod.FIX_AMOUNT;
+            public int BuyAmount = 10000;
+            public BuyResCityConfig[] CityConfig;
+
+            public class BuyResCityConfig
+            {
+                public int CityId;
+                public string CityName;
+                public bool BuyFood = false, BuyWoods = false, BuyStone = false, BuyIron = false;
+            }
+        } //end class
 
         public class SellResourcesConfig
         {
@@ -35,7 +54,7 @@ namespace LVAuto.LVConfig
                 WoodsConfig = new SellResConfig(RESOURCE_TYPE_WOODS),
                 StoneConfig = new SellResConfig(RESOURCE_TYPE_STONE),
                 IronConfig = new SellResConfig(RESOURCE_TYPE_IRON);
-            public SellCityConfig[] CityConfig;
+            public SellResCityConfig[] CityConfig;
             
             public class SellResConfig
             {
@@ -52,7 +71,7 @@ namespace LVAuto.LVConfig
                 }
             }
 
-            public class SellCityConfig
+            public class SellResCityConfig
             {
                 public int CityId;
                 public string CityName;

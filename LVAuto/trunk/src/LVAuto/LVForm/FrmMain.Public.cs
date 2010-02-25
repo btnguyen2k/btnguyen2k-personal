@@ -6,9 +6,9 @@ namespace LVAuto.LVForm
     public partial class FrmMain : System.Windows.Forms.Form
     {
         private static LVAuto.LVThread.AutoSellResources THREAD_SELL_RESOURCES;
+        private static LVAuto.LVThread.AutoBuyResources THREAD_BUY_RESOURCES;
         private static LVAuto.LVThread.AutoConstruct THREAD_CONSTRUCT;
         private static LVThread.DEL LVDEL;
-        private static LVThread.BUYRES LVBUYRES;
         private static LVThread.THAOPHAT LVTHAOPHAT;
         private static LVThread.UPGRADE LVUPGRADE;
         private static LVThread.ANUI LVANUI;
@@ -87,9 +87,9 @@ namespace LVAuto.LVForm
                 THREAD_SELL_RESOURCES.Stop();
             }
 
-            if (LVBUYRES.IsRun)
+            if (THREAD_BUY_RESOURCES.IsRunning)
             {
-                LVBUYRES.Stop();
+                THREAD_BUY_RESOURCES.Stop();
             }
                 
             if (LVTHAOPHAT.IsRun)
@@ -181,16 +181,17 @@ namespace LVAuto.LVForm
             if (Auto_checkAutoSellResources.Checked && !THREAD_SELL_RESOURCES.IsRunning)
             {
                 //THREAD_SELL_RESOURCES.GetParameter(BanTaiNguyen, int.Parse(SellRes_txtTimer.Text) * 60 * 1000);
-                THREAD_SELL_RESOURCES.SetUp(int.Parse(SellRes_txtTimer.Text) * 60 * 1000);
+                THREAD_SELL_RESOURCES.SetUp(int.Parse(SellRes_txtTimer.Text) * 60);
                 pnSELL.Enabled = false;
                 THREAD_SELL_RESOURCES.Start();
             }
 
-            if (Auto_checkAutoBuyResources.Checked && !LVBUYRES.IsRun)
+            if (Auto_checkAutoBuyResources.Checked && !THREAD_BUY_RESOURCES.IsRunning)
             {
-                LVBUYRES.GetParameter(MuaTaiNguyen);
+                //THREAD_BUY_RESOURCES.GetParameter(MuaTaiNguyen);
+                THREAD_BUY_RESOURCES.SetUp(int.Parse(BuyRes_txtTimer.Text) * 60);
                 pnLVBUYRES.Enabled = false;
-                LVBUYRES.Auto();
+                THREAD_BUY_RESOURCES.Start();
             }
 
             if (Auto_checkAutoQuest.Checked && !LVTHAOPHAT.IsRun)

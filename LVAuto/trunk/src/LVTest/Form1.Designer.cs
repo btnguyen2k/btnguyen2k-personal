@@ -38,6 +38,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.textLog = new System.Windows.Forms.TextBox();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -104,6 +105,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.maskedTextBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnTest);
             this.panel1.Controls.Add(this.textServer);
@@ -136,6 +138,15 @@
             this.textLog.Size = new System.Drawing.Size(624, 385);
             this.textLog.TabIndex = 0;
             // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.Location = new System.Drawing.Point(332, 9);
+            this.maskedTextBox1.Mask = "999,999,999";
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(280, 20);
+            this.maskedTextBox1.TabIndex = 8;
+            this.maskedTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -165,6 +176,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox textLog;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
     }
 }
 

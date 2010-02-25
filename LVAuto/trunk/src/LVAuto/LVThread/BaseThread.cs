@@ -14,7 +14,7 @@ namespace LVAuto.LVThread
         protected Label Message;
         protected Thread InThread;
         public bool IsRunning = false;
-        public int SleepTime = 60000;
+        public int SleepTimeInSeconds = 60;
 
         /// <summary>
         /// Constructs a new BaseThread object
@@ -84,6 +84,18 @@ namespace LVAuto.LVThread
             else
             {
                 this.Message.Text = str;
+            }
+        }
+
+        /// <summary>
+        /// Sleeps for SleepTimeInSeconds seconds.
+        /// </summary>
+        protected void Sleep()
+        {
+            for (int i = 0; i < SleepTimeInSeconds && IsRunning; i++)
+            {
+                SetText("Đang ngủ, còn " + (SleepTimeInSeconds - i) + " giây...");
+                Thread.Sleep(1000);
             }
         }
     } //end class

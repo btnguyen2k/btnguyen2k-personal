@@ -58,6 +58,16 @@ namespace LVAuto.LVForm
         private const string ATTR_GENERAL_NUM_CAVALRIES      = "numCavalries";
         private const string ATTR_GENERAL_NUM_CATAPULTS      = "numCatapults";
 
+        private void Auto_checkAutoSellResources_CheckedChanged(object sender, EventArgs e)
+        {
+            LVToggleAutoSellResources();
+        }
+
+        private void Auto_checkAutoBuyResources_CheckedChanged(object sender, EventArgs e)
+        {
+            LVToggleAutoBuyResources();
+        }
+
         /// <summary>
         /// Save configurations.
         /// </summary>
@@ -301,7 +311,7 @@ namespace LVAuto.LVForm
         {
             if (Auto_checkAutoSellResources.Checked)
             {
-                THREAD_SELL_RESOURCES.SetUp(int.Parse(SellRes_txtTimer.Text) * 60 * 1000);
+                THREAD_SELL_RESOURCES.SetUp(int.Parse(SellRes_txtTimer.Text) * 60);
                 pnSELL.Enabled = false;
                 THREAD_SELL_RESOURCES.Start();
             }
@@ -309,6 +319,24 @@ namespace LVAuto.LVForm
             {
                 THREAD_SELL_RESOURCES.Stop();
                 pnSELL.Enabled = true;
+            }
+        }
+
+        /// <summary>
+        /// Toggles the "Auto Buy Resources" check box.
+        /// </summary>
+        private void LVToggleAutoBuyResources()
+        {
+            if (Auto_checkAutoBuyResources.Checked)
+            {
+                THREAD_BUY_RESOURCES.SetUp(int.Parse(BuyRes_txtTimer.Text) * 60);
+                pnLVBUYRES.Enabled = false;
+                THREAD_BUY_RESOURCES.Start();
+            }
+            else
+            {
+                THREAD_BUY_RESOURCES.Stop();
+                pnLVBUYRES.Enabled = true;
             }
         }
     } //end class

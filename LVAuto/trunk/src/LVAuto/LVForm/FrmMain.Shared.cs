@@ -94,15 +94,15 @@ namespace LVAuto.LVForm
                 //        break;
                 //    }
 
-                case "tabmuatainguyen":
-                    {
-                        if (!BuyResource_loaded)
-                        {
-                            LVCommon.common.LoadCityToGridForBuyResource(this.BuyRes_gridCityList);
-                            BuyResource_loaded = true;
-                        }
-                        break;
-                    }
+                //case "tabmuatainguyen":
+                //    {
+                //        if (!BuyResource_loaded)
+                //        {
+                //            LVCommon.common.LoadCityToGridForBuyResource(this.BuyRes_gridCityList);
+                //            BuyResource_loaded = true;
+                //        }
+                //        break;
+                //    }
 
                 case "tabxaydung":
                     {
