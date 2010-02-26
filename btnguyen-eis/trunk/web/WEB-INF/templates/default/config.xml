@@ -4,6 +4,10 @@
 		<charset>utf-8</charset>
 	</settings>
 	
+	<page id="home.index">
+		<templateFile>page_HomeLogin.html</templateFile>
+	</page>
+	
 	<page id="index">
 		<templateFile>page_index.html</templateFile>
 	</page>

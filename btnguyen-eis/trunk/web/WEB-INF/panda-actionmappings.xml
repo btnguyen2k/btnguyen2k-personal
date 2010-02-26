@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <action-mappings>
-	<default-handler bean="" />
+	<default-handler bean="controllerGlobalDefault" />
 
-	<module name="">
-		<default-handler bean="" />
-		<handler action="action" bean="" />
+	<module name="home">
+		<default-handler />
+		<handler action="login" bean="controllerHomeLogin" />
+		<handler action="index" bean="controllerHomeIndex" />
 	</module>
 </action-mappings>

@@ -7,5 +7,6 @@
         http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-	<bean id="boo" class="java.lang.String" />
+	<bean id="controllerGlobalDefault" class="org.ddth.eis.controller.ReturnHomeController" />
+	<bean id="controllerHomeLogin" class="org.ddth.eis.controller.home.LoginController" />
 </beans>

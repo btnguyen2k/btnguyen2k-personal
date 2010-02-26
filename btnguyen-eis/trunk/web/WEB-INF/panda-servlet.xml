@@ -98,29 +98,34 @@
 	<!-- Template Configuration -->
 
 	<!-- Authentication Configuration -->
-	<bean id="initialDirContextFactory" class="org.acegisecurity.ldap.DefaultInitialDirContextFactory">
-		<constructor-arg value="ldap://ldap.roadrantz.com:389/dc=roadrantz,dc=com" />
-		<property name="managerDn" value="cn=manager,dc=roadrantz,dc=com" />
-		<property name="managerPassword" value="letmein" />
-	</bean>
-
-	<bean id="ldapAuthenticator"
-		class="org.acegisecurity.providers.ldap.authenticator.BindAuthenticator">
-		<constructor-arg ref="initialDirContextFactory" />
-		<property name="userDnPatterns">
-			<list>
-				<value>uid={0},ou=motorists</value>
-			</list>
-		</property>
+	<bean id="ldapTemplate" class="org.springframework.ldap.core.LdapTemplate">
+		<constructor-arg>
+			<bean class="org.springframework.ldap.core.support.LdapContextSource">
+				<!-- Home -->
+				<property name="url" value="ldap://192.168.1.123:389" />
+				<property name="base" value="DC=ddth,DC=local" />
+				<property name="userDn" value="CN=LDAP Public,CN=Users,DC=ddth,DC=local" />
+				<property name="password" value="Abc123" />
+				<!-- -->
+				<!--
+					COA <property name="url" value="ldap://vndc01.vn.coa.local:389" />
+					<property name="base" value="DC=vn,DC=coa,DC=local" /> <property
+					name="userDn" value="CN=ldap public,OU=Test,DC=vn,DC=coa,DC=local"
+					/> <property name="password" value="Abc123" />
+				-->
+			</bean>
+		</constructor-arg>
+		<property name="ignorePartialResultException" value="true" />
 	</bean>
 
 	<bean id="ldapAuthenticationProvider"
-		class="org.acegisecurity.providers.ldap.LdapAuthenticationProvider">
-		<constructor-arg ref="ldapAuthenticator" />
-		<constructor-arg ref="ldapPopulator" />
+		class="org.ddth.panda.extras.security.ldap.SimpleLdapAuthenticationProvider">
+		<property name="ldapTemplate" ref="ldapTemplate" />
+		<property name="uidSearchName" value="userPrincipalName" />
 	</bean>
 
-	<bean id="authenticationManager" class="org.acegisecurity.providers.ProviderManager">
+	<bean id="authenticationManager"
+		class="org.springframework.security.authentication.ProviderManager">
 		<property name="providers">
 			<list>
 				<ref bean="ldapAuthenticationProvider" />
@@ -135,11 +140,10 @@
 		</property>
 	</bean>
 
-	<!--
-		<bean id="urlCreator" class="org.ddth.knob.utils.KnobUrlCreator">
-		</bean>
-	-->
+	<bean id="urlCreator" class="org.ddth.panda.DefaultUrlCreatorImpl">
+	</bean>
 
+	<!-- Panda Bean Configurations -->
 	<bean id="actionControllerManager" class="org.ddth.panda.ActionControllerManager"
 		init-method="init" destroy-method="destroy">
 		<property name="pandaControllersFile" value="/WEB-INF/panda-controllers.xml" />
@@ -151,25 +155,14 @@
 
 	<bean id="applicationFactory" class="org.ddth.panda.ApplicationFactory">
 		<property name="applicationClass" value="org.ddth.panda.DefaultApplication" />
-		<property name="actionControllerManager">
-			<ref bean="actionControllerManager" />
-		</property>
-		<property name="requestParserFactory">
-			<ref bean="requestParserFactory" />
-		</property>
+		<property name="actionControllerManager" ref="actionControllerManager" />
+		<property name="requestParserFactory" ref="requestParserFactory" />
 	</bean>
 
 	<bean id="pandaFrontController" class="org.ddth.panda.springwebmvc.PandaFrontController">
-		<property name="applicationFactory">
-			<ref bean="applicationFactory" />
-		</property>
-		<!--
-			<property name="actionControllerManager"> <ref
-			bean="actionControllerManager" /> </property> <property
-			name="requestParserFactory"> <ref bean="requestParserFactory" />
-			</property>
-		-->
+		<property name="applicationFactory" ref="applicationFactory" />
 	</bean>
+	<!-- Panda Bean Configurations -->
 
 	<!-- Map all requests to pandaFrontController -->
 	<bean id="urlMapping"
@@ -190,5 +183,4 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	<!-- END BO managers -->
-
 </beans>
