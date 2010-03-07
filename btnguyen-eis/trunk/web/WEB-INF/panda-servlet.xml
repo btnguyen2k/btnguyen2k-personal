@@ -117,11 +117,15 @@
 		</constructor-arg>
 		<property name="ignorePartialResultException" value="true" />
 	</bean>
-
+	
 	<bean id="ldapAuthenticationProvider"
 		class="org.ddth.panda.extras.security.ldap.SimpleLdapAuthenticationProvider">
 		<property name="ldapTemplate" ref="ldapTemplate" />
 		<property name="uidSearchName" value="userPrincipalName" />
+	</bean>
+
+	<bean id="dafAuthenticationProvider" class="org.ddth.eis.bo.daf.DafAuthenticationProvider">
+		<property name="dafDataProvider" ref="managerDaf" />
 	</bean>
 
 	<bean id="authenticationManager"
@@ -129,6 +133,7 @@
 		<property name="providers">
 			<list>
 				<ref bean="ldapAuthenticationProvider" />
+				<ref bean="dafAuthenticationProvider" />
 			</list>
 		</property>
 	</bean>

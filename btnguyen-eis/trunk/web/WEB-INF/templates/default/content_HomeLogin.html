@@ -1,0 +1,10 @@
+<#assign _form=page.form />
+<h1>${language.getMessage('msg.login')}</h1>
+<form name="${_form.name}" method="post" action="${_form.action}">
+	<label>Login Name:</label>
+	<input name="loginName" value="" type="text" size="30" />
+	<label>Password:</label>
+	<input name="password" value="" type="password" size="30" />
+	<br /><br />
+	<input class="button" type="submit" value="${language.getMessage('msg.login')}"/>
+</form>

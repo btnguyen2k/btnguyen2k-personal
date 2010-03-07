@@ -17,4 +17,6 @@ public class EisConstants {
 
     public final static String MODULE_HOME                    = "home";
     public final static String ACTION_INDEX                   = "index";
+    public final static String ACTION_LOGIN                   = "login";
+    public final static String ACTION_LOGOUT                  = "logout";
 }
