@@ -43,7 +43,7 @@
 	<classpathentry kind="lib" path="resources/lib/thirdparty/org.springframework.transaction-3.0.0.RELEASE.jar"/>
 	<classpathentry kind="lib" path="resources/lib/thirdparty/org.springframework.web-3.0.0.RELEASE.jar"/>
 	<classpathentry kind="lib" path="resources/lib/thirdparty/org.springframework.web.portlet-3.0.0.RELEASE.jar"/>
-	<classpathentry kind="lib" path="resources/lib/thirdparty/org.springframework.web.servlet-3.0.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="resources/lib/thirdparty/org.springframework.web.servlet-3.0.0.RELEASE.jar" sourcepath="/JavaSources/spring/3.0.0/org.springframework.web.servlet-sources-3.0.0.RELEASE.jar"/>
 	<classpathentry kind="lib" path="resources/lib/thirdparty/org.springframework.web.struts-3.0.0.RELEASE.jar"/>
 	<classpathentry kind="lib" path="resources/lib/thirdparty/postgresql-8.1-404.jdbc3.jar"/>
 	<classpathentry kind="lib" path="resources/lib/thirdparty/spring-security-core-3.0.1.RELEASE.jar"/>

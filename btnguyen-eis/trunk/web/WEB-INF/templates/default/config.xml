@@ -5,7 +5,15 @@
 	</settings>
 	
 	<page id="home.index">
+		<templateFile>transit.html</templateFile>
+	</page>
+	
+	<page id="home.login">
 		<templateFile>page_HomeLogin.html</templateFile>
+	</page>
+	
+	<page id="home.login.successful">
+		<templateFile>page_HomeLoginDone.html</templateFile>
 	</page>
 	
 	<page id="index">

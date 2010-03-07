@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<app-menu>
+	<menu title="lang:msg.menuMain" link="url:/">
+		<item title="lang:msg.home" link="url: /" />
+		<item title="lang:msg.menuStaff" link="action:staff" />
+		<item title="lang:msg.menuHR" link="action:hr" />
+		<item title="lang:msg.menuManager" link="action:manager" />
+		<item title="lang:msg.menuIT" link="action:it" />
+		<item title="lang:msg.menuHelp" link="action:help" />
+		<item title="lang:msg.logout" link="action:logout" />
+	</menu>
+	<menu title="lang:msg.menuStaff" link="action:staff">
+		<item title="Skill Inventory" />
+	</menu>
+	<menu title="lang:msg.menuHR" link="action:hr">
+	</menu>
+	<menu title="lang:msg.menuManager" link="action:manager">
+	</menu>
+	<menu title="lang:msg.menuIT" link="action:it">
+	</menu>
+	<menu title="lang:msg.menuHelp" link="action:help">
+	</menu>
+</app-menu>
