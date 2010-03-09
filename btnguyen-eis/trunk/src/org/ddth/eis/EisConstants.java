@@ -6,6 +6,13 @@ package org.ddth.eis;
  * @author Thanh Ba Nguyen &lt;btnguyen2k@gmail.com&gt;
  */
 public class EisConstants {
+
+    public final static int    GROUP_ID_ADMINISTRATOR         = 1;
+    public final static int    GROUP_ID_STAFF                 = 2;
+    public final static int    GROUP_ID_GUEST                 = 3;
+
+    public final static String SESSION_CURRENT_USERNAME       = "EIS_USERNAME";
+
     public final static String BEAN_HIBERNATE_SESSION_FACTORY = "sessionFactory";
     public final static String BEAN_LANGUAGE_FACTORY          = "languageFactory";
     public final static String BEAN_TEMPLATE_FACTORY          = "templateFactory";

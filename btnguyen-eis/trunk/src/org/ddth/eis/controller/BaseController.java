@@ -31,6 +31,7 @@ import org.ddth.xconfig.XConfig;
 import org.ddth.xconfig.XNode;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
+import org.springframework.web.servlet.view.RedirectView;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
@@ -54,9 +55,22 @@ public abstract class BaseController extends AbstractController {
     protected final static String MODEL_PAGE_SLOGAN      = "slogan";
     protected final static String MODEL_PAGE_TOP_MENU    = "topMenu";
     protected final static String MODEL_PAGE_SIDE_MENU   = "sideMenu";
-    protected final static String MODEL_PAGE_TRANSIT_URL = "transitUrl";
 
     private static XConfig        appMenuConfig;
+
+    /* for IRequireAuthenticationController */
+    /**
+     * Gets the login URL to redirect to.
+     * 
+     * @return String
+     */
+    public String getLoginUrl() {
+        UrlCreator urlCreator = getUrlCreator();
+        String uri = urlCreator.createUri(EisConstants.MODULE_HOME, EisConstants.ACTION_LOGIN);
+        return uri;
+    }
+
+    /* for IRequireAuthenticationController */
 
     /**
      * Gets a bean from Spring's application context.
@@ -292,7 +306,7 @@ public abstract class BaseController extends AbstractController {
                 menuEntry.put(ATTR_URL, url);
             }
             List<Map<String, ?>> menuItems = getMenuItems(node);
-            if ( menuItems != null && menuItems.size() > 1 ) {
+            if ( menuItems != null && menuItems.size() > 0 ) {
                 menuEntry.put(ATTR_MENU_ITEMS, menuItems);
             }
         }
@@ -438,13 +452,20 @@ public abstract class BaseController extends AbstractController {
 
     /**
      * Calls this methods to start populating models.
+     */
+    protected void modelController() {
+        modelController(getModelAndView());
+    }
+
+    /**
+     * Calls this methods to start populating models.
      * 
      * @param mav
      *            ModelAndView
      */
-    protected void modelController() {
-        modelLanguage(getModelAndView());
-        modelPage(getModelAndView());
+    protected void modelController(ModelAndView mav) {
+        modelLanguage(mav);
+        modelPage(mav);
     }
 
     /**
@@ -455,6 +476,15 @@ public abstract class BaseController extends AbstractController {
             HttpServletResponse response) throws Exception {
         this.httpRequest = request;
         this.httpResponse = response;
+        if ( this instanceof IRequireAuthenticationController ) {
+            HttpSession session = getSession();
+            if ( session.getAttribute(EisConstants.SESSION_CURRENT_USERNAME) == null ) {
+                IRequireAuthenticationController controller = (IRequireAuthenticationController) this;
+                String url = controller.getLoginUrl();
+                assert url != null;
+                return new ModelAndView(new RedirectView(url));
+            }
+        }
         initLanguage();
         initTemplate();
         this.mav = execute();

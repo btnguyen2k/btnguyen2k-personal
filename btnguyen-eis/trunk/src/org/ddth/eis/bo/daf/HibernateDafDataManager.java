@@ -353,6 +353,9 @@ public class HibernateDafDataManager implements DafDataManager {
      * {@inheritDoc}
      */
     public DafGroup getGroup(Object groupId) throws DafException {
+        if ( groupId == null ) {
+            return null;
+        }
         Session session = getSession();
         try {
             return (DafGroup) session.get(ENTITY_GROUP, (Serializable) groupId);
@@ -451,6 +454,9 @@ public class HibernateDafDataManager implements DafDataManager {
      * {@inheritDoc}
      */
     public DafUser getUser(Object userId) throws DafException {
+        if ( userId == null ) {
+            return null;
+        }
         Session session = getSession();
         try {
             return (DafUser) session.get(ENTITY_USER, (Serializable) userId);
@@ -463,6 +469,9 @@ public class HibernateDafDataManager implements DafDataManager {
      * {@inheritDoc}
      */
     public DafUser getUser(String loginName) throws DafException {
+        if ( loginName == null ) {
+            return null;
+        }
         // TODO normalizing login name?
         loginName = loginName.trim();
         Session session = getSession();
@@ -481,6 +490,9 @@ public class HibernateDafDataManager implements DafDataManager {
      * {@inheritDoc}
      */
     public DafUser getUserByEmail(String email) throws DafException {
+        if ( email == null ) {
+            return null;
+        }
         // TODO normalizing email?
         email = email.trim();
 
@@ -498,6 +510,9 @@ public class HibernateDafDataManager implements DafDataManager {
      * {@inheritDoc}
      */
     public DafUserProfile getUserProfile(Id id) throws DafException {
+        if ( id == null ) {
+            return null;
+        }
         Session session = getSession();
         try {
             return (DafUserProfile) session.get(ENTITY_USER_PROFILE, id);

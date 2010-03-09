@@ -9,4 +9,5 @@
 
 	<bean id="controllerGlobalDefault" class="org.ddth.eis.controller.ReturnHomeController" />
 	<bean id="controllerHomeLogin" class="org.ddth.eis.controller.home.LoginController" />
+	<bean id="controllerHomeIndex" class="org.ddth.eis.controller.home.IndexController" />
 </beans>
