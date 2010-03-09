@@ -1,5 +1,6 @@
 package org.ddth.eis.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,9 +10,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 public abstract class BaseFormController extends BaseController implements IFormController {
 
-    private final static String MODEL_PAGE_FORM = "form";
+    protected final static String MODEL_PAGE_TRANSITION_URL     = "transitionUrl";
+    protected final static String MODEL_PAGE_TRANSITION_MESSAGE = "transitionMessage";
 
-    private SubmittedForm       form;
+    private final static String   MODEL_PAGE_FORM               = "form";
+
+    private SubmittedForm         form;
 
     /**
      * {@inheritDoc}
@@ -32,7 +36,56 @@ public abstract class BaseFormController extends BaseController implements IForm
      * 
      * @return ModelAndView
      */
-    protected abstract ModelAndView getFormSubmissionSuccessfulModelAndView();
+    @SuppressWarnings("unchecked")
+    protected ModelAndView getFormSubmissionSuccessfulModelAndView() {
+        String viewName = getFormSubmissionSuccessfulViewName();
+        if ( viewName == null ) {
+            return null;
+        }
+        ModelAndView mav = new ModelAndView(viewName);
+        modelController(mav);
+
+        Map<String, Object> model = mav.getModel();
+        Object modelPageObj = model.get(MODEL_PAGE);
+        if ( modelPageObj == null ) {
+            modelPageObj = new HashMap<String, Object>();
+            model.put(MODEL_PAGE, modelPageObj);
+        }
+        Map<String, Object> modelPage = (Map<String, Object>) modelPageObj;
+        String transitionUrl = getTransitionUrl();
+        if ( transitionUrl != null ) {
+            modelPage.put(MODEL_PAGE_TRANSITION_URL, transitionUrl);
+            modelPage.put(MODEL_PAGE_TRANSITION_MESSAGE, getTransitionMessage());
+        }
+
+        return mav;
+    }
+
+    /**
+     * Gets transition url. Sub-class overrides this method to provide its own transition url.
+     * 
+     * @return String
+     */
+    protected String getTransitionUrl() {
+        return null;
+    }
+
+    /**
+     * Gets transition message. Sub-class overrides this method to provide its own transition
+     * message.
+     * 
+     * @return String
+     */
+    protected String getTransitionMessage() {
+        return null;
+    }
+
+    /**
+     * Gets name of the view for successful form submission.
+     * 
+     * @return String
+     */
+    protected abstract String getFormSubmissionSuccessfulViewName();
 
     /**
      * Models the page's content. Subclass overrides this methods to model its own page content.

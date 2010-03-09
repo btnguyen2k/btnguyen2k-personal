@@ -3,20 +3,16 @@
 	<settings>
 		<charset>utf-8</charset>
 	</settings>
-	
+
 	<page id="home.index">
-		<templateFile>transit.html</templateFile>
+		<templateFile>page_HomeIndex.html</templateFile>
 	</page>
-	
+
 	<page id="home.login">
 		<templateFile>page_HomeLogin.html</templateFile>
 	</page>
-	
+
 	<page id="home.login.successful">
-		<templateFile>page_HomeLoginDone.html</templateFile>
-	</page>
-	
-	<page id="index">
-		<templateFile>page_index.html</templateFile>
+		<templateFile>transit.html</templateFile>
 	</page>
 </template-config>

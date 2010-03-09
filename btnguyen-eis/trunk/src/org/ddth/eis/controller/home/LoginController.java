@@ -1,19 +1,27 @@
 package org.ddth.eis.controller.home;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Calendar;
+import java.util.TimeZone;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.ddth.daf.utils.DafException;
 import org.ddth.eis.EisConstants;
+import org.ddth.eis.EisLanguageConstants;
+import org.ddth.eis.bo.daf.DafDataManager;
+import org.ddth.eis.bo.daf.DafUser;
 import org.ddth.eis.controller.BaseFormController;
 import org.ddth.fileupload.SubmittedForm;
 import org.ddth.fileupload.impl.SubmittedFormImpl;
+import org.ddth.mls.Language;
 import org.ddth.panda.UrlCreator;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.ProviderNotFoundException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Controller for action: login
@@ -21,6 +29,8 @@ import org.springframework.web.servlet.ModelAndView;
  * @author Thanh Ba Nguyen &lt;btnguyen2k@gmail.com&gt;
  */
 public class LoginController extends BaseFormController {
+
+    private final Log           LOGGER                = LogFactory.getLog(LoginController.class);
 
     private final static String VIEW_NAME             = EisConstants.MODULE_HOME + "."
                                                               + EisConstants.ACTION_LOGIN;
@@ -44,14 +54,26 @@ public class LoginController extends BaseFormController {
      * {@inheritDoc}
      */
     @Override
-    protected ModelAndView getFormSubmissionSuccessfulModelAndView() {
-        Map<String, String> modelPage = new HashMap<String, String>();
+    protected String getFormSubmissionSuccessfulViewName() {
+        return VIEW_LOGIN_DONE;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected String getTransitionUrl() {
         UrlCreator urlCreator = getUrlCreator();
-        String transitUrl = urlCreator.createUri(EisConstants.MODULE_HOME,
-                                                 EisConstants.ACTION_INDEX);
-        modelPage.put(MODEL_PAGE_TRANSIT_URL, transitUrl);
-        ModelAndView mav = new ModelAndView(VIEW_LOGIN_DONE, MODEL_PAGE, modelPage);
-        return mav;
+        return urlCreator.createUri(EisConstants.MODULE_HOME, EisConstants.ACTION_INDEX);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected String getTransitionMessage() {
+        Language lang = getLanguage();
+        return lang.getMessage(EisLanguageConstants.MESSAGE_LOGIN_SUCCESSFUL);
     }
 
     /**
@@ -82,6 +104,41 @@ public class LoginController extends BaseFormController {
         Authentication authentication = new UsernamePasswordAuthenticationToken(username, password);
         AuthenticationManager am = getBean(EisConstants.BEAN_AUTHENTICATION_MANAGER,
                                            AuthenticationManager.class);
-        return am.authenticate(authentication) != null;
+        try {
+            authentication = am.authenticate(authentication);
+        } catch ( ProviderNotFoundException e ) {
+            authentication = null;
+        }
+        if ( authentication != null ) {
+            // create daf user account if not exists
+            DafDataManager dafManager = getBean(EisConstants.BEAN_BO_DAF_MANAGER,
+                                                DafDataManager.class);
+            try {
+                DafUser user = dafManager.getUser(username);
+                if ( user == null ) {
+                    user = new DafUser();
+                    user.setLoginName(username);
+                    user.setPassword("");
+                    user.setEmail("");
+                    int now = (int) (System.currentTimeMillis() / 1000);
+                    user.setRegisterTimestamp(now);
+                    user.setLastUpdateTimestamp(now);
+                    TimeZone timeZone = Calendar.getInstance().getTimeZone();
+                    user.setTimeZoneId(timeZone.getID());
+                    user = dafManager.createUser(user);
+                    user = dafManager.assignUserToGroup(user.getId(), EisConstants.GROUP_ID_STAFF);
+                }
+            } catch ( DafException e ) {
+                LOGGER.fatal(e.getMessage(), e);
+                throw new RuntimeException(e);
+            }
+
+            HttpSession session = getSession();
+            session.setAttribute(EisConstants.SESSION_CURRENT_USERNAME, username);
+        } else {
+            Language lang = getLanguage();
+            form.addErrorMessage(lang.getMessage(EisLanguageConstants.ERROR_LOGIN_FAILED));
+        }
+        return authentication != null;
     }
 }
