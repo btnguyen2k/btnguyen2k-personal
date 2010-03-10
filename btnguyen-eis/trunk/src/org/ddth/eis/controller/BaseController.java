@@ -14,10 +14,13 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.ddth.daf.utils.DafException;
 import org.ddth.eis.EisAppConfigConstants;
 import org.ddth.eis.EisConstants;
 import org.ddth.eis.bo.appconfig.AppConfig;
 import org.ddth.eis.bo.appconfig.AppConfigManager;
+import org.ddth.eis.bo.daf.DafDataManager;
+import org.ddth.eis.bo.daf.DafUser;
 import org.ddth.mls.Language;
 import org.ddth.mls.LanguageFactory;
 import org.ddth.mls.utils.MlsException;
@@ -66,7 +69,7 @@ public abstract class BaseController extends AbstractController {
      */
     public String getLoginUrl() {
         UrlCreator urlCreator = getUrlCreator();
-        String uri = urlCreator.createUri(EisConstants.MODULE_HOME, EisConstants.ACTION_LOGIN);
+        String uri = urlCreator.createUri(EisConstants.MODULE_HOME, EisConstants.ACTION_HOME_LOGIN);
         return uri;
     }
 
@@ -105,6 +108,23 @@ public abstract class BaseController extends AbstractController {
     }
 
     /**
+     * Gets the currently logged in user.
+     * 
+     * @return DafUser
+     */
+    protected DafUser getCurrentUser() {
+        String username = getSessionAttribute(EisConstants.SESSION_CURRENT_USERNAME, String.class);
+        DafDataManager dafDm = getBean(EisConstants.BEAN_BO_DAF_MANAGER, DafDataManager.class);
+        DafUser user;
+        try {
+            user = dafDm.getUser(username);
+            return user;
+        } catch ( DafException e ) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
      * Gets the ModelAndView object.
      * 
      * @return ModelAndView
@@ -138,6 +158,35 @@ public abstract class BaseController extends AbstractController {
      */
     protected HttpSession getSession() {
         return getRequest().getSession(true);
+    }
+
+    /**
+     * Gets a Http Session attribute.
+     * 
+     * @param attrName
+     *            String
+     * @return Object
+     */
+    protected Object getSessionAttribute(String attrName) {
+        HttpSession session = getSession();
+        return session.getAttribute(attrName);
+    }
+
+    /**
+     * Gets a Http Session attribute.
+     * 
+     * @param <T>
+     * @param attrName
+     *            String
+     * @param clazz
+     *            Class<T>
+     * @return T
+     */
+    @SuppressWarnings("unchecked")
+    protected <T> T getSessionAttribute(String attrName, Class<T> clazz) {
+        HttpSession session = getSession();
+        Object obj = session.getAttribute(attrName);
+        return obj != null ? (T) obj : null;
     }
 
     /**

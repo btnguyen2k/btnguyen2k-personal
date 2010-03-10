@@ -27,7 +27,7 @@ public class ReturnHomeController implements Controller, ApplicationContextAware
      */
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-        String uri = urlCreator.createUri(EisConstants.MODULE_HOME, EisConstants.ACTION_INDEX);
+        String uri = urlCreator.createUri(EisConstants.MODULE_HOME, EisConstants.ACTION_HOME_INDEX);
         View view = new RedirectView(uri);
         return new ModelAndView(view);
     }

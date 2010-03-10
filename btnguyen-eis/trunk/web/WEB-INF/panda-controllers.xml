@@ -8,6 +8,9 @@
         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 	<bean id="controllerGlobalDefault" class="org.ddth.eis.controller.ReturnHomeController" />
+
 	<bean id="controllerHomeLogin" class="org.ddth.eis.controller.home.LoginController" />
 	<bean id="controllerHomeIndex" class="org.ddth.eis.controller.home.IndexController" />
+
+	<bean id="controllerStaffSkillInventory" class="org.ddth.eis.controller.staff.SkillInventoryController" />
 </beans>

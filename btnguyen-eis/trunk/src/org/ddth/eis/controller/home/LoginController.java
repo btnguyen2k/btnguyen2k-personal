@@ -33,10 +33,10 @@ public class LoginController extends BaseFormController {
     private final Log           LOGGER                = LogFactory.getLog(LoginController.class);
 
     private final static String VIEW_NAME             = EisConstants.MODULE_HOME + "."
-                                                              + EisConstants.ACTION_LOGIN;
+                                                              + EisConstants.ACTION_HOME_LOGIN;
 
     private final static String VIEW_LOGIN_DONE       = EisConstants.MODULE_HOME + "."
-                                                              + EisConstants.ACTION_LOGIN
+                                                              + EisConstants.ACTION_HOME_LOGIN
                                                               + ".successful";
 
     private final static String FORM_FIELD_LOGIN_NAME = "loginName";
@@ -64,7 +64,7 @@ public class LoginController extends BaseFormController {
     @Override
     protected String getTransitionUrl() {
         UrlCreator urlCreator = getUrlCreator();
-        return urlCreator.createUri(EisConstants.MODULE_HOME, EisConstants.ACTION_INDEX);
+        return urlCreator.createUri(EisConstants.MODULE_HOME, EisConstants.ACTION_HOME_INDEX);
     }
 
     /**
