@@ -3,8 +3,11 @@
 	<default-handler bean="controllerGlobalDefault" />
 
 	<module name="home">
-		<default-handler />
 		<handler action="login" bean="controllerHomeLogin" />
 		<handler action="index" bean="controllerHomeIndex" />
+	</module>
+
+	<module name="staff">
+		<handler action="skillInventory" bean="controllerStaffSkillInventory" />
 	</module>
 </action-mappings>

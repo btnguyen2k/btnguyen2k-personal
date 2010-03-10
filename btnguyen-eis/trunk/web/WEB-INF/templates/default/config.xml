@@ -15,4 +15,8 @@
 	<page id="home.login.successful">
 		<templateFile>transit.html</templateFile>
 	</page>
+	
+	<page id="staff.skillInventory">
+		<templateFile>page_StaffSkillInventory.html</templateFile>
+	</page>
 </template-config>

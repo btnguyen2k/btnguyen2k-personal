@@ -21,9 +21,13 @@ public class EisConstants {
 
     public final static String BEAN_BO_APPCONFIG_MANAGER      = "managerAppConfig";
     public final static String BEAN_BO_DAF_MANAGER            = "managerDaf";
+    public final static String BEAN_BO_SKILL_MANAGER          = "managerSkill";
 
     public final static String MODULE_HOME                    = "home";
-    public final static String ACTION_INDEX                   = "index";
-    public final static String ACTION_LOGIN                   = "login";
-    public final static String ACTION_LOGOUT                  = "logout";
+    public final static String ACTION_HOME_INDEX              = "index";
+    public final static String ACTION_HOME_LOGIN              = "login";
+    public final static String ACTION_HOME_LOGOUT             = "logout";
+
+    public final static String MODULE_STAFF                   = "staff";
+    public final static String ACTION_STAFF_SKILL_INVENTORY   = "skillInventory";
 }

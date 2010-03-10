@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class entity-name="org.ddth.eis.bo.skillinventory.SkillItem"
+		name="org.ddth.eis.bo.skillinventory.SkillItem" table="eis_skill_item">
+		<cache usage="nonstrict-read-write" />
+		<id name="id" column="siid" type="integer">
+			<generator class="native">
+				<!-- Note: for PostgreSQL 8.3 -->
+				<param name="sequence">eis_skill_item_siid_seq</param>
+			</generator>
+		</id>
+		<property name="categoryId" column="sicategory_id" type="integer"
+			not-null="true" />
+		<property name="name" column="siname" type="string" length="64"
+			not-null="true" />
+	</class>
+</hibernate-mapping>

@@ -7,7 +7,7 @@ import org.ddth.eis.controller.IRequireAuthenticationController;
 public class IndexController extends BaseController implements IRequireAuthenticationController {
 
     private final static String VIEW_NAME = EisConstants.MODULE_HOME + "."
-                                                  + EisConstants.ACTION_INDEX;
+                                                  + EisConstants.ACTION_HOME_INDEX;
 
     /**
      * {@inheritDoc}

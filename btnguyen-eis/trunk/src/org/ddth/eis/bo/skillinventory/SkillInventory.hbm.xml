@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class entity-name="org.ddth.eis.bo.skillinventory.SkillInventory"
+		name="org.ddth.eis.bo.skillinventory.SkillInventory" table="eis_skill_inventory">
+		<cache usage="nonstrict-read-write" />
+		<composite-id>
+			<key-many-to-one name="user" entity-name="org.ddth.eis.bo.daf.DafUser"
+				column="siuser_id" lazy="false" />
+			<key-many-to-one name="skillItem"
+				entity-name="org.ddth.eis.bo.skillinventory.SkillItem" column="siitem_id"
+				lazy="false" />
+		</composite-id>
+		<property name="level" column="silevel" type="integer"
+			not-null="true" />
+	</class>
+</hibernate-mapping>

@@ -8,9 +8,9 @@
 	</div>
 </#if>
 <form name="${_form.name}" method="post" action="${_form.action}">
-	<label>Login Name:</label>
+	<label>${language.getMessage('msg.loginName')}:</label>
 	<input name="loginName" value="" type="text" size="30" />
-	<label>Password:</label>
+	<label>${language.getMessage('msg.password')}:</label>
 	<input name="password" value="" type="password" size="30" />
 	<br /><br />
 	<input class="button" type="submit" value="${language.getMessage('msg.login')}"/>

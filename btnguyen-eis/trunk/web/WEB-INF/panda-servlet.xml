@@ -32,6 +32,9 @@
 				<value>org/ddth/eis/bo/daf/DafUser.hbm.xml</value>
 				<value>org/ddth/eis/bo/daf/DafUserProfile.hbm.xml</value>
 				<value>org/ddth/eis/bo/daf/DafUserRule.hbm.xml</value>
+				<value>org/ddth/eis/bo/skillinventory/SkillCategory.hbm.xml</value>
+				<value>org/ddth/eis/bo/skillinventory/SkillItem.hbm.xml</value>
+				<value>org/ddth/eis/bo/skillinventory/SkillInventory.hbm.xml</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -43,6 +46,8 @@
 				<prop key="hibernate.cache.use_second_level_cache">true</prop>
 				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
 				<prop key="hibernate.cache.configuration_resource_file">ehcache.xml</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
 			</props>
 		</property>
 	</bean>
@@ -188,6 +193,10 @@
 	</bean>
 
 	<bean id="managerDaf" class="org.ddth.eis.bo.daf.HibernateDafDataManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="managerSkill" class="org.ddth.eis.bo.skillinventory.HibernateSkillDataManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	<!-- END BO managers -->

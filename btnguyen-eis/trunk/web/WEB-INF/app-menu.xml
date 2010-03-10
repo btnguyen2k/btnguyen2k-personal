@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <app-menu>
-	<menu title="lang:msg.menuMain" link="url:/">
-		<item title="lang:msg.home" link="url: /" />
+	<menu title="lang:msg.menuMain" link="action:home">
+		<item title="lang:msg.home" link="action:home" />
 		<item title="lang:msg.menuStaff" link="action:staff" />
 		<!--
 		<item title="lang:msg.menuHR" link="action:hr" />
@@ -12,7 +12,7 @@
 		<item title="lang:msg.logout" link="action:logout" />
 	</menu>
 	<menu title="lang:msg.menuStaff" link="action:staff">
-		<item title="Skill Inventory" link="action:staff:mySkillInventory"/>
+		<item title="lang:msg.menuStaff.skillInventory" link="action:staff:skillInventory"/>
 	</menu>
 	<!-- 
 	<menu title="lang:msg.menuHR" link="action:hr">

@@ -8,9 +8,9 @@
 		<cache usage="nonstrict-read-write" />
 		<composite-id>
 			<key-many-to-one name="user" entity-name="org.ddth.eis.bo.daf.DafUser"
-				column="uid" />
+				column="uid" lazy="false" />
 			<key-many-to-one name="group" entity-name="org.ddth.eis.bo.daf.DafGroup"
-				column="gid" />
+				column="gid" lazy="false" />
 		</composite-id>
 	</class>
 </hibernate-mapping>

@@ -1,0 +1,55 @@
+<#assign _form=page.form />
+<h1>${language.getMessage('msg.menuStaff.skillInventory')}</h1>
+<#if _form.hasErrorMessage()>
+	<div class="error">
+		<#list _form.errorMessages as msg>
+			${msg}<br/>
+		</#list>
+	</div>
+</#if>
+<form name="${_form.name}" method="post" action="${_form.action}">
+	<table border="0" width="100%" cellpadding="2" cellspacing="2">
+	<#list page.skillCategories as skillCategory>
+		<tr>
+			<td colspan="2" style="font-weight: bold; border-bottom: 1px solid; font-size: 125%">${skillCategory.name?html}:</td>
+		</tr>
+		<#if skillCategory.skillItems?? && skillCategory.skillItems?size gt 0>
+			<#list skillCategory.skillItems as skillItem>
+				<tr>
+					<#assign _match=0/>
+					<#list 0..9 as level>
+						<#if page.mySkillInventories??>
+							<#list page.mySkillInventories as mySkillInventory>
+								<#if mySkillInventory.skillItem.id=skillItem.id && mySkillInventory.level=level>
+									<#assign _match=level/>
+								</#if>
+							</#list>
+						</#if>
+					</#list>
+					<td style="border-bottom: 1px dotted;
+						<#if _match gt 0>
+							font-weight: bold; font-style: italic;
+							<#if _match gt 6>
+								color: #ff0000;
+							<#elseif _match gt 3>
+								color: #0000ff;
+							</#if>
+						</#if>">
+							&nbsp;&nbsp;&nbsp;&nbsp;${skillItem.name?html}
+					</td>
+					<td style="border-bottom: 1px dotted;">
+						<select name="skillItem_${skillItem.id?c}"<#if _match gt 0> style="font-weight: bold"</#if>>
+							<#list 0..9 as level>
+								<option value="${level?c}"<#if _match=level> selected="selected"</#if>>${level?c}</option>
+							</#list>
+						</select>
+					</td>
+				</tr>
+			</#list>
+			<tr>
+				<td colspan="2" align="right"><input class="button" type="submit" value="${language.getMessage('msg.update')}"/></td>
+			</tr>
+		</#if>
+	</#list>
+	</table>
+</form>
