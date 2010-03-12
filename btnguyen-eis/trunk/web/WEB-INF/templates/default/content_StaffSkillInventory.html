@@ -11,43 +11,53 @@
 	<table border="0" width="100%" cellpadding="2" cellspacing="2">
 	<#list page.skillCategories as skillCategory>
 		<tr>
-			<td colspan="2" style="font-weight: bold; border-bottom: 1px solid; font-size: 125%">${skillCategory.name?html}:</td>
+			<td colspan="3" style="font-weight: bold; border-bottom: 1px solid; font-size: 125%">${skillCategory.name?html}:</td>
 		</tr>
 		<#if skillCategory.skillItems?? && skillCategory.skillItems?size gt 0>
+			<tr>
+				<td style="font-weight: bold;">${language.getMessage('msg.skill')}</td>
+				<td style="font-weight: bold;" align="center">${language.getMessage('msg.skill.rating')}</td>
+				<td style="font-weight: bold;" align="center">${language.getMessage('msg.skill.numMonthsExp')}</td>
+			</tr>
 			<#list skillCategory.skillItems as skillItem>
 				<tr>
-					<#assign _match=0/>
+					<#assign _matchLevel=0/>
+					<#assign _matchNumMonthsExp=0/>
+					<#assign _style=""/>
 					<#list 0..9 as level>
 						<#if page.mySkillInventories??>
 							<#list page.mySkillInventories as mySkillInventory>
 								<#if mySkillInventory.skillItem.id=skillItem.id && mySkillInventory.level=level>
-									<#assign _match=level/>
+									<#assign _matchLevel=level/>
+									<#assign _matchNumMonthsExp=mySkillInventory.numMonthsExp/>
 								</#if>
 							</#list>
 						</#if>
 					</#list>
-					<td style="border-bottom: 1px dotted;
-						<#if _match gt 0>
-							font-weight: bold; font-style: italic;
-							<#if _match gt 6>
-								color: #ff0000;
-							<#elseif _match gt 3>
-								color: #0000ff;
-							</#if>
-						</#if>">
-							&nbsp;&nbsp;&nbsp;&nbsp;${skillItem.name?html}
-					</td>
+					<#if _matchLevel gt 6>
+						<#assign _style="font-weight: bold; font-style: italic; color: #ff0000;"/>
+					<#elseif _matchLevel gt 3>
+						<#assign _style="font-weight: bold; font-style: italic; color: #0000ff;"/>
+					<#elseif _matchLevel gt 0>
+						<#assign _style="font-weight: bold; font-style: italic;"/>
+					</#if>
 					<td style="border-bottom: 1px dotted;">
-						<select name="skillItem_${skillItem.id?c}"<#if _match gt 0> style="font-weight: bold"</#if>>
+							<span style="${_style}">&nbsp;&nbsp;&nbsp;&nbsp;${skillItem.name?html}</span>
+					</td>
+					<td style="border-bottom: 1px dotted;" align="center">
+						<select name="skillItem_level_${skillItem.id?c}">
 							<#list 0..9 as level>
-								<option value="${level?c}"<#if _match=level> selected="selected"</#if>>${level?c}</option>
+								<option value="${level?c}"<#if _matchLevel=level> style="${_style}" selected="selected"</#if>>${level?c}</option>
 							</#list>
 						</select>
+					</td>
+					<td style="border-bottom: 1px dotted;" align="center">
+						<input style="text-align: right; ${_style}" name="skillItem_numMonthsExp_${skillItem.id?c}" value="${_matchNumMonthsExp?c}" size="4"/>
 					</td>
 				</tr>
 			</#list>
 			<tr>
-				<td colspan="2" align="right"><input class="button" type="submit" value="${language.getMessage('msg.update')}"/></td>
+				<td colspan="3" align="right"><input class="button" type="submit" value="${language.getMessage('msg.update')}"/></td>
 			</tr>
 		</#if>
 	</#list>

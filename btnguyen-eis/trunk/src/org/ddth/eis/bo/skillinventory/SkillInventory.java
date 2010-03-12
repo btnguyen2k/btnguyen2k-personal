@@ -15,23 +15,7 @@ public class SkillInventory implements Serializable {
 
     private DafUser           user;
     private SkillItem         skillItem;
-    private int               userId, skillItemId, level;
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public int getSkillItemId() {
-        return skillItemId;
-    }
-
-    public void setSkillItemId(int skillItemId) {
-        this.skillItemId = skillItemId;
-    }
+    private int               level, numMonthsExp;
 
     public int getLevel() {
         return level;
@@ -39,6 +23,18 @@ public class SkillInventory implements Serializable {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public int getNumMonthsExp() {
+        return numMonthsExp;
+    }
+
+    public void setNumMonthsExp(int numMonthsExp) {
+        this.numMonthsExp = numMonthsExp;
+    }
+
+    public static long getSerialversionuid() {
+        return serialVersionUID;
     }
 
     public DafUser getUser() {

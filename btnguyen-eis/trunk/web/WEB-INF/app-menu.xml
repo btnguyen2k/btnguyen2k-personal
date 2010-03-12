@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <app-menu>
-	<menu title="lang:msg.menuMain" link="action:home">
-		<item title="lang:msg.home" link="action:home" />
-		<item title="lang:msg.menuStaff" link="action:staff" />
-		<!--
-		<item title="lang:msg.menuHR" link="action:hr" />
-		<item title="lang:msg.menuManager" link="action:manager" />
-		<item title="lang:msg.menuIT" link="action:it" />
+	<menu title="lang:msg.menuMain" link="action:home" permission="EIS:STAFF">
+		<item title="lang:msg.home" link="action:home" permission="EIS:STAFF" />
+		<item title="lang:msg.menuStaff" link="action:staff" permission="EIS:STAFF" />
+		<item title="lang:msg.menuHR" link="action:hr" permission="EIS:HR" />
+		<item title="lang:msg.menuManager" link="action:manager"
+			permission="EIS:MANAGER" />
+		<item title="lang:msg.menuIT" link="action:it" permission="EIS:IT" />
 		<item title="lang:msg.menuHelp" link="action:help" />
-		-->
 		<item title="lang:msg.logout" link="action:logout" />
 	</menu>
-	<menu title="lang:msg.menuStaff" link="action:staff">
-		<item title="lang:msg.menuStaff.skillInventory" link="action:staff:skillInventory"/>
+	<menu title="lang:msg.menuStaff" link="action:staff" permission="EIS:STAFF">
+		<item title="lang:msg.menuStaff.skillInventory" link="action:staff:skillInventory" />
 	</menu>
-	<!-- 
-	<menu title="lang:msg.menuHR" link="action:hr">
+	<menu title="lang:msg.menuHR" link="action:hr" permission="EIS:HR">
 	</menu>
-	<menu title="lang:msg.menuManager" link="action:manager">
+	<menu title="lang:msg.menuManager" link="action:manager"
+		permission="EIS:MANAGER">
 	</menu>
-	<menu title="lang:msg.menuIT" link="action:it">
+	<menu title="lang:msg.menuIT" link="action:it" permission="EIS:IT">
 	</menu>
 	<menu title="lang:msg.menuHelp" link="action:help">
 	</menu>
-	-->
 </app-menu>

@@ -107,18 +107,19 @@
 		<constructor-arg>
 			<bean class="org.springframework.ldap.core.support.LdapContextSource">
 				<!--
-					Home -->
-				<property name="url" value="ldap://192.168.1.123:389" />
-				<property name="base" value="DC=ddth,DC=local" />
-				<property name="userDn" value="CN=LDAP Public,CN=Users,DC=ddth,DC=local" />
-				<property name="password" value="Abc123" />
-				<!--  -->
-				<!--
-					COA <property name="url" value="ldap://vndc01.vn.coa.local:389" />
-					<property name="base" value="DC=vn,DC=coa,DC=local" /> <property
-					name="userDn" value="CN=ldap public,OU=Test,DC=vn,DC=coa,DC=local"
-					/> <property name="password" value="Abc123" />
+					Home <property name="url" value="ldap://192.168.1.123:389" />
+					<property name="base" value="DC=ddth,DC=local" /> <property
+					name="userDn" value="CN=LDAP Public,CN=Users,DC=ddth,DC=local" />
+					<property name="password" value="Abc123" />
 				-->
+				<!--
+					COA -->
+				<property name="url" value="ldap://vndc01.vn.coa.local:389" />
+				<property name="base" value="DC=vn,DC=coa,DC=local" />
+				<property name="userDn"
+					value="CN=ldap public,OU=Test,DC=vn,DC=coa,DC=local" />
+				<property name="password" value="Abc123" />
+				<!-- -->
 			</bean>
 		</constructor-arg>
 		<property name="ignorePartialResultException" value="true" />
@@ -195,8 +196,9 @@
 	<bean id="managerDaf" class="org.ddth.eis.bo.daf.HibernateDafDataManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	
-	<bean id="managerSkill" class="org.ddth.eis.bo.skillinventory.HibernateSkillDataManager">
+
+	<bean id="managerSkill"
+		class="org.ddth.eis.bo.skillinventory.HibernateSkillDataManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	<!-- END BO managers -->

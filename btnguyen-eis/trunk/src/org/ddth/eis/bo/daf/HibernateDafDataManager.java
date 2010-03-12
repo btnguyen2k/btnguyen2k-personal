@@ -140,6 +140,7 @@ public class HibernateDafDataManager implements DafDataManager {
     }
 
     private void closeSession(Session session) {
+        session.flush();
         session.close();
     }
 

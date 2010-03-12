@@ -5,8 +5,13 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.ddth.daf.UserProfile;
+import org.ddth.daf.UserProfile.Id;
+import org.ddth.daf.utils.DafException;
 import org.ddth.eis.EisConstants;
+import org.ddth.eis.bo.daf.DafDataManager;
 import org.ddth.eis.bo.daf.DafUser;
+import org.ddth.eis.bo.daf.DafUserProfile;
 import org.ddth.eis.bo.skillinventory.SkillCategory;
 import org.ddth.eis.bo.skillinventory.SkillDataManager;
 import org.ddth.eis.bo.skillinventory.SkillInventory;
@@ -19,14 +24,15 @@ import org.ddth.fileupload.impl.SubmittedFormImpl;
 public class SkillInventoryController extends BaseFormController implements
         IRequireAuthenticationController {
 
-    private final static String VIEW_NAME                       = EisConstants.MODULE_STAFF
-                                                                        + "."
-                                                                        + EisConstants.ACTION_STAFF_SKILL_INVENTORY;
+    private final static String VIEW_NAME                            = EisConstants.MODULE_STAFF
+                                                                             + "."
+                                                                             + EisConstants.ACTION_STAFF_SKILL_INVENTORY;
 
-    private final static String MODEL_PAGE_SKILL_CATEGORIES     = "skillCategories";
-    private final static String MODEL_PAGE_MY_SKILL_INVENTORIES = "mySkillInventories";
+    private final static String MODEL_PAGE_SKILL_CATEGORIES          = "skillCategories";
+    private final static String MODEL_PAGE_MY_SKILL_INVENTORIES      = "mySkillInventories";
 
-    private final static String FORM_FIELD_SKILL_ITEM           = "skillItem";
+    private final static String FORM_FIELD_SKILL_ITEM_LEVEL          = "skillItem_level";
+    private final static String FORM_FIELD_SKILL_ITEM_NUM_MONTHS_EXP = "skillItem_numMonthsExp";
 
     /**
      * {@inheritDoc}
@@ -74,8 +80,13 @@ public class SkillInventoryController extends BaseFormController implements
         Collection<? extends SkillCategory> skillCategories = sdm.getAllSkillCategories();
         for ( SkillCategory skillCategory : skillCategories ) {
             for ( SkillItem skillItem : skillCategory.getSkillItems() ) {
-                String fieldName = FORM_FIELD_SKILL_ITEM + "_" + skillItem.getId();
+                String fieldName = FORM_FIELD_SKILL_ITEM_LEVEL + "_" + skillItem.getId();
                 Object fieldValue = request.getParameter(fieldName);
+                if ( fieldValue != null ) {
+                    form.setAttribute(fieldName, fieldValue);
+                }
+                fieldName = FORM_FIELD_SKILL_ITEM_NUM_MONTHS_EXP + "_" + skillItem.getId();
+                fieldValue = request.getParameter(fieldName);
                 if ( fieldValue != null ) {
                     form.setAttribute(fieldName, fieldValue);
                 }
@@ -97,16 +108,33 @@ public class SkillInventoryController extends BaseFormController implements
         Collection<? extends SkillCategory> skillCategories = sdm.getAllSkillCategories();
         for ( SkillCategory skillCategory : skillCategories ) {
             for ( SkillItem skillItem : skillCategory.getSkillItems() ) {
-                String fieldName = FORM_FIELD_SKILL_ITEM + "_" + skillItem.getId();
+                String fieldName = FORM_FIELD_SKILL_ITEM_LEVEL + "_" + skillItem.getId();
                 int fieldValue = form.getAttributeAsInt(fieldName);
                 if ( 1 <= fieldValue && fieldValue <= 9 ) {
                     SkillInventory skillInventory = new SkillInventory();
-                    skillInventory.setLevel(fieldValue);
                     skillInventory.setSkillItem(skillItem);
                     skillInventory.setUser(user);
+                    skillInventory.setLevel(fieldValue);
+                    fieldName = FORM_FIELD_SKILL_ITEM_NUM_MONTHS_EXP + "_" + skillItem.getId();
+                    fieldValue = form.getAttributeAsInt(fieldName);
+                    skillInventory.setNumMonthsExp(fieldValue);
                     sdm.createSkillInventory(skillInventory);
                 }
             }
+        }
+        DafDataManager dafDm = getBean(EisConstants.BEAN_BO_DAF_MANAGER, DafDataManager.class);
+        UserProfile.Id userProfileId = new Id(user.getId(), EisConstants.APP_DOMAIN,
+                EisConstants.UPK_KEY_LAST_SKILL_UPDATE_TIMESTAMP);
+        try {
+            DafUserProfile userProfile = dafDm.getUserProfile(userProfileId);
+            if ( userProfile == null ) {
+                userProfile = new DafUserProfile(userProfileId, null);
+                dafDm.createUserProfile(userProfile);
+            }
+            userProfile.setValue(System.currentTimeMillis() / 1000);
+            dafDm.updateUserProfile(userProfile);
+        } catch ( DafException e ) {
+            throw new RuntimeException(e);
         }
         return true;
     }

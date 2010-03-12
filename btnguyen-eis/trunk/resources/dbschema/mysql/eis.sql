@@ -32,9 +32,10 @@ CREATE TABLE IF NOT EXISTS eis_app_config (
 	PRIMARY KEY (config_domain, config_key)
 ) Engine = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 INSERT INTO eis_app_config (config_domain, config_key, config_string) VALUES ('SITE', 'NAME', 'EIS');
-INSERT INTO eis_app_config (config_domain, config_key, config_string) VALUES ('SITE', 'TITLE', 'EIS');
-INSERT INTO eis_app_config (config_domain, config_key, config_string) VALUES ('SITE', 'KEYWORDS', 'EIS, CMS, Content Management System');
-INSERT INTO eis_app_config (config_domain, config_key, config_string) VALUES ('SITE', 'DESCRIPTION', 'Knob - Content Management System');
+INSERT INTO eis_app_config (config_domain, config_key, config_string) VALUES ('SITE', 'TITLE', 'EIS - Enterprise Intranet Suite');
+INSERT INTO eis_app_config (config_domain, config_key, config_string) VALUES ('SITE', 'KEYWORDS', 'EIS, Enterprise, Intranet');
+INSERT INTO eis_app_config (config_domain, config_key, config_string) VALUES ('SITE', 'DESCRIPTION', 'EIS - Enterprise Intranet Suite');
+INSERT INTO eis_app_config (config_domain, config_key, config_string) VALUES ('SITE', 'SLOGAN', 'Too lazy to think of a slogan');
 
 CREATE TABLE daf_permission (
 	pmodule							VARCHAR(32)			NOT NULL,
@@ -43,8 +44,14 @@ CREATE TABLE daf_permission (
 	ppassport_class_name			VARCHAR(255)		NOT NULL,
 	PRIMARY KEY (pmodule, paction)
 ) Engine = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci;
-#INSERT INTO daf_permission (pmodule, paction, pdescription, ppassport_class_name)
-#VALUES ('PANDA_PORTAL', 'ACCESS_ADMINCP', 'Has permission to access Panda Portal Administration Control Panel.', 'org.ddth.daf.impl.BooleanPassport');
+INSERT INTO daf_permission (pmodule, paction, pdescription, ppassport_class_name)
+VALUES ('EIS', 'STAFF', 'Staff-level permission.', 'org.ddth.daf.impl.BooleanPassport');
+INSERT INTO daf_permission (pmodule, paction, pdescription, ppassport_class_name)
+VALUES ('EIS', 'HR', 'HR-level permission.', 'org.ddth.daf.impl.BooleanPassport');
+INSERT INTO daf_permission (pmodule, paction, pdescription, ppassport_class_name)
+VALUES ('EIS', 'MANAGER', 'Manager-level permission.', 'org.ddth.daf.impl.BooleanPassport');
+INSERT INTO daf_permission (pmodule, paction, pdescription, ppassport_class_name)
+VALUES ('EIS', 'IT', 'IT-level permission.', 'org.ddth.daf.impl.BooleanPassport');
 
 CREATE TABLE daf_user (
 	uid								INTEGER				AUTO_INCREMENT,
@@ -132,10 +139,24 @@ INSERT INTO daf_group (gis_god, gname, gdescription, gprefix, gsuffix)
 VALUES (1, 'Administrator', 'God administrator who has full privileges.', '<font color="#FF0000">', '</font>');
 
 INSERT INTO daf_group (gis_god, gname, gdescription, gprefix, gsuffix)
-VALUES (0, 'Staff', 'Normal user who normally has read/write privileges.', '', '');
+VALUES (0, 'Staff', 'Normal staff.', '', '');
+
+NSERT INTO daf_group (gis_god, gname, gdescription, gprefix, gsuffix)
+VALUES (0, 'HR', 'HR staff.', '', '');
+
+NSERT INTO daf_group (gis_god, gname, gdescription, gprefix, gsuffix)
+VALUES (0, 'Manager', 'Manager staff.', '', '');
+
+NSERT INTO daf_group (gis_god, gname, gdescription, gprefix, gsuffix)
+VALUES (0, 'IT', 'IT staff.', '', '');
 
 INSERT INTO daf_group (gis_god, gname, gdescription, gprefix, gsuffix)
 VALUES (0, 'Guest', 'Guest user who normally has read-only privileges.', '', '');
 
-	-- Administrator account - Administrator group
+INSERT INTO daf_group_rule (gid, pmodule, paction, is_global) VALUES (2, 'EIS', 'STAFF', 'Y');
+INSERT INTO daf_group_rule (gid, pmodule, paction, is_global) VALUES (3, 'EIS', 'HR', 'Y');
+INSERT INTO daf_group_rule (gid, pmodule, paction, is_global) VALUES (4, 'EIS', 'MANAGER', 'Y');
+INSERT INTO daf_group_rule (gid, pmodule, paction, is_global) VALUES (5, 'EIS', 'IT', 'Y');
+
+-- Administrator account - Administrator group
 INSERT INTO daf_role (gid, uid) VALUES(1, 1);

@@ -29,6 +29,8 @@ CREATE TABLE IF NOT EXISTS eis_skill_inventory (
 		INDEX (siitem_id),
 	silevel								INTEGER				NOT NULL DEFAULT 0,
 		INDEX (silevel),
+	sinum_months_exp					INTEGER				NOT NULL DEFAULT 0,
+		INDEX (sinum_months_exp),
 	PRIMARY KEY (siuser_id,siitem_id),
 	FOREIGN KEY (siuser_id) REFERENCES daf_user(uid) ON DELETE CASCADE,
 	FOREIGN KEY (siitem_id) REFERENCES eis_skill_item(siid) ON DELETE CASCADE
