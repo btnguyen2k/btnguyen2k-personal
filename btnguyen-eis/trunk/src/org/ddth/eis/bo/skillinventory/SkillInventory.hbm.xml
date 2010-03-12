@@ -15,5 +15,7 @@
 		</composite-id>
 		<property name="level" column="silevel" type="integer"
 			not-null="true" />
+		<property name="numMonthsExp" column="sinum_months_exp" type="integer"
+			not-null="true" />
 	</class>
 </hibernate-mapping>

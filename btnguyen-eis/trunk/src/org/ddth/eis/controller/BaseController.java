@@ -303,6 +303,7 @@ public abstract class BaseController extends AbstractController {
         modelPageTitle(modelPage);
         modelPageKeywords(modelPage);
         modelPageDescription(modelPage);
+        modelPageSlogan(modelPage);
         modelPageContent(modelPage);
     }
 
@@ -315,6 +316,7 @@ public abstract class BaseController extends AbstractController {
         final String XPATH_MENU = "/app-menu/menu";
         final String NODE_TITLE = "title";
         final String NODE_LINK = "link";
+        final String NODE_PERMISSION = "permission";
         final String ATTR_TITLE = "title";
         final String ATTR_URL = "url";
         final String ATTR_MENU_ITEMS = "menuItems";
@@ -334,6 +336,17 @@ public abstract class BaseController extends AbstractController {
         Language lang = getLanguage();
         UrlCreator urlCreator = getUrlCreator();
         for ( XNode node : nodes ) {
+            String strPermission = node.getAtrribute(NODE_PERMISSION);
+            if ( strPermission != null ) {
+                String[] tokens = strPermission.split(":");
+                if ( tokens.length != 2 ) {
+                    // something wrong...
+                    LOGGER.warn("Invalid permission: " + strPermission);
+                    continue;
+                }
+                
+            }
+
             Map<String, Object> menuEntry = new HashMap<String, Object>();
             modelMenu.add(menuEntry);
             String title = node.getAtrribute(NODE_TITLE);
@@ -443,11 +456,27 @@ public abstract class BaseController extends AbstractController {
      */
     protected void modelPageName(Map<String, Object> modelPage) {
         AppConfigManager acp = getAppConfigManager();
-        AppConfig config = acp.loadConfig(EisAppConfigConstants.CONFIG_PAGE_NAME);
+        AppConfig config = acp.loadConfig(EisAppConfigConstants.CONFIG_SITE_NAME);
         if ( config != null ) {
             modelPage.put(MODEL_PAGE_NAME, config.getStringValue());
         } else {
             modelPage.put(MODEL_PAGE_NAME, "");
+        }
+    }
+
+    /**
+     * Models the page's slogan.
+     * 
+     * @param modelPage
+     *            Map<String, Object>
+     */
+    protected void modelPageSlogan(Map<String, Object> modelPage) {
+        AppConfigManager acp = getAppConfigManager();
+        AppConfig config = acp.loadConfig(EisAppConfigConstants.CONFIG_SITE_SLOGAN);
+        if ( config != null ) {
+            modelPage.put(MODEL_PAGE_SLOGAN, config.getStringValue());
+        } else {
+            modelPage.put(MODEL_PAGE_SLOGAN, "");
         }
     }
 
@@ -459,7 +488,7 @@ public abstract class BaseController extends AbstractController {
      */
     protected void modelPageTitle(Map<String, Object> modelPage) {
         AppConfigManager acp = getAppConfigManager();
-        AppConfig config = acp.loadConfig(EisAppConfigConstants.CONFIG_PAGE_TITLE);
+        AppConfig config = acp.loadConfig(EisAppConfigConstants.CONFIG_SITE_TITLE);
         if ( config != null ) {
             modelPage.put(MODEL_PAGE_TITLE, config.getStringValue());
         } else {
@@ -475,7 +504,7 @@ public abstract class BaseController extends AbstractController {
      */
     protected void modelPageKeywords(Map<String, Object> modelPage) {
         AppConfigManager acp = getAppConfigManager();
-        AppConfig config = acp.loadConfig(EisAppConfigConstants.CONFIG_PAGE_KEYWORDS);
+        AppConfig config = acp.loadConfig(EisAppConfigConstants.CONFIG_SITE_KEYWORDS);
         if ( config != null ) {
             modelPage.put(MODEL_PAGE_KEYWORDS, config.getStringValue());
         } else {
@@ -491,7 +520,7 @@ public abstract class BaseController extends AbstractController {
      */
     protected void modelPageDescription(Map<String, Object> modelPage) {
         AppConfigManager acp = getAppConfigManager();
-        AppConfig config = acp.loadConfig(EisAppConfigConstants.CONFIG_PAGE_DESCRIPTION);
+        AppConfig config = acp.loadConfig(EisAppConfigConstants.CONFIG_SITE_DESCRIPTION);
         if ( config != null ) {
             modelPage.put(MODEL_PAGE_DESCRIPTION, config.getStringValue());
         } else {
