@@ -3,7 +3,7 @@
 	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class entity-name="org.ddth.eis.bo.daf.DafUser" name="org.ddth.eis.bo.daf.DafUser"
+	<class entity-name="org.ddth.panda.daf.DafUser" name="org.ddth.panda.daf.DafUser"
 		table="daf_user">
 		<cache usage="nonstrict-read-write" />
 		<id name="id" column="uid" type="integer">
@@ -22,6 +22,7 @@
 			type="integer" not-null="true" />
 		<property name="lastUpdateTimestamp" column="ulast_update_timestamp"
 			type="integer" not-null="true" />
+		<property name="title" column="utitle" type="string" length="16" />
 		<property name="firstName" column="ufirst_name" type="string"
 			length="32" />
 		<property name="middleName" column="umid_name" type="string"
@@ -40,7 +41,7 @@
 		<set name="roles" table="daf_role" lazy="false">
 			<cache usage="nonstrict-read-write" />
 			<key column="uid" />
-			<many-to-many column="gid" entity-name="org.ddth.eis.bo.daf.DafGroup" />
+			<many-to-many column="gid" entity-name="org.ddth.panda.daf.DafGroup" />
 		</set>
 	</class>
 </hibernate-mapping>

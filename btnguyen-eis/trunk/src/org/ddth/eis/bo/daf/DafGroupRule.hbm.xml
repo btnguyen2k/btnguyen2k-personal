@@ -3,17 +3,17 @@
 	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class entity-name="org.ddth.eis.bo.daf.DafGroupRule" name="org.ddth.eis.bo.daf.DafGroupRule"
+	<class entity-name="org.ddth.panda.daf.DafGroupRule" name="org.ddth.panda.daf.DafGroupRule"
 		table="daf_group_rule">
 		<cache usage="nonstrict-read-write" />
 		<composite-id>
 			<key-many-to-one name="permission"
-				entity-name="org.ddth.eis.bo.daf.DafPermission" lazy="false">
+				entity-name="org.ddth.panda.daf.DafPermission" lazy="false">
 				<column name="pmodule" />
 				<column name="paction" />
 			</key-many-to-one>
 			<key-many-to-one name="group" lazy="false"
-				entity-name="org.ddth.eis.bo.daf.DafGroup" column="gid" />
+				entity-name="org.ddth.panda.daf.DafGroup" column="gid" />
 		</composite-id>
 		<property name="isGlobal" column="is_global"
 			type="org.ddth.hibernate.CharBooleanType" not-null="true" />

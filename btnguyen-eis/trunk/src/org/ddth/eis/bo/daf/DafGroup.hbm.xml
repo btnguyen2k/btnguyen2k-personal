@@ -3,7 +3,7 @@
 	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class entity-name="org.ddth.eis.bo.daf.DafGroup" name="org.ddth.eis.bo.daf.DafGroup"
+	<class entity-name="org.ddth.panda.daf.DafGroup" name="org.ddth.panda.daf.DafGroup"
 		table="daf_group">
 		<cache usage="nonstrict-read-write" />
 		<id name="id" column="gid" type="integer">

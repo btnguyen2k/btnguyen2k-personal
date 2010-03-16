@@ -9,29 +9,29 @@ import org.ddth.daf.UserProfile;
 import org.ddth.daf.UserProfile.Id;
 import org.ddth.daf.utils.DafException;
 import org.ddth.eis.EisConstants;
-import org.ddth.eis.bo.daf.DafDataManager;
-import org.ddth.eis.bo.daf.DafUser;
-import org.ddth.eis.bo.daf.DafUserProfile;
 import org.ddth.eis.bo.skillinventory.SkillCategory;
 import org.ddth.eis.bo.skillinventory.SkillDataManager;
 import org.ddth.eis.bo.skillinventory.SkillInventory;
 import org.ddth.eis.bo.skillinventory.SkillItem;
 import org.ddth.eis.controller.BaseFormController;
 import org.ddth.eis.controller.IRequireAuthenticationController;
+import org.ddth.eis.controller.IRequireAuthorizationController;
 import org.ddth.fileupload.SubmittedForm;
 import org.ddth.fileupload.impl.SubmittedFormImpl;
+import org.ddth.panda.daf.DafDataManager;
+import org.ddth.panda.daf.DafUser;
+import org.ddth.panda.daf.DafUserProfile;
 
 public class SkillInventoryController extends BaseFormController implements
-        IRequireAuthenticationController {
+        IRequireAuthenticationController, IRequireAuthorizationController {
 
-    private final static String VIEW_NAME                            = EisConstants.MODULE_STAFF
-                                                                             + "."
-                                                                             + EisConstants.ACTION_STAFF_SKILL_INVENTORY;
+    private final static String VIEW_NAME = EisConstants.MODULE_STAFF + "."
+            + EisConstants.ACTION_STAFF_SKILL_INVENTORY;
 
-    private final static String MODEL_PAGE_SKILL_CATEGORIES          = "skillCategories";
-    private final static String MODEL_PAGE_MY_SKILL_INVENTORIES      = "mySkillInventories";
+    private final static String MODEL_PAGE_SKILL_CATEGORIES = "skillCategories";
+    private final static String MODEL_PAGE_MY_SKILL_INVENTORIES = "mySkillInventories";
 
-    private final static String FORM_FIELD_SKILL_ITEM_LEVEL          = "skillItem_level";
+    private final static String FORM_FIELD_SKILL_ITEM_LEVEL = "skillItem_level";
     private final static String FORM_FIELD_SKILL_ITEM_NUM_MONTHS_EXP = "skillItem_numMonthsExp";
 
     /**

@@ -2,15 +2,15 @@ package org.ddth.eis.controller;
 
 /**
  * Controller implements this interface to indicate that access to the controller requires
- * authentication.
+ * authorization.
  * 
  * @author Thanh Ba Nguyen &lt;btnguyen2k@gmail.com&gt;
  */
-public interface IRequireAuthenticationController {
+public interface IRequireAuthorizationController {
     /**
-     * Gets the login URL to redirect to.
+     * Checks if the current user can access this controler.
      * 
-     * @return String
+     * @return boolean
      */
-    public String getLoginUrl();
+    public boolean canAccess();
 }

@@ -7,7 +7,7 @@
 		name="org.ddth.eis.bo.skillinventory.SkillInventory" table="eis_skill_inventory">
 		<cache usage="nonstrict-read-write" />
 		<composite-id>
-			<key-many-to-one name="user" entity-name="org.ddth.eis.bo.daf.DafUser"
+			<key-many-to-one name="user" entity-name="org.ddth.panda.daf.DafUser"
 				column="siuser_id" lazy="false" />
 			<key-many-to-one name="skillItem"
 				entity-name="org.ddth.eis.bo.skillinventory.SkillItem" column="siitem_id"

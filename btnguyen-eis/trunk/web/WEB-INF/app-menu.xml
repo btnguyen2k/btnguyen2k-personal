@@ -11,6 +11,7 @@
 		<item title="lang:msg.logout" link="action:logout" />
 	</menu>
 	<menu title="lang:msg.menuStaff" link="action:staff" permission="EIS:STAFF">
+		<item title="lang:msg.menuStaff.profile" link="action:staff:profile" />
 		<item title="lang:msg.menuStaff.skillInventory" link="action:staff:skillInventory" />
 	</menu>
 	<menu title="lang:msg.menuHR" link="action:hr" permission="EIS:HR">

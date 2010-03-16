@@ -10,12 +10,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 public abstract class BaseFormController extends BaseController implements IFormController {
 
-    protected final static String MODEL_PAGE_TRANSITION_URL     = "transitionUrl";
+    protected final static String MODEL_PAGE_TRANSITION_URL = "transitionUrl";
     protected final static String MODEL_PAGE_TRANSITION_MESSAGE = "transitionMessage";
 
-    private final static String   MODEL_PAGE_FORM               = "form";
+    private final static String MODEL_PAGE_FORM = "form";
 
-    private SubmittedForm         form;
+    private SubmittedForm form;
 
     /**
      * {@inheritDoc}

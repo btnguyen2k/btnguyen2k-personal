@@ -3,7 +3,7 @@
 	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class entity-name="org.ddth.eis.bo.daf.DafUserProfile" name="org.ddth.eis.bo.daf.DafUserProfile"
+	<class entity-name="org.ddth.panda.daf.DafUserProfile" name="org.ddth.panda.daf.DafUserProfile"
 		table="daf_user_profile">
 		<cache usage="nonstrict-read-write" />
 		<composite-id class="org.ddth.daf.UserProfile$Id" name="id">

@@ -3,7 +3,7 @@
 	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class entity-name="org.ddth.eis.bo.daf.DafPermission" name="org.ddth.eis.bo.daf.DafPermission"
+	<class entity-name="org.ddth.panda.daf.DafPermission" name="org.ddth.panda.daf.DafPermission"
 		table="daf_permission">
 		<cache usage="nonstrict-read-write" />
 		<composite-id>
