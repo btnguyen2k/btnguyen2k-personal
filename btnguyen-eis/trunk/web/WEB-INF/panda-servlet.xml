@@ -19,7 +19,7 @@
 		<property name="resourceRef" value="true" />
 	</bean>
 
-	<bean id="sessionFactory"
+	<bean id="hibernateSessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="mappingResources">
@@ -50,6 +50,10 @@
 				<prop key="hibernate.format_sql">true</prop>
 			</props>
 		</property>
+	</bean>
+
+	<bean id="pandaHibernateSessionFactory" class="org.ddth.panda.hibernate.SimpleHibernateSessionFactory">
+		<property name="sessionFactory" ref="hibernateSessionFactory" />
 	</bean>
 	<!-- Database Configuration -->
 
@@ -131,9 +135,11 @@
 		<property name="uidSearchName" value="userPrincipalName" />
 	</bean>
 
-	<bean id="dafAuthenticationProvider" class="org.ddth.eis.bo.daf.DafAuthenticationProvider">
-		<property name="dafDataProvider" ref="managerDaf" />
-	</bean>
+	<!--
+		<bean id="dafAuthenticationProvider"
+		class="org.ddth.eis.bo.daf.DafAuthenticationProvider"> <property
+		name="dafDataProvider" ref="managerDaf" /> </bean>
+	-->
 
 	<bean id="authenticationManager"
 		class="org.springframework.security.authentication.ProviderManager">
@@ -147,6 +153,12 @@
 		</property>
 	</bean>
 	<!-- Authentication Configuration -->
+
+	<!-- Authorization Configuration -->
+	<bean id="dafAuthorizationAgent" class="org.ddth.daf.impl.SimpleAuthorizationAgent">
+		<property name="dataProvider" ref="managerDaf" />
+	</bean>
+	<!-- Authorization Configuration -->
 
 	<bean id="pandaViewResolver" class="org.ddth.panda.springwebmvc.PandaViewResolver">
 		<property name="templateFactory">
@@ -190,16 +202,21 @@
 
 	<!-- START BO managers -->
 	<bean id="managerAppConfig" class="org.ddth.eis.bo.appconfig.HibernateAppConfigManager">
-		<property name="sessionFactory" ref="sessionFactory" />
+		<property name="sessionFactory" ref="hibernateSessionFactory" />
 	</bean>
 
-	<bean id="managerDaf" class="org.ddth.eis.bo.daf.HibernateDafDataManager">
-		<property name="sessionFactory" ref="sessionFactory" />
+	<!--
+		<bean id="managerDaf"
+		class="org.ddth.eis.bo.daf.HibernateDafDataManager"> <property
+		name="sessionFactory" ref="hibernateSessionFactory" /> </bean>
+	-->
+	<bean id="managerDaf" class="org.ddth.panda.daf.hibernate.HibernateDafDataManager">
+		<property name="hibernateSessionFactory" ref="pandaHibernateSessionFactory" />
 	</bean>
 
 	<bean id="managerSkill"
 		class="org.ddth.eis.bo.skillinventory.HibernateSkillDataManager">
-		<property name="sessionFactory" ref="sessionFactory" />
+		<property name="sessionFactory" ref="hibernateSessionFactory" />
 	</bean>
 	<!-- END BO managers -->
 </beans>

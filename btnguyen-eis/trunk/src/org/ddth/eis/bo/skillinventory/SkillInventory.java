@@ -2,7 +2,7 @@ package org.ddth.eis.bo.skillinventory;
 
 import java.io.Serializable;
 
-import org.ddth.eis.bo.daf.DafUser;
+import org.ddth.panda.daf.DafUser;
 
 /**
  * @author Thanh Ba Nguyen &lt;btnguyen2k@gmail.com&gt;
@@ -13,9 +13,9 @@ public class SkillInventory implements Serializable {
      */
     private static final long serialVersionUID = -2474094414059627717L;
 
-    private DafUser           user;
-    private SkillItem         skillItem;
-    private int               level, numMonthsExp;
+    private DafUser user;
+    private SkillItem skillItem;
+    private int level, numMonthsExp;
 
     public int getLevel() {
         return level;

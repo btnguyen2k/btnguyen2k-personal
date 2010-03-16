@@ -3,7 +3,7 @@ package org.ddth.eis.bo.skillinventory;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.ddth.eis.bo.daf.DafUser;
+import org.ddth.panda.daf.DafUser;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -14,13 +14,13 @@ import org.hibernate.SessionFactory;
  */
 public class HibernateSkillDataManager implements SkillDataManager {
 
-    private final static String ENTITY_SKILL_CATEGORY  = SkillCategory.class.getName();
+    private final static String ENTITY_SKILL_CATEGORY = SkillCategory.class.getName();
 
-    private final static String ENTITY_SKILL_ITEM      = SkillItem.class.getName();
+    private final static String ENTITY_SKILL_ITEM = SkillItem.class.getName();
 
     private final static String ENTITY_SKILL_INVENTORY = SkillInventory.class.getName();
 
-    private SessionFactory      sessionFactory;
+    private SessionFactory sessionFactory;
 
     public SessionFactory getSessionFactory() {
         return this.sessionFactory;

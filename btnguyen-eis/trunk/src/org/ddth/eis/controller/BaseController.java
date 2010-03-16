@@ -3,6 +3,7 @@ package org.ddth.eis.controller;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,18 +15,23 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.ddth.daf.utils.DafException;
+import org.ddth.daf.AuthorityAgent;
+import org.ddth.daf.AuthorizationAgent;
+import org.ddth.daf.Passport;
+import org.ddth.daf.Resource;
 import org.ddth.eis.EisAppConfigConstants;
 import org.ddth.eis.EisConstants;
 import org.ddth.eis.bo.appconfig.AppConfig;
 import org.ddth.eis.bo.appconfig.AppConfigManager;
-import org.ddth.eis.bo.daf.DafDataManager;
-import org.ddth.eis.bo.daf.DafUser;
+import org.ddth.eis.model.DafUserModel;
 import org.ddth.mls.Language;
 import org.ddth.mls.LanguageFactory;
 import org.ddth.mls.utils.MlsException;
 import org.ddth.panda.PandaConstants;
 import org.ddth.panda.UrlCreator;
+import org.ddth.panda.daf.DafDataManager;
+import org.ddth.panda.daf.DafPermission;
+import org.ddth.panda.daf.DafUser;
 import org.ddth.webtemplate.Template;
 import org.ddth.webtemplate.TemplateFactory;
 import org.ddth.webtemplate.utils.WebTemplateException;
@@ -40,26 +46,29 @@ import org.xml.sax.SAXException;
 
 public abstract class BaseController extends AbstractController {
 
-    private final static Log      LOGGER                 = LogFactory.getLog(BaseController.class);
+    private final static Log LOGGER = LogFactory.getLog(BaseController.class);
 
-    private HttpServletRequest    httpRequest;
+    private HttpServletRequest httpRequest;
 
-    private HttpServletResponse   httpResponse;
+    private HttpServletResponse httpResponse;
 
-    private ModelAndView          mav;
+    private ModelAndView mav;
 
-    protected final static String MODEL_LANGUAGE         = "language";
+    private DafPermission accessPermission;
 
-    protected final static String MODEL_PAGE             = "page";
-    protected final static String MODEL_PAGE_NAME        = "name";
-    protected final static String MODEL_PAGE_TITLE       = "title";
-    protected final static String MODEL_PAGE_KEYWORDS    = "keywords";
+    protected final static String MODEL_LANGUAGE = "language";
+
+    protected final static String MODEL_CURRENT_USER = "currentUser";
+    protected final static String MODEL_PAGE = "page";
+    protected final static String MODEL_PAGE_NAME = "name";
+    protected final static String MODEL_PAGE_TITLE = "title";
+    protected final static String MODEL_PAGE_KEYWORDS = "keywords";
     protected final static String MODEL_PAGE_DESCRIPTION = "description";
-    protected final static String MODEL_PAGE_SLOGAN      = "slogan";
-    protected final static String MODEL_PAGE_TOP_MENU    = "topMenu";
-    protected final static String MODEL_PAGE_SIDE_MENU   = "sideMenu";
+    protected final static String MODEL_PAGE_SLOGAN = "slogan";
+    protected final static String MODEL_PAGE_TOP_MENU = "topMenu";
+    protected final static String MODEL_PAGE_SIDE_MENU = "sideMenu";
 
-    private static XConfig        appMenuConfig;
+    private static XConfig appMenuConfig;
 
     /* for IRequireAuthenticationController */
     /**
@@ -74,6 +83,26 @@ public abstract class BaseController extends AbstractController {
     }
 
     /* for IRequireAuthenticationController */
+
+    /* for IRequireAuthorizationController */
+    /**
+     * Checks if the current user can access this controler.
+     * 
+     * @return boolean
+     */
+    public boolean canAccess() {
+        return accessPermission != null ? hasPermission(accessPermission) : true;
+    }
+
+    public void setAccessPermission(DafPermission accessPermission) {
+        this.accessPermission = accessPermission;
+    }
+
+    public DafPermission getAccessPermission() {
+        return this.accessPermission;
+    }
+
+    /* for IRequireAuthorizationController */
 
     /**
      * Gets a bean from Spring's application context.
@@ -115,13 +144,7 @@ public abstract class BaseController extends AbstractController {
     protected DafUser getCurrentUser() {
         String username = getSessionAttribute(EisConstants.SESSION_CURRENT_USERNAME, String.class);
         DafDataManager dafDm = getBean(EisConstants.BEAN_BO_DAF_MANAGER, DafDataManager.class);
-        DafUser user;
-        try {
-            user = dafDm.getUser(username);
-            return user;
-        } catch ( DafException e ) {
-            throw new RuntimeException(e);
-        }
+        return username != null ? dafDm.getUser(username) : null;
     }
 
     /**
@@ -187,6 +210,17 @@ public abstract class BaseController extends AbstractController {
         HttpSession session = getSession();
         Object obj = session.getAttribute(attrName);
         return obj != null ? (T) obj : null;
+    }
+
+    /**
+     * Removes a Http Session attribute.
+     * 
+     * @param attrName
+     *            String
+     */
+    protected void removeSessionAttribute(String attrName) {
+        HttpSession session = getSession();
+        session.removeAttribute(attrName);
     }
 
     /**
@@ -289,6 +323,16 @@ public abstract class BaseController extends AbstractController {
     }
 
     /**
+     * Top level model: Sets the CurrentUser model.
+     * 
+     * @param mav
+     *            ModelAndView
+     */
+    protected void modelCurrentUser(ModelAndView mav) {
+        mav.addObject(MODEL_CURRENT_USER, DafUserModel.getInstance(getCurrentUser()));
+    }
+
+    /**
      * Top level model: Sets the Page model.
      * 
      * @param mav
@@ -305,6 +349,64 @@ public abstract class BaseController extends AbstractController {
         modelPageDescription(modelPage);
         modelPageSlogan(modelPage);
         modelPageContent(modelPage);
+    }
+
+    /**
+     * Checks if the current user has a specific permission.
+     * 
+     * @param permission
+     *            DafPermission
+     * @return boolean
+     */
+    protected boolean hasPermission(DafPermission permission) {
+        DafUser currentUser = getCurrentUser();
+        if ( currentUser == null ) {
+            return false;
+        }
+        AuthorizationAgent aa = getBean(EisConstants.BEAN_DAF_AUTHORIZATION_AGENT,
+                                        AuthorizationAgent.class);
+        // if ( currentUser != null ) {
+        if ( aa.isInGodGroup(currentUser) ) {
+            return true;
+        }
+        Collection<? extends Passport> passports = aa
+                .getAuthority(currentUser, permission, AuthorityAgent.RETURN_ALL_PASSPORT);
+        return passports != null && passports.size() > 0;
+        // } else {
+        // DafDataManager dafDm = getDafDataManager();
+        // return permissionChecker.getPassport(dafDm.getGroup(PandaPortalConstants.GROUP_GUEST),
+        // permission) != null;
+        // }
+    }
+
+    /**
+     * Checks if the current user has a specific permission against a specific resource.
+     * 
+     * @param permission
+     *            DafPermission
+     * @param resource
+     *            Resource
+     * @return boolean
+     */
+    protected boolean hasPermission(DafPermission permission, Resource resource) {
+        DafUser currentUser = getCurrentUser();
+        if ( currentUser == null ) {
+            return false;
+        }
+        AuthorizationAgent aa = getBean(EisConstants.BEAN_DAF_AUTHORIZATION_AGENT,
+                                        AuthorizationAgent.class);
+        // if ( currentUser != null ) {
+        if ( aa.isInGodGroup(currentUser) ) {
+            return true;
+        }
+        Collection<? extends Passport> passports = aa
+                .getAuthority(currentUser, permission, resource, AuthorityAgent.RETURN_ALL_PASSPORT);
+        return passports != null && passports.size() > 0;
+        // } else {
+        // DafDataManager dafDm = getDafDataManager();
+        // return permissionChecker.getPassport(dafDm.getGroup(PandaPortalConstants.GROUP_GUEST),
+        // permission, resource) != null;
+        // }
     }
 
     private XConfig loadMenuConfig() throws IOException, SAXException, ParserConfigurationException {
@@ -344,7 +446,10 @@ public abstract class BaseController extends AbstractController {
                     LOGGER.warn("Invalid permission: " + strPermission);
                     continue;
                 }
-                
+                DafPermission permission = DafPermission.createInstance(tokens[0], tokens[1]);
+                if ( !hasPermission(permission) ) {
+                    continue;
+                }
             }
 
             Map<String, Object> menuEntry = new HashMap<String, Object>();
@@ -542,6 +647,7 @@ public abstract class BaseController extends AbstractController {
      *            ModelAndView
      */
     protected void modelController(ModelAndView mav) {
+        modelCurrentUser(mav);
         modelLanguage(mav);
         modelPage(mav);
     }
@@ -555,12 +661,22 @@ public abstract class BaseController extends AbstractController {
         this.httpRequest = request;
         this.httpResponse = response;
         if ( this instanceof IRequireAuthenticationController ) {
-            HttpSession session = getSession();
-            if ( session.getAttribute(EisConstants.SESSION_CURRENT_USERNAME) == null ) {
+            DafUser user = getCurrentUser();
+            if ( user == null ) {
+                removeSessionAttribute(EisConstants.SESSION_CURRENT_USERNAME);
                 IRequireAuthenticationController controller = (IRequireAuthenticationController) this;
                 String url = controller.getLoginUrl();
                 assert url != null;
                 return new ModelAndView(new RedirectView(url));
+            }
+        }
+        if ( this instanceof IRequireAuthorizationController ) {
+            IRequireAuthorizationController controller = (IRequireAuthorizationController) this;
+            if ( !controller.canAccess() ) {
+                // TODO refine!
+                // current behavior: return HTTP Error 403
+                response.sendError(403);
+                return null;
             }
         }
         initLanguage();

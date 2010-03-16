@@ -3,13 +3,13 @@
 	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class entity-name="org.ddth.eis.bo.daf.DafRole" name="org.ddth.eis.bo.daf.DafRole"
+	<class entity-name="org.ddth.panda.daf.DafRole" name="org.ddth.panda.daf.DafRole"
 		table="daf_role">
 		<cache usage="nonstrict-read-write" />
 		<composite-id>
-			<key-many-to-one name="user" entity-name="org.ddth.eis.bo.daf.DafUser"
+			<key-many-to-one name="user" entity-name="org.ddth.panda.daf.DafUser"
 				column="uid" lazy="false" />
-			<key-many-to-one name="group" entity-name="org.ddth.eis.bo.daf.DafGroup"
+			<key-many-to-one name="group" entity-name="org.ddth.panda.daf.DafGroup"
 				column="gid" lazy="false" />
 		</composite-id>
 	</class>

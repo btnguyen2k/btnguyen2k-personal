@@ -2,7 +2,7 @@ package org.ddth.eis.bo.skillinventory;
 
 import java.util.Collection;
 
-import org.ddth.eis.bo.daf.DafUser;
+import org.ddth.panda.daf.DafUser;
 
 public interface SkillDataManager {
     /**

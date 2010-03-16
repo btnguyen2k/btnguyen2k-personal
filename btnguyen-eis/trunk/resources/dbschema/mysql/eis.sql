@@ -9,6 +9,10 @@
 #GRANT ALL PRIVILEGES ON eis.* TO 'eis'@'localhost' IDENTIFIED BY 'eis';
 
 # Drop existing tables
+DROP TABLE IF EXISTS eis_skill_inventory;
+DROP TABLE IF EXISTS eis_skill_item;
+DROP TABLE IF EXISTS eis_skill_category;
+
 DROP TABLE IF EXISTS eis_app_config;
 DROP TABLE IF EXISTS daf_user_profile;
 DROP TABLE IF EXISTS daf_role;
@@ -64,6 +68,7 @@ CREATE TABLE daf_user (
 		INDEX (uregister_timestamp),
 	ulast_update_timestamp			INTEGER				NOT NULL DEFAULT 0,
 		INDEX (ulast_update_timestamp),
+	utitle							VARCHAR(16),
 	ufirst_name						VARCHAR(32),
 	umid_name						VARCHAR(64),
 	ulast_name						VARCHAR(32),
@@ -141,13 +146,13 @@ VALUES (1, 'Administrator', 'God administrator who has full privileges.', '<font
 INSERT INTO daf_group (gis_god, gname, gdescription, gprefix, gsuffix)
 VALUES (0, 'Staff', 'Normal staff.', '', '');
 
-NSERT INTO daf_group (gis_god, gname, gdescription, gprefix, gsuffix)
+INSERT INTO daf_group (gis_god, gname, gdescription, gprefix, gsuffix)
 VALUES (0, 'HR', 'HR staff.', '', '');
 
-NSERT INTO daf_group (gis_god, gname, gdescription, gprefix, gsuffix)
+INSERT INTO daf_group (gis_god, gname, gdescription, gprefix, gsuffix)
 VALUES (0, 'Manager', 'Manager staff.', '', '');
 
-NSERT INTO daf_group (gis_god, gname, gdescription, gprefix, gsuffix)
+INSERT INTO daf_group (gis_god, gname, gdescription, gprefix, gsuffix)
 VALUES (0, 'IT', 'IT staff.', '', '');
 
 INSERT INTO daf_group (gis_god, gname, gdescription, gprefix, gsuffix)

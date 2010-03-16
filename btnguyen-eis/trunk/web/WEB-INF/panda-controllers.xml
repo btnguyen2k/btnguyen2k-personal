@@ -12,5 +12,14 @@
 	<bean id="controllerHomeLogin" class="org.ddth.eis.controller.home.LoginController" />
 	<bean id="controllerHomeIndex" class="org.ddth.eis.controller.home.IndexController" />
 
-	<bean id="controllerStaffSkillInventory" class="org.ddth.eis.controller.staff.SkillInventoryController" />
+	<bean id="controllerStaffSkillInventory" class="org.ddth.eis.controller.staff.SkillInventoryController">
+		<property name="accessPermission">
+			<bean class="org.ddth.panda.daf.DafPermission">
+				<constructor-arg value="EIS" />
+				<constructor-arg value="STAFF" />
+				<constructor-arg value="" />
+				<constructor-arg value="org.ddth.daf.impl.BooleanPassport" />
+			</bean>
+		</property>
+	</bean>
 </beans>

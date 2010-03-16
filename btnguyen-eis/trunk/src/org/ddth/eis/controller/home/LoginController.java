@@ -11,13 +11,13 @@ import org.apache.commons.logging.LogFactory;
 import org.ddth.daf.utils.DafException;
 import org.ddth.eis.EisConstants;
 import org.ddth.eis.EisLanguageConstants;
-import org.ddth.eis.bo.daf.DafDataManager;
-import org.ddth.eis.bo.daf.DafUser;
 import org.ddth.eis.controller.BaseFormController;
 import org.ddth.fileupload.SubmittedForm;
 import org.ddth.fileupload.impl.SubmittedFormImpl;
 import org.ddth.mls.Language;
 import org.ddth.panda.UrlCreator;
+import org.ddth.panda.daf.DafDataManager;
+import org.ddth.panda.daf.DafUser;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderNotFoundException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -30,17 +30,16 @@ import org.springframework.security.core.Authentication;
  */
 public class LoginController extends BaseFormController {
 
-    private final Log           LOGGER                = LogFactory.getLog(LoginController.class);
+    private final Log LOGGER = LogFactory.getLog(LoginController.class);
 
-    private final static String VIEW_NAME             = EisConstants.MODULE_HOME + "."
-                                                              + EisConstants.ACTION_HOME_LOGIN;
+    private final static String VIEW_NAME = EisConstants.MODULE_HOME + "."
+            + EisConstants.ACTION_HOME_LOGIN;
 
-    private final static String VIEW_LOGIN_DONE       = EisConstants.MODULE_HOME + "."
-                                                              + EisConstants.ACTION_HOME_LOGIN
-                                                              + ".successful";
+    private final static String VIEW_LOGIN_DONE = EisConstants.MODULE_HOME + "."
+            + EisConstants.ACTION_HOME_LOGIN + ".successful";
 
     private final static String FORM_FIELD_LOGIN_NAME = "loginName";
-    private final static String FORM_FIELD_PASSWORD   = "password";
+    private final static String FORM_FIELD_PASSWORD = "password";
 
     /**
      * {@inheritDoc}
