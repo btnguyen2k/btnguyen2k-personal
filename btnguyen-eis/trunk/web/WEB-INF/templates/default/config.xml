@@ -19,4 +19,8 @@
 	<page id="staff.skillInventory">
 		<templateFile>page_StaffSkillInventory.html</templateFile>
 	</page>
+	
+	<page id="staff.profile">
+		<templateFile>page_StaffProfile.html</templateFile>
+	</page>
 </template-config>
