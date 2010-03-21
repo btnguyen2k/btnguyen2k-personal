@@ -22,13 +22,13 @@ import org.ddth.panda.daf.DafDataManager;
 import org.ddth.panda.daf.DafUser;
 import org.ddth.panda.daf.DafUserProfile;
 
-public class SkillInventoryController extends BaseFormController implements
+public class ProfileController extends BaseFormController implements
         IRequireAuthenticationController, IRequireAuthorizationController {
 
-    private final static String FORM_NAME = "frmSkillInventory";
-
+    private final static String FORM_NAME = "frmStaffProfile";
+    
     private final static String VIEW_NAME = EisConstants.MODULE_STAFF + "."
-            + EisConstants.ACTION_STAFF_SKILL_INVENTORY;
+            + EisConstants.ACTION_STAFF_PROFILE;
 
     private final static String MODEL_PAGE_SKILL_CATEGORIES = "skillCategories";
     private final static String MODEL_PAGE_MY_SKILL_INVENTORIES = "mySkillInventories";
@@ -56,7 +56,7 @@ public class SkillInventoryController extends BaseFormController implements
      * {@inheritDoc}
      */
     public SubmittedForm initAssociatedForm() {
-        SubmittedForm form = new SubmittedFormImpl(FORM_NAME);
+        SubmittedForm form = new SubmittedFormImpl("FORM_NAME");
         form.setAction("");
         return form;
     }

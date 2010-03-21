@@ -483,6 +483,7 @@ public abstract class BaseController extends AbstractController {
     private List<Map<String, ?>> getMenuItems(XNode root) {
         final String NODE_TITLE = "title";
         final String NODE_LINK = "link";
+        final String NODE_PERMISSION = "permission";
         final String ATTR_TITLE = "title";
         final String ATTR_URL = "url";
 
@@ -497,6 +498,20 @@ public abstract class BaseController extends AbstractController {
         ArrayXNode aNode = (ArrayXNode) root;
         XNode[] children = aNode.getNodeValue();
         for ( XNode child : children ) {
+            String strPermission = child.getAtrribute(NODE_PERMISSION);
+            if ( strPermission != null ) {
+                String[] tokens = strPermission.split(":");
+                if ( tokens.length != 2 ) {
+                    // something wrong...
+                    LOGGER.warn("Invalid permission: " + strPermission);
+                    continue;
+                }
+                DafPermission permission = DafPermission.createInstance(tokens[0], tokens[1]);
+                if ( !hasPermission(permission) ) {
+                    continue;
+                }
+            }
+
             Map<String, Object> menuEntry = new HashMap<String, Object>();
             menuItems.add(menuEntry);
             String title = child.getAtrribute(NODE_TITLE);

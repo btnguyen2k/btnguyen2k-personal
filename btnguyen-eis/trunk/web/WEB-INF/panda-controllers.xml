@@ -22,4 +22,14 @@
 			</bean>
 		</property>
 	</bean>
+	<bean id="controllerStaffProfile" class="org.ddth.eis.controller.staff.ProfileController">
+		<property name="accessPermission">
+			<bean class="org.ddth.panda.daf.DafPermission">
+				<constructor-arg value="EIS" />
+				<constructor-arg value="STAFF" />
+				<constructor-arg value="" />
+				<constructor-arg value="org.ddth.daf.impl.BooleanPassport" />
+			</bean>
+		</property>
+	</bean>
 </beans>
