@@ -226,7 +226,7 @@ namespace LVAuto.LVForm
 
             if (Auto_checkAutoConstruct.Checked && !THREAD_CONSTRUCT.IsRunning)
             {
-                THREAD_CONSTRUCT.SetUp(int.Parse(txtBUILDCHECK.Text) * 60 * 1000);
+                THREAD_CONSTRUCT.SetUp(int.Parse(Construct_txtTimer.Text) * 60 * 1000);
                 Construct_treeBuilding.Enabled = false;
                 Construct_btnReloadBuildings.Enabled = false;
                 THREAD_CONSTRUCT.Start();

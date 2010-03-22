@@ -16,6 +16,7 @@ namespace LVAuto.LVHelper
         public const int COMMAND_SELL_RESOURCE = 49;
         public const int COMMAND_BUILD_BUILDING = 65;
         public const int COMMAND_UPDATE_MY_MARKET_PRICE = 68;
+        public const int COMMAND_SELL_NATIONAL_TREASURE_ITEM = 136;
 
         private static object LocalLock = new object();
 
@@ -86,6 +87,12 @@ namespace LVAuto.LVHelper
             {
                 return null;
             }
+        }
+
+        public static void SellNationalTreasureItem(int itemId)
+        {
+            string parameters = "lEquipID=" + itemId;
+            GetInstance().ExecuteCommand(COMMAND_SELL_NATIONAL_TREASURE_ITEM, parameters, true);
         }
 
         /// <summary>

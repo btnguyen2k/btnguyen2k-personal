@@ -178,10 +178,10 @@ namespace LVAuto.LVForm
         {
             XmlElement myNode = doc.CreateElement(NODE_CONSTRUCTIONS);
             root.AppendChild(myNode);
-            myNode.SetAttribute(ATTR_TIME, LVAuto.LVForm.FrmMain.LVFRMMAIN.txtBUILDCHECK.Text);
-            myNode.SetAttribute(ATTR_CONSTRUCT_ALL, LVAuto.LVForm.FrmMain.LVFRMMAIN.chkXayNhaAll.Checked.ToString());
-            myNode.SetAttribute(ATTR_AUTO_RESOURCE, LVAuto.LVForm.FrmMain.LVFRMMAIN.chkXayNha_TuMuaTaiNguyen.Checked.ToString());
-            myNode.SetAttribute(ATTR_GOLD_THRESHOLD, LVAuto.LVForm.FrmMain.LVFRMMAIN.txtXayNha_VangAnToan.Text);
+            myNode.SetAttribute(ATTR_TIME, LVAuto.LVForm.FrmMain.LVFRMMAIN.Construct_txtTimer.Text);
+            myNode.SetAttribute(ATTR_CONSTRUCT_ALL, LVAuto.LVForm.FrmMain.LVFRMMAIN.Construct_checkUpgradeAll.Checked.ToString());
+            myNode.SetAttribute(ATTR_AUTO_RESOURCE, LVAuto.LVForm.FrmMain.LVFRMMAIN.Construct_checkAutoBuyResources.Checked.ToString());
+            myNode.SetAttribute(ATTR_GOLD_THRESHOLD, LVAuto.LVForm.FrmMain.LVFRMMAIN.Construct_txtGoldThreshold.Text);
 
             if ( LVAuto.LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AllCities == null )
             {
@@ -290,7 +290,7 @@ namespace LVAuto.LVForm
         {
             if (Auto_checkAutoConstruct.Checked)
             {
-                THREAD_CONSTRUCT.SetUp(int.Parse(txtBUILDCHECK.Text) * 60 * 1000);
+                THREAD_CONSTRUCT.SetUp(int.Parse(Construct_txtTimer.Text) * 60 * 1000);
                 Construct_treeBuilding.Enabled = false;
                 pnXayNha.Enabled = false;
                 Construct_btnReloadBuildings.Enabled = false;
