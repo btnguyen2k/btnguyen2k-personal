@@ -13,6 +13,7 @@ namespace LVAuto.LVHelper
         private static object LocalLock = new object();
 
         public const int COMMAND_GET_MARKET_INFO = 38;
+        public const int COMMAND_GET_NATIONAL_TREASURE_INFO = 24;
 
         private static CommonCommandHelper instance;
 
@@ -81,6 +82,46 @@ namespace LVAuto.LVHelper
             {
                 return null;
             }
+        }
+
+        /// <summary>
+        /// Gets information about helmet items in national treasure.
+        /// </summary>
+        /// <returns>result["list"] is list of helmets, each item is an array where [0] is the itemId, and [1] is the itemName</returns>
+        public static Hashtable GetNationalTreasureHelmets()
+        {
+            string parameter = "lType=1";
+            return GetInstance().ExecuteCommand(COMMAND_GET_NATIONAL_TREASURE_INFO, parameter, true);
+        }
+
+        /// <summary>
+        /// Gets information about weapon items in national treasure.
+        /// </summary>
+        /// <returns>result["list"] is list of weapons, each item is an array where [0] is the itemId, and [1] is the itemName</returns>
+        public static Hashtable GetNationalTreasureWeapons()
+        {
+            string parameter = "lType=2";
+            return GetInstance().ExecuteCommand(COMMAND_GET_NATIONAL_TREASURE_INFO, parameter, true);
+        }
+
+        /// <summary>
+        /// Gets information about armour items in national treasure.
+        /// </summary>
+        /// <returns>result["list"] is list of armours, each item is an array where [0] is the itemId, and [1] is the itemName</returns>
+        public static Hashtable GetNationalTreasureArmours()
+        {
+            string parameter = "lType=3";
+            return GetInstance().ExecuteCommand(COMMAND_GET_NATIONAL_TREASURE_INFO, parameter, true);
+        }
+
+        /// <summary>
+        /// Gets information about mount items in national treasure.
+        /// </summary>
+        /// <returns>result["list"] is list of mounts, each item is an array where [0] is the itemId, and [1] is the itemName</returns>
+        public static Hashtable GetNationalTreasureMounts()
+        {
+            string parameter = "lType=4";
+            return GetInstance().ExecuteCommand(COMMAND_GET_NATIONAL_TREASURE_INFO, parameter, true);
         }
 
         /// <summary>

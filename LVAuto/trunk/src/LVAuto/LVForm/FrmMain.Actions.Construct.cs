@@ -11,6 +11,16 @@ namespace LVAuto.LVForm
 {
     public partial class FrmMain : Form
     {
+        private void Construct_dropdownCityList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LVLoadBuildingsToTreeViewForConstruct();
+        }
+
+        private void Construct_btnReloadBuildings_Click(object sender, EventArgs e)
+        {
+            LVReloadBuildingsForConstruct();
+        }
+
         /// <summary>
         /// Reloads buildings for constructing.
         /// </summary>

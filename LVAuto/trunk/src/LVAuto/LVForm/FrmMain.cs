@@ -548,11 +548,6 @@ namespace LVAuto.LVForm
             LVAuto.LVWeb.LVClient.LoginMobi(txtPhoneSend.Text, txtPassword.Text, txtTo.Text, "Test thu tinh nang send sms");
         }
 
-        private void Construct_btnReloadBuildings_Click(object sender, EventArgs e) 
-		{
-            LVReloadBuildingsForConstruct();
-        }
-
         private void cmdReload_Click(object sender, EventArgs e) {
             lock (LVAuto.LVWeb.LVClient.islock) {
                 //FirstLogin();
@@ -611,11 +606,6 @@ namespace LVAuto.LVForm
 		private void checkBox1_CheckedChanged_1(object sender, EventArgs e)
 		{
 			_chuongbao = chkChuong.Checked;
-		}
-
-		private void Construct_dropdownCityList_SelectedIndexChanged(object sender, EventArgs e)
-		{
-            LVLoadBuildingsToTreeViewForConstruct();
 		}
 
 		private void tvDEL_Leave(object sender, EventArgs e)
@@ -1232,15 +1222,15 @@ namespace LVAuto.LVForm
 
 		private void chkXayNhaAll_CheckedChanged(object sender, EventArgs e)
 		{
-			Construct_dropdownCityList.Enabled = !chkXayNhaAll.Checked;
-			Construct_treeBuilding.Enabled = !chkXayNhaAll.Checked;
-			Construct_btnReloadBuildings.Enabled = !chkXayNhaAll.Checked;
-            LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.IsBuildAll = chkXayNhaAll.Checked;	
+			Construct_dropdownCityList.Enabled = !Construct_checkUpgradeAll.Checked;
+			Construct_treeBuilding.Enabled = !Construct_checkUpgradeAll.Checked;
+			Construct_btnReloadBuildings.Enabled = !Construct_checkUpgradeAll.Checked;
+            LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.IsBuildAll = Construct_checkUpgradeAll.Checked;	
 		}
 
 		private void chkXayNha_TuMuaTaiNguyen_CheckedChanged(object sender, EventArgs e)
 		{
-			txtXayNha_VangAnToan.Enabled = chkXayNha_TuMuaTaiNguyen.Checked;
+			Construct_txtGoldThreshold.Enabled = Construct_checkAutoBuyResources.Checked;
 		}
 
 		private void pnXayNha_Leave(object sender, EventArgs e)
@@ -1248,10 +1238,10 @@ namespace LVAuto.LVForm
 			try
 			{
 
-                LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AutoBuyResources = chkXayNha_TuMuaTaiNguyen.Checked;
-				if (chkXayNha_TuMuaTaiNguyen.Checked) LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.GoldThreshold = long.Parse(txtXayNha_VangAnToan.Text);
+                LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AutoBuyResources = Construct_checkAutoBuyResources.Checked;
+				if (Construct_checkAutoBuyResources.Checked) LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.GoldThreshold = long.Parse(Construct_txtGoldThreshold.Text);
 
-				if (chkXayNhaAll.Checked) return;
+				if (Construct_checkUpgradeAll.Checked) return;
 
 				int cityPost = Construct_dropdownCityList.SelectedIndex;
 				if (cityPost < 0) return;
@@ -1289,10 +1279,10 @@ namespace LVAuto.LVForm
 			try
 			{
 
-                LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AutoBuyResources = chkXayNha_TuMuaTaiNguyen.Checked;
-                if (chkXayNha_TuMuaTaiNguyen.Checked) LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.GoldThreshold = long.Parse(txtXayNha_VangAnToan.Text);
+                LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.AutoBuyResources = Construct_checkAutoBuyResources.Checked;
+                if (Construct_checkAutoBuyResources.Checked) LVConfig.AutoConfig.CONFIG_CITY_CONSTRUCT.GoldThreshold = long.Parse(Construct_txtGoldThreshold.Text);
 
-				if (chkXayNhaAll.Checked) return;
+				if (Construct_checkUpgradeAll.Checked) return;
 
 				int cityPost = Construct_dropdownCityList.SelectedIndex;
 				if (cityPost < 0) return;
@@ -2430,6 +2420,105 @@ namespace LVAuto.LVForm
         {
             chkTabBinhManListManDanh.Visible = !rdBinhManDanhDiaTinh.Checked;
             grBinhManToaDoMo.Visible = rdBinhManDanhDiaTinh.Checked;
+        }
+
+        private void Login_btnTest_Click(object sender, EventArgs e)
+        {
+            Hashtable result;
+            ArrayList items;
+
+            result = LVHelper.CommonCommandHelper.GetNationalTreasureHelmets();
+            items = (ArrayList)result["list"];
+            foreach (object obj in items)
+            {
+                ArrayList item = (ArrayList)obj;
+                int itemId = int.Parse(item[0].ToString());
+                string itemName = item[1].ToString();
+                int itemAddHP = int.Parse(item[3].ToString());
+                int itemAddStr = int.Parse(item[4].ToString());
+                int itemAddAgi = int.Parse(item[5].ToString());
+                int itemAddCommand = int.Parse(item[6].ToString());
+                if (itemAddCommand < 23)
+                {
+                    //Khương Đế đầu khôi: +23 Thống Lĩnh
+                    LVHelper.OptCommandHelper.SellNationalTreasureItem(itemId);
+                }
+            }
+
+            result = LVHelper.CommonCommandHelper.GetNationalTreasureWeapons();
+            items = (ArrayList)result["list"];
+            foreach (object obj in items)
+            {
+                ArrayList item = (ArrayList)obj;
+                int itemId = int.Parse(item[0].ToString());
+                string itemName = item[1].ToString();
+                int itemAddHP = int.Parse(item[3].ToString());
+                int itemAddStr = int.Parse(item[4].ToString());
+                int itemAddAgi = int.Parse(item[5].ToString());
+                int itemAddCommand = int.Parse(item[6].ToString());
+                if (itemAddStr < 27 && itemAddAgi < 15)
+                {
+                    //Khương Đế trường kích: +27 Sức Mạnh & +15 Nhanh Nhẹn
+                    LVHelper.OptCommandHelper.SellNationalTreasureItem(itemId);
+                }
+                //if (itemName == "Tiên Ti đầu khôi" || itemName == "Ô Hoàn đầu khôi" 
+                //    || itemName == "Lực thần đầu khôi" || itemName == "Thư sinh quan" 
+                //    || itemName == "Văn thần quan" || itemName == "Minh châu quan"
+                //    || itemName == "Hổ thần khôi" || itemName=="")
+                //{
+                //    LVHelper.OptCommandHelper.SellNationalTreasureItem(itemId);
+                //}
+            }
+
+            result = LVHelper.CommonCommandHelper.GetNationalTreasureArmours();
+            items = (ArrayList)result["list"];
+            foreach (object obj in items)
+            {
+                ArrayList item = (ArrayList)obj;
+                int itemId = int.Parse(item[0].ToString());
+                string itemName = item[1].ToString();
+                int itemAddHP = int.Parse(item[3].ToString());
+                int itemAddStr = int.Parse(item[4].ToString());
+                int itemAddAgi = int.Parse(item[5].ToString());
+                int itemAddCommand = int.Parse(item[6].ToString());
+                if (itemAddCommand < 11)
+                {
+                    //Khương Đế khôi giáp: +11 Thống Lĩnh
+                    LVHelper.OptCommandHelper.SellNationalTreasureItem(itemId);
+                }
+                //if (itemName == "Tiên Ti đầu khôi" || itemName == "Ô Hoàn đầu khôi" 
+                //    || itemName == "Lực thần đầu khôi" || itemName == "Thư sinh quan" 
+                //    || itemName == "Văn thần quan" || itemName == "Minh châu quan"
+                //    || itemName == "Hổ thần khôi" || itemName=="")
+                //{
+                //    LVHelper.OptCommandHelper.SellNationalTreasureItem(itemId);
+                //}
+            }
+
+            result = LVHelper.CommonCommandHelper.GetNationalTreasureMounts();
+            items = (ArrayList)result["list"];
+            foreach (object obj in items)
+            {
+                ArrayList item = (ArrayList)obj;
+                int itemId = int.Parse(item[0].ToString());
+                string itemName = item[1].ToString();
+                int itemAddHP = int.Parse(item[3].ToString());
+                int itemAddStr = int.Parse(item[4].ToString());
+                int itemAddAgi = int.Parse(item[5].ToString());
+                int itemAddCommand = int.Parse(item[6].ToString());
+                if (itemAddStr < 9 && itemAddAgi < 21   )
+                {
+                    //Tây lương chiến mã: +9 Sức Mạnh & +21 Nhanh Nhẹn
+                    LVHelper.OptCommandHelper.SellNationalTreasureItem(itemId);
+                }
+                //if (itemName == "Tiên Ti đầu khôi" || itemName == "Ô Hoàn đầu khôi" 
+                //    || itemName == "Lực thần đầu khôi" || itemName == "Thư sinh quan" 
+                //    || itemName == "Văn thần quan" || itemName == "Minh châu quan"
+                //    || itemName == "Hổ thần khôi" || itemName=="")
+                //{
+                //    LVHelper.OptCommandHelper.SellNationalTreasureItem(itemId);
+                //}
+            }
         }
 	} //end class
 } //end namespace
