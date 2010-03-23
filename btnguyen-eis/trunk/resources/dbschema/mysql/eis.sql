@@ -4,7 +4,7 @@
 # Note: for MySQL, please use DELETE TABLE IF EXISTS and CREATE TABLE IF NOT EXISTS whenever possible!
 
 # Run the following queries as root
-#DROP DATABASE eis;
+#DROP DATABASE IF EXISTS eis;
 #CREATE DATABASE eis CHARACTER SET = utf8 COLLATE = utf8_general_ci;
 #GRANT ALL PRIVILEGES ON eis.* TO 'eis'@'localhost' IDENTIFIED BY 'eis';
 
