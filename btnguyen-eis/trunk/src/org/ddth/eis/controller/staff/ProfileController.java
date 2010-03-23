@@ -26,15 +26,20 @@ public class ProfileController extends BaseFormController implements
         IRequireAuthenticationController, IRequireAuthorizationController {
 
     private final static String FORM_NAME = "frmStaffProfile";
-    
+
     private final static String VIEW_NAME = EisConstants.MODULE_STAFF + "."
             + EisConstants.ACTION_STAFF_PROFILE;
 
     private final static String MODEL_PAGE_SKILL_CATEGORIES = "skillCategories";
     private final static String MODEL_PAGE_MY_SKILL_INVENTORIES = "mySkillInventories";
 
-    private final static String FORM_FIELD_SKILL_ITEM_LEVEL = "skillItem_level";
-    private final static String FORM_FIELD_SKILL_ITEM_NUM_MONTHS_EXP = "skillItem_numMonthsExp";
+    private final static String FORM_FIELD_PROFILE_TITLE = "profileTitle";
+    private final static String FORM_FIELD_PROFILE_FIRSTNAME = "profileFirstName";
+    private final static String FORM_FIELD_PROFILE_MIDDLENAMES = "profileMiddleNames";
+    private final static String FORM_FIELD_PROFILE_LASTNAME = "profileLastName";
+    private final static String FORM_FIELD_PROFILE_DOB_DAY = "profileDobDay";
+    private final static String FORM_FIELD_PROFILE_DOB_MONTH = "profileDobMonth";
+    private final static String FORM_FIELD_PROFILE_DOB_YEAR = "profileDobYear";
 
     /**
      * {@inheritDoc}
@@ -56,8 +61,17 @@ public class ProfileController extends BaseFormController implements
      * {@inheritDoc}
      */
     public SubmittedForm initAssociatedForm() {
-        SubmittedForm form = new SubmittedFormImpl("FORM_NAME");
+        SubmittedForm form = new SubmittedFormImpl(FORM_NAME);
         form.setAction("");
+        DafUser user = getCurrentUser();
+        form.setAttribute(FORM_FIELD_PROFILE_TITLE, user.getTitle());
+        form.setAttribute(FORM_FIELD_PROFILE_FIRSTNAME, user.getFirstName());
+        form.setAttribute(FORM_FIELD_PROFILE_LASTNAME, user.getLastName());
+        form.setAttribute(FORM_FIELD_PROFILE_MIDDLENAMES, user.getMiddleName());
+        form.setAttribute(FORM_FIELD_PROFILE_DOB_DAY, user.getDobDay());
+        form.setAttribute(FORM_FIELD_PROFILE_DOB_MONTH, user.getDobMonth());
+        form.setAttribute(FORM_FIELD_PROFILE_DOB_YEAR, user.getDobYear());
+        
         return form;
     }
 

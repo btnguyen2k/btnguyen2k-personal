@@ -17,9 +17,9 @@
 	<label>${language.getMessage('msg.profile.lastName')}:</label>
 	<input type="text" name="profileLastName" value="${_form.getAttribute('profileLastName')}" size="32" />
 	<label>${language.getMessage('msg.profile.dob')}:</label>
-	${language.getMessage('msg.profile.dobDay')}:
-	${language.getMessage('msg.profile.dobMonth')}:
-	${language.getMessage('msg.profile.dobYear')}:
+	${language.getMessage('msg.profile.dobDay')}: <input type="text" name="profileDobDay" value="${_form.getAttribute('profileDobDay')}" size="2" />
+	${language.getMessage('msg.profile.dobMonth')}: <input type="text" name="profileDobMonth" value="${_form.getAttribute('profileDobMonth')}" size="2" />
+	${language.getMessage('msg.profile.dobYear')}: <input type="text" name="profileDobYear" value="${_form.getAttribute('profileDobYear')}" size="4" />
 	<br /><br />
 	<input class="button" type="submit" value="${language.getMessage('msg.update')}"/>
 </form>
