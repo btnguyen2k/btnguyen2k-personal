@@ -1,0 +1,23 @@
+<#assign _form=page.form />
+<h1>${language.getMessage('msg.menuAdmin.siteSettings')}</h1>
+<#if _form.hasErrorMessage()>
+	<div class="error">
+		<#list _form.errorMessages as msg>
+			${msg}<br/>
+		</#list>
+	</div>
+</#if>
+<form name="${_form.name}" method="post" action="${_form.action}">
+	<label>${language.getMessage('msg.site.name')}:</label>
+	<input type="text" name="siteName" value="${_form.getAttribute('siteName')}" size="48" />
+	<label>${language.getMessage('msg.site.title')}:</label>
+	<input type="text" name="siteTitle" value="${_form.getAttribute('siteTitle')}" size="48" />
+	<label>${language.getMessage('msg.site.slogan')}:</label>
+	<input type="text" name="siteSlogan" value="${_form.getAttribute('siteSlogan')}" size="48" />
+	<label>${language.getMessage('msg.site.keywords')}:</label>
+	<input type="text" name="siteKeywords" value="${_form.getAttribute('siteKeywords')}" size="48" />
+	<label>${language.getMessage('msg.site.description')}:</label>
+	<input type="text" name="siteDescription" value="${_form.getAttribute('siteDescription')}" size="48" />
+	<br /><br />
+	<input class="button" type="submit" value="${language.getMessage('msg.update')}"/>
+</form>

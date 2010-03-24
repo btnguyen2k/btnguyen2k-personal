@@ -14,6 +14,6 @@ public class EisPermissionConstants {
             EisConstants.APP_DOMAIN, "MANAGER", "Manager-level permission.", BooleanPassport.class
                     .getName());
 
-    public final static DafPermission PERMISSION_IT = new DafPermission(EisConstants.APP_DOMAIN,
-            "IT", "IT-level permission.", BooleanPassport.class.getName());
+    public final static DafPermission PERMISSION_ADMIN = new DafPermission(EisConstants.APP_DOMAIN,
+            "ADMIN", "IT/Administrative-level permission.", BooleanPassport.class.getName());
 }

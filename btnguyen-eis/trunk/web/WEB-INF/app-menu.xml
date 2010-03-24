@@ -6,7 +6,7 @@
 		<item title="lang:msg.menuHR" link="action:hr" permission="EIS:HR" />
 		<item title="lang:msg.menuManager" link="action:manager"
 			permission="EIS:MANAGER" />
-		<item title="lang:msg.menuIT" link="action:it" permission="EIS:IT" />
+		<item title="lang:msg.menuAdmin" link="action:admin" permission="EIS:ADMIN" />
 		<item title="lang:msg.menuHelp" link="action:help" />
 		<item title="lang:msg.logout" link="action:logout" />
 	</menu>
@@ -18,8 +18,10 @@
 	</menu>
 	<menu title="lang:msg.menuManager" link="action:manager"
 		permission="EIS:MANAGER">
+		<item title="lang:msg.menuManager.skillSearch" link="action:manager:skillSearch" />
 	</menu>
-	<menu title="lang:msg.menuIT" link="action:it" permission="EIS:IT">
+	<menu title="lang:msg.menuAdmin" link="action:admin" permission="EIS:ADMIN">
+		<item title="lang:msg.menuAdmin.siteSettings" link="action:admin:siteSettings" />
 	</menu>
 	<menu title="lang:msg.menuHelp" link="action:help">
 	</menu>

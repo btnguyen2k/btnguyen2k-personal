@@ -55,7 +55,7 @@ VALUES ('EIS', 'HR', 'HR-level permission.', 'org.ddth.daf.impl.BooleanPassport'
 INSERT INTO daf_permission (pmodule, paction, pdescription, ppassport_class_name)
 VALUES ('EIS', 'MANAGER', 'Manager-level permission.', 'org.ddth.daf.impl.BooleanPassport');
 INSERT INTO daf_permission (pmodule, paction, pdescription, ppassport_class_name)
-VALUES ('EIS', 'IT', 'IT-level permission.', 'org.ddth.daf.impl.BooleanPassport');
+VALUES ('EIS', 'ADMIN', 'IT/Administrative-level permission.', 'org.ddth.daf.impl.BooleanPassport');
 
 CREATE TABLE daf_user (
 	uid								INTEGER				AUTO_INCREMENT,
@@ -153,7 +153,7 @@ INSERT INTO daf_group (gis_god, gname, gdescription, gprefix, gsuffix)
 VALUES (0, 'Manager', 'Manager staff.', '', '');
 
 INSERT INTO daf_group (gis_god, gname, gdescription, gprefix, gsuffix)
-VALUES (0, 'IT', 'IT staff.', '', '');
+VALUES (0, 'ADMIN', 'IT/Administrator staff.', '', '');
 
 INSERT INTO daf_group (gis_god, gname, gdescription, gprefix, gsuffix)
 VALUES (0, 'Guest', 'Guest user who normally has read-only privileges.', '', '');
@@ -161,7 +161,7 @@ VALUES (0, 'Guest', 'Guest user who normally has read-only privileges.', '', '')
 INSERT INTO daf_group_rule (gid, pmodule, paction, is_global) VALUES (2, 'EIS', 'STAFF', 'Y');
 INSERT INTO daf_group_rule (gid, pmodule, paction, is_global) VALUES (3, 'EIS', 'HR', 'Y');
 INSERT INTO daf_group_rule (gid, pmodule, paction, is_global) VALUES (4, 'EIS', 'MANAGER', 'Y');
-INSERT INTO daf_group_rule (gid, pmodule, paction, is_global) VALUES (5, 'EIS', 'IT', 'Y');
+INSERT INTO daf_group_rule (gid, pmodule, paction, is_global) VALUES (5, 'EIS', 'ADMIN', 'Y');
 
 -- Administrator account - Administrator group
 INSERT INTO daf_role (gid, uid) VALUES(1, 1);

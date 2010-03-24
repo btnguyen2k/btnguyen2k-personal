@@ -11,4 +11,12 @@
 		<handler action="skillInventory" bean="controllerStaffSkillInventory" />
 		<handler action="profile" bean="controllerStaffProfile" />
 	</module>
+	
+	<module name="manager">
+		<handler action="skillSearch" bean="controllerManagerSkillSearch" />
+	</module>
+
+	<module name="admin">
+		<handler action="siteSettings" bean="controllerAdminSiteSettings" />
+	</module>
 </action-mappings>
