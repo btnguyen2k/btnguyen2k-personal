@@ -44,6 +44,7 @@ public class HibernateAppConfigManager implements AppConfigManager {
     }
 
     private void closeSession(Session session) {
+        session.flush();
         session.close();
     }
 

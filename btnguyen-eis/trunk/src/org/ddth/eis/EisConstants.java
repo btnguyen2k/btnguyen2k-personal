@@ -38,4 +38,10 @@ public class EisConstants {
     public final static String MODULE_STAFF = "staff";
     public final static String ACTION_STAFF_SKILL_INVENTORY = "skillInventory";
     public final static String ACTION_STAFF_PROFILE = "profile";
+
+    public final static String MODULE_ADMIN = "admin";
+    public final static String ACTION_ADMIN_SITE_SETTINGS = "siteSettings";
+
+    public final static String MODULE_MANAGER = "manager";
+    public final static String ACTION_MANAGER_SKILL_SEARCH = "skillSearch";
 }

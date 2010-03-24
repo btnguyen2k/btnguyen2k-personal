@@ -23,4 +23,12 @@
 	<page id="staff.profile">
 		<templateFile>page_StaffProfile.html</templateFile>
 	</page>
+	
+	<page id="manager.skillSearch">
+		<templateFile>page_ManagerSkillSearch.html</templateFile>
+	</page>
+	
+	<page id="admin.siteSettings">
+		<templateFile>page_AdminSiteSettings.html</templateFile>
+	</page>
 </template-config>
