@@ -5,10 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.ddth.eis.EisAppConfigConstants;
 import org.ddth.eis.EisConstants;
-import org.ddth.eis.bo.appconfig.AppConfig;
-import org.ddth.eis.bo.appconfig.AppConfigManager;
 import org.ddth.eis.bo.skillinventory.SkillCategory;
 import org.ddth.eis.bo.skillinventory.SkillDataManager;
 import org.ddth.eis.controller.BaseFormController;
@@ -27,23 +24,11 @@ public class SkillSearchController extends BaseFormController implements
 
     private final static String MODEL_PAGE_SKILL_CATEGORIES = "skillCategories";
 
-    private final static String FORM_FIELD_QUERY = "query";
-
-    private final static String SKILL_LEVEL = "LEVEL";
-    private final static String MONTHS_EXP = "MONTHS";
-    private final static String SPACES = "\\s*";
-    private final static String TOKEN_OPERATOR = "<=|>=|=|<|>";
-    private final static String TOKEN_OPERAND = SKILL_LEVEL + "|" + MONTHS_EXP + "|\\d+";
-    private final static String EXP_TOKEN = TOKEN_OPERAND + SPACES + TOKEN_OPERATOR + SPACES
-            + TOKEN_OPERAND;
-    private final static String EXP_TOKEN_BRACKETS = "\\(" + SPACES + EXP_TOKEN + SPACES + "\\)";
-    private final static String TOKEN_LOGIC_OPERAND = "AND|OR";
-
-    private final static String FORM_FIELD_SITE_NAME = "siteName";
-    private final static String FORM_FIELD_SITE_TITLE = "siteTitle";
-    private final static String FORM_FIELD_SITE_KEYWORDS = "siteKeywords";
-    private final static String FORM_FIELD_SITE_DESCRIPTION = "siteDescription";
-    private final static String FORM_FIELD_SITE_SLOGAN = "siteSlogan";
+    private final static String FORM_FIELD_QUERY_SKILL = "querySkill_";
+    private final static String FORM_FIELD_QUERY_SKILL_OPERATOR = "querySkillOperator_";
+    private final static String FORM_FIELD_QUERY_SKILL_LEVEL = "querySkillLevel_";
+    private final static String FORM_FIELD_QUERY_MONTHS_EXP_OPERATOR = "queryMonthsExpOperator_";
+    private final static String FORM_FIELD_QUERY_MONTHS_EXP = "queryMonthsExp_";
 
     /**
      * {@inheritDoc}
@@ -68,30 +53,6 @@ public class SkillSearchController extends BaseFormController implements
         SubmittedForm form = new SubmittedFormImpl(FORM_NAME);
         form.setAction("");
 
-        AppConfigManager acm = getAppConfigManager();
-        AppConfig appConfig;
-
-        appConfig = acm.loadConfig(EisAppConfigConstants.CONFIG_SITE_DESCRIPTION);
-        form.setAttribute(FORM_FIELD_SITE_DESCRIPTION, appConfig != null ? appConfig
-                .getStringValue() : "");
-
-        appConfig = acm.loadConfig(EisAppConfigConstants.CONFIG_SITE_KEYWORDS);
-        form.setAttribute(FORM_FIELD_SITE_KEYWORDS, appConfig != null ? appConfig.getStringValue()
-                : "");
-
-        appConfig = acm.loadConfig(EisAppConfigConstants.CONFIG_SITE_NAME);
-        form
-                .setAttribute(FORM_FIELD_SITE_NAME, appConfig != null ? appConfig.getStringValue()
-                        : "");
-
-        appConfig = acm.loadConfig(EisAppConfigConstants.CONFIG_SITE_SLOGAN);
-        form.setAttribute(FORM_FIELD_SITE_SLOGAN, appConfig != null ? appConfig.getStringValue()
-                : "");
-
-        appConfig = acm.loadConfig(EisAppConfigConstants.CONFIG_SITE_TITLE);
-        form.setAttribute(FORM_FIELD_SITE_TITLE, appConfig != null ? appConfig.getStringValue()
-                : "");
-
         return form;
     }
 
@@ -109,46 +70,45 @@ public class SkillSearchController extends BaseFormController implements
      * {@inheritDoc}
      */
     public void populateSubmittedForm(SubmittedForm form, HttpServletRequest request) {
-        form.setAttribute(FORM_FIELD_SITE_DESCRIPTION, request
-                .getParameter(FORM_FIELD_SITE_DESCRIPTION));
-        form.setAttribute(FORM_FIELD_SITE_KEYWORDS, request.getParameter(FORM_FIELD_SITE_KEYWORDS));
-        form.setAttribute(FORM_FIELD_SITE_NAME, request.getParameter(FORM_FIELD_SITE_NAME));
-        form.setAttribute(FORM_FIELD_SITE_SLOGAN, request.getParameter(FORM_FIELD_SITE_SLOGAN));
-        form.setAttribute(FORM_FIELD_SITE_TITLE, request.getParameter(FORM_FIELD_SITE_TITLE));
+        for ( int i = 1; i < 100; i++ ) {
+            String field = FORM_FIELD_QUERY_SKILL + i;
+            form.setAttribute(field, request.getParameter(field));
+
+            field = FORM_FIELD_QUERY_SKILL_OPERATOR + i;
+            form.setAttribute(field, request.getParameter(field));
+
+            field = FORM_FIELD_QUERY_SKILL_LEVEL + i;
+            form.setAttribute(field, request.getParameter(field));
+
+            field = FORM_FIELD_QUERY_MONTHS_EXP_OPERATOR + i;
+            form.setAttribute(field, request.getParameter(field));
+
+            field = FORM_FIELD_QUERY_MONTHS_EXP + i;
+            form.setAttribute(field, request.getParameter(field));
+        }
     }
 
     /**
      * {@inheritDoc}
      */
     public boolean processFormSubmission(SubmittedForm form) {
-        AppConfigManager acm = getAppConfigManager();
-        AppConfig appConfig;
-
-        appConfig = new AppConfig();
-        appConfig.setKey(EisAppConfigConstants.CONFIG_SITE_DESCRIPTION);
-        appConfig.setStringValue(form.getAttribute(FORM_FIELD_SITE_DESCRIPTION));
-        acm.saveConfig(appConfig);
-
-        appConfig = new AppConfig();
-        appConfig.setKey(EisAppConfigConstants.CONFIG_SITE_KEYWORDS);
-        appConfig.setStringValue(form.getAttribute(FORM_FIELD_SITE_KEYWORDS));
-        acm.saveConfig(appConfig);
-
-        appConfig = new AppConfig();
-        appConfig.setKey(EisAppConfigConstants.CONFIG_SITE_NAME);
-        appConfig.setStringValue(form.getAttribute(FORM_FIELD_SITE_NAME));
-        acm.saveConfig(appConfig);
-
-        appConfig = new AppConfig();
-        appConfig.setKey(EisAppConfigConstants.CONFIG_SITE_SLOGAN);
-        appConfig.setStringValue(form.getAttribute(FORM_FIELD_SITE_SLOGAN));
-        acm.saveConfig(appConfig);
-
-        appConfig = new AppConfig();
-        appConfig.setKey(EisAppConfigConstants.CONFIG_SITE_TITLE);
-        appConfig.setStringValue(form.getAttribute(FORM_FIELD_SITE_TITLE));
-        acm.saveConfig(appConfig);
-
+        String query = null;
+        for ( int i = 1; i < 100; i++ ) {
+            String field = FORM_FIELD_QUERY_SKILL + i;
+            int skillId = form.getAttributeAsInt(field);
+            if ( skillId > 0 ) {
+                String temp = "SKILL_" + i;
+                field = FORM_FIELD_QUERY_SKILL_OPERATOR + i;
+                temp += " " + form.getAttribute(field) + " ";
+                field = FORM_FIELD_QUERY_SKILL_LEVEL + i;
+                temp += form.getAttributeAsInt(field);
+                if ( query == null ) {
+                    query = temp;
+                } else {
+                    query = query + " AND (" + temp + ")";
+                }
+            }
+        }
         return true;
     }
 }
