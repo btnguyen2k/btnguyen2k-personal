@@ -8,6 +8,45 @@
 	</div>
 </#if>
 <form name="${_form.name}" method="post" action="${_form.action}">
+	<script tye="text/javascript" language="javascript">
+	//<![CDATA[
+	function skillSelectionChanged(skillField, skillOptField, skillLevelField, monthsExpOptField, monthsExpField) {
+		var obj = document.getElementsByName(skillField);
+		obj = obj[0];
+		var enabled1 = obj.selectedIndex != 0;
+
+		obj = document.getElementsByName(monthsExpOptField);
+		obj = obj[0];
+		var enabled2 = obj.selectedIndex != 0;
+
+		obj = document.getElementsByName(skillOptField);
+		obj = obj[0];
+		obj.disabled = !enabled1;
+
+		obj = document.getElementsByName(skillLevelField);
+		obj = obj[0];
+		obj.disabled = !enabled1;
+
+		obj = document.getElementsByName(monthsExpOptField);
+		obj = obj[0];
+		obj.disabled = !enabled1;
+
+		obj = document.getElementsByName(monthsExpField);
+		obj = obj[0];
+		obj.disabled = !enabled1 || !enabled2;
+	}
+
+	function monthsExpOptSelectionChanged(monthsExpOptField, monthsExpField) {
+		var obj = document.getElementsByName(monthsExpOptField);
+		obj = obj[0];
+		var enabled = obj.selectedIndex != 0;
+
+		obj = document.getElementsByName(monthsExpField);
+		obj = obj[0];
+		obj.disabled = !enabled;
+	}
+	//]]>
+	</script>
 	<table border="0" width="100%" cellpadding="2" cellspacing="2">
 	<thead>
 		<tr>
@@ -19,48 +58,55 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td>
-				<select name="querySkill">
-					<option value=""></option>
-					<#list page.skillCategories as skillCategory>
-						<optgroup label="${skillCategory.name?html}" />
-						<#list skillCategory.skillItems as skillItem>
-							<option value="${skillItem.id?c}">&nbsp;&nbsp;&nbsp;&nbsp;${skillItem.name?html}</option>
+		<#list 1..10 as _index>
+			<#assign _skillField="querySkill_"+_index />
+			<#assign _skillOptField="querySkillOperator_"+_index />
+			<#assign _skillLevelField="querySkillLevel_"+_index />
+			<#assign _monthsExpOptField="queryMonthsExpOperator_"+_index />
+			<#assign _monthsExpField="queryMonthsExp_"+_index />
+			<tr>
+				<td>
+					<select name="${_skillField}" onchange="skillSelectionChanged('${_skillField}', '${_skillOptField}', '${_skillLevelField}', '${_monthsExpOptField}', '${_monthsExpField}');">
+						<option value=""></option>
+						<#list page.skillCategories as skillCategory>
+							<optgroup label="${skillCategory.name?html}" />
+							<#list skillCategory.skillItems as skillItem>
+								<option value="${skillItem.id?c}">&nbsp;&nbsp;&nbsp;&nbsp;${skillItem.name?html}</option>
+							</#list>
 						</#list>
-					</#list>
-				</select>
-			</td>
-			<td align="center">
-				<select name="querySkillOperator">
-					<option value="=">=</option>
-					<option value="&lt;">&lt;</option>
-					<option value="&gt;">&gt;</option>
-					<option value="&lt;=">&lt;=</option>
-					<option value="&gt;=">&gt;=</option>
-				</select>
-			</td>
-			<td align="center">
-				<select name="querySkillLevel">
-					<#list 0..9 as _level>
-						<option value="${_level?c}">${_level?c}</option>
-					</#list>
-				</select>
-			</td>
-			<td align="center" style="border-left: 1px solid">
-				<select name="queryMonthsExpOperator">
-					<option value=""></option>
-					<option value="=">=</option>
-					<option value="&lt;">&lt;</option>
-					<option value="&gt;">&gt;</option>
-					<option value="&lt;=">&lt;=</option>
-					<option value="&gt;=">&gt;=</option>
-				</select>
-			</td>
-			<td align="center">
-				<input name="queryMonthsExp" type="text" value="" size="2" />
-			</td>
-		</tr>
+					</select>
+				</td>
+				<td align="center">
+					<select name="${_skillOptField}" disabled="disabled">
+						<option value="=">=</option>
+						<option value="&lt;">&lt;</option>
+						<option value="&gt;">&gt;</option>
+						<option value="&lt;=">&lt;=</option>
+						<option value="&gt;=">&gt;=</option>
+					</select>
+				</td>
+				<td align="center">
+					<select name="${_skillLevelField}" disabled="disabled">
+						<#list 0..9 as _level>
+							<option value="${_level?c}">${_level?c}</option>
+						</#list>
+					</select>
+				</td>
+				<td align="center" style="border-left: 1px solid">
+					<select disabled="disabled" name="${_monthsExpOptField}" onchange="monthsExpOptSelectionChanged('${_monthsExpOptField}', '${_monthsExpField}');">
+						<option value=""></option>
+						<option value="=">=</option>
+						<option value="&lt;">&lt;</option>
+						<option value="&gt;">&gt;</option>
+						<option value="&lt;=">&lt;=</option>
+						<option value="&gt;=">&gt;=</option>
+					</select>
+				</td>
+				<td align="center">
+					<input disabled="disabled" name="${_monthsExpField}" type="text" value="" size="2" />
+				</td>
+			</tr>
+		</#list>
 	</tbody>
 	</table>
 </form>
