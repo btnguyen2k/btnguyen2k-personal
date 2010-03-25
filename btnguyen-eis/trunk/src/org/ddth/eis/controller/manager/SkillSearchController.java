@@ -1,5 +1,6 @@
 package org.ddth.eis.controller.manager;
 
+import java.util.Collection;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +9,8 @@ import org.ddth.eis.EisAppConfigConstants;
 import org.ddth.eis.EisConstants;
 import org.ddth.eis.bo.appconfig.AppConfig;
 import org.ddth.eis.bo.appconfig.AppConfigManager;
+import org.ddth.eis.bo.skillinventory.SkillCategory;
+import org.ddth.eis.bo.skillinventory.SkillDataManager;
 import org.ddth.eis.controller.BaseFormController;
 import org.ddth.eis.controller.IRequireAuthenticationController;
 import org.ddth.eis.controller.IRequireAuthorizationController;
@@ -21,6 +24,8 @@ public class SkillSearchController extends BaseFormController implements
 
     private final static String VIEW_NAME = EisConstants.MODULE_MANAGER + "."
             + EisConstants.ACTION_MANAGER_SKILL_SEARCH;
+
+    private final static String MODEL_PAGE_SKILL_CATEGORIES = "skillCategories";
 
     private final static String FORM_FIELD_QUERY = "query";
 
@@ -95,6 +100,9 @@ public class SkillSearchController extends BaseFormController implements
      */
     protected void modelPageContent(Map<String, Object> modelPage) {
         super.modelPageContent(modelPage);
+        SkillDataManager sdm = getBean(EisConstants.BEAN_BO_SKILL_MANAGER, SkillDataManager.class);
+        Collection<? extends SkillCategory> skillCategories = sdm.getAllSkillCategories();
+        modelPage.put(MODEL_PAGE_SKILL_CATEGORIES, skillCategories);
     }
 
     /**
