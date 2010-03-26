@@ -41,8 +41,10 @@
 			</fileset>
 		</delete>
 		
-		<zip destfile="${dir.temp}/${product.name}-${product.version}.zip" basedir="${dir.temp}/zip" />
-		<copy todir="${dir.release}" file="${dir.temp}/${product.name}-${product.version}.zip" />
+		<property name="filename.release" value="${product.name}-${product.version}-${DSTAMP}.zip"/>
+
+		<zip destfile="${dir.temp}/${filename.release}" basedir="${dir.temp}/zip" />
+		<copy todir="${dir.release}" file="${dir.temp}/${filename.release}" />
 	</target>
 
 	<target name="compile" description="Compile Java source files">
