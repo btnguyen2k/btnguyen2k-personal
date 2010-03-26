@@ -1,5 +1,6 @@
 package org.ddth.eis.controller.manager;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
@@ -8,11 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import org.ddth.eis.EisConstants;
 import org.ddth.eis.bo.skillinventory.SkillCategory;
 import org.ddth.eis.bo.skillinventory.SkillDataManager;
+import org.ddth.eis.bo.skillinventory.SkillItem;
 import org.ddth.eis.controller.BaseFormController;
 import org.ddth.eis.controller.IRequireAuthenticationController;
 import org.ddth.eis.controller.IRequireAuthorizationController;
+import org.ddth.eis.model.DafUserModel;
 import org.ddth.fileupload.SubmittedForm;
 import org.ddth.fileupload.impl.SubmittedFormImpl;
+import org.ddth.panda.daf.DafUser;
 
 public class SkillSearchController extends BaseFormController implements
         IRequireAuthenticationController, IRequireAuthorizationController {
@@ -23,12 +27,15 @@ public class SkillSearchController extends BaseFormController implements
             + EisConstants.ACTION_MANAGER_SKILL_SEARCH;
 
     private final static String MODEL_PAGE_SKILL_CATEGORIES = "skillCategories";
+    private final static String MODEL_PAGE_SEARCH_RESULT = "searchResult";
 
     private final static String FORM_FIELD_QUERY_SKILL = "querySkill_";
     private final static String FORM_FIELD_QUERY_SKILL_OPERATOR = "querySkillOperator_";
     private final static String FORM_FIELD_QUERY_SKILL_LEVEL = "querySkillLevel_";
     private final static String FORM_FIELD_QUERY_MONTHS_EXP_OPERATOR = "queryMonthsExpOperator_";
     private final static String FORM_FIELD_QUERY_MONTHS_EXP = "queryMonthsExp_";
+
+    private Collection<? extends DafUser> searchResult;
 
     /**
      * {@inheritDoc}
@@ -62,8 +69,16 @@ public class SkillSearchController extends BaseFormController implements
     protected void modelPageContent(Map<String, Object> modelPage) {
         super.modelPageContent(modelPage);
         SkillDataManager sdm = getBean(EisConstants.BEAN_BO_SKILL_MANAGER, SkillDataManager.class);
-        Collection<? extends SkillCategory> skillCategories = sdm.getAllSkillCategories();
-        modelPage.put(MODEL_PAGE_SKILL_CATEGORIES, skillCategories);
+        Collection<? extends SkillCategory> modelSkillCategories = sdm.getAllSkillCategories();
+        modelPage.put(MODEL_PAGE_SKILL_CATEGORIES, modelSkillCategories);
+
+        Collection<DafUserModel> modelSearchResult = new ArrayList<DafUserModel>();
+        if ( this.searchResult != null ) {
+            for ( DafUser user : this.searchResult ) {
+                modelSearchResult.add(DafUserModel.getInstance(user));
+            }
+        }
+        modelPage.put(MODEL_PAGE_SEARCH_RESULT, modelSearchResult);
     }
 
     /**
@@ -92,20 +107,30 @@ public class SkillSearchController extends BaseFormController implements
      * {@inheritDoc}
      */
     public boolean processFormSubmission(SubmittedForm form) {
-        String query = null;
+        SkillDataManager skillDm = getBean(EisConstants.BEAN_BO_SKILL_MANAGER,
+                                           SkillDataManager.class);
         for ( int i = 1; i < 100; i++ ) {
             String field = FORM_FIELD_QUERY_SKILL + i;
             int skillId = form.getAttributeAsInt(field);
-            if ( skillId > 0 ) {
-                String temp = "SKILL_" + i;
+            SkillItem skillItem = skillDm.getSkillItem(skillId);
+            if ( skillItem != null ) {
                 field = FORM_FIELD_QUERY_SKILL_OPERATOR + i;
-                temp += " " + form.getAttribute(field) + " ";
+                String skillLevelOperator = form.getAttribute(field);
                 field = FORM_FIELD_QUERY_SKILL_LEVEL + i;
-                temp += form.getAttributeAsInt(field);
-                if ( query == null ) {
-                    query = temp;
+                int skillLevel = form.getAttributeAsInt(field);
+
+                field = FORM_FIELD_QUERY_MONTHS_EXP_OPERATOR + i;
+                String monthsExpOperator = form.getAttribute(field);
+                field = FORM_FIELD_QUERY_MONTHS_EXP + i;
+                int monthsExp = form.getAttributeAsInt(field);
+
+                if ( monthsExpOperator != null && monthsExpOperator.length() > 0 ) {
+                    this.searchResult = skillDm.searchSkill(this.searchResult, skillItem,
+                                                            skillLevelOperator, skillLevel,
+                                                            monthsExpOperator, monthsExp);
                 } else {
-                    query = query + " AND (" + temp + ")";
+                    this.searchResult = skillDm.searchSkill(this.searchResult, skillItem,
+                                                            skillLevelOperator, skillLevel);
                 }
             }
         }
