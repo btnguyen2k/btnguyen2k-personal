@@ -2,8 +2,11 @@ package org.ddth.eis.bo.skillinventory;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
 
 import org.ddth.panda.daf.DafUser;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -51,6 +54,18 @@ public class HibernateSkillDataManager implements SkillDataManager {
         Session session = getSession();
         try {
             return (SkillCategory) session.get(ENTITY_SKILL_CATEGORY, id);
+        } finally {
+            closeSession(session);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public SkillItem getSkillItem(int id) {
+        Session session = getSession();
+        try {
+            return (SkillItem) session.get(ENTITY_SKILL_ITEM, id);
         } finally {
             closeSession(session);
         }
@@ -179,6 +194,52 @@ public class HibernateSkillDataManager implements SkillDataManager {
         try {
             session.update(ENTITY_SKILL_INVENTORY, skillInventory);
             return skillInventory;
+        } finally {
+            closeSession(session);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public Collection<? extends DafUser> searchSkill(Collection<? extends DafUser> searchWithin,
+            SkillItem skillItem, String skillLevelOperator, int skillLevel) {
+        return searchSkill(searchWithin, skillItem, skillLevelOperator, skillLevel, null, -1);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public Collection<? extends DafUser> searchSkill(Collection<? extends DafUser> searchWithin,
+            SkillItem skillItem, String skillLevelOperator, int skillLevel,
+            String monthsExpOperator, int monthsExp) {
+        String HQL = "SELECT SI.user FROM " + ENTITY_SKILL_INVENTORY
+                + " SI WHERE SI.skillItem=:skillItem AND SI.level" + skillLevelOperator
+                + skillLevel;
+        if ( monthsExpOperator != null ) {
+            HQL += " AND SI.numMonthsExp" + monthsExpOperator + monthsExp;
+        }
+        if ( searchWithin != null ) {
+            if ( searchWithin.size() == 0 ) {
+                return new ArrayList<DafUser>();
+            }
+            HQL += " AND SI.user IN (:users)";
+        }
+        Session session = getSession();
+        try {
+            Query query = session.createQuery(HQL).setCacheable(true).setParameter("skillItem",
+                                                                                   skillItem);
+            if ( searchWithin != null ) {
+                query = query.setParameterList("users", searchWithin);
+            }
+            List<?> hresult = query.list();
+            Collection<DafUser> result = new HashSet<DafUser>();
+            if ( result != null ) {
+                for ( Object obj : hresult ) {
+                    result.add((DafUser) obj);
+                }
+            }
+            return result;
         } finally {
             closeSession(session);
         }

@@ -11,6 +11,7 @@
 	<!-- directory properties -->
 	<property name="dir.src" value="src" />
 	<property name="dir.temp" value="temp" />
+	<property name="dir.release" value="release" />
 	<property name="dir.resources" value="resources" />
 	<property name="dir.resources.lib" value="${dir.resources}/lib" />
 	<property name="dir.classes" value="classes" />
@@ -22,8 +23,27 @@
 	<!-- Create the time stamp -->
 	<tstamp />
 
+	<mkdir dir="${dir.release}" />
 	<mkdir dir="${dir.classes}" />
 	<mkdir dir="${dir.temp}" />
+	
+	<target name="release" depends="compile" description="Release EIS project">
+		<delete dir="${dir.temp}" quiet="true" />
+		<mkdir dir="${dir.temp}/zip/web" />
+
+		<copy todir="${dir.temp}/zip/web">
+			<fileset dir="${dir.web}">
+			</fileset>
+		</copy>
+		<delete>
+			<fileset dir="${dir.temp}/zip/web/WEB-INF/classes">
+				<include name="**/*.class" />
+			</fileset>
+		</delete>
+		
+		<zip destfile="${dir.temp}/${product.name}-${product.version}.zip" basedir="${dir.temp}/zip" />
+		<copy todir="${dir.release}" file="${dir.temp}/${product.name}-${product.version}.zip" />
+	</target>
 
 	<target name="compile" description="Compile Java source files">
 		<javac srcdir="${dir.src}" destdir="${dir.classes}" debug="true" source="1.5" encoding="utf-8" optimize="on" target="1.5">

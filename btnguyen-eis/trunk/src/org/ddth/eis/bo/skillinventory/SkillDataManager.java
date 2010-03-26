@@ -23,6 +23,15 @@ public interface SkillDataManager {
     public SkillCategory getSkillCategory(int id);
 
     /**
+     * Gets a skill item by id.
+     * 
+     * @param id
+     *            int
+     * @return SkillItem
+     */
+    public SkillItem getSkillItem(int id);
+
+    /**
      * Gets all available skill categories.
      * 
      * @return Collection<? extends SkillCategory>
@@ -54,4 +63,43 @@ public interface SkillDataManager {
      * @return Collection<? extends SkillInventory>
      */
     public Collection<? extends SkillInventory> getSkillInventories(DafUser user);
+
+    /**
+     * Finds users that has specific skill.
+     * 
+     * @param searchWithin
+     *            Collection<? extends DafUser> find within only this collection of users, null to
+     *            search all users
+     * @param skillItem
+     *            SkillItem
+     * @param skillILevelOperator
+     *            String one of "=", "<", ">", "<=", ">="
+     * @param skillLevel
+     *            int
+     * @return Collection<? extends DafUser>
+     */
+    public Collection<? extends DafUser> searchSkill(Collection<? extends DafUser> searchWithin,
+            SkillItem skillItem, String skillILevelOperator, int skillLevel);
+
+    /**
+     * Finds users that has specific skill and number of months experienced.
+     * 
+     * @param searchWithin
+     *            Collection<? extends DafUser> find within only this collection of users, null to
+     *            search all users
+     * @param skillItem
+     *            SkillItem
+     * @param skillLevelOperator
+     *            String one of "=", "<", ">", "<=", ">="
+     * @param skillLevel
+     *            int
+     * @param monthsExpOperator
+     *            String one of "=", "<", ">", "<=", ">="
+     * @param monthsExp
+     *            int
+     * @return Collection<? extends DafUser>
+     */
+    public Collection<? extends DafUser> searchSkill(Collection<? extends DafUser> searchWithin,
+            SkillItem skillItem, String skillLevelOperator, int skillLevel,
+            String monthsExpOperator, int monthsExp);
 }

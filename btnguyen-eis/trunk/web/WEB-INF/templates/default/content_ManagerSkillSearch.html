@@ -45,20 +45,32 @@
 		obj = obj[0];
 		obj.disabled = !enabled;
 	}
+
+	function adjustSelectedItem(objName, value) {
+		var obj = document.getElementsByName(objName);
+		obj = obj[0];
+		var i;
+		for ( i = 0; i < obj.options.length; i++ ) {
+			if ( obj.options[i].value == value ) {
+				obj.selectedIndex = i;
+				break;
+			}
+		}
+	}
 	//]]>
 	</script>
 	<table border="0" width="100%" cellpadding="2" cellspacing="2">
 	<thead>
 		<tr>
-			<th>Skill</th>
-			<th>Skill Opt</th>
-			<th>Level</th>
-			<th>Exp Opt</th>
-			<th>Months Exp</th>
+			<th>${language.getMessage('msg.skillSearch.skill')}</th>
+			<th>${language.getMessage('msg.skillSearch.skillLevelOperator')}</th>
+			<th>${language.getMessage('msg.skillSearch.skillLevel')}</th>
+			<th>${language.getMessage('msg.skillSearch.monthsExpOperator')}</th>
+			<th>${language.getMessage('msg.skillSearch.monthsExp')}</th>
 		</tr>
 	</thead>
 	<tbody>
-		<#list 1..10 as _index>
+		<#list 1..5 as _index>
 			<#assign _skillField="querySkill_"+_index />
 			<#assign _skillOptField="querySkillOperator_"+_index />
 			<#assign _skillLevelField="querySkillLevel_"+_index />
@@ -75,6 +87,11 @@
 							</#list>
 						</#list>
 					</select>
+					<script tye="text/javascript" language="javascript">
+					//<![CDATA[
+					adjustSelectedItem('${_skillField}', '${_form.getAttribute(_skillField)}');
+					//]]>
+					</script>
 				</td>
 				<td align="center">
 					<select name="${_skillOptField}" disabled="disabled">
@@ -84,6 +101,11 @@
 						<option value="&lt;=">&lt;=</option>
 						<option value="&gt;=">&gt;=</option>
 					</select>
+					<script tye="text/javascript" language="javascript">
+					//<![CDATA[
+					adjustSelectedItem('${_skillOptField}', '${_form.getAttribute(_skillOptField)}');
+					//]]>
+					</script>
 				</td>
 				<td align="center">
 					<select name="${_skillLevelField}" disabled="disabled">
@@ -91,6 +113,11 @@
 							<option value="${_level?c}">${_level?c}</option>
 						</#list>
 					</select>
+					<script tye="text/javascript" language="javascript">
+					//<![CDATA[
+					adjustSelectedItem('${_skillLevelField}', '${_form.getAttribute(_skillLevelField)}');
+					//]]>
+					</script>
 				</td>
 				<td align="center" style="border-left: 1px solid">
 					<select disabled="disabled" name="${_monthsExpOptField}" onchange="monthsExpOptSelectionChanged('${_monthsExpOptField}', '${_monthsExpField}');">
@@ -101,12 +128,34 @@
 						<option value="&lt;=">&lt;=</option>
 						<option value="&gt;=">&gt;=</option>
 					</select>
+					<script tye="text/javascript" language="javascript">
+					//<![CDATA[
+					adjustSelectedItem('${_monthsExpOptField}', '${_form.getAttribute(_monthsExpOptField)}');
+					//]]>
+					</script>
 				</td>
 				<td align="center">
-					<input disabled="disabled" name="${_monthsExpField}" type="text" value="" size="2" />
+					<input disabled="disabled" name="${_monthsExpField}" type="text" value="${_form.getAttribute(_monthsExpField)}" size="2" />
+					<script tye="text/javascript" language="javascript">
+					//<![CDATA[
+					skillSelectionChanged('${_skillField}', '${_skillOptField}', '${_skillLevelField}', '${_monthsExpOptField}', '${_monthsExpField}');
+					//]]>
+					</script>
 				</td>
 			</tr>
 		</#list>
 	</tbody>
+	<tfoot>
+		<tr>
+			<td>
+				<input type="submit" value="${language.getMessage('msg.search')}" />
+			</td>
+		</tr>
+	</tfoot>
 	</table>
 </form>
+
+<h2>${language.getMessage('msg.searchResult')}</h2>
+<#list page.searchResult as user>
+	<p>${user.displayName}</p>
+</#list>
