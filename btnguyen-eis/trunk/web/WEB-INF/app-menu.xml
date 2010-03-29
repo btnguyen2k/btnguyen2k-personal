@@ -7,8 +7,10 @@
 		<item title="lang:msg.menuManager" link="action:manager"
 			permission="EIS:MANAGER" />
 		<item title="lang:msg.menuAdmin" link="action:admin" permission="EIS:ADMIN" />
+		<!--
 		<item title="lang:msg.menuHelp" link="action:help" />
-		<item title="lang:msg.logout" link="action:logout" />
+		-->
+		<item title="lang:msg.logout" link="action:home:logout" />
 	</menu>
 	<menu title="lang:msg.menuStaff" link="action:staff" permission="EIS:STAFF">
 		<item title="lang:msg.menuStaff.profile" link="action:staff:profile" />
