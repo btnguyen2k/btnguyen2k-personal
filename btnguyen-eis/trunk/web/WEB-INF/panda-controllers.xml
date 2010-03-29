@@ -10,6 +10,7 @@
 	<bean id="controllerGlobalDefault" class="org.ddth.eis.controller.ReturnHomeController" />
 
 	<bean id="controllerHomeLogin" class="org.ddth.eis.controller.home.LoginController" />
+	<bean id="controllerHomeLogout" class="org.ddth.eis.controller.home.LogoutController" />
 	<bean id="controllerHomeIndex" class="org.ddth.eis.controller.home.IndexController" />
 
 	<bean id="controllerStaffSkillInventory" class="org.ddth.eis.controller.staff.SkillInventoryController">

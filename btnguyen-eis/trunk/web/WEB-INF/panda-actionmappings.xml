@@ -4,6 +4,7 @@
 
 	<module name="home">
 		<handler action="login" bean="controllerHomeLogin" />
+		<handler action="logout" bean="controllerHomeLogout" />
 		<handler action="index" bean="controllerHomeIndex" />
 	</module>
 
