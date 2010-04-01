@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE languages PUBLIC
-		"-//MLS/Multilanguages Support Registry DTD//EN"
-		"http://www.ddth.org/dtd/mls/0.3/mls.dtd">
+	<!--
+		<!DOCTYPE languages PUBLIC "-//MLS/Multilanguages Support Registry
+		DTD//EN" "http://www.ddth.org/dtd/mls/0.3/mls.dtd">
+	-->
 <languages cache="disabled">
 	<storage externalInstance="true">
 	</storage>
@@ -14,9 +15,9 @@
 		locale="en_US">
 		<ref target="default" />
 	</language>
-	
-	<language name="vn" description="Vietnamese Language Pack" type="properties"
-		locale="vi">
+
+	<language name="vn" description="Vietnamese Language Pack"
+		type="properties" locale="vi">
 		<asset name="knob.xml" />
 	</language>
 </languages>
