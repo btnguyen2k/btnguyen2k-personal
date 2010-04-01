@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE templates PUBLIC
-	"-//Template Registry DTD//EN"
-	"http://www.ddth.org/dtd/webtemplate/0.4/templates.dtd">
+	<!--
+		<!DOCTYPE templates PUBLIC "-//Template Registry DTD//EN"
+		"http://www.ddth.org/dtd/webtemplate/0.4/templates.dtd">
+	-->
 <templates cache="disabled">
 	<storage externalInstance="true">
 	</storage>
