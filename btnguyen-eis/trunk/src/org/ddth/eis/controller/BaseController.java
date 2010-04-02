@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -59,12 +60,16 @@ public abstract class BaseController extends AbstractController {
     protected final static String MODEL_LANGUAGE = "language";
 
     protected final static String MODEL_CURRENT_USER = "currentUser";
+
+    protected final static String MODEL_APP_VERSION_INFO = "appVersionInfo";
+
     protected final static String MODEL_PAGE = "page";
     protected final static String MODEL_PAGE_NAME = "name";
     protected final static String MODEL_PAGE_TITLE = "title";
     protected final static String MODEL_PAGE_KEYWORDS = "keywords";
     protected final static String MODEL_PAGE_DESCRIPTION = "description";
     protected final static String MODEL_PAGE_SLOGAN = "slogan";
+    protected final static String MODEL_PAGE_COPYRIGHT = "copyright";
     protected final static String MODEL_PAGE_TOP_MENU = "topMenu";
     protected final static String MODEL_PAGE_SIDE_MENU = "sideMenu";
 
@@ -312,6 +317,37 @@ public abstract class BaseController extends AbstractController {
         return this instanceof IFormController;
     }
 
+    private Properties appExternalConfigs;
+
+    /**
+     * Top level model: Sets the AppVersionInfo model.
+     * 
+     * @param mav
+     *            ModelAndView
+     */
+    protected void modelAppVersionInfo(ModelAndView mav) {
+        final String EXTERNAL_CONFIG_FILE = "/WEB-INF/eis-config.properties";
+        final String PROP_VERSION_STRING = "version.string";
+        final String PROP_BUILD_NUMBER = "build.number";
+        if ( appExternalConfigs == null ) {
+            appExternalConfigs = new Properties();
+            InputStream is = getServletContext().getResourceAsStream(EXTERNAL_CONFIG_FILE);
+            try {
+                appExternalConfigs.load(is);
+            } catch ( IOException e ) {
+                throw new RuntimeException(e);
+            } finally {
+                try {
+                    is.close();
+                } catch ( IOException e ) {
+                }
+            }
+        }
+        String versionString = appExternalConfigs.getProperty(PROP_VERSION_STRING) + " Build "
+                + appExternalConfigs.getProperty(PROP_BUILD_NUMBER);
+        mav.addObject(MODEL_APP_VERSION_INFO, versionString);
+    }
+
     /**
      * Top level model: Sets the Language model.
      * 
@@ -348,6 +384,7 @@ public abstract class BaseController extends AbstractController {
         modelPageKeywords(modelPage);
         modelPageDescription(modelPage);
         modelPageSlogan(modelPage);
+        modelPageCopyright(modelPage);
         modelPageContent(modelPage);
     }
 
@@ -601,6 +638,22 @@ public abstract class BaseController extends AbstractController {
     }
 
     /**
+     * Models the page's copyright message.
+     * 
+     * @param modelPage
+     *            Map<String, Object>
+     */
+    protected void modelPageCopyright(Map<String, Object> modelPage) {
+        AppConfigManager acp = getAppConfigManager();
+        AppConfig config = acp.loadConfig(EisAppConfigConstants.CONFIG_SITE_COPYRIGHT);
+        if ( config != null ) {
+            modelPage.put(MODEL_PAGE_COPYRIGHT, config.getStringValue());
+        } else {
+            modelPage.put(MODEL_PAGE_COPYRIGHT, "");
+        }
+    }
+
+    /**
      * Models the page's title.
      * 
      * @param modelPage
@@ -664,6 +717,7 @@ public abstract class BaseController extends AbstractController {
     protected void modelController(ModelAndView mav) {
         modelCurrentUser(mav);
         modelLanguage(mav);
+        modelAppVersionInfo(mav);
         modelPage(mav);
     }
 

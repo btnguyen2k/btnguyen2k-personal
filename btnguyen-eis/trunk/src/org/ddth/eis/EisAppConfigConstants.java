@@ -22,4 +22,7 @@ public class EisAppConfigConstants {
 
     public final static AppConfigKey CONFIG_SITE_SLOGAN = AppConfigKey.createAppConfigKey("SITE",
                                                                                           "SLOGAN");
+
+    public final static AppConfigKey CONFIG_SITE_COPYRIGHT = AppConfigKey
+            .createAppConfigKey("SITE", "COPYRIGHT");
 }

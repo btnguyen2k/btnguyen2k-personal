@@ -1,5 +1,6 @@
 <#assign _form=page.form />
 <h1>${language.getMessage('msg.login')}</h1>
+<div class="info">${language.getMessage('msg.login.infoMessage')}</div>
 <#if _form.hasErrorMessage()>
 	<div class="error">
 		<#list _form.errorMessages as msg>

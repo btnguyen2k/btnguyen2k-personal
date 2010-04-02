@@ -27,6 +27,7 @@ public class SiteSettingsController extends BaseFormController implements
     private final static String FORM_FIELD_SITE_KEYWORDS = "siteKeywords";
     private final static String FORM_FIELD_SITE_DESCRIPTION = "siteDescription";
     private final static String FORM_FIELD_SITE_SLOGAN = "siteSlogan";
+    private final static String FORM_FIELD_SITE_COPYRIGHT = "siteCopyright";
 
     /**
      * {@inheritDoc}
@@ -53,6 +54,10 @@ public class SiteSettingsController extends BaseFormController implements
 
         AppConfigManager acm = getAppConfigManager();
         AppConfig appConfig;
+
+        appConfig = acm.loadConfig(EisAppConfigConstants.CONFIG_SITE_COPYRIGHT);
+        form.setAttribute(FORM_FIELD_SITE_COPYRIGHT, appConfig != null ? appConfig.getStringValue()
+                : "");
 
         appConfig = acm.loadConfig(EisAppConfigConstants.CONFIG_SITE_DESCRIPTION);
         form.setAttribute(FORM_FIELD_SITE_DESCRIPTION, appConfig != null ? appConfig
@@ -89,6 +94,8 @@ public class SiteSettingsController extends BaseFormController implements
      * {@inheritDoc}
      */
     public void populateSubmittedForm(SubmittedForm form, HttpServletRequest request) {
+        form.setAttribute(FORM_FIELD_SITE_COPYRIGHT, request
+                .getParameter(FORM_FIELD_SITE_COPYRIGHT));
         form.setAttribute(FORM_FIELD_SITE_DESCRIPTION, request
                 .getParameter(FORM_FIELD_SITE_DESCRIPTION));
         form.setAttribute(FORM_FIELD_SITE_KEYWORDS, request.getParameter(FORM_FIELD_SITE_KEYWORDS));
@@ -103,6 +110,11 @@ public class SiteSettingsController extends BaseFormController implements
     public boolean processFormSubmission(SubmittedForm form) {
         AppConfigManager acm = getAppConfigManager();
         AppConfig appConfig;
+        
+        appConfig = new AppConfig();
+        appConfig.setKey(EisAppConfigConstants.CONFIG_SITE_COPYRIGHT);
+        appConfig.setStringValue(form.getAttribute(FORM_FIELD_SITE_COPYRIGHT));
+        acm.saveConfig(appConfig);
 
         appConfig = new AppConfig();
         appConfig.setKey(EisAppConfigConstants.CONFIG_SITE_DESCRIPTION);
