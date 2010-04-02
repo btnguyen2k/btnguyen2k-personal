@@ -5,8 +5,8 @@
 		EIS - Enterprise Intranet Suite
     </description>
 
-	<property name="product.name" value="eis" />
-	<property name="product.version" value="0.1" />
+	<property name="product.name" value="EIS" />
+	<property name="product.version" value="0.1.1" />
 
 	<!-- directory properties -->
 	<property name="dir.src" value="src" />
@@ -26,10 +26,16 @@
 	<mkdir dir="${dir.release}" />
 	<mkdir dir="${dir.classes}" />
 	<mkdir dir="${dir.temp}" />
-	
+
 	<target name="release" depends="compile" description="Release EIS project">
 		<delete dir="${dir.temp}" quiet="true" />
 		<mkdir dir="${dir.temp}/zip/web" />
+
+		<propertyfile file="${dir.web.WEB_INF}/eis-config.properties">
+			<entry key="build.number" type="int" value="1" operation="+" />
+			<entry key="version.string" type="string" value="${product.name} v${product.version}" />
+		</propertyfile>
+		<property file="${dir.web.WEB_INF}/eis-config.properties" />
 
 		<copy todir="${dir.temp}/zip/web">
 			<fileset dir="${dir.web}">
@@ -40,8 +46,8 @@
 				<include name="**/*.class" />
 			</fileset>
 		</delete>
-		
-		<property name="filename.release" value="${product.name}-${product.version}-${DSTAMP}.zip"/>
+
+		<property name="filename.release" value="${product.name}-${product.version}-${DSTAMP}.zip" />
 
 		<zip destfile="${dir.temp}/${filename.release}" basedir="${dir.temp}/zip" />
 		<copy todir="${dir.release}" file="${dir.temp}/${filename.release}" />

@@ -40,6 +40,7 @@ INSERT INTO eis_app_config (config_domain, config_key, config_string) VALUES ('S
 INSERT INTO eis_app_config (config_domain, config_key, config_string) VALUES ('SITE', 'KEYWORDS', 'EIS, Enterprise, Intranet');
 INSERT INTO eis_app_config (config_domain, config_key, config_string) VALUES ('SITE', 'DESCRIPTION', 'EIS - Enterprise Intranet Suite');
 INSERT INTO eis_app_config (config_domain, config_key, config_string) VALUES ('SITE', 'SLOGAN', 'Too lazy to think of a slogan');
+INSERT INTO eis_app_config (config_domain, config_key, config_string) VALUES ('SITE', 'COPYRIGHT', '(C) 2010 EIS');
 
 CREATE TABLE daf_permission (
 	pmodule							VARCHAR(32)			NOT NULL,
