@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 public abstract class BaseFormController extends BaseController implements IFormController {
 
+    protected final static String MODEL_PAGE_INFO_MESSAGE = "infoMessage";
     protected final static String MODEL_PAGE_TRANSITION_URL = "transitionUrl";
     protected final static String MODEL_PAGE_TRANSITION_MESSAGE = "transitionMessage";
 
@@ -52,6 +53,7 @@ public abstract class BaseFormController extends BaseController implements IForm
             model.put(MODEL_PAGE, modelPageObj);
         }
         Map<String, Object> modelPage = (Map<String, Object>) modelPageObj;
+        modelPage.put(MODEL_PAGE_INFO_MESSAGE, getInfoMessage());
         String transitionUrl = getTransitionUrl();
         if ( transitionUrl != null ) {
             modelPage.put(MODEL_PAGE_TRANSITION_URL, transitionUrl);
@@ -77,6 +79,16 @@ public abstract class BaseFormController extends BaseController implements IForm
      * @return String
      */
     protected String getTransitionMessage() {
+        return null;
+    }
+
+    /**
+     * Gets an additional info message. Sub-class overrides this method to provide its own info
+     * message.
+     * 
+     * @return String
+     */
+    protected String getInfoMessage() {
         return null;
     }
 
