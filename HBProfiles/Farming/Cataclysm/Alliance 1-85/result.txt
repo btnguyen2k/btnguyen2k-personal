@@ -1,0 +1,92 @@
+Auflistung der Ordnerpfade
+Volumeseriennummer : 00000035 8ACE:DF1E
+D:.
+|   'Auto Search [by gringo]'.ini
+|   01-03 Nordhaintal [bygringo].ini
+|   03-04 Nordhaintal [bygringo].ini
+|   04-06 Nordhaintal [bygringo].ini
+|   06-09 Goldhain [bygringo].ini
+|   09-11 Goldhain [bygringo].ini
+|   11-13 Westfall [bygringo].ini
+|   13-16 Westfall [bygringo].ini
+|   16-19 Loch Modan [bygringo].ini
+|   19-22 Loch Modan [bygringo].ini
+|   22-24 Sumpfland [bygringo].ini
+|   24-26 Sumpfland [bygringo].ini
+|   26-28 Arathihochland [bygringo].ini
+|   28-31 Arathihochland [bygringo].ini
+|   31-35 Hinterland [bygringo].ini
+|   35-38 Westliche PestlÑnder [bygringo].ini
+|   38-41 Westliche PestlÑnder [bygringo].ini
+|   41-43 ôstliche PestlÑnder [bygringo].ini
+|   43-46 ôstliche PestlÑnder [bygringo].ini
+|   46-48 ôdland [bygringo].ini
+|   48-52 Tanaris [bygringo].ini
+|   52-56 Krater von Un'Goro  [bygringo].ini
+|   56-59 Silithus [bygringo].ini
+|   59-62 Zangermarschen [by gringo].ini
+|   62-65 Allerias Feste [by gringo].ini
+|   65-68 WÑlder von Terokkar [bygringo].ini
+|   68-69 Schattenmondtal [by gringo].ini
+|   69-72 Borean Tundra [bygringo].ini
+|   72-77 GrizzlyhÅgel [bygringo].ini
+|   77-80 Zul Drak [by gringo].ini
+|   80-82 Hyjal RANDOM [bygringo].ini
+|   82-83 Tiefenheim RANDOM [bygringo].ini
+|   83-84 Uldum RANDOM [bygringo].ini
+|   84-85 Schattenhochland RANDOM [bygringo].ini
+|   auflisten.bat
+|   goto  Zul Drak [bygringo].ini
+|   goto Allerias Feste 1 [by gringo].ini
+|   goto Arathihochland 1 [bygringo].ini
+|   goto Arathihochland 2 [bygringo].ini
+|   goto Eisenschmiede 1 [bygringo].ini
+|   goto Eisenschmiede 2 [bygringo].ini
+|   goto Goldhain 1 [bygringo].ini
+|   goto Goldhain 2 [bygringo].ini
+|   goto GrizzlyhÅgel 1 [bygringo].ini
+|   goto Hinterland [bygringo].ini
+|   goto Krater von Un'Goro 1 [bygringo].ini
+|   goto Loch Modan 1 [bygringo].ini
+|   goto Loch Modan 2 [bygringo].ini
+|   goto Nordend 1 [by gringo].ini
+|   goto Nordhaintal 1 [bygringo].ini
+|   goto Nordhaintal 2 [bygringo].ini
+|   goto Schattenmondtal 1 [bygringo].ini
+|   goto Sengende Schlucht  1 [bygringo].ini
+|   goto Silithus 1.ini
+|   goto Sumpfland 1 [bygringo].ini
+|   goto Sumpfland 2 [bygringo].ini
+|   goto Tanaris 1 [bygringo].ini
+|   goto Westfall 1 [bygringo].ini
+|   goto Westfall 2 [bygringo].ini
+|   goto Westliche PestlÑnder 1 [bygringo].ini
+|   goto Westliche PestlÑnder 2 [bygringo].ini
+|   goto WÑlder von Terokkar 1 [bygringo].ini
+|   goto Zangermarschen 1 [bygringo].ini
+|   goto ôdland 1 [bygringo].ini
+|   goto ôstliche PestlÑnder 1 [bygringo].ini
+|   goto ôstliche PestlÑnder 2 [bygringo].ini
+|   Log 4.2.txt
+|   result.txt
+|   UseTrainer 1 [bygringo].ini
+|   UseTrainer 2 [bygringo].ini
+|   UseTrainer 3 [bygringo].ini
+|   UseTrainer 4 [bygringo].ini
+|   UseTrainer 5 [bygringo].ini
+|   UseTrainer 6 [bygringo].ini
+|   [quest1] goto Hyjal [bygringo].ini
+|   [quest1] goto Tiefenheim [bygringo].ini
+|   [quest1] goto Uldum [bygringo].ini
+|   [quest2] goto Uldum [bygringo].ini
+|   [quest3] goto Uldum [bygringo].ini
+|   [quest4] goto Uldum [bygringo].ini
+|   
+\---Alternativ Profile
+        40-43 Tausend Nadeln [bygringo].ini
+        43-47 Tanaris [bygringo].ini
+        48-52 Tanaris [bygringo].ini
+        71-74 Borean Tundra + GWP+ [Spirithealer] new vendor #2 [by gringo].ini
+        74-76 Drachenîde + GWP+ [Spirithealer] new vendor #2 [by gringo].ini
+        76-78 Sholazarbecken + GWP+ [Spirithealer] new vendor #2 [by gringo].ini
+        
