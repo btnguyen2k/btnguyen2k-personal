@@ -1,0 +1,383 @@
+                                                    **
+    /                           ,                   **
+---/__--------------__---)__--------__----__----__- **
+  /   ) /   /     /   ) /   ) /   /   ) /   ) /   ) **
+_(___/_(___/_____(___/_/_____/___/___/_(___/_(___/_ **
+          /         /                     /         **
+      (_ /      (_ /                  (_ /          **
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+******************************************************
+         Copyright by PiroxBots.com
+
+
+
+[Info]
+Author=dergringo
+Version=1.0
+pTVers.=AB 2.6.5.0
+
+Mobs & Lvl Range= 1-85
+Drops= alles möglich
+Ghost= yes
+Vendor= yes
+Spirithealer= yes
+Forum Profile Link=http://www.piroxbots.com/forum/76-profile-packs/42924-cataclysm-alliance-1-85-bygringo.html
+
+
+##############################################################################################################
+
+
+         ###########
+         #   LOG:  #
+         ###########
+
+----------------------------------
+1.0
+
+ADD: 
+
+Start Cataclysm 23.11.2010
+............................
+
+1.1
+
+Fix:
+
+- 01-03 Nordhaintal [bygringo]
+
+............................
+
+1.2
+add:
+
+- z15=SetOption("MaxZDistanceToTarget", 4)
+- z16=SetOption("RunBackFromTarget", -1)
+- z17=SetOption("TargetSearchRange", 20)
+
+fix:
+
+- 01-03 Nordhaintal [bygringo]
+- 03-04 Nordhaintal [bygringo]
+- 04-06 Nordhaintal [bygringo]
+
+...........................
+
+1.3
+
+add:
+
+- Profile von 48 bist 80 zusammen gebaut!
+- neue goto Profile, neue schiffe!
+
+...........................
+
+1.4
+
+gefixt:
+
+- goto  Zul Drak [bygringo] (teils neue wps)
+
+...........................
+
+1.5
+
+gefixt:
+
+- 72-77 Grizzlyhügel [bygringo] (skip vendor-horde)
+- 65-68 Wälder von Terokkar [bygringo] (skip vendor-horde)
+
+..........................
+
+1.6
+
+- goto Eisenschmiede [bygringo] (SW U-bahn gefixt)
+- mailbox gefixt
+
+..........................
+
+1.7
+
+add:
+
+- goto Arathihochland 1 [bygringo] (neuen FP)
+
+.........................
+
+1.8
+
+add:
+
+- 69-72 Borean Tundra [bygringo] z=IgnoreFaction(1973) 
+
+fix
+
+- goto Arathihochland 2 [bygringo] (wps gefixt, + jump2range gefixt)
+
+- goto Westfall 2 [bygringo] (add ghost + neue FP)
+z3=SetOption("MaxTargetDistance", 18)
+z4=SetOption("RunBackFromTarget", -1)
+z5=SetOption("MaxZDistanceToTarget", 4)
+
+
+.........................
+
+1.9
+
+add
+
+Trainer Support:
+
+6 - 11 - 16 - 48 - 59 - 69 - 80
+
+- UseTrainer 1 [bygringo]
+- UseTrainer 2 [bygringo]
+- UseTrainer 3 [bygringo]
+- UseTrainer 4 [bygringo]
+- UseTrainer 5 [bygringo]
+- UseTrainer 6 [bygringo]
+
+- goto Eisenschmiede 2 [bygringo]
+
+
+Fix:
+
+- 77-80 Zul Drak [by gringo]  ("z=PauseBot()")
+- 38-41 Westliche Pestländer [bygringo] (jump2 LEVEL)
+
+geändert:
+
+- goto Westfall 1 [bygringo]
+- 13-16 Westfall [bygringo]
+- goto Tanaris 1 [bygringo]
+- 46-48 Ödland [bygringo]
+- 56-59 Silithus [bygringo]
+- 68-69 Schattenmondtal [by gringo]
+- goto Goldhain 2 [bygringo] (sätz Ruhestein)
+
+
+........................
+
+2.0
+
+fix:
+
+- 56-59 Silithus [bygringo] ("z0=IgnoreFaction(104)")
+- goto Silithus 1 ("z0=IgnoreFaction(104)")
+
+.......................
+
+
+2.1
+
+add:
+
+- 41-43 Östliche Pestländer [bygringo] (use Schaumbedeckter Beutel use Scum Covered Bag)
+
+
+......................
+
+2.2
+
+Fix:
+
+- goto Nordend 1 [by gringo]
+- goto Eisenschmiede 1 [bygringo]
+- goto Eisenschmiede 1 [bygringo]
+- goto Tanaris 1 [bygringo]
+
+......................
+
+2.3
+
+
+add:
+ 
+- 03-04 Nordhaintal [bygringo] (ghost)
+
+Fix:
+
+- goto Silithus 1.ini
+
+.....................
+
+2.4
+
+Add:
+
+- Multilingual
+- 'Auto Search [by gringo]'
+
+....................
+
+2.5
+
+fix:
+
+- 69-72 Borean Tundra [bygringo] (ghost)
+
+...................
+
+2.6
+
+fix:
+
+- goto Nordend 1 [by gringo] (time fix)
+
+....................
+
+2.7
+
+add:
+
+- 80-82 Hyjal RANDOM [bygringo] (neu)
+
+...................
+
+2.8
+
+fix:
+
+- 59-62 Zangermarschen [by gringo] (gotsuck)
+- 52-56 Krater von Un'Goro  [bygringo] (spiritheailer)
+
+add:
+
+- 83-85 Schattenhochland RANDOM [bygringo] (neu)
+- 82-83 Tiefenheim RANDOM [bygringo] (neu)
+- [quest1] goto Tiefenheim [bygringo] (neu)
+
+.................
+
+2.9
+
+add: 
+
+- goto Krater von Un'Goro 1 [bygringo] (neue wps + jump2)
+- 19-22 Loch Modan [bygringo] (profil überarbeitet)
+
+fix:
+
+48-52 Tanaris [bygringo] (jump2)
+
+................
+
+
+3.0
+
+- 82-83 Tiefenheim RANDOM [bygringo] (add ghost)
+
+................
+
+3.1 
+
+
+add:
+
+
+- 52-56 Krater von Un'Goro  [bygringo] (ghost)
+- 84-85 Schattenhochland RANDOM [bygringo] (ghost)
+
+...............
+
+3.2
+
+fix:
+
+- MapIDs gefixt!
+- 14-16 Westfall (ghost)
+
+..............
+
+3.3
+
+add:
+
+- 83-84 Uldum RANDOM [bygringo].ini (neu)
+
+.............
+
+3.4
+
+fix:
+
+- 09-11 Goldhain [bygringo] (ghost)
+
+add:
+
+- goto Allerias Feste 1 [by gringo] (ghost)
+.............
+
+3.5
+
+add:
+
+- 13-16 Westfall [bygringo] (ghost+spiritheiler)
+
+............
+
+3.6
+
+fix
+
+- 28-31 Arathihochland [bygringo] (spiritheiler jump2)
+
+............
+
+3.7
+
+neues profil:
+
+- [quest1] goto Hyjal [bygringo]
+
+............
+
+3.8
+
+überarbeitet:
+
+- [quest1] goto Hyjal [bygringo]
+- [quest1] goto Tiefenheim [bygringo]
+
+...........
+
+3.9
+
+add:
+
+- 35-38 Westliche Pestländer [bygringo] (add zuvendor2)
+..........
+
+4.0
+
+add:
+
+- 35-38 Westliche Pestländer [bygringo]  (add zuvendor3)
+
+.........
+
+4.1
+
+add:
+
+neue quest profile
+
+- [quest1] goto Uldum [bygringo]
+- [quest2] goto Uldum [bygringo]
+- [quest3] goto Uldum [bygringo]
+- [quest4] goto Uldum [bygringo]
+
+...........
+
+4.2
+
+- [quest1] goto Uldum [bygringo] (lv min und max support)
+- [quest2] goto Uldum [bygringo] (lv min und max support)
+- [quest3] goto Uldum [bygringo] (lv min und max support)
+- [quest4] goto Uldum [bygringo] (lv min und max support)
+...........
+
+4.3
+
+fix:
+
+- 77-80 Zul Drak [by gringo] (jump2rang)
