@@ -1,0 +1,51 @@
+<HBProfile creator="Ark" version="1.0">
+
+    <Name>Arks Shard</Name>
+    <MinLevel>88</MinLevel>
+    <MaxLevel>91</MaxLevel>
+   
+    <MinDurability>0.2</MinDurability>
+    <MinFreeBagSlots>2</MinFreeBagSlots>
+   
+   	<SellGrey>True</SellGrey>
+   	<SellWhite>True</SellWhite>
+	<SellGreen>False</SellGreen>
+
+	<MailWhite>True</MailWhite>
+	<MailGreen>True</MailGreen>
+	<MailBlue>True</MailBlue>
+	<MailPurple>True</MailPurple>
+        <Factions>,2479</Factions> 
+	
+	 <AvoidMobs>
+       <Mob Name="Kang the Soul Thief" Entry="50439" />
+   </AvoidMobs>
+	
+    <Vendors>
+<Vendor Name="Merchant Tantan" Entry="59341" Type="Repair" X="1172.832" Y="1411.606" Z="342.6643" />
+	</Vendors>
+<Blackspots>
+<Blackspot X="2317.868" Y="1763.114" Z="509.3717" Radius="1.392727" />
+<Blackspot X="2235.784" Y="1749.011" Z="493.6839" Radius="1.42489" />
+<Blackspot X="2233.673" Y="1662.498" Z="497.0729" Radius="1.807803" />
+<Blackspot X="2243.654" Y="1727.126" Z="493.4233" Radius="1.785862" />
+<Blackspot X="2334.938" Y="1750.147" Z="508.1594" Radius="6.038" />
+</Blackspots>
+   
+    <Mailboxes> 
+<Mailbox X="1698.788" Y="913.6039" Z="470.9345" />
+	</Mailboxes>
+   
+    <GrindArea>
+		<TargetMinLevel>80</TargetMinLevel>
+		<TargetMaxLevel>91</TargetMaxLevel>
+		<Hotspots>
+<Hotspot X="1350.042" Y="2144.496" Z="362.0416" />
+<Hotspot X="1243.179" Y="2080.919" Z="338.8806" />
+<Hotspot X="1246.752" Y="2189.13" Z="336.3727" />
+<Hotspot X="1150.819" Y="2012.154" Z="330.2161" />
+<Hotspot X="1418.741" Y="2169.07" Z="366.3194" />
+
+        </Hotspots>
+    </GrindArea>
+</HBProfile>
