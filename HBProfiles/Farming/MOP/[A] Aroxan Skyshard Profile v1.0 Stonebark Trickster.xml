@@ -1,0 +1,51 @@
+<HBProfile creator="Aroxan" version="1.0">
+	<Name>Aroxan Skyshard Profile v1.0 Stonebark Trickster</Name> 
+  
+	<MinLevel>1</MinLevel> 
+	<MaxLevel>101</MaxLevel>
+	
+    <TargetElites>False</TargetElites>
+
+	<MinDurability>0.3</MinDurability> 
+	<MinFreeBagSlots>2</MinFreeBagSlots>
+	
+   	<SellGrey>True</SellGrey>
+   	<SellWhite>False</SellWhite>
+	<SellGreen>False</SellGreen>
+
+	<MailWhite>True</MailWhite>
+	<MailGreen>True</MailGreen>
+	<MailBlue>True</MailBlue>
+	<MailPurple>True</MailPurple>
+
+  <Factions>1712</Factions> 
+    
+  <Vendors>
+  <Vendor Name="Merchant Tantan" Entry="59341" Type="Repair" X="1172.832" Y="1411.606" Z="342.6643" /> 
+  </Vendors>
+
+  <Mailboxes> 
+ <Mailbox X="1698.788" Y="913.6039" Z="470.9345" />
+  </Mailboxes>
+
+<GrindArea>
+
+  <TargetMinLevel>1</TargetMinLevel> 
+
+  <TargetMaxLevel>101</TargetMaxLevel> 
+
+<Hotspots>
+<Hotspot X="1393.072" Y="1624.025" Z="347.6457" />
+<Hotspot X="1420.68" Y="1695.438" Z="344.2379" />
+<Hotspot X="1488.349" Y="1752.348" Z="356.6577" />
+<Hotspot X="1527.599" Y="1706.217" Z="367.985" />
+<Hotspot X="1615.508" Y="1702.762" Z="406.936" />
+<Hotspot X="1622.058" Y="1793.023" Z="427.9878" />
+<Hotspot X="1665.089" Y="1700.231" Z="428.7497" />
+<Hotspot X="1546.81" Y="1587.152" Z="390.6247" />
+<Hotspot X="1473.494" Y="1562.719" Z="399.4134" />
+
+
+</Hotspots>
+  </GrindArea>
+</HBProfile>
