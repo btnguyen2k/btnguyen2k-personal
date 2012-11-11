@@ -1,0 +1,183 @@
+<HBProfile>
+  <Name>Zuabros' Hellfire Route</Name>
+  <MinDurability>0.4</MinDurability>
+  <MinFreeBagSlots>1</MinFreeBagSlots>
+  
+  <MinLevel>1</MinLevel>
+  <MaxLevel>86</MaxLevel>
+  <Factions>99999</Factions>
+  
+  <MailGrey>False</MailGrey>
+  <MailWhite>True</MailWhite>
+  <MailGreen>True</MailGreen>
+  <MailBlue>True</MailBlue>
+  <MailPurple>True</MailPurple>
+ 
+  <SellGrey>True</SellGrey>
+  <SellWhite>True</SellWhite>
+  <SellGreen>False</SellGreen>
+  <SellBlue>False</SellBlue>
+  <SellPurple>False</SellPurple>
+
+    <Vendors>
+<Vendor Name="Maktu" Entry="18010" Type="Repair" X="1020.835" Y="7383.452" Z="36.24097" /> // neutral zangarmarsh
+    </Vendors>
+	
+    <Mailboxes>
+	<Mailbox X="1028.813" Y="7361.491" Z="36.42369" /> // neutral harborage zangarmash
+    </Mailboxes>
+
+ <Blackspots>
+// Hellfire
+	<Blackspot X="-284.768" Y="2624.931" Z="-3.36948" Radius="10" /> // stucks under hut
+// Netherstorm
+	<Blackspot X="3755.799" Y="2062.228" Z="150.077" Radius="10" /> // Stucks inside cave
+	<Blackspot X="3456.469" Y="3557.925" Z="173.2902" Radius="10" /> // steep hill (falls)
+	<Blackspot X="3618.534" Y="2086.171" Z="106.3678" Radius="15" /> // under rock
+// Others
+	<Blackspot X="-3216.535" Y="2511.391" Z="61.34509" Radius="10" /> //eternal combat
+	<Blackspot X="2339.894" Y="6495.784" Z="3.463711" Radius="10" /> // under root blades edge
+	<Blackspot X="-788.7512" Y="3727.885" Z="118.6286" Radius="10" /> // steep cliff hellfire
+	<Blackspot X="-3404.402" Y="3986.206" Z="60.45509" Radius="10" /> // under house terokkar
+	<Blackspot X="-3905.222" Y="1424.516" Z="58.08376" Radius="10" /> // immune mob shadowmoon
+	<Blackspot X="-3461.027" Y="1145.653" Z="18.51462" Radius="10" /> // node inside lava shadowmoon
+	<Blackspot X="-3440.753" Y="2515.51" Z="57.27776" Radius="10" /> // anode node inside lava
+	<Blackspot X="785.5434" Y="6722.408" Z="20.08885" Radius="10" />
+	<Blackspot X="423.5639" Y="8409.825" Z="-17.92938" Radius="10" /> // node inside river zangarmash
+	<Blackspot X="3268.367" Y="4901.19" Z="267.3843" Radius="10" /> // under tree
+	<Blackspot X="3199.569" Y="1810.639" Z="143.3377" Radius="10" /> // under rock netherstorm
+	<Blackspot X="-4253.484" Y="1953.077" Z="83.30181" Radius="10" /> // under rock shadowmoon
+	<Blackspot X="-3351.746" Y="2418.677" Z="59.47302" Radius="10" /> // under rock shadowmoon
+	<Blackspot X="825.0602" Y="6270.798" Z="19.45717" Radius="10" /> // may stuck in blades edge border (can try remove)
+	<Blackspot X="825.3439" Y="6378.757" Z="21.48122" Radius="10" /> // may stuck in blades edge border (can try remove)
+	<Blackspot X="825.1466" Y="6495.455" Z="23.33274" Radius="10" /> // may stuck in blades edge border (can try remove)
+	<Blackspot X="-193.5825" Y="2426.937" Z="27.08094" Radius="10" /> // stucks under root hellfire
+	<Blackspot X="16.59114" Y="4611.818" Z="52.14264" Radius="10" /> // stucks at the ground... hellfire
+<Blackspot X="-2872.714" Y="1296.682" Z="6.808586" Radius="10" /> // inside cave shadowmoon
+<Blackspot X="-2439.698" Y="5018.658" Z="27.17116" Radius="10" /> // terokkar inside village
+<Blackspot X="4996.257" Y="3742.523" Z="206.3126" Radius="10" /> // phasing issues, netherstorm
+// Shadowmoon
+<Blackspot X="-3314.688" Y="905.309" Z="29.96673" Radius="10" /> // steep hill (falls)
+  </Blackspots>
+
+  <Hotspots>
+    <Hotspot X="-467.9124" Y="3271.298" Z="80" />
+    <Hotspot X="-487.1975" Y="3082.274" Z="80" />
+    <Hotspot X="-667.65" Y="3164.908" Z="80" />
+    <Hotspot X="-775.0949" Y="3099.834" Z="80" />
+    <Hotspot X="-885.2949" Y="3272.848" Z="80" />
+    <Hotspot X="-980.3424" Y="3076.077" Z="80" />
+    <Hotspot X="-921.1099" Y="2894.284" Z="80" />
+    <Hotspot X="-1184.212" Y="3005.839" Z="80" />
+    <Hotspot X="-1089.165" Y="3203.642" Z="80" />
+    <Hotspot X="-1222.782" Y="3346.701" Z="80" />
+    <Hotspot X="-1428.03" Y="3435.015" Z="80" />
+    <Hotspot X="-1518.945" Y="3543.988" Z="80" />
+    <Hotspot X="-1585.065" Y="3761.934" Z="80" />
+    <Hotspot X="-1703.53" Y="3785.691" Z="80" />
+    <Hotspot X="-1432.162" Y="3225.333" Z="80" />
+    <Hotspot X="-1291.657" Y="3126.69" Z="80" />
+    <Hotspot X="-1404.612" Y="3037.343" Z="80" />
+    <Hotspot X="-1443.182" Y="2845.737" Z="80" />
+    <Hotspot X="-1403.235" Y="2704.227" Z="80" />
+    <Hotspot X="-1158.04" Y="2535.862" Z="80" />
+    <Hotspot X="-959.68" Y="2568.915" Z="80" />
+    <Hotspot X="-910.09" Y="2520.884" Z="80" />
+    <Hotspot X="-794.3798" Y="2282.797" Z="80" />
+    <Hotspot X="-576.7349" Y="2182.604" Z="80" />
+    <Hotspot X="-476.1775" Y="2125.793" Z="80" />
+    <Hotspot X="-560.205" Y="1984.8" Z="80" />
+    <Hotspot X="-702.0875" Y="2097.905" Z="80" />
+    <Hotspot X="-852.235" Y="1986.866" Z="80" />
+    <Hotspot X="-988.6074" Y="2119.596" Z="80" />
+    <Hotspot X="-1064.37" Y="2265.754" Z="80" />
+    <Hotspot X="-1258.597" Y="2279.698" Z="80" />
+    <Hotspot X="-1174.57" Y="2125.793" Z="80" />
+    <Hotspot X="-1147.02" Y="1974.471" Z="80" />
+    <Hotspot X="-984.475" Y="1870.147" Z="80" />
+    <Hotspot X="-1237.935" Y="1425.993" Z="80" />
+    <Hotspot X="-1105.695" Y="1459.562" Z="80" />
+    <Hotspot X="-934.8849" Y="1460.595" Z="80" />
+    <Hotspot X="-852.235" Y="1659.432" Z="80" />
+    <Hotspot X="-714.4849" Y="1607.786" Z="80" />
+    <Hotspot X="-551.9399" Y="1804.556" Z="80" />
+    <Hotspot X="-378.375" Y="1858.268" Z="80" />
+    <Hotspot X="-309.4999" Y="2012.173" Z="80" />
+    <Hotspot X="-116.6499" Y="1998.745" Z="80" />
+    <Hotspot X="7.325042" Y="1889.772" Z="80" />
+    <Hotspot X="131.3001" Y="1741.032" Z="80" />
+    <Hotspot X="260.785" Y="2025.084" Z="80" />
+    <Hotspot X="289.7126" Y="2131.991" Z="80" />
+    <Hotspot X="503.225" Y="2192.933" Z="80" />
+    <Hotspot X="383.3825" Y="2298.291" Z="80" />
+    <Hotspot X="351.7" Y="2502.292" Z="80" />
+    <Hotspot X="178.1351" Y="2308.62" Z="80" />
+    <Hotspot X="34.8751" Y="2239.415" Z="80" />
+    <Hotspot X="-157.975" Y="2465.623" Z="80" />
+    <Hotspot X="-301.2349" Y="2384.539" Z="80" />
+    <Hotspot X="-326.0299" Y="2518.818" Z="80" />
+    <Hotspot X="-248.8899" Y="2675.822" Z="80" />
+    <Hotspot X="-485.82" Y="2741.412" Z="80" />
+    <Hotspot X="-354.9575" Y="2896.866" Z="80" />
+    <Hotspot X="-182.77" Y="2871.559" Z="80" />
+    <Hotspot X="-218.585" Y="2994.993" Z="80" />
+    <Hotspot X="-141.4449" Y="3096.219" Z="80" />
+    <Hotspot X="40.38509" Y="3117.91" Z="80" />
+    <Hotspot X="286.9576" Y="3054.385" Z="80" />
+    <Hotspot X="499.0925" Y="2738.313" Z="80" />
+    <Hotspot X="720.8701" Y="2864.845" Z="80" />
+    <Hotspot X="530.7751" Y="2890.668" Z="80" />
+    <Hotspot X="490.8275" Y="3028.046" Z="80" />
+    <Hotspot X="472.92" Y="3163.875" Z="80" />
+    <Hotspot X="307.6201" Y="3359.613" Z="80" />
+    <Hotspot X="470.1651" Y="3376.656" Z="80" />
+    <Hotspot X="439.86" Y="3572.91" Z="80" />
+    <Hotspot X="478.43" Y="3778.46" Z="80" />
+    <Hotspot X="304.1763" Y="3851.797" Z="80" />
+    <Hotspot X="127.1675" Y="4066.127" Z="80" />
+    <Hotspot X="23.85501" Y="3895.18" Z="80" />
+    <Hotspot X="-230.9825" Y="3816.678" Z="80" />
+    <Hotspot X="-193.1012" Y="3976.264" Z="80" />
+    <Hotspot X="-84.27872" Y="4174.067" Z="80" />
+    <Hotspot X="-71.88121" Y="4369.805" Z="80" />
+    <Hotspot X="-49.15249" Y="4610.991" Z="80" />
+    <Hotspot X="18.00069" Y="4744.237" Z="80" />
+    <Hotspot X="160.9163" Y="4607.376" Z="80" />
+    <Hotspot X="193.2875" Y="4780.389" Z="80" />
+    <Hotspot X="159.5388" Y="4884.197" Z="80" />
+    <Hotspot X="-8.516169" Y="4913.119" Z="80" />
+    <Hotspot X="-153.4981" Y="4950.304" Z="80" />
+    <Hotspot X="-278.5061" Y="5174.963" Z="80" />
+    <Hotspot X="-397.3155" Y="4950.82" Z="80" />
+    <Hotspot X="-538.5093" Y="4912.086" Z="80" />
+    <Hotspot X="-618.4044" Y="4732.359" Z="80" />
+    <Hotspot X="-492.0187" Y="4550.565" Z="80" />
+    <Hotspot X="-368.0437" Y="4514.413" Z="80" />
+    <Hotspot X="-419.6999" Y="4377.552" Z="80" />
+    <Hotspot X="-379.0637" Y="4085.236" Z="80" />
+    <Hotspot X="-573.2911" Y="4285.622" Z="80" />
+    <Hotspot X="-658.0075" Y="4414.737" Z="80" />
+    <Hotspot X="-803.3337" Y="4405.957" Z="80" />
+    <Hotspot X="-903.2023" Y="4346.564" Z="80" />
+    <Hotspot X="-774.4061" Y="4186.462" Z="80" />
+    <Hotspot X="-948.66" Y="4090.917" Z="80" />
+    <Hotspot X="-999.6273" Y="4208.153" Z="80" />
+    <Hotspot X="-1157.351" Y="4217.966" Z="80" />
+    <Hotspot X="-1258.597" Y="4109.51" Z="80" />
+    <Hotspot X="-991.3624" Y="3938.562" Z="80" />
+    <Hotspot X="-747.5449" Y="3964.385" Z="80" />
+    <Hotspot X="-584.3112" Y="3929.266" Z="80" />
+    <Hotspot X="-729.6375" Y="3802.217" Z="80" />
+    <Hotspot X="-783.3599" Y="3703.057" Z="80" />
+    <Hotspot X="-943.1499" Y="3651.928" Z="80" />
+    <Hotspot X="-675.9149" Y="3437.081" Z="80" />
+    <Hotspot X="-569.8475" Y="3710.288" Z="80" />
+    <Hotspot X="-353.58" Y="3592.535" Z="80" />
+    <Hotspot X="-177.2599" Y="3608.545" Z="80" />
+    <Hotspot X="76.20007" Y="3694.277" Z="80" />
+    <Hotspot X="161.6051" Y="3588.404" Z="80" />
+    <Hotspot X="67.93504" Y="3463.421" Z="80" />
+    <Hotspot X="-206.1875" Y="3344.635" Z="80" />
+    <Hotspot X="-372.8649" Y="3402.995" Z="80" />
+  </Hotspots>
+</HBProfile>

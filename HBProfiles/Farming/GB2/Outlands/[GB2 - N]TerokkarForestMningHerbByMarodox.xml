@@ -1,0 +1,50 @@
+<HBProfile>
+  <Name>Terokkar_Forest_Herbs/Mine_By_Marodox</Name>
+  <MinDurability>0.4</MinDurability>
+  <MinFreeBagSlots>1</MinFreeBagSlots>
+  
+  <MinLevel>1</MinLevel>
+  <MaxLevel>86</MaxLevel>
+  <Factions>99999</Factions>
+  
+  <MailGrey>False</MailGrey>
+  <MailWhite>True</MailWhite>
+  <MailGreen>True</MailGreen>
+  <MailBlue>True</MailBlue>
+  <MailPurple>True</MailPurple>
+ 
+  <SellGrey>True</SellGrey>
+  <SellWhite>False</SellWhite>
+  <SellGreen>False</SellGreen>
+  <SellBlue>False</SellBlue>
+  <SellPurple>False</SellPurple>
+
+	<Vendors>
+	<Vendor Name="Eral" Entry="19197" Type="Food" X="-2092.227" Y="5329.306" Z="-35.38803" />
+	</Vendors>
+	
+	<Mailboxes>
+	<Mailbox X="-1897.166" Y="5159.539" Z="-40.20902" />
+	</Mailboxes>
+
+  <Hotspots>
+  <Hotspot X="-2718.965" Y="5372.228" Z="64.09505" />
+  <Hotspot X="-3314.973" Y="5858.095" Z="35.68805" />
+  <Hotspot X="-3685.737" Y="5528.144" Z="31.49185" />
+  <Hotspot X="-3840.391" Y="5335.299" Z="19.17387" />
+  <Hotspot X="-3790.453" Y="4370.786" Z="44.00699" />
+  <Hotspot X="-3048.39" Y="4276.488" Z="94.62006" />
+  <Hotspot X="-2682.149" Y="4811.362" Z="127.0631" />
+  <Hotspot X="-2572.125" Y="4996.103" Z="132.9662" />
+  <Hotspot X="-2126.392" Y="4665.426" Z="117.1455" />
+  <Hotspot X="-2342.346" Y="4202.389" Z="47.07895" />
+  <Hotspot X="-2733.417" Y="3572.666" Z="65.54935" />
+  <Hotspot X="-2665.414" Y="3250.389" Z="54.61624" />
+  <Hotspot X="-2193.495" Y="3571.842" Z="36.82264" />
+  <Hotspot X="-2247.511" Y="4070.598" Z="39.00222" />
+  <Hotspot X="-2207.291" Y="5011.603" Z="33.06831" />
+  <Hotspot X="-2488.098" Y="5326.035" Z="51.89925" />
+  </Hotspots>
+  <Blackspots>
+  </Blackspots>
+</HBProfile>

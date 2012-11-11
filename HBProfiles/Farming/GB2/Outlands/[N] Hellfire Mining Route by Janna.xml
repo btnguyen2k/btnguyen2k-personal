@@ -1,0 +1,95 @@
+<HBProfile creator="Janna" version="1.0">
+<Name>Hellfire Mining 275-325</Name>
+<MinDurability>0.4</MinDurability>
+<MinFreeBagSlots>1</MinFreeBagSlots>
+
+<MinLevel>1</MinLevel>
+<MaxLevel>91</MaxLevel>
+
+<MailGrey>False</MailGrey>
+<MailWhite>True</MailWhite>
+<MailGreen>True</MailGreen>
+<MailBlue>True</MailBlue>
+<MailPurple>True</MailPurple>
+
+<SellGrey>True</SellGrey>
+<SellWhite>False</SellWhite>
+<SellGreen>False</SellGreen>
+<SellBlue>False</SellBlue>
+<SellPurple>False</SellPurple>
+
+<Vendors>
+
+</Vendors>
+
+<Mailboxes>
+
+</Mailboxes>
+
+<Grindarea>
+
+<Factions>99999</Factions>
+
+<AvoidMobs>
+
+</AvoidMobs>
+
+<Hotspots>
+<Hotspot X="-68.0119" Y="1899.068" Z="128.3586" />
+<Hotspot X="62.73042" Y="1952.623" Z="119.0982" />
+<Hotspot X="183.711" Y="2039.536" Z="114.3406" />
+<Hotspot X="262.3884" Y="2173.413" Z="120.6937" />
+<Hotspot X="323.1165" Y="2346.367" Z="148.6564" />
+<Hotspot X="396.9022" Y="2516.878" Z="191.7204" />
+<Hotspot X="430.0757" Y="2637.22" Z="198.1425" />
+<Hotspot X="472.972" Y="2773.549" Z="222.3434" />
+<Hotspot X="468.8552" Y="2859.692" Z="231.5206" />
+<Hotspot X="452.3924" Y="2900.154" Z="101.5229" />
+<Hotspot X="372.0641" Y="3056.388" Z="58.80193" />
+<Hotspot X="265.2644" Y="3143.335" Z="63.12993" />
+<Hotspot X="-24.10007" Y="3111.021" Z="34.83798" />
+<Hotspot X="-55.49165" Y="3216.575" Z="39.18847" />
+<Hotspot X="-30.13302" Y="3392.777" Z="95.59727" />
+<Hotspot X="114.2067" Y="3513.582" Z="98.69918" />
+<Hotspot X="359.3942" Y="3475.361" Z="94.65992" />
+<Hotspot X="393.3259" Y="3512.065" Z="203.7221" />
+<Hotspot X="317.9405" Y="3706.588" Z="217.3454" />
+<Hotspot X="233.215" Y="3866.864" Z="197.1997" />
+<Hotspot X="137.4334" Y="4034.143" Z="127.569" />
+<Hotspot X="43.24836" Y="4289.721" Z="119.6848" />
+<Hotspot X="50.94171" Y="4455.577" Z="111.2804" />
+<Hotspot X="157.7879" Y="4598.288" Z="109.2048" />
+<Hotspot X="173.0859" Y="4856.112" Z="99.19039" />
+<Hotspot X="11.4392" Y="4898.129" Z="99.92156" />
+<Hotspot X="-87.45648" Y="4863.243" Z="90.0086" />
+<Hotspot X="-303.3151" Y="5039.563" Z="103.8538" />
+<Hotspot X="-576.2574" Y="4807.076" Z="74.08548" />
+<Hotspot X="-469.9426" Y="4592.32" Z="99.38464" />
+<Hotspot X="-537.1515" Y="4435.175" Z="145.1508" />
+<Hotspot X="-991.7528" Y="4323.753" Z="140.8665" />
+<Hotspot X="-1232.218" Y="4062.7" Z="133.5823" />
+<Hotspot X="-819.6009" Y="3961.233" Z="131.9648" />
+<Hotspot X="-763.1971" Y="3812.686" Z="157.3872" />
+<Hotspot X="-899.4406" Y="3675.897" Z="153.4959" />
+<Hotspot X="-903.4533" Y="3461.585" Z="148.8043" />
+<Hotspot X="-1218.06" Y="3349.092" Z="252.9005" />
+<Hotspot X="-1341.953" Y="3146.215" Z="81.30486" />
+<Hotspot X="-1144.51" Y="2931.054" Z="58.63716" />
+<Hotspot X="-1002.772" Y="2675.7" Z="61.54658" />
+<Hotspot X="-799.3475" Y="2415.427" Z="74.94366" />
+<Hotspot X="-538.5685" Y="2155.681" Z="124.994" />
+<Hotspot X="-409.3253" Y="1870.704" Z="171.9452" />
+<Hotspot X="-268.2393" Y="1870.287" Z="173.6604" />
+<Hotspot X="-229.2571" Y="2242.521" Z="125.1028" />
+<Hotspot X="-251.2098" Y="2640.007" Z="45.99523" />
+<Hotspot X="-270.9312" Y="2861.099" Z="5.389446" />
+<Hotspot X="-290.307" Y="2976.907" Z="-7.416258" />
+</Hotspots>
+
+<Blackspots>
+
+</Blackspots>
+
+</Grindarea>
+
+</HBProfile>
