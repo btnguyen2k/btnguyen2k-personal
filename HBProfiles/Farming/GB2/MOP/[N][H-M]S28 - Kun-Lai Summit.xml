@@ -1,0 +1,120 @@
+<HBProfile>
+///////////////////////////////////////////////////
+//                                               //
+// Profile generated with ZapRecorder2 v1.2.0    //
+// Created by BadWolf                            //
+//                                               //
+///////////////////////////////////////////////////
+<Name>S28 - Kun-Lai Summit - Herb Mining</Name>
+<MinDurability>0.4</MinDurability>
+<MinFreeBagSlots>1</MinFreeBagSlots>
+
+<MinLevel>1</MinLevel>
+<MaxLevel>91</MaxLevel>
+<Factions>99999</Factions>
+
+<MailGrey>false</MailGrey>
+<MailWhite>true</MailWhite>
+<MailGreen>true</MailGreen>
+<MailBlue>true</MailBlue>
+<MailPurple>true</MailPurple>
+
+<SellGrey>true</SellGrey>
+<SellWhite>false</SellWhite>
+<SellGreen>false</SellGreen>
+<SellBlue>false</SellBlue>
+<SellPurple>false</SellPurple>
+
+<Vendors>
+<Vendor Name="Ironshaper Shou" Entry="59827" Type="Repair" X="3042,047" Y="1245,347" Z="654,3098" />
+</Vendors>
+
+<Mailboxes>
+<Mailbox X="3108.657" Y="1237.408" Z="654.1589" />
+</Mailboxes>
+
+<Blackspots>
+						<!-- The Dooker Dome -->
+<Blackspot X="3009.671" Y="1674.201" Z="659.4459" Radius="20" /> <!-- The Dooker Dome -->
+<Blackspot X="2940.103" Y="1702.583" Z="644.3242" Radius="20" /> <!-- The Dooker Dome -->
+<Blackspot X="2990.615" Y="1618.997" Z="645.3886" Radius="20" /> <!-- The Dooker Dome -->
+<Blackspot X="2983.769" Y="1650.398" Z="644.3087" Radius="20" /> <!-- The Dooker Dome -->
+<Blackspot X="2849.21" Y="1987.384" Z="640.0646" Radius="20" /> <!-- The Dooker Dome -->
+<Blackspot X="2891.576" Y="1953.663" Z="636.2579" Radius="20" /> <!-- The Dooker Dome -->
+<Blackspot X="2844.309" Y="1940.443" Z="624.3087" Radius="20" /> <!-- The Dooker Dome -->
+<Blackspot X="2912.462" Y="1841.349" Z="666.304" Radius="20" /> <!-- The Dooker Dome -->
+<Blackspot X="3011.774" Y="2007.396" Z="644.8821" Radius="20" /> <!-- The Dooker Dome -->
+<Blackspot X="2847.884" Y="2009.575" Z="639.9312" Radius="20" /> <!-- The Dooker Dome -->
+<Blackspot X="2864.753" Y="1958.09" Z="635.7365" Radius="20" /> <!-- The Dooker Dome -->
+<Blackspot X="2925.036" Y="1957.22" Z="642.7274" Radius="20" /> <!-- The Dooker Dome -->
+<Blackspot X="2933.335" Y="1991.953" Z="646.4371" Radius="20" /> <!-- The Dooker Dome -->
+<Blackspot X="2924.076" Y="1904" Z="640.6896" Radius="20" /> <!-- The Dooker Dome -->
+<Blackspot X="2998.868" Y="1906.472" Z="642.9385" Radius="20" /> <!-- The Dooker Dome -->
+<Blackspot X="2954.653" Y="2012.262" Z="645.746" Radius="20" /> <!-- The Dooker Dome -->
+<Blackspot X="2805.553" Y="1983.108" Z="610.206" Radius="20" /> <!-- The Dooker Dome -->
+<Blackspot X="3038.777" Y="1674.113" Z="647.7855" Radius="20" /> <!-- The Dooker Dome -->
+<Blackspot X="3033.599" Y="1653.203" Z="654.9814" Radius="20" /> <!-- The Dooker Dome -->
+<Blackspot X="2885.767" Y="1877.656" Z="666.4838" Radius="20" /> <!-- The Dooker Dome -->
+						<!-- Knucklethump Hole -->
+<Blackspot X="2957.365" Y="1723.057" Z="643.7546" Radius="20" /> <!-- Knucklethump Hole -->
+<Blackspot X="2920.2" Y="1733.757" Z="644.7365" Radius="20" /> <!-- Knucklethump Hole -->
+<Blackspot X="2977.07" Y="1705.615" Z="643.8828" Radius="20" /> <!-- Knucklethump Hole -->
+<Blackspot X="3007.826" Y="1692.422" Z="646.3754" Radius="20" /> <!-- Knucklethump Hole -->
+<Blackspot X="2938.641" Y="1632.828" Z="643.2573" Radius="20" /> <!-- Knucklethump Hole -->
+<Blackspot X="2916.502" Y="1571" Z="645.0411" Radius="20" /> <!-- Knucklethump Hole -->
+</Blackspots>
+      
+<Hotspots>
+<Hotspot X="3792.282" Y="2322.651" Z="783.3129" />
+<Hotspot X="3777.319" Y="2332.877" Z="792.6663" />
+<Hotspot X="3726.512" Y="2347.751" Z="811.8779" />
+<Hotspot X="3681.245" Y="2340.605" Z="847.2999" />
+<Hotspot X="3626.938" Y="2346.161" Z="837.308" />
+<Hotspot X="3587.518" Y="2385.94" Z="822.1407" />
+<Hotspot X="3536.234" Y="2413.055" Z="813.614" />
+<Hotspot X="3512.071" Y="2464.839" Z="802.3251" />
+<Hotspot X="3496.001" Y="2520.55" Z="793.0696" />
+<Hotspot X="3459.302" Y="2564.319" Z="788.616" />
+<Hotspot X="3414.385" Y="2582.39" Z="761.8446" />
+<Hotspot X="3364.759" Y="2593.886" Z="732.5717" />
+<Hotspot X="3308.529" Y="2600.719" Z="715.2689" />
+<Hotspot X="3248.808" Y="2605.631" Z="705.2445" />
+<Hotspot X="3201.862" Y="2601.494" Z="671.9708" />
+<Hotspot X="3150.766" Y="2581.441" Z="670.06" />
+<Hotspot X="3130.086" Y="2538.917" Z="701.5933" />
+<Hotspot X="3134.958" Y="2494.723" Z="740.1825" />
+<Hotspot X="3142.564" Y="2451.717" Z="779.9588" />
+<Hotspot X="3151.919" Y="2403.896" Z="813.2225" />
+<Hotspot X="3153.667" Y="2351.351" Z="838.4048" />
+<Hotspot X="3145.259" Y="2295.182" Z="832.373" />
+<Hotspot X="3124.063" Y="2246.588" Z="805.3421" />
+<Hotspot X="3098.738" Y="2201.004" Z="779.0351" />
+<Hotspot X="3074.119" Y="2148.293" Z="768.414" />
+<Hotspot X="3059.543" Y="2092.14" Z="767.8317" />
+<Hotspot X="3071.2" Y="2035.631" Z="778.4705" />
+<Hotspot X="3079.212" Y="1983.105" Z="752.1381" />
+<Hotspot X="3063.53" Y="1930.012" Z="738.118" />
+<Hotspot X="3040.124" Y="1876.901" Z="731.2297" />
+<Hotspot X="3057.521" Y="1829.401" Z="739.7131" />
+<Hotspot X="3099.483" Y="1798.464" Z="766.0106" />
+<Hotspot X="3131.425" Y="1770.505" Z="805.9313" />
+<Hotspot X="3165.602" Y="1723.946" Z="813.1102" />
+<Hotspot X="3199.951" Y="1679.421" Z="825.7375" />
+<Hotspot X="3251.937" Y="1660.132" Z="839.6572" />
+<Hotspot X="3309.429" Y="1664.132" Z="851.4823" />
+<Hotspot X="3367.962" Y="1668.821" Z="858.4667" />
+<Hotspot X="3426.588" Y="1672.887" Z="858.9026" />
+<Hotspot X="3485.925" Y="1679.258" Z="859.9407" />
+<Hotspot X="3536.901" Y="1705.674" Z="863.5167" />
+<Hotspot X="3564.445" Y="1754.536" Z="879.0846" />
+<Hotspot X="3587.362" Y="1808.131" Z="889.8535" />
+<Hotspot X="3614.266" Y="1860.095" Z="895.4519" />
+<Hotspot X="3652.146" Y="1903.745" Z="904.5809" />
+<Hotspot X="3685.222" Y="1951.621" Z="908.5654" />
+<Hotspot X="3717.397" Y="2000.089" Z="905.7556" />
+<Hotspot X="3743.443" Y="2053.177" Z="905.1752" />
+<Hotspot X="3756.887" Y="2108.472" Z="892.1945" />
+<Hotspot X="3758.354" Y="2151.933" Z="880.5328" />
+<Hotspot X="3759.225" Y="2185.928" Z="869.4837" />
+</Hotspots>
+</HBProfile>
